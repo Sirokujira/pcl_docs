@@ -110,8 +110,8 @@ breathe_default_project = "myproject"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-# extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo"]
-extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo", "breathe"]
+extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo"]
+# extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo", "breathe"]
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
