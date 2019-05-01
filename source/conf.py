@@ -36,7 +36,7 @@ def run_doxygen(folder):
         print("testb")
         # doc generate build
         # Linux
-        retcode = subprocess.call("cd %s/pcl/build; cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+        retcode = subprocess.call("cd %s/pcl/build; %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
         # Windows
         # retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DGENERATE_XML=ON -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
         # install build
@@ -46,7 +46,7 @@ def run_doxygen(folder):
 
         print("testc")
         # Linux
-        retcode = subprocess.call("cd %s/pcl/build; cmake --build . -- doc tutorials advanced" % (folder), shell=True)
+        retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
         # retcode = subprocess.call("cd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
         if retcode < 0:
             sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
