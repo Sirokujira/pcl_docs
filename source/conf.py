@@ -27,18 +27,18 @@ def run_doxygen(folder):
     try:
         # print(folder)
         # Linux
-        # retcode = subprocess.call("cd %s/pcl; mkdir build; cd build" % folder, shell=True)
+        retcode = subprocess.call("cd %s/pcl; mkdir build; cd build" % folder, shell=True)
         # Windows
-        retcode = subprocess.call("cd %s/pcl && mkdir build && cd build" % folder, shell=True)
+        # retcode = subprocess.call("cd %s/pcl && mkdir build && cd build" % folder, shell=True)
         if retcode < 0:
             sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
         print("testb")
         # doc generate build
         # Linux
-        # retcode = subprocess.call("cd %s/pcl/build; cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+        retcode = subprocess.call("cd %s/pcl/build; cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
         # Windows
-        retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DGENERATE_XML=ON -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+        # retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DGENERATE_XML=ON -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
         # install build
         # retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DCMAKE_BUILD_TYPE=Release -DWITH_CUDA=OFF -DWITH_DAVIDSDK=OFF -DWITH_DSSDK=OFF -DWITH_ENSENSO=OFF -DWITH_FZAPI=OFF -DWITH_LIBUSB=OFF -DWITH_OPENGL=OFF -DWITH_OPENNI=OFF -DWITH_OPENNI2=OFF -DWITH_PCAP=OFF -DWITH_PNG=OFF -DWITH_QHULL=ON -DWITH_QT=ON -DWITH_VTK=ON -DBUILD_global_tests=OFF -DBUILD_examples=OFF -DBUILD_tools=ON -DBUILD_apps=OFF -DBUILD_tools:BOOL=OFF -DBUILD_global_tests:BOOL=OFF -DBUILD_2d:BOOL=ON -DBUILD_CUDA:BOOL=OFF -DBUILD_GPU:BOOL=OFF -DBUILD_all_in_one_installer:BOOL=OFF -DBUILD_apps:BOOL=OFF -DBUILD_common:BOOL=ON -DBUILD_example:BOOL=OFF -DBUILD_features:BOOL=ON -DBUILD_filters:BOOL=ON -DBUILD_geometry:BOOL=ON -DBUILD_global_tests:BOOL=OFF -DBUILD_io:BOOL=ON -DBUILD_kdtree:BOOL=ON -DBUILD_keypoints:BOOL=ON -DBUILD_octree:BOOL=ON -DBUILD_outofcore:BOOL=ON -DBUILD_people:BOOL=ON -DBUILD_recognition:BOOL=ON -DBUILD_registration:BOOL=ON -DBUILD_sample_consensus:BOOL=ON -DBUILD_search:BOOL=ON -DBUILD_segmentation:BOOL=ON -DBUILD_simulation:BOOL=OFF -DBUILD_stereo:BOOL=ON -DBUILD_surface:BOOL=ON -DBUILD_surface_on_nurbs:BOOL=ON -DBUILD_tracking:BOOL=ON -DBUILD_visualization:BOOL=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
         if retcode < 0:
@@ -46,8 +46,8 @@ def run_doxygen(folder):
 
         print("testc")
         # Linux
-        # retcode = subprocess.call("cd %s/pcl/build; cmake --build . -- doc tutorials advanced" % (folder), shell=True)
-        retcode = subprocess.call("cd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+        retcode = subprocess.call("cd %s/pcl/build; cmake --build . -- doc tutorials advanced" % (folder), shell=True)
+        # retcode = subprocess.call("cd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
         if retcode < 0:
             sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
