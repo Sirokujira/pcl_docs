@@ -112,19 +112,33 @@ run_doxygen(os.getcwd())
 # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
 call(['doxygen', './pcl/build/doc/doxygen/Doxyfile'])
 
-# make source(generate index.rst)
-# call(['python', './make_source.py', './pcl/include/pcl/', './'])
-# call(['python', './make_source.py', './pcl/doc', './tmp_doc'])
-# call(['python', './make_source.py', './pcl/doc', './pcl/doc'])
-# call(['python', './make_source.py', './pcl', '.'])
-# call(['python', './make_source.py', './pcl/build/include/pcl', '.'])
-# call(['python', './make_source.py', './pcl/build/doc/doxygen/xml', './src'])
+# make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
-
 
 # breathe_projects = { "myproject" : "./user_doxygen_out/xml/" }
 breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
 breathe_default_project = "myproject"
+
+# Setup the exhale extension
+exhale_args = {
+    # These arguments are required
+    "containmentFolder":     "./api",
+    "rootFileName":          "index.rst",
+    "rootFileTitle":         "Library API",
+    "doxygenStripFromPath":  "..",
+    # Suggested optional arguments
+    "createTreeView":        True,
+    # TIP: if using the sphinx-bootstrap-theme, you need
+    # "treeViewIsBootstrap": True,
+    "exhaleExecutesDoxygen": True,
+    "exhaleDoxygenStdin":    "INPUT = ./pcl"
+}
+
+# Tell sphinx what the primary language being documented is.
+primary_domain = 'cpp'
+
+# Tell sphinx what the pygments highlight language should be.
+highlight_language = 'cpp'
 
 # If your extensions are in another directory, add it here. If the directory
 # is relative to the documentation root, use os.path.abspath to make it
@@ -136,8 +150,9 @@ breathe_default_project = "myproject"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-# extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo"]
-extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo", "breathe"]
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
