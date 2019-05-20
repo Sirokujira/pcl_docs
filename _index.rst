@@ -6,20 +6,3 @@
 Welcome to pcl's documentation!
 ===============================
 
-.. toctree::
-   :maxdepth: 6
-   :caption: Contents:
-
-   pcl/doc/advanced/content/index
-   pcl/doc/tutorials/content/index
-
-   src/index
-   src/tools
-   src/test
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

@@ -20,36 +20,60 @@ import six
 import sys
 import subprocess
 import cmake
+import platform
 
 def run_doxygen(folder):
     """Run the doxygen make command in the designated folder"""
 
     try:
-        # print(folder)
-        # Linux
-        retcode = subprocess.call("cd %s/pcl; mkdir build; cd build" % folder, shell=True)
-        # Windows
-        # retcode = subprocess.call("cd %s/pcl && mkdir build && cd build" % folder, shell=True)
-        if retcode < 0:
-            sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+        if platform.system() == "Windows":
+            # Windows
+            retcode = subprocess.call("cd %s/pcl && mkdir build && cd build" % folder, shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-        print("testb")
-        # doc generate build
-        # Linux
-        retcode = subprocess.call("cd %s/pcl/build; %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
-        # Windows
-        # retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DGENERATE_XML=ON -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
-        # install build
-        # retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DCMAKE_BUILD_TYPE=Release -DWITH_CUDA=OFF -DWITH_DAVIDSDK=OFF -DWITH_DSSDK=OFF -DWITH_ENSENSO=OFF -DWITH_FZAPI=OFF -DWITH_LIBUSB=OFF -DWITH_OPENGL=OFF -DWITH_OPENNI=OFF -DWITH_OPENNI2=OFF -DWITH_PCAP=OFF -DWITH_PNG=OFF -DWITH_QHULL=ON -DWITH_QT=ON -DWITH_VTK=ON -DBUILD_global_tests=OFF -DBUILD_examples=OFF -DBUILD_tools=ON -DBUILD_apps=OFF -DBUILD_tools:BOOL=OFF -DBUILD_global_tests:BOOL=OFF -DBUILD_2d:BOOL=ON -DBUILD_CUDA:BOOL=OFF -DBUILD_GPU:BOOL=OFF -DBUILD_all_in_one_installer:BOOL=OFF -DBUILD_apps:BOOL=OFF -DBUILD_common:BOOL=ON -DBUILD_example:BOOL=OFF -DBUILD_features:BOOL=ON -DBUILD_filters:BOOL=ON -DBUILD_geometry:BOOL=ON -DBUILD_global_tests:BOOL=OFF -DBUILD_io:BOOL=ON -DBUILD_kdtree:BOOL=ON -DBUILD_keypoints:BOOL=ON -DBUILD_octree:BOOL=ON -DBUILD_outofcore:BOOL=ON -DBUILD_people:BOOL=ON -DBUILD_recognition:BOOL=ON -DBUILD_registration:BOOL=ON -DBUILD_sample_consensus:BOOL=ON -DBUILD_search:BOOL=ON -DBUILD_segmentation:BOOL=ON -DBUILD_simulation:BOOL=OFF -DBUILD_stereo:BOOL=ON -DBUILD_surface:BOOL=ON -DBUILD_surface_on_nurbs:BOOL=ON -DBUILD_tracking:BOOL=ON -DBUILD_visualization:BOOL=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
-        if retcode < 0:
-            sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+            # patch
+            # retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../doxyfile.patch" % (folder, folder), shell=True)
+            # if retcode < 0:
+            #     sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+            # retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../filter1.patch" % (folder, folder), shell=True)
+            # if retcode < 0:
+            #     sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+            # retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../filter2.patch" % (folder, folder), shell=True)
+            # if retcode < 0:
+            #     sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+            retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../diff.patch" % (folder, folder), shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-        print("testc")
-        # Linux
-        retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
-        # retcode = subprocess.call("cd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
-        if retcode < 0:
-            sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+            # doc generate build
+            retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+
+            # make doc
+            retcode = subprocess.call("cd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+        else:
+            # Linux
+            retcode = subprocess.call("cd %s/pcl; mkdir build; cd build" % folder, shell=True)
+
+            # patch
+            # retcode = subprocess.call("cd %s/pcl; patch -f -p1 < ../doxyfile.patch" % (folder), shell=True)
+            retcode = subprocess.call("cd %s/pcl ; patch -d %s/pcl -f -p1 < ../diff.patch" % (folder, folder), shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+
+            # doc generate build
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+
+            # make doc
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
     except OSError as e:
         sys.stderr.write("doxygen execution failed: %s" % e)
@@ -63,6 +87,8 @@ def generate_doxygen_xml(app):
     if read_the_docs_build:
         run_doxygen(".")
 
+# Running on Read the Docs
+# https://breathe.readthedocs.io/en/latest/readthedocs.html
 def setup(app):
 
     # Add hook for building doxygen xml when needed
@@ -92,8 +118,8 @@ call(['doxygen', './pcl/build/doc/doxygen/Doxyfile'])
 # call(['python', './make_source.py', './pcl/doc', './pcl/doc'])
 # call(['python', './make_source.py', './pcl', '.'])
 # call(['python', './make_source.py', './pcl/build/include/pcl', '.'])
-call(['python', './make_source.py', './pcl', './src'])
 # call(['python', './make_source.py', './pcl/build/doc/doxygen/xml', './src'])
+# call(['python', './make_source.py', './pcl', './api'])
 
 
 # breathe_projects = { "myproject" : "./user_doxygen_out/xml/" }
@@ -110,8 +136,8 @@ breathe_default_project = "myproject"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo"]
-# extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo", "breathe"]
+# extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo"]
+extensions = ["sphinx.ext.imgmath", "sphinx.ext.todo", "breathe"]
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -408,7 +434,6 @@ autosummary_generate = True
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
-    'numpy': ('http://docs.scipy.org/doc/numpy/', None),
 }
 
 doctest_global_setup = '''

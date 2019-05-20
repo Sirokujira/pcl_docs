@@ -7,15 +7,23 @@ Welcome to pcl's documentation!
 ===============================
 
 .. toctree::
-   :maxdepth: 6
-   :caption: Contents:
+   :maxdepth: 2
+   :caption: Tutorials:
 
-   pcl/doc/advanced/content/index
    pcl/doc/tutorials/content/index
 
-   src/index
-   src/tools
-   src/test
+.. toctree::
+   :maxdepth: 2
+   :caption: Advanced Topics:
+
+   pcl/doc/advanced/content/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API documentation:
+
+   api/index
+
 
 Indices and tables
 ==================
@@ -23,3 +31,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+

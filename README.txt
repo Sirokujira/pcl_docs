@@ -8,7 +8,7 @@ This repostitory contains scripts and files for generating API documenations aut
 
 Why ?
 
-The core team will be freed from maintaining in-house documentation systems and html / javascript works. :)
+...
 
 How it works ?
 1.Clone the PointCloudLibrary repository.
@@ -20,11 +20,9 @@ How it works ?
  The API documentation will be available at: https://pcl.readthedocs.org
 
 Run on local for testing
-pip install Sphinx==1.5.3
-pip install sphinx_rtd_theme
-pip install breathe
-sphinx-build ./source ./build
-
+conda env create -f environment.yml
+conda activate pcl-docs
+make html
 
 Contact
 

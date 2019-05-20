@@ -84,13 +84,13 @@ def generateRSTs(inDir, outDir, isRoot=False):
 Alphabet
 ========
 
-.. doxygenfile:: alphabet.hpp
+.. doxygenfile:: 
    :project: myproject
 
-.. doxygenfile:: alphabet_container.hpp
+.. doxygenfile:: 
    :project: myproject
 
-.. doxygenfile:: compound_alphabet.hpp
+.. doxygenfile:: 
    :project: myproject
 
 .. toctree::
@@ -114,4 +114,4 @@ inDir = sys.argv[1]
 outDir = sys.argv[2]
 
 generateIndex(inDir, outDir)
-generateRSTs(inDir, outDir, False)
+generateRSTs(inDir, outDir, True)
