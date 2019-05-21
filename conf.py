@@ -28,7 +28,7 @@ def run_doxygen(folder):
 
     try:
         # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
-        subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+        subprocess.call("git clone https://github.com/PointCloudLibrary/pcl %s/pcl" % (folder), shell=True)
         if platform.system() == "Windows":
             # Windows
             retcode = subprocess.call("cd %s/pcl && mkdir build" % folder, shell=True)
@@ -102,6 +102,7 @@ if __name__ == "__main__":
     # run_doxygen(os.getcwd())
     print("test2")
 
+run_doxygen("./source")
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
