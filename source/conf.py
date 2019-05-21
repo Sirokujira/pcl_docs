@@ -97,25 +97,30 @@ if __name__ == "__main__":
 from subprocess import call
 call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
 
+print(os.getcwd())
 # generate doxyfile(doxyfile.in)
 run_doxygen(os.getcwd())
 # print("testd")
 
 # generate xml files in doxyfile
 # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
-call(['doxygen', './pcl/build/doc/doxygen/Doxyfile'])
+# call(['doxygen', './pcl/build/doc/doxygen/Doxyfile'])
+call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/Doxyfile')])
+
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
+call(['python', os.path.join(os.getcwd(), 'make_source.py'), os.path.join(os.getcwd(), 'pcl'), os.path.join(os.getcwd(), 'api')])
 
 # breathe_projects = { "myproject" : "./user_doxygen_out/xml/" }
-breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
+# breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
+breathe_projects = { "myproject" : os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/Doxyfile') }
 breathe_default_project = "myproject"
 
 # Setup the exhale extension
 exhale_args = {
     # These arguments are required
-    "containmentFolder":     "./api",
+    "containmentFolder":     os.path.join(os.getcwd(), 'api'),
     "rootFileName":          "index.rst",
     "rootFileTitle":         "Library API",
     "doxygenStripFromPath":  "..",
@@ -123,8 +128,8 @@ exhale_args = {
     "createTreeView":        True,
     # TIP: if using the sphinx-bootstrap-theme, you need
     # "treeViewIsBootstrap": True,
-    "exhaleExecutesDoxygen": True,
-    "exhaleDoxygenStdin":    "INPUT = ./pcl"
+    # "exhaleExecutesDoxygen": True,
+    # "exhaleDoxygenStdin":    "INPUT = os.path.join(os.getcwd(), 'pcl')
 }
 
 # Tell sphinx what the primary language being documented is.
