@@ -21,11 +21,14 @@ import sys
 import subprocess
 import cmake
 import platform
+from subprocess import call
 
 def run_doxygen(folder):
     """Run the doxygen make command in the designated folder"""
 
     try:
+        # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
+        subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
         if platform.system() == "Windows":
             # Windows
             retcode = subprocess.call("cd %s/pcl && mkdir build" % folder, shell=True)
@@ -67,6 +70,12 @@ def run_doxygen(folder):
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
+        # generate xml files in doxyfile
+        # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
+        subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+        # call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile')])
+
+
     except OSError as e:
         sys.stderr.write("doxygen execution failed: %s" % e)
 
@@ -77,8 +86,8 @@ def generate_doxygen_xml(app):
     read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
     if read_the_docs_build:
-        # run_doxygen(".")
-        run_doxygen(os.getcwd())
+        run_doxygen(".")
+        # run_doxygen(os.getcwd())
 
 # Running on Read the Docs
 # https://breathe.readthedocs.io/en/latest/readthedocs.html
@@ -89,38 +98,25 @@ def setup(app):
 
 if __name__ == "__main__":
     print("test1")
-    run_doxygen(os.getcwd())
+    run_doxygen(".")
+    # run_doxygen(os.getcwd())
     print("test2")
-
-
-# doxygen
-from subprocess import call
-call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
-
-print(os.getcwd())
-# generate doxyfile(doxyfile.in)
-run_doxygen(os.getcwd())
-# print("testd")
-
-# generate xml files in doxyfile
-# call(['doxygen', './doxyfiles/Developer_Doxyfile'])
-# call(['doxygen', './pcl/build/doc/doxygen/Doxyfile'])
-call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/Doxyfile')])
 
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
-call(['python', os.path.join(os.getcwd(), 'make_source.py'), os.path.join(os.getcwd(), 'pcl'), os.path.join(os.getcwd(), 'api')])
+# call(['python', os.path.join(os.getcwd(), 'make_source.py'), os.path.join(os.getcwd(), 'pcl'), os.path.join(os.getcwd(), 'api')])
 
 # breathe_projects = { "myproject" : "./user_doxygen_out/xml/" }
-# breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
-breathe_projects = { "myproject" : os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/Doxyfile') }
+breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
+# breathe_projects = { "myproject" : os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile') }
 breathe_default_project = "myproject"
 
 # Setup the exhale extension
 exhale_args = {
     # These arguments are required
-    "containmentFolder":     os.path.join(os.getcwd(), 'api'),
+    # "containmentFolder":     os.path.join(os.getcwd(), 'api'),
+    "containmentFolder":     './api',
     "rootFileName":          "index.rst",
     "rootFileTitle":         "Library API",
     "doxygenStripFromPath":  "..",
