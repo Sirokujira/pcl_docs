@@ -38,7 +38,7 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            retcode = subprocess.call("patch -d %s/pcl -f -p1 < diff.patch" % (folder, folder), shell=True)
+            retcode = subprocess.call("patch -d %s/pcl -f -p1 < diff.patch" % (folder), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -61,7 +61,7 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            retcode = subprocess.call("patch -d %s/pcl -f -p1 < diff.patch" % (folder, folder), shell=True)
+            retcode = subprocess.call("patch -d %s/pcl -f -p1 < diff.patch" % (folder), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
