@@ -86,7 +86,7 @@ def generate_doxygen_xml(app):
     read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
     if read_the_docs_build:
-        run_doxygen(".")
+        run_doxygen("./source")
         # run_doxygen(os.getcwd())
 
 # Running on Read the Docs
@@ -98,7 +98,7 @@ def setup(app):
 
 if __name__ == "__main__":
     print("test1")
-    run_doxygen(".")
+    run_doxygen("./source")
     # run_doxygen(os.getcwd())
     print("test2")
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
 # call(['python', os.path.join(os.getcwd(), 'make_source.py'), os.path.join(os.getcwd(), 'pcl'), os.path.join(os.getcwd(), 'api')])
 
 # breathe_projects = { "myproject" : "./user_doxygen_out/xml/" }
-breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
+breathe_projects = { "myproject" : "./source/pcl/build/doc/doxygen/xml/" }
 # breathe_projects = { "myproject" : os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile') }
 breathe_default_project = "myproject"
 
@@ -116,6 +116,7 @@ breathe_default_project = "myproject"
 exhale_args = {
     # These arguments are required
     # "containmentFolder":     os.path.join(os.getcwd(), 'api'),
+    # "containmentFolder":     './source/api',
     "containmentFolder":     './api',
     "rootFileName":          "index.rst",
     "rootFileTitle":         "Library API",

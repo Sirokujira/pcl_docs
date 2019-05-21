@@ -4,8 +4,8 @@
 # You can set these variables from the command line.
 SPHINXBUILD   = sphinx-build
 PAPER         =
-SOURCEDIR     = source
-BUILDDIR      = build
+SOURCEDIR     = .
+BUILDDIR      = _build
 SPHINXOPTS    = -d $(BUILDDIR)/doctrees
 
 # User-friendly check for sphinx-build
