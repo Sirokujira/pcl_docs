@@ -56,22 +56,22 @@ def run_doxygen(folder):
             # folder check
             retcode = subprocess.call("ls", shell=True)
 
-            retcode = subprocess.call("cd pcl; mkdir build; cd ..", shell=True)
+            retcode = subprocess.call("pushd pcl; mkdir build; popd", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            retcode = subprocess.call("cd pcl; patch -f -p1 < ../diff.patch;cd ..", shell=True)
+            retcode = subprocess.call("pushd pcl; patch -f -p1 < ../diff.patch; popd", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # doc generate build
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("pushd %s/pcl/build; %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("pushd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced;popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # run_doxygen(os.getcwd())
     print("test2")
 
-run_doxygen(".")
+# run_doxygen(".")
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
