@@ -51,6 +51,9 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
         else:
             # Linux
+            # folder check
+            retcode = subprocess.call("ls", shell=True)
+
             retcode = subprocess.call("cd %s/pcl; mkdir build" % folder, shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
@@ -88,7 +91,7 @@ def generate_doxygen_xml(app):
     if read_the_docs_build:
         # checkouts/latest
         print(os.getcwd())
-        run_doxygen("./checkouts/latest/source")
+        run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
         # run_doxygen(os.getcwd())
 
 # Running on Read the Docs
