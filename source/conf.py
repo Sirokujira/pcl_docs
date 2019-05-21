@@ -28,20 +28,11 @@ def run_doxygen(folder):
     try:
         if platform.system() == "Windows":
             # Windows
-            retcode = subprocess.call("cd %s/pcl && mkdir build && cd build" % folder, shell=True)
+            retcode = subprocess.call("cd %s/pcl && mkdir build" % folder, shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            # retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../doxyfile.patch" % (folder, folder), shell=True)
-            # if retcode < 0:
-            #     sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
-            # retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../filter1.patch" % (folder, folder), shell=True)
-            # if retcode < 0:
-            #     sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
-            # retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../filter2.patch" % (folder, folder), shell=True)
-            # if retcode < 0:
-            #     sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
             retcode = subprocess.call("cd %s/pcl && patch -d %s/pcl -f -p1 < ../diff.patch" % (folder, folder), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
@@ -57,11 +48,12 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
         else:
             # Linux
-            retcode = subprocess.call("cd %s/pcl; mkdir build; cd build" % folder, shell=True)
+            retcode = subprocess.call("cd %s/pcl; mkdir build" % folder, shell=True)
+            if retcode < 0:
+                sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            # retcode = subprocess.call("cd %s/pcl; patch -f -p1 < ../doxyfile.patch" % (folder), shell=True)
-            retcode = subprocess.call("cd %s/pcl ; patch -d %s/pcl -f -p1 < ../diff.patch" % (folder, folder), shell=True)
+            retcode = subprocess.call("cd %s/pcl; patch -d %s/pcl -f -p1 < ../diff.patch" % (folder, folder), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -85,7 +77,8 @@ def generate_doxygen_xml(app):
     read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
     if read_the_docs_build:
-        run_doxygen(".")
+        # run_doxygen(".")
+        run_doxygen(os.getcwd())
 
 # Running on Read the Docs
 # https://breathe.readthedocs.io/en/latest/readthedocs.html
