@@ -41,7 +41,7 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # doc generate build
-            retcode = subprocess.call("cd %s/pcl/build && %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build && %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -61,7 +61,7 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # doc generate build
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake %s/pcl -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR, folder), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
