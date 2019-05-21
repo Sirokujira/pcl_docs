@@ -1,0 +1,90 @@
+diff --git a/doc/doxygen/doxyfile.in b/doc/doxygen/doxyfile.in
+index 4c02c6fab..a9ff117c2 100644
+--- a/doc/doxygen/doxyfile.in
++++ b/doc/doxygen/doxyfile.in
+@@ -56,7 +56,7 @@ LOOKUP_CACHE_SIZE      = 0
+ #---------------------------------------------------------------------------
+ # Build related configuration options
+ #---------------------------------------------------------------------------
+-EXTRACT_ALL            = YES
++EXTRACT_ALL            = NO
+ EXTRACT_PRIVATE        = NO
+ EXTRACT_PACKAGE        = NO
+ EXTRACT_STATIC         = YES
+@@ -247,7 +247,7 @@ MAN_LINKS              = NO
+ #---------------------------------------------------------------------------
+ # configuration options related to the XML output
+ #---------------------------------------------------------------------------
+-GENERATE_XML           = NO
++GENERATE_XML           = YES
+ XML_OUTPUT             = xml
+ XML_PROGRAMLISTING     = YES
+ 
+diff --git a/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt b/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt
+index 7c4d7d4c0..46550f924 100644
+--- a/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt
++++ b/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt
+@@ -13,8 +13,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ # Find the QtWidgets library
+ find_package(Qt5 REQUIRED Widgets)
+ 
+-find_package(VTK REQUIRED)
+-find_package(PCL 1.7.1 REQUIRED)
++find_package(VTK 7.0 REQUIRED)
++find_package(PCL 1.8.1 REQUIRED)
+ 
+ # Fix a compilation bug under ubuntu 16.04 (Xenial)
+ list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
+diff --git a/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui b/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui
+index 3f616085e..d36f005a0 100644
+--- a/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui
++++ b/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui
+@@ -288,8 +288,8 @@
+      <string>Random colors</string>
+     </property>
+    </widget>
++   </widget>
+   </widget>
+- </widget>
+  <customwidgets>
+   <customwidget>
+    <class>QVTKWidget</class>
+diff --git a/features/include/pcl/features/impl/brisk_2d.hpp b/features/include/pcl/features/impl/brisk_2d.hpp
+index 255848c9b..3a9269475 100644
+--- a/features/include/pcl/features/impl/brisk_2d.hpp
++++ b/features/include/pcl/features/impl/brisk_2d.hpp
+@@ -568,7 +568,7 @@ pcl::BRISK2DEstimation<PointInT, PointOutT, KeypointT, IntensityT>::compute (
+     if (true) // kp.angle==-1
+     {
+       if (!rotation_invariance_enabled_)
+-        // don't compute the gradient direction, just assign a rotation of 0°
++        // don't compute the gradient direction, just assign a rotation of 0
+         theta = 0;
+       else
+       {
+diff --git a/filters/include/pcl/filters/fast_bilateral.h b/filters/include/pcl/filters/fast_bilateral.h
+index 7f59798e7..afbf25478 100644
+--- a/filters/include/pcl/filters/fast_bilateral.h
++++ b/filters/include/pcl/filters/fast_bilateral.h
+@@ -46,7 +46,7 @@ namespace pcl
+ {
+   /** \brief Implementation of a fast bilateral filter for smoothing depth information in organized point clouds
+    *  Based on the following paper:
+-   *    * Sylvain Paris and FrŽdo Durand
++   *    * Sylvain Paris and Fredo Durand
+    *      "A Fast Approximation of the Bilateral Filter using a Signal Processing Approach"
+    *       European Conference on Computer Vision (ECCV'06)
+    *
+diff --git a/filters/include/pcl/filters/fast_bilateral_omp.h b/filters/include/pcl/filters/fast_bilateral_omp.h
+index 204e7d1f5..ffc82eed8 100644
+--- a/filters/include/pcl/filters/fast_bilateral_omp.h
++++ b/filters/include/pcl/filters/fast_bilateral_omp.h
+@@ -47,7 +47,7 @@ namespace pcl
+ {
+   /** \brief Implementation of a fast bilateral filter for smoothing depth information in organized point clouds
+    *  Based on the following paper:
+-   *    * Sylvain Paris and FrÂŽdo Durand
++   *    * Sylvain Paris and Fredo Durand
+    *      "A Fast Approximation of the Bilateral Filter using a Signal Processing Approach"
+    *       European Conference on Computer Vision (ECCV'06)
+    *

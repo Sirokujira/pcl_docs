@@ -1,0 +1,34 @@
+.. pcl documentation master file, created by
+   sphinx-quickstart on Mon Mar  4 10:50:16 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to pcl's documentation!
+===============================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials:
+
+   pcl/doc/tutorials/content/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Advanced Topics:
+
+   pcl/doc/advanced/content/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API documentation:
+
+   api/index
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

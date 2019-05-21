@@ -28,7 +28,9 @@ def run_doxygen(folder):
 
     try:
         # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
-        subprocess.call("git clone https://github.com/PointCloudLibrary/pcl %s/pcl" % (folder), shell=True)
+        # subprocess.call("git clone https://github.com/PointCloudLibrary/pcl %s/pcl" % (folder), shell=True)
+        subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+        # wait()?
         if platform.system() == "Windows":
             # Windows
             retcode = subprocess.call("cd %s/pcl && mkdir build" % folder, shell=True)
@@ -90,9 +92,8 @@ def generate_doxygen_xml(app):
 
     if read_the_docs_build:
         # checkouts/latest
-        print(os.getcwd())
-        run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
-        # run_doxygen(os.getcwd())
+        run_doxygen(".")
+        # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
 
 # Running on Read the Docs
 # https://breathe.readthedocs.io/en/latest/readthedocs.html
@@ -103,18 +104,18 @@ def setup(app):
 
 if __name__ == "__main__":
     print("test1")
-    run_doxygen("./source")
+    run_doxygen(".")
     # run_doxygen(os.getcwd())
     print("test2")
 
-run_doxygen("./source")
+run_doxygen(".")
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
 # call(['python', os.path.join(os.getcwd(), 'make_source.py'), os.path.join(os.getcwd(), 'pcl'), os.path.join(os.getcwd(), 'api')])
 
 # breathe_projects = { "myproject" : "./user_doxygen_out/xml/" }
-breathe_projects = { "myproject" : "./source/pcl/build/doc/doxygen/xml/" }
+breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
 # breathe_projects = { "myproject" : os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile') }
 breathe_default_project = "myproject"
 
@@ -122,7 +123,6 @@ breathe_default_project = "myproject"
 exhale_args = {
     # These arguments are required
     # "containmentFolder":     os.path.join(os.getcwd(), 'api'),
-    # "containmentFolder":     './source/api',
     "containmentFolder":     './api',
     "rootFileName":          "index.rst",
     "rootFileTitle":         "Library API",
