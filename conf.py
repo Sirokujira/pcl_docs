@@ -56,7 +56,7 @@ def run_doxygen(folder):
             # folder check
             retcode = subprocess.call("ls", shell=True)
 
-            retcode = subprocess.call("cd %s/pcl; mkdir build" % folder, shell=True)
+            retcode = subprocess.call("cd pcl; ls; mkdir build; ls", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
