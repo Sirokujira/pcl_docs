@@ -109,10 +109,12 @@ def generate_doxygen_xml(app):
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
-        os.environ["FLANN_ROOT"] = os.path.join(rootpath, 'include/flann')
-        os.environ["BOOST_ROOT"] = os.path.join(rootpath, 'include/boost')
-        os.environ["QHULL_ROOT"] = os.path.join(rootpath, 'include/boost')
-        os.environ["VTK_DIR"] = os.path.join(rootpath, 'include/vtk-8.2')
+        os.environ["FLANN_ROOT"] = rootpath
+        os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
+        os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
+        os.environ["BOOST_ROOT"] = rootpath
+        os.environ["QHULL_ROOT"] = rootpath
+        os.environ["VTK_DIR"] = rootpath
         retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
         # binpath = os.path.join(rootpath, 'bin')
         # print(os.environ["PATH"])
