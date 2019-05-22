@@ -108,7 +108,7 @@ def setup(app):
     app.connect("builder-inited", generate_doxygen_xml)
 
 
-# read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 if not read_the_docs_build:
     print("--- not read the docs ---")
     run_doxygen(".")
