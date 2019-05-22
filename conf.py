@@ -32,7 +32,8 @@ def run_doxygen(folder):
             # Windows
             # retcode = subprocess.call("rmdir pcl", shell=True)
             # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
-            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+            # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b v1.9.1 --depth 1", shell=True)
             # git pull
             retcode = subprocess.call("pushd %s/pcl && git pull && popd" % folder, shell=True)
             # make build folder
@@ -56,8 +57,9 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
         else:
             # Linux
-            retcode = subprocess.call("rm -rf pcl", shell=True)
-            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+            # retcode = subprocess.call("rm -rf pcl", shell=True)
+            # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b v1.9.1 --depth 1", shell=True)
 
             # git pull
             retcode = subprocess.call("cd ./pcl && git pull; ls; cd -", shell=True)
@@ -86,7 +88,7 @@ def run_doxygen(folder):
 
         # generate xml files in doxyfile
         # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
-        subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+        retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
         # call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile')])
 
 
@@ -101,6 +103,8 @@ def generate_doxygen_xml(app):
 
     if read_the_docs_build:
         print("--- read the docs build ---")
+        # remove read the docs cache data
+        retcode = subprocess.call("rm -rf pcl", shell=True)
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
 
