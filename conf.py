@@ -33,7 +33,7 @@ def run_doxygen(folder):
             # retcode = subprocess.call("rmdir pcl", shell=True)
             # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
             # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
-            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b v1.9.1 --depth 1", shell=True)
+            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
             # git pull
             retcode = subprocess.call("pushd %s/pcl && git pull && popd" % folder, shell=True)
             # make build folder
@@ -59,7 +59,7 @@ def run_doxygen(folder):
             # Linux
             # retcode = subprocess.call("rm -rf pcl", shell=True)
             # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
-            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b v1.9.1 --depth 1", shell=True)
+            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
 
             # git pull
             retcode = subprocess.call("cd ./pcl && git pull; ls; cd -", shell=True)
