@@ -113,6 +113,9 @@ def generate_doxygen_xml(app):
         print(os.environ["PATH"])
         retcode = subprocess.call("export PATH=" + binpath + ":$PATH", shell=True)
         retcode = subprocess.call("python --version", shell=True)
+        retcode = subprocess.call("conda list", shell=True)
+        retcode = subprocess.call("conda info -e", shell=True)
+        retcode = subprocess.call("conda activate pcl-docs", shell=True)
 
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
