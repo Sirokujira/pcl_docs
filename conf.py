@@ -109,6 +109,10 @@ def generate_doxygen_xml(app):
         rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath,'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath,'include/eigen3')
+        binpath = os.path.join(rootpath, 'bin')
+        print(os.environ["PATH"])
+        retcode = subprocess.call("export PATH=" + binpath + ":$PATH", shell=True)
+        retcode = subprocess.call("python --version", shell=True)
 
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
