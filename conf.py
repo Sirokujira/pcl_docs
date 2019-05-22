@@ -115,6 +115,7 @@ def generate_doxygen_xml(app):
         os.environ["BOOST_ROOT"] = rootpath
         os.environ["QHULL_ROOT"] = rootpath
         os.environ["VTK_DIR"] = rootpath
+        os.environ["GLEW_ROOT"] = rootpath
         retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
         # binpath = os.path.join(rootpath, 'bin')
         # print(os.environ["PATH"])
