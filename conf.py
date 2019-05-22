@@ -27,11 +27,12 @@ def run_doxygen(folder):
     """Run the doxygen make command in the designated folder"""
 
     try:
-        # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
-        subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
         # wait()?
         if platform.system() == "Windows":
             # Windows
+            # retcode = subprocess.call("rmdir pcl", shell=True)
+            # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
+            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
             # git pull
             retcode = subprocess.call("pushd %s/pcl && git pull && popd" % folder, shell=True)
             # make build folder
@@ -55,8 +56,11 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
         else:
             # Linux
+            retcode = subprocess.call("rm -rf pcl", shell=True)
+            retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+
             # git pull
-            retcode = subprocess.call("cd ./pcl && git pull; cd -", shell=True)
+            retcode = subprocess.call("cd ./pcl && git pull; ls; cd -", shell=True)
             # folder check
             # retcode = subprocess.call("ls", shell=True)
 
