@@ -28,12 +28,14 @@ def run_doxygen(folder):
 
     try:
         # call(['git', 'clone', 'https://github.com/PointCloudLibrary/pcl'])
-        # subprocess.call("git clone https://github.com/PointCloudLibrary/pcl %s/pcl" % (folder), shell=True)
         subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
         # wait()?
         if platform.system() == "Windows":
             # Windows
-            retcode = subprocess.call("cd %s/pcl && mkdir build" % folder, shell=True)
+            # git pull
+            retcode = subprocess.call("pushd %s/pcl && git pull && popd" % folder, shell=True)
+            # make build folder
+            retcode = subprocess.call("pushd %s/pcl && mkdir build && popd" % folder, shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -42,36 +44,39 @@ def run_doxygen(folder):
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-            # doc generate build
-            retcode = subprocess.call("cd %s/pcl/build && %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # doc generate makefile in build folder
+            retcode = subprocess.call("pushd %s/pcl/build && %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
-            retcode = subprocess.call("cd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("pushd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
         else:
             # Linux
+            # git pull
+            retcode = subprocess.call("cd ./pcl && git pull; cd -", shell=True)
             # folder check
-            retcode = subprocess.call("ls", shell=True)
+            # retcode = subprocess.call("ls", shell=True)
 
-            retcode = subprocess.call("cd pcl; mkdir build; ls; cd ..", shell=True)
+            # make build folder
+            retcode = subprocess.call("cd ./pcl; mkdir -p build; cd -", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            retcode = subprocess.call("cd pcl; patch -f -p1 < ../diff.patch; cd ..", shell=True)
+            retcode = subprocess.call("cd ./pcl; patch -f -p1 < ../diff.patch; cd -", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-            # doc generate build
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd ../.." % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # doc generate makefile in build folder
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd ../.." % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -102,7 +107,11 @@ def setup(app):
     # Add hook for building doxygen xml when needed
     app.connect("builder-inited", generate_doxygen_xml)
 
-run_doxygen(".")
+
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+if not read_the_docs_build:
+    print("--- not read the docs ---")
+    run_doxygen(".")
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
