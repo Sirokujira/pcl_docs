@@ -104,6 +104,10 @@ def generate_doxygen_xml(app):
         print("--- read the docs build ---")
         # remove read the docs cache data
         retcode = subprocess.call("rm -rf pcl", shell=True)
+        # set conda path?
+        # os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(os.environ["PREFIX"],'include/eigen3')
+        # os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(os.environ["PREFIX"],'include/eigen3')
+        retcode = subprocess.call("conda install eigen -c conda-forge -y", shell=True)
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
 
