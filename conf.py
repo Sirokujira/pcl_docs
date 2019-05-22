@@ -61,7 +61,7 @@ def run_doxygen(folder):
             retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
 
             # git pull
-            retcode = subprocess.call("cd ./pcl && git pull; ls; cd -", shell=True)
+            retcode = subprocess.call("cd ./pcl && git pull; cd -", shell=True)
             # folder check
             # retcode = subprocess.call("ls", shell=True)
 
@@ -90,7 +90,6 @@ def run_doxygen(folder):
         retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
         # call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile')])
 
-
     except OSError as e:
         sys.stderr.write("doxygen execution failed: %s" % e)
 
@@ -107,15 +106,15 @@ def generate_doxygen_xml(app):
         # set conda path?
         # retcode = subprocess.call("conda install eigen -c conda-forge -y", shell=True)
         rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
-        os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath,'include/eigen3')
-        os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath,'include/eigen3')
-        binpath = os.path.join(rootpath, 'bin')
-        print(os.environ["PATH"])
-        retcode = subprocess.call("export PATH=" + binpath + ":$PATH", shell=True)
-        retcode = subprocess.call("python --version", shell=True)
-        retcode = subprocess.call("conda list", shell=True)
-        retcode = subprocess.call("conda info -e", shell=True)
-        retcode = subprocess.call("conda activate pcl-docs", shell=True)
+        os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+        os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+        os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
+        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
+        # binpath = os.path.join(rootpath, 'bin')
+        # print(os.environ["PATH"])
+        # retcode = subprocess.call("export PATH=" + binpath + ":$PATH", shell=True)
+        # retcode = subprocess.call("export PATH="/home/docs/.conda/bin:$PATH", shell=True)
+        # retcode = subprocess.call("python --version", shell=True)
 
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
