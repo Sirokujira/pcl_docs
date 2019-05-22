@@ -89,29 +89,30 @@ def run_doxygen(folder):
     except OSError as e:
         sys.stderr.write("doxygen execution failed: %s" % e)
 
+# use setup.py file?
+def generate_doxygen_xml(app):
+    """Run the doxygen make commands if we're on the ReadTheDocs server"""
 
-# def generate_doxygen_xml(app):
-#     """Run the doxygen make commands if we're on the ReadTheDocs server"""
-# 
-#     read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
-# 
-#     if read_the_docs_build:
-#         print("--- read the docs build ---")
-#         run_doxygen(".")
-#         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
+    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+    if read_the_docs_build:
+        print("--- read the docs build ---")
+        run_doxygen(".")
+        # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
 
 # Running on Read the Docs
 # https://breathe.readthedocs.io/en/latest/readthedocs.html
-# def setup(app):
-# 
-#     # Add hook for building doxygen xml when needed
-#     app.connect("builder-inited", generate_doxygen_xml)
+def setup(app):
+
+    # Add hook for building doxygen xml when needed
+    app.connect("builder-inited", generate_doxygen_xml)
 
 
 # read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
-# if not read_the_docs_build:
-#     print("--- not read the docs ---")
-run_doxygen(".")
+if not read_the_docs_build:
+    print("--- not read the docs ---")
+    run_doxygen(".")
+
 
 # make source(generate rst from source code.)
 # call(['python', './make_source.py', './pcl', './api'])
