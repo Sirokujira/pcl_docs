@@ -73,7 +73,7 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            retcode = subprocess.call("cd ./pcl; patch -f -p1 < ../diff.patch --binary; cd -", shell=True)
+            retcode = subprocess.call("cd ./pcl; patch -f -p1 < ../diff.patch; cd -", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -108,7 +108,7 @@ def generate_doxygen_xml(app):
     if read_the_docs_build:
         print("--- read the docs build ---")
         # remove read the docs cache data
-        # retcode = subprocess.call("rm -rf pcl", shell=True)
+        retcode = subprocess.call("rm -rf pcl", shell=True)
         # set conda path?
         # retcode = subprocess.call("conda install eigen -c conda-forge -y", shell=True)
         rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
@@ -186,9 +186,9 @@ highlight_language = 'cpp'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
-# generate api documentation(api rst generate local build)
+# generate API documentation(api rst generate local build)
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
-# generate rst files before upload.
+# generate API rst files before upload.
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
