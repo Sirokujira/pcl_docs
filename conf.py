@@ -54,6 +54,8 @@ def run_doxygen(folder):
             retcode = subprocess.call("pushd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+
+            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
         else:
             # Linux
             # retcode = subprocess.call("rm -rf pcl", shell=True)
@@ -71,7 +73,7 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # patch
-            retcode = subprocess.call("cd ./pcl; patch -f -p1 < ../diff.patch; cd -", shell=True)
+            retcode = subprocess.call("cd ./pcl; patch -f -p1 < ../diff.patch --binary; cd -", shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -87,9 +89,11 @@ def run_doxygen(folder):
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
+            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
+
         # generate xml files in doxyfile
         # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
-        retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
+        retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
         # call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile')])
 
     except OSError as e:
@@ -120,9 +124,9 @@ def generate_doxygen_xml(app):
         os.environ["GLEW_ROOT"] = rootpath
         retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
         # install freeglut
-        retcode = subprocess.call("apt install freeglut3 freeglut3-dev -y", shell=True)
+        # retcode = subprocess.call("apt install freeglut3 freeglut3-dev -y", shell=True)
         # mesa-libGL
-        retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
+        # retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
 
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")

@@ -20,35 +20,6 @@ index 4c02c6fab..a9ff117c2 100644
  XML_OUTPUT             = xml
  XML_PROGRAMLISTING     = YES
  
-diff --git a/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt b/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt
-index 7c4d7d4c0..46550f924 100644
---- a/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt
-+++ b/doc/tutorials/content/sources/qt_visualizer/CMakeLists.txt
-@@ -13,8 +13,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
- # Find the QtWidgets library
- find_package(Qt5 REQUIRED Widgets)
- 
--find_package(VTK REQUIRED)
--find_package(PCL 1.7.1 REQUIRED)
-+find_package(VTK 7.0 REQUIRED)
-+find_package(PCL 1.8.1 REQUIRED)
- 
- # Fix a compilation bug under ubuntu 16.04 (Xenial)
- list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
-diff --git a/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui b/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui
-index 3f616085e..d36f005a0 100644
---- a/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui
-+++ b/doc/tutorials/content/sources/qt_visualizer/pclviewer.ui
-@@ -288,8 +288,8 @@
-      <string>Random colors</string>
-     </property>
-    </widget>
-+   </widget>
-   </widget>
-- </widget>
-  <customwidgets>
-   <customwidget>
-    <class>QVTKWidget</class>
 diff --git a/features/include/pcl/features/impl/brisk_2d.hpp b/features/include/pcl/features/impl/brisk_2d.hpp
 index 255848c9b..3a9269475 100644
 --- a/features/include/pcl/features/impl/brisk_2d.hpp

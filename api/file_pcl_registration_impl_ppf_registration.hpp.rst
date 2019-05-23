@@ -1,0 +1,49 @@
+
+.. _file_pcl_registration_impl_ppf_registration.hpp:
+
+File ppf_registration.hpp
+=========================
+
+|exhale_lsh| :ref:`Parent directory <dir_pcl_registration_impl>` (``pcl\registration\impl``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``pcl\registration\impl\ppf_registration.hpp``)
+-----------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_pcl_registration_impl_ppf_registration.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``pcl/common/transforms.h``
+
+- ``pcl/features/pfh.h``
+
+- ``pcl/features/ppf.h``
+
+- ``pcl/registration/ppf_registration.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_pcl_registration_ppf_registration.h`
+
+
+

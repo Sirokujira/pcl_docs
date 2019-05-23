@@ -1,0 +1,60 @@
+
+.. _file_pcl_surface_3rdparty_poisson4_binary_node.h:
+
+File binary_node.h
+==================
+
+|exhale_lsh| :ref:`Parent directory <dir_pcl_surface_3rdparty_poisson4>` (``pcl\surface\3rdparty\poisson4``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``pcl\surface\3rdparty\poisson4\binary_node.h``)
+------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_pcl_surface_3rdparty_poisson4_binary_node.h.rst
+
+
+
+
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_pcl_surface_3rdparty_poisson4_octree_poisson.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_pcl`
+
+- :ref:`namespace_pcl__poisson`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classpcl_1_1poisson_1_1_binary_node`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_binary__node_8h_1a9ad4f98bf9a4d8396ca038f81c559c9a`
+
