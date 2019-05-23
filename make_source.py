@@ -52,7 +52,7 @@ def generateDoxyIndex(outDir, moduleName, CATEGORY_NAME, listModules, listFiles,
 
     # doxygenfile
     for fileName in listFiles :
-        outFile.write(".. doxygenfile:: %s/%s\n" % (outDir[3:], fileName))
+        outFile.write(".. doxygenfile:: %s/%s\n" % (outDir[2:], fileName))
         outFile.write("   :project: myproject\n\n")
 
     # toctree
@@ -79,7 +79,7 @@ def generateRST(outDir, moduleName, listModules, listFiles) :
 
     # doxygenfile
     for fileName in listFiles :
-        outFile.write(".. doxygenfile:: %s/%s\n" % (outDir[3:], fileName))
+        outFile.write(".. doxygenfile:: %s/%s\n" % (outDir[2:], fileName))
         outFile.write("   :project: myproject\n\n")
 
     # toctree

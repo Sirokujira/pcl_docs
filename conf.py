@@ -55,7 +55,7 @@ def run_doxygen(folder):
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
         else:
             # Linux
             # retcode = subprocess.call("rm -rf pcl", shell=True)
@@ -89,11 +89,11 @@ def run_doxygen(folder):
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
+            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
 
         # generate xml files in doxyfile
         # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
-        retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+        # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
         # call(['doxygen', os.path.join(os.getcwd(), 'pcl/build/doc/doxygen/doxyfile')])
 
     except OSError as e:
@@ -107,10 +107,10 @@ def generate_doxygen_xml(app):
 
     if read_the_docs_build:
         print("--- read the docs build ---")
+        # build read the docs hosting server.(timeout error)
         # remove read the docs cache data
         retcode = subprocess.call("rm -rf pcl", shell=True)
-        # set conda path?
-        # retcode = subprocess.call("conda install eigen -c conda-forge -y", shell=True)
+        # set conda module paths
         rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
@@ -123,12 +123,9 @@ def generate_doxygen_xml(app):
         os.environ["VTK_DIR"] = rootpath
         os.environ["GLEW_ROOT"] = rootpath
         retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
-        # install freeglut
-        # retcode = subprocess.call("apt install freeglut3 freeglut3-dev -y", shell=True)
-        # mesa-libGL
-        # retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
-
         run_doxygen(".")
+        # build local pc.(git contains _build/html folder)
+        pass
 
 # Running on Read the Docs
 # https://breathe.readthedocs.io/en/latest/readthedocs.html
@@ -487,12 +484,6 @@ autosummary_generate = True
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
 }
-
-doctest_global_setup = '''
-import numpy as np
-import pcl # TODO : Remove this line
-np.random.seed(0)
-'''
 
 
 def _import_object_from_name(module_name, fullname):
