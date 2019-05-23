@@ -34,9 +34,9 @@ def run_doxygen(folder):
             # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
             retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
             # git pull
-            retcode = subprocess.call("pushd %s/pcl && git pull && popd" % folder, shell=True)
+            retcode = subprocess.call("pushd \"%s/pcl\" && git pull && popd" % folder, shell=True)
             # make build folder
-            retcode = subprocess.call("pushd %s/pcl && mkdir build && popd" % folder, shell=True)
+            retcode = subprocess.call("pushd \"%s/pcl\" && mkdir build && popd" % folder, shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -46,12 +46,12 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # doc generate makefile in build folder
-            retcode = subprocess.call("pushd %s/pcl/build && %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("pushd \"%s/pcl/build\" && %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
-            retcode = subprocess.call("pushd %s/pcl/build && %s/cmake --build . -- doc tutorials advanced && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("pushd \"%s/pcl/build\" && %s/cmake --build . -- doc tutorials advanced && popd" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -108,7 +108,7 @@ def generate_doxygen_xml(app):
     if read_the_docs_build:
         print("--- read the docs build ---")
         # remove read the docs cache data
-        retcode = subprocess.call("rm -rf pcl", shell=True)
+        # retcode = subprocess.call("rm -rf pcl", shell=True)
         # set conda path?
         # retcode = subprocess.call("conda install eigen -c conda-forge -y", shell=True)
         rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
@@ -129,7 +129,6 @@ def generate_doxygen_xml(app):
         # retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
 
         run_doxygen(".")
-        # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
 
 # Running on Read the Docs
 # https://breathe.readthedocs.io/en/latest/readthedocs.html
@@ -155,20 +154,20 @@ breathe_projects = { "myproject" : "./pcl/build/doc/doxygen/xml/" }
 breathe_default_project = "myproject"
 
 # Setup the exhale extension
-# exhale_args = {
-#     # These arguments are required
-#     # "containmentFolder":     os.path.join(os.getcwd(), 'api'),
-#     "containmentFolder":     './api',
-#     "rootFileName":          "index.rst",
-#     "rootFileTitle":         "Library API",
-#     "doxygenStripFromPath":  "..",
-#     # Suggested optional arguments
-#     "createTreeView":        True,
-#     # TIP: if using the sphinx-bootstrap-theme, you need
-#     # "treeViewIsBootstrap": True,
-#     # "exhaleExecutesDoxygen": True,
-#     # "exhaleDoxygenStdin":    "INPUT = os.path.join(os.getcwd(), 'pcl')
-# }
+exhale_args = {
+    # These arguments are required
+    # "containmentFolder":     os.path.join(os.getcwd(), 'api'),
+    "containmentFolder":     './api',
+    "rootFileName":          "index.rst",
+    "rootFileTitle":         "Library API",
+    "doxygenStripFromPath":  "..",
+    # Suggested optional arguments
+    "createTreeView":        True,
+    # TIP: if using the sphinx-bootstrap-theme, you need
+    # "treeViewIsBootstrap": True,
+    # "exhaleExecutesDoxygen": True,
+    # "exhaleDoxygenStdin":    "INPUT = os.path.join(os.getcwd(), 'pcl')
+}
 
 # Tell sphinx what the primary language being documented is.
 primary_domain = 'cpp'
@@ -186,8 +185,10 @@ highlight_language = 'cpp'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
+# generate api documentation(api rst generate local build)
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
+# generate rst files before upload.
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
