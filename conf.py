@@ -77,7 +77,7 @@ def run_doxygen(folder):
 
             # doc generate makefile in build folder
             # retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
@@ -117,13 +117,11 @@ def generate_doxygen_xml(app):
         os.environ["QHULL_ROOT"] = rootpath
         os.environ["VTK_DIR"] = rootpath
         os.environ["GLEW_ROOT"] = rootpath
-        # os.environ["OPENGL_INCLUDE_DIR"] = os.path.join(rootpath, 'include')
-        # os.environ["OPENGL_INCLUDE_DIR"] = os.path.join(rootpath, 'include')
         retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
         # install freeglut
-        # retcode = subprocess.call("apt install freeglut3 freeglut3-dev -y", shell=True)
+        retcode = subprocess.call("apt install freeglut3 freeglut3-dev -y", shell=True)
         # mesa-libGL
-        # retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
+        retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
 
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
