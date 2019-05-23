@@ -121,7 +121,9 @@ def generate_doxygen_xml(app):
         # print(os.environ["PATH"])
         # retcode = subprocess.call("export PATH=" + binpath + ":$PATH", shell=True)
         # retcode = subprocess.call("export PATH="/home/docs/.conda/bin:$PATH", shell=True)
-        retcode = subprocess.call("apt install freeglut3-dev -y", shell=True)
+        retcode = subprocess.call("apt install freeglut3 freeglut3-dev -y", shell=True)
+        # mesa-libGL
+        retcode = subprocess.call("apt install libgl1-mesa-dev libglapi-mesa -y", shell=True)
 
         run_doxygen(".")
         # run_doxygen("/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/source")
