@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File cpc_segmentation.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File cpc_segmentation.hpp" href="file_pcl_segmentation_impl_cpc_segmentation.hpp.html" />
+    <link rel="prev" title="File cpc_segmentation.h" href="file_pcl_segmentation_cpc_segmentation.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_segmentation_cpc_segmentation.h.html">File cpc_segmentation.h</a> &raquo;</li>
+        
+      <li>Program Listing for File cpc_segmentation.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_segmentation_cpc_segmentation.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-cpc-segmentation-h">
+<span id="program-listing-file-pcl-segmentation-cpc-segmentation-h"></span><h1>Program Listing for File cpc_segmentation.h<a class="headerlink" href="#program-listing-for-file-cpc-segmentation-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_segmentation_cpc_segmentation.h.html#file-pcl-segmentation-cpc-segmentation-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\segmentation\cpc_segmentation.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2014-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="c1">// common includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_base.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// segmentation and sample consensus includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/segmentation/supervoxel_clustering.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/segmentation/lccp_segmentation.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/sac.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/sac_model_plane.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/segmentation/extract_clusters.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define PCL_INSTANTIATE_CPCSegmentation(T) template class PCL_EXPORTS pcl::CPCSegmentation&lt;T&gt;;</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief A segmentation algorithm partitioning a supervoxel graph. It uses planar cuts induced by local concavities for the recursive segmentation. Cuts are estimated using locally constrained directed RANSAC.</span>
+<span class="cm">   *  \note If you use this in a scientific work please cite the following paper:</span>
+<span class="cm">   *  M. Schoeler, J. Papon, F. Woergoetter</span>
+<span class="cm">   *  Constrained Planar Cuts - Object Partitioning for Point Clouds</span>
+<span class="cm">   *  In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2015</span>
+<span class="cm">   *  Inherits most of its functionality from \ref LCCPSegmentation</span>
+<span class="cm">   *  \author Markus Schoeler (mschoeler@web.de)</span>
+<span class="cm">   *  \ingroup segmentation</span>
+<span class="cm">   */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">CPCSegmentation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">LCCPSegmentation</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">PointXYZINormal</span> <span class="n">WeightSACPointType</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">LCCPSegmentation</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">LCCP</span><span class="p">;</span>
+      <span class="c1">// LCCP typedefs</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">EdgeID</span> <span class="n">EdgeID</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">EdgeIterator</span> <span class="n">EdgeIterator</span><span class="p">;</span>
+      <span class="c1">// LCCP methods</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">calculateConvexConnections</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">applyKconvexity</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">doGrouping</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">mergeSmallSegments</span><span class="p">;</span>
+      <span class="c1">// LCCP variables</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">sv_adjacency_list_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">k_factor_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">grouping_data_valid_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">sv_label_to_seg_label_map_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">sv_label_to_supervoxel_map_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">concavity_tolerance_threshold_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">seed_resolution_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">LCCP</span><span class="o">::</span><span class="n">supervoxels_set_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">CPCSegmentation</span> <span class="p">();</span>
+
+      <span class="o">~</span><span class="n">CPCSegmentation</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Merge supervoxels using cuts through local convexities. The input parameters are generated by using the \ref SupervoxelClustering class. To retrieve the output use the \ref relabelCloud method.</span>
+<span class="cm">       *  \note There are three ways to retrieve the segmentation afterwards (inherited from \ref LCCPSegmentation): \ref relabelCloud, \ref getSegmentSupervoxelMap and \ref getSupervoxelSegmentMap*/</span>
+      <span class="kt">void</span>
+      <span class="nf">segment</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Determines if we want to use cutting planes</span>
+<span class="cm">       *  \param[in] max_cuts Maximum number of cuts</span>
+<span class="cm">       *  \param[in] cutting_min_segments Minimum segment size for cutting</span>
+<span class="cm">       *  \param[in] cutting_min_score Minimum score a proposed cut has to achieve for being performed</span>
+<span class="cm">       *  \param[in] locally_constrained Decide if we constrain our cuts locally</span>
+<span class="cm">       *  \param[in] directed_cutting Decide if we prefer cuts perpendicular to the edge-direction</span>
+<span class="cm">       *  \param[in] clean_cutting Decide if we cut only edges with supervoxels on opposite sides of the plane (clean) or all edges within the seed_resolution_ distance to the plane (not clean). The later was used in the paper.</span>
+<span class="cm">       */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setCutting</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">max_cuts</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">cutting_min_segments</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">float</span> <span class="n">cutting_min_score</span> <span class="o">=</span> <span class="mf">0.16</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">bool</span> <span class="n">locally_constrained</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">bool</span> <span class="n">directed_cutting</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">bool</span> <span class="n">clean_cutting</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">max_cuts_</span> <span class="o">=</span> <span class="n">max_cuts</span><span class="p">;</span>
+        <span class="n">min_segment_size_for_cutting_</span> <span class="o">=</span> <span class="n">cutting_min_segments</span><span class="p">;</span>
+        <span class="n">min_cut_score_</span> <span class="o">=</span> <span class="n">cutting_min_score</span><span class="p">;</span>
+        <span class="n">use_local_constrains_</span> <span class="o">=</span> <span class="n">locally_constrained</span><span class="p">;</span>
+        <span class="n">use_directed_weights_</span> <span class="o">=</span> <span class="n">directed_cutting</span><span class="p">;</span>
+        <span class="n">use_clean_cutting_</span> <span class="o">=</span> <span class="n">clean_cutting</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the number of iterations for the weighted RANSAC step (best cut estimations)</span>
+<span class="cm">       *  \param[in] ransac_iterations The number of iterations */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setRANSACIterations</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">ransac_iterations</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">ransac_itrs_</span> <span class="o">=</span> <span class="n">ransac_iterations</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Used in for CPC to find and fit cutting planes to the pointcloud.</span>
+<span class="cm">       *  \note Is used recursively</span>
+<span class="cm">       *  \param[in] depth_levels_left When first calling the function set this parameter to the maximum levels you want to cut down */</span>
+      <span class="kt">void</span>
+      <span class="n">applyCuttingPlane</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">depth_levels_left</span><span class="p">);</span>
+
+      <span class="c1">///  *** Parameters *** ///</span>
+
+      <span class="cm">/** \brief Maximum number of cuts */</span>
+      <span class="kt">uint32_t</span> <span class="n">max_cuts_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Minimum segment size for cutting */</span>
+      <span class="kt">uint32_t</span> <span class="n">min_segment_size_for_cutting_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Cut_score threshold */</span>
+      <span class="kt">float</span> <span class="n">min_cut_score_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Use local constrains for cutting */</span>
+      <span class="kt">bool</span> <span class="n">use_local_constrains_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Use directed weights for the cutting */</span>
+      <span class="kt">bool</span> <span class="n">use_directed_weights_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Use clean cutting */</span>
+      <span class="kt">bool</span> <span class="n">use_clean_cutting_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Iterations for RANSAC */</span>
+      <span class="kt">uint32_t</span> <span class="n">ransac_itrs_</span><span class="p">;</span>
+
+
+<span class="cm">/******************************************* Directional weighted RANSAC declarations ******************************************************************/</span>
+      <span class="cm">/** \brief @b WeightedRandomSampleConsensus represents an implementation of the Directionally Weighted RANSAC algorithm, as described in: &quot;Constrained Planar Cuts - Part Segmentation for Point Clouds&quot;, CVPR 2015, M. Schoeler, J. Papon, F. Wörgötter.</span>
+<span class="cm">        *  \note It only uses points with a weight &gt; 0 for the model calculation, but uses all points for the evaluation (scoring of the model)</span>
+<span class="cm">        *  Only use in conjunction with sac_model_plane</span>
+<span class="cm">        *  If you use this in a scientific work please cite the following paper:</span>
+<span class="cm">        *  M. Schoeler, J. Papon, F. Woergoetter</span>
+<span class="cm">        *  Constrained Planar Cuts - Object Partitioning for Point Clouds</span>
+<span class="cm">        *  In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2015</span>
+<span class="cm">        *  \author Markus Schoeler (mschoeler@web.de)</span>
+<span class="cm">        *  \ingroup segmentation</span>
+<span class="cm">        */</span>
+
+      <span class="k">class</span> <span class="nc">WeightedRandomSampleConsensus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SampleConsensus</span><span class="o">&lt;</span><span class="n">WeightSACPointType</span><span class="o">&gt;</span>
+      <span class="p">{</span>
+          <span class="k">typedef</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">WeightSACPointType</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">SampleConsensusModelPtr</span><span class="p">;</span>
+
+        <span class="k">public</span><span class="o">:</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">WeightedRandomSampleConsensus</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">WeightedRandomSampleConsensus</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+          <span class="cm">/** \brief WeightedRandomSampleConsensus (Weighted RAndom SAmple Consensus) main constructor</span>
+<span class="cm">            * \param[in] model a Sample Consensus model</span>
+<span class="cm">            * \param[in] random if true set the random seed to the current time, else set to 12345 (default: false)</span>
+<span class="cm">            */</span>
+          <span class="n">WeightedRandomSampleConsensus</span> <span class="p">(</span><span class="k">const</span> <span class="n">SampleConsensusModelPtr</span> <span class="o">&amp;</span><span class="n">model</span><span class="p">,</span>
+                                        <span class="kt">bool</span> <span class="n">random</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">SampleConsensus</span><span class="o">&lt;</span><span class="n">WeightSACPointType</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">random</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">initialize</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief WeightedRandomSampleConsensus (Weighted RAndom SAmple Consensus) main constructor</span>
+<span class="cm">            * \param[in] model a Sample Consensus model</span>
+<span class="cm">            * \param[in] threshold distance to model threshold</span>
+<span class="cm">            * \param[in] random if true set the random seed to the current time, else set to 12345 (default: false)</span>
+<span class="cm">            */</span>
+          <span class="n">WeightedRandomSampleConsensus</span> <span class="p">(</span><span class="k">const</span> <span class="n">SampleConsensusModelPtr</span> <span class="o">&amp;</span><span class="n">model</span><span class="p">,</span>
+                                        <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                                        <span class="kt">bool</span> <span class="n">random</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">SampleConsensus</span><span class="o">&lt;</span><span class="n">WeightSACPointType</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">random</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">initialize</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Compute the actual model and find the inliers</span>
+<span class="cm">            * \param[in] debug_verbosity_level enable/disable on-screen debug information and set the verbosity level</span>
+<span class="cm">            */</span>
+          <span class="kt">bool</span>
+          <span class="n">computeModel</span> <span class="p">(</span><span class="kt">int</span> <span class="n">debug_verbosity_level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Set the weights for the input points</span>
+<span class="cm">          *  \param[in] weights Weights for input samples. Negative weights are counted as penalty.</span>
+<span class="cm">          */</span>
+          <span class="kt">void</span>
+          <span class="nf">setWeights</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">weights</span><span class="p">,</span>
+                      <span class="k">const</span> <span class="kt">bool</span> <span class="n">directed_weights</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">weights</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">full_cloud_pt_indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">())</span>
+            <span class="p">{</span>
+              <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::WeightedRandomSampleConsensus::setWeights] Cannot assign weights. Weight vector needs to have the same length as the input pointcloud</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+              <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">weights_</span> <span class="o">=</span> <span class="n">weights</span><span class="p">;</span>
+            <span class="n">model_pt_indices_</span><span class="o">-&gt;</span><span class="n">clear</span> <span class="p">();</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">weights</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">epsilon</span> <span class="p">())</span>
+                <span class="n">model_pt_indices_</span><span class="o">-&gt;</span><span class="n">push_back</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">use_directed_weights_</span> <span class="o">=</span> <span class="n">directed_weights</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Get the best score</span>
+<span class="cm">          *  \returns The best score found.</span>
+<span class="cm">          */</span>
+          <span class="kt">double</span>
+          <span class="nf">getBestScore</span> <span class="p">()</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">best_score_</span><span class="p">);</span>
+          <span class="p">}</span>
+
+        <span class="k">protected</span><span class="o">:</span>
+          <span class="cm">/** \brief Initialize the model parameters. Called by the constructors. */</span>
+          <span class="kt">void</span>
+          <span class="n">initialize</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="c1">// Maximum number of trials before we give up.</span>
+            <span class="n">max_iterations_</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+            <span class="n">use_directed_weights_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="n">model_pt_indices_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span>
+            <span class="n">full_cloud_pt_indices_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span> <span class="p">(</span><span class="n">sac_model_</span><span class="o">-&gt;</span><span class="n">getIndices</span> <span class="p">())));</span>
+            <span class="n">point_cloud_ptr_</span> <span class="o">=</span> <span class="n">sac_model_</span><span class="o">-&gt;</span><span class="n">getInputCloud</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief  weight each positive weight point by the inner product between the normal and the plane normal */</span>
+          <span class="kt">bool</span> <span class="n">use_directed_weights_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief  vector of weights assigned to points. Set by the setWeights-method */</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">weights_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief  The indices used for estimating the RANSAC model. Only those whose weight is &gt; 0 */</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">model_pt_indices_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief  The complete list of indices used for the model evaluation */</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">full_cloud_pt_indices_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief  Pointer to the input PointCloud */</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">WeightSACPointType</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="n">point_cloud_ptr_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief  Highest score found so far */</span>
+          <span class="kt">double</span> <span class="n">best_score_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+  <span class="cp">#include</span> <span class="cpf">&lt;pcl/segmentation/impl/cpc_segmentation.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#elif defined(PCL_ONLY_CORE_POINT_TYPES)</span>
+  <span class="c1">//pcl::PointXYZINormal is not a core point type (so we cannot use the precompiled classes here)</span>
+  <span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/impl/sac_model_plane.hpp&gt;</span><span class="cp"></span>
+  <span class="cp">#include</span> <span class="cpf">&lt;pcl/segmentation/impl/extract_clusters.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif </span><span class="c1">// PCL_NO_PRECOMPILE / PCL_ONLY_CORE_POINT_TYPES</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_segmentation_impl_cpc_segmentation.hpp.html" class="btn btn-neutral float-right" title="File cpc_segmentation.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_segmentation_cpc_segmentation.h.html" class="btn btn-neutral float-left" title="File cpc_segmentation.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

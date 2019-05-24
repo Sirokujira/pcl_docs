@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File inflate.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File inftrees.h" href="file_pcl_surface_3rdparty_opennurbs_inftrees.h.html" />
+    <link rel="prev" title="File inflate.h" href="file_pcl_surface_3rdparty_opennurbs_inflate.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_inflate.h.html">File inflate.h</a> &raquo;</li>
+        
+      <li>Program Listing for File inflate.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_inflate.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-inflate-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-inflate-h"></span><h1>Program Listing for File inflate.h<a class="headerlink" href="#program-listing-for-file-inflate-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_inflate.h.html#file-pcl-surface-3rdparty-opennurbs-inflate-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\inflate.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* inflate.h -- internal inflate state definition</span>
+<span class="cm"> * Copyright (C) 1995-2004 Mark Adler</span>
+<span class="cm"> * For conditions of distribution and use, see copyright notice in zlib.h</span>
+<span class="cm"> */</span>
+
+<span class="cm">/* WARNING: this file should *not* be used by applications. It is</span>
+<span class="cm">   part of the implementation of the compression library and is</span>
+<span class="cm">   subject to change. Applications should only use zlib.h.</span>
+<span class="cm"> */</span>
+
+<span class="cm">/* define NO_GZIP when compiling if you want to disable gzip header and</span>
+<span class="cm">   trailer decoding by inflate().  NO_GZIP would be used to avoid linking in</span>
+<span class="cm">   the crc code when it is not needed.  For shared libraries, gzip decoding</span>
+<span class="cm">   should be left enabled. */</span>
+<span class="cp">#ifndef NO_GZIP</span>
+<span class="cp">#  define GUNZIP</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/* Possible inflate modes between inflate() calls */</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">HEAD</span><span class="p">,</span>       <span class="cm">/* i: waiting for magic header */</span>
+    <span class="n">FLAGS</span><span class="p">,</span>      <span class="cm">/* i: waiting for method and flags (gzip) */</span>
+    <span class="n">TIME</span><span class="p">,</span>       <span class="cm">/* i: waiting for modification time (gzip) */</span>
+    <span class="n">OS</span><span class="p">,</span>         <span class="cm">/* i: waiting for extra flags and operating system (gzip) */</span>
+    <span class="n">EXLEN</span><span class="p">,</span>      <span class="cm">/* i: waiting for extra length (gzip) */</span>
+    <span class="n">EXTRA</span><span class="p">,</span>      <span class="cm">/* i: waiting for extra bytes (gzip) */</span>
+    <span class="n">NAME</span><span class="p">,</span>       <span class="cm">/* i: waiting for end of file name (gzip) */</span>
+    <span class="n">COMMENT</span><span class="p">,</span>    <span class="cm">/* i: waiting for end of comment (gzip) */</span>
+    <span class="n">HCRC</span><span class="p">,</span>       <span class="cm">/* i: waiting for header crc (gzip) */</span>
+    <span class="n">DICTID</span><span class="p">,</span>     <span class="cm">/* i: waiting for dictionary check value */</span>
+    <span class="n">DICT</span><span class="p">,</span>       <span class="cm">/* waiting for inflateSetDictionary() call */</span>
+        <span class="n">TYPE</span><span class="p">,</span>       <span class="cm">/* i: waiting for type bits, including last-flag bit */</span>
+        <span class="n">TYPEDO</span><span class="p">,</span>     <span class="cm">/* i: same, but skip check to exit inflate on new block */</span>
+        <span class="n">STORED</span><span class="p">,</span>     <span class="cm">/* i: waiting for stored size (length and complement) */</span>
+        <span class="n">COPY</span><span class="p">,</span>       <span class="cm">/* i/o: waiting for input or output to copy stored block */</span>
+        <span class="n">TABLE</span><span class="p">,</span>      <span class="cm">/* i: waiting for dynamic block table lengths */</span>
+        <span class="n">LENLENS</span><span class="p">,</span>    <span class="cm">/* i: waiting for code length code lengths */</span>
+        <span class="n">CODELENS</span><span class="p">,</span>   <span class="cm">/* i: waiting for length/lit and distance code lengths */</span>
+            <span class="n">LEN</span><span class="p">,</span>        <span class="cm">/* i: waiting for length/lit code */</span>
+            <span class="n">LENEXT</span><span class="p">,</span>     <span class="cm">/* i: waiting for length extra bits */</span>
+            <span class="n">DIST</span><span class="p">,</span>       <span class="cm">/* i: waiting for distance code */</span>
+            <span class="n">DISTEXT</span><span class="p">,</span>    <span class="cm">/* i: waiting for distance extra bits */</span>
+            <span class="n">MATCH</span><span class="p">,</span>      <span class="cm">/* o: waiting for output space to copy string */</span>
+            <span class="n">LIT</span><span class="p">,</span>        <span class="cm">/* o: waiting for output space to write literal */</span>
+    <span class="n">CHECK</span><span class="p">,</span>      <span class="cm">/* i: waiting for 32-bit check value */</span>
+    <span class="n">LENGTH</span><span class="p">,</span>     <span class="cm">/* i: waiting for 32-bit length (gzip) */</span>
+    <span class="n">DONE</span><span class="p">,</span>       <span class="cm">/* finished check, done -- remain here until reset */</span>
+    <span class="n">BAD</span><span class="p">,</span>        <span class="cm">/* got a data error -- remain here until reset */</span>
+    <span class="n">MEM</span><span class="p">,</span>        <span class="cm">/* got an inflate() memory error -- remain here until reset */</span>
+    <span class="n">SYNC</span>        <span class="cm">/* looking for synchronization bytes to restart inflate() */</span>
+<span class="p">}</span> <span class="n">inflate_mode</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">    State transitions between above modes -</span>
+
+<span class="cm">    (most modes can go to the BAD or MEM mode -- not shown for clarity)</span>
+
+<span class="cm">    Process header:</span>
+<span class="cm">        HEAD -&gt; (gzip) or (zlib)</span>
+<span class="cm">        (gzip) -&gt; FLAGS -&gt; TIME -&gt; OS -&gt; EXLEN -&gt; EXTRA -&gt; NAME</span>
+<span class="cm">        NAME -&gt; COMMENT -&gt; HCRC -&gt; TYPE</span>
+<span class="cm">        (zlib) -&gt; DICTID or TYPE</span>
+<span class="cm">        DICTID -&gt; DICT -&gt; TYPE</span>
+<span class="cm">    Read deflate blocks:</span>
+<span class="cm">            TYPE -&gt; STORED or TABLE or LEN or CHECK</span>
+<span class="cm">            STORED -&gt; COPY -&gt; TYPE</span>
+<span class="cm">            TABLE -&gt; LENLENS -&gt; CODELENS -&gt; LEN</span>
+<span class="cm">    Read deflate codes:</span>
+<span class="cm">                LEN -&gt; LENEXT or LIT or TYPE</span>
+<span class="cm">                LENEXT -&gt; DIST -&gt; DISTEXT -&gt; MATCH -&gt; LEN</span>
+<span class="cm">                LIT -&gt; LEN</span>
+<span class="cm">    Process trailer:</span>
+<span class="cm">        CHECK -&gt; LENGTH -&gt; DONE</span>
+<span class="cm"> */</span>
+
+<span class="cm">/* state maintained between inflate() calls.  Approximately 7K bytes. */</span>
+<span class="k">struct</span> <span class="n">inflate_state</span> <span class="p">{</span>
+    <span class="n">inflate_mode</span> <span class="n">mode</span><span class="p">;</span>          <span class="cm">/* current inflate mode */</span>
+    <span class="kt">int</span> <span class="n">last</span><span class="p">;</span>                   <span class="cm">/* true if processing last block */</span>
+    <span class="kt">int</span> <span class="n">wrap</span><span class="p">;</span>                   <span class="cm">/* bit 0 true for zlib, bit 1 true for gzip */</span>
+    <span class="kt">int</span> <span class="n">havedict</span><span class="p">;</span>               <span class="cm">/* true if dictionary provided */</span>
+    <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span>                  <span class="cm">/* gzip header method and flags (0 if zlib) */</span>
+    <span class="kt">unsigned</span> <span class="n">dmax</span><span class="p">;</span>              <span class="cm">/* zlib header max distance (INFLATE_STRICT) */</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">check</span><span class="p">;</span>        <span class="cm">/* protected copy of check value */</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">total</span><span class="p">;</span>        <span class="cm">/* protected copy of output count */</span>
+    <span class="n">gz_headerp</span> <span class="n">head</span><span class="p">;</span>            <span class="cm">/* where to save gzip header information */</span>
+        <span class="cm">/* sliding window */</span>
+    <span class="kt">unsigned</span> <span class="n">wbits</span><span class="p">;</span>             <span class="cm">/* log base 2 of requested window size */</span>
+    <span class="kt">unsigned</span> <span class="n">wsize</span><span class="p">;</span>             <span class="cm">/* window size or zero if not using window */</span>
+    <span class="kt">unsigned</span> <span class="n">whave</span><span class="p">;</span>             <span class="cm">/* valid bytes in the window */</span>
+    <span class="kt">unsigned</span> <span class="n">write</span><span class="p">;</span>             <span class="cm">/* window write index */</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">FAR</span> <span class="o">*</span><span class="n">window</span><span class="p">;</span>  <span class="cm">/* allocated sliding window, if needed */</span>
+        <span class="cm">/* bit accumulator */</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">hold</span><span class="p">;</span>         <span class="cm">/* input bit accumulator */</span>
+    <span class="kt">unsigned</span> <span class="n">bits</span><span class="p">;</span>              <span class="cm">/* number of bits in &quot;in&quot; */</span>
+        <span class="cm">/* for string and stored block copying */</span>
+    <span class="kt">unsigned</span> <span class="n">length</span><span class="p">;</span>            <span class="cm">/* literal or length of data to copy */</span>
+    <span class="kt">unsigned</span> <span class="n">offset</span><span class="p">;</span>            <span class="cm">/* distance back to copy string from */</span>
+        <span class="cm">/* for table and code decoding */</span>
+    <span class="kt">unsigned</span> <span class="n">extra</span><span class="p">;</span>             <span class="cm">/* extra bits needed */</span>
+        <span class="cm">/* fixed and dynamic code tables */</span>
+    <span class="n">code</span> <span class="k">const</span> <span class="n">FAR</span> <span class="o">*</span><span class="n">lencode</span><span class="p">;</span>    <span class="cm">/* starting table for length/literal codes */</span>
+    <span class="n">code</span> <span class="k">const</span> <span class="n">FAR</span> <span class="o">*</span><span class="n">distcode</span><span class="p">;</span>   <span class="cm">/* starting table for distance codes */</span>
+    <span class="kt">unsigned</span> <span class="n">lenbits</span><span class="p">;</span>           <span class="cm">/* index bits for lencode */</span>
+    <span class="kt">unsigned</span> <span class="n">distbits</span><span class="p">;</span>          <span class="cm">/* index bits for distcode */</span>
+        <span class="cm">/* dynamic table building */</span>
+    <span class="kt">unsigned</span> <span class="n">ncode</span><span class="p">;</span>             <span class="cm">/* number of code length code lengths */</span>
+    <span class="kt">unsigned</span> <span class="n">nlen</span><span class="p">;</span>              <span class="cm">/* number of length code lengths */</span>
+    <span class="kt">unsigned</span> <span class="n">ndist</span><span class="p">;</span>             <span class="cm">/* number of distance code lengths */</span>
+    <span class="kt">unsigned</span> <span class="n">have</span><span class="p">;</span>              <span class="cm">/* number of code lengths in lens[] */</span>
+    <span class="n">code</span> <span class="n">FAR</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>             <span class="cm">/* next available space in codes[] */</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">lens</span><span class="p">[</span><span class="mi">320</span><span class="p">];</span>   <span class="cm">/* temporary storage for code lengths */</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">work</span><span class="p">[</span><span class="mi">288</span><span class="p">];</span>   <span class="cm">/* work area for code table building */</span>
+    <span class="n">code</span> <span class="n">codes</span><span class="p">[</span><span class="n">ENOUGH</span><span class="p">];</span>         <span class="cm">/* space for code tables */</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_inftrees.h.html" class="btn btn-neutral float-right" title="File inftrees.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_inflate.h.html" class="btn btn-neutral float-left" title="File inflate.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

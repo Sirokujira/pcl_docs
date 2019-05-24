@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File ndt.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File ndt.hpp" href="file_pcl_registration_impl_ndt.hpp.html" />
+    <link rel="prev" title="File ndt.h" href="file_pcl_registration_ndt.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_ndt.h.html">File ndt.h</a> &raquo;</li>
+        
+      <li>Program Listing for File ndt.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_ndt.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-ndt-h">
+<span id="program-listing-file-pcl-registration-ndt-h"></span><h1>Program Listing for File ndt.h<a class="headerlink" href="#program-listing-for-file-ndt-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_ndt.h.html#file-pcl-registration-ndt-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\ndt.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/registration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/filters/voxel_grid_covariance.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;unsupported/Eigen/NonLinearOptimization&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief A 3D Normal Distribution Transform registration implementation for point cloud data.</span>
+<span class="cm">    * \note For more information please see</span>
+<span class="cm">    * &lt;b&gt;Magnusson, M. (2009). The Three-Dimensional Normal-Distributions Transform —</span>
+<span class="cm">    * an Efﬁcient Representation for Registration, Surface Analysis, and Loop Detection.</span>
+<span class="cm">    * PhD thesis, Orebro University. Orebro Studies in Technology 36.&lt;/b&gt;,</span>
+<span class="cm">    * &lt;b&gt;More, J., and Thuente, D. (1994). Line Search Algorithm with Guaranteed Sufficient Decrease</span>
+<span class="cm">    * In ACM Transactions on Mathematical Software.&lt;/b&gt; and</span>
+<span class="cm">    * Sun, W. and Yuan, Y, (2006) Optimization Theory and Methods: Nonlinear Programming. 89-100</span>
+<span class="cm">    * \note Math refactored by Todor Stoyanov.</span>
+<span class="cm">    * \author Brian Okorn (Space and Naval Warfare Systems Center Pacific)</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">NormalDistributionsTransform</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">PointCloudSource</span> <span class="n">PointCloudSource</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudSourcePtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudSourceConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">PointCloudTarget</span> <span class="n">PointCloudTarget</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudTargetPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudTargetConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">PointIndices</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointIndicesPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">PointIndices</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointIndicesConstPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Typename of searchable voxel grid containing mean and covariance. */</span>
+      <span class="k">typedef</span> <span class="n">VoxelGridCovariance</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">TargetGrid</span><span class="p">;</span>
+      <span class="cm">/** \brief Typename of pointer to searchable voxel grid. */</span>
+      <span class="k">typedef</span> <span class="n">TargetGrid</span><span class="o">*</span> <span class="n">TargetGridPtr</span><span class="p">;</span>
+      <span class="cm">/** \brief Typename of const pointer to searchable voxel grid. */</span>
+      <span class="k">typedef</span> <span class="k">const</span> <span class="n">TargetGrid</span><span class="o">*</span> <span class="n">TargetGridConstPtr</span><span class="p">;</span>
+      <span class="cm">/** \brief Typename of const pointer to searchable voxel grid leaf. */</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">TargetGrid</span><span class="o">::</span><span class="n">LeafConstPtr</span> <span class="n">TargetGridLeafConstPtr</span><span class="p">;</span>
+
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">NormalDistributionsTransform</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">NormalDistributionsTransform</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+
+      <span class="cm">/** \brief Constructor.</span>
+<span class="cm">        * Sets \ref outlier_ratio_ to 0.35, \ref step_size_ to 0.05 and \ref resolution_ to 1.0</span>
+<span class="cm">        */</span>
+      <span class="n">NormalDistributionsTransform</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="o">~</span><span class="n">NormalDistributionsTransform</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input target (e.g., the point cloud that we want to align the input source to).</span>
+<span class="cm">        * \param[in] cloud the input point cloud target</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputTarget</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudTargetConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">setInputTarget</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="n">init</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set/change the voxel grid resolution.</span>
+<span class="cm">        * \param[in] resolution side length of voxels</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setResolution</span> <span class="p">(</span><span class="kt">float</span> <span class="n">resolution</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// Prevents unnessary voxel initiations</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">resolution_</span> <span class="o">!=</span> <span class="n">resolution</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">resolution_</span> <span class="o">=</span> <span class="n">resolution</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+            <span class="n">init</span> <span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get voxel grid resolution.</span>
+<span class="cm">        * \return side length of voxels</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getResolution</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">resolution_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the newton line search maximum step length.</span>
+<span class="cm">        * \return maximum step length</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getStepSize</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">step_size_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set/change the newton line search maximum step length.</span>
+<span class="cm">        * \param[in] step_size maximum step length</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setStepSize</span> <span class="p">(</span><span class="kt">double</span> <span class="n">step_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">step_size_</span> <span class="o">=</span> <span class="n">step_size</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the point cloud outlier ratio.</span>
+<span class="cm">        * \return outlier ratio</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getOulierRatio</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">outlier_ratio_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set/change the point cloud outlier ratio.</span>
+<span class="cm">        * \param[in] outlier_ratio outlier ratio</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setOulierRatio</span> <span class="p">(</span><span class="kt">double</span> <span class="n">outlier_ratio</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">outlier_ratio_</span> <span class="o">=</span> <span class="n">outlier_ratio</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the registration alignment probability.</span>
+<span class="cm">        * \return transformation probability</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getTransformationProbability</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">trans_probability_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the number of iterations required to calculate alignment.</span>
+<span class="cm">        * \return final number of iterations</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="n">getFinalNumIteration</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">nr_iterations_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Convert 6 element transformation vector to affine transformation.</span>
+<span class="cm">        * \param[in] x transformation vector of the form [x, y, z, roll, pitch, yaw]</span>
+<span class="cm">        * \param[out] trans affine transform corresponding to given transfomation vector</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="n">convertTransform</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="o">&amp;</span><span class="n">trans</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">trans</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Translation</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">float</span> <span class="p">(</span><span class="n">x</span> <span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="kt">float</span> <span class="p">(</span><span class="n">x</span> <span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="kt">float</span> <span class="p">(</span><span class="n">x</span> <span class="p">(</span><span class="mi">2</span><span class="p">)))</span> <span class="o">*</span>
+                <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxis</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">float</span> <span class="p">(</span><span class="n">x</span> <span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitX</span> <span class="p">())</span> <span class="o">*</span>
+                <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxis</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">float</span> <span class="p">(</span><span class="n">x</span> <span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitY</span> <span class="p">())</span> <span class="o">*</span>
+                <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxis</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">float</span> <span class="p">(</span><span class="n">x</span> <span class="p">(</span><span class="mi">5</span><span class="p">)),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitZ</span> <span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Convert 6 element transformation vector to transformation matrix.</span>
+<span class="cm">        * \param[in] x transformation vector of the form [x, y, z, roll, pitch, yaw]</span>
+<span class="cm">        * \param[out] trans 4x4 transformation matrix corresponding to given transfomation vector</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="n">convertTransform</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">trans</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">_affine</span><span class="p">;</span>
+        <span class="n">convertTransform</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_affine</span><span class="p">);</span>
+        <span class="n">trans</span> <span class="o">=</span> <span class="n">_affine</span><span class="p">.</span><span class="n">matrix</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">reg_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">target_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">nr_iterations_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">max_iterations_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">previous_transformation_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">final_transformation_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">transformation_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">transformation_epsilon_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">transformation_rotation_epsilon_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">converged_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">corr_dist_threshold_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">inlier_threshold_</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">update_visualizer_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Estimate the transformation and returns the transformed source (input) as output.</span>
+<span class="cm">        * \param[out] output the resultant input transformed point cloud dataset</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">computeTransformation</span> <span class="p">(</span><span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">computeTransformation</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Estimate the transformation and returns the transformed source (input) as output.</span>
+<span class="cm">        * \param[out] output the resultant input transformed point cloud dataset</span>
+<span class="cm">        * \param[in] guess the initial gross estimation of the transformation</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeTransformation</span> <span class="p">(</span><span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">guess</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Initiate covariance voxel structure. */</span>
+      <span class="kt">void</span> <span class="kr">inline</span>
+      <span class="nf">init</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">target_cells_</span><span class="p">.</span><span class="n">setLeafSize</span> <span class="p">(</span><span class="n">resolution_</span><span class="p">,</span> <span class="n">resolution_</span><span class="p">,</span> <span class="n">resolution_</span><span class="p">);</span>
+        <span class="n">target_cells_</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span> <span class="n">target_</span> <span class="p">);</span>
+        <span class="c1">// Initiate voxel structure.</span>
+        <span class="n">target_cells_</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Compute derivatives of probability function w.r.t. the transformation vector.</span>
+<span class="cm">        * \note Equation 6.10, 6.12 and 6.13 [Magnusson 2009].</span>
+<span class="cm">        * \param[out] score_gradient the gradient vector of the probability function w.r.t. the transformation vector</span>
+<span class="cm">        * \param[out] hessian the hessian matrix of the probability function w.r.t. the transformation vector</span>
+<span class="cm">        * \param[in] trans_cloud transformed point cloud</span>
+<span class="cm">        * \param[in] p the current transform vector</span>
+<span class="cm">        * \param[in] compute_hessian flag to calculate hessian, unnessissary for step calculation.</span>
+<span class="cm">        */</span>
+      <span class="kt">double</span>
+      <span class="nf">computeDerivatives</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">score_gradient</span><span class="p">,</span>
+                          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">hessian</span><span class="p">,</span>
+                          <span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">trans_cloud</span><span class="p">,</span>
+                          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span>
+                          <span class="kt">bool</span> <span class="n">compute_hessian</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Compute individual point contirbutions to derivatives of probability function w.r.t. the transformation vector.</span>
+<span class="cm">        * \note Equation 6.10, 6.12 and 6.13 [Magnusson 2009].</span>
+<span class="cm">        * \param[in,out] score_gradient the gradient vector of the probability function w.r.t. the transformation vector</span>
+<span class="cm">        * \param[in,out] hessian the hessian matrix of the probability function w.r.t. the transformation vector</span>
+<span class="cm">        * \param[in] x_trans transformed point minus mean of occupied covariance voxel</span>
+<span class="cm">        * \param[in] c_inv covariance of occupied covariance voxel</span>
+<span class="cm">        * \param[in] compute_hessian flag to calculate hessian, unnessissary for step calculation.</span>
+<span class="cm">        */</span>
+      <span class="kt">double</span>
+      <span class="nf">updateDerivatives</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">score_gradient</span><span class="p">,</span>
+                         <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">hessian</span><span class="p">,</span>
+                         <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">x_trans</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">c_inv</span><span class="p">,</span>
+                         <span class="kt">bool</span> <span class="n">compute_hessian</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Precompute anglular components of derivatives.</span>
+<span class="cm">        * \note Equation 6.19 and 6.21 [Magnusson 2009].</span>
+<span class="cm">        * \param[in] p the current transform vector</span>
+<span class="cm">        * \param[in] compute_hessian flag to calculate hessian, unnessissary for step calculation.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeAngleDerivatives</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">compute_hessian</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Compute point derivatives.</span>
+<span class="cm">        * \note Equation 6.18-21 [Magnusson 2009].</span>
+<span class="cm">        * \param[in] x point from the input cloud</span>
+<span class="cm">        * \param[in] compute_hessian flag to calculate hessian, unnessissary for step calculation.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computePointDerivatives</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">compute_hessian</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Compute hessian of probability function w.r.t. the transformation vector.</span>
+<span class="cm">        * \note Equation 6.13 [Magnusson 2009].</span>
+<span class="cm">        * \param[out] hessian the hessian matrix of the probability function w.r.t. the transformation vector</span>
+<span class="cm">        * \param[in] trans_cloud transformed point cloud</span>
+<span class="cm">        * \param[in] p the current transform vector</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeHessian</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">hessian</span><span class="p">,</span>
+                      <span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">trans_cloud</span><span class="p">,</span>
+                      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Compute individual point contirbutions to hessian of probability function w.r.t. the transformation vector.</span>
+<span class="cm">        * \note Equation 6.13 [Magnusson 2009].</span>
+<span class="cm">        * \param[in,out] hessian the hessian matrix of the probability function w.r.t. the transformation vector</span>
+<span class="cm">        * \param[in] x_trans transformed point minus mean of occupied covariance voxel</span>
+<span class="cm">        * \param[in] c_inv covariance of occupied covariance voxel</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">updateHessian</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">hessian</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">x_trans</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">c_inv</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Compute line search step length and update transform and probability derivatives using More-Thuente method.</span>
+<span class="cm">        * \note Search Algorithm [More, Thuente 1994]</span>
+<span class="cm">        * \param[in] x initial transformation vector, \f$ x \f$ in Equation 1.3 (Moore, Thuente 1994) and \f$ \vec{p} \f$ in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \param[in] step_dir descent direction, \f$ p \f$ in Equation 1.3 (Moore, Thuente 1994) and \f$ \delta \vec{p} \f$ normalized in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \param[in] step_init initial step length estimate, \f$ \alpha_0 \f$ in Moore-Thuente (1994) and the noramal of \f$ \delta \vec{p} \f$ in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \param[in] step_max maximum step length, \f$ \alpha_max \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] step_min minimum step length, \f$ \alpha_min \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[out] score final score function value, \f$ f(x + \alpha p) \f$ in Equation 1.3 (Moore, Thuente 1994) and \f$ score \f$ in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \param[in,out] score_gradient gradient of score function w.r.t. transformation vector, \f$ f&#39;(x + \alpha p) \f$ in Moore-Thuente (1994) and \f$ \vec{g} \f$ in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \param[out] hessian hessian of score function w.r.t. transformation vector, \f$ f&#39;&#39;(x + \alpha p) \f$ in Moore-Thuente (1994) and \f$ H \f$ in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \param[in,out] trans_cloud transformed point cloud, \f$ X \f$ transformed by \f$ T(\vec{p},\vec{x}) \f$ in Algorithm 2 [Magnusson 2009]</span>
+<span class="cm">        * \return final step length</span>
+<span class="cm">        */</span>
+      <span class="kt">double</span>
+      <span class="nf">computeStepLengthMT</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">step_dir</span><span class="p">,</span>
+                           <span class="kt">double</span> <span class="n">step_init</span><span class="p">,</span>
+                           <span class="kt">double</span> <span class="n">step_max</span><span class="p">,</span> <span class="kt">double</span> <span class="n">step_min</span><span class="p">,</span>
+                           <span class="kt">double</span> <span class="o">&amp;</span><span class="n">score</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">score_gradient</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">hessian</span><span class="p">,</span>
+                           <span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">trans_cloud</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Update interval of possible step lengths for More-Thuente method, \f$ I \f$ in More-Thuente (1994)</span>
+<span class="cm">        * \note Updating Algorithm until some value satisfies \f$ \psi(\alpha_k) \leq 0 \f$ and \f$ \phi&#39;(\alpha_k) \geq 0 \f$</span>
+<span class="cm">        * and Modified Updating Algorithm from then on [More, Thuente 1994].</span>
+<span class="cm">        * \param[in,out] a_l first endpoint of interval \f$ I \f$, \f$ \alpha_l \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in,out] f_l value at first endpoint, \f$ f_l \f$ in Moore-Thuente (1994), \f$ \psi(\alpha_l) \f$ for Update Algorithm and \f$ \phi(\alpha_l) \f$ for Modified Update Algorithm</span>
+<span class="cm">        * \param[in,out] g_l derivative at first endpoint, \f$ g_l \f$ in Moore-Thuente (1994), \f$ \psi&#39;(\alpha_l) \f$ for Update Algorithm and \f$ \phi&#39;(\alpha_l) \f$ for Modified Update Algorithm</span>
+<span class="cm">        * \param[in,out] a_u second endpoint of interval \f$ I \f$, \f$ \alpha_u \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in,out] f_u value at second endpoint, \f$ f_u \f$ in Moore-Thuente (1994), \f$ \psi(\alpha_u) \f$ for Update Algorithm and \f$ \phi(\alpha_u) \f$ for Modified Update Algorithm</span>
+<span class="cm">        * \param[in,out] g_u derivative at second endpoint, \f$ g_u \f$ in Moore-Thuente (1994), \f$ \psi&#39;(\alpha_u) \f$ for Update Algorithm and \f$ \phi&#39;(\alpha_u) \f$ for Modified Update Algorithm</span>
+<span class="cm">        * \param[in] a_t trial value, \f$ \alpha_t \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] f_t value at trial value, \f$ f_t \f$ in Moore-Thuente (1994), \f$ \psi(\alpha_t) \f$ for Update Algorithm and \f$ \phi(\alpha_t) \f$ for Modified Update Algorithm</span>
+<span class="cm">        * \param[in] g_t derivative at trial value, \f$ g_t \f$ in Moore-Thuente (1994), \f$ \psi&#39;(\alpha_t) \f$ for Update Algorithm and \f$ \phi&#39;(\alpha_t) \f$ for Modified Update Algorithm</span>
+<span class="cm">        * \return if interval converges</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">updateIntervalMT</span> <span class="p">(</span><span class="kt">double</span> <span class="o">&amp;</span><span class="n">a_l</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">f_l</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">g_l</span><span class="p">,</span>
+                        <span class="kt">double</span> <span class="o">&amp;</span><span class="n">a_u</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">f_u</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">g_u</span><span class="p">,</span>
+                        <span class="kt">double</span> <span class="n">a_t</span><span class="p">,</span> <span class="kt">double</span> <span class="n">f_t</span><span class="p">,</span> <span class="kt">double</span> <span class="n">g_t</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Select new trial value for More-Thuente method.</span>
+<span class="cm">        * \note Trial Value Selection [More, Thuente 1994], \f$ \psi(\alpha_k) \f$ is used for \f$ f_k \f$ and \f$ g_k \f$</span>
+<span class="cm">        * until some value satisfies the test \f$ \psi(\alpha_k) \leq 0 \f$ and \f$ \phi&#39;(\alpha_k) \geq 0 \f$</span>
+<span class="cm">        * then \f$ \phi(\alpha_k) \f$ is used from then on.</span>
+<span class="cm">        * \note Interpolation Minimizer equations from Optimization Theory and Methods: Nonlinear Programming By Wenyu Sun, Ya-xiang Yuan (89-100).</span>
+<span class="cm">        * \param[in] a_l first endpoint of interval \f$ I \f$, \f$ \alpha_l \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] f_l value at first endpoint, \f$ f_l \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] g_l derivative at first endpoint, \f$ g_l \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] a_u second endpoint of interval \f$ I \f$, \f$ \alpha_u \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] f_u value at second endpoint, \f$ f_u \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] g_u derivative at second endpoint, \f$ g_u \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] a_t previous trial value, \f$ \alpha_t \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] f_t value at previous trial value, \f$ f_t \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] g_t derivative at previous trial value, \f$ g_t \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \return new trial value</span>
+<span class="cm">        */</span>
+      <span class="kt">double</span>
+      <span class="nf">trialValueSelectionMT</span> <span class="p">(</span><span class="kt">double</span> <span class="n">a_l</span><span class="p">,</span> <span class="kt">double</span> <span class="n">f_l</span><span class="p">,</span> <span class="kt">double</span> <span class="n">g_l</span><span class="p">,</span>
+                             <span class="kt">double</span> <span class="n">a_u</span><span class="p">,</span> <span class="kt">double</span> <span class="n">f_u</span><span class="p">,</span> <span class="kt">double</span> <span class="n">g_u</span><span class="p">,</span>
+                             <span class="kt">double</span> <span class="n">a_t</span><span class="p">,</span> <span class="kt">double</span> <span class="n">f_t</span><span class="p">,</span> <span class="kt">double</span> <span class="n">g_t</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Auxiliary function used to determine endpoints of More-Thuente interval.</span>
+<span class="cm">        * \note \f$ \psi(\alpha) \f$ in Equation 1.6 (Moore, Thuente 1994)</span>
+<span class="cm">        * \param[in] a the step length, \f$ \alpha \f$ in More-Thuente (1994)</span>
+<span class="cm">        * \param[in] f_a function value at step length a, \f$ \phi(\alpha) \f$ in More-Thuente (1994)</span>
+<span class="cm">        * \param[in] f_0 initial function value, \f$ \phi(0) \f$ in Moore-Thuente (1994)</span>
+<span class="cm">        * \param[in] g_0 initial function gradiant, \f$ \phi&#39;(0) \f$ in More-Thuente (1994)</span>
+<span class="cm">        * \param[in] mu the step length, constant \f$ \mu \f$ in Equation 1.1 [More, Thuente 1994]</span>
+<span class="cm">        * \return sufficient decrease value</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">auxilaryFunction_PsiMT</span> <span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">f_a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">f_0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">g_0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">1.e-4</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">f_a</span> <span class="o">-</span> <span class="n">f_0</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">g_0</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Auxiliary function derivative used to determine endpoints of More-Thuente interval.</span>
+<span class="cm">        * \note \f$ \psi&#39;(\alpha) \f$, derivative of Equation 1.6 (Moore, Thuente 1994)</span>
+<span class="cm">        * \param[in] g_a function gradient at step length a, \f$ \phi&#39;(\alpha) \f$ in More-Thuente (1994)</span>
+<span class="cm">        * \param[in] g_0 initial function gradiant, \f$ \phi&#39;(0) \f$ in More-Thuente (1994)</span>
+<span class="cm">        * \param[in] mu the step length, constant \f$ \mu \f$ in Equation 1.1 [More, Thuente 1994]</span>
+<span class="cm">        * \return sufficient decrease derivative</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">auxilaryFunction_dPsiMT</span> <span class="p">(</span><span class="kt">double</span> <span class="n">g_a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">g_0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">1.e-4</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">g_a</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">g_0</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The voxel grid generated from target cloud containing point means and covariances. */</span>
+      <span class="n">TargetGrid</span> <span class="n">target_cells_</span><span class="p">;</span>
+
+      <span class="c1">//double fitness_epsilon_;</span>
+
+      <span class="cm">/** \brief The side length of voxels. */</span>
+      <span class="kt">float</span> <span class="n">resolution_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The maximum step length. */</span>
+      <span class="kt">double</span> <span class="n">step_size_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The ratio of outliers of points w.r.t. a normal distribution, Equation 6.7 [Magnusson 2009]. */</span>
+      <span class="kt">double</span> <span class="n">outlier_ratio_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The normalization constants used fit the point distribution to a normal distribution, Equation 6.8 [Magnusson 2009]. */</span>
+      <span class="kt">double</span> <span class="n">gauss_d1_</span><span class="p">,</span> <span class="n">gauss_d2_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The probability score of the transform applied to the input cloud, Equation 6.9 and 6.10 [Magnusson 2009]. */</span>
+      <span class="kt">double</span> <span class="n">trans_probability_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Precomputed Angular Gradient</span>
+<span class="cm">        *</span>
+<span class="cm">        * The precomputed angular derivatives for the jacobian of a transformation vector, Equation 6.19 [Magnusson 2009].</span>
+<span class="cm">        */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">j_ang_a_</span><span class="p">,</span> <span class="n">j_ang_b_</span><span class="p">,</span> <span class="n">j_ang_c_</span><span class="p">,</span> <span class="n">j_ang_d_</span><span class="p">,</span> <span class="n">j_ang_e_</span><span class="p">,</span> <span class="n">j_ang_f_</span><span class="p">,</span> <span class="n">j_ang_g_</span><span class="p">,</span> <span class="n">j_ang_h_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Precomputed Angular Hessian</span>
+<span class="cm">        *</span>
+<span class="cm">        * The precomputed angular derivatives for the hessian of a transformation vector, Equation 6.19 [Magnusson 2009].</span>
+<span class="cm">        */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">h_ang_a2_</span><span class="p">,</span> <span class="n">h_ang_a3_</span><span class="p">,</span>
+                      <span class="n">h_ang_b2_</span><span class="p">,</span> <span class="n">h_ang_b3_</span><span class="p">,</span>
+                      <span class="n">h_ang_c2_</span><span class="p">,</span> <span class="n">h_ang_c3_</span><span class="p">,</span>
+                      <span class="n">h_ang_d1_</span><span class="p">,</span> <span class="n">h_ang_d2_</span><span class="p">,</span> <span class="n">h_ang_d3_</span><span class="p">,</span>
+                      <span class="n">h_ang_e1_</span><span class="p">,</span> <span class="n">h_ang_e2_</span><span class="p">,</span> <span class="n">h_ang_e3_</span><span class="p">,</span>
+                      <span class="n">h_ang_f1_</span><span class="p">,</span> <span class="n">h_ang_f2_</span><span class="p">,</span> <span class="n">h_ang_f3_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The first order derivative of the transformation of a point w.r.t. the transform vector, \f$ J_E \f$ in Equation 6.18 [Magnusson 2009]. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="n">point_gradient_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The second order derivative of the transformation of a point w.r.t. the transform vector, \f$ H_E \f$ in Equation 6.20 [Magnusson 2009]. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="o">&gt;</span> <span class="n">point_hessian_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+
+  <span class="p">};</span>
+
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/impl/ndt.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_registration_impl_ndt.hpp.html" class="btn btn-neutral float-right" title="File ndt.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_ndt.h.html" class="btn btn-neutral float-left" title="File ndt.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File pca.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File pca.hpp" href="file_pcl_common_impl_pca.hpp.html" />
+    <link rel="prev" title="File pca.h" href="file_pcl_common_pca.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_common_pca.h.html">File pca.h</a> &raquo;</li>
+        
+      <li>Program Listing for File pca.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_common_pca.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-pca-h">
+<span id="program-listing-file-pcl-common-pca-h"></span><h1>Program Listing for File pca.h<a class="headerlink" href="#program-listing-for-file-pca-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_common_pca.h.html#file-pcl-common-pca-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\common\pca.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_base.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** Principal Component analysis (PCA) class.\n</span>
+<span class="cm">    *  Principal components are extracted by singular values decomposition on the</span>
+<span class="cm">    * covariance matrix of the centered input cloud. Available data after pca computation</span>
+<span class="cm">    * are:\n</span>
+<span class="cm">    * - The Mean of the input data\n</span>
+<span class="cm">    * - The Eigenvectors: Ordered set of vectors representing the resultant principal components and the eigenspace cartesian basis (right-handed coordinate system).\n</span>
+<span class="cm">    * - The Eigenvalues: Eigenvectors correspondent loadings ordered in descending order.\n\n</span>
+<span class="cm">    * Other methods allow projection in the eigenspace, reconstruction from eigenspace and</span>
+<span class="cm">    *  update of the eigenspace with a new datum (according Matej Artec, Matjaz Jogan and</span>
+<span class="cm">    * Ales Leonardis: &quot;Incremental PCA for On-line Visual Learning and Recognition&quot;).</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Nizar Sallem</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">PCA</span> <span class="o">:</span> <span class="k">public</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLBase</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLBase</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">Base</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">::</span><span class="n">PointCloud</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">::</span><span class="n">PointCloudPtr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">::</span><span class="n">PointCloudConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">::</span><span class="n">PointIndicesPtr</span> <span class="n">PointIndicesPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">::</span><span class="n">PointIndicesConstPtr</span> <span class="n">PointIndicesConstPtr</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">initCompute</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">setInputCloud</span><span class="p">;</span>
+
+      <span class="cm">/** Updating method flag */</span>
+      <span class="k">enum</span> <span class="n">FLAG</span>
+      <span class="p">{</span>
+        <span class="cm">/** keep the new basis vectors if possible */</span>
+        <span class="n">increase</span><span class="p">,</span>
+        <span class="cm">/** preserve subspace dimension */</span>
+        <span class="n">preserve</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Default Constructor</span>
+<span class="cm">        * \param basis_only flag to compute only the PCA basis</span>
+<span class="cm">        */</span>
+      <span class="n">PCA</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">basis_only</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">Base</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">compute_done_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">basis_only_</span> <span class="p">(</span><span class="n">basis_only</span><span class="p">)</span>
+      <span class="p">{}</span>
+
+      <span class="cm">/** Copy Constructor</span>
+<span class="cm">        * \param[in] pca PCA object</span>
+<span class="cm">        */</span>
+      <span class="n">PCA</span> <span class="p">(</span><span class="n">PCA</span> <span class="k">const</span> <span class="o">&amp;</span> <span class="n">pca</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">Base</span> <span class="p">(</span><span class="n">pca</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">compute_done_</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">compute_done_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">basis_only_</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">basis_only_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">eigenvectors_</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">eigenvectors_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">coefficients_</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">coefficients_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">mean_</span> <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">mean_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">eigenvalues_</span>  <span class="p">(</span><span class="n">pca</span><span class="p">.</span><span class="n">eigenvalues_</span><span class="p">)</span>
+      <span class="p">{}</span>
+
+      <span class="cm">/** Assignment operator</span>
+<span class="cm">        * \param[in] pca PCA object</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">PCA</span><span class="o">&amp;</span>
+      <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="n">PCA</span> <span class="k">const</span> <span class="o">&amp;</span> <span class="n">pca</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">eigenvectors_</span> <span class="o">=</span> <span class="n">pca</span><span class="p">.</span><span class="n">eigenvectors_</span><span class="p">;</span>
+        <span class="n">coefficients_</span> <span class="o">=</span> <span class="n">pca</span><span class="p">.</span><span class="n">coefficients_</span><span class="p">;</span>
+        <span class="n">eigenvalues_</span>  <span class="o">=</span> <span class="n">pca</span><span class="p">.</span><span class="n">eigenvalues_</span><span class="p">;</span>
+        <span class="n">mean_</span>         <span class="o">=</span> <span class="n">pca</span><span class="p">.</span><span class="n">mean_</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset</span>
+<span class="cm">        * \param cloud the const boost shared pointer to a PointCloud message</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">Base</span><span class="o">::</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="n">compute_done_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the vector of indices that represents the input data.</span>
+<span class="cm">        * \param[in] indices a pointer to the indices that represent the input data.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">setIndices</span> <span class="p">(</span><span class="k">const</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">Base</span><span class="o">::</span><span class="n">setIndices</span> <span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+        <span class="n">compute_done_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the vector of indices that represents the input data.</span>
+<span class="cm">        * \param[in] indices a pointer to the indices that represent the input data.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">setIndices</span> <span class="p">(</span><span class="k">const</span> <span class="n">IndicesConstPtr</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">Base</span><span class="o">::</span><span class="n">setIndices</span> <span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+        <span class="n">compute_done_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the vector of indices that represents the input data.</span>
+<span class="cm">        * \param[in] indices a pointer to the indices that represent the input data.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">setIndices</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointIndicesConstPtr</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">Base</span><span class="o">::</span><span class="n">setIndices</span> <span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+        <span class="n">compute_done_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the indices for the points laying within an interest region of</span>
+<span class="cm">        * the point cloud.</span>
+<span class="cm">        * \note you shouldn&#39;t call this method on unorganized point clouds!</span>
+<span class="cm">        * \param[in] row_start the offset on rows</span>
+<span class="cm">        * \param[in] col_start the offset on columns</span>
+<span class="cm">        * \param[in] nb_rows the number of rows to be considered row_start included</span>
+<span class="cm">        * \param[in] nb_cols the number of columns to be considered col_start included</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">setIndices</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row_start</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">col_start</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nb_rows</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nb_cols</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">Base</span><span class="o">::</span><span class="n">setIndices</span> <span class="p">(</span><span class="n">row_start</span><span class="p">,</span> <span class="n">col_start</span><span class="p">,</span> <span class="n">nb_rows</span><span class="p">,</span> <span class="n">nb_cols</span><span class="p">);</span>
+        <span class="n">compute_done_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Mean accessor</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">&amp;</span>
+      <span class="n">getMean</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">initCompute</span> <span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">InitFailedException</span><span class="p">,</span>
+                               <span class="s">&quot;[pcl::PCA::getMean] PCA initCompute failed&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">mean_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** Eigen Vectors accessor</span>
+<span class="cm">        * \return Column ordered eigenvectors, representing the eigenspace cartesian basis (right-handed coordinate system).</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&amp;</span>
+      <span class="n">getEigenVectors</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">initCompute</span> <span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">InitFailedException</span><span class="p">,</span>
+                               <span class="s">&quot;[pcl::PCA::getEigenVectors] PCA initCompute failed&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">eigenvectors_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** Eigen Values accessor</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span>
+      <span class="n">getEigenValues</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">initCompute</span> <span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">InitFailedException</span><span class="p">,</span>
+                               <span class="s">&quot;[pcl::PCA::getEigenVectors] PCA getEigenValues failed&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">eigenvalues_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** Coefficients accessor</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="o">&amp;</span>
+      <span class="n">getCoefficients</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">initCompute</span> <span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">compute_done_</span><span class="p">)</span>
+          <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">InitFailedException</span><span class="p">,</span>
+                               <span class="s">&quot;[pcl::PCA::getEigenVectors] PCA getCoefficients failed&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">coefficients_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** update PCA with a new point</span>
+<span class="cm">        * \param[in] input input point</span>
+<span class="cm">        * \param[in] flag update flag</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">update</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">FLAG</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">preserve</span><span class="p">);</span>
+
+      <span class="cm">/** Project point on the eigenspace.</span>
+<span class="cm">        * \param[in] input point from original dataset</span>
+<span class="cm">        * \param[out] projection the point in eigen vectors space</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">project</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">projection</span><span class="p">);</span>
+
+      <span class="cm">/** Project cloud on the eigenspace.</span>
+<span class="cm">        * \param[in] input cloud from original dataset</span>
+<span class="cm">        * \param[out] projection the cloud in eigen vectors space</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">project</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">projection</span><span class="p">);</span>
+
+      <span class="cm">/** Reconstruct point from its projection</span>
+<span class="cm">        * \param[in] projection point from eigenvector space</span>
+<span class="cm">        * \param[out] input reconstructed point</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">reconstruct</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">projection</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">);</span>
+
+      <span class="cm">/** Reconstruct cloud from its projection</span>
+<span class="cm">        * \param[in] projection cloud from eigenvector space</span>
+<span class="cm">        * \param[out] input reconstructed cloud</span>
+<span class="cm">        * \throw InitFailedException</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">reconstruct</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">projection</span><span class="p">,</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">);</span>
+    <span class="k">private</span><span class="o">:</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="n">initCompute</span> <span class="p">();</span>
+
+      <span class="kt">bool</span> <span class="n">compute_done_</span><span class="p">;</span>
+      <span class="kt">bool</span> <span class="n">basis_only_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">eigenvectors_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="n">coefficients_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">mean_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">eigenvalues_</span><span class="p">;</span>
+  <span class="p">};</span> <span class="c1">// class PCA</span>
+<span class="p">}</span> <span class="c1">// namespace pcl</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/impl/pca.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_common_impl_pca.hpp.html" class="btn btn-neutral float-right" title="File pca.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_common_pca.h.html" class="btn btn-neutral float-left" title="File pca.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

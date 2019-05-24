@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File rf_face_detector_trainer.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File rf_face_utils.h" href="file_pcl_recognition_face_detection_rf_face_utils.h.html" />
+    <link rel="prev" title="File rf_face_detector_trainer.h" href="file_pcl_recognition_face_detection_rf_face_detector_trainer.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_face_detection_rf_face_detector_trainer.h.html">File rf_face_detector_trainer.h</a> &raquo;</li>
+        
+      <li>Program Listing for File rf_face_detector_trainer.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_face_detection_rf_face_detector_trainer.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-rf-face-detector-trainer-h">
+<span id="program-listing-file-pcl-recognition-face-detection-rf-face-detector-trainer-h"></span><h1>Program Listing for File rf_face_detector_trainer.h<a class="headerlink" href="#program-listing-for-file-rf-face-detector-trainer-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_face_detection_rf_face_detector_trainer.h.html#file-pcl-recognition-face-detection-rf-face-detector-trainer-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\face_detection\rf_face_detector_trainer.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * rf_face_detector_trainer.h</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Created on: 22 Sep 2012</span>
+<span class="cm"> *      Author: Aitor Aldoma</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/recognition/face_detection/face_detector_data_provider.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/recognition/face_detection/rf_face_utils.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/ml/dt/decision_forest.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/integral_image2D.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">RFFaceDetectorTrainer</span>
+  <span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span>
+      <span class="kt">int</span> <span class="n">w_size_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">max_patch_size_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">stride_sw_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">ntrees_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">forest_filename_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">nfeatures_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">thres_face_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">num_images_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">trans_max_variance_</span><span class="p">;</span>
+      <span class="kt">size_t</span> <span class="n">min_votes_size_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">used_for_pose_</span><span class="p">;</span>
+      <span class="kt">bool</span> <span class="n">use_normals_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">directory_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">HEAD_ST_DIAMETER_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">larger_radius_ratio_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">head_center_votes_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">head_center_votes_clustered_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">head_center_original_votes_clustered_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">angle_votes_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">uncertainties_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">head_clusters_centers_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">head_clusters_rotation_</span><span class="p">;</span>
+
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">input_</span><span class="p">;</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">face_heat_map_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">face_detection</span><span class="o">::</span><span class="n">RFTreeNode</span><span class="o">&lt;</span><span class="n">face_detection</span><span class="o">::</span><span class="n">FeatureType</span><span class="o">&gt;</span> <span class="n">NodeType</span><span class="p">;</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">DecisionForest</span><span class="o">&lt;</span><span class="n">NodeType</span><span class="o">&gt;</span> <span class="n">forest_</span><span class="p">;</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">model_path_</span><span class="p">;</span>
+      <span class="kt">bool</span> <span class="n">pose_refinement_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">icp_iterations_</span><span class="p">;</span>
+
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">model_original_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">res_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="n">RFFaceDetectorTrainer</span><span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">w_size_</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+        <span class="n">max_patch_size_</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+        <span class="n">stride_sw_</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">ntrees_</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">forest_filename_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="p">(</span><span class="s">&quot;forest.txt&quot;</span><span class="p">);</span>
+        <span class="n">nfeatures_</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+        <span class="n">thres_face_</span> <span class="o">=</span> <span class="mf">1.f</span><span class="p">;</span>
+        <span class="n">num_images_</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+        <span class="n">trans_max_variance_</span> <span class="o">=</span> <span class="mf">1600.f</span><span class="p">;</span>
+        <span class="n">used_for_pose_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+        <span class="n">use_normals_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">directory_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+        <span class="n">HEAD_ST_DIAMETER_</span> <span class="o">=</span> <span class="mf">0.2364f</span><span class="p">;</span>
+        <span class="n">larger_radius_ratio_</span> <span class="o">=</span> <span class="mf">1.5f</span><span class="p">;</span>
+        <span class="n">face_heat_map_</span><span class="p">.</span><span class="n">reset</span> <span class="p">();</span>
+        <span class="n">model_path_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="p">(</span><span class="s">&quot;face_mesh.ply&quot;</span><span class="p">);</span>
+        <span class="n">pose_refinement_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">res_</span> <span class="o">=</span> <span class="mf">0.005f</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">RFFaceDetectorTrainer</span><span class="p">()</span>
+      <span class="p">{</span>
+
+      <span class="p">}</span>
+
+      <span class="cm">/*</span>
+<span class="cm">       * Common parameters</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="n">setForestFilename</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">ff</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">forest_filename_</span> <span class="o">=</span> <span class="n">ff</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">setUseNormals</span><span class="p">(</span><span class="kt">bool</span> <span class="n">use</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">use_normals_</span> <span class="o">=</span> <span class="n">use</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">setWSize</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">w_size_</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/*</span>
+<span class="cm">       * Training parameters</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="n">setDirectory</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">dir</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">directory_</span> <span class="o">=</span> <span class="n">dir</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="kt">void</span> <span class="n">setNumTrainingImages</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">num_images_</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">setNumTrees</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">ntrees_</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">setNumFeatures</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">nfeatures_</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/*</span>
+<span class="cm">       * Detection parameters</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="n">setModelPath</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">model</span><span class="p">);</span>
+
+      <span class="kt">void</span> <span class="nf">setPoseRefinement</span><span class="p">(</span><span class="kt">bool</span> <span class="n">do_it</span><span class="p">,</span> <span class="kt">int</span> <span class="n">iters</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">pose_refinement_</span> <span class="o">=</span> <span class="n">do_it</span><span class="p">;</span>
+        <span class="n">icp_iterations_</span> <span class="o">=</span> <span class="n">iters</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setLeavesFaceThreshold</span><span class="p">(</span><span class="kt">float</span> <span class="n">p</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">thres_face_</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setLeavesFaceMaxVariance</span><span class="p">(</span><span class="kt">float</span> <span class="n">max</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">trans_max_variance_</span> <span class="o">=</span> <span class="n">max</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setWStride</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">stride_sw_</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setFaceMinVotes</span><span class="p">(</span><span class="kt">int</span> <span class="n">mv</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">min_votes_size_</span> <span class="o">=</span> <span class="n">mv</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setNumVotesUsedForPose</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">used_for_pose_</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setForest</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">DecisionForest</span><span class="o">&lt;</span><span class="n">NodeType</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">forest</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">forest_</span> <span class="o">=</span> <span class="n">forest</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/*</span>
+<span class="cm">       * Get functions</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">getFaceHeatMap</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span> <span class="n">heat_map</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">heat_map</span> <span class="o">=</span> <span class="n">face_heat_map_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">//get votes</span>
+      <span class="kt">void</span> <span class="nf">getVotes</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span> <span class="n">votes_cloud</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getVector3fMap</span> <span class="p">()</span> <span class="o">=</span> <span class="n">head_center_votes_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">getVotes</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span> <span class="n">votes_cloud</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">head_center_votes_clustered_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">head_center_votes_clustered_</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span> <span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">getVector3fMap</span> <span class="p">()</span> <span class="o">=</span> <span class="n">head_center_votes_clustered_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">intensity</span> <span class="o">=</span> <span class="mf">0.1f</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">getVotes2</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span> <span class="n">votes_cloud</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">head_center_votes_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">head_center_original_votes_clustered_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">head_center_original_votes_clustered_</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span> <span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">getVector3fMap</span> <span class="p">()</span> <span class="o">=</span> <span class="n">head_center_original_votes_clustered_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">intensity</span> <span class="o">=</span> <span class="mf">0.1f</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">votes_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">//get heads</span>
+      <span class="kt">void</span> <span class="nf">getDetectedFaces</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">faces</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">head_clusters_centers_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">head</span> <span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+          <span class="n">head</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_clusters_centers_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+          <span class="n">head</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_clusters_centers_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+          <span class="n">head</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_clusters_centers_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+          <span class="n">head</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_clusters_rotation_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+          <span class="n">head</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_clusters_rotation_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+          <span class="n">head</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_clusters_rotation_</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+          <span class="n">faces</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">head</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="cm">/*</span>
+<span class="cm">       * Other functions</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">setInputCloud</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span> <span class="n">cloud</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">input_</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">setFaceHeatMapCloud</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span> <span class="n">heat_map</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">face_heat_map_</span> <span class="o">=</span> <span class="n">heat_map</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="nf">trainWithDataProvider</span><span class="p">();</span>
+      <span class="kt">void</span> <span class="nf">faceVotesClustering</span><span class="p">();</span>
+      <span class="kt">void</span> <span class="nf">detectFaces</span><span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_recognition_face_detection_rf_face_utils.h.html" class="btn btn-neutral float-right" title="File rf_face_utils.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_face_detection_rf_face_detector_trainer.h.html" class="btn btn-neutral float-left" title="File rf_face_detector_trainer.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

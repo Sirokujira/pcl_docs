@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File default_convergence_criteria.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File deflate.h" href="file_pcl_surface_3rdparty_opennurbs_deflate.h.html" />
+    <link rel="prev" title="File default_convergence_criteria.hpp" href="file_pcl_registration_impl_default_convergence_criteria.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_impl_default_convergence_criteria.hpp.html">File default_convergence_criteria.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File default_convergence_criteria.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_impl_default_convergence_criteria.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-default-convergence-criteria-hpp">
+<span id="program-listing-file-pcl-registration-impl-default-convergence-criteria-hpp"></span><h1>Program Listing for File default_convergence_criteria.hpp<a class="headerlink" href="#program-listing-for-file-default-convergence-criteria-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_impl_default_convergence_criteria.hpp.html#file-pcl-registration-impl-default-convergence-criteria-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\impl\default_convergence_criteria.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_REGISTRATION_DEFAULT_CONVERGENCE_CRITERIA_HPP_</span>
+<span class="cp">#define PCL_REGISTRATION_DEFAULT_CONVERGENCE_CRITERIA_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">registration</span><span class="o">::</span><span class="n">DefaultConvergenceCriteria</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">hasConverged</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">convergence_state_</span> <span class="o">!=</span> <span class="n">CONVERGENCE_CRITERIA_NOT_CONVERGED</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//If it already converged or failed before, reset.</span>
+    <span class="n">iterations_similar_transforms_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">convergence_state_</span> <span class="o">=</span> <span class="n">CONVERGENCE_CRITERIA_NOT_CONVERGED</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">bool</span> <span class="n">is_similar</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::DefaultConvergenceCriteria::hasConverged] Iteration %d out of %d.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">iterations_</span><span class="p">,</span> <span class="n">max_iterations_</span><span class="p">);</span>
+  <span class="c1">// 1. Number of iterations has reached the maximum user imposed number of iterations</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iterations_</span> <span class="o">&gt;=</span> <span class="n">max_iterations_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">failure_after_max_iter_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">convergence_state_</span> <span class="o">=</span> <span class="n">CONVERGENCE_CRITERIA_ITERATIONS</span><span class="p">;</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">convergence_state_</span> <span class="o">=</span> <span class="n">CONVERGENCE_CRITERIA_FAILURE_AFTER_MAX_ITERATIONS</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 2. The epsilon (difference) between the previous transformation and the current estimated transformation</span>
+  <span class="kt">double</span> <span class="n">cos_angle</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="n">translation_sqr</span> <span class="o">=</span> <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+                           <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+                           <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">transformation_</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::DefaultConvergenceCriteria::hasConverged] Current transformation gave %f rotation (cosine) and %f translation.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cos_angle</span><span class="p">,</span> <span class="n">translation_sqr</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">cos_angle</span> <span class="o">&gt;=</span> <span class="n">rotation_threshold_</span> <span class="o">&amp;&amp;</span> <span class="n">translation_sqr</span> <span class="o">&lt;=</span> <span class="n">translation_threshold_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iterations_similar_transforms_</span> <span class="o">&gt;=</span> <span class="n">max_iterations_similar_transforms_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">convergence_state_</span> <span class="o">=</span> <span class="n">CONVERGENCE_CRITERIA_TRANSFORM</span><span class="p">;</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">is_similar</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">correspondences_cur_mse_</span> <span class="o">=</span> <span class="n">calculateMSE</span> <span class="p">(</span><span class="n">correspondences_</span><span class="p">);</span>
+  <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::DefaultConvergenceCriteria::hasConverged] Previous / Current MSE for correspondences distances is: %f / %f.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">correspondences_prev_mse_</span><span class="p">,</span> <span class="n">correspondences_cur_mse_</span><span class="p">);</span>
+
+  <span class="c1">// 3. The relative sum of Euclidean squared errors is smaller than a user defined threshold</span>
+  <span class="c1">// Absolute</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">correspondences_cur_mse_</span> <span class="o">-</span> <span class="n">correspondences_prev_mse_</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">mse_threshold_absolute_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iterations_similar_transforms_</span> <span class="o">&gt;=</span> <span class="n">max_iterations_similar_transforms_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">convergence_state_</span> <span class="o">=</span> <span class="n">CONVERGENCE_CRITERIA_ABS_MSE</span><span class="p">;</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">is_similar</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Relative</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">correspondences_cur_mse_</span> <span class="o">-</span> <span class="n">correspondences_prev_mse_</span><span class="p">)</span> <span class="o">/</span> <span class="n">correspondences_prev_mse_</span> <span class="o">&lt;</span> <span class="n">mse_threshold_relative_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iterations_similar_transforms_</span> <span class="o">&gt;=</span> <span class="n">max_iterations_similar_transforms_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">convergence_state_</span> <span class="o">=</span> <span class="n">CONVERGENCE_CRITERIA_REL_MSE</span><span class="p">;</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">is_similar</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_similar</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Increment the number of transforms that the thresholds are allowed to be similar</span>
+    <span class="o">++</span><span class="n">iterations_similar_transforms_</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="c1">// When the transform becomes large, reset.</span>
+    <span class="n">iterations_similar_transforms_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">correspondences_prev_mse_</span> <span class="o">=</span> <span class="n">correspondences_cur_mse_</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endif    </span><span class="c1">// PCL_REGISTRATION_DEFAULT_CONVERGENCE_CRITERIA_HPP_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_deflate.h.html" class="btn btn-neutral float-right" title="File deflate.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_impl_default_convergence_criteria.hpp.html" class="btn btn-neutral float-left" title="File default_convergence_criteria.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

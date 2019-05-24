@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File time.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File time.h" href="file_pcl_console_time.h.html" />
+    <link rel="prev" title="File time.h" href="file_pcl_common_time.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_common_time.h.html">File time.h</a> &raquo;</li>
+        
+      <li>Program Listing for File time.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_common_time.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-time-h">
+<span id="program-listing-file-pcl-common-time-h"></span><h1>Program Listing for File time.h<a class="headerlink" href="#program-listing-for-file-time-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_common_time.h.html#file-pcl-common-time-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\common\time.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;queue&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cm">/**</span>
+<span class="cm">  * \file pcl/common/time.h</span>
+<span class="cm">  * Define methods for measuring time spent in code blocks</span>
+<span class="cm">  * \ingroup common</span>
+<span class="cm">  */</span>
+
+<span class="cm">/*@{*/</span>
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief Simple stopwatch.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">StopWatch</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Constructor. */</span>
+      <span class="n">StopWatch</span> <span class="p">()</span> <span class="o">:</span> <span class="n">start_time_</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">())</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">StopWatch</span> <span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Retrieve the time in milliseconds spent since the last call to \a reset(). */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getTime</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">end_time</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ratio</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time_</span><span class="p">).</span><span class="n">count</span><span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Retrieve the time in seconds spent since the last call to \a reset(). */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getTimeSeconds</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">getTime</span> <span class="p">()</span> <span class="o">*</span> <span class="mf">0.001</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Reset the stopwatch to 0. */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">reset</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">start_time_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">time_point</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">&gt;</span> <span class="n">start_time_</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief Class to measure the time spent in a scope</span>
+<span class="cm">    *</span>
+<span class="cm">    * To use this class, e.g. to measure the time spent in a function,</span>
+<span class="cm">    * just create an instance at the beginning of the function. Example:</span>
+<span class="cm">    *</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * {</span>
+<span class="cm">    *   pcl::ScopeTime t1 (&quot;calculation&quot;);</span>
+<span class="cm">    *</span>
+<span class="cm">    *   // ... perform calculation here</span>
+<span class="cm">    * }</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    *</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">ScopeTime</span> <span class="o">:</span> <span class="k">public</span> <span class="n">StopWatch</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="kr">inline</span> <span class="n">ScopeTime</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">title_</span> <span class="p">(</span><span class="n">title</span><span class="p">)</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="kr">inline</span> <span class="o">~</span><span class="n">ScopeTime</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">val</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">getTime</span> <span class="p">();</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">title_</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; took &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ms.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">title_</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief A helper class to measure frequency of a certain event.</span>
+<span class="cm">    *</span>
+<span class="cm">    * To use this class create an instance and call event() function every time</span>
+<span class="cm">    * the event in question occurs. The estimated frequency can be retrieved</span>
+<span class="cm">    * with getFrequency() function.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Sergey Alexandrov</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">EventFrequency</span>
+  <span class="p">{</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Constructor.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] window_size number of most recent events that are</span>
+<span class="cm">        * considered in frequency estimation (default: 30) */</span>
+      <span class="n">EventFrequency</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">window_size</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">window_size_</span> <span class="p">(</span><span class="n">window_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">stop_watch_</span><span class="p">.</span><span class="n">reset</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Notifies the class that the event occurred. */</span>
+      <span class="kt">void</span> <span class="n">event</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">event_time_queue_</span><span class="p">.</span><span class="n">push</span> <span class="p">(</span><span class="n">stop_watch_</span><span class="p">.</span><span class="n">getTimeSeconds</span> <span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">event_time_queue_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&gt;</span> <span class="n">window_size_</span><span class="p">)</span>
+          <span class="n">event_time_queue_</span><span class="p">.</span><span class="n">pop</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Retrieve the estimated frequency. */</span>
+      <span class="kt">double</span>
+      <span class="n">getFrequency</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">event_time_queue_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">event_time_queue_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span>
+                <span class="p">(</span><span class="n">event_time_queue_</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span> <span class="o">-</span> <span class="n">event_time_queue_</span><span class="p">.</span><span class="n">front</span> <span class="p">()));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Reset frequency computation. */</span>
+      <span class="kt">void</span> <span class="n">reset</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">stop_watch_</span><span class="p">.</span><span class="n">reset</span> <span class="p">();</span>
+        <span class="n">event_time_queue_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+
+      <span class="n">pcl</span><span class="o">::</span><span class="n">StopWatch</span> <span class="n">stop_watch_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">event_time_queue_</span><span class="p">;</span>
+      <span class="k">const</span> <span class="kt">size_t</span> <span class="n">window_size_</span><span class="p">;</span>
+
+  <span class="p">};</span>
+
+<span class="cp">#ifndef MEASURE_FUNCTION_TIME</span>
+<span class="cp">#define MEASURE_FUNCTION_TIME \</span>
+<span class="cp">  ScopeTime scopeTime(__func__)</span>
+<span class="cp">#endif</span>
+
+<span class="kr">inline</span> <span class="kt">double</span>
+<span class="nf">getTime</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">().</span><span class="n">time_since_epoch</span><span class="p">()).</span><span class="n">count</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">/// Executes code, only if secs are gone since last exec.</span>
+<span class="cp">#ifndef DO_EVERY_TS</span>
+<span class="cp">#define DO_EVERY_TS(secs, currentTime, code) \</span>
+<span class="cp">if (1) {\</span>
+<span class="cp">  static double s_lastDone_ = 0.0; \</span>
+<span class="cp">  double s_now_ = (currentTime); \</span>
+<span class="cp">  if (s_lastDone_ &gt; s_now_) \</span>
+<span class="cp">    s_lastDone_ = s_now_; \</span>
+<span class="cp">  if ((s_now_ - s_lastDone_) &gt; (secs)) {        \</span>
+<span class="cp">    code; \</span>
+<span class="cp">    s_lastDone_ = s_now_; \</span>
+<span class="cp">  }\</span>
+<span class="cp">} else \</span>
+<span class="cp">  (void)0</span>
+<span class="cp">#endif</span>
+
+<span class="c1">/// Executes code, only if secs are gone since last exec.</span>
+<span class="cp">#ifndef DO_EVERY</span>
+<span class="cp">#define DO_EVERY(secs, code) \</span>
+<span class="cp">  DO_EVERY_TS(secs, pcl::getTime(), code)</span>
+<span class="cp">#endif</span>
+
+<span class="p">}</span>  <span class="c1">// end namespace</span>
+<span class="cm">/*@}*/</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_console_time.h.html" class="btn btn-neutral float-right" title="File time.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_common_time.h.html" class="btn btn-neutral float-left" title="File time.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

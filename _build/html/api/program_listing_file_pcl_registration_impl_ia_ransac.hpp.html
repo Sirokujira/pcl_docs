@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File ia_ransac.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File icp.h" href="file_pcl_registration_icp.h.html" />
+    <link rel="prev" title="File ia_ransac.hpp" href="file_pcl_registration_impl_ia_ransac.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_impl_ia_ransac.hpp.html">File ia_ransac.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File ia_ransac.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_impl_ia_ransac.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-ia-ransac-hpp">
+<span id="program-listing-file-pcl-registration-impl-ia-ransac-hpp"></span><h1>Program Listing for File ia_ransac.hpp<a class="headerlink" href="#program-listing-for-file-ia-ransac-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_impl_ia_ransac.hpp.html#file-pcl-registration-impl-ia-ransac-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\impl\ia_ransac.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef IA_RANSAC_HPP_</span>
+<span class="cp">#define IA_RANSAC_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/distances.h&gt;</span><span class="cp"></span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FeatureT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusInitialAlignment</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">FeatureT</span><span class="o">&gt;::</span><span class="n">setSourceFeatures</span> <span class="p">(</span><span class="k">const</span> <span class="n">FeatureCloudConstPtr</span> <span class="o">&amp;</span><span class="n">features</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">features</span> <span class="o">==</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="n">features</span><span class="o">-&gt;</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::setSourceFeatures] Invalid or empty point cloud dataset given!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">input_features_</span> <span class="o">=</span> <span class="n">features</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FeatureT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusInitialAlignment</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">FeatureT</span><span class="o">&gt;::</span><span class="n">setTargetFeatures</span> <span class="p">(</span><span class="k">const</span> <span class="n">FeatureCloudConstPtr</span> <span class="o">&amp;</span><span class="n">features</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">features</span> <span class="o">==</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="n">features</span><span class="o">-&gt;</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::setTargetFeatures] Invalid or empty point cloud dataset given!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">target_features_</span> <span class="o">=</span> <span class="n">features</span><span class="p">;</span>
+  <span class="n">feature_tree_</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">target_features_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FeatureT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusInitialAlignment</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">FeatureT</span><span class="o">&gt;::</span><span class="n">selectSamples</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nr_samples</span><span class="p">,</span> <span class="kt">float</span> <span class="n">min_sample_distance</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sample_indices</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">nr_samples</span> <span class="o">&gt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()))</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::selectSamples] &quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;The number of samples (%d) must not be greater than the number of points (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+               <span class="n">nr_samples</span><span class="p">,</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Iteratively draw random samples until nr_samples is reached</span>
+  <span class="kt">int</span> <span class="n">iterations_without_a_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">max_iterations_without_a_sample</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">sample_indices</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">sample_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">&lt;</span> <span class="n">nr_samples</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Choose a sample at random</span>
+    <span class="kt">int</span> <span class="n">sample_index</span> <span class="o">=</span> <span class="n">getRandomIndex</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+
+    <span class="c1">// Check to see if the sample is 1) unique and 2) far away from the other samples</span>
+    <span class="kt">bool</span> <span class="n">valid_sample</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">sample_idx</span> <span class="p">:</span> <span class="n">sample_indices</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span> <span class="n">distance_between_samples</span> <span class="o">=</span> <span class="n">euclideanDistance</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">sample_index</span><span class="p">],</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">sample_index</span> <span class="o">==</span> <span class="n">sample_idx</span> <span class="o">||</span> <span class="n">distance_between_samples</span> <span class="o">&lt;</span> <span class="n">min_sample_distance</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">valid_sample</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If the sample is valid, add it to the output</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">valid_sample</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">sample_indices</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">sample_index</span><span class="p">);</span>
+      <span class="n">iterations_without_a_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+      <span class="o">++</span><span class="n">iterations_without_a_sample</span><span class="p">;</span>
+
+    <span class="c1">// If no valid samples can be found, relax the inter-sample distance requirements</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iterations_without_a_sample</span> <span class="o">&gt;=</span> <span class="n">max_iterations_without_a_sample</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::selectSamples] &quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+      <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;No valid sample found after %d iterations. Relaxing min_sample_distance_ to %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                <span class="n">iterations_without_a_sample</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">min_sample_distance</span><span class="p">);</span>
+
+      <span class="n">min_sample_distance_</span> <span class="o">*=</span> <span class="mf">0.5f</span><span class="p">;</span>
+      <span class="n">min_sample_distance</span> <span class="o">=</span> <span class="n">min_sample_distance_</span><span class="p">;</span>
+      <span class="n">iterations_without_a_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FeatureT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusInitialAlignment</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">FeatureT</span><span class="o">&gt;::</span><span class="n">findSimilarFeatures</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">FeatureCloud</span> <span class="o">&amp;</span><span class="n">input_features</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sample_indices</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corresponding_indices</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span> <span class="p">(</span><span class="n">k_correspondences_</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_distances</span> <span class="p">(</span><span class="n">k_correspondences_</span><span class="p">);</span>
+
+  <span class="n">corresponding_indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">sample_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sample_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Find the k features nearest to input_features.points[sample_indices[i]]</span>
+    <span class="n">feature_tree_</span><span class="o">-&gt;</span><span class="n">nearestKSearch</span> <span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">sample_indices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">k_correspondences_</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_distances</span><span class="p">);</span>
+
+    <span class="c1">// Select one at random and add it to corresponding_indices</span>
+    <span class="kt">int</span> <span class="n">random_correspondence</span> <span class="o">=</span> <span class="n">getRandomIndex</span> <span class="p">(</span><span class="n">k_correspondences_</span><span class="p">);</span>
+    <span class="n">corresponding_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nn_indices</span><span class="p">[</span><span class="n">random_correspondence</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FeatureT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusInitialAlignment</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">FeatureT</span><span class="o">&gt;::</span><span class="n">computeErrorMetric</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">float</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_index</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_distance</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">const</span> <span class="n">ErrorFunctor</span> <span class="o">&amp;</span> <span class="n">compute_error</span> <span class="o">=</span> <span class="o">*</span><span class="n">error_functor_</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Find the distance between cloud.points[i] and its nearest neighbor in the target point cloud</span>
+    <span class="n">tree_</span><span class="o">-&gt;</span><span class="n">nearestKSearch</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nn_index</span><span class="p">,</span> <span class="n">nn_distance</span><span class="p">);</span>
+
+    <span class="c1">// Compute the error</span>
+    <span class="n">error</span> <span class="o">+=</span> <span class="n">compute_error</span> <span class="p">(</span><span class="n">nn_distance</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FeatureT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusInitialAlignment</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">FeatureT</span><span class="o">&gt;::</span><span class="n">computeTransformation</span> <span class="p">(</span><span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&amp;</span> <span class="n">guess</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Some sanity checks first</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">input_features_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeTransformation] &quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;No source features were given! Call setSourceFeatures before aligning.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">target_features_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeTransformation] &quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;No target features were given! Call setTargetFeatures before aligning.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">input_features_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeTransformation] &quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;The source points and source feature points need to be in a one-to-one relationship! Current input cloud sizes: %ld vs %ld.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+               <span class="n">input_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">(),</span> <span class="n">input_features_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">target_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">target_features_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeTransformation] &quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;The target points and target feature points need to be in a one-to-one relationship! Current input cloud sizes: %ld vs %ld.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+               <span class="n">target_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">(),</span> <span class="n">target_features_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error_functor_</span><span class="p">)</span>
+    <span class="n">error_functor_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">TruncatedError</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">corr_dist_threshold_</span><span class="p">)));</span>
+
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sample_indices</span> <span class="p">(</span><span class="n">nr_samples_</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">corresponding_indices</span> <span class="p">(</span><span class="n">nr_samples_</span><span class="p">);</span>
+  <span class="n">PointCloudSource</span> <span class="n">input_transformed</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">error</span><span class="p">,</span> <span class="n">lowest_error</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">final_transformation_</span> <span class="o">=</span> <span class="n">guess</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">i_iter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">converged_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">guess</span><span class="p">.</span><span class="n">isApprox</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span> <span class="mf">0.01f</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="c1">// If guess is not the Identity matrix we check it.</span>
+    <span class="n">transformPointCloud</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">input_transformed</span><span class="p">,</span> <span class="n">final_transformation_</span><span class="p">);</span>
+    <span class="n">lowest_error</span> <span class="o">=</span> <span class="n">computeErrorMetric</span> <span class="p">(</span><span class="n">input_transformed</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">corr_dist_threshold_</span><span class="p">));</span>
+    <span class="n">i_iter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(;</span> <span class="n">i_iter</span> <span class="o">&lt;</span> <span class="n">max_iterations_</span><span class="p">;</span> <span class="o">++</span><span class="n">i_iter</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Draw nr_samples_ random samples</span>
+    <span class="n">selectSamples</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">nr_samples_</span><span class="p">,</span> <span class="n">min_sample_distance_</span><span class="p">,</span> <span class="n">sample_indices</span><span class="p">);</span>
+
+    <span class="c1">// Find corresponding features in the target cloud</span>
+    <span class="n">findSimilarFeatures</span> <span class="p">(</span><span class="o">*</span><span class="n">input_features_</span><span class="p">,</span> <span class="n">sample_indices</span><span class="p">,</span> <span class="n">corresponding_indices</span><span class="p">);</span>
+
+    <span class="c1">// Estimate the transform from the samples to their corresponding points</span>
+    <span class="n">transformation_estimation_</span><span class="o">-&gt;</span><span class="n">estimateRigidTransformation</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">sample_indices</span><span class="p">,</span> <span class="o">*</span><span class="n">target_</span><span class="p">,</span> <span class="n">corresponding_indices</span><span class="p">,</span> <span class="n">transformation_</span><span class="p">);</span>
+
+    <span class="c1">// Transform the data and compute the error</span>
+    <span class="n">transformPointCloud</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">input_transformed</span><span class="p">,</span> <span class="n">transformation_</span><span class="p">);</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">computeErrorMetric</span> <span class="p">(</span><span class="n">input_transformed</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">corr_dist_threshold_</span><span class="p">));</span>
+
+    <span class="c1">// If the new error is lower, update the final transformation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i_iter</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">lowest_error</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">lowest_error</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
+      <span class="n">final_transformation_</span> <span class="o">=</span> <span class="n">transformation_</span><span class="p">;</span>
+      <span class="n">converged_</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Apply the final transformation</span>
+  <span class="n">transformPointCloud</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">final_transformation_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endif  </span><span class="c1">//#ifndef IA_RANSAC_HPP_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_registration_icp.h.html" class="btn btn-neutral float-right" title="File icp.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_impl_ia_ransac.hpp.html" class="btn btn-neutral float-left" title="File ia_ransac.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

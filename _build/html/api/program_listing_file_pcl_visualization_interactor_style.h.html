@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File interactor_style.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File internal.h" href="file_E__pcl_docs_pcl_gpu_kinfu_src_internal.h.html" />
+    <link rel="prev" title="File interactor_style.h" href="file_pcl_visualization_interactor_style.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_visualization_interactor_style.h.html">File interactor_style.h</a> &raquo;</li>
+        
+      <li>Program Listing for File interactor_style.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_visualization_interactor_style.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-interactor-style-h">
+<span id="program-listing-file-pcl-visualization-interactor-style-h"></span><h1>Program Listing for File interactor_style.h<a class="headerlink" href="#program-listing-for-file-interactor-style-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_visualization_interactor_style.h.html#file-pcl-visualization-interactor-style-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\visualization\interactor_style.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/common/actor_map.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/common/ren_win_interact_map.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/keyboard_event.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/mouse_event.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/point_picking_event.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/area_picking_event.h&gt;</span><span class="cp"></span>
+<span class="cp">#ifndef Q_MOC_RUN</span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/signals2/signal.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkInteractorStyleRubberBandPick.h&gt;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">vtkRendererCollection</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkLegendScaleActor</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkScalarBarActor</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkPNGWriter</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkWindowToImageFilter</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkPointPicker</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">visualization</span>
+  <span class="p">{</span>
+
+    <span class="cm">/** \brief A list of potential keyboard modifiers for \ref pcl::visualization::PCLVisualizerInteractorStyle::PCLVisualizerInteractorStyle()</span>
+<span class="cm">      * Defaults to Alt.</span>
+<span class="cm">      */</span>
+    <span class="k">enum</span> <span class="n">InteractorKeyboardModifier</span>
+    <span class="p">{</span>
+      <span class="n">INTERACTOR_KB_MOD_ALT</span><span class="p">,</span>
+      <span class="n">INTERACTOR_KB_MOD_CTRL</span><span class="p">,</span>
+      <span class="n">INTERACTOR_KB_MOD_SHIFT</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief PCLVisualizerInteractorStyle defines an unique, custom VTK</span>
+<span class="cm">      * based interactory style for PCL Visualizer applications. Besides</span>
+<span class="cm">      * defining the rendering style, we also create a list of custom actions</span>
+<span class="cm">      * that are triggered on different keys being pressed:</span>
+<span class="cm">      *</span>
+<span class="cm">      * -        p, P   : switch to a point-based representation</span>
+<span class="cm">      * -        w, W   : switch to a wireframe-based representation (where available)</span>
+<span class="cm">      * -        s, S   : switch to a surface-based representation (where available)</span>
+<span class="cm">      * -        j, J   : take a .PNG snapshot of the current window view</span>
+<span class="cm">      * -        c, C   : display current camera/window parameters</span>
+<span class="cm">      * -        f, F   : fly to point mode</span>
+<span class="cm">      * -        e, E   : exit the interactor\</span>
+<span class="cm">      * -        q, Q   : stop and call VTK&#39;s TerminateApp</span>
+<span class="cm">      * -       + / -   : increment/decrement overall point size</span>
+<span class="cm">      * -        g, G   : display scale grid (on/off)</span>
+<span class="cm">      * -        u, U   : display lookup table (on/off)</span>
+<span class="cm">      * -  r, R [+ ALT] : reset camera [to viewpoint = {0, 0, 0} -&gt; center_{x, y, z}]</span>
+<span class="cm">      * -  CTRL + s, S  : save camera parameters</span>
+<span class="cm">      * -  CTRL + r, R  : restore camera parameters</span>
+<span class="cm">      * -  ALT + s, S   : turn stereo mode on/off</span>
+<span class="cm">      * -  ALT + f, F   : switch between maximized window mode and original size</span>
+<span class="cm">      * -        l, L           : list all available geometric and color handlers for the current actor map</span>
+<span class="cm">      * -  ALT + 0..9 [+ CTRL]  : switch between different geometric handlers (where available)</span>
+<span class="cm">      * -        0..9 [+ CTRL]  : switch between different color handlers (where available)</span>
+<span class="cm">      * -</span>
+<span class="cm">      * -  SHIFT + left click   : select a point</span>
+<span class="cm">      * -        x, X   : toggle rubber band selection mode for left mouse button</span>
+<span class="cm">      *</span>
+<span class="cm">      * \author Radu B. Rusu</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">PCLVisualizerInteractorStyle</span> <span class="p">:</span> <span class="k">public</span> <span class="n">vtkInteractorStyleRubberBandPick</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CloudActorMap</span><span class="o">&gt;</span> <span class="n">CloudActorMapPtr</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="n">PCLVisualizerInteractorStyle</span> <span class="o">*</span><span class="nf">New</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">PCLVisualizerInteractorStyle</span> <span class="p">()</span> <span class="o">:</span>
+          <span class="n">init_</span> <span class="p">(),</span> <span class="n">win_height_</span> <span class="p">(),</span> <span class="n">win_width_</span> <span class="p">(),</span> <span class="n">win_pos_x_</span> <span class="p">(),</span> <span class="n">win_pos_y_</span> <span class="p">(),</span>
+          <span class="n">max_win_height_</span> <span class="p">(),</span> <span class="n">max_win_width_</span> <span class="p">(),</span> <span class="n">use_vbos_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">grid_enabled_</span> <span class="p">(),</span> <span class="n">lut_enabled_</span> <span class="p">(),</span>
+          <span class="n">stereo_anaglyph_mask_default_</span> <span class="p">(),</span>
+          <span class="n">modifier_</span> <span class="p">(),</span> <span class="n">camera_saved_</span> <span class="p">(),</span> <span class="n">lut_actor_id_</span> <span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="p">{}</span>
+
+        <span class="cm">/** \brief Empty destructor */</span>
+        <span class="o">~</span><span class="n">PCLVisualizerInteractorStyle</span> <span class="p">()</span> <span class="p">{}</span>
+
+        <span class="c1">// this macro defines Superclass, the isA functionality and the safe downcast method</span>
+        <span class="n">vtkTypeMacro</span> <span class="p">(</span><span class="n">PCLVisualizerInteractorStyle</span><span class="p">,</span> <span class="n">vtkInteractorStyleRubberBandPick</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Initialization routine. Must be called before anything else. */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">Initialize</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Pass a pointer to the cloud actor map</span>
+<span class="cm">          * \param[in] actors the actor map that will be used with this style</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setCloudActorMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">CloudActorMapPtr</span> <span class="o">&amp;</span><span class="n">actors</span><span class="p">)</span> <span class="p">{</span> <span class="n">cloud_actors_</span> <span class="o">=</span> <span class="n">actors</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Pass a pointer to the shape actor map</span>
+<span class="cm">          * \param[in] actors the actor map that will be used with this style</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setShapeActorMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">ShapeActorMapPtr</span> <span class="o">&amp;</span><span class="n">actors</span><span class="p">)</span> <span class="p">{</span> <span class="n">shape_actors_</span> <span class="o">=</span> <span class="n">actors</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the cloud actor map pointer. */</span>
+        <span class="kr">inline</span> <span class="n">CloudActorMapPtr</span>
+        <span class="nf">getCloudActorMap</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">cloud_actors_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the cloud actor map pointer. */</span>
+        <span class="kr">inline</span> <span class="n">ShapeActorMapPtr</span>
+        <span class="nf">getShapeActorMap</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">shape_actors_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Pass a set of renderers to the interactor style.</span>
+<span class="cm">          * \param[in] rens the vtkRendererCollection to use</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">setRendererCollection</span> <span class="p">(</span><span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkRendererCollection</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">rens</span><span class="p">)</span> <span class="p">{</span> <span class="n">rens_</span> <span class="o">=</span> <span class="n">rens</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Use Vertex Buffer Objects renderers.</span>
+<span class="cm">          * This is an optimization for the obsolete OpenGL backend. Modern OpenGL2 backend (VTK ≥ 6.3) uses vertex</span>
+<span class="cm">          * buffer objects by default, transparently for the user.</span>
+<span class="cm">          * \param[in] use_vbos set to true to use VBOs</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setUseVbos</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">use_vbos</span><span class="p">)</span> <span class="p">{</span> <span class="n">use_vbos_</span> <span class="o">=</span> <span class="n">use_vbos</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Register a callback function for mouse events</span>
+<span class="cm">          * \param[in] cb a boost function that will be registered as a callback for a mouse event</span>
+<span class="cm">          * \return a connection object that allows to disconnect the callback function.</span>
+<span class="cm">          */</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">connection</span>
+        <span class="n">registerMouseCallback</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">cb</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Register a callback boost::function for keyboard events</span>
+<span class="cm">          * \param[in] cb a boost function that will be registered as a callback for a keyboard event</span>
+<span class="cm">          * \return a connection object that allows to disconnect the callback function.</span>
+<span class="cm">          */</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">connection</span>
+        <span class="n">registerKeyboardCallback</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">KeyboardEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">cb</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Register a callback function for point picking events</span>
+<span class="cm">          * \param[in] cb a boost function that will be registered as a callback for a point picking event</span>
+<span class="cm">          * \return a connection object that allows to disconnect the callback function.</span>
+<span class="cm">          */</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">connection</span>
+        <span class="n">registerPointPickingCallback</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">PointPickingEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">cb</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Register a callback function for area picking events</span>
+<span class="cm">          * \param[in] cb a boost function that will be registered as a callback for a area picking event</span>
+<span class="cm">          * \return a connection object that allows to disconnect the callback function.</span>
+<span class="cm">          */</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">connection</span>
+        <span class="n">registerAreaPickingCallback</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">AreaPickingEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">cb</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Save the current rendered image to disk, as a PNG screenshot.</span>
+<span class="cm">          * \param[in] file the name of the PNG file</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">saveScreenshot</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Save the camera parameters to disk, as a .cam file.</span>
+<span class="cm">          * \param[in] file the name of the .cam file</span>
+<span class="cm">          */</span>
+        <span class="kt">bool</span>
+        <span class="nf">saveCameraParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Get camera parameters of a given viewport (0 means default viewport). */</span>
+        <span class="kt">void</span>
+        <span class="nf">getCameraParameters</span> <span class="p">(</span><span class="n">Camera</span> <span class="o">&amp;</span><span class="n">camera</span><span class="p">,</span> <span class="kt">int</span> <span class="n">viewport</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Load camera parameters from a camera parameter file.</span>
+<span class="cm">          * \param[in] file the name of the camera parameter file</span>
+<span class="cm">          */</span>
+        <span class="kt">bool</span>
+        <span class="nf">loadCameraParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Set the camera parameters via an intrinsics and and extrinsics matrix</span>
+<span class="cm">          * \note This assumes that the pixels are square and that the center of the image is at the center of the sensor.</span>
+<span class="cm">          * \param[in] intrinsics the intrinsics that will be used to compute the VTK camera parameters</span>
+<span class="cm">          * \param[in] extrinsics the extrinsics that will be used to compute the VTK camera parameters</span>
+<span class="cm">          * \param[in] viewport the viewport to modify camera of (0 modifies all cameras)</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">setCameraParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">intrinsics</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">extrinsics</span><span class="p">,</span> <span class="kt">int</span> <span class="n">viewport</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Set the camera parameters by given a full camera data structure.</span>
+<span class="cm">          * \param[in] camera camera structure containing all the camera parameters.</span>
+<span class="cm">          * \param[in] viewport the viewport to modify camera of (0 modifies all cameras)</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">setCameraParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">Camera</span> <span class="o">&amp;</span><span class="n">camera</span><span class="p">,</span> <span class="kt">int</span> <span class="n">viewport</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Set camera file for camera parameter saving/restoring.</span>
+<span class="cm">          * \param[in] file the name of the camera parameter file</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">setCameraFile</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">file</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">camera_file_</span> <span class="o">=</span> <span class="n">file</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get camera file for camera parameter saving/restoring. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+        <span class="n">getCameraFile</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">camera_file_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Change the default keyboard modified from ALT to a different special key.</span>
+<span class="cm">          * Allowed values are:</span>
+<span class="cm">          * - INTERACTOR_KB_MOD_ALT</span>
+<span class="cm">          * - INTERACTOR_KB_MOD_CTRL</span>
+<span class="cm">          * - INTERACTOR_KB_MOD_SHIFT</span>
+<span class="cm">          * \param[in] modifier the new keyboard modifier</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setKeyboardModifier</span> <span class="p">(</span><span class="k">const</span> <span class="n">InteractorKeyboardModifier</span> <span class="o">&amp;</span><span class="n">modifier</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">modifier_</span> <span class="o">=</span> <span class="n">modifier</span><span class="p">;</span>
+        <span class="p">}</span>
+
+       <span class="k">protected</span><span class="o">:</span>
+        <span class="cm">/** \brief Set to true after initialization is complete. */</span>
+        <span class="kt">bool</span> <span class="n">init_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Collection of vtkRenderers stored internally. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkRendererCollection</span><span class="o">&gt;</span> <span class="n">rens_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Cloud actor map stored internally. */</span>
+        <span class="n">CloudActorMapPtr</span> <span class="n">cloud_actors_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Shape map stored internally. */</span>
+        <span class="n">ShapeActorMapPtr</span> <span class="n">shape_actors_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The current window width/height. */</span>
+        <span class="kt">int</span> <span class="n">win_height_</span><span class="p">,</span> <span class="n">win_width_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The current window position x/y. */</span>
+        <span class="kt">int</span> <span class="n">win_pos_x_</span><span class="p">,</span> <span class="n">win_pos_y_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The maximum resizeable window width/height. */</span>
+        <span class="kt">int</span> <span class="n">max_win_height_</span><span class="p">,</span> <span class="n">max_win_width_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Boolean that holds whether or not to use the vtkVertexBufferObjectMapper*/</span>
+        <span class="kt">bool</span> <span class="n">use_vbos_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Set to true if the grid actor is enabled. */</span>
+        <span class="kt">bool</span> <span class="n">grid_enabled_</span><span class="p">;</span>
+        <span class="cm">/** \brief Actor for 2D grid on screen. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkLegendScaleActor</span><span class="o">&gt;</span> <span class="n">grid_actor_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Set to true if the LUT actor is enabled. */</span>
+        <span class="kt">bool</span> <span class="n">lut_enabled_</span><span class="p">;</span>
+        <span class="cm">/** \brief Actor for 2D lookup table on screen. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkScalarBarActor</span><span class="o">&gt;</span> <span class="n">lut_actor_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A PNG writer for screenshot captures. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkPNGWriter</span><span class="o">&gt;</span> <span class="n">snapshot_writer_</span><span class="p">;</span>
+        <span class="cm">/** \brief Internal window to image filter. Needed by \a snapshot_writer_. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkWindowToImageFilter</span><span class="o">&gt;</span> <span class="n">wif_</span><span class="p">;</span>
+        <span class="cm">/** \brief Stores the point picker when switching to an area picker. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkPointPicker</span><span class="o">&gt;</span> <span class="n">point_picker_</span><span class="p">;</span>
+
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">mouse_signal_</span><span class="p">;</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">KeyboardEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">keyboard_signal_</span><span class="p">;</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">PointPickingEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">point_picking_signal_</span><span class="p">;</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">visualization</span><span class="o">::</span><span class="n">AreaPickingEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">area_picking_signal_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Interactor style internal method. Gets called whenever a key is pressed. */</span>
+        <span class="kt">void</span>
+        <span class="nf">OnChar</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="c1">// Keyboard events</span>
+        <span class="kt">void</span>
+        <span class="nf">OnKeyDown</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnKeyUp</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="c1">// mouse button events</span>
+        <span class="kt">void</span>
+        <span class="nf">OnMouseMove</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnLeftButtonDown</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnLeftButtonUp</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnMiddleButtonDown</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnMiddleButtonUp</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnRightButtonDown</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnRightButtonUp</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnMouseWheelForward</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>
+        <span class="nf">OnMouseWheelBackward</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="c1">// mouse move event</span>
+        <span class="cm">/** \brief Interactor style internal method. Gets called periodically if a timer is set. */</span>
+        <span class="kt">void</span>
+        <span class="nf">OnTimer</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Interactor style internal method. Zoom in. */</span>
+        <span class="kt">void</span>
+        <span class="nf">zoomIn</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Interactor style internal method. Zoom out. */</span>
+        <span class="kt">void</span>
+        <span class="nf">zoomOut</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Get camera parameters from a string vector.</span>
+<span class="cm">          * \param[in] camera A string vector:</span>
+<span class="cm">          * Clipping Range, Focal Point, Position, ViewUp, Distance, Field of View Y, Window Size, Window Pos.</span>
+<span class="cm">          * Values in each string are separated by a &#39;,&#39;</span>
+<span class="cm">          */</span>
+        <span class="kt">bool</span>
+        <span class="nf">getCameraParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">camera</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Set render window. */</span>
+        <span class="kt">void</span>
+        <span class="nf">setRenderWindow</span> <span class="p">(</span><span class="k">const</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkRenderWindow</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">win</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">win_</span> <span class="o">=</span> <span class="n">win</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief True if we&#39;re using red-blue colors for anaglyphic stereo, false if magenta-green. */</span>
+        <span class="kt">bool</span> <span class="n">stereo_anaglyph_mask_default_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A VTK Mouse Callback object, used for point picking. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">PointPickingCallback</span><span class="o">&gt;</span> <span class="n">mouse_callback_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The keyboard modifier to use. Default: Alt. */</span>
+        <span class="n">InteractorKeyboardModifier</span> <span class="n">modifier_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Camera file for camera parameter saving/restoring. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">camera_file_</span><span class="p">;</span>
+        <span class="cm">/** \brief A \ref pcl::visualization::Camera for camera parameter saving/restoring. */</span>
+        <span class="n">Camera</span> <span class="n">camera_</span><span class="p">;</span>
+        <span class="cm">/** \brief A \ref pcl::visualization::Camera is saved or not. */</span>
+        <span class="kt">bool</span> <span class="n">camera_saved_</span><span class="p">;</span>
+        <span class="cm">/** \brief The render window.</span>
+<span class="cm">          * Only used when interactor maybe not available</span>
+<span class="cm">          */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkRenderWindow</span><span class="o">&gt;</span> <span class="n">win_</span><span class="p">;</span>
+
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">PointPickingCallback</span><span class="p">;</span>
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">PCLVisualizer</span><span class="p">;</span>
+
+       <span class="k">private</span><span class="o">:</span>
+        <span class="cm">/** \brief ID used to fetch/display the look up table on the visualizer</span>
+<span class="cm">         * It should be set by PCLVisualizer \ref setLookUpTableID</span>
+<span class="cm">         * @note If empty, a random actor added to the interactor will be used */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">lut_actor_id_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Add/remove the look up table displayed when &#39;u&#39; is pressed, can also be used to update the current LUT displayed</span>
+<span class="cm">         * \ref lut_actor_id_ is used (if not empty) to chose which cloud/shape actor LUT will be updated (depending on what is available)</span>
+<span class="cm">         * If \ref lut_actor_id_ is empty the first actor with LUT support found will be used. */</span>
+        <span class="kt">void</span>
+        <span class="nf">updateLookUpTableDisplay</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">add_lut</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief PCL histogram visualizer interactory style class.</span>
+<span class="cm">      * \author Radu B. Rusu</span>
+<span class="cm">      */</span>
+    <span class="k">class</span> <span class="nc">PCLHistogramVisualizerInteractorStyle</span> <span class="o">:</span> <span class="k">public</span> <span class="n">vtkInteractorStyleTrackballCamera</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">static</span> <span class="n">PCLHistogramVisualizerInteractorStyle</span> <span class="o">*</span><span class="n">New</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">PCLHistogramVisualizerInteractorStyle</span> <span class="p">()</span> <span class="o">:</span> <span class="n">init_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span> <span class="p">{}</span>
+
+        <span class="cm">/** \brief Initialization routine. Must be called before anything else. */</span>
+        <span class="kt">void</span>
+        <span class="n">Initialize</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Pass a map of render/window/interactors to the interactor style.</span>
+<span class="cm">          * \param[in] wins the RenWinInteract map to use</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">setRenWinInteractMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">RenWinInteractMap</span> <span class="o">&amp;</span><span class="n">wins</span><span class="p">)</span> <span class="p">{</span> <span class="n">wins_</span> <span class="o">=</span> <span class="n">wins</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="k">private</span><span class="o">:</span>
+        <span class="cm">/** \brief A map of all windows on screen (with their renderers and interactors). */</span>
+        <span class="n">RenWinInteractMap</span> <span class="n">wins_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Set to true after initialization is complete. */</span>
+        <span class="kt">bool</span> <span class="n">init_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Interactor style internal method. Gets called whenever a key is pressed. */</span>
+        <span class="kt">void</span> <span class="nf">OnKeyDown</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Interactor style internal method. Gets called periodically if a timer is set. */</span>
+        <span class="kt">void</span> <span class="nf">OnTimer</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_kinfu_src_internal.h.html" class="btn btn-neutral float-right" title="File internal.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_visualization_interactor_style.h.html" class="btn btn-neutral float-left" title="File interactor_style.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

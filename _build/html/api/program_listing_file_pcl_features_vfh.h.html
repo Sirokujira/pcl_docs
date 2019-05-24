@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File vfh.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File vfh.hpp" href="file_pcl_features_impl_vfh.hpp.html" />
+    <link rel="prev" title="File vfh.h" href="file_pcl_features_vfh.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_vfh.h.html">File vfh.h</a> &raquo;</li>
+        
+      <li>Program Listing for File vfh.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_vfh.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-vfh-h">
+<span id="program-listing-file-pcl-features-vfh-h"></span><h1>Program Listing for File vfh.h<a class="headerlink" href="#program-listing-for-file-vfh-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_vfh.h.html#file-pcl-features-vfh-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\vfh.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/feature.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief VFHEstimation estimates the &lt;b&gt;Viewpoint Feature Histogram (VFH)&lt;/b&gt; descriptor for a given point cloud</span>
+<span class="cm">    * dataset containing points and normals. The default VFH implementation uses 45 binning subdivisions for each of</span>
+<span class="cm">    * the three extended FPFH values, plus another 45 binning subdivisions for the distances between each point and</span>
+<span class="cm">    * the centroid and 128 binning subdivisions for the viewpoint component, which results in a</span>
+<span class="cm">    * 308-byte array of float values. These are stored in a pcl::VFHSignature308 point type.</span>
+<span class="cm">    * A major difference between the PFH/FPFH descriptors and VFH, is that for a given point cloud dataset, only a</span>
+<span class="cm">    * single VFH descriptor will be estimated (vfhs-&gt;points.size() should be 1), while the resultant PFH/FPFH data</span>
+<span class="cm">    * will have the same number of entries as the number of points in the cloud.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If you use this code in any academic work, please cite:</span>
+<span class="cm">    *</span>
+<span class="cm">    *   - R.B. Rusu, G. Bradski, R. Thibaux, J. Hsu.</span>
+<span class="cm">    *     Fast 3D Recognition and Pose Using the Viewpoint Feature Histogram.</span>
+<span class="cm">    *     In Proceedings of International Conference on Intelligent Robots and Systems (IROS)</span>
+<span class="cm">    *     Taipei, Taiwan, October 18-22 2010.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note The code is stateful as we do not expect this class to be multicore parallelized. Please look at</span>
+<span class="cm">    * \ref FPFHEstimationOMP for an example of a parallel implementation of the FPFH (Fast Point Feature Histogram).</span>
+<span class="cm">    * \author Radu B. Rusu</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">VFHSignature308</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">VFHEstimation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">feature_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">search_radius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">normals_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudOut</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">VFHEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">VFHEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">VFHEstimation</span> <span class="p">()</span> <span class="o">:</span>
+        <span class="n">nr_bins_f1_</span> <span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">nr_bins_f2_</span> <span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">nr_bins_f3_</span> <span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">nr_bins_f4_</span> <span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">nr_bins_vp_</span> <span class="p">(</span><span class="mi">128</span><span class="p">),</span>
+        <span class="n">vpx_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">vpy_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">vpz_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">use_given_normal_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">use_given_centroid_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">normalize_bins_</span> <span class="p">(</span><span class="nb">true</span><span class="p">),</span> <span class="n">normalize_distances_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">size_component_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">d_pi_</span> <span class="p">(</span><span class="mf">1.0f</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0f</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">M_PI</span><span class="p">)))</span>
+      <span class="p">{</span>
+        <span class="n">hist_f1_</span><span class="p">.</span><span class="n">setZero</span> <span class="p">(</span><span class="n">nr_bins_f1_</span><span class="p">);</span>
+        <span class="n">hist_f2_</span><span class="p">.</span><span class="n">setZero</span> <span class="p">(</span><span class="n">nr_bins_f2_</span><span class="p">);</span>
+        <span class="n">hist_f3_</span><span class="p">.</span><span class="n">setZero</span> <span class="p">(</span><span class="n">nr_bins_f3_</span><span class="p">);</span>
+        <span class="n">hist_f4_</span><span class="p">.</span><span class="n">setZero</span> <span class="p">(</span><span class="n">nr_bins_f4_</span><span class="p">);</span>
+        <span class="n">search_radius_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">k_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">feature_name_</span> <span class="o">=</span> <span class="s">&quot;VFHEstimation&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Estimate the SPFH (Simple Point Feature Histograms) signatures of the angular</span>
+<span class="cm">        * (f1, f2, f3) and distance (f4) features for a given point from its neighborhood</span>
+<span class="cm">        * \param[in] centroid_p the centroid point</span>
+<span class="cm">        * \param[in] centroid_n the centroid normal</span>
+<span class="cm">        * \param[in] cloud the dataset containing the XYZ Cartesian coordinates of the two points</span>
+<span class="cm">        * \param[in] normals the dataset containing the surface normals at each point in \a cloud</span>
+<span class="cm">        * \param[in] indices the k-neighborhood point indices in the dataset</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">computePointSPFHSignature</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid_p</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid_n</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointNT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">normals</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Set the viewpoint.</span>
+<span class="cm">        * \param[in] vpx the X coordinate of the viewpoint</span>
+<span class="cm">        * \param[in] vpy the Y coordinate of the viewpoint</span>
+<span class="cm">        * \param[in] vpz the Z coordinate of the viewpoint</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setViewPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">vpx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">vpy</span><span class="p">,</span> <span class="kt">float</span> <span class="n">vpz</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">vpx_</span> <span class="o">=</span> <span class="n">vpx</span><span class="p">;</span>
+        <span class="n">vpy_</span> <span class="o">=</span> <span class="n">vpy</span><span class="p">;</span>
+        <span class="n">vpz_</span> <span class="o">=</span> <span class="n">vpz</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the viewpoint. */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getViewPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="o">&amp;</span><span class="n">vpx</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">vpy</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">vpz</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">vpx</span> <span class="o">=</span> <span class="n">vpx_</span><span class="p">;</span>
+        <span class="n">vpy</span> <span class="o">=</span> <span class="n">vpy_</span><span class="p">;</span>
+        <span class="n">vpz</span> <span class="o">=</span> <span class="n">vpz_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set use_given_normal_</span>
+<span class="cm">        * \param[in] use Set to true if you want to use the normal passed to setNormalUse(normal)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setUseGivenNormal</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">use</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">use_given_normal_</span> <span class="o">=</span> <span class="n">use</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the normal to use</span>
+<span class="cm">        * \param[in] normal Sets the normal to be used in the VFH computation. It is is used</span>
+<span class="cm">        * to build the Darboux Coordinate system.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setNormalToUse</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">normal</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">normal_to_use_</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="p">(</span><span class="n">normal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">normal</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">normal</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set use_given_centroid_</span>
+<span class="cm">        * \param[in] use Set to true if you want to use the centroid passed through setCentroidToUse(centroid)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setUseGivenCentroid</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">use</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">use_given_centroid_</span> <span class="o">=</span> <span class="n">use</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set centroid_to_use_</span>
+<span class="cm">        * \param[in] centroid Centroid to be used in the VFH computation. It is used to compute the distances</span>
+<span class="cm">        * from all points to this centroid.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setCentroidToUse</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">centroid_to_use_</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="p">(</span><span class="n">centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">centroid</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief set normalize_bins_</span>
+<span class="cm">        * \param[in] normalize If true, the VFH bins are normalized using the total number of points</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setNormalizeBins</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">normalize</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">normalize_bins_</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief set normalize_distances_</span>
+<span class="cm">        * \param[in] normalize If true, the 4th component of VFH (shape distribution component) get normalized</span>
+<span class="cm">        * by the maximum size between the centroid and the point cloud</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setNormalizeDistance</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">normalize</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">normalize_distances_</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief set size_component_</span>
+<span class="cm">        * \param[in] fill_size True if the 4th component of VFH (shape distribution component) needs to be filled.</span>
+<span class="cm">        * Otherwise, it is set to zero.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setFillSizeComponent</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">fill_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">size_component_</span> <span class="o">=</span> <span class="n">fill_size</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Overloaded computed method from pcl::Feature.</span>
+<span class="cm">        * \param[out] output the resultant point cloud model dataset containing the estimated features</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">compute</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+    <span class="k">private</span><span class="o">:</span>
+
+      <span class="cm">/** \brief The number of subdivisions for each feature interval. */</span>
+      <span class="kt">int</span> <span class="n">nr_bins_f1_</span><span class="p">,</span> <span class="n">nr_bins_f2_</span><span class="p">,</span> <span class="n">nr_bins_f3_</span><span class="p">,</span> <span class="n">nr_bins_f4_</span><span class="p">,</span> <span class="n">nr_bins_vp_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Values describing the viewpoint (&quot;pinhole&quot; camera model assumed). For per point viewpoints, inherit</span>
+<span class="cm">        * from VFHEstimation and provide your own computeFeature (). By default, the viewpoint is set to 0,0,0.</span>
+<span class="cm">        */</span>
+      <span class="kt">float</span> <span class="n">vpx_</span><span class="p">,</span> <span class="n">vpy_</span><span class="p">,</span> <span class="n">vpz_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Estimate the Viewpoint Feature Histograms (VFH) descriptors at a set of points given by</span>
+<span class="cm">        * &lt;setInputCloud (), setIndices ()&gt; using the surface in setSearchSurface () and the spatial locator in</span>
+<span class="cm">        * setSearchMethod ()</span>
+<span class="cm">        * \param[out] output the resultant point cloud model dataset that contains the VFH feature estimates</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeFeature</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief This method should get called before starting the actual computation. */</span>
+      <span class="kt">bool</span>
+      <span class="n">initCompute</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Placeholder for the f1 histogram. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">hist_f1_</span><span class="p">;</span>
+      <span class="cm">/** \brief Placeholder for the f2 histogram. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">hist_f2_</span><span class="p">;</span>
+      <span class="cm">/** \brief Placeholder for the f3 histogram. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">hist_f3_</span><span class="p">;</span>
+      <span class="cm">/** \brief Placeholder for the f4 histogram. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">hist_f4_</span><span class="p">;</span>
+      <span class="cm">/** \brief Placeholder for the vp histogram. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">hist_vp_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Normal to be used to computed VFH. Default, the average normal of the whole point cloud */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">normal_to_use_</span><span class="p">;</span>
+      <span class="cm">/** \brief Centroid to be used to computed VFH. Default, the centroid of the whole point cloud */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">centroid_to_use_</span><span class="p">;</span>
+
+      <span class="c1">// VFH configuration parameters because CVFH instantiates it. See constructor for default values.</span>
+
+      <span class="cm">/** \brief Use the normal_to_use_ */</span>
+      <span class="kt">bool</span> <span class="n">use_given_normal_</span><span class="p">;</span>
+      <span class="cm">/** \brief Use the centroid_to_use_ */</span>
+      <span class="kt">bool</span> <span class="n">use_given_centroid_</span><span class="p">;</span>
+      <span class="cm">/** \brief Normalize bins by the number the total number of points. */</span>
+      <span class="kt">bool</span> <span class="n">normalize_bins_</span><span class="p">;</span>
+      <span class="cm">/** \brief Normalize the shape distribution component of VFH */</span>
+      <span class="kt">bool</span> <span class="n">normalize_distances_</span><span class="p">;</span>
+      <span class="cm">/** \brief Activate or deactivate the size component of VFH */</span>
+      <span class="kt">bool</span> <span class="n">size_component_</span><span class="p">;</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="cm">/** \brief Float constant = 1.0 / (2.0 * M_PI) */</span>
+      <span class="kt">float</span> <span class="n">d_pi_</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/impl/vfh.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_impl_vfh.hpp.html" class="btn btn-neutral float-right" title="File vfh.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_vfh.h.html" class="btn btn-neutral float-left" title="File vfh.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

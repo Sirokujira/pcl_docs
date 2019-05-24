@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File sac_model_circle.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File sac_model_circle.hpp" href="file_pcl_sample_consensus_impl_sac_model_circle.hpp.html" />
+    <link rel="prev" title="File sac_model_circle.h" href="file_pcl_sample_consensus_sac_model_circle.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_sample_consensus_sac_model_circle.h.html">File sac_model_circle.h</a> &raquo;</li>
+        
+      <li>Program Listing for File sac_model_circle.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_sample_consensus_sac_model_circle.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-sac-model-circle-h">
+<span id="program-listing-file-pcl-sample-consensus-sac-model-circle-h"></span><h1>Program Listing for File sac_model_circle.h<a class="headerlink" href="#program-listing-for-file-sac-model-circle-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_sample_consensus_sac_model_circle.h.html#file-pcl-sample-consensus-sac-model-circle-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\sample_consensus\sac_model_circle.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/sac_model.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/model_types.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief SampleConsensusModelCircle2D defines a model for 2D circle segmentation on the X-Y plane.</span>
+<span class="cm">    *</span>
+<span class="cm">    * The model coefficients are defined as:</span>
+<span class="cm">    *   - \b center.x : the X coordinate of the circle&#39;s center</span>
+<span class="cm">    *   - \b center.y : the Y coordinate of the circle&#39;s center</span>
+<span class="cm">    *   - \b radius   : the circle&#39;s radius</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Radu B. Rusu</span>
+<span class="cm">    * \ingroup sample_consensus</span>
+<span class="cm">   */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">SampleConsensusModelCircle2D</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">model_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">radius_min_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">radius_max_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">error_sqr_dists_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">PointCloud</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">PointCloudPtr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">PointCloudConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SampleConsensusModelCircle2D</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor for base SampleConsensusModelCircle2D.</span>
+<span class="cm">        * \param[in] cloud the input point cloud dataset</span>
+<span class="cm">        * \param[in] random if true set the random seed to the current time, else set to 12345 (default: false)</span>
+<span class="cm">        */</span>
+      <span class="n">SampleConsensusModelCircle2D</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">random</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">random</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">model_name_</span> <span class="o">=</span> <span class="s">&quot;SampleConsensusModelCircle2D&quot;</span><span class="p">;</span>
+        <span class="n">sample_size_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">model_size_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Constructor for base SampleConsensusModelCircle2D.</span>
+<span class="cm">        * \param[in] cloud the input point cloud dataset</span>
+<span class="cm">        * \param[in] indices a vector of point indices to be used from \a cloud</span>
+<span class="cm">        * \param[in] random if true set the random seed to the current time, else set to 12345 (default: false)</span>
+<span class="cm">        */</span>
+      <span class="n">SampleConsensusModelCircle2D</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                    <span class="kt">bool</span> <span class="n">random</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">random</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">model_name_</span> <span class="o">=</span> <span class="s">&quot;SampleConsensusModelCircle2D&quot;</span><span class="p">;</span>
+        <span class="n">sample_size_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">model_size_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Copy constructor.</span>
+<span class="cm">        * \param[in] source the model to copy into this</span>
+<span class="cm">        */</span>
+      <span class="n">SampleConsensusModelCircle2D</span> <span class="p">(</span><span class="k">const</span> <span class="n">SampleConsensusModelCircle2D</span> <span class="o">&amp;</span><span class="n">source</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="o">*</span><span class="k">this</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+        <span class="n">model_name_</span> <span class="o">=</span> <span class="s">&quot;SampleConsensusModelCircle2D&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="o">~</span><span class="n">SampleConsensusModelCircle2D</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Copy constructor.</span>
+<span class="cm">        * \param[in] source the model to copy into this</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">SampleConsensusModelCircle2D</span><span class="o">&amp;</span>
+      <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">SampleConsensusModelCircle2D</span> <span class="o">&amp;</span><span class="n">source</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check whether the given index samples can form a valid 2D circle model, compute the model coefficients</span>
+<span class="cm">        * from these samples and store them in model_coefficients. The circle coefficients are: x, y, R.</span>
+<span class="cm">        * \param[in] samples the point indices found as possible good candidates for creating a valid model</span>
+<span class="cm">        * \param[out] model_coefficients the resultant model coefficients</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="n">computeModelCoefficients</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span>
+                                <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Compute all distances from the cloud data to a given 2D circle model.</span>
+<span class="cm">        * \param[in] model_coefficients the coefficients of a 2D circle model that we need to compute distances to</span>
+<span class="cm">        * \param[out] distances the resultant estimated distances</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">getDistancesToModel</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                           <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">distances</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Compute all distances from the cloud data to a given 2D circle model.</span>
+<span class="cm">        * \param[in] model_coefficients the coefficients of a 2D circle model that we need to compute distances to</span>
+<span class="cm">        * \param[in] threshold a maximum admissible distance threshold for determining the inliers from the outliers</span>
+<span class="cm">        * \param[out] inliers the resultant model inliers</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">selectWithinDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Count all the points which respect the given model coefficients as inliers.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] model_coefficients the coefficients of a model that we need to compute distances to</span>
+<span class="cm">        * \param[in] threshold maximum admissible distance threshold for determining the inliers from the outliers</span>
+<span class="cm">        * \return the resultant number of inliers</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">countWithinDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+       <span class="cm">/** \brief Recompute the 2d circle coefficients using the given inlier set and return them to the user.</span>
+<span class="cm">        * @note: these are the coefficients of the 2d circle model after refinement (e.g. after SVD)</span>
+<span class="cm">        * \param[in] inliers the data inliers found as supporting the model</span>
+<span class="cm">        * \param[in] model_coefficients the initial guess for the optimization</span>
+<span class="cm">        * \param[out] optimized_coefficients the resultant recomputed coefficients after non-linear optimization</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">optimizeModelCoefficients</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                                 <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">optimized_coefficients</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Create a new point cloud with inliers projected onto the 2d circle model.</span>
+<span class="cm">        * \param[in] inliers the data inliers that we want to project on the 2d circle model</span>
+<span class="cm">        * \param[in] model_coefficients the coefficients of a 2d circle model</span>
+<span class="cm">        * \param[out] projected_points the resultant projected points</span>
+<span class="cm">        * \param[in] copy_data_fields set to true if we need to copy the other data fields</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">projectPoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                     <span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">projected_points</span><span class="p">,</span>
+                     <span class="kt">bool</span> <span class="n">copy_data_fields</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Verify whether a subset of indices verifies the given 2d circle model coefficients.</span>
+<span class="cm">        * \param[in] indices the data indices that need to be tested against the 2d circle model</span>
+<span class="cm">        * \param[in] model_coefficients the 2d circle model coefficients</span>
+<span class="cm">        * \param[in] threshold a maximum admissible distance threshold for determining the inliers from the outliers</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">doSamplesVerifyModel</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Return an unique id for this model (SACMODEL_CIRCLE2D). */</span>
+      <span class="kr">inline</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SacModel</span>
+      <span class="n">getModelType</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">SACMODEL_CIRCLE2D</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">sample_size_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SampleConsensusModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">model_size_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Check whether a model is valid given the user constraints.</span>
+<span class="cm">        * \param[in] model_coefficients the set of model coefficients</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isModelValid</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Check if a sample of indices results in a good sample of points indices.</span>
+<span class="cm">        * \param[in] samples the resultant index samples</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isSampleGood</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="cm">/** \brief Functor for the optimization function */</span>
+      <span class="k">struct</span> <span class="nl">OptimizationFunctor</span> <span class="p">:</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Functor</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span>
+      <span class="p">{</span>
+        <span class="cm">/** \brief Functor constructor</span>
+<span class="cm">          * \param[in] indices the indices of data points to evaluate</span>
+<span class="cm">          * \param[in] estimator pointer to the estimator object</span>
+<span class="cm">          */</span>
+        <span class="n">OptimizationFunctor</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelCircle2D</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">indices</span><span class="p">)</span> <span class="o">:</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">Functor</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()),</span> <span class="n">model_</span> <span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">indices_</span> <span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="p">{}</span>
+
+        <span class="cm">/** Cost function to be minimized</span>
+<span class="cm">          * \param[in] x the variables array</span>
+<span class="cm">          * \param[out] fvec the resultant functions evaluations</span>
+<span class="cm">          * \return 0</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">fvec</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">values</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="c1">// Compute the difference between the center of the circle and the datapoint X_i</span>
+            <span class="kt">float</span> <span class="n">xt</span> <span class="o">=</span> <span class="n">model_</span><span class="o">-&gt;</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="kt">float</span> <span class="n">yt</span> <span class="o">=</span> <span class="n">model_</span><span class="o">-&gt;</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+
+            <span class="c1">// g = sqrt ((x-a)^2 + (y-b)^2) - R</span>
+            <span class="n">fvec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">sqrt</span> <span class="p">(</span><span class="n">xt</span> <span class="o">*</span> <span class="n">xt</span> <span class="o">+</span> <span class="n">yt</span> <span class="o">*</span> <span class="n">yt</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+          <span class="p">}</span>
+          <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelCircle2D</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">model_</span><span class="p">;</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/impl/sac_model_circle.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_sample_consensus_impl_sac_model_circle.hpp.html" class="btn btn-neutral float-right" title="File sac_model_circle.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_sample_consensus_sac_model_circle.h.html" class="btn btn-neutral float-left" title="File sac_model_circle.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

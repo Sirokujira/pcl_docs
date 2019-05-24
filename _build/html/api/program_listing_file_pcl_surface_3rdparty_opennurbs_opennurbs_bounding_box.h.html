@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_bounding_box.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_box.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_box.h.html" />
+    <link rel="prev" title="File opennurbs_bounding_box.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bounding_box.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bounding_box.h.html">File opennurbs_bounding_box.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_bounding_box.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_bounding_box.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-bounding-box-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-bounding-box-h"></span><h1>Program Listing for File opennurbs_bounding_box.h<a class="headerlink" href="#program-listing-for-file-opennurbs-bounding-box-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bounding_box.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-bounding-box-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_bounding_box.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(ON_BOUNDING_BOX_INC_)</span>
+<span class="cp">#define ON_BOUNDING_BOX_INC_</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_BoundingBox  - axis aligned bounding box</span>
+<span class="c1">//</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_BoundingBox</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_BoundingBox</span> <span class="n">EmptyBoundingBox</span><span class="p">;</span> <span class="c1">// ((1.0,0,0,0,0),(-1.0,0.0,0.0))</span>
+
+  <span class="n">ON_BoundingBox</span><span class="p">();</span> <span class="c1">// creates EmptyBox</span>
+
+  <span class="n">ON_BoundingBox</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// min corner of axis aligned bounding box</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span>  <span class="c1">// max corner of axis aligned bounding box</span>
+    <span class="p">);</span>
+  <span class="o">~</span><span class="n">ON_BoundingBox</span><span class="p">();</span>
+
+
+  <span class="c1">// temporary - use ON_ClippingRegion - this function will be removed soon.</span>
+  <span class="kt">int</span> <span class="nf">IsVisible</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">bbox2c</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span> <span class="c1">// invalidates bounding box</span>
+
+  <span class="c1">// operator[] returns min if index &lt;= 0 and max if indes &gt;= 1</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dPoint</span> <span class="nf">Min</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">Max</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="nf">Diagonal</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// max corner - min corner</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">Center</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">Corner</span><span class="p">(</span> <span class="c1">// 8 corners of box</span>
+    <span class="kt">int</span><span class="p">,</span> <span class="o">//</span> <span class="n">x_index</span>   <span class="mi">0</span> <span class="o">=</span> <span class="n">Min</span><span class="p">().</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">Max</span><span class="p">().</span><span class="n">x</span>
+    <span class="kt">int</span><span class="p">,</span> <span class="c1">// y_index   0 = Min().y, 1 = Max().y</span>
+    <span class="kt">int</span>  <span class="c1">// z_index   0 = Min().z, 1 = Max().z</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">GetCorners</span><span class="p">(</span>
+    <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">box_corners</span> <span class="c1">// returns list of 8 corner points</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">GetCorners</span><span class="p">(</span>
+    <span class="n">ON_3dPoint</span> <span class="n">box_corners</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="c1">// returns list of 8 corner points</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// empty boxes are not valid</span>
+
+  <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span><span class="k">class</span> <span class="nc">ON_TextLog</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test a bounding box to see if it is degenerate (flat)</span>
+<span class="cm">    in one or more directions.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    tolerance - [in] Distances &lt;= tolerance will be considered</span>
+<span class="cm">        to be zero.  If tolerance is negative (default), then</span>
+<span class="cm">        a scale invarient tolerance is used.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    @untitled table</span>
+<span class="cm">    0     box is not degenerate</span>
+<span class="cm">    1     box is a rectangle (degenerate in one direction)</span>
+<span class="cm">    2     box is a line (degenerate in two directions)</span>
+<span class="cm">    3     box is a point (degenerate in three directions)</span>
+<span class="cm">    4     box is not valid</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">IsDegenerate</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="n">ON_UNSET_VALUE</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="c1">//////////</span>
+  <span class="c1">// ON_BoundingBox::Transform() updates the bounding box</span>
+  <span class="c1">// to be the smallest axis aligned bounding box that contains</span>
+  <span class="c1">// the transform of the eight corner points of the input</span>
+  <span class="c1">// bounding box.</span>
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="p">);</span>
+
+  <span class="kt">double</span> <span class="nf">Tolerance</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// rough guess at a tolerance to use for comparing</span>
+                            <span class="c1">// objects in this bounding box</span>
+
+
+  <span class="c1">// All of these Set() functions set or expand a box to enclose the points in the arguments</span>
+  <span class="c1">// If bGrowBox is true, the existing box is expanded, otherwise it is only set to the current point list</span>
+  <span class="kt">bool</span> <span class="nf">Set</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">point_array</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Set</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Set</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_4dPoint</span><span class="o">&gt;&amp;</span> <span class="n">point_array</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Set</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_3dPoint</span><span class="o">&gt;&amp;</span> <span class="n">point_array</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Set</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_2dPoint</span><span class="o">&gt;&amp;</span> <span class="n">point_array</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">IsPointIn</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">test_point</span><span class="p">,</span> <span class="c1">// point to test</span>
+         <span class="kt">int</span> <span class="n">bStrictlyIn</span> <span class="o">=</span> <span class="nb">false</span>
+                   <span class="o">//</span> <span class="nb">true</span> <span class="n">to</span> <span class="n">test</span> <span class="k">for</span> <span class="n">strict</span> <span class="p">(</span> <span class="n">min</span> <span class="o">&lt;</span> <span class="n">point</span> <span class="o">&lt;</span> <span class="n">max</span> <span class="p">)</span>
+                   <span class="c1">// false to test for (min &lt;= point &lt;= max)</span>
+                   <span class="c1">//</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// Point on or in the box that is closest to test_point.</span>
+  <span class="c1">// If test_point is in or on the box, the test_point is returned.</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">ClosestPoint</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">test_point</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find a lower bound on the distance</span>
+<span class="cm">    between the point and this bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is less than or equal to the shortest</span>
+<span class="cm">    distance from the line to this bounding box.</span>
+<span class="cm">    Put another way, if Q is any point in this bounding box,</span>
+<span class="cm">    then P.DistanceTo(Q) &gt;= MinimumDistanceTo(bbox).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find an upper bound on the distance</span>
+<span class="cm">    between the point and this bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is greater than or equal to the</span>
+<span class="cm">    longest distance from the point P to this bounding box.</span>
+<span class="cm">    Put another way, if Q is any point in this bounding box,</span>
+<span class="cm">    then P.DistanceTo(Q) &lt;= MaximumDistanceTo(bbox).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find a lower bound on the distance</span>
+<span class="cm">    between this and the other bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    other - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is less than or equal to the shortest</span>
+<span class="cm">    distance between the bounding boxes.</span>
+<span class="cm">    Put another way, if Q is any point in this bounding box</span>
+<span class="cm">    and P is any point in the other bounding box,</span>
+<span class="cm">    then P.DistanceTo(Q) &gt;= MinimumDistanceTo(bbox).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">other</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find an upper bound on the distance</span>
+<span class="cm">    between this and the other bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    other - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is greater than or equal to the longest</span>
+<span class="cm">    distance between the bounding boxes.</span>
+<span class="cm">    Put another way, if Q is any point in this bounding box</span>
+<span class="cm">    and P is any point in the other bounding box,</span>
+<span class="cm">    then P.DistanceTo(Q) &lt;= MaximumDistanceTo(bbox).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">other</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find a lower bound on the distance</span>
+<span class="cm">    between the line segment and this bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    line - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is less than or equal to the shortest</span>
+<span class="cm">    distance from the line to this bounding box.</span>
+<span class="cm">    Put another way, if Q is any point on line</span>
+<span class="cm">    and P is any point in this bounding box, then</span>
+<span class="cm">    P.DistanceTo(Q) &gt;= MinimumDistanceTo(bbox).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span> <span class="n">line</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find a tight lower bound on the distance</span>
+<span class="cm">    between the plane and this bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    plane - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    The minimum distance between a point on the plane</span>
+<span class="cm">    and a point on the bounding box.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_PlaneEquation::MimimumValueAt</span>
+<span class="cm">    ON_PlaneEquation::MaximumValueAt</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_PlaneEquation</span><span class="o">&amp;</span> <span class="n">plane_equation</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find an upper bound on the distance</span>
+<span class="cm">    between the line segment and this bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    line - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is greater than or equal to the</span>
+<span class="cm">    longest distance from the line to this bounding box.</span>
+<span class="cm">    Put another way, if Q is any point on the line</span>
+<span class="cm">    and P is any point in this bounding box, then</span>
+<span class="cm">    P.DistanceTo(Q) &lt;= MaximumDistanceTo(bbox).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span> <span class="n">line</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly find a tight upper bound on the distance</span>
+<span class="cm">    between the plane and this bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    plane - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A distance that is equal to the longest distance from</span>
+<span class="cm">    the plane to this bounding box.  Put another way,</span>
+<span class="cm">    if Q is any point on the plane and P is any point</span>
+<span class="cm">    in this bounding box, then</span>
+<span class="cm">    P.DistanceTo(Q) &lt;= MaximumDistanceTo(bbox) and there</span>
+<span class="cm">    is at least one point on the bounding box where the</span>
+<span class="cm">    distance is equal to the returned value.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_PlaneEquation::MaximumValueAt</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_PlaneEquation</span><span class="o">&amp;</span> <span class="n">plane_equation</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly determine if the shortest distance from</span>
+<span class="cm">    the point P to the bounding box is greater than d.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    d - [in] distance (&gt; 0.0)</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if if the shortest distance from the point P</span>
+<span class="cm">    to the bounding box is greater than d.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly determine if the shortest distance from the line</span>
+<span class="cm">    to the bounding box is greater than d.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    d - [in] distance (&gt; 0.0)</span>
+<span class="cm">    line - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the shortest distance from the line</span>
+<span class="cm">    to the bounding box is greater than d. It is not the</span>
+<span class="cm">    case that false means that the shortest distance</span>
+<span class="cm">    is less than or equal to d.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span> <span class="n">line</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly determine if the shortest distance from the plane</span>
+<span class="cm">    to the bounding box is greater than d.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    d - [in] distance (&gt; 0.0)</span>
+<span class="cm">    plane - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the shortest distance from the plane</span>
+<span class="cm">    to the bounding box is greater than d, and false</span>
+<span class="cm">    if the shortest distance is less than or equal to d.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly determine if the shortest distance from the plane</span>
+<span class="cm">    to the bounding box is greater than d.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    d - [in] distance (&gt; 0.0)</span>
+<span class="cm">    plane_equation - [in] (the first three coefficients</span>
+<span class="cm">                           are assumed to be a unit vector.</span>
+<span class="cm">                           If not, adjust your d accordingly.)</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the shortest distance from the plane</span>
+<span class="cm">    to the bounding box is greater than d, and false</span>
+<span class="cm">    if the shortest distance is less than or equal to d.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_PlaneEquation</span><span class="o">&amp;</span> <span class="n">plane_equation</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly determine if the shortest distance this bounding</span>
+<span class="cm">    box to another bounding box is greater than d.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    d - [in] distance (&gt; 0.0)</span>
+<span class="cm">    other - [in] other bounding box</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if if the shortest distance from this bounding</span>
+<span class="cm">    box to the other bounding box is greater than d.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">other</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Get point in a bounding box that is closest to a line</span>
+  <span class="c1">//   segment.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   line - [in] line segment</span>
+  <span class="c1">//   box_point - [out] point in box that is closest to line</span>
+  <span class="c1">//       segment point at t0.</span>
+  <span class="c1">//   t0 - [out] parameter of point on line that is closest to</span>
+  <span class="c1">//       the box.</span>
+  <span class="c1">//   t1 - [out] parameter of point on line that is closest to</span>
+  <span class="c1">//       the box.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   3 success - line segments intersects box in a segment</span>
+  <span class="c1">//               from line(t0) to line(t1) (t0 &lt; t1)</span>
+  <span class="c1">//   2 success - line segments intersects box in a single point</span>
+  <span class="c1">//               at line(t0) (t0==t1)</span>
+  <span class="c1">//   1 success - line segment does not intersect box.  Closest</span>
+  <span class="c1">//               point on the line is at line(t0) (t0==t1)</span>
+  <span class="c1">//   0 failure - box is invalid.</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   The box is treated as a solid box.  If the intersection</span>
+  <span class="c1">//   of the line segment, then 3 is returned.</span>
+  <span class="kt">int</span> <span class="nf">GetClosestPoint</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// line</span>
+    <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span>    <span class="c1">// box_point</span>
+    <span class="kt">double</span><span class="o">*</span><span class="p">,</span>        <span class="c1">// t0</span>
+    <span class="kt">double</span><span class="o">*</span>         <span class="c1">// t1</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// Get points on bounding boxes that are closest to each other.</span>
+  <span class="c1">// If the boxes intersect, then the point at the centroid of the</span>
+  <span class="c1">// intersection is returned for both points.</span>
+  <span class="kt">bool</span> <span class="nf">GetClosestPoint</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// &quot;other&quot; bounding box</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// point on &quot;this&quot; box that is closest to &quot;other&quot; box</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span>  <span class="c1">// point on &quot;other&quot; box that is closest to &quot;this&quot; box</span>
+         <span class="p">)</span>  <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// Point on the box that is farthest from the test_point.</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">FarPoint</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="c1">// test_point</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// Get points on bounding boxes that are farthest from each other.</span>
+  <span class="kt">bool</span> <span class="nf">GetFarPoint</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// &quot;other&quot; bounding box</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// point on &quot;this&quot; box that is farthest from &quot;other&quot; box</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span>  <span class="c1">// point on &quot;other&quot; box that is farthest from &quot;this&quot; box</span>
+         <span class="p">)</span>  <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Intersect this with other_bbox and save intersection in this.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    other_bbox - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if this-intesect-other_bbox is a non-empty valid bounding box</span>
+<span class="cm">    and this is set.  False if the intersection is empty, in which case</span>
+<span class="cm">    &quot;this&quot; is set to an invalid bounding box.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If &quot;this&quot; or other_bbox is invalid, they are treated as</span>
+<span class="cm">    the empty set, and false is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Intersection</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">other_bbox</span>
+         <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set &quot;this&quot; to the intersection of bbox_A and bbox_B.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bbox_A - [in]</span>
+<span class="cm">    bbox_B - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the &quot;this&quot; is a non-empty valid bounding box.</span>
+<span class="cm">    False if the intersection is empty, in which case</span>
+<span class="cm">    &quot;this&quot; is set to an invalid bounding box.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If bbox_A or bbox_B is invalid, they are treated as</span>
+<span class="cm">    the empty set, and false is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Intersection</span><span class="p">(</span> <span class="c1">// this = intersection of two args</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox_A</span><span class="p">,</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox_B</span>
+         <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Intersection</span><span class="p">(</span>        <span class="c1">//Returns true when intersect is non-empty.</span>
+         <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span><span class="p">,</span>    <span class="c1">//Infinite Line segment to intersect with</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="o">=</span><span class="nb">NULL</span> <span class="p">,</span>      <span class="c1">// t0  parameter of first intersection point</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="o">=</span><span class="nb">NULL</span>       <span class="o">//</span> <span class="n">t1</span>  <span class="n">parameter</span> <span class="n">of</span> <span class="n">last</span> <span class="n">intersection</span> <span class="n">point</span> <span class="p">(</span><span class="n">t0</span><span class="o">&lt;=</span><span class="n">t1</span><span class="p">)</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test a box to see if it is contained in this box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    other - [in] box to test</span>
+<span class="cm">    bProperSubSet - [in] if true, then the test is for a proper inclusion.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If bProperSubSet is false, then the result is true when</span>
+<span class="cm">      this-&gt;m_min[i] &lt;= other.m_min[i] and other.m_max[i] &lt;= this-&gt;m_max[i].</span>
+<span class="cm">      for i=0,1 and 2.</span>
+<span class="cm">    If bProperSubSet is true, then the result is true when</span>
+<span class="cm">      the above condition is true and at least one of the inequalities is strict.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Includes</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bProperSubSet</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="nf">Volume</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="nf">Area</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Union() returns true if union is not empty.</span>
+  <span class="c1">// Invalid boxes are treated as the empty set.</span>
+  <span class="kt">bool</span> <span class="nf">Union</span><span class="p">(</span> <span class="c1">// this = this union arg</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Union</span><span class="p">(</span> <span class="c1">// this = union of two args</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span><span class="p">,</span>
+         <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test to see if &quot;this&quot; and other_bbox are disjoint (do not intersect).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    other_bbox - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if &quot;this&quot; and other_bbox are disjoint.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If &quot;this&quot; or other_bbox is invalid, then true is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsDisjoint</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">other_bbox</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">SwapCoordinates</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span> <span class="p">);</span>
+
+  <span class="n">ON_3dPoint</span> <span class="n">m_min</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span> <span class="n">m_max</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#if defined(ON_DLL_TEMPLATE)</span>
+
+<span class="c1">// This stuff is here because of a limitation in the way Microsoft</span>
+<span class="c1">// handles templates and DLLs.  See Microsoft&#39;s knowledge base</span>
+<span class="c1">// article ID Q168958 for details.</span>
+<span class="cp">#pragma warning( push )</span>
+<span class="cp">#pragma warning( disable : 4231 )</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_BoundingBox</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="cp">#pragma warning( pop )</span>
+
+<span class="cp">#endif</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  Get a tight bounding box that contains the points.</span>
+<span class="cm">Parameters:</span>
+<span class="cm"> dim - [in] (&gt;=1)</span>
+<span class="cm"> is_rat - [in] true if points are rational</span>
+<span class="cm"> count - [in] number of points</span>
+<span class="cm"> stride - [in] stride between points</span>
+<span class="cm"> point_list - [in]</span>
+<span class="cm"> bbox - [in/out]</span>
+<span class="cm"> bGrowBox - [in] (default = false)</span>
+<span class="cm">   If the input bbox is valid and bGrowBox is true,</span>
+<span class="cm">   then the output bbox is the union of the input</span>
+<span class="cm">   bbox and the bounding box of the point list.</span>
+<span class="cm"> xform - [in] (default = NULL)</span>
+<span class="cm">   If not null, the bounding box of the transformed</span>
+<span class="cm">   points is calculated.  The points are not modified.</span>
+<span class="cm">Returns:</span>
+<span class="cm">  True if the output bbox is valid.</span>
+<span class="cm">*/</span>
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_GetPointListBoundingBox</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">point_list</span><span class="p">,</span>
+    <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_GetPointListBoundingBox</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">point_list</span><span class="p">,</span>
+    <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_GetPointListBoundingBox</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">point_list</span><span class="p">,</span>
+    <span class="kt">double</span><span class="o">*</span> <span class="n">boxmin</span><span class="p">,</span>       <span class="c1">// min[dim]</span>
+    <span class="kt">double</span><span class="o">*</span> <span class="n">boxmax</span><span class="p">,</span>       <span class="c1">// max[dim]</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_BoundingBox</span> <span class="nf">ON_PointListBoundingBox</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">point_list</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_GetPointListBoundingBox</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">point_list</span><span class="p">,</span>
+    <span class="kt">float</span><span class="o">*</span> <span class="n">boxmin</span><span class="p">,</span>       <span class="c1">// min[dim]</span>
+    <span class="kt">float</span><span class="o">*</span> <span class="n">boxmax</span><span class="p">,</span>       <span class="c1">// max[dim]</span>
+    <span class="kt">int</span> <span class="n">bGrowBox</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_BoundingBox</span> <span class="nf">ON_PointListBoundingBox</span><span class="p">(</span> <span class="c1">// low level workhorse function</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">point_list</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_GetPointGridBoundingBox</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">point_count0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">point_count1</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">point_stride0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">point_stride1</span><span class="p">,</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">point_grid</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">boxmin</span><span class="p">,</span>       <span class="c1">// min[dim]</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">boxmax</span><span class="p">,</span>       <span class="c1">// max[dim]</span>
+        <span class="kt">int</span> <span class="n">bGrowBox</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_BoundingBox</span> <span class="nf">ON_PointGridBoundingBox</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">point_count0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">point_count1</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">point_stride0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">point_stride1</span><span class="p">,</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">point_grid</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">double</span> <span class="nf">ON_BoundingBoxTolerance</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">bboxmin</span><span class="p">,</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">bboxmax</span>
+        <span class="p">);</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  Determine if an object is too large or too far</span>
+<span class="cm">  from the origin for single precision coordinates</span>
+<span class="cm">  to be useful.</span>
+<span class="cm">Parameters:</span>
+<span class="cm">  bbox - [in]</span>
+<span class="cm">    Bounding box of an object with single precision</span>
+<span class="cm">    coordinates.  An ON_Mesh is an example of an</span>
+<span class="cm">    object with single precision coordinates.</span>
+<span class="cm">  xform - [out]</span>
+<span class="cm">    If this function returns false and xform is not</span>
+<span class="cm">    null, then the identity transform is returned.</span>
+<span class="cm">    If this function returns true and xform is not</span>
+<span class="cm">    null, then the transform moves the region</span>
+<span class="cm">    contained in bbox to a location where single</span>
+<span class="cm">    precision coordinates will have enough</span>
+<span class="cm">    information for the object to be useful.</span>
+<span class="cm">Returns:</span>
+<span class="cm">  true:</span>
+<span class="cm">    The region contained in bbox is too large</span>
+<span class="cm">    or too far from the origin for single</span>
+<span class="cm">    precision coordinates to be useful.</span>
+<span class="cm">  false:</span>
+<span class="cm">    A single precision object contained in bbox</span>
+<span class="cm">    will be satisfactory for common calculations.</span>
+<span class="cm">*/</span>
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_BeyondSinglePrecision</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span> <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_WorldBBoxIsInTightBBox</span><span class="p">(</span>
+          <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">tight_bbox</span><span class="p">,</span>
+          <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">world_bbox</span><span class="p">,</span>
+          <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span>
+          <span class="p">);</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_box.h.html" class="btn btn-neutral float-right" title="File opennurbs_box.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bounding_box.h.html" class="btn btn-neutral float-left" title="File opennurbs_bounding_box.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

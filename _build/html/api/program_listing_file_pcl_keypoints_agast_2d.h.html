@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File agast_2d.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File agast_2d.hpp" href="file_pcl_keypoints_impl_agast_2d.hpp.html" />
+    <link rel="prev" title="File agast_2d.h" href="file_pcl_keypoints_agast_2d.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_keypoints_agast_2d.h.html">File agast_2d.h</a> &raquo;</li>
+        
+      <li>Program Listing for File agast_2d.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_keypoints_agast_2d.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-agast-2d-h">
+<span id="program-listing-file-pcl-keypoints-agast-2d-h"></span><h1>Program Listing for File agast_2d.h<a class="headerlink" href="#program-listing-for-file-agast-2d-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_keypoints_agast_2d.h.html#file-pcl-keypoints-agast-2d-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\keypoints\agast_2d.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/keypoints/keypoint.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/intensity.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">keypoints</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">agast</span>
+    <span class="p">{</span>
+
+      <span class="cm">/** \brief Abstract detector class for AGAST corner point detectors.</span>
+<span class="cm">        *</span>
+<span class="cm">        * Adapted from the C++ implementation of Elmar Mair</span>
+<span class="cm">        * (http://www6.in.tum.de/Main/ResearchAgast).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \author Stefan Holzer</span>
+<span class="cm">        * \ingroup keypoints</span>
+<span class="cm">        */</span>
+      <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">AbstractAgastDetector</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractAgastDetector</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">AbstractAgastDetector</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Constructor.</span>
+<span class="cm">            * \param[in] width the width of the image to process</span>
+<span class="cm">            * \param[in] height the height of the image to process</span>
+<span class="cm">            * \param[in] threshold the corner detection threshold</span>
+<span class="cm">            * \param[in] bmax the max image value (default: 255)</span>
+<span class="cm">            */</span>
+          <span class="n">AbstractAgastDetector</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">width</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="kt">size_t</span> <span class="n">height</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="kt">double</span> <span class="n">bmax</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">width_</span> <span class="p">(</span><span class="n">width</span><span class="p">)</span>
+            <span class="p">,</span> <span class="n">height_</span> <span class="p">(</span><span class="n">height</span><span class="p">)</span>
+            <span class="p">,</span> <span class="n">threshold_</span> <span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+            <span class="p">,</span> <span class="n">nr_max_keypoints_</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span>
+            <span class="p">,</span> <span class="n">bmax_</span> <span class="p">(</span><span class="n">bmax</span><span class="p">)</span>
+          <span class="p">{}</span>
+
+          <span class="cm">/** \brief Destructor. */</span>
+          <span class="k">virtual</span> <span class="o">~</span><span class="n">AbstractAgastDetector</span> <span class="p">()</span> <span class="p">{}</span>
+
+          <span class="cm">/** \brief Detects corner points.</span>
+<span class="cm">            * \param intensity_data</span>
+<span class="cm">            * \param output</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="n">detectKeypoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">intensity_data</span><span class="p">,</span>
+                           <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Detects corner points.</span>
+<span class="cm">            * \param intensity_data</span>
+<span class="cm">            * \param output</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detectKeypoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">intensity_data</span><span class="p">,</span>
+                           <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Applies non-max-suppression.</span>
+<span class="cm">            * \param[in] intensity_data the image data</span>
+<span class="cm">            * \param[in] input the keypoint positions</span>
+<span class="cm">            * \param[out] output the resultant keypoints after non-max-supression</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">applyNonMaxSuppression</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">intensity_data</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+                                  <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Applies non-max-suppression.</span>
+<span class="cm">            * \param[in] intensity_data the image data</span>
+<span class="cm">            * \param[in] input the keypoint positions</span>
+<span class="cm">            * \param[out] output the resultant keypoints after non-max-supression</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">applyNonMaxSuppression</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">intensity_data</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+                                  <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param[in] im the pixels to compute the score at</span>
+<span class="cm">            */</span>
+          <span class="k">virtual</span> <span class="kt">int</span>
+          <span class="nf">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param[in] im the pixels to compute the score at</span>
+<span class="cm">            */</span>
+          <span class="k">virtual</span> <span class="kt">int</span>
+          <span class="nf">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Sets the threshold for corner detection.</span>
+<span class="cm">            * \param[in] threshold the threshold used for corner detection.</span>
+<span class="cm">            */</span>
+          <span class="kr">inline</span> <span class="kt">void</span>
+          <span class="nf">setThreshold</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">threshold_</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Get the threshold for corner detection, as set by the user. */</span>
+          <span class="kr">inline</span> <span class="kt">double</span>
+          <span class="nf">getThreshold</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">threshold_</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Sets the maximum number of keypoints to return. The</span>
+<span class="cm">            * estimated keypoints are sorted by their internal score.</span>
+<span class="cm">            * \param[in] nr_max_keypoints set the maximum number of keypoints to return</span>
+<span class="cm">            */</span>
+          <span class="kr">inline</span> <span class="kt">void</span>
+          <span class="nf">setMaxKeypoints</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_max_keypoints</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">nr_max_keypoints_</span> <span class="o">=</span> <span class="n">nr_max_keypoints</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Get the maximum number of keypoints to return, as set by the user. */</span>
+          <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+          <span class="nf">getMaxKeypoints</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">nr_max_keypoints_</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="k">virtual</span> <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span>
+                  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            */</span>
+          <span class="k">virtual</span> <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span>
+                  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">protected</span><span class="o">:</span>
+
+          <span class="cm">/** \brief Structure holding an index and the associated keypoint score. */</span>
+          <span class="k">struct</span> <span class="n">ScoreIndex</span>
+          <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">score</span><span class="p">;</span>
+          <span class="p">};</span>
+
+          <span class="cm">/** \brief Score index comparator. */</span>
+          <span class="k">struct</span> <span class="n">CompareScoreIndex</span>
+          <span class="p">{</span>
+            <span class="cm">/** \brief Comparator</span>
+<span class="cm">              * \param[in] i1 the first score index</span>
+<span class="cm">              * \param[in] i2 the second score index</span>
+<span class="cm">              */</span>
+            <span class="kr">inline</span> <span class="kt">bool</span>
+            <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="k">const</span> <span class="n">ScoreIndex</span> <span class="o">&amp;</span><span class="n">i1</span><span class="p">,</span> <span class="k">const</span> <span class="n">ScoreIndex</span> <span class="o">&amp;</span><span class="n">i2</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="k">return</span> <span class="p">(</span><span class="n">i1</span><span class="p">.</span><span class="n">score</span> <span class="o">&gt;</span> <span class="n">i2</span><span class="p">.</span><span class="n">score</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">};</span>
+
+          <span class="cm">/** \brief Initializes the sample pattern. */</span>
+          <span class="k">virtual</span> <span class="kt">void</span>
+          <span class="nf">initPattern</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Non-max-suppression helper method.</span>
+<span class="cm">            * \param[in] input the keypoint positions</span>
+<span class="cm">            * \param[in] scores the keypoint scores computed on the image data</span>
+<span class="cm">            * \param[out] output the resultant keypoints after non-max-supression</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">applyNonMaxSuppression</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ScoreIndex</span><span class="o">&gt;&amp;</span> <span class="n">scores</span><span class="p">,</span>
+                                  <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Computes corner scores for the specified points.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            * \param corners_all</span>
+<span class="cm">            * \param scores</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">computeCornerScores</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">corners_all</span><span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ScoreIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">scores</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Computes corner scores for the specified points.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            * \param corners_all</span>
+<span class="cm">            * \param scores</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">computeCornerScores</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">corners_all</span><span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ScoreIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">scores</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Width of the image to process. */</span>
+          <span class="kt">size_t</span> <span class="n">width_</span><span class="p">;</span>
+          <span class="cm">/** \brief Height of the image to process. */</span>
+          <span class="kt">size_t</span> <span class="n">height_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Threshold for corner detection. */</span>
+          <span class="kt">double</span> <span class="n">threshold_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief The maximum number of keypoints to return. */</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_max_keypoints_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Max image value. */</span>
+          <span class="kt">double</span> <span class="n">bmax_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Detector class for AGAST corner point detector (7_12s).</span>
+<span class="cm">        *</span>
+<span class="cm">        * Adapted from the C++ implementation of Elmar Mair</span>
+<span class="cm">        * (http://www6.in.tum.de/Main/ResearchAgast).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \author Stefan Holzer</span>
+<span class="cm">        * \ingroup keypoints</span>
+<span class="cm">        */</span>
+      <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">AgastDetector7_12s</span> <span class="p">:</span> <span class="k">public</span> <span class="n">AbstractAgastDetector</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AgastDetector7_12s</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">AgastDetector7_12s</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Constructor.</span>
+<span class="cm">            * \param[in] width the width of the image to process</span>
+<span class="cm">            * \param[in] height the height of the image to process</span>
+<span class="cm">            * \param[in] threshold the corner detection threshold</span>
+<span class="cm">            * \param[in] bmax the max image value (default: 255)</span>
+<span class="cm">            */</span>
+          <span class="n">AgastDetector7_12s</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">width</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="kt">size_t</span> <span class="n">height</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="kt">double</span> <span class="n">bmax</span> <span class="o">=</span> <span class="mi">255</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">AbstractAgastDetector</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">bmax</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">initPattern</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Destructor. */</span>
+          <span class="o">~</span><span class="n">AgastDetector7_12s</span> <span class="p">()</span> <span class="p">{}</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            */</span>
+          <span class="kt">int</span>
+          <span class="n">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            */</span>
+          <span class="kt">int</span>
+          <span class="nf">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">protected</span><span class="o">:</span>
+          <span class="cm">/** \brief Initializes the sample pattern. */</span>
+          <span class="kt">void</span>
+          <span class="n">initPattern</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">private</span><span class="o">:</span>
+          <span class="cm">/** \brief Border width. */</span>
+          <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">border_width_</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+          <span class="c1">// offsets defining the sample pattern</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int_fast16_t</span><span class="p">,</span> <span class="mi">12</span><span class="o">&gt;</span> <span class="n">offset_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Detector class for AGAST corner point detector (5_8).</span>
+<span class="cm">        *</span>
+<span class="cm">        * Adapted from the C++ implementation of Elmar Mair</span>
+<span class="cm">        * (http://www6.in.tum.de/Main/ResearchAgast).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \author Stefan Holzer</span>
+<span class="cm">        * \ingroup keypoints</span>
+<span class="cm">        */</span>
+      <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">AgastDetector5_8</span> <span class="p">:</span> <span class="k">public</span> <span class="n">AbstractAgastDetector</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AgastDetector5_8</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">AgastDetector5_8</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Constructor.</span>
+<span class="cm">            * \param[in] width the width of the image to process</span>
+<span class="cm">            * \param[in] height the height of the image to process</span>
+<span class="cm">            * \param[in] threshold the corner detection threshold</span>
+<span class="cm">            * \param[in] bmax the max image value (default: 255)</span>
+<span class="cm">            */</span>
+          <span class="n">AgastDetector5_8</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">width</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">size_t</span> <span class="n">height</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">double</span> <span class="n">bmax</span> <span class="o">=</span> <span class="mi">255</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">AbstractAgastDetector</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">bmax</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">initPattern</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Destructor. */</span>
+          <span class="o">~</span><span class="n">AgastDetector5_8</span> <span class="p">()</span> <span class="p">{}</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            */</span>
+          <span class="kt">int</span>
+          <span class="n">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            */</span>
+          <span class="kt">int</span>
+          <span class="nf">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">protected</span><span class="o">:</span>
+          <span class="cm">/** \brief Initializes the sample pattern. */</span>
+          <span class="kt">void</span>
+          <span class="n">initPattern</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">private</span><span class="o">:</span>
+          <span class="cm">/** \brief Border width. */</span>
+          <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">border_width_</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+          <span class="c1">// offsets defining the sample pattern</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int_fast16_t</span><span class="p">,</span> <span class="mi">8</span><span class="o">&gt;</span> <span class="n">offset_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Detector class for AGAST corner point detector (OAST 9_16).</span>
+<span class="cm">        *</span>
+<span class="cm">        * Adapted from the C++ implementation of Elmar Mair</span>
+<span class="cm">        * (http://www6.in.tum.de/Main/ResearchAgast).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \author Stefan Holzer</span>
+<span class="cm">        * \ingroup keypoints</span>
+<span class="cm">        */</span>
+      <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">OastDetector9_16</span> <span class="p">:</span> <span class="k">public</span> <span class="n">AbstractAgastDetector</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OastDetector9_16</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">OastDetector9_16</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Constructor.</span>
+<span class="cm">            * \param[in] width the width of the image to process</span>
+<span class="cm">            * \param[in] height the height of the image to process</span>
+<span class="cm">            * \param[in] threshold the corner detection threshold</span>
+<span class="cm">            * \param[in] bmax the max image value (default: 255)</span>
+<span class="cm">            */</span>
+          <span class="n">OastDetector9_16</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">width</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">size_t</span> <span class="n">height</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">double</span> <span class="n">bmax</span> <span class="o">=</span> <span class="mi">255</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">AbstractAgastDetector</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">bmax</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">initPattern</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Destructor. */</span>
+          <span class="o">~</span><span class="n">OastDetector9_16</span> <span class="p">()</span> <span class="p">{}</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            */</span>
+          <span class="kt">int</span>
+          <span class="n">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Computes corner score.</span>
+<span class="cm">            * \param im</span>
+<span class="cm">            */</span>
+          <span class="kt">int</span>
+          <span class="nf">computeCornerScore</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Detects points of interest (i.e., keypoints) in the given image</span>
+<span class="cm">            * \param[in] im the image to detect keypoints in</span>
+<span class="cm">            * \param[out] corners_all the resultant set of keypoints detected</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span>
+          <span class="nf">detect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">im</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">corners_all</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">protected</span><span class="o">:</span>
+          <span class="cm">/** \brief Initializes the sample pattern. */</span>
+          <span class="kt">void</span>
+          <span class="n">initPattern</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">private</span><span class="o">:</span>
+          <span class="cm">/** \brief Border width. */</span>
+          <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">border_width_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+          <span class="c1">// offsets defining the sample pattern</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int_fast16_t</span><span class="p">,</span> <span class="mi">16</span><span class="o">&gt;</span> <span class="n">offset_</span><span class="p">;</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="c1">// namespace agast</span>
+  <span class="p">}</span> <span class="c1">// namespace keypoints</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">namespace</span> <span class="n">keypoints</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">internal</span>
+    <span class="p">{</span>
+      <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Out</span><span class="o">&gt;</span>
+      <span class="k">struct</span> <span class="n">AgastApplyNonMaxSuppresion</span>
+      <span class="p">{</span>
+        <span class="n">AgastApplyNonMaxSuppresion</span> <span class="p">(</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">image_data</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">tmp_cloud</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">keypoints</span><span class="o">::</span><span class="n">agast</span><span class="o">::</span><span class="n">AbstractAgastDetector</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">detector</span><span class="p">,</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">Out</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="n">output_temp</span><span class="p">;</span>
+          <span class="n">detector</span><span class="o">-&gt;</span><span class="n">applyNonMaxSuppression</span> <span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">tmp_cloud</span><span class="p">,</span> <span class="n">output_temp</span><span class="p">);</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">copyPointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Out</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">output_temp</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+
+      <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="k">template</span> <span class="o">&lt;&gt;</span>
+      <span class="k">struct</span> <span class="n">AgastApplyNonMaxSuppresion</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span>
+      <span class="p">{</span>
+        <span class="n">AgastApplyNonMaxSuppresion</span> <span class="p">(</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">image_data</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">tmp_cloud</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">keypoints</span><span class="o">::</span><span class="n">agast</span><span class="o">::</span><span class="n">AbstractAgastDetector</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">detector</span><span class="p">,</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">detector</span><span class="o">-&gt;</span><span class="n">applyNonMaxSuppression</span> <span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">tmp_cloud</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+      <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Out</span><span class="o">&gt;</span>
+      <span class="k">struct</span> <span class="n">AgastDetector</span>
+      <span class="p">{</span>
+        <span class="n">AgastDetector</span> <span class="p">(</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">image_data</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">keypoints</span><span class="o">::</span><span class="n">agast</span><span class="o">::</span><span class="n">AbstractAgastDetector</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">detector</span><span class="p">,</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">Out</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="n">output_temp</span><span class="p">;</span>
+          <span class="n">detector</span><span class="o">-&gt;</span><span class="n">detectKeypoints</span> <span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">output_temp</span><span class="p">);</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">copyPointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">Out</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">output_temp</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+
+      <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="k">template</span> <span class="o">&lt;&gt;</span>
+      <span class="k">struct</span> <span class="n">AgastDetector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span>
+      <span class="p">{</span>
+        <span class="n">AgastDetector</span> <span class="p">(</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">image_data</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">keypoints</span><span class="o">::</span><span class="n">agast</span><span class="o">::</span><span class="n">AbstractAgastDetector</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">detector</span><span class="p">,</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">detector</span><span class="o">-&gt;</span><span class="n">detectKeypoints</span> <span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="c1">// namespace agast</span>
+  <span class="p">}</span> <span class="c1">// namespace keypoints</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="cm">/** \brief Detects 2D AGAST corner points. Based on the original work and</span>
+<span class="cm">    * paper reference by</span>
+<span class="cm">    *</span>
+<span class="cm">    * \par</span>
+<span class="cm">    * Elmar Mair, Gregory D. Hager, Darius Burschka, Michael Suppa, and Gerhard Hirzinger.</span>
+<span class="cm">    * Adaptive and generic corner detection based on the accelerated segment test.</span>
+<span class="cm">    * In Proceedings of the European Conference on Computer Vision (ECCV&#39;10), September 2010.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note This is an abstract base class. All children must implement a detectKeypoints method, based on the type of AGAST keypoint to be used.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Stefan Holzer, Radu B. Rusu</span>
+<span class="cm">    * \ingroup keypoints</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">IntensityT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">AgastKeypoint2DBase</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudOut</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">KdTree</span> <span class="n">KdTree</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudInConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">keypoints</span><span class="o">::</span><span class="n">agast</span><span class="o">::</span><span class="n">AbstractAgastDetector</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">AgastDetectorPtr</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor */</span>
+      <span class="n">AgastKeypoint2DBase</span> <span class="p">()</span>
+        <span class="o">:</span> <span class="n">threshold_</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">apply_non_max_suppression_</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">bmax_</span> <span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">nr_max_keypoints_</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span>
+      <span class="p">{</span>
+        <span class="n">k_</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="o">~</span><span class="n">AgastKeypoint2DBase</span> <span class="p">()</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the threshold for corner detection.</span>
+<span class="cm">        * \param[in] threshold the threshold used for corner detection.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setThreshold</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">threshold_</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the threshold for corner detection, as set by the user. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getThreshold</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">threshold_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the maximum number of keypoints to return. The</span>
+<span class="cm">        * estimated keypoints are sorted by their internal score.</span>
+<span class="cm">        * \param[in] nr_max_keypoints set the maximum number of keypoints to return</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setMaxKeypoints</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_max_keypoints</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">nr_max_keypoints_</span> <span class="o">=</span> <span class="n">nr_max_keypoints</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the maximum number of keypoints to return, as set by the user. */</span>
+      <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+      <span class="n">getMaxKeypoints</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">nr_max_keypoints_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the max image data value (affects how many iterations AGAST does)</span>
+<span class="cm">        * \param[in] bmax the max image data value</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setMaxDataValue</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">bmax</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">bmax_</span> <span class="o">=</span> <span class="n">bmax</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the bmax image value, as set by the user. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getMaxDataValue</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">bmax_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets whether non-max-suppression is applied or not.</span>
+<span class="cm">        * \param[in] enabled determines whether non-max-suppression is enabled.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setNonMaxSuppression</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">enabled</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">apply_non_max_suppression_</span> <span class="o">=</span> <span class="n">enabled</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns whether non-max-suppression is applied or not. */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="n">getNonMaxSuppression</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">apply_non_max_suppression_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setAgastDetector</span> <span class="p">(</span><span class="k">const</span> <span class="n">AgastDetectorPtr</span> <span class="o">&amp;</span><span class="n">detector</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">detector_</span> <span class="o">=</span> <span class="n">detector</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kr">inline</span> <span class="n">AgastDetectorPtr</span>
+      <span class="n">getAgastDetector</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">detector_</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Initializes everything and checks whether input data is fine. */</span>
+      <span class="kt">bool</span>
+      <span class="n">initCompute</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Detects the keypoints.</span>
+<span class="cm">        * \param[out] output the resultant keypoints</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">detectKeypoints</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Intensity field accessor. */</span>
+      <span class="n">IntensityT</span> <span class="n">intensity_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Threshold for corner detection. */</span>
+      <span class="kt">double</span> <span class="n">threshold_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Determines whether non-max-suppression is activated. */</span>
+      <span class="kt">bool</span> <span class="n">apply_non_max_suppression_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Max image value. */</span>
+      <span class="kt">double</span> <span class="n">bmax_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The Agast detector to use. */</span>
+      <span class="n">AgastDetectorPtr</span> <span class="n">detector_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The maximum number of keypoints to return. */</span>
+      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_max_keypoints_</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief Detects 2D AGAST corner points. Based on the original work and</span>
+<span class="cm">    * paper reference by</span>
+<span class="cm">    *</span>
+<span class="cm">    * \par</span>
+<span class="cm">    * Elmar Mair, Gregory D. Hager, Darius Burschka, Michael Suppa, and Gerhard Hirzinger.</span>
+<span class="cm">    * Adaptive and generic corner detection based on the accelerated segment test.</span>
+<span class="cm">    * In Proceedings of the European Conference on Computer Vision (ECCV&#39;10), September 2010.</span>
+<span class="cm">    *</span>
+<span class="cm">    * Code example:</span>
+<span class="cm">    *</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * pcl::PointCloud&lt;pcl::PointXYZRGBA&gt; cloud;</span>
+<span class="cm">    * pcl::AgastKeypoint2D&lt;pcl::PointXYZRGBA&gt; agast;</span>
+<span class="cm">    * agast.setThreshold (30);</span>
+<span class="cm">    * agast.setInputCloud (cloud);</span>
+<span class="cm">    *</span>
+<span class="cm">    * PointCloud&lt;pcl::PointUV&gt; keypoints;</span>
+<span class="cm">    * agast.compute (keypoints);</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note The AGAST keypoint type used is 7_12s.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Stefan Holzer, Radu B. Rusu</span>
+<span class="cm">    * \ingroup keypoints</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">AgastKeypoint2D</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudOut</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Keypoint</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;::</span><span class="n">intensity_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;::</span><span class="n">threshold_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;::</span><span class="n">bmax_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;::</span><span class="n">apply_non_max_suppression_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;::</span><span class="n">detector_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;::</span><span class="n">nr_max_keypoints_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor */</span>
+      <span class="n">AgastKeypoint2D</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;AgastKeypoint2D&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="o">~</span><span class="n">AgastKeypoint2D</span> <span class="p">()</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Detects the keypoints.</span>
+<span class="cm">        * \param[out] output the resultant keypoints</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">detectKeypoints</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief Detects 2D AGAST corner points. Based on the original work and</span>
+<span class="cm">    * paper reference by</span>
+<span class="cm">    *</span>
+<span class="cm">    * \par</span>
+<span class="cm">    * Elmar Mair, Gregory D. Hager, Darius Burschka, Michael Suppa, and Gerhard Hirzinger.</span>
+<span class="cm">    * Adaptive and generic corner detection based on the accelerated segment test.</span>
+<span class="cm">    * In Proceedings of the European Conference on Computer Vision (ECCV&#39;10), September 2010.</span>
+<span class="cm">    *</span>
+<span class="cm">    * Code example:</span>
+<span class="cm">    *</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * pcl::PointCloud&lt;pcl::PointXYZRGBA&gt; cloud;</span>
+<span class="cm">    * pcl::AgastKeypoint2D&lt;pcl::PointXYZRGBA&gt; agast;</span>
+<span class="cm">    * agast.setThreshold (30);</span>
+<span class="cm">    * agast.setInputCloud (cloud);</span>
+<span class="cm">    *</span>
+<span class="cm">    * PointCloud&lt;pcl::PointUV&gt; keypoints;</span>
+<span class="cm">    * agast.compute (keypoints);</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note This is a specialized version for PointXYZ clouds, and operates on depth (z) as float. The output keypoints are of the PointXY type.</span>
+<span class="cm">    * \note The AGAST keypoint type used is 7_12s.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Stefan Holzer, Radu B. Rusu</span>
+<span class="cm">    * \ingroup keypoints</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">AgastKeypoint2D</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span>
+    <span class="o">:</span> <span class="k">public</span> <span class="n">AgastKeypoint2DBase</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Constructor */</span>
+      <span class="n">AgastKeypoint2D</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">name_</span> <span class="o">=</span> <span class="s">&quot;AgastKeypoint2D&quot;</span><span class="p">;</span>
+        <span class="n">bmax_</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>    <span class="c1">// max data value for an OpenNI camera</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="o">~</span><span class="n">AgastKeypoint2D</span> <span class="p">()</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Detects the keypoints.</span>
+<span class="cm">        * \param[out] output the resultant keypoints</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">detectKeypoints</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointUV</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="p">};</span>
+
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/keypoints/impl/agast_2d.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_keypoints_impl_agast_2d.hpp.html" class="btn btn-neutral float-right" title="File agast_2d.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_keypoints_agast_2d.h.html" class="btn btn-neutral float-left" title="File agast_2d.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

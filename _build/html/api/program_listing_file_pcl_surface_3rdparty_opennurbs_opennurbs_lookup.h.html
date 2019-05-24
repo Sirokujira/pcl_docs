@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_lookup.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_mapchan.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_mapchan.h.html" />
+    <link rel="prev" title="File opennurbs_lookup.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_lookup.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_lookup.h.html">File opennurbs_lookup.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_lookup.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_lookup.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-lookup-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-lookup-h"></span><h1>Program Listing for File opennurbs_lookup.h<a class="headerlink" href="#program-listing-for-file-opennurbs-lookup-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_lookup.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-lookup-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_lookup.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(OPENNURBS_MAP_INC_)</span>
+<span class="cp">#define OPENNURBS_MAP_INC_</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  ON_SerialNumberMap provides a way to map set of unique</span>
+<span class="cm">  serial number - uuid pairs to application defined values</span>
+<span class="cm">  so that adding, finding and removing serial numbers is</span>
+<span class="cm">  fast and efficient.  The class is designed to handle</span>
+<span class="cm">  several millions of unique serial numbers.  There are no</span>
+<span class="cm">  restrictions on what order numbers are added and removed.</span>
+<span class="cm">  The minimum memory footprint is less than 150KB and doesn&#39;t</span>
+<span class="cm">  increase until you have more than 8000 serial numbers.</span>
+<span class="cm">  It is possible to have an active serial number and an</span>
+<span class="cm">  inactive id.</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SerialNumberMap</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_SerialNumberMap</span><span class="p">(</span> <span class="n">ON_MEMORY_POOL</span><span class="o">*</span> <span class="n">pool</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">);</span>
+  <span class="o">~</span><span class="n">ON_SerialNumberMap</span><span class="p">();</span>
+
+  <span class="k">struct</span> <span class="n">MAP_VALUE</span>
+  <span class="p">{</span>
+    <span class="n">ON__UINT32</span> <span class="n">m_u_type</span><span class="p">;</span>
+    <span class="k">union</span>
+    <span class="p">{</span>
+      <span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span>
+      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ui</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">m_u</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span>
+  <span class="p">{</span>
+    <span class="c1">////////////////////////////////////////////////////////////</span>
+    <span class="c1">//</span>
+    <span class="c1">// ID</span>
+    <span class="c1">//</span>
+    <span class="n">ON_UUID</span> <span class="n">m_id</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="n">m_next</span><span class="p">;</span> <span class="c1">// id hash table linked list</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////</span>
+    <span class="c1">//</span>
+    <span class="c1">// Serial number:</span>
+    <span class="c1">//</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_sn</span><span class="p">;</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////</span>
+    <span class="c1">//</span>
+    <span class="c1">// Status flags:</span>
+    <span class="c1">//</span>
+    <span class="c1">// If m_id_active is 1, then m_sn_active must be 1.</span>
+    <span class="c1">// If m_sn_active = 1, then m_id_active can be 0 or 1.</span>
+    <span class="c1">//</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">m_sn_active</span><span class="p">;</span> <span class="c1">// 1 = serial number is active</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">m_id_active</span><span class="p">;</span> <span class="c1">// 1 = id is active</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">m_reserved1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">m_reserved2</span><span class="p">;</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////</span>
+    <span class="c1">//</span>
+    <span class="c1">// User information:</span>
+    <span class="c1">//</span>
+    <span class="c1">//   ON_SerialNumberMap does not use the m_value field.</span>
+    <span class="c1">//   When a new element is added, m_value is memset to</span>
+    <span class="c1">//   zero.  Other than that, m_value is not changed by</span>
+    <span class="c1">//   this class.  The location of m_value in memory,</span>
+    <span class="c1">//   (&amp;m_value) may change at any time.</span>
+    <span class="k">struct</span> <span class="n">MAP_VALUE</span> <span class="n">m_value</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span><span class="n">ON_TextLog</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of active serial numbers in the list.</span>
+<span class="cm">  */</span>
+  <span class="kt">size_t</span> <span class="nf">ActiveSerialNumberCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of active ids in the list.  This number</span>
+<span class="cm">    is less than or equal to ActiveSerialNumberCount().</span>
+<span class="cm">  */</span>
+  <span class="kt">size_t</span> <span class="nf">ActiveIdCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    The active element with the smallest serial number,</span>
+<span class="cm">    or null if the list is empty.</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">FirstElement</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    The active element with the biggest serial number,</span>
+<span class="cm">    or null if the list is empty.</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">LastElement</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sn - [in] serial number to search for.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the serial number is active, a pointer to</span>
+<span class="cm">    its element is returned.</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">FindSerialNumber</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    id - [in] id number to search for.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the id is active, a pointer to</span>
+<span class="cm">    its element is returned.</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">FindId</span><span class="p">(</span><span class="n">ON_UUID</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Add a serial number to the map.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sn - [in] serial number to add.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the serial number is valid (&gt;0), a pointer to its</span>
+<span class="cm">    element is returned.  When a new element is added,</span>
+<span class="cm">    every byte of the m_value field is set to 0.</span>
+<span class="cm">    If the serial number was already active, its element is</span>
+<span class="cm">    also returned.  If you need to distinguish between new</span>
+<span class="cm">    and previously existing elements, then change</span>
+<span class="cm">    m_value.m_u_type to something besides 0 after you add</span>
+<span class="cm">    a new serial number.  The id associated with this</span>
+<span class="cm">    serial number will be zero and cannot be found using</span>
+<span class="cm">    FindId().</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">AddSerialNumber</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sn - [in] serial number to add.</span>
+<span class="cm">    id - [in] suggested id to add. If id is zero or</span>
+<span class="cm">              already in use, another id will be assigned</span>
+<span class="cm">              to the element.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the serial number is valid (&gt;0), a pointer to its</span>
+<span class="cm">    element is returned.  When a new element is added,</span>
+<span class="cm">    every byte of the m_value field is set to 0.</span>
+<span class="cm">    If the serial number was already active, its element is</span>
+<span class="cm">    also returned.  If you need to distinguish between new</span>
+<span class="cm">    and previously existing elements, then change</span>
+<span class="cm">    m_value.m_u_type to something besides 0 after you add</span>
+<span class="cm">    a new serial number.</span>
+<span class="cm">    If the id parameter is zero, then a new uuid is created</span>
+<span class="cm">    and added. If the id parameter is non zero but is active</span>
+<span class="cm">    on another element, a new uuid is created and added.</span>
+<span class="cm">    You can inspect the value of m_id on the returned element</span>
+<span class="cm">    to determine the id AddSerialNumberAndId() assigned to</span>
+<span class="cm">    the element.</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">AddSerialNumberAndId</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">,</span> <span class="n">ON_UUID</span> <span class="n">id</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sn - [in] serial number of the element to remove.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the serial number was active, it is removed</span>
+<span class="cm">    and a pointer to its element is returned.  If</span>
+<span class="cm">    the element&#39;s id was active, the id is also removed.</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">RemoveSerialNumberAndId</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sn - [in] If &gt; 0, this is the serial number</span>
+<span class="cm">              of the element with the id. If 0, the</span>
+<span class="cm">              field is ignored.</span>
+<span class="cm">    id - [in] id to search for.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the id was active, it is removed and a pointer</span>
+<span class="cm">    to its element is returned.  The element&#39;s serial</span>
+<span class="cm">    remains active. To remove both the id and serial number,</span>
+<span class="cm">    use RemoveSerialNumberAndId().</span>
+<span class="cm">  Restrictions:</span>
+<span class="cm">    The returned pointer may become invalid after any</span>
+<span class="cm">    subsequent calls to any function in this class.</span>
+<span class="cm">    If you need to save information in the returned</span>
+<span class="cm">    SN_ELEMENT for future use, you must copy the</span>
+<span class="cm">    information into storage you are managing.</span>
+
+<span class="cm">    You may change the value of the SN_ELEMENT&#39;s m_value</span>
+<span class="cm">    field.  You must NEVER change any other SN_ELEMENT</span>
+<span class="cm">    fields or you will break searching and possibly cause</span>
+<span class="cm">    crashes.</span>
+<span class="cm">  */</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">RemoveId</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">,</span> <span class="n">ON_UUID</span> <span class="n">id</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Finds all the elements whose serial numbers are</span>
+<span class="cm">    in the range sn0 &lt;= sn &lt;= sn1 and appends them</span>
+<span class="cm">    to the elements[] array.  If max_count &gt; 0, it</span>
+<span class="cm">    specifies the maximum number of elements to append.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sn0 - [in]</span>
+<span class="cm">      Minimum serial number.</span>
+<span class="cm">    sn1 - [in]</span>
+<span class="cm">      Maximum serial number</span>
+<span class="cm">    max_count - [in]</span>
+<span class="cm">      If max_count &gt; 0, this parameter specifies the</span>
+<span class="cm">      maximum number of elements to append.</span>
+<span class="cm">    elements - [out]</span>
+<span class="cm">      Elements are appended to this array</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of elements appended to elements[] array.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    When many elements are returned, GetElements() can be</span>
+<span class="cm">    substantially faster than repeated calls to FindElement().</span>
+<span class="cm">  */</span>
+  <span class="kt">size_t</span> <span class="nf">GetElements</span><span class="p">(</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn0</span><span class="p">,</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn1</span><span class="p">,</span>
+          <span class="kt">size_t</span> <span class="n">max_count</span><span class="p">,</span>
+          <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">SN_ELEMENT</span><span class="o">&gt;&amp;</span> <span class="n">elements</span>
+          <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Empties the list.</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">EmptyList</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Returns true if the map is valid.  Returns false if the</span>
+<span class="cm">    map is not valid.  If an error is found and textlog</span>
+<span class="cm">    is not null, then a description of the problem is sent</span>
+<span class="cm">    to textlog.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if the list if valid.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">(</span><span class="n">ON_TextLog</span><span class="o">*</span> <span class="n">textlog</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span><span class="n">ON_TextLog</span><span class="o">&amp;</span> <span class="n">text_log</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="c1">// prohibit copy construction and operator=</span>
+  <span class="c1">// no implementation</span>
+  <span class="n">ON_SerialNumberMap</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_SerialNumberMap</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_SerialNumberMap</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_SerialNumberMap</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="k">enum</span>
+  <span class="p">{</span>
+    <span class="c1">// These numbers are chosen so the ON_SerialNumberMap</span>
+    <span class="c1">// will be computationally efficient for up to</span>
+    <span class="c1">// 10 million entries.</span>
+    <span class="n">SN_BLOCK_CAPACITY</span> <span class="o">=</span> <span class="mi">8192</span><span class="p">,</span>
+    <span class="n">SN_PURGE_RATIO</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">ID_HASH_TABLE_COUNT</span> <span class="o">=</span> <span class="mi">8192</span>
+  <span class="p">};</span>
+
+  <span class="k">struct</span> <span class="n">SN_BLOCK</span>
+  <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">m_count</span><span class="p">;</span>  <span class="c1">// used elements in m_sn[]</span>
+    <span class="kt">size_t</span> <span class="n">m_purged</span><span class="p">;</span> <span class="c1">// number of purged elements in m_sn[]</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_sorted</span><span class="p">;</span> <span class="c1">// 0 = no, 1 = yes</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_sn0</span><span class="p">;</span> <span class="c1">// minimum sn in m_sn[]</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_sn1</span><span class="p">;</span> <span class="c1">// maximum sn in m_sn[]</span>
+    <span class="k">struct</span> <span class="n">SN_ELEMENT</span> <span class="n">m_sn</span><span class="p">[</span><span class="n">SN_BLOCK_CAPACITY</span><span class="p">];</span>
+    <span class="kt">void</span> <span class="nf">EmptyBlock</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="nf">CullBlockHelper</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="nf">SortBlockHelper</span><span class="p">();</span>
+    <span class="kt">bool</span> <span class="nf">IsValidBlock</span><span class="p">(</span><span class="n">ON_TextLog</span><span class="o">*</span> <span class="n">textlog</span><span class="p">,</span><span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span><span class="k">const</span><span class="o">*</span> <span class="n">hash_table</span><span class="p">,</span><span class="kt">size_t</span><span class="o">*</span> <span class="n">active_id_count</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">BinarySearchBlockHelper</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">);</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareMaxSN</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+    <span class="kt">size_t</span> <span class="nf">ActiveElementEstimate</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn0</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn1</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span><span class="n">ON_TextLog</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_maxsn</span><span class="p">;</span> <span class="c1">// largest sn stored anywhere</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_reserved</span><span class="p">;</span>
+
+  <span class="c1">// All heap used in this class is allocated from this pool.</span>
+  <span class="n">ON_MEMORY_POOL</span><span class="o">*</span> <span class="n">m_pool</span><span class="p">;</span>
+
+  <span class="c1">// Serial Number list counts</span>
+  <span class="kt">size_t</span> <span class="n">m_sn_count</span><span class="p">;</span>   <span class="c1">// total number of elements</span>
+  <span class="kt">size_t</span> <span class="n">m_sn_purged</span><span class="p">;</span>  <span class="c1">// total number of purged elements</span>
+
+  <span class="c1">// ID hash table counts (all ids in the hash table are active)</span>
+  <span class="kt">bool</span> <span class="n">m_bHashTableIsValid</span><span class="p">;</span> <span class="c1">// true if m_hash_table[] is valid</span>
+  <span class="kt">size_t</span> <span class="n">m_active_id_count</span><span class="p">;</span> <span class="c1">// number of active ids in the hash table</span>
+  <span class="n">ON_UUID</span> <span class="n">m_inactive_id</span><span class="p">;</span>    <span class="c1">// frequently and id is removed and</span>
+                            <span class="c1">// then added back.  m_inactive_id</span>
+                            <span class="c1">// records the most recently removed</span>
+                            <span class="c1">// id so we don&#39;t have to waste time</span>
+                            <span class="c1">// searching the hash table for</span>
+                            <span class="c1">// an id that is not there.</span>
+
+
+  <span class="c1">// The blocks in m_sn_list[] are alwasy sorted, disjoint,</span>
+  <span class="c1">// and in increasing order.  m_sn_list is used when</span>
+  <span class="c1">// m_sn_block0.m_sn[] is not large enough.</span>
+  <span class="c1">// The sn list is partitioned into blocks to avoid</span>
+  <span class="c1">// requiring large amounts of contiguous memory for</span>
+  <span class="c1">// situations with millions of serial numbers.</span>
+  <span class="k">struct</span> <span class="n">SN_BLOCK</span><span class="o">**</span> <span class="n">m_snblk_list</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">m_snblk_list_capacity</span><span class="p">;</span> <span class="c1">// capacity of m_blk_list[]</span>
+  <span class="kt">size_t</span> <span class="n">m_snblk_list_count</span><span class="p">;</span>    <span class="c1">// used elements in m_snblk_list[]</span>
+
+  <span class="c1">// If FindElementHelper() returns a non-null pointer</span>
+  <span class="c1">// to an element, then m_e_blk points to the SN_BLOCK</span>
+  <span class="c1">// that contains the returned element.  In all other</span>
+  <span class="c1">// situations the value in m_e_blk is undefined and</span>
+  <span class="c1">// m_e_blk must not be dereferenced.</span>
+  <span class="k">struct</span> <span class="n">SN_BLOCK</span><span class="o">*</span> <span class="n">m_e_blk</span><span class="p">;</span>
+
+  <span class="c1">// m_sn_block0 is where the new additions are added.</span>
+  <span class="c1">// When serial numbers are not added in increasing</span>
+  <span class="c1">// order, m_sn_block0.m_sn[] may not be sorted.</span>
+  <span class="n">SN_BLOCK</span> <span class="n">m_sn_block0</span><span class="p">;</span>
+
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="nf">FindElementHelper</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sn</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">UpdateMaxSNHelper</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="nf">GarbageCollectHelper</span><span class="p">();</span>
+  <span class="kt">size_t</span> <span class="nf">GarbageCollectMoveHelper</span><span class="p">(</span><span class="n">SN_BLOCK</span><span class="o">*</span> <span class="n">dst</span><span class="p">,</span><span class="n">SN_BLOCK</span><span class="o">*</span> <span class="n">src</span><span class="p">);</span>
+
+  <span class="c1">// When m_bHashTableIsValid is true, then m_hash_table[i] is</span>
+  <span class="c1">// a linked list of elements whose id satisfies</span>
+  <span class="c1">// i = HashIndex(&amp;e-&gt;m_id).  When m_bHashTableIsValid is false,</span>
+  <span class="c1">// m_hash_table[] is identically zero.</span>
+  <span class="k">struct</span> <span class="n">SN_ELEMENT</span><span class="o">*</span> <span class="n">m_hash_table</span><span class="p">[</span><span class="n">ID_HASH_TABLE_COUNT</span><span class="p">];</span>
+  <span class="kt">size_t</span> <span class="nf">HashIndex</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_UUID</span><span class="o">*</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">InvalidateHashTableHelper</span><span class="p">();</span> <span class="c1">// marks table as dirty</span>
+  <span class="kt">bool</span> <span class="nf">RemoveBlockFromHashTableHelper</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">SN_BLOCK</span><span class="o">*</span> <span class="n">blk</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">AddBlockToHashTableHelper</span><span class="p">(</span><span class="k">struct</span> <span class="n">SN_BLOCK</span><span class="o">*</span> <span class="n">blk</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">BuildHashTableHelper</span><span class="p">();</span>      <span class="c1">// prepares table for use</span>
+<span class="p">};</span>
+
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_mapchan.h.html" class="btn btn-neutral float-right" title="File opennurbs_mapchan.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_lookup.h.html" class="btn btn-neutral float-left" title="File opennurbs_lookup.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

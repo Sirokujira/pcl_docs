@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File sac_model.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File sac_model.h" href="file_pcl_sample_consensus_sac_model.h.html" />
+    <link rel="prev" title="File sac_model.h" href="file_E__pcl_docs_pcl_cuda_sample_consensus_include_pcl_cuda_sample_consensus_sac_model.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_E__pcl_docs_pcl_cuda_sample_consensus_include_pcl_cuda_sample_consensus_sac_model.h.html">File sac_model.h</a> &raquo;</li>
+        
+      <li>Program Listing for File sac_model.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_E__pcl_docs_pcl_cuda_sample_consensus_include_pcl_cuda_sample_consensus_sac_model.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-sac-model-h">
+<span id="program-listing-file-e-pcl-docs-pcl-cuda-sample-consensus-include-pcl-cuda-sample-consensus-sac-model-h"></span><h1>Program Listing for File sac_model.h<a class="headerlink" href="#program-listing-for-file-sac-model-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_E__pcl_docs_pcl_cuda_sample_consensus_include_pcl_cuda_sample_consensus_sac_model.h.html#file-e-pcl-docs-pcl-cuda-sample-consensus-include-pcl-cuda-sample-consensus-sac-model-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">E:\pcl_docs\pcl\cuda\sample_consensus\include\pcl\cuda\sample_consensus\sac_model.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Copyright (c) 2009, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;float.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;thrust/sequence.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;thrust/count.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;thrust/remove.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/cuda/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;thrust/random/linear_congruential_engine.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">cuda</span>
+  <span class="p">{</span>
+    <span class="c1">// Forward declaration</span>
+    <span class="c1">//template&lt;class T&gt; class ProgressiveSampleConsensus;</span>
+
+    <span class="cm">/** \brief Check if a certain tuple is a point inlier. */</span>
+    <span class="k">struct</span> <span class="n">DeleteIndices</span>
+    <span class="p">{</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Tuple</span><span class="o">&gt;</span> <span class="n">__inline__</span> <span class="n">__host__</span> <span class="n">__device__</span> <span class="kt">int</span>
+      <span class="k">operator</span> <span class="p">()</span> <span class="p">(</span><span class="k">const</span> <span class="n">Tuple</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Check if a certain tuple is a point inlier. */</span>
+    <span class="k">struct</span> <span class="n">isInlier</span>
+    <span class="p">{</span>
+        <span class="n">__inline__</span> <span class="n">__host__</span> <span class="n">__device__</span> <span class="kt">bool</span>
+        <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="k">struct</span> <span class="n">isNaNPoint</span>
+    <span class="p">{</span>
+        <span class="n">__inline__</span> <span class="n">__host__</span> <span class="n">__device__</span> <span class="kt">bool</span>
+        <span class="k">operator</span> <span class="p">()(</span><span class="n">PointXYZRGB</span> <span class="n">pt</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="cp">#ifdef __CUDACC__</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">isnan</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">|</span> <span class="n">isnan</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">isnan</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">z</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="cp">#else</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isnan</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">|</span> <span class="n">std</span><span class="o">::</span><span class="n">isnan</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">std</span><span class="o">::</span><span class="n">isnan</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">z</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="cp">#endif</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief @b SampleConsensusModel represents the base model class. All sample consensus models must inherit from</span>
+<span class="cm">      * this class.</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Storage</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">SampleConsensusModel</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">PointCloudAOS</span><span class="o">&lt;</span><span class="n">Storage</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SampleConsensusModel</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">SampleConsensusModel</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Indices</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">IndicesPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">IndicesConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Coefficients</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="o">&lt;</span><span class="n">Coefficients</span><span class="o">&gt;</span> <span class="n">CoefficientsPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="o">&lt;</span><span class="k">const</span> <span class="n">Coefficients</span><span class="o">&gt;</span> <span class="n">CoefficientsConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Hypotheses</span><span class="p">;</span>
+        <span class="c1">//TODO: should be vector&lt;int&gt; instead of int. but currently, only 1point plane model supports this</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Samples</span><span class="p">;</span>
+
+      <span class="k">private</span><span class="o">:</span>
+        <span class="cm">/** \brief Empty constructor for base SampleConsensusModel. */</span>
+        <span class="n">SampleConsensusModel</span> <span class="p">()</span> <span class="o">:</span> <span class="n">radius_min_</span> <span class="p">(</span><span class="o">-</span><span class="n">FLT_MAX</span><span class="p">),</span> <span class="n">radius_max_</span> <span class="p">(</span><span class="n">FLT_MAX</span><span class="p">)</span>
+        <span class="p">{};</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/** \brief Constructor for base SampleConsensusModel.</span>
+<span class="cm">          * \param cloud the input point cloud dataset</span>
+<span class="cm">          */</span>
+        <span class="n">SampleConsensusModel</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span> <span class="o">:</span>
+          <span class="n">radius_min_</span> <span class="p">(</span><span class="o">-</span><span class="n">FLT_MAX</span><span class="p">),</span> <span class="n">radius_max_</span> <span class="p">(</span><span class="n">FLT_MAX</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// Sets the input cloud and creates a vector of &quot;fake&quot; indices</span>
+          <span class="n">setInputCloud</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/* \brief Constructor for base SampleConsensusModel.</span>
+<span class="cm">         * \param cloud the input point cloud dataset</span>
+<span class="cm">         * \param indices a vector of point indices to be used from \a cloud</span>
+<span class="cm">         */</span>
+  <span class="cm">/*      SampleConsensusModel (const PointCloudConstPtr &amp;cloud, const std::vector&lt;int&gt; &amp;indices) :</span>
+<span class="cm">                              input_ (cloud),</span>
+<span class="cm">                              indices_ (boost::make_shared &lt;std::vector&lt;int&gt; &gt; (indices)),</span>
+<span class="cm">                              radius_min_ (-DBL_MAX), radius_max_ (DBL_MAX)</span>
+
+<span class="cm">        {</span>
+<span class="cm">          if (indices_-&gt;size () &gt; input_-&gt;points.size ())</span>
+<span class="cm">          {</span>
+<span class="cm">            ROS_ERROR (&quot;[pcl::SampleConsensusModel] Invalid index vector given with size %lu while the input PointCloud has size %lu!&quot;, (unsigned long) indices_-&gt;size (), (unsigned long) input_-&gt;points.size ());</span>
+<span class="cm">            indices_-&gt;clear ();</span>
+<span class="cm">          }</span>
+<span class="cm">        };*/</span>
+
+        <span class="cm">/** \brief Destructor for base SampleConsensusModel. */</span>
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">SampleConsensusModel</span> <span class="p">()</span> <span class="p">{};</span>
+
+        <span class="cm">/** \brief Get a set of random data samples and return them as point</span>
+<span class="cm">          * indices. Pure virtual.</span>
+<span class="cm">          * \param iterations the internal number of iterations used by SAC methods</span>
+<span class="cm">          * \param samples the resultant model samples, &lt;b&gt;stored on the device&lt;/b&gt;</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">getSamples</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">iterations</span><span class="p">,</span> <span class="n">Indices</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Check whether the given index samples can form a valid model,</span>
+<span class="cm">          * compute the model coefficients from these samples and store them</span>
+<span class="cm">          * in model_coefficients. Pure virtual.</span>
+<span class="cm">          * \param samples the point indices found as possible good candidates</span>
+<span class="cm">          * for creating a valid model, &lt;b&gt;stored on the device&lt;/b&gt;</span>
+<span class="cm">          * \param model_coefficients the computed model coefficients</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">computeModelCoefficients</span> <span class="p">(</span><span class="k">const</span> <span class="n">Indices</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span> <span class="n">Coefficients</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">generateModelHypotheses</span> <span class="p">(</span><span class="n">Hypotheses</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_iterations</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">generateModelHypotheses</span> <span class="p">(</span><span class="n">Hypotheses</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="n">Samples</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_iterations</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">isSampleInlier</span> <span class="p">(</span><span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers_stencil</span><span class="p">,</span> <span class="n">Samples</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">)</span>
+          <span class="p">{</span><span class="k">return</span> <span class="p">((</span><span class="o">*</span><span class="n">inliers_stencil</span><span class="p">)[</span><span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">);};</span>
+
+        <span class="cm">/* \brief Recompute the model coefficients using the given inlier set</span>
+<span class="cm">          * and return them to the user. Pure virtual.</span>
+<span class="cm">          *</span>
+<span class="cm">          * @note: these are the coefficients of the model after refinement</span>
+<span class="cm">          * (e.g., after a least-squares optimization)</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param inliers the data inliers supporting the model</span>
+<span class="cm">          * \param model_coefficients the initial guess for the model coefficients</span>
+<span class="cm">          * \param optimized_coefficients the resultant recomputed coefficients</span>
+<span class="cm">          * after non-linear optimization</span>
+<span class="cm">          */</span>
+  <span class="c1">//      virtual void</span>
+  <span class="c1">//      optimizeModelCoefficients (const std::vector&lt;int&gt; &amp;inliers,</span>
+  <span class="c1">//                                 const Eigen::VectorXf &amp;model_coefficients,</span>
+  <span class="c1">//                                 Eigen::VectorXf &amp;optimized_coefficients) = 0;</span>
+
+      <span class="cm">/*  \brief Compute all distances from the cloud data to a given model. Pure virtual.</span>
+<span class="cm">        * \param model_coefficients the coefficients of a model that we need to</span>
+<span class="cm">        *   compute distances to</span>
+<span class="cm">        * \param distances the resultant estimated distances</span>
+<span class="cm">        */</span>
+  <span class="c1">//      virtual void</span>
+  <span class="c1">//      getDistancesToModel (const Eigen::VectorXf &amp;model_coefficients,</span>
+  <span class="c1">//                           std::vector&lt;float&gt; &amp;distances) = 0;</span>
+
+        <span class="cm">/** \brief Select all the points which respect the given model</span>
+<span class="cm">          * coefficients as inliers. Pure virtual.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param model_coefficients the coefficients of a model that we need to</span>
+<span class="cm">          * compute distances to</span>
+<span class="cm">          * \param threshold a maximum admissible distance threshold for</span>
+<span class="cm">          * determining the inliers from the outliers</span>
+<span class="cm">          * \param inliers the resultant model inliers</span>
+<span class="cm">          * \param inliers_stencil</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">int</span>
+        <span class="nf">selectWithinDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Coefficients</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span>
+                              <span class="kt">float</span> <span class="n">threshold</span><span class="p">,</span>
+                              <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers_stencil</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">virtual</span> <span class="kt">int</span>
+        <span class="nf">selectWithinDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Hypotheses</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span>
+                              <span class="kt">float</span> <span class="n">threshold</span><span class="p">,</span>
+                              <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers_stencil</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">virtual</span> <span class="kt">int</span>
+        <span class="nf">selectWithinDistance</span> <span class="p">(</span><span class="n">Hypotheses</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span>
+                              <span class="kt">float</span> <span class="n">threshold</span><span class="p">,</span>
+                              <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers_stencil</span><span class="p">,</span>
+                              <span class="n">float3</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">virtual</span> <span class="kt">int</span>
+        <span class="nf">countWithinDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Coefficients</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="kt">float</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">virtual</span> <span class="kt">int</span>
+        <span class="nf">countWithinDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Hypotheses</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="kt">int</span>
+        <span class="nf">deleteIndices</span> <span class="p">(</span><span class="k">const</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">indices_stencil</span> <span class="p">);</span>
+        <span class="kt">int</span>
+        <span class="nf">deleteIndices</span> <span class="p">(</span><span class="k">const</span> <span class="n">Hypotheses</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span> <span class="k">const</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">inliers_delete</span><span class="p">);</span>
+
+        <span class="cm">/*  \brief Create a new point cloud with inliers projected onto the model. Pure virtual.</span>
+<span class="cm">          * \param inliers the data inliers that we want to project on the model</span>
+<span class="cm">          * \param model_coefficients the coefficients of a model</span>
+<span class="cm">          * \param projected_points the resultant projected points</span>
+<span class="cm">          * \param copy_data_fields set to true (default) if we want the \a</span>
+<span class="cm">          * projected_points cloud to be an exact copy of the input dataset minus</span>
+<span class="cm">          * the point projections on the plane model</span>
+<span class="cm">          */</span>
+  <span class="c1">//      virtual void</span>
+  <span class="c1">//      projectPoints (const std::vector&lt;int&gt; &amp;inliers,</span>
+  <span class="c1">//                     const Eigen::VectorXf &amp;model_coefficients,</span>
+  <span class="c1">//                     PointCloud &amp;projected_points,</span>
+  <span class="c1">//                     bool copy_data_fields = true) = 0;</span>
+
+        <span class="cm">/*  \brief Verify whether a subset of indices verifies a given set of</span>
+<span class="cm">          * model coefficients. Pure virtual.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param indices the data indices that need to be tested against the model</span>
+<span class="cm">          * \param model_coefficients the set of model coefficients</span>
+<span class="cm">          * \param threshold a maximum admissible distance threshold for</span>
+<span class="cm">          * determining the inliers from the outliers</span>
+<span class="cm">          */</span>
+  <span class="c1">//      virtual bool</span>
+  <span class="c1">//      doSamplesVerifyModel (const std::set&lt;int&gt; &amp;indices,</span>
+  <span class="c1">//                            const Eigen::VectorXf &amp;model_coefficients,</span>
+  <span class="c1">//                            float threshold) = 0;</span>
+
+        <span class="cm">/** \brief Provide a pointer to the input dataset</span>
+<span class="cm">          * \param cloud the const boost shared pointer to a PointCloud message</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">setInputCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Get a pointer to the input point cloud dataset. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudConstPtr</span>
+        <span class="nf">getInputCloud</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">input_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/* \brief Provide a pointer to the vector of indices that represents the input data.</span>
+<span class="cm">         * \param indices a pointer to the vector of indices that represents the input data.</span>
+<span class="cm">         */</span>
+  <span class="c1">//      inline void</span>
+  <span class="c1">//      setIndices (const IndicesPtr &amp;indices) { indices_ = indices; }</span>
+
+        <span class="cm">/* \brief Provide the vector of indices that represents the input data.</span>
+<span class="cm">         * \param indices the vector of indices that represents the input data.</span>
+<span class="cm">         */</span>
+  <span class="c1">//      inline void</span>
+  <span class="c1">//      setIndices (std::vector&lt;int&gt; &amp;indices)</span>
+  <span class="c1">//      {</span>
+  <span class="c1">//        indices_ = boost::make_shared &lt;std::vector&lt;int&gt; &gt; (indices);</span>
+  <span class="c1">//      }</span>
+
+        <span class="cm">/** \brief Get a pointer to the vector of indices used. */</span>
+        <span class="kr">inline</span> <span class="n">IndicesPtr</span>
+        <span class="nf">getIndices</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">nr_indices_in_stencil_</span> <span class="o">!=</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">())</span>
+          <span class="p">{</span>
+            <span class="k">typename</span> <span class="n">Indices</span><span class="o">::</span><span class="n">iterator</span> <span class="n">last</span> <span class="o">=</span> <span class="n">thrust</span><span class="o">::</span><span class="n">remove_copy</span> <span class="p">(</span><span class="n">indices_stencil_</span><span class="o">-&gt;</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">indices_stencil_</span><span class="o">-&gt;</span><span class="n">end</span> <span class="p">(),</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">begin</span> <span class="p">(),</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+            <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">erase</span> <span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">end</span> <span class="p">());</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="p">(</span><span class="n">indices_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/* \brief Return an unique id for each type of model employed. */</span>
+  <span class="c1">//      virtual SacModel</span>
+  <span class="c1">//      getModelType () const = 0;</span>
+
+        <span class="cm">/* \brief Return the size of a sample from which a model is computed */</span>
+  <span class="c1">//      inline unsigned int</span>
+  <span class="c1">//      getSampleSize () const { return SAC_SAMPLE_SIZE.at (getModelType ()); }</span>
+
+        <span class="cm">/** \brief Set the minimum and maximum allowable radius limits for the</span>
+<span class="cm">          * model (applicable to models that estimate a radius)</span>
+<span class="cm">          * \param min_radius the minimum radius model</span>
+<span class="cm">          * \param max_radius the maximum radius model</span>
+<span class="cm">          * \todo change this to set limits on the entire model</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setRadiusLimits</span> <span class="p">(</span><span class="kt">float</span> <span class="n">min_radius</span><span class="p">,</span> <span class="kt">float</span> <span class="n">max_radius</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">radius_min_</span> <span class="o">=</span> <span class="n">min_radius</span><span class="p">;</span>
+          <span class="n">radius_max_</span> <span class="o">=</span> <span class="n">max_radius</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the minimum and maximum allowable radius limits for the</span>
+<span class="cm">          * model as set by the user.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param min_radius the resultant minimum radius model</span>
+<span class="cm">          * \param max_radius the resultant maximum radius model</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">getRadiusLimits</span> <span class="p">(</span><span class="kt">float</span> <span class="o">&amp;</span><span class="n">min_radius</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">max_radius</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">min_radius</span> <span class="o">=</span> <span class="n">radius_min_</span><span class="p">;</span>
+          <span class="n">max_radius</span> <span class="o">=</span> <span class="n">radius_max_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+  <span class="c1">//      friend class ProgressiveSampleConsensus&lt;PointT&gt;;</span>
+
+        <span class="kr">inline</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span>
+        <span class="n">getNormals</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">normals_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="kr">inline</span>
+          <span class="kt">void</span> <span class="n">setNormals</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">normals</span><span class="p">)</span> <span class="p">{</span> <span class="n">normals_</span> <span class="o">=</span> <span class="n">normals</span><span class="p">;</span> <span class="p">}</span>
+
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="cm">/*  \brief Check whether a model is valid given the user constraints.</span>
+<span class="cm">          * \param model_coefficients the set of model coefficients</span>
+<span class="cm">          */</span>
+  <span class="c1">//      virtual inline bool</span>
+  <span class="c1">//      isModelValid (const Eigen::VectorXf &amp;model_coefficients) = 0;</span>
+
+        <span class="cm">/** \brief A boost shared pointer to the point cloud data array. */</span>
+        <span class="n">PointCloudConstPtr</span> <span class="n">input_</span><span class="p">;</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Storage</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">normals_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to the vector of point indices to use. */</span>
+        <span class="n">IndicesPtr</span> <span class="n">indices_</span><span class="p">;</span>
+        <span class="cm">/** \brief A pointer to the vector of point indices (stencil) to use. */</span>
+        <span class="n">IndicesPtr</span> <span class="n">indices_stencil_</span><span class="p">;</span>
+        <span class="cm">/** \brief number of indices left in indices_stencil_ */</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_indices_in_stencil_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The minimum and maximum radius limits for the model.</span>
+<span class="cm">          * Applicable to all models that estimate a radius.</span>
+<span class="cm">          */</span>
+        <span class="kt">float</span> <span class="n">radius_min_</span><span class="p">,</span> <span class="n">radius_max_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Linear-Congruent random number generator engine. */</span>
+        <span class="n">thrust</span><span class="o">::</span><span class="n">minstd_rand</span> <span class="n">rngl_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="cm">/*  \brief @b SampleConsensusModelFromNormals represents the base model class</span>
+<span class="cm">      * for models that require the use of surface normals for estimation.</span>
+<span class="cm">      */</span>
+  <span class="c1">//  template &lt;typename PointT, typename PointNT&gt;</span>
+  <span class="c1">//  class SampleConsensusModelFromNormals</span>
+  <span class="c1">//  {</span>
+  <span class="c1">//    public:</span>
+  <span class="c1">//      typedef typename pcl::PointCloud&lt;PointNT&gt;::ConstPtr PointCloudNConstPtr;</span>
+  <span class="c1">//      typedef typename pcl::PointCloud&lt;PointNT&gt;::Ptr PointCloudNPtr;</span>
+  <span class="c1">//</span>
+  <span class="c1">//      typedef boost::shared_ptr&lt;SampleConsensusModelFromNormals&gt; Ptr;</span>
+  <span class="c1">//      typedef boost::shared_ptr&lt;const SampleConsensusModelFromNormals&gt; ConstPtr;</span>
+  <span class="c1">//</span>
+  <span class="c1">//      /* \brief Empty constructor for base SampleConsensusModelFromNormals. */</span>
+  <span class="c1">//      SampleConsensusModelFromNormals () : normal_distance_weight_ (0.0) {};</span>
+  <span class="c1">//</span>
+  <span class="c1">//      /*  \brief Set the normal angular distance weight.</span>
+  <span class="c1">//        * \param w the relative weight (between 0 and 1) to give to the angular</span>
+  <span class="c1">//        * distance (0 to pi/2) between point normals and the plane normal.</span>
+  <span class="c1">//        * (The Euclidean distance will have weight 1-w.)</span>
+  <span class="c1">//        */</span>
+  <span class="c1">//      inline void</span>
+  <span class="c1">//      setNormalDistanceWeight (float w) { normal_distance_weight_ = w; }</span>
+  <span class="c1">//</span>
+  <span class="c1">//      /* \brief Get the normal angular distance weight. */</span>
+  <span class="c1">//      inline float</span>
+  <span class="c1">//      getNormalDistanceWeight () { return (normal_distance_weight_); }</span>
+  <span class="c1">//</span>
+  <span class="c1">//      /* \brief Provide a pointer to the input dataset that contains the point</span>
+  <span class="c1">//        * normals of the XYZ dataset.</span>
+  <span class="c1">//        *</span>
+  <span class="c1">//        * \param normals the const boost shared pointer to a PointCloud message</span>
+  <span class="c1">//        */</span>
+  <span class="c1">//      inline void</span>
+  <span class="c1">//      setInputNormals (const PointCloudNConstPtr &amp;normals) { normals_ = normals; }</span>
+  <span class="c1">//</span>
+  <span class="c1">//      /* \brief Get a pointer to the normals of the input XYZ point cloud dataset. */</span>
+  <span class="c1">//      inline PointCloudNConstPtr</span>
+  <span class="c1">//      getInputNormals () { return (normals_); }</span>
+  <span class="c1">//</span>
+  <span class="c1">//    protected:</span>
+  <span class="c1">//      /* \brief The relative weight (between 0 and 1) to give to the angular</span>
+  <span class="c1">//        * distance (0 to pi/2) between point normals and the plane normal.</span>
+  <span class="c1">//        */</span>
+  <span class="c1">//      float normal_distance_weight_;</span>
+  <span class="c1">//</span>
+  <span class="c1">//      /* \brief A pointer to the input dataset that contains the point normals</span>
+  <span class="c1">//        * of the XYZ dataset.</span>
+  <span class="c1">//        */</span>
+  <span class="c1">//      PointCloudNConstPtr normals_;</span>
+  <span class="c1">//  };</span>
+  <span class="p">}</span> <span class="c1">// namespace_</span>
+<span class="p">}</span> <span class="c1">// namespace_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_sample_consensus_sac_model.h.html" class="btn btn-neutral float-right" title="File sac_model.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_E__pcl_docs_pcl_cuda_sample_consensus_include_pcl_cuda_sample_consensus_sac_model.h.html" class="btn btn-neutral float-left" title="File sac_model.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

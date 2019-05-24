@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File decision_tree_trainer.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File decision_tree_trainer.hpp" href="file_pcl_ml_impl_dt_decision_tree_trainer.hpp.html" />
+    <link rel="prev" title="File decision_tree_trainer.h" href="file_pcl_ml_dt_decision_tree_trainer.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_ml_dt_decision_tree_trainer.h.html">File decision_tree_trainer.h</a> &raquo;</li>
+        
+      <li>Program Listing for File decision_tree_trainer.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_ml_dt_decision_tree_trainer.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-decision-tree-trainer-h">
+<span id="program-listing-file-pcl-ml-dt-decision-tree-trainer-h"></span><h1>Program Listing for File decision_tree_trainer.h<a class="headerlink" href="#program-listing-for-file-decision-tree-trainer-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_ml_dt_decision_tree_trainer.h.html#file-pcl-ml-dt-decision-tree-trainer-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\ml\dt\decision_tree_trainer.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ml/dt/decision_tree.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ml/feature_handler.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ml/stats_estimator.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ml/dt/decision_tree_data_provider.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+
+  <span class="cm">/** \brief Trainer for decision trees. */</span>
+  <span class="k">template</span> <span class="o">&lt;</span>
+    <span class="k">class</span> <span class="nc">FeatureType</span><span class="p">,</span>
+    <span class="k">class</span> <span class="nc">DataSet</span><span class="p">,</span>
+    <span class="k">class</span> <span class="nc">LabelType</span><span class="p">,</span>
+    <span class="k">class</span> <span class="nc">ExampleIndex</span><span class="p">,</span>
+    <span class="k">class</span> <span class="nc">NodeType</span> <span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">DecisionTreeTrainer</span>
+  <span class="p">{</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Constructor. */</span>
+      <span class="n">DecisionTreeTrainer</span> <span class="p">();</span>
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="k">virtual</span>
+      <span class="o">~</span><span class="n">DecisionTreeTrainer</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Sets the feature handler used to create and evaluate features.</span>
+<span class="cm">        * \param[in] feature_handler The feature handler.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setFeatureHandler</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">FeatureHandler</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">feature_handler</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">feature_handler_</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">feature_handler</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the object for estimating the statistics for tree nodes.</span>
+<span class="cm">        * \param[in] stats_estimator The statistics estimator.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setStatsEstimator</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">StatsEstimator</span><span class="o">&lt;</span><span class="n">LabelType</span><span class="p">,</span> <span class="n">NodeType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">stats_estimator</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">stats_estimator_</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">stats_estimator</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the maximum depth of the learned tree.</span>
+<span class="cm">        * \param[in] max_tree_depth Maximum depth of the learned tree.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMaxTreeDepth</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">max_tree_depth</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">max_tree_depth_</span> <span class="o">=</span> <span class="n">max_tree_depth</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the number of features used to find optimal decision features.</span>
+<span class="cm">        * \param[in] num_of_features The number of features.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setNumOfFeatures</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">num_of_features</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">num_of_features_</span> <span class="o">=</span> <span class="n">num_of_features</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the number of thresholds tested for finding the optimal decision threshold on the feature responses.</span>
+<span class="cm">        * \param[in] num_of_threshold The number of thresholds.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setNumOfThresholds</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">num_of_threshold</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">num_of_thresholds_</span> <span class="o">=</span> <span class="n">num_of_threshold</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the input data set used for training.</span>
+<span class="cm">        * \param[in] data_set The data set used for training.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setTrainingDataSet</span> <span class="p">(</span><span class="n">DataSet</span> <span class="o">&amp;</span> <span class="n">data_set</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">data_set_</span> <span class="o">=</span> <span class="n">data_set</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Example indices that specify the data used for training.</span>
+<span class="cm">        * \param[in] examples The examples.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setExamples</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">examples</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">examples_</span> <span class="o">=</span> <span class="n">examples</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the label data corresponding to the example data.</span>
+<span class="cm">        * \param[in] label_data The label data.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setLabelData</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LabelType</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">label_data</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">label_data_</span> <span class="o">=</span> <span class="n">label_data</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the minimum number of examples to continue growing a tree.</span>
+<span class="cm">        * \param[in] n Number of examples</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMinExamplesForSplit</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">min_examples_for_split_</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Specify the thresholds to be used when evaluating features.</span>
+<span class="cm">        * \param[in] thres The threshold values.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">setThresholds</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">thres</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">thresholds_</span> <span class="o">=</span> <span class="n">thres</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Specify the data provider.</span>
+<span class="cm">        * \param[in] dtdp The data provider that should implement getDatasetAndLabels(...) function</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">setDecisionTreeDataProvider</span> <span class="p">(</span><span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">DecisionTreeTrainerDataProvider</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">LabelType</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">&gt;::</span><span class="n">Ptr</span><span class="o">&amp;</span> <span class="n">dtdp</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">decision_tree_trainer_data_provider_</span> <span class="o">=</span> <span class="n">dtdp</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Specify if the features are randomly generated at each split node.</span>
+<span class="cm">        * \param[in] b Do it or not.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">setRandomFeaturesAtSplitNode</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">random_features_at_split_node_</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Trains a decision tree using the set training data and settings.</span>
+<span class="cm">        * \param[out] tree Destination for the trained tree.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">train</span> <span class="p">(</span><span class="n">DecisionTree</span><span class="o">&lt;</span><span class="n">NodeType</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">tree</span><span class="p">);</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Trains a decision tree node from the specified features, label data, and examples.</span>
+<span class="cm">        * \param[in] features The feature pool used for training.</span>
+<span class="cm">        * \param[in] examples The examples used for training.</span>
+<span class="cm">        * \param[in] label_data The label data corresponding to the examples.</span>
+<span class="cm">        * \param[in] max_depth The maximum depth of the remaining tree.</span>
+<span class="cm">        * \param[out] node The resulting node.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">trainDecisionTreeNode</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">features</span><span class="p">,</span>
+                             <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">examples</span><span class="p">,</span>
+                             <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LabelType</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">label_data</span><span class="p">,</span>
+                             <span class="kt">size_t</span> <span class="n">max_depth</span><span class="p">,</span>
+                             <span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Creates uniformely distrebuted thresholds over the range of the supplied values.</span>
+<span class="cm">        * \param[in] num_of_thresholds The number of thresholds to create.</span>
+<span class="cm">        * \param[in] values The values for estimating the expected value range.</span>
+<span class="cm">        * \param[out] thresholds The resulting thresholds.</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">createThresholdsUniform</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">num_of_thresholds</span><span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">thresholds</span><span class="p">);</span>
+
+    <span class="k">private</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Maximum depth of the learned tree. */</span>
+      <span class="kt">size_t</span> <span class="n">max_tree_depth_</span><span class="p">;</span>
+      <span class="cm">/** \brief Number of features used to find optimal decision features. */</span>
+      <span class="kt">size_t</span> <span class="n">num_of_features_</span><span class="p">;</span>
+      <span class="cm">/** \brief Number of thresholds. */</span>
+      <span class="kt">size_t</span> <span class="n">num_of_thresholds_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief FeatureHandler instance, responsible for creating and evaluating features. */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">FeatureHandler</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">*</span> <span class="n">feature_handler_</span><span class="p">;</span>
+      <span class="cm">/** \brief StatsEstimator instance, responsible for gathering stats about a node. */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">StatsEstimator</span><span class="o">&lt;</span><span class="n">LabelType</span><span class="p">,</span> <span class="n">NodeType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">*</span> <span class="n">stats_estimator_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The training data set. */</span>
+      <span class="n">DataSet</span> <span class="n">data_set_</span><span class="p">;</span>
+      <span class="cm">/** \brief The label data. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LabelType</span><span class="o">&gt;</span> <span class="n">label_data_</span><span class="p">;</span>
+      <span class="cm">/** \brief The example data. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="n">examples_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Minimum number of examples to split a node. */</span>
+      <span class="kt">size_t</span> <span class="n">min_examples_for_split_</span><span class="p">;</span>
+      <span class="cm">/** \brief Thresholds to be used instead of generating uniform distributed thresholds. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">thresholds_</span><span class="p">;</span>
+      <span class="cm">/** \brief The data provider which is called before training a specific tree, if pointer is NULL, then data_set_ is used. */</span>
+      <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">DecisionTreeTrainerDataProvider</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">LabelType</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">decision_tree_trainer_data_provider_</span><span class="p">;</span>
+      <span class="cm">/** \brief If true, random features are generated at each node, otherwise, at start of training the tree */</span>
+      <span class="kt">bool</span> <span class="n">random_features_at_split_node_</span><span class="p">;</span>
+  <span class="p">};</span>
+
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ml/impl/dt/decision_tree_trainer.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_ml_impl_dt_decision_tree_trainer.hpp.html" class="btn btn-neutral float-right" title="File decision_tree_trainer.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_ml_dt_decision_tree_trainer.h.html" class="btn btn-neutral float-left" title="File decision_tree_trainer.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

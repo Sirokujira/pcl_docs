@@ -1,0 +1,1116 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File shot.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File shot_lrf.h" href="file_pcl_features_shot_lrf.h.html" />
+    <link rel="prev" title="File shot.hpp" href="file_pcl_features_impl_shot.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_impl_shot.hpp.html">File shot.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File shot.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_impl_shot.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-shot-hpp">
+<span id="program-listing-file-pcl-features-impl-shot-hpp"></span><h1>Program Listing for File shot.hpp<a class="headerlink" href="#program-listing-for-file-shot-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_impl_shot.hpp.html#file-pcl-features-impl-shot-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\impl\shot.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_FEATURES_IMPL_SHOT_H_</span>
+<span class="cp">#define PCL_FEATURES_IMPL_SHOT_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/shot.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/shot_lrf.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+
+<span class="c1">// Useful constants.</span>
+<span class="cp">#define PST_PI 3.1415926535897932384626433832795</span>
+<span class="cp">#define PST_RAD_45 0.78539816339744830961566084581988</span>
+<span class="cp">#define PST_RAD_90 1.5707963267948966192313216916398</span>
+<span class="cp">#define PST_RAD_135 2.3561944901923449288469825374596</span>
+<span class="cp">#define PST_RAD_180 PST_PI</span>
+<span class="cp">#define PST_RAD_360 6.283185307179586476925286766558</span>
+<span class="cp">#define PST_RAD_PI_7_8 2.7488935718910690836548129603691</span>
+
+<span class="k">const</span> <span class="kt">double</span> <span class="n">zeroDoubleEps15</span> <span class="o">=</span> <span class="mf">1E-15</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">float</span> <span class="n">zeroFloatEps8</span> <span class="o">=</span> <span class="mf">1E-8</span><span class="n">f</span><span class="p">;</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="cm">/** \brief Check if val1 and val2 are equals.</span>
+<span class="cm">  *</span>
+<span class="cm">  * \param[in] val1 first number to check.</span>
+<span class="cm">  * \param[in] val2 second number to check.</span>
+<span class="cm">  * \param[in] zeroDoubleEps epsilon</span>
+<span class="cm">  * \return true if val1 is equal to val2, false otherwise.</span>
+<span class="cm">  */</span>
+<span class="kr">inline</span> <span class="kt">bool</span>
+<span class="nf">areEquals</span> <span class="p">(</span><span class="kt">double</span> <span class="n">val1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">val2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">zeroDoubleEps</span> <span class="o">=</span> <span class="n">zeroDoubleEps15</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">val1</span> <span class="o">-</span> <span class="n">val2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">zeroDoubleEps</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="cm">/** \brief Check if val1 and val2 are equals.</span>
+<span class="cm">  *</span>
+<span class="cm">  * \param[in] val1 first number to check.</span>
+<span class="cm">  * \param[in] val2 second number to check.</span>
+<span class="cm">  * \param[in] zeroFloatEps epsilon</span>
+<span class="cm">  * \return true if val1 is equal to val2, false otherwise.</span>
+<span class="cm">  */</span>
+<span class="kr">inline</span> <span class="kt">bool</span>
+<span class="nf">areEquals</span> <span class="p">(</span><span class="kt">float</span> <span class="n">val1</span><span class="p">,</span> <span class="kt">float</span> <span class="n">val2</span><span class="p">,</span> <span class="kt">float</span> <span class="n">zeroFloatEps</span> <span class="o">=</span> <span class="n">zeroFloatEps8</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">fabs</span> <span class="p">(</span><span class="n">val1</span> <span class="o">-</span> <span class="n">val2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">zeroFloatEps</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">sRGB_LUT</span><span class="p">[</span><span class="mi">256</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span> <span class="mi">1</span><span class="p">};</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">sXYZ_LUT</span><span class="p">[</span><span class="mi">4000</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span> <span class="mi">1</span><span class="p">};</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">RGB2CIELAB</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">R</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">G</span><span class="p">,</span>
+                                                                              <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">B</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span>
+                                                                              <span class="kt">float</span> <span class="o">&amp;</span><span class="n">B2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">sRGB_LUT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0f</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">f</span> <span class="o">&gt;</span> <span class="mf">0.04045</span><span class="p">)</span>
+        <span class="n">sRGB_LUT</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">powf</span> <span class="p">((</span><span class="n">f</span> <span class="o">+</span> <span class="mf">0.055f</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.055f</span><span class="p">,</span> <span class="mf">2.4f</span><span class="p">);</span>
+      <span class="k">else</span>
+        <span class="n">sRGB_LUT</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span> <span class="o">/</span> <span class="mf">12.92f</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="mf">4000.0f</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">f</span> <span class="o">&gt;</span> <span class="mf">0.008856</span><span class="p">)</span>
+        <span class="n">sXYZ_LUT</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">powf</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.3333f</span><span class="p">));</span>
+      <span class="k">else</span>
+        <span class="n">sXYZ_LUT</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">((</span><span class="mf">7.787</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">16.0</span> <span class="o">/</span> <span class="mf">116.0</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kt">float</span> <span class="n">fr</span> <span class="o">=</span> <span class="n">sRGB_LUT</span><span class="p">[</span><span class="n">R</span><span class="p">];</span>
+  <span class="kt">float</span> <span class="n">fg</span> <span class="o">=</span> <span class="n">sRGB_LUT</span><span class="p">[</span><span class="n">G</span><span class="p">];</span>
+  <span class="kt">float</span> <span class="n">fb</span> <span class="o">=</span> <span class="n">sRGB_LUT</span><span class="p">[</span><span class="n">B</span><span class="p">];</span>
+
+  <span class="c1">// Use white = D65</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">fr</span> <span class="o">*</span> <span class="mf">0.412453f</span> <span class="o">+</span> <span class="n">fg</span> <span class="o">*</span> <span class="mf">0.357580f</span> <span class="o">+</span> <span class="n">fb</span> <span class="o">*</span> <span class="mf">0.180423f</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fr</span> <span class="o">*</span> <span class="mf">0.212671f</span> <span class="o">+</span> <span class="n">fg</span> <span class="o">*</span> <span class="mf">0.715160f</span> <span class="o">+</span> <span class="n">fb</span> <span class="o">*</span> <span class="mf">0.072169f</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">z</span> <span class="o">=</span> <span class="n">fr</span> <span class="o">*</span> <span class="mf">0.019334f</span> <span class="o">+</span> <span class="n">fg</span> <span class="o">*</span> <span class="mf">0.119193f</span> <span class="o">+</span> <span class="n">fb</span> <span class="o">*</span> <span class="mf">0.950227f</span><span class="p">;</span>
+
+  <span class="kt">float</span> <span class="n">vx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">0.95047f</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">vy</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">vz</span> <span class="o">=</span> <span class="n">z</span> <span class="o">/</span> <span class="mf">1.08883f</span><span class="p">;</span>
+
+  <span class="n">vx</span> <span class="o">=</span> <span class="n">sXYZ_LUT</span><span class="p">[</span><span class="kt">int</span><span class="p">(</span><span class="n">vx</span><span class="o">*</span><span class="mi">4000</span><span class="p">)];</span>
+  <span class="n">vy</span> <span class="o">=</span> <span class="n">sXYZ_LUT</span><span class="p">[</span><span class="kt">int</span><span class="p">(</span><span class="n">vy</span><span class="o">*</span><span class="mi">4000</span><span class="p">)];</span>
+  <span class="n">vz</span> <span class="o">=</span> <span class="n">sXYZ_LUT</span><span class="p">[</span><span class="kt">int</span><span class="p">(</span><span class="n">vz</span><span class="o">*</span><span class="mi">4000</span><span class="p">)];</span>
+
+  <span class="n">L</span> <span class="o">=</span> <span class="mf">116.0f</span> <span class="o">*</span> <span class="n">vy</span> <span class="o">-</span> <span class="mf">16.0f</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">L</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="mf">100.0f</span><span class="p">;</span>
+
+  <span class="n">A</span> <span class="o">=</span> <span class="mf">500.0f</span> <span class="o">*</span> <span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="n">vy</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="mf">120.0f</span><span class="p">;</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">A</span> <span class="o">&lt;-</span> <span class="mi">120</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="o">-</span><span class="mf">120.0f</span><span class="p">;</span>
+
+  <span class="n">B2</span> <span class="o">=</span> <span class="mf">200.0f</span> <span class="o">*</span> <span class="p">(</span><span class="n">vy</span> <span class="o">-</span> <span class="n">vz</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">B2</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">)</span>
+    <span class="n">B2</span> <span class="o">=</span> <span class="mf">120.0f</span><span class="p">;</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">B2</span><span class="o">&lt;-</span> <span class="mi">120</span><span class="p">)</span>
+    <span class="n">B2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">120.0f</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">initCompute</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">initCompute</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::initCompute] Init failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// SHOT cannot work with k-search</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">getKSearch</span> <span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span><span class="p">(</span>
+      <span class="s">&quot;[pcl::%s::initCompute] Error! Search method set to k-neighborhood. Call setKSearch(0) and setRadiusSearch( radius ) to use this class.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="n">getClassName</span><span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Default LRF estimation alg: SHOTLocalReferenceFrameEstimation</span>
+  <span class="k">typename</span> <span class="n">SHOTLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">lrf_estimator</span><span class="p">(</span><span class="k">new</span> <span class="n">SHOTLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span><span class="p">());</span>
+  <span class="n">lrf_estimator</span><span class="o">-&gt;</span><span class="n">setRadiusSearch</span> <span class="p">((</span><span class="n">lrf_radius_</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">lrf_radius_</span> <span class="p">:</span> <span class="n">search_radius_</span><span class="p">));</span>
+  <span class="n">lrf_estimator</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">input_</span><span class="p">);</span>
+  <span class="n">lrf_estimator</span><span class="o">-&gt;</span><span class="n">setIndices</span> <span class="p">(</span><span class="n">indices_</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fake_surface_</span><span class="p">)</span>
+    <span class="n">lrf_estimator</span><span class="o">-&gt;</span><span class="n">setSearchSurface</span><span class="p">(</span><span class="n">surface_</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">FeatureWithLocalReferenceFrames</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">initLocalReferenceFrames</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">(),</span> <span class="n">lrf_estimator</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::initCompute] Init failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">createBinDistanceShape</span> <span class="p">(</span>
+    <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">bin_distance_shape</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">bin_distance_shape</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="k">const</span> <span class="n">PointRFT</span><span class="o">&amp;</span> <span class="n">current_frame</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+  <span class="c1">//if (!std::isfinite (current_frame.rf[0]) || !std::isfinite (current_frame.rf[4]) || !std::isfinite (current_frame.rf[11]))</span>
+    <span class="c1">//return;</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_z</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="kt">unsigned</span> <span class="n">nan_counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_idx</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i_idx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// check NaN normal</span>
+    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">&amp;</span> <span class="n">normal_vec</span> <span class="o">=</span> <span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]].</span><span class="n">getNormalVector4fMap</span> <span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">normal_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">normal_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">normal_vec</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+    <span class="p">{</span>
+      <span class="n">bin_distance_shape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+      <span class="o">++</span><span class="n">nan_counter</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="c1">//double cosineDesc = feat[i].rf[6]*normal[0] + feat[i].rf[7]*normal[1] + feat[i].rf[8]*normal[2];</span>
+      <span class="kt">double</span> <span class="n">cosineDesc</span> <span class="o">=</span> <span class="n">normal_vec</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_z</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">cosineDesc</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">cosineDesc</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">cosineDesc</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">cosineDesc</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+
+      <span class="n">bin_distance_shape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">cosineDesc</span><span class="p">)</span> <span class="o">*</span> <span class="n">nr_shape_bins_</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">nan_counter</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::createBinDistanceShape] Point %d has %d (%f%%) NaN normals in its neighbourhood</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">(),</span> <span class="n">index</span><span class="p">,</span> <span class="n">nan_counter</span><span class="p">,</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">nan_counter</span><span class="p">)</span><span class="o">*</span><span class="mf">100.f</span><span class="o">/</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">())));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">normalizeHistogram</span> <span class="p">(</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">,</span> <span class="kt">int</span> <span class="n">desc_length</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Normalization is performed by considering the L2 norm</span>
+  <span class="c1">// and not the sum of bins, as reported in the ECCV paper.</span>
+  <span class="c1">// This is due to additional experiments performed by the authors after its pubblication,</span>
+  <span class="c1">// where L2 normalization turned out better at handling point density variations.</span>
+  <span class="kt">double</span> <span class="n">acc_norm</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">desc_length</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">acc_norm</span> <span class="o">+=</span> <span class="n">shot</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">shot</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+  <span class="n">acc_norm</span> <span class="o">=</span> <span class="n">sqrt</span> <span class="p">(</span><span class="n">acc_norm</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">desc_length</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">shot</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">acc_norm</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">interpolateSingleChannel</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">binDistance</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_bins</span><span class="p">,</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">&amp;</span> <span class="n">central_point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">)[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]].</span><span class="n">getVector4fMap</span> <span class="p">();</span>
+  <span class="k">const</span> <span class="n">PointRFT</span><span class="o">&amp;</span> <span class="n">current_frame</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">frames_</span><span class="p">)[</span><span class="n">index</span><span class="p">];</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_x</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_y</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_z</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_idx</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i_idx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span><span class="p">(</span><span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]].</span><span class="n">getVector4fMap</span> <span class="p">()</span> <span class="o">-</span> <span class="n">central_point</span><span class="p">;</span>
+    <span class="n">delta</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// Compute the Euclidean norm</span>
+   <span class="kt">double</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">sqrt</span> <span class="p">(</span><span class="n">sqr_dists</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">areEquals</span> <span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">xInFeatRef</span> <span class="o">=</span> <span class="n">delta</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_x</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">yInFeatRef</span> <span class="o">=</span> <span class="n">delta</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_y</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">zInFeatRef</span> <span class="o">=</span> <span class="n">delta</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_z</span><span class="p">);</span>
+
+    <span class="c1">// To avoid numerical problems afterwards</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-30</span><span class="p">)</span>
+      <span class="n">yInFeatRef</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">xInFeatRef</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-30</span><span class="p">)</span>
+      <span class="n">xInFeatRef</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">zInFeatRef</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-30</span><span class="p">)</span>
+      <span class="n">zInFeatRef</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bit4</span> <span class="o">=</span> <span class="p">((</span><span class="n">yInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">((</span><span class="n">yInFeatRef</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">xInFeatRef</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)))</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bit3</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="p">(((</span><span class="n">xInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">((</span><span class="n">xInFeatRef</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">yInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)))</span> <span class="o">?</span> <span class="o">!</span><span class="nl">bit4</span> <span class="p">:</span> <span class="n">bit4</span><span class="p">);</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">bit3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">bit3</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">desc_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">bit4</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">bit3</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">);</span>
+
+    <span class="n">desc_index</span> <span class="o">=</span> <span class="n">desc_index</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">xInFeatRef</span> <span class="o">*</span> <span class="n">yInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">xInFeatRef</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">))</span>
+      <span class="n">desc_index</span> <span class="o">+=</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">xInFeatRef</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">))</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="n">desc_index</span> <span class="o">+=</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">xInFeatRef</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">))</span> <span class="o">?</span> <span class="mi">4</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">desc_index</span> <span class="o">+=</span> <span class="n">zInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 2 RADII</span>
+    <span class="n">desc_index</span> <span class="o">+=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">radius1_2_</span><span class="p">)</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">step_index</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">floor</span> <span class="p">(</span><span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">+</span><span class="mf">0.5</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">volume_index</span> <span class="o">=</span> <span class="n">desc_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1">//Interpolation on the cosine (adjacent bins in the histogram)</span>
+    <span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">-=</span> <span class="n">step_index</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">intWeight</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">shot</span><span class="p">[</span><span class="n">volume_index</span> <span class="o">+</span> <span class="p">((</span><span class="n">step_index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">nr_bins</span><span class="p">)]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+    <span class="k">else</span>
+      <span class="n">shot</span><span class="p">[</span><span class="n">volume_index</span> <span class="o">+</span> <span class="p">((</span><span class="n">step_index</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nr_bins</span><span class="p">)</span> <span class="o">%</span> <span class="n">nr_bins</span><span class="p">)]</span> <span class="o">+=</span> <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binDistance</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+
+    <span class="c1">//Interpolation on the distance (adjacent husks)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">radius1_2_</span><span class="p">)</span>   <span class="c1">//external sphere</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">radiusDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">-</span> <span class="n">radius3_4_</span><span class="p">)</span> <span class="o">/</span> <span class="n">radius1_2_</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">radius3_4_</span><span class="p">)</span> <span class="c1">//most external sector, votes only for itself</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">radiusDistance</span><span class="p">;</span>  <span class="c1">//peso=1-d</span>
+      <span class="k">else</span>  <span class="c1">//3/4 of radius, votes also for the internal sphere</span>
+      <span class="p">{</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">radiusDistance</span><span class="p">;</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radiusDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>    <span class="c1">//internal sphere</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">radiusDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">-</span> <span class="n">radius1_4_</span><span class="p">)</span> <span class="o">/</span> <span class="n">radius1_2_</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="n">radius1_4_</span><span class="p">)</span> <span class="c1">//most internal sector, votes only for itself</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">radiusDistance</span><span class="p">;</span>  <span class="c1">//weight=1-d</span>
+      <span class="k">else</span>  <span class="c1">//3/4 of radius, votes also for the external sphere</span>
+      <span class="p">{</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">radiusDistance</span><span class="p">;</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radiusDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Interpolation on the inclination (adjacent vertical volumes)</span>
+    <span class="kt">double</span> <span class="n">inclinationCos</span> <span class="o">=</span> <span class="n">zInFeatRef</span> <span class="o">/</span> <span class="n">distance</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">inclinationCos</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+      <span class="n">inclinationCos</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">inclinationCos</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span>
+      <span class="n">inclinationCos</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">inclination</span> <span class="o">=</span> <span class="n">acos</span> <span class="p">(</span><span class="n">inclinationCos</span><span class="p">);</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="o">&amp;&amp;</span> <span class="n">inclination</span> <span class="o">&lt;=</span> <span class="n">PST_RAD_180</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&gt;</span> <span class="n">PST_RAD_90</span> <span class="o">||</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">-</span> <span class="n">PST_RAD_90</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-30</span> <span class="o">&amp;&amp;</span> <span class="n">zInFeatRef</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">inclinationDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">-</span> <span class="n">PST_RAD_135</span><span class="p">)</span> <span class="o">/</span> <span class="n">PST_RAD_90</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&gt;</span> <span class="n">PST_RAD_135</span><span class="p">)</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">((</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inclinationDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">inclinationDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">-</span> <span class="n">PST_RAD_45</span><span class="p">)</span> <span class="o">/</span> <span class="n">PST_RAD_90</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&lt;</span> <span class="n">PST_RAD_45</span><span class="p">)</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">((</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inclinationDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">yInFeatRef</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="o">||</span> <span class="n">xInFeatRef</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//Interpolation on the azimuth (adjacent horizontal volumes)</span>
+      <span class="kt">double</span> <span class="n">azimuth</span> <span class="o">=</span> <span class="n">atan2</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">,</span> <span class="n">xInFeatRef</span><span class="p">);</span>
+
+      <span class="kt">int</span> <span class="n">sel</span> <span class="o">=</span> <span class="n">desc_index</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">angularSectorSpan</span> <span class="o">=</span> <span class="n">PST_RAD_45</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">angularSectorStart</span> <span class="o">=</span> <span class="o">-</span> <span class="n">PST_RAD_PI_7_8</span><span class="p">;</span>
+
+      <span class="kt">double</span> <span class="n">azimuthDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">azimuth</span> <span class="o">-</span> <span class="p">(</span><span class="n">angularSectorStart</span> <span class="o">+</span> <span class="n">angularSectorSpan</span><span class="o">*</span><span class="n">sel</span><span class="p">))</span> <span class="o">/</span> <span class="n">angularSectorSpan</span><span class="p">;</span>
+
+      <span class="n">assert</span> <span class="p">((</span><span class="n">azimuthDistance</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="o">||</span> <span class="n">areEquals</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">azimuthDistance</span> <span class="o">&gt;</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">||</span> <span class="n">areEquals</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)));</span>
+
+      <span class="n">azimuthDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">)(</span><span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">azimuthDistance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">azimuthDistance</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">interp_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%</span> <span class="n">maxAngularSectors_</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">interp_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">maxAngularSectors_</span><span class="p">)</span> <span class="o">%</span> <span class="n">maxAngularSectors_</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">intWeight</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">azimuthDistance</span><span class="p">;</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">volume_index</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>  <span class="n">volume_index</span> <span class="o">+</span> <span class="n">step_index</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+    <span class="n">shot</span><span class="p">[</span><span class="n">volume_index</span> <span class="o">+</span> <span class="n">step_index</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">intWeight</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">interpolateDoubleChannel</span> <span class="p">(</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">binDistanceShape</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">binDistanceColor</span><span class="p">,</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_bins_shape</span><span class="p">,</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_bins_color</span><span class="p">,</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">central_point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">)[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]].</span><span class="n">getVector4fMap</span> <span class="p">();</span>
+  <span class="k">const</span> <span class="n">PointRFT</span><span class="o">&amp;</span> <span class="n">current_frame</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">frames_</span><span class="p">)[</span><span class="n">index</span><span class="p">];</span>
+
+  <span class="kt">int</span> <span class="n">shapeToColorStride</span> <span class="o">=</span> <span class="n">nr_grid_sector_</span><span class="o">*</span><span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_x</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_y</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">current_frame_z</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_idx</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i_idx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span><span class="p">(</span><span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]].</span><span class="n">getVector4fMap</span> <span class="p">()</span> <span class="o">-</span> <span class="n">central_point</span><span class="p">;</span>
+    <span class="n">delta</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// Compute the Euclidean norm</span>
+    <span class="kt">double</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">sqrt</span> <span class="p">(</span><span class="n">sqr_dists</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">areEquals</span> <span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">xInFeatRef</span> <span class="o">=</span> <span class="n">delta</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_x</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">yInFeatRef</span> <span class="o">=</span> <span class="n">delta</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_y</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">zInFeatRef</span> <span class="o">=</span> <span class="n">delta</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">current_frame_z</span><span class="p">);</span>
+
+    <span class="c1">// To avoid numerical problems afterwards</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-30</span><span class="p">)</span>
+      <span class="n">yInFeatRef</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">xInFeatRef</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-30</span><span class="p">)</span>
+      <span class="n">xInFeatRef</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">zInFeatRef</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-30</span><span class="p">)</span>
+      <span class="n">zInFeatRef</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bit4</span> <span class="o">=</span> <span class="p">((</span><span class="n">yInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">((</span><span class="n">yInFeatRef</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">xInFeatRef</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)))</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bit3</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="p">(((</span><span class="n">xInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">((</span><span class="n">xInFeatRef</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">yInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)))</span> <span class="o">?</span> <span class="o">!</span><span class="nl">bit4</span> <span class="p">:</span> <span class="n">bit4</span><span class="p">);</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">bit3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">bit3</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">desc_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">bit4</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">bit3</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">);</span>
+
+    <span class="n">desc_index</span> <span class="o">=</span> <span class="n">desc_index</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">xInFeatRef</span> <span class="o">*</span> <span class="n">yInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">xInFeatRef</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">))</span>
+      <span class="n">desc_index</span> <span class="o">+=</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">xInFeatRef</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">))</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="n">desc_index</span> <span class="o">+=</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">xInFeatRef</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">))</span> <span class="o">?</span> <span class="mi">4</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">desc_index</span> <span class="o">+=</span> <span class="n">zInFeatRef</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 2 RADII</span>
+    <span class="n">desc_index</span> <span class="o">+=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">radius1_2_</span><span class="p">)</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">step_index_shape</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">floor</span> <span class="p">(</span><span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">+</span><span class="mf">0.5</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">step_index_color</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">floor</span> <span class="p">(</span><span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">+</span><span class="mf">0.5</span><span class="p">));</span>
+
+    <span class="kt">int</span> <span class="n">volume_index_shape</span> <span class="o">=</span> <span class="n">desc_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">volume_index_color</span> <span class="o">=</span> <span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">desc_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1">//Interpolation on the cosine (adjacent bins in the histrogram)</span>
+    <span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">-=</span> <span class="n">step_index_shape</span><span class="p">;</span>
+    <span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">-=</span> <span class="n">step_index_color</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">intWeightShape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]));</span>
+    <span class="kt">double</span> <span class="n">intWeightColor</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">shot</span><span class="p">[</span><span class="n">volume_index_shape</span> <span class="o">+</span> <span class="p">((</span><span class="n">step_index_shape</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">nr_bins_shape</span><span class="p">)]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+    <span class="k">else</span>
+      <span class="n">shot</span><span class="p">[</span><span class="n">volume_index_shape</span> <span class="o">+</span> <span class="p">((</span><span class="n">step_index_shape</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nr_bins_shape</span><span class="p">)</span> <span class="o">%</span> <span class="n">nr_bins_shape</span><span class="p">)]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binDistanceShape</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">shot</span><span class="p">[</span><span class="n">volume_index_color</span> <span class="o">+</span> <span class="p">((</span><span class="n">step_index_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">nr_bins_color</span><span class="p">)]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+    <span class="k">else</span>
+      <span class="n">shot</span><span class="p">[</span><span class="n">volume_index_color</span> <span class="o">+</span> <span class="p">((</span><span class="n">step_index_color</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nr_bins_color</span><span class="p">)</span> <span class="o">%</span> <span class="n">nr_bins_color</span><span class="p">)]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]);</span>
+
+    <span class="c1">//Interpolation on the distance (adjacent husks)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">radius1_2_</span><span class="p">)</span>   <span class="c1">//external sphere</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">radiusDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">-</span> <span class="n">radius3_4_</span><span class="p">)</span> <span class="o">/</span> <span class="n">radius1_2_</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">radius3_4_</span><span class="p">)</span> <span class="c1">//most external sector, votes only for itself</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">radiusDistance</span><span class="p">;</span> <span class="c1">//weight=1-d</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">radiusDistance</span><span class="p">;</span> <span class="c1">//weight=1-d</span>
+      <span class="p">}</span>
+      <span class="k">else</span>  <span class="c1">//3/4 of radius, votes also for the internal sphere</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">radiusDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">radiusDistance</span><span class="p">;</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radiusDistance</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radiusDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>    <span class="c1">//internal sphere</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">radiusDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance</span> <span class="o">-</span> <span class="n">radius1_4_</span><span class="p">)</span> <span class="o">/</span> <span class="n">radius1_2_</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="n">radius1_4_</span><span class="p">)</span> <span class="c1">//most internal sector, votes only for itself</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">radiusDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">radiusDistance</span><span class="p">;</span> <span class="c1">//weight=1-d</span>
+      <span class="p">}</span>
+      <span class="k">else</span>  <span class="c1">//3/4 of radius, votes also for the external sphere</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">radiusDistance</span><span class="p">;</span> <span class="c1">//weight=1-d</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">radiusDistance</span><span class="p">;</span> <span class="c1">//weight=1-d</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radiusDistance</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radiusDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Interpolation on the inclination (adjacent vertical volumes)</span>
+    <span class="kt">double</span> <span class="n">inclinationCos</span> <span class="o">=</span> <span class="n">zInFeatRef</span> <span class="o">/</span> <span class="n">distance</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">inclinationCos</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+      <span class="n">inclinationCos</span> <span class="o">=</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">inclinationCos</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span>
+      <span class="n">inclinationCos</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">inclination</span> <span class="o">=</span> <span class="n">acos</span> <span class="p">(</span><span class="n">inclinationCos</span><span class="p">);</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="o">&amp;&amp;</span> <span class="n">inclination</span> <span class="o">&lt;=</span> <span class="n">PST_RAD_180</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&gt;</span> <span class="n">PST_RAD_90</span> <span class="o">||</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">-</span> <span class="n">PST_RAD_90</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-30</span> <span class="o">&amp;&amp;</span> <span class="n">zInFeatRef</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">inclinationDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">-</span> <span class="n">PST_RAD_135</span><span class="p">)</span> <span class="o">/</span> <span class="n">PST_RAD_90</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&gt;</span> <span class="n">PST_RAD_135</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">((</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inclinationDistance</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inclinationDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">inclinationDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">-</span> <span class="n">PST_RAD_45</span><span class="p">)</span> <span class="o">/</span> <span class="n">PST_RAD_90</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">inclination</span> <span class="o">&lt;</span> <span class="n">PST_RAD_45</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">inclinationDistance</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">((</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inclinationDistance</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inclinationDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">yInFeatRef</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="o">||</span> <span class="n">xInFeatRef</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//Interpolation on the azimuth (adjacent horizontal volumes)</span>
+      <span class="kt">double</span> <span class="n">azimuth</span> <span class="o">=</span> <span class="n">atan2</span> <span class="p">(</span><span class="n">yInFeatRef</span><span class="p">,</span> <span class="n">xInFeatRef</span><span class="p">);</span>
+
+      <span class="kt">int</span> <span class="n">sel</span> <span class="o">=</span> <span class="n">desc_index</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">angularSectorSpan</span> <span class="o">=</span> <span class="n">PST_RAD_45</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">angularSectorStart</span> <span class="o">=</span> <span class="o">-</span> <span class="n">PST_RAD_PI_7_8</span><span class="p">;</span>
+
+      <span class="kt">double</span> <span class="n">azimuthDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">azimuth</span> <span class="o">-</span> <span class="p">(</span><span class="n">angularSectorStart</span> <span class="o">+</span> <span class="n">angularSectorSpan</span><span class="o">*</span><span class="n">sel</span><span class="p">))</span> <span class="o">/</span> <span class="n">angularSectorSpan</span><span class="p">;</span>
+      <span class="n">assert</span> <span class="p">((</span><span class="n">azimuthDistance</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="o">||</span> <span class="n">areEquals</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">azimuthDistance</span> <span class="o">&gt;</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">||</span> <span class="n">areEquals</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)));</span>
+      <span class="n">azimuthDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">)(</span><span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">azimuthDistance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">azimuthDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">azimuthDistance</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">interp_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%</span> <span class="n">maxAngularSectors_</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">interp_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">desc_index</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">maxAngularSectors_</span><span class="p">)</span> <span class="o">%</span> <span class="n">maxAngularSectors_</span><span class="p">;</span>
+        <span class="n">intWeightShape</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">azimuthDistance</span><span class="p">;</span>
+        <span class="n">intWeightColor</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">azimuthDistance</span><span class="p">;</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_shape</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">);</span>
+        <span class="n">shot</span><span class="p">[</span><span class="n">shapeToColorStride</span> <span class="o">+</span> <span class="n">interp_index</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_bins_color</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">-=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">azimuthDistance</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">volume_index_shape</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>  <span class="n">volume_index_shape</span> <span class="o">+</span> <span class="n">step_index_shape</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+    <span class="n">assert</span> <span class="p">(</span><span class="n">volume_index_color</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>  <span class="n">volume_index_color</span> <span class="o">+</span> <span class="n">step_index_color</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">);</span>
+    <span class="n">shot</span><span class="p">[</span><span class="n">volume_index_shape</span> <span class="o">+</span> <span class="n">step_index_shape</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">intWeightShape</span><span class="p">);</span>
+    <span class="n">shot</span><span class="p">[</span><span class="n">volume_index_color</span> <span class="o">+</span> <span class="n">step_index_color</span><span class="p">]</span> <span class="o">+=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">intWeightColor</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">computePointSHOT</span> <span class="p">(</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Clear the resultant shot</span>
+  <span class="n">shot</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">binDistanceShape</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">binDistanceColor</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">nNeighbors</span> <span class="o">=</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="c1">//Skip the current feature if the number of its neighbors is not sufficient for its description</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">nNeighbors</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computePointSHOT] Warning! Neighborhood has less than 5 vertexes. Aborting description of point with index %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                  <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">(),</span> <span class="p">(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]);</span>
+
+    <span class="n">shot</span><span class="p">.</span><span class="n">setConstant</span><span class="p">(</span><span class="n">descLength_</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">()</span> <span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">//If shape description is enabled, compute the bins activated by each neighbor of the current feature in the shape histogram</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">b_describe_shape_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="o">-&gt;</span><span class="n">createBinDistanceShape</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">binDistanceShape</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//If color description is enabled, compute the bins activated by each neighbor of the current feature in the color histogram</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">b_describe_color_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">binDistanceColor</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">nNeighbors</span><span class="p">);</span>
+
+    <span class="c1">//unsigned char redRef = input_-&gt;points[(*indices_)[index]].rgba &gt;&gt; 16 &amp; 0xFF;</span>
+    <span class="c1">//unsigned char greenRef = input_-&gt;points[(*indices_)[index]].rgba &gt;&gt; 8&amp; 0xFF;</span>
+    <span class="c1">//unsigned char blueRef = input_-&gt;points[(*indices_)[index]].rgba &amp; 0xFF;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">redRef</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]].</span><span class="n">r</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">greenRef</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]].</span><span class="n">g</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">blueRef</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]].</span><span class="n">b</span><span class="p">;</span>
+
+    <span class="kt">float</span> <span class="n">LRef</span><span class="p">,</span> <span class="n">aRef</span><span class="p">,</span> <span class="n">bRef</span><span class="p">;</span>
+
+    <span class="n">RGB2CIELAB</span> <span class="p">(</span><span class="n">redRef</span><span class="p">,</span> <span class="n">greenRef</span><span class="p">,</span> <span class="n">blueRef</span><span class="p">,</span> <span class="n">LRef</span><span class="p">,</span> <span class="n">aRef</span><span class="p">,</span> <span class="n">bRef</span><span class="p">);</span>
+    <span class="n">LRef</span> <span class="o">/=</span> <span class="mf">100.0f</span><span class="p">;</span>
+    <span class="n">aRef</span> <span class="o">/=</span> <span class="mf">120.0f</span><span class="p">;</span>
+    <span class="n">bRef</span> <span class="o">/=</span> <span class="mf">120.0f</span><span class="p">;</span>    <span class="c1">//normalized LAB components (0&lt;L&lt;1, -1&lt;a&lt;1, -1&lt;b&lt;1)</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_idx</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i_idx</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//unsigned char red = surface_-&gt;points[indices[i_idx]].rgba &gt;&gt; 16 &amp; 0xFF;</span>
+      <span class="c1">//unsigned char green = surface_-&gt;points[indices[i_idx]].rgba &gt;&gt; 8 &amp; 0xFF;</span>
+      <span class="c1">//unsigned char blue = surface_-&gt;points[indices[i_idx]].rgba &amp; 0xFF;</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">red</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]].</span><span class="n">r</span><span class="p">;</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">green</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]].</span><span class="n">g</span><span class="p">;</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">blue</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]].</span><span class="n">b</span><span class="p">;</span>
+
+      <span class="kt">float</span> <span class="n">L</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+
+      <span class="n">RGB2CIELAB</span> <span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+      <span class="n">L</span> <span class="o">/=</span> <span class="mf">100.0f</span><span class="p">;</span>
+      <span class="n">a</span> <span class="o">/=</span> <span class="mf">120.0f</span><span class="p">;</span>
+      <span class="n">b</span> <span class="o">/=</span> <span class="mf">120.0f</span><span class="p">;</span>   <span class="c1">//normalized LAB components (0&lt;L&lt;1, -1&lt;a&lt;1, -1&lt;b&lt;1)</span>
+
+      <span class="kt">double</span> <span class="n">colorDistance</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">fabs</span> <span class="p">(</span><span class="n">LRef</span> <span class="o">-</span> <span class="n">L</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">fabs</span> <span class="p">(</span><span class="n">aRef</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">fabs</span> <span class="p">(</span><span class="n">bRef</span> <span class="o">-</span> <span class="n">b</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">colorDistance</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">colorDistance</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">colorDistance</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">colorDistance</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+      <span class="n">binDistanceColor</span><span class="p">[</span><span class="n">i_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">colorDistance</span> <span class="o">*</span> <span class="n">nr_color_bins_</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">//Apply quadrilinear interpolation on the activated bins in the shape and/or color histogram(s)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">b_describe_shape_</span> <span class="o">&amp;&amp;</span> <span class="n">b_describe_color_</span><span class="p">)</span>
+    <span class="n">interpolateDoubleChannel</span> <span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">sqr_dists</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">binDistanceShape</span><span class="p">,</span> <span class="n">binDistanceColor</span><span class="p">,</span>
+                              <span class="n">nr_shape_bins_</span><span class="p">,</span> <span class="n">nr_color_bins_</span><span class="p">,</span>
+                              <span class="n">shot</span><span class="p">);</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">b_describe_color_</span><span class="p">)</span>
+    <span class="n">interpolateSingleChannel</span> <span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">sqr_dists</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">binDistanceColor</span><span class="p">,</span> <span class="n">nr_color_bins_</span><span class="p">,</span> <span class="n">shot</span><span class="p">);</span>
+  <span class="k">else</span>
+    <span class="nf">interpolateSingleChannel</span> <span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">sqr_dists</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">binDistanceShape</span><span class="p">,</span> <span class="n">nr_shape_bins_</span><span class="p">,</span> <span class="n">shot</span><span class="p">);</span>
+
+  <span class="c1">// Normalize the final histogram</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">normalizeHistogram</span> <span class="p">(</span><span class="n">shot</span><span class="p">,</span> <span class="n">descLength_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">computePointSHOT</span> <span class="p">(</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//Skip the current feature if the number of its neighbors is not sufficient for its description</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computePointSHOT] Warning! Neighborhood has less than 5 vertexes. Aborting description of point with index %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+                  <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">(),</span> <span class="p">(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">index</span><span class="p">]);</span>
+
+    <span class="n">shot</span><span class="p">.</span><span class="n">setConstant</span><span class="p">(</span><span class="n">descLength_</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">()</span> <span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+   <span class="c1">// Clear the resultant shot</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">binDistanceShape</span><span class="p">;</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">createBinDistanceShape</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">binDistanceShape</span><span class="p">);</span>
+
+  <span class="c1">// Interpolate</span>
+  <span class="n">shot</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+  <span class="n">interpolateSingleChannel</span> <span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">sqr_dists</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">binDistanceShape</span><span class="p">,</span> <span class="n">nr_shape_bins_</span><span class="p">,</span> <span class="n">shot</span><span class="p">);</span>
+
+  <span class="c1">// Normalize the final histogram</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">normalizeHistogram</span> <span class="p">(</span><span class="n">shot</span><span class="p">,</span> <span class="n">descLength_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">computeFeature</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">descLength_</span> <span class="o">=</span> <span class="n">nr_grid_sector_</span> <span class="o">*</span> <span class="p">(</span><span class="n">nr_shape_bins_</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">sqradius_</span> <span class="o">=</span> <span class="n">search_radius_</span> <span class="o">*</span> <span class="n">search_radius_</span><span class="p">;</span>
+  <span class="n">radius3_4_</span> <span class="o">=</span> <span class="p">(</span><span class="n">search_radius_</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="n">radius1_4_</span> <span class="o">=</span> <span class="n">search_radius_</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="n">radius1_2_</span> <span class="o">=</span> <span class="n">search_radius_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="n">assert</span><span class="p">(</span><span class="n">descLength_</span> <span class="o">==</span> <span class="mi">352</span><span class="p">);</span>
+
+  <span class="n">shot_</span><span class="p">.</span><span class="n">setZero</span> <span class="p">(</span><span class="n">descLength_</span><span class="p">);</span>
+
+  <span class="c1">// Allocate enough space to hold the results</span>
+  <span class="c1">// \note This resize is irrelevant for a radiusSearch ().</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span> <span class="p">(</span><span class="n">k_</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_dists</span> <span class="p">(</span><span class="n">k_</span><span class="p">);</span>
+
+  <span class="n">output</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="c1">// Iterating over the entire index vector</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">lrf_is_nan</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">PointRFT</span><span class="o">&amp;</span> <span class="n">current_frame</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">frames_</span><span class="p">)[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="p">{</span>
+      <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeFeature] The local reference frame is not valid! Aborting description of point with index %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">(),</span> <span class="p">(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">idx</span><span class="p">]);</span>
+      <span class="n">lrf_is_nan</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isFinite</span> <span class="p">((</span><span class="o">*</span><span class="n">input_</span><span class="p">)[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">idx</span><span class="p">]])</span> <span class="o">||</span>
+        <span class="n">lrf_is_nan</span> <span class="o">||</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">searchForNeighbors</span> <span class="p">((</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">idx</span><span class="p">],</span> <span class="n">search_parameter_</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_dists</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Copy into the resultant cloud</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">descriptor</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+
+      <span class="n">output</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Estimate the SHOT descriptor at each patch</span>
+    <span class="n">computePointSHOT</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">idx</span><span class="p">),</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_dists</span><span class="p">,</span> <span class="n">shot_</span><span class="p">);</span>
+
+    <span class="c1">// Copy into the resultant cloud</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">descriptor</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">shot_</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">x_axis</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">y_axis</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">z_axis</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">computeFeature</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Compute the current length of the descriptor</span>
+  <span class="n">descLength_</span> <span class="o">=</span> <span class="p">(</span><span class="n">b_describe_shape_</span><span class="p">)</span> <span class="o">?</span> <span class="n">nr_grid_sector_</span><span class="o">*</span><span class="p">(</span><span class="n">nr_shape_bins_</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">descLength_</span> <span class="o">+=</span>   <span class="p">(</span><span class="n">b_describe_color_</span><span class="p">)</span> <span class="o">?</span> <span class="n">nr_grid_sector_</span><span class="o">*</span><span class="p">(</span><span class="n">nr_color_bins_</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="n">assert</span><span class="p">(</span> <span class="p">(</span><span class="o">!</span><span class="n">b_describe_color_</span> <span class="o">&amp;&amp;</span> <span class="n">b_describe_shape_</span> <span class="o">&amp;&amp;</span> <span class="n">descLength_</span> <span class="o">==</span> <span class="mi">352</span><span class="p">)</span> <span class="o">||</span>
+          <span class="p">(</span><span class="n">b_describe_color_</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">b_describe_shape_</span> <span class="o">&amp;&amp;</span> <span class="n">descLength_</span> <span class="o">==</span> <span class="mi">992</span><span class="p">)</span> <span class="o">||</span>
+          <span class="p">(</span><span class="n">b_describe_color_</span> <span class="o">&amp;&amp;</span> <span class="n">b_describe_shape_</span> <span class="o">&amp;&amp;</span> <span class="n">descLength_</span> <span class="o">==</span> <span class="mi">1344</span><span class="p">)</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Useful values</span>
+  <span class="n">sqradius_</span> <span class="o">=</span> <span class="n">search_radius_</span><span class="o">*</span><span class="n">search_radius_</span><span class="p">;</span>
+  <span class="n">radius3_4_</span> <span class="o">=</span> <span class="p">(</span><span class="n">search_radius_</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="n">radius1_4_</span> <span class="o">=</span> <span class="n">search_radius_</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="n">radius1_2_</span> <span class="o">=</span> <span class="n">search_radius_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="n">shot_</span><span class="p">.</span><span class="n">setZero</span> <span class="p">(</span><span class="n">descLength_</span><span class="p">);</span>
+
+  <span class="c1">// Allocate enough space to hold the results</span>
+  <span class="c1">// \note This resize is irrelevant for a radiusSearch ().</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span> <span class="p">(</span><span class="n">k_</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_dists</span> <span class="p">(</span><span class="n">k_</span><span class="p">);</span>
+
+  <span class="n">output</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="c1">// Iterating over the entire index vector</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">idx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">lrf_is_nan</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">PointRFT</span><span class="o">&amp;</span> <span class="n">current_frame</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">frames_</span><span class="p">)[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">current_frame</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="p">{</span>
+      <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeFeature] The local reference frame is not valid! Aborting description of point with index %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">(),</span> <span class="p">(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">idx</span><span class="p">]);</span>
+      <span class="n">lrf_is_nan</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isFinite</span> <span class="p">((</span><span class="o">*</span><span class="n">input_</span><span class="p">)[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">idx</span><span class="p">]])</span> <span class="o">||</span>
+        <span class="n">lrf_is_nan</span> <span class="o">||</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">searchForNeighbors</span> <span class="p">((</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">idx</span><span class="p">],</span> <span class="n">search_parameter_</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_dists</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Copy into the resultant cloud</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">descriptor</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+
+      <span class="n">output</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Compute the SHOT descriptor for the current 3D feature</span>
+    <span class="n">computePointSHOT</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">idx</span><span class="p">),</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_dists</span><span class="p">,</span> <span class="n">shot_</span><span class="p">);</span>
+
+    <span class="c1">// Copy into the resultant cloud</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">descLength_</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">descriptor</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">shot_</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">x_axis</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">y_axis</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">rf</span><span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">z_axis</span><span class="p">[</span><span class="n">d</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_SHOTEstimationBase(T,NT,OutT,RFT) template class PCL_EXPORTS pcl::SHOTEstimationBase&lt;T,NT,OutT,RFT&gt;;</span>
+<span class="cp">#define PCL_INSTANTIATE_SHOTEstimation(T,NT,OutT,RFT) template class PCL_EXPORTS pcl::SHOTEstimation&lt;T,NT,OutT,RFT&gt;;</span>
+<span class="cp">#define PCL_INSTANTIATE_SHOTColorEstimation(T,NT,OutT,RFT) template class PCL_EXPORTS pcl::SHOTColorEstimation&lt;T,NT,OutT,RFT&gt;;</span>
+
+<span class="cp">#endif    </span><span class="c1">// PCL_FEATURES_IMPL_SHOT_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_shot_lrf.h.html" class="btn btn-neutral float-right" title="File shot_lrf.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_impl_shot.hpp.html" class="btn btn-neutral float-left" title="File shot.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

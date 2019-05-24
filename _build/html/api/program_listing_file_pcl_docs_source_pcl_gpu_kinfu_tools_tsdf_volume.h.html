@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File tsdf_volume.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File tsdf_volume.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_source_pcl_gpu_kinfu_tools_tsdf_volume.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-tsdf-volume-h">
+<span id="program-listing-file-pcl-docs-source-pcl-gpu-kinfu-tools-tsdf-volume-h"></span><h1>Program Listing for File tsdf_volume.h<a class="headerlink" href="#program-listing-for-file-tsdf-volume-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_source_pcl_gpu_kinfu_tools_tsdf_volume.h.html#file-pcl-docs-source-pcl-gpu-kinfu-tools-tsdf-volume-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\source\pcl\gpu\kinfu\tools\tsdf_volume.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Copyright (c) 2011, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  $Id: tsdf_volume.h 6459 2012-07-18 07:50:37Z dpb $</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+
+
+<span class="cp">#define DEFAULT_GRID_RES_X 512  </span><span class="c1">// pcl::device::VOLUME_X ( and _Y, _Z)</span>
+<span class="cp">#define DEFAULT_GRID_RES_Y 512</span>
+<span class="cp">#define DEFAULT_GRID_RES_Z 512</span>
+
+<span class="cp">#define DEFAULT_VOLUME_SIZE_X 3000</span>
+<span class="cp">#define DEFAULT_VOLUME_SIZE_Y 3000</span>
+<span class="cp">#define DEFAULT_VOLUME_SIZE_Z 3000</span>
+
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">VoxelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">WeightT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">TSDFVolume</span>
+  <span class="p">{</span>
+  <span class="k">public</span><span class="o">:</span>
+
+    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TSDFVolume</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="p">,</span> <span class="n">WeightT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">TSDFVolume</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="p">,</span> <span class="n">WeightT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+    <span class="c1">// typedef Eigen::Matrix&lt;VoxelT, Eigen::Dynamic, 1&gt; VoxelTVec;</span>
+    <span class="k">typedef</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">VoxelTVec</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Structure storing voxel grid resolution, volume size (in mm) and element_size of stored data */</span>
+    <span class="k">struct</span> <span class="n">Header</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="n">resolution</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">volume_size</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">volume_element_size</span><span class="p">,</span> <span class="n">weights_element_size</span><span class="p">;</span>
+
+      <span class="n">Header</span> <span class="p">()</span>
+        <span class="o">:</span> <span class="n">resolution</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+          <span class="n">volume_size</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+          <span class="n">volume_element_size</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">VoxelT</span><span class="p">)),</span>
+          <span class="n">weights_element_size</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">WeightT</span><span class="p">))</span>
+      <span class="p">{};</span>
+
+      <span class="n">Header</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">resolution</span> <span class="p">(</span><span class="n">res</span><span class="p">),</span>
+          <span class="n">volume_size</span> <span class="p">(</span><span class="n">size</span><span class="p">),</span>
+          <span class="n">volume_element_size</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">VoxelT</span><span class="p">)),</span>
+          <span class="n">weights_element_size</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">WeightT</span><span class="p">))</span>
+      <span class="p">{};</span>
+
+      <span class="kr">inline</span> <span class="kt">size_t</span>
+      <span class="nf">getVolumeSize</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="p">};</span>
+
+      <span class="k">friend</span> <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span>
+      <span class="k">operator</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Header</span><span class="o">&amp;</span> <span class="n">h</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(resolution = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">h</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, volume size = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">h</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="p">);</span>
+      <span class="p">}</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+
+    <span class="p">};</span>
+
+  <span class="cp">#define DEFAULT_TRANCATION_DISTANCE 30.0f</span>
+
+    <span class="cm">/** \brief Camera intrinsics structure</span>
+<span class="cm">      */</span>
+    <span class="k">struct</span> <span class="n">Intr</span>
+    <span class="p">{</span>
+      <span class="kt">float</span> <span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">;</span>
+      <span class="n">Intr</span> <span class="p">()</span> <span class="p">{};</span>
+      <span class="n">Intr</span> <span class="p">(</span><span class="kt">float</span> <span class="n">fx_</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fy_</span><span class="p">,</span> <span class="kt">float</span> <span class="n">cx_</span><span class="p">,</span> <span class="kt">float</span> <span class="n">cy_</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">fx</span><span class="p">(</span><span class="n">fx_</span><span class="p">),</span> <span class="n">fy</span><span class="p">(</span><span class="n">fy_</span><span class="p">),</span> <span class="n">cx</span><span class="p">(</span><span class="n">cx_</span><span class="p">),</span> <span class="n">cy</span><span class="p">(</span><span class="n">cy_</span><span class="p">)</span> <span class="p">{};</span>
+
+      <span class="n">Intr</span> <span class="nf">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">level_index</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">div</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">level_index</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">Intr</span> <span class="p">(</span><span class="n">fx</span> <span class="o">/</span> <span class="n">div</span><span class="p">,</span> <span class="n">fy</span> <span class="o">/</span> <span class="n">div</span><span class="p">,</span> <span class="n">cx</span> <span class="o">/</span> <span class="n">div</span><span class="p">,</span> <span class="n">cy</span> <span class="o">/</span> <span class="n">div</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="k">friend</span> <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span>
+      <span class="k">operator</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;([f = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">intr</span><span class="p">.</span><span class="n">fx</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">intr</span><span class="p">.</span><span class="n">fy</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;] [cp = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">intr</span><span class="p">.</span><span class="n">cx</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">intr</span><span class="p">.</span><span class="n">cy</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;])&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="p">};</span>
+
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="c1">// Constructors</span>
+
+    <span class="cm">/** \brief Default constructor */</span>
+    <span class="n">TSDFVolume</span> <span class="p">()</span>
+      <span class="o">:</span> <span class="n">volume_</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="o">&gt;</span><span class="p">),</span>
+        <span class="n">weights_</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">WeightT</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="p">{};</span>
+
+    <span class="cm">/** \brief Constructor loading data from file */</span>
+    <span class="n">TSDFVolume</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">volume_</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="o">&gt;</span><span class="p">),</span>
+        <span class="n">weights_</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">WeightT</span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">load</span> <span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;done [&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;]&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="k">else</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;error!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Set the header directly. Useful if directly writing into volume and weights */</span>
+    <span class="kr">inline</span> <span class="kt">void</span>
+    <span class="nf">setHeader</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">resolution</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">volume_size</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">header_</span> <span class="o">=</span> <span class="n">Header</span> <span class="p">(</span><span class="n">resolution</span><span class="p">,</span> <span class="n">volume_size</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">volume_</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">())</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">console</span><span class="o">::</span><span class="n">print_warn</span> <span class="p">(</span><span class="s">&quot;[TSDFVolume::setHeader] Header volume size (%d) doesn&#39;t fit underlying data size (%d)&quot;</span><span class="p">,</span> <span class="n">volume_</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">(),</span> <span class="n">size</span><span class="p">());</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Resizes the internal storage and updates the header accordingly */</span>
+    <span class="kr">inline</span> <span class="kt">void</span>
+    <span class="nf">resize</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">grid_resolution</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">volume_size</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="p">(</span><span class="n">DEFAULT_VOLUME_SIZE_X</span><span class="p">,</span> <span class="n">DEFAULT_VOLUME_SIZE_Y</span><span class="p">,</span> <span class="n">DEFAULT_VOLUME_SIZE_Z</span><span class="p">))</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">lin_size</span> <span class="o">=</span> <span class="n">grid_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_resolution</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="n">volume_</span><span class="o">-&gt;</span><span class="n">resize</span> <span class="p">(</span><span class="n">lin_size</span><span class="p">);</span>
+      <span class="n">weights_</span><span class="o">-&gt;</span><span class="n">resize</span> <span class="p">(</span><span class="n">lin_size</span><span class="p">);</span>
+      <span class="n">setHeader</span> <span class="p">(</span><span class="n">grid_resolution</span><span class="p">,</span> <span class="n">volume_size</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Resize internal storage and header to default sizes defined in tsdf_volume.h */</span>
+    <span class="kr">inline</span> <span class="kt">void</span>
+    <span class="nf">resizeDefaultSize</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="n">resize</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="p">(</span><span class="n">DEFAULT_GRID_RES_X</span><span class="p">,</span> <span class="n">DEFAULT_GRID_RES_Y</span><span class="p">,</span> <span class="n">DEFAULT_GRID_RES_Z</span><span class="p">),</span>
+              <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="p">(</span><span class="n">DEFAULT_VOLUME_SIZE_X</span><span class="p">,</span> <span class="n">DEFAULT_VOLUME_SIZE_Y</span><span class="p">,</span> <span class="n">DEFAULT_VOLUME_SIZE_Z</span><span class="p">));</span>
+    <span class="p">};</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="c1">// Storage and element access</span>
+
+    <span class="cm">/** \brief Loads volume from file */</span>
+    <span class="kt">bool</span>
+    <span class="nf">load</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">binary</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Saves volume to file */</span>
+    <span class="kt">bool</span>
+    <span class="nf">save</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;tsdf_volume.dat&quot;</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">binary</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Returns overall number of voxels in grid */</span>
+    <span class="kr">inline</span> <span class="kt">size_t</span>
+    <span class="nf">size</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">header_</span><span class="p">.</span><span class="n">getVolumeSize</span><span class="p">();</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns the volume size in mm */</span>
+    <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span>
+    <span class="n">volumeSize</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">header_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns the size of one voxel in mm */</span>
+    <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span>
+    <span class="n">voxelSize</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Array3f</span> <span class="n">res</span> <span class="o">=</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">array</span><span class="p">().</span><span class="k">template</span> <span class="n">cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="k">return</span> <span class="n">header_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">array</span><span class="p">()</span> <span class="o">/</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns the voxel grid resolution */</span>
+    <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span>
+    <span class="n">gridResolution</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns constant reference to header */</span>
+    <span class="kr">inline</span> <span class="k">const</span> <span class="n">Header</span> <span class="o">&amp;</span>
+    <span class="n">header</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">header_</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns constant reference to the volume std::vector */</span>
+    <span class="kr">inline</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="o">&gt;</span> <span class="o">&amp;</span>
+    <span class="n">volume</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">volume_</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns writebale(!) reference to volume */</span>
+    <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="o">&gt;</span> <span class="o">&amp;</span>
+    <span class="n">volumeWriteable</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">volume_</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns constant reference to the weights std::vector */</span>
+    <span class="kr">inline</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">WeightT</span><span class="o">&gt;</span> <span class="o">&amp;</span>
+    <span class="n">weights</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">weights_</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="cm">/** \brief Returns writebale(!) reference to volume */</span>
+    <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">WeightT</span><span class="o">&gt;</span> <span class="o">&amp;</span>
+    <span class="n">weightsWriteable</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">weights_</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="c1">// Functionality</span>
+
+    <span class="cm">/** \brief Converts volume to cloud of TSDF values</span>
+<span class="cm">      * \param[ou] cloud - the output point cloud</span>
+<span class="cm">      * \param[in] step - the decimation step to use</span>
+<span class="cm">      */</span>
+    <span class="kt">void</span>
+    <span class="nf">convertToTsdfCloud</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">unsigned</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Converts the volume to a surface representation via a point cloud */</span>
+  <span class="c1">//  void</span>
+  <span class="c1">//  convertToCloud (pcl::PointCloud&lt;pcl::PointXYZ&gt;::Ptr &amp;cloud) const;</span>
+
+    <span class="cm">/** \brief Crate Volume from Point Cloud */</span>
+  <span class="c1">//   template &lt;typename PointT&gt; void</span>
+  <span class="c1">//   createFromCloud (const typename pcl::PointCloud&lt;PointT&gt;::ConstPtr &amp;cloud, const Intr &amp;intr);</span>
+
+    <span class="cm">/** \brief Returns the 3D voxel coordinate */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">getVoxelCoord</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">voxel_coord</span><span class="p">)</span>  <span class="k">const</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Returns the 3D voxel coordinate and point offset wrt. to the voxel center (in mm) */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">getVoxelCoordAndOffset</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">voxel_coord</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">offset</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="cm">/** extracts voxels in neighborhood of given voxel */</span>
+    <span class="kt">bool</span>
+    <span class="nf">extractNeighborhood</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">voxel_coord</span><span class="p">,</span> <span class="kt">int</span> <span class="n">neighborhood_size</span><span class="p">,</span> <span class="n">VoxelTVec</span> <span class="o">&amp;</span><span class="n">neighborhood</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="cm">/** adds voxel values in local neighborhood */</span>
+    <span class="kt">bool</span>
+    <span class="nf">addNeighborhood</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="o">&amp;</span><span class="n">voxel_coord</span><span class="p">,</span> <span class="kt">int</span> <span class="n">neighborhood_size</span><span class="p">,</span> <span class="k">const</span> <span class="n">VoxelTVec</span> <span class="o">&amp;</span><span class="n">neighborhood</span><span class="p">,</span> <span class="n">WeightT</span> <span class="n">voxel_weight</span><span class="p">);</span>
+
+    <span class="cm">/** averages voxel values by the weight value */</span>
+    <span class="kt">void</span>
+    <span class="nf">averageValues</span> <span class="p">();</span>
+
+    <span class="cm">/** \brief Returns and index for linear access of the volume and weights */</span>
+    <span class="kr">inline</span> <span class="kt">int</span>
+    <span class="nf">getLinearVoxelIndex</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Array3i</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">indices</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">indices</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">indices</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="cm">/** \brief Returns a vector of linear indices for voxel coordinates given in 3xn matrix */</span>
+    <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXi</span>
+    <span class="n">getLinearVoxelIndinces</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_matrix</span><span class="p">)</span> <span class="k">const</span>  <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">RowVector3i</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">header_</span><span class="p">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">indices_matrix</span><span class="p">).</span><span class="n">transpose</span><span class="p">();</span>
+    <span class="p">}</span>
+
+  <span class="k">private</span><span class="o">:</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="c1">// Private functions and members</span>
+
+  <span class="c1">//  void</span>
+  <span class="c1">//  scaleDepth (const Eigen::MatrixXf &amp;depth, Eigen::MatrixXf &amp;depth_scaled, const Intr &amp;intr) const;</span>
+
+  <span class="c1">//  void</span>
+  <span class="c1">//  integrateVolume (const Eigen::MatrixXf &amp;depth_scaled, float tranc_dist, const Eigen::Matrix3f &amp;R_inv, const Eigen::Vector3f &amp;t, const Intr &amp;intr);</span>
+
+    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">VoxelT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">VolumePtr</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">WeightT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">WeightsPtr</span><span class="p">;</span>
+
+    <span class="n">Header</span> <span class="n">header_</span><span class="p">;</span>
+    <span class="n">VolumePtr</span> <span class="n">volume_</span><span class="p">;</span>
+    <span class="n">WeightsPtr</span> <span class="n">weights_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+
+  <span class="p">};</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

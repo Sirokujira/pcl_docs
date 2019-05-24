@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File point_representation.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File point_tests.h" href="file_pcl_common_point_tests.h.html" />
+    <link rel="prev" title="File point_representation.h" href="file_pcl_point_representation.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_point_representation.h.html">File point_representation.h</a> &raquo;</li>
+        
+      <li>Program Listing for File point_representation.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_point_representation.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-point-representation-h">
+<span id="program-listing-file-pcl-point-representation-h"></span><h1>Program Listing for File point_representation.h<a class="headerlink" href="#program-listing-for-file-point-representation-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_point_representation.h.html#file-pcl-point-representation-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\point_representation.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/for_each_type.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief @b PointRepresentation provides a set of methods for converting a point structs/object into an</span>
+<span class="cm">    * n-dimensional vector.</span>
+<span class="cm">    * \note This is an abstract class.  Subclasses must set nr_dimensions_ to the appropriate value in the constructor</span>
+<span class="cm">    * and provide an implementation of the pure virtual copyToFloatArray method.</span>
+<span class="cm">    * \author Michael Dixon</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">PointRepresentation</span>
+  <span class="p">{</span>
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief The number of dimensions in this point&#39;s vector (i.e. the &quot;k&quot; in &quot;k-D&quot;) */</span>
+      <span class="kt">int</span> <span class="n">nr_dimensions_</span><span class="p">;</span>
+      <span class="cm">/** \brief A vector containing the rescale factor to apply to each dimension. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">alpha_</span><span class="p">;</span>
+      <span class="cm">/** \brief Indicates whether this point representation is trivial. It is trivial if and only if the following</span>
+<span class="cm">       *  conditions hold:</span>
+<span class="cm">       *  - the relevant data consists only of float values</span>
+<span class="cm">       *  - the vectorize operation directly copies the first nr_dimensions_ elements of PointT to the out array</span>
+<span class="cm">       *  - sizeof(PointT) is a multiple of sizeof(float)</span>
+<span class="cm">       *  In short, a trivial point representation converts the input point to a float array that is the same as if</span>
+<span class="cm">       *  the point was reinterpret_casted to a float array of length nr_dimensions_ . This value says that this</span>
+<span class="cm">       *  representation can be trivial; it is only trivial if setRescaleValues() has not been set.</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span> <span class="n">trivial_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor */</span>
+      <span class="n">PointRepresentation</span> <span class="p">()</span> <span class="o">:</span> <span class="n">nr_dimensions_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">alpha_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">trivial_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">PointRepresentation</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Copy point data from input point to a float array. This method must be overridden in all subclasses.</span>
+<span class="cm">       *  \param[in] p The input point</span>
+<span class="cm">       *  \param[out] out A pointer to a float array.</span>
+<span class="cm">       */</span>
+      <span class="k">virtual</span> <span class="kt">void</span> <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span><span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Returns whether this point representation is trivial. It is trivial if and only if the following</span>
+<span class="cm">       *  conditions hold:</span>
+<span class="cm">       *  - the relevant data consists only of float values</span>
+<span class="cm">       *  - the vectorize operation directly copies the first nr_dimensions_ elements of PointT to the out array</span>
+<span class="cm">       *  - sizeof(PointT) is a multiple of sizeof(float)</span>
+<span class="cm">       *  In short, a trivial point representation converts the input point to a float array that is the same as if</span>
+<span class="cm">       *  the point was reinterpret_casted to a float array of length nr_dimensions_ . */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">isTrivial</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">trivial_</span> <span class="o">&amp;&amp;</span> <span class="n">alpha_</span><span class="p">.</span><span class="n">empty</span> <span class="p">();</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Verify that the input point is valid.</span>
+<span class="cm">       *  \param p The point to validate</span>
+<span class="cm">       */</span>
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="nf">isValid</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">is_valid</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">trivial_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="p">{</span>
+              <span class="n">is_valid</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+              <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="kt">float</span> <span class="o">*</span><span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">nr_dimensions_</span><span class="p">];</span>
+          <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">temp</span><span class="p">);</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="p">{</span>
+              <span class="n">is_valid</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+              <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+          <span class="k">delete</span> <span class="p">[]</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">is_valid</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Convert input point into a vector representation, rescaling by \a alpha.</span>
+<span class="cm">        * \param[in] p the input point</span>
+<span class="cm">        * \param[out] out The output vector.  Can be of any type that implements the [] operator.</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">OutputType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">vectorize</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">OutputType</span> <span class="o">&amp;</span><span class="n">out</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kt">float</span> <span class="o">*</span><span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">nr_dimensions_</span><span class="p">];</span>
+        <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">temp</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">alpha_</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">delete</span> <span class="p">[]</span> <span class="n">temp</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the rescale values to use when vectorizing points</span>
+<span class="cm">        * \param[in] rescale_array The array/vector of rescale values.  Can be of any type that implements the [] operator.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">setRescaleValues</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">rescale_array</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">alpha_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">nr_dimensions_</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">alpha_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rescale_array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Return the number of dimensions in the point&#39;s vector representation. */</span>
+      <span class="kr">inline</span> <span class="kt">int</span> <span class="n">getNumberOfDimensions</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">nr_dimensions_</span><span class="p">);</span> <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="cm">/** \brief @b DefaultPointRepresentation extends PointRepresentation to define default behavior for common point types.</span>
+<span class="cm">   */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointDefault</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;::</span><span class="n">nr_dimensions_</span><span class="p">;</span>
+    <span class="k">using</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;::</span><span class="n">trivial_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="c1">// Boost shared pointers</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="c1">// If point type is unknown, assume it&#39;s a struct/array of floats, and compute the number of dimensions</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointDefault</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">);</span>
+        <span class="c1">// Limit the default representation to the first 3 elements</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nr_dimensions_</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+        <span class="n">trivial_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="o">~</span><span class="n">DefaultPointRepresentation</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="kr">inline</span> <span class="n">Ptr</span>
+      <span class="n">makeShared</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">Ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointDefault</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="c1">// If point type is unknown, treat it as a struct/array of floats</span>
+        <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="cm">/** \brief @b DefaulFeatureRepresentation extends PointRepresentation and is intended to be used when defining the</span>
+<span class="cm">    * default behavior for feature descriptor types (i.e., copy each element of each field into a float array).</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointDefault</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultFeatureRepresentation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;::</span><span class="n">nr_dimensions_</span><span class="p">;</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="k">struct</span> <span class="n">IncrementFunctor</span>
+      <span class="p">{</span>
+        <span class="n">IncrementFunctor</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">n_</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">n_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="k">operator</span> <span class="p">()</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">n_</span> <span class="o">+=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="k">private</span><span class="o">:</span>
+        <span class="kt">int</span> <span class="o">&amp;</span><span class="n">n_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+    <span class="k">struct</span> <span class="n">NdCopyPointFunctor</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">POD</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Pod</span><span class="p">;</span>
+
+      <span class="n">NdCopyPointFunctor</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointDefault</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">p2</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">p1_</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Pod</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">p1</span><span class="p">)),</span> <span class="n">p2_</span> <span class="p">(</span><span class="n">p2</span><span class="p">),</span> <span class="n">f_idx_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="k">operator</span><span class="p">()</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">FieldT</span><span class="p">;</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">NrDims</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">;</span>
+        <span class="n">Helper</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span> <span class="n">FieldT</span><span class="p">,</span> <span class="n">NrDims</span><span class="o">&gt;::</span><span class="n">copyPoint</span> <span class="p">(</span><span class="n">p1_</span><span class="p">,</span> <span class="n">p2_</span><span class="p">,</span> <span class="n">f_idx_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Copy helper for scalar fields</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FieldT</span><span class="p">,</span> <span class="kt">int</span> <span class="n">NrDims</span><span class="o">&gt;</span>
+      <span class="k">struct</span> <span class="n">Helper</span>
+      <span class="p">{</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">copyPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Pod</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">p2</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">f_idx</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">data_ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">p1</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+          <span class="n">p2</span><span class="p">[</span><span class="n">f_idx</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">FieldT</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">data_ptr</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+      <span class="c1">// Copy helper for array fields</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FieldT</span><span class="p">,</span> <span class="kt">int</span> <span class="n">NrDims</span><span class="o">&gt;</span>
+      <span class="k">struct</span> <span class="n">Helper</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span> <span class="n">FieldT</span><span class="p">[</span><span class="n">NrDims</span><span class="p">],</span> <span class="n">NrDims</span><span class="o">&gt;</span>
+      <span class="p">{</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">copyPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Pod</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">p2</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">f_idx</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">data_ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">p1</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+          <span class="kt">int</span> <span class="n">nr_dims</span> <span class="o">=</span> <span class="n">NrDims</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">FieldT</span> <span class="o">*</span> <span class="n">array</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">FieldT</span> <span class="o">*&gt;</span> <span class="p">(</span><span class="n">data_ptr</span><span class="p">);</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dims</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">p2</span><span class="p">[</span><span class="n">f_idx</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">};</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="k">const</span> <span class="n">Pod</span> <span class="o">&amp;</span><span class="n">p1_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="o">*</span> <span class="n">p2_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">f_idx_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="c1">// Boost shared pointers</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">DefaultFeatureRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">DefaultFeatureRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">fieldList</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">FieldList</span><span class="p">;</span>
+
+      <span class="n">DefaultFeatureRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// zero-out the nr_dimensions_ before it gets incremented</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">for_each_type</span> <span class="o">&lt;</span><span class="n">FieldList</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">IncrementFunctor</span> <span class="p">(</span><span class="n">nr_dimensions_</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="kr">inline</span> <span class="n">Ptr</span>
+      <span class="n">makeShared</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">Ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">DefaultFeatureRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointDefault</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">for_each_type</span> <span class="o">&lt;</span><span class="n">FieldList</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">NdCopyPointFunctor</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">out</span><span class="p">));</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">PointXYZ</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span>  <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointXYZ</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">trivial_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointXYZ</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">PointXYZI</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span>  <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointXYZI</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">trivial_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointXYZI</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+        <span class="c1">// By default, p.intensity is not part of the PointXYZI vectorization</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">PointNormal</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span>  <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointNormal</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">trivial_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointNormal</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">PFHSignature125</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">PFHSignature125</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">PFHRGBSignature250</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">PFHRGBSignature250</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">PPFSignature</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">PPFSignature</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">trivial_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PPFSignature</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">f1</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">f2</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">f3</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">f4</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">FPFHSignature33</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">FPFHSignature33</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">VFHSignature308</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">VFHSignature308</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">GASDSignature512</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">GASDSignature512</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">GASDSignature984</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">GASDSignature984</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">GASDSignature7992</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">GASDSignature7992</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span> <span class="o">&lt;</span><span class="n">Narf36</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">Narf36</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">36</span><span class="p">;</span>
+        <span class="n">trivial_</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">Narf36</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">descriptor</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">NormalBasedSignature12</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">DefaultFeatureRepresentation</span> <span class="o">&lt;</span><span class="n">NormalBasedSignature12</span><span class="o">&gt;</span>
+  <span class="p">{};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">ShapeContext1980</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">ShapeContext1980</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">1980</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">ShapeContext1980</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">descriptor</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">UniqueShapeContext1960</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">UniqueShapeContext1960</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">1960</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">UniqueShapeContext1960</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">descriptor</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">SHOT352</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">SHOT352</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">352</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">SHOT352</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">descriptor</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;&gt;</span>
+  <span class="k">class</span> <span class="nc">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">SHOT1344</span><span class="o">&gt;</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">SHOT1344</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">DefaultPointRepresentation</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="mi">1344</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">SHOT1344</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">descriptor</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+
+  <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="cm">/** \brief @b CustomPointRepresentation extends PointRepresentation to allow for sub-part selection on the point.</span>
+<span class="cm">   */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointDefault</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">CustomPointRepresentation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">using</span> <span class="n">PointRepresentation</span> <span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;::</span><span class="n">nr_dimensions_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="c1">// Boost shared pointers</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CustomPointRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">CustomPointRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor</span>
+<span class="cm">        * \param[in] max_dim the maximum number of dimensions to use</span>
+<span class="cm">        * \param[in] start_dim the starting dimension</span>
+<span class="cm">        */</span>
+      <span class="n">CustomPointRepresentation</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">max_dim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">start_dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">max_dim_</span><span class="p">(</span><span class="n">max_dim</span><span class="p">),</span> <span class="n">start_dim_</span><span class="p">(</span><span class="n">start_dim</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// If point type is unknown, assume it&#39;s a struct/array of floats, and compute the number of dimensions</span>
+        <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">PointDefault</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">-</span> <span class="n">start_dim_</span><span class="p">;</span>
+        <span class="c1">// Limit the default representation to the first 3 elements</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nr_dimensions_</span> <span class="o">&gt;</span> <span class="n">max_dim_</span><span class="p">)</span>
+          <span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="n">max_dim_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kr">inline</span> <span class="n">Ptr</span>
+      <span class="n">makeShared</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">CustomPointRepresentation</span><span class="o">&lt;</span><span class="n">PointDefault</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Copy the point data into a float array</span>
+<span class="cm">        * \param[in] p the input point</span>
+<span class="cm">        * \param[out] out the resultant output array</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointDefault</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span><span class="n">out</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="c1">// If point type is unknown, treat it as a struct/array of floats</span>
+        <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">))</span> <span class="o">+</span> <span class="n">start_dim_</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_dimensions_</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Use at most this many dimensions (i.e. the &quot;k&quot; in &quot;k-D&quot; is at most max_dim_) -- \note float fields are assumed */</span>
+      <span class="kt">int</span> <span class="n">max_dim_</span><span class="p">;</span>
+      <span class="cm">/** \brief Use dimensions only starting with this one (i.e. the &quot;k&quot; in &quot;k-D&quot; is = dim - start_dim_) -- \note float fields are assumed */</span>
+      <span class="kt">int</span> <span class="n">start_dim_</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_common_point_tests.h.html" class="btn btn-neutral float-right" title="File point_tests.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_point_representation.h.html" class="btn btn-neutral float-left" title="File point_representation.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File print.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File priority_octree_iterator.hpp" href="file_E__pcl_docs_pcl_gpu_octree_src_utils_priority_octree_iterator.hpp.html" />
+    <link rel="prev" title="File print.h" href="file_pcl_console_print.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_console_print.h.html">File print.h</a> &raquo;</li>
+        
+      <li>Program Listing for File print.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_console_print.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-print-h">
+<span id="program-listing-file-pcl-console-print-h"></span><h1>Program Listing for File print.h<a class="headerlink" href="#program-listing-for-file-print-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_console_print.h.html#file-pcl-console-print-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\console\print.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Copyright (c) 2010, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdarg&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_config.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define PCL_ALWAYS(...)  pcl::console::print (pcl::console::L_ALWAYS, __VA_ARGS__)</span>
+<span class="cp">#define PCL_ERROR(...)   pcl::console::print (pcl::console::L_ERROR, __VA_ARGS__)</span>
+<span class="cp">#define PCL_WARN(...)    pcl::console::print (pcl::console::L_WARN, __VA_ARGS__)</span>
+<span class="cp">#define PCL_INFO(...)    pcl::console::print (pcl::console::L_INFO, __VA_ARGS__)</span>
+<span class="cp">#define PCL_DEBUG(...)   pcl::console::print (pcl::console::L_DEBUG, __VA_ARGS__)</span>
+<span class="cp">#define PCL_VERBOSE(...) pcl::console::print (pcl::console::L_VERBOSE, __VA_ARGS__)</span>
+
+<span class="cp">#define PCL_ASSERT_ERROR_PRINT_CHECK(pred, msg) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        if (!(pred)) \</span>
+<span class="cp">        { \</span>
+<span class="cp">            PCL_ERROR(msg); \</span>
+<span class="cp">            PCL_ERROR(&quot;In File %s, in line %d\n&quot; __FILE__, __LINE__); \</span>
+<span class="cp">        } \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="cp">#define PCL_ASSERT_ERROR_PRINT_RETURN(pred, msg, err) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        PCL_ASSERT_ERROR_PRINT_CHECK(pred, msg); \</span>
+<span class="cp">        if (!(pred)) return err; \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">console</span>
+  <span class="p">{</span>
+    <span class="k">enum</span> <span class="n">TT_ATTIBUTES</span>
+    <span class="p">{</span>
+      <span class="n">TT_RESET</span>     <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">TT_BRIGHT</span>    <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="n">TT_DIM</span>       <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="n">TT_UNDERLINE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="n">TT_BLINK</span>     <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="n">TT_REVERSE</span>   <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+      <span class="n">TT_HIDDEN</span>    <span class="o">=</span> <span class="mi">8</span>
+    <span class="p">};</span>
+
+    <span class="k">enum</span> <span class="n">TT_COLORS</span>
+    <span class="p">{</span>
+      <span class="n">TT_BLACK</span><span class="p">,</span>
+      <span class="n">TT_RED</span><span class="p">,</span>
+      <span class="n">TT_GREEN</span><span class="p">,</span>
+      <span class="n">TT_YELLOW</span><span class="p">,</span>
+      <span class="n">TT_BLUE</span><span class="p">,</span>
+      <span class="n">TT_MAGENTA</span><span class="p">,</span>
+      <span class="n">TT_CYAN</span><span class="p">,</span>
+      <span class="n">TT_WHITE</span>
+    <span class="p">};</span>
+
+    <span class="k">enum</span> <span class="n">VERBOSITY_LEVEL</span>
+    <span class="p">{</span>
+      <span class="n">L_ALWAYS</span><span class="p">,</span>
+      <span class="n">L_ERROR</span><span class="p">,</span>
+      <span class="n">L_WARN</span><span class="p">,</span>
+      <span class="n">L_INFO</span><span class="p">,</span>
+      <span class="n">L_DEBUG</span><span class="p">,</span>
+      <span class="n">L_VERBOSE</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** set the verbosity level */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">setVerbosityLevel</span> <span class="p">(</span><span class="n">VERBOSITY_LEVEL</span> <span class="n">level</span><span class="p">);</span>
+
+    <span class="cm">/** get the verbosity level. */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">VERBOSITY_LEVEL</span>
+    <span class="nf">getVerbosityLevel</span> <span class="p">();</span>
+
+    <span class="cm">/** initialize verbosity level. */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">bool</span>
+    <span class="nf">initVerbosityLevel</span> <span class="p">();</span>
+
+    <span class="cm">/** is verbosity level enabled? */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">bool</span>
+    <span class="nf">isVerbosityLevelEnabled</span> <span class="p">(</span><span class="n">VERBOSITY_LEVEL</span> <span class="n">severity</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Change the text color (on either stdout or stderr) with an attr:fg:bg</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param attribute the text attribute</span>
+<span class="cm">      * \param fg the foreground color</span>
+<span class="cm">      * \param bg the background color</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">change_text_color</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="kt">int</span> <span class="n">attribute</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">bg</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Change the text color (on either stdout or stderr) with an attr:fg</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param attribute the text attribute</span>
+<span class="cm">      * \param fg the foreground color</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">change_text_color</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="kt">int</span> <span class="n">attribute</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fg</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Reset the text color (on either stdout or stderr) to its original state</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">reset_text_color</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Print a message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param attr the text attribute</span>
+<span class="cm">      * \param fg the foreground color</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_color</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="kt">int</span> <span class="n">attr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print an info message on stream with colors</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_info</span>  <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print an info message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_info</span>  <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a highlighted info message on stream with colors</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_highlight</span>  <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a highlighted info message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_highlight</span>  <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print an error message on stream with colors</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_error</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print an error message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_error</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a warning message on stream with colors</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_warn</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a warning message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_warn</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a debug message on stream with colors</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_debug</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a debug message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_debug</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+
+    <span class="cm">/** \brief Print a value message on stream with colors</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_value</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a value message on stream with colors</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print_value</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a message on stream</span>
+<span class="cm">      * \param level the verbosity level</span>
+<span class="cm">      * \param stream the output stream (stdout, stderr, etc)</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print</span> <span class="p">(</span><span class="n">VERBOSITY_LEVEL</span> <span class="n">level</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+
+    <span class="cm">/** \brief Print a message</span>
+<span class="cm">      * \param level the verbosity level</span>
+<span class="cm">      * \param format the message</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">print</span> <span class="p">(</span><span class="n">VERBOSITY_LEVEL</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_octree_src_utils_priority_octree_iterator.hpp.html" class="btn btn-neutral float-right" title="File priority_octree_iterator.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_console_print.h.html" class="btn btn-neutral float-left" title="File print.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1178 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File NCV.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File NCV.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_pcl_gpu_people_src_cuda_nvidia_NCV.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-ncv-hpp">
+<span id="program-listing-file-pcl-docs-pcl-gpu-people-src-cuda-nvidia-ncv-hpp"></span><h1>Program Listing for File NCV.hpp<a class="headerlink" href="#program-listing-for-file-ncv-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_pcl_gpu_people_src_cuda_nvidia_NCV.hpp.html#file-pcl-docs-pcl-gpu-people-src-cuda-nvidia-ncv-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\pcl\gpu\people\src\cuda\nvidia\NCV.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (C) 2009-2010, NVIDIA Corporation, all rights reserved.</span>
+<span class="cm"> *  Third party copyrights are property of their respective owners.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id:  $</span>
+<span class="cm"> * Ported to PCL by Koen Buys : Attention Work in progress!</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_GPU_PEOPLE__NCV_HPP_</span>
+<span class="cp">#define PCL_GPU_PEOPLE__NCV_HPP_</span>
+
+<span class="cp">#if (defined WIN32 || defined _WIN32 || defined WINCE) &amp;&amp; defined CVAPI_EXPORTS</span>
+    <span class="cp">#define NCV_EXPORTS __declspec(dllexport)</span>
+<span class="cp">#else</span>
+    <span class="cp">#define NCV_EXPORTS</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef _WIN32</span>
+    <span class="cp">#define WIN32_LEAN_AND_MEAN</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cuda_runtime.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Compile-time assert functionality</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+<span class="cm">/**</span>
+<span class="cm">* Compile-time assert namespace</span>
+<span class="cm">*/</span>
+<span class="k">namespace</span> <span class="n">NcvCTprep</span>
+<span class="p">{</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">x</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">CT_ASSERT_FAILURE</span><span class="p">;</span>
+
+    <span class="k">template</span> <span class="o">&lt;&gt;</span>
+    <span class="k">struct</span> <span class="n">CT_ASSERT_FAILURE</span><span class="o">&lt;</span><span class="nb">true</span><span class="o">&gt;</span> <span class="p">{};</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="kt">int</span> <span class="n">x</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">assertTest</span><span class="p">{};</span>
+<span class="p">}</span>
+
+<span class="cp">#define NCV_CT_PREP_PASTE_AUX(a,b)      a##b                         </span><span class="c1">///&lt; Concatenation indirection macro</span>
+<span class="cp">#define NCV_CT_PREP_PASTE(a,b)          NCV_CT_PREP_PASTE_AUX(a, b)  </span><span class="c1">///&lt; Concatenation macro</span>
+
+<span class="cm">/**</span>
+<span class="cm">* Performs compile-time assertion of a condition on the file scope</span>
+<span class="cm">*/</span>
+<span class="cp">#define NCV_CT_ASSERT(X) \</span>
+<span class="cp">    typedef NcvCTprep::assertTest&lt;sizeof(NcvCTprep::CT_ASSERT_FAILURE&lt; (bool)(X) &gt;)&gt; \</span>
+<span class="cp">    NCV_CT_PREP_PASTE(__ct_assert_typedef_, __LINE__)</span>
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Alignment macros</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+<span class="cp">#if !defined(__align__) &amp;&amp; !defined(__CUDACC__)</span>
+    <span class="cp">#if defined(_WIN32) || defined(_WIN64)</span>
+        <span class="cp">#define __align__(n)         __declspec(align(n))</span>
+    <span class="cp">#elif defined(__unix__)</span>
+        <span class="cp">#define __align__(n)         __attribute__((__aligned__(n)))</span>
+    <span class="cp">#endif</span>
+<span class="cp">#endif</span>
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Integral and compound types of guaranteed size</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+<span class="k">typedef</span>               <span class="kt">bool</span> <span class="n">NcvBool</span><span class="p">;</span>
+<span class="k">typedef</span>          <span class="kt">long</span> <span class="kt">long</span> <span class="n">Ncv64s</span><span class="p">;</span>
+
+<span class="cp">#if defined(__APPLE__) &amp;&amp; !defined(__CUDACC__)</span>
+    <span class="k">typedef</span> <span class="kt">uint64_t</span> <span class="n">Ncv64u</span><span class="p">;</span>
+<span class="cp">#else</span>
+    <span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">Ncv64u</span><span class="p">;</span>
+<span class="cp">#endif</span>
+
+<span class="k">typedef</span>                <span class="kt">int</span> <span class="n">Ncv32s</span><span class="p">;</span>
+<span class="k">typedef</span>       <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">Ncv32u</span><span class="p">;</span>
+<span class="k">typedef</span>              <span class="kt">short</span> <span class="n">Ncv16s</span><span class="p">;</span>
+<span class="k">typedef</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">Ncv16u</span><span class="p">;</span>
+<span class="k">typedef</span>               <span class="kt">char</span> <span class="n">Ncv8s</span><span class="p">;</span>
+<span class="k">typedef</span>      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">Ncv8u</span><span class="p">;</span>
+<span class="k">typedef</span>              <span class="kt">float</span> <span class="n">Ncv32f</span><span class="p">;</span>
+<span class="k">typedef</span>             <span class="kt">double</span> <span class="n">Ncv64f</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">NcvRect8u</span>
+<span class="p">{</span>
+    <span class="n">Ncv8u</span> <span class="n">x</span><span class="p">;</span>
+    <span class="n">Ncv8u</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">Ncv8u</span> <span class="n">width</span><span class="p">;</span>
+    <span class="n">Ncv8u</span> <span class="n">height</span><span class="p">;</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvRect8u</span><span class="p">()</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvRect8u</span><span class="p">(</span><span class="n">Ncv8u</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ncv8u</span> <span class="n">y</span><span class="p">,</span> <span class="n">Ncv8u</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv8u</span> <span class="n">height</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">NcvRect32s</span>
+<span class="p">{</span>
+    <span class="n">Ncv32s</span> <span class="n">x</span><span class="p">;</span>          <span class="c1">///&lt; x-coordinate of upper left corner.</span>
+    <span class="n">Ncv32s</span> <span class="n">y</span><span class="p">;</span>          <span class="c1">///&lt; y-coordinate of upper left corner.</span>
+    <span class="n">Ncv32s</span> <span class="n">width</span><span class="p">;</span>      <span class="c1">///&lt; Rectangle width.</span>
+    <span class="n">Ncv32s</span> <span class="n">height</span><span class="p">;</span>     <span class="c1">///&lt; Rectangle height.</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvRect32s</span><span class="p">()</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvRect32s</span><span class="p">(</span><span class="n">Ncv32s</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ncv32s</span> <span class="n">y</span><span class="p">,</span> <span class="n">Ncv32s</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv32s</span> <span class="n">height</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">NcvRect32u</span>
+<span class="p">{</span>
+    <span class="n">Ncv32u</span> <span class="n">x</span><span class="p">;</span>          <span class="c1">///&lt; x-coordinate of upper left corner.</span>
+    <span class="n">Ncv32u</span> <span class="n">y</span><span class="p">;</span>          <span class="c1">///&lt; y-coordinate of upper left corner.</span>
+    <span class="n">Ncv32u</span> <span class="n">width</span><span class="p">;</span>      <span class="c1">///&lt; Rectangle width.</span>
+    <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">;</span>     <span class="c1">///&lt; Rectangle height.</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvRect32u</span><span class="p">()</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvRect32u</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">y</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">NcvSize32s</span>
+<span class="p">{</span>
+    <span class="n">Ncv32s</span> <span class="n">width</span><span class="p">;</span>  <span class="c1">///&lt; Rectangle width.</span>
+    <span class="n">Ncv32s</span> <span class="n">height</span><span class="p">;</span> <span class="c1">///&lt; Rectangle height.</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvSize32s</span><span class="p">()</span> <span class="o">:</span> <span class="n">width</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvSize32s</span><span class="p">(</span><span class="n">Ncv32s</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv32s</span> <span class="n">height</span><span class="p">)</span> <span class="o">:</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">NcvSize32u</span>
+<span class="p">{</span>
+    <span class="n">Ncv32u</span> <span class="n">width</span><span class="p">;</span>  <span class="c1">///&lt; Rectangle width.</span>
+    <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">;</span> <span class="c1">///&lt; Rectangle height.</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvSize32u</span><span class="p">()</span> <span class="o">:</span> <span class="n">width</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvSize32u</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">)</span> <span class="o">:</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="kt">bool</span> <span class="k">operator</span> <span class="o">==</span> <span class="p">(</span><span class="k">const</span> <span class="n">NcvSize32u</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">==</span> <span class="n">another</span><span class="p">.</span><span class="n">width</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">==</span> <span class="n">another</span><span class="p">.</span><span class="n">height</span><span class="p">;}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">NcvPoint2D32s</span>
+<span class="p">{</span>
+    <span class="n">Ncv32s</span> <span class="n">x</span><span class="p">;</span> <span class="c1">///&lt; Point X.</span>
+    <span class="n">Ncv32s</span> <span class="n">y</span><span class="p">;</span> <span class="c1">///&lt; Point Y.</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvPoint2D32s</span><span class="p">()</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvPoint2D32s</span><span class="p">(</span><span class="n">Ncv32s</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ncv32s</span> <span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">NcvPoint2D32u</span>
+<span class="p">{</span>
+    <span class="n">Ncv32u</span> <span class="n">x</span><span class="p">;</span> <span class="c1">///&lt; Point X.</span>
+    <span class="n">Ncv32u</span> <span class="n">y</span><span class="p">;</span> <span class="c1">///&lt; Point Y.</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvPoint2D32u</span><span class="p">()</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{};</span>
+    <span class="n">__host__</span> <span class="n">__device__</span> <span class="nf">NcvPoint2D32u</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">NcvBool</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv64s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv64u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv16s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv16u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv8s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv8u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32f</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv64f</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">);</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">NcvRect8u</span><span class="p">)</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32u</span><span class="p">));</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">NcvRect32s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32s</span><span class="p">));</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">NcvRect32u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32u</span><span class="p">));</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">NcvSize32u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32u</span><span class="p">));</span>
+<span class="n">NCV_CT_ASSERT</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">NcvPoint2D32u</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Ncv32u</span><span class="p">));</span>
+
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Persistent constants</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+<span class="k">const</span> <span class="n">Ncv32u</span> <span class="n">K_WARP_SIZE</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">Ncv32u</span> <span class="n">K_LOG2_WARP_SIZE</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Error handling</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="kt">void</span> <span class="nf">ncvDebugOutput</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
+
+<span class="k">typedef</span> <span class="kt">void</span> <span class="nf">NCVDebugOutputHandler</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="kt">void</span> <span class="nf">ncvSetDebugOutputHandler</span><span class="p">(</span><span class="n">NCVDebugOutputHandler</span><span class="o">*</span> <span class="n">func</span><span class="p">);</span>
+
+<span class="cp">#define ncvAssertPrintCheck(pred, msg) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        if (!(pred)) \</span>
+<span class="cp">        { \</span>
+<span class="cp">            std::ostringstream oss; \</span>
+<span class="cp">            oss &lt;&lt; &quot;NCV Assertion Failed: &quot; &lt;&lt; msg &lt;&lt; &quot;, file=&quot; &lt;&lt; __FILE__ &lt;&lt; &quot;, line=&quot; &lt;&lt; __LINE__ &lt;&lt; std::endl; \</span>
+<span class="cp">            ncvDebugOutput(oss.str()); \</span>
+<span class="cp">        } \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="cp">#define ncvAssertPrintReturn(pred, msg, err) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        ncvAssertPrintCheck(pred, msg); \</span>
+<span class="cp">        if (!(pred)) return err; \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="cp">#define ncvAssertReturn(pred, err) \</span>
+<span class="cp">    ncvAssertPrintReturn(pred, &quot;retcode=&quot; &lt;&lt; (int)err, err)</span>
+
+<span class="cp">#define ncvAssertReturnNcvStat(ncvOp) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        NCVStatus _ncvStat = ncvOp; \</span>
+<span class="cp">        ncvAssertPrintReturn(NCV_SUCCESS==_ncvStat, &quot;NcvStat=&quot; &lt;&lt; (int)_ncvStat, _ncvStat); \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="cp">#define ncvAssertCUDAReturn(cudacall, errCode) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        cudaError_t res = cudacall; \</span>
+<span class="cp">        ncvAssertPrintReturn(cudaSuccess==res, &quot;cudaError_t=&quot; &lt;&lt; res, errCode); \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="cp">#define ncvAssertCUDALastErrorReturn(errCode) \</span>
+<span class="cp">    do \</span>
+<span class="cp">    { \</span>
+<span class="cp">        cudaError_t res = cudaGetLastError(); \</span>
+<span class="cp">        ncvAssertPrintReturn(cudaSuccess==res, &quot;cudaError_t=&quot; &lt;&lt; res, errCode); \</span>
+<span class="cp">    } while (0)</span>
+
+<span class="cm">/**</span>
+<span class="cm">* \brief Return-codes for status notification, errors and warnings</span>
+<span class="cm">*/</span>
+<span class="k">enum</span>
+<span class="p">{</span>
+    <span class="c1">//NCV statuses</span>
+    <span class="n">NCV_SUCCESS</span><span class="p">,</span>
+    <span class="n">NCV_UNKNOWN_ERROR</span><span class="p">,</span>
+
+    <span class="n">NCV_CUDA_ERROR</span><span class="p">,</span>
+    <span class="n">NCV_NPP_ERROR</span><span class="p">,</span>
+    <span class="n">NCV_FILE_ERROR</span><span class="p">,</span>
+
+    <span class="n">NCV_NULL_PTR</span><span class="p">,</span>
+    <span class="n">NCV_INCONSISTENT_INPUT</span><span class="p">,</span>
+    <span class="n">NCV_TEXTURE_BIND_ERROR</span><span class="p">,</span>
+    <span class="n">NCV_DIMENSIONS_INVALID</span><span class="p">,</span>
+
+    <span class="n">NCV_INVALID_ROI</span><span class="p">,</span>
+    <span class="n">NCV_INVALID_STEP</span><span class="p">,</span>
+    <span class="n">NCV_INVALID_SCALE</span><span class="p">,</span>
+
+    <span class="n">NCV_ALLOCATOR_NOT_INITIALIZED</span><span class="p">,</span>
+    <span class="n">NCV_ALLOCATOR_BAD_ALLOC</span><span class="p">,</span>
+    <span class="n">NCV_ALLOCATOR_BAD_DEALLOC</span><span class="p">,</span>
+    <span class="n">NCV_ALLOCATOR_INSUFFICIENT_CAPACITY</span><span class="p">,</span>
+    <span class="n">NCV_ALLOCATOR_DEALLOC_ORDER</span><span class="p">,</span>
+    <span class="n">NCV_ALLOCATOR_BAD_REUSE</span><span class="p">,</span>
+
+    <span class="n">NCV_MEM_COPY_ERROR</span><span class="p">,</span>
+    <span class="n">NCV_MEM_RESIDENCE_ERROR</span><span class="p">,</span>
+    <span class="n">NCV_MEM_INSUFFICIENT_CAPACITY</span><span class="p">,</span>
+
+    <span class="n">NCV_HAAR_INVALID_PIXEL_STEP</span><span class="p">,</span>
+    <span class="n">NCV_HAAR_TOO_MANY_FEATURES_IN_CLASSIFIER</span><span class="p">,</span>
+    <span class="n">NCV_HAAR_TOO_MANY_FEATURES_IN_CASCADE</span><span class="p">,</span>
+    <span class="n">NCV_HAAR_TOO_LARGE_FEATURES</span><span class="p">,</span>
+    <span class="n">NCV_HAAR_XML_LOADING_EXCEPTION</span><span class="p">,</span>
+
+    <span class="n">NCV_NOIMPL_HAAR_TILTED_FEATURES</span><span class="p">,</span>
+    <span class="n">NCV_NOT_IMPLEMENTED</span><span class="p">,</span>
+
+    <span class="n">NCV_WARNING_HAAR_DETECTIONS_VECTOR_OVERFLOW</span><span class="p">,</span>
+
+    <span class="c1">//NPP statuses</span>
+    <span class="n">NPPST_SUCCESS</span> <span class="o">=</span> <span class="n">NCV_SUCCESS</span><span class="p">,</span>              <span class="c1">///&lt; Successful operation (same as NPP_NO_ERROR)</span>
+    <span class="n">NPPST_ERROR</span><span class="p">,</span>                              <span class="c1">///&lt; Unknown error</span>
+    <span class="n">NPPST_CUDA_KERNEL_EXECUTION_ERROR</span><span class="p">,</span>        <span class="c1">///&lt; CUDA kernel execution error</span>
+    <span class="n">NPPST_NULL_POINTER_ERROR</span><span class="p">,</span>                 <span class="c1">///&lt; NULL pointer argument error</span>
+    <span class="n">NPPST_TEXTURE_BIND_ERROR</span><span class="p">,</span>                 <span class="c1">///&lt; CUDA texture binding error or non-zero offset returned</span>
+    <span class="n">NPPST_MEMCPY_ERROR</span><span class="p">,</span>                       <span class="c1">///&lt; CUDA memory copy error</span>
+    <span class="n">NPPST_MEM_ALLOC_ERR</span><span class="p">,</span>                      <span class="c1">///&lt; CUDA memory allocation error</span>
+    <span class="n">NPPST_MEMFREE_ERR</span><span class="p">,</span>                        <span class="c1">///&lt; CUDA memory deallocation error</span>
+
+    <span class="c1">//NPPST statuses</span>
+    <span class="n">NPPST_INVALID_ROI</span><span class="p">,</span>                        <span class="c1">///&lt; Invalid region of interest argument</span>
+    <span class="n">NPPST_INVALID_STEP</span><span class="p">,</span>                       <span class="c1">///&lt; Invalid image lines step argument (check sign, alignment, relation to image width)</span>
+    <span class="n">NPPST_INVALID_SCALE</span><span class="p">,</span>                      <span class="c1">///&lt; Invalid scale parameter passed</span>
+    <span class="n">NPPST_MEM_INSUFFICIENT_BUFFER</span><span class="p">,</span>            <span class="c1">///&lt; Insufficient user-allocated buffer</span>
+    <span class="n">NPPST_MEM_RESIDENCE_ERROR</span><span class="p">,</span>                <span class="c1">///&lt; Memory residence error detected (check if pointers should be device or pinned)</span>
+    <span class="n">NPPST_MEM_INTERNAL_ERROR</span><span class="p">,</span>                 <span class="c1">///&lt; Internal memory management error</span>
+
+    <span class="n">NCV_LAST_STATUS</span>                           <span class="c1">///&lt; Marker to continue error numeration in other files</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="n">Ncv32u</span> <span class="n">NCVStatus</span><span class="p">;</span>
+
+<span class="cp">#define NCV_SET_SKIP_COND(x) \</span>
+<span class="cp">    bool __ncv_skip_cond = x</span>
+
+<span class="cp">#define NCV_RESET_SKIP_COND(x) \</span>
+<span class="cp">    __ncv_skip_cond = x</span>
+
+<span class="cp">#define NCV_SKIP_COND_BEGIN \</span>
+<span class="cp">    if (!__ncv_skip_cond) {</span>
+
+<span class="cp">#define NCV_SKIP_COND_END \</span>
+<span class="cp">    }</span>
+
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Timer</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">_NcvTimer</span> <span class="o">*</span><span class="n">NcvTimer</span><span class="p">;</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="n">NcvTimer</span> <span class="nf">ncvStartTimer</span><span class="p">();</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="kt">double</span> <span class="nf">ncvEndQueryTimerUs</span><span class="p">(</span><span class="n">NcvTimer</span> <span class="n">t</span><span class="p">);</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="kt">double</span> <span class="nf">ncvEndQueryTimerMs</span><span class="p">(</span><span class="n">NcvTimer</span> <span class="n">t</span><span class="p">);</span>
+
+
+<span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">// Memory management classes template compound types</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* Calculates the aligned top bound value</span>
+<span class="cm">*/</span>
+<span class="n">NCV_EXPORTS</span> <span class="n">Ncv32u</span> <span class="nf">alignUp</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="n">what</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">alignment</span><span class="p">);</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMemoryType</span>
+<span class="cm">*/</span>
+<span class="k">enum</span> <span class="n">NCVMemoryType</span>
+<span class="p">{</span>
+    <span class="n">NCVMemoryTypeNone</span><span class="p">,</span>
+    <span class="n">NCVMemoryTypeHostPageable</span><span class="p">,</span>
+    <span class="n">NCVMemoryTypeHostPinned</span><span class="p">,</span>
+    <span class="n">NCVMemoryTypeDevice</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMemPtr</span>
+<span class="cm">*/</span>
+<span class="k">struct</span> <span class="n">NCV_EXPORTS</span> <span class="n">NCVMemPtr</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+    <span class="n">NCVMemoryType</span> <span class="n">memtype</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">clear</span><span class="p">();</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMemSegment</span>
+<span class="cm">*/</span>
+<span class="k">struct</span> <span class="n">NCV_EXPORTS</span> <span class="n">NCVMemSegment</span>
+<span class="p">{</span>
+    <span class="n">NCVMemPtr</span> <span class="n">begin</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">clear</span><span class="p">();</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* INCVMemAllocator (Interface)</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">NCV_EXPORTS</span> <span class="n">INCVMemAllocator</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">INCVMemAllocator</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">virtual</span> <span class="n">NCVStatus</span> <span class="nf">alloc</span><span class="p">(</span><span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">seg</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">NCVStatus</span> <span class="nf">dealloc</span><span class="p">(</span><span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">seg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">virtual</span> <span class="n">NcvBool</span> <span class="nf">isInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">NcvBool</span> <span class="nf">isCounting</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">virtual</span> <span class="n">NCVMemoryType</span> <span class="nf">memType</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">Ncv32u</span> <span class="nf">alignment</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">size_t</span> <span class="nf">maxSize</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kr">inline</span> <span class="n">INCVMemAllocator</span><span class="o">::~</span><span class="n">INCVMemAllocator</span><span class="p">()</span> <span class="p">{}</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMemStackAllocator</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">NCV_EXPORTS</span> <span class="nl">NCVMemStackAllocator</span> <span class="p">:</span> <span class="k">public</span> <span class="n">INCVMemAllocator</span>
+<span class="p">{</span>
+    <span class="n">NCVMemStackAllocator</span><span class="p">();</span>
+    <span class="n">NCVMemStackAllocator</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMemStackAllocator</span> <span class="o">&amp;</span><span class="p">);</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="k">explicit</span> <span class="n">NCVMemStackAllocator</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="n">alignment</span><span class="p">);</span>
+    <span class="n">NCVMemStackAllocator</span><span class="p">(</span><span class="n">NCVMemoryType</span> <span class="n">memT</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">alignment</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">reusePtr</span><span class="o">=</span><span class="k">nullptr</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">NCVMemStackAllocator</span><span class="p">();</span>
+
+    <span class="k">virtual</span> <span class="n">NCVStatus</span> <span class="nf">alloc</span><span class="p">(</span><span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">seg</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="n">NCVStatus</span> <span class="nf">dealloc</span><span class="p">(</span><span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">seg</span><span class="p">);</span>
+
+    <span class="k">virtual</span> <span class="n">NcvBool</span> <span class="nf">isInitialized</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">NcvBool</span> <span class="nf">isCounting</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="k">virtual</span> <span class="n">NCVMemoryType</span> <span class="nf">memType</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">Ncv32u</span> <span class="nf">alignment</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">size_t</span> <span class="nf">maxSize</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+    <span class="n">NCVMemoryType</span> <span class="n">_memType</span><span class="p">;</span>
+    <span class="n">Ncv32u</span> <span class="n">_alignment</span><span class="p">;</span>
+    <span class="n">Ncv8u</span> <span class="o">*</span><span class="n">allocBegin</span><span class="p">;</span>
+    <span class="n">Ncv8u</span> <span class="o">*</span><span class="n">begin</span><span class="p">;</span>
+    <span class="n">Ncv8u</span> <span class="o">*</span><span class="n">end</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">currentSize</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">_maxSize</span><span class="p">;</span>
+    <span class="n">NcvBool</span> <span class="n">bReusesMemory</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMemNativeAllocator</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">NCV_EXPORTS</span> <span class="nl">NCVMemNativeAllocator</span> <span class="p">:</span> <span class="k">public</span> <span class="n">INCVMemAllocator</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">NCVMemNativeAllocator</span><span class="p">(</span><span class="n">NCVMemoryType</span> <span class="n">memT</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">alignment</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">NCVMemNativeAllocator</span><span class="p">();</span>
+
+    <span class="k">virtual</span> <span class="n">NCVStatus</span> <span class="nf">alloc</span><span class="p">(</span><span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">seg</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="n">NCVStatus</span> <span class="nf">dealloc</span><span class="p">(</span><span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">seg</span><span class="p">);</span>
+
+    <span class="k">virtual</span> <span class="n">NcvBool</span> <span class="nf">isInitialized</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">NcvBool</span> <span class="nf">isCounting</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+    <span class="k">virtual</span> <span class="n">NCVMemoryType</span> <span class="nf">memType</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">Ncv32u</span> <span class="nf">alignment</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">size_t</span> <span class="nf">maxSize</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+    <span class="n">NCVMemNativeAllocator</span><span class="p">();</span>
+    <span class="n">NCVMemNativeAllocator</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMemNativeAllocator</span> <span class="o">&amp;</span><span class="p">);</span>
+
+    <span class="n">NCVMemoryType</span> <span class="n">_memType</span><span class="p">;</span>
+    <span class="n">Ncv32u</span> <span class="n">_alignment</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">currentSize</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">_maxSize</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* Copy dispatchers</span>
+<span class="cm">*/</span>
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">memSegCopyHelper</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="n">NCVMemoryType</span> <span class="n">dstType</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="n">NCVMemoryType</span> <span class="n">srcType</span><span class="p">,</span>
+                                       <span class="kt">size_t</span> <span class="n">sz</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">);</span>
+
+
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">memSegCopyHelper2D</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstPitch</span><span class="p">,</span> <span class="n">NCVMemoryType</span> <span class="n">dstType</span><span class="p">,</span>
+                                         <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">srcPitch</span><span class="p">,</span> <span class="n">NCVMemoryType</span> <span class="n">srcType</span><span class="p">,</span>
+                                         <span class="n">Ncv32u</span> <span class="n">widthbytes</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">);</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVVector (1D)</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">NCVVector</span>
+<span class="p">{</span>
+    <span class="n">NCVVector</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVVector</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">NCVVector</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">clear</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">NCVVector</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kt">void</span> <span class="n">clear</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="n">_length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">_memtype</span> <span class="o">=</span> <span class="n">NCVMemoryTypeNone</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NCVStatus</span> <span class="n">copySolid</span><span class="p">(</span><span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">dst</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">howMuch</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">howMuch</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ncvAssertReturn</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_length</span> <span class="o">==</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span><span class="p">,</span> <span class="n">NCV_MEM_COPY_ERROR</span><span class="p">);</span>
+            <span class="n">howMuch</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">ncvAssertReturn</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">howMuch</span> <span class="o">&amp;&amp;</span>
+                <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">howMuch</span> <span class="o">&amp;&amp;</span>
+                <span class="n">howMuch</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NCV_MEM_COPY_ERROR</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">ncvAssertReturn</span><span class="p">((</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">==</span> <span class="n">NCVMemoryTypeNone</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                        <span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_ptr</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="n">dst</span><span class="p">.</span><span class="n">_memtype</span> <span class="o">==</span> <span class="n">NCVMemoryTypeNone</span><span class="p">),</span> <span class="n">NCV_NULL_PTR</span><span class="p">);</span>
+
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">NCV_SUCCESS</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">!=</span> <span class="n">NCVMemoryTypeNone</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">memSegCopyHelper</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_ptr</span><span class="p">,</span> <span class="n">dst</span><span class="p">.</span><span class="n">_memtype</span><span class="p">,</span>
+                                       <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span><span class="p">,</span>
+                                       <span class="n">howMuch</span><span class="p">,</span> <span class="n">cuStream</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">ncvStat</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">T</span> <span class="o">*</span><span class="n">ptr</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span><span class="p">;}</span>
+    <span class="kt">size_t</span> <span class="n">length</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span><span class="p">;}</span>
+    <span class="n">NCVMemoryType</span> <span class="n">memType</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span><span class="p">;}</span>
+
+<span class="k">protected</span><span class="o">:</span>
+
+    <span class="n">T</span> <span class="o">*</span><span class="n">_ptr</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">_length</span><span class="p">;</span>
+    <span class="n">NCVMemoryType</span> <span class="n">_memtype</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVVectorAlloc</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">NCVVectorAlloc</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">NCVVectorAlloc</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">NCVVectorAlloc</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVVectorAlloc</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">NCVVectorAlloc</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">NCVVectorAlloc</span><span class="p">(</span><span class="n">INCVMemAllocator</span> <span class="o">&amp;</span><span class="n">allocator</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">length</span><span class="p">)</span>
+        <span class="o">:</span>
+        <span class="n">allocator</span><span class="p">(</span><span class="n">allocator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">allocator</span><span class="p">.</span><span class="n">alloc</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">,</span> <span class="n">length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">));</span>
+        <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">ncvStat</span> <span class="o">==</span> <span class="n">NCV_SUCCESS</span><span class="p">,</span> <span class="s">&quot;NCVVectorAlloc ctor:: alloc failed&quot;</span><span class="p">,</span> <span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span> <span class="o">*</span><span class="p">)</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span> <span class="o">=</span> <span class="n">length</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">memtype</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">~</span><span class="n">NCVVectorAlloc</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span><span class="p">;</span>
+
+        <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">allocator</span><span class="p">.</span><span class="n">dealloc</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">);</span>
+        <span class="n">ncvAssertPrintCheck</span><span class="p">(</span><span class="n">ncvStat</span> <span class="o">==</span> <span class="n">NCV_SUCCESS</span><span class="p">,</span> <span class="s">&quot;NCVVectorAlloc dtor:: dealloc failed&quot;</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">NcvBool</span> <span class="n">isMemAllocated</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocator</span><span class="p">.</span><span class="n">isCounting</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">Ncv32u</span> <span class="n">getAllocatorsAlignment</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">allocator</span><span class="p">.</span><span class="n">alignment</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">NCVMemSegment</span> <span class="n">getSegment</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">allocatedMem</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">INCVMemAllocator</span> <span class="o">&amp;</span><span class="n">allocator</span><span class="p">;</span>
+    <span class="n">NCVMemSegment</span> <span class="n">allocatedMem</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVVectorReuse</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">NCVVectorReuse</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">NCVVectorReuse</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">NCVVectorReuse</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVVectorReuse</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="k">explicit</span> <span class="n">NCVVectorReuse</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">memSegment</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span> <span class="o">=</span> <span class="n">memSegment</span><span class="p">.</span><span class="n">size</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span> <span class="o">*</span><span class="p">)</span><span class="n">memSegment</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">=</span> <span class="n">memSegment</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">memtype</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NCVVectorReuse</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">memSegment</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">length</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">memSegment</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> \
+            <span class="s">&quot;NCVVectorReuse ctor:: memory binding failed due to size mismatch&quot;</span><span class="p">,</span> <span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_length</span> <span class="o">=</span> <span class="n">length</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span> <span class="o">*</span><span class="p">)</span><span class="n">memSegment</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">=</span> <span class="n">memSegment</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">memtype</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NcvBool</span> <span class="n">isMemReused</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+    <span class="n">NcvBool</span> <span class="n">bReused</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMatrix (2D)</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">NCVMatrix</span>
+<span class="p">{</span>
+    <span class="n">NCVMatrix</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMatrix</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">NCVMatrix</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">clear</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">NCVMatrix</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kt">void</span> <span class="n">clear</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="n">_pitch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">_width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">_height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">_memtype</span> <span class="o">=</span> <span class="n">NCVMemoryTypeNone</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">Ncv32u</span> <span class="n">stride</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_pitch</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//a side effect of this function is that it copies everything in a single chunk, so the &quot;padding&quot; will be overwritten</span>
+    <span class="n">NCVStatus</span> <span class="n">copySolid</span><span class="p">(</span><span class="n">NCVMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">dst</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">howMuch</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">howMuch</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ncvAssertReturn</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_pitch</span> <span class="o">==</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span> <span class="o">&amp;&amp;</span>
+                            <span class="n">dst</span><span class="p">.</span><span class="n">_height</span> <span class="o">==</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span><span class="p">,</span> <span class="n">NCV_MEM_COPY_ERROR</span><span class="p">);</span>
+            <span class="n">howMuch</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">ncvAssertReturn</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_pitch</span> <span class="o">*</span> <span class="n">dst</span><span class="p">.</span><span class="n">_height</span> <span class="o">&gt;=</span> <span class="n">howMuch</span> <span class="o">&amp;&amp;</span>
+                            <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span> <span class="o">&gt;=</span> <span class="n">howMuch</span> <span class="o">&amp;&amp;</span>
+                            <span class="n">howMuch</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NCV_MEM_COPY_ERROR</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">ncvAssertReturn</span><span class="p">((</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">==</span> <span class="n">NCVMemoryTypeNone</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                        <span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_ptr</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="n">dst</span><span class="p">.</span><span class="n">_memtype</span> <span class="o">==</span> <span class="n">NCVMemoryTypeNone</span><span class="p">),</span> <span class="n">NCV_NULL_PTR</span><span class="p">);</span>
+
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">NCV_SUCCESS</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">!=</span> <span class="n">NCVMemoryTypeNone</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">memSegCopyHelper</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_ptr</span><span class="p">,</span> <span class="n">dst</span><span class="p">.</span><span class="n">_memtype</span><span class="p">,</span>
+                                       <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span><span class="p">,</span>
+                                       <span class="n">howMuch</span><span class="p">,</span> <span class="n">cuStream</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">ncvStat</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NCVStatus</span> <span class="n">copy2D</span><span class="p">(</span><span class="n">NCVMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">dst</span><span class="p">,</span> <span class="n">NcvSize32u</span> <span class="n">roi</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="n">ncvAssertReturn</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">roi</span><span class="p">.</span><span class="n">width</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">roi</span><span class="p">.</span><span class="n">height</span> <span class="o">&amp;&amp;</span>
+                        <span class="n">dst</span><span class="p">.</span><span class="n">width</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">roi</span><span class="p">.</span><span class="n">width</span> <span class="o">&amp;&amp;</span> <span class="n">dst</span><span class="p">.</span><span class="n">height</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">roi</span><span class="p">.</span><span class="n">height</span><span class="p">,</span> <span class="n">NCV_MEM_COPY_ERROR</span><span class="p">);</span>
+        <span class="n">ncvAssertReturn</span><span class="p">((</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">==</span> <span class="n">NCVMemoryTypeNone</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                        <span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_ptr</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">dst</span><span class="p">.</span><span class="n">_memtype</span> <span class="o">==</span> <span class="n">NCVMemoryTypeNone</span><span class="p">),</span> <span class="n">NCV_NULL_PTR</span><span class="p">);</span>
+
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">NCV_SUCCESS</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">!=</span> <span class="n">NCVMemoryTypeNone</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">memSegCopyHelper2D</span><span class="p">(</span><span class="n">dst</span><span class="p">.</span><span class="n">_ptr</span><span class="p">,</span> <span class="n">dst</span><span class="p">.</span><span class="n">_pitch</span><span class="p">,</span> <span class="n">dst</span><span class="p">.</span><span class="n">_memtype</span><span class="p">,</span>
+                                         <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span><span class="p">,</span>
+                                         <span class="n">roi</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">roi</span><span class="p">.</span><span class="n">height</span><span class="p">,</span> <span class="n">cuStream</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">ncvStat</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">T</span> <span class="o">&amp;</span><span class="n">at</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="n">NcvBool</span> <span class="n">bOutRange</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_width</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span><span class="p">);</span>
+        <span class="n">ncvAssertPrintCheck</span><span class="p">(</span><span class="o">!</span><span class="n">bOutRange</span><span class="p">,</span> <span class="s">&quot;Error addressing matrix at [&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bOutRange</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">T</span> <span class="o">*</span><span class="p">)((</span><span class="n">Ncv8u</span> <span class="o">*</span><span class="p">)</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span><span class="p">))[</span><span class="n">x</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="n">T</span> <span class="o">*</span><span class="n">ptr</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span><span class="p">;}</span>
+    <span class="n">Ncv32u</span> <span class="n">width</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_width</span><span class="p">;}</span>
+    <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span><span class="p">;}</span>
+    <span class="n">NcvSize32u</span> <span class="n">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="n">NcvSize32u</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_width</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span><span class="p">);}</span>
+    <span class="n">Ncv32u</span> <span class="n">pitch</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span><span class="p">;}</span>
+    <span class="n">NCVMemoryType</span> <span class="n">memType</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span><span class="p">;}</span>
+
+<span class="k">protected</span><span class="o">:</span>
+
+    <span class="n">T</span> <span class="o">*</span><span class="n">_ptr</span><span class="p">;</span>
+    <span class="n">Ncv32u</span> <span class="n">_width</span><span class="p">;</span>
+    <span class="n">Ncv32u</span> <span class="n">_height</span><span class="p">;</span>
+    <span class="n">Ncv32u</span> <span class="n">_pitch</span><span class="p">;</span>
+    <span class="n">NCVMemoryType</span> <span class="n">_memtype</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMatrixAlloc</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">NCVMatrixAlloc</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NCVMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">NCVMatrixAlloc</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">NCVMatrixAlloc</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMatrixAlloc</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">NCVMatrixAlloc</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMatrixAlloc</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">NCVMatrixAlloc</span><span class="p">(</span><span class="n">INCVMemAllocator</span> <span class="o">&amp;</span><span class="n">allocator</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="o">:</span>
+        <span class="n">allocator</span><span class="p">(</span><span class="n">allocator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="n">Ncv32u</span> <span class="n">widthBytes</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+        <span class="n">Ncv32u</span> <span class="n">pitchBytes</span> <span class="o">=</span> <span class="n">alignUp</span><span class="p">(</span><span class="n">widthBytes</span><span class="p">,</span> <span class="n">allocator</span><span class="p">.</span><span class="n">alignment</span><span class="p">());</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">pitch</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">pitch</span> <span class="o">&gt;=</span> <span class="n">pitchBytes</span> <span class="o">&amp;&amp;</span>
+                <span class="p">(</span><span class="n">pitch</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">allocator</span><span class="p">.</span><span class="n">alignment</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s">&quot;NCVMatrixAlloc ctor:: incorrect pitch passed&quot;</span><span class="p">,</span> <span class="p">);</span>
+            <span class="n">pitchBytes</span> <span class="o">=</span> <span class="n">pitch</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">Ncv32u</span> <span class="n">requiredAllocSize</span> <span class="o">=</span> <span class="n">pitchBytes</span> <span class="o">*</span> <span class="n">height</span><span class="p">;</span>
+
+        <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">allocator</span><span class="p">.</span><span class="n">alloc</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">,</span> <span class="n">requiredAllocSize</span><span class="p">);</span>
+        <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">ncvStat</span> <span class="o">==</span> <span class="n">NCV_SUCCESS</span><span class="p">,</span> <span class="s">&quot;NCVMatrixAlloc ctor:: alloc failed&quot;</span><span class="p">,</span> <span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span> <span class="o">*</span><span class="p">)</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_width</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span> <span class="o">=</span> <span class="n">pitchBytes</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">memtype</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">~</span><span class="n">NCVMatrixAlloc</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">NCVStatus</span> <span class="n">ncvStat</span><span class="p">;</span>
+
+        <span class="n">ncvStat</span> <span class="o">=</span> <span class="n">allocator</span><span class="p">.</span><span class="n">dealloc</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">);</span>
+        <span class="n">ncvAssertPrintCheck</span><span class="p">(</span><span class="n">ncvStat</span> <span class="o">==</span> <span class="n">NCV_SUCCESS</span><span class="p">,</span> <span class="s">&quot;NCVMatrixAlloc dtor:: dealloc failed&quot;</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">NcvBool</span> <span class="n">isMemAllocated</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocatedMem</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">allocator</span><span class="p">.</span><span class="n">isCounting</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">Ncv32u</span> <span class="n">getAllocatorsAlignment</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">allocator</span><span class="p">.</span><span class="n">alignment</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">NCVMemSegment</span> <span class="n">getSegment</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">allocatedMem</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+    <span class="n">INCVMemAllocator</span> <span class="o">&amp;</span><span class="n">allocator</span><span class="p">;</span>
+    <span class="n">NCVMemSegment</span> <span class="n">allocatedMem</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/**</span>
+<span class="cm">* NCVMatrixReuse</span>
+<span class="cm">*/</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">NCVMatrixReuse</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NCVMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">NCVMatrixReuse</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">NCVMatrixReuse</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMatrixReuse</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">NCVMatrixReuse</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMemSegment</span> <span class="o">&amp;</span><span class="n">memSegment</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">width</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">height</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">NcvBool</span> <span class="n">bSkipPitchCheck</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="n">Ncv32u</span> <span class="n">widthBytes</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+        <span class="n">Ncv32u</span> <span class="n">pitchBytes</span> <span class="o">=</span> <span class="n">alignUp</span><span class="p">(</span><span class="n">widthBytes</span><span class="p">,</span> <span class="n">alignment</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">pitch</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">bSkipPitchCheck</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">pitch</span> <span class="o">&gt;=</span> <span class="n">pitchBytes</span> <span class="o">&amp;&amp;</span>
+                    <span class="p">(</span><span class="n">pitch</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">alignment</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s">&quot;NCVMatrixReuse ctor:: incorrect pitch passed&quot;</span><span class="p">,</span> <span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">pitch</span> <span class="o">&gt;=</span> <span class="n">widthBytes</span><span class="p">,</span> <span class="s">&quot;NCVMatrixReuse ctor:: incorrect pitch passed&quot;</span><span class="p">,</span> <span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">pitchBytes</span> <span class="o">=</span> <span class="n">pitch</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">pitchBytes</span> <span class="o">*</span> <span class="n">height</span> <span class="o">&lt;=</span> <span class="n">memSegment</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> \
+            <span class="s">&quot;NCVMatrixReuse ctor:: memory binding failed due to size mismatch&quot;</span><span class="p">,</span> <span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_width</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span> <span class="o">=</span> <span class="n">pitchBytes</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span> <span class="o">*</span><span class="p">)</span><span class="n">memSegment</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">=</span> <span class="n">memSegment</span><span class="p">.</span><span class="n">begin</span><span class="p">.</span><span class="n">memtype</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NCVMatrixReuse</span><span class="p">(</span><span class="k">const</span> <span class="n">NCVMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">mat</span><span class="p">,</span> <span class="n">NcvRect32u</span> <span class="n">roi</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="n">ncvAssertPrintReturn</span><span class="p">(</span><span class="n">roi</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">mat</span><span class="p">.</span><span class="n">width</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">roi</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">mat</span><span class="p">.</span><span class="n">height</span><span class="p">()</span> <span class="o">&amp;&amp;</span> \
+            <span class="n">roi</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">roi</span><span class="p">.</span><span class="n">width</span> <span class="o">&lt;=</span> <span class="n">mat</span><span class="p">.</span><span class="n">width</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">roi</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">roi</span><span class="p">.</span><span class="n">height</span> <span class="o">&lt;=</span> <span class="n">mat</span><span class="p">.</span><span class="n">height</span><span class="p">(),</span>
+            <span class="s">&quot;NCVMatrixReuse ctor:: memory binding failed due to mismatching ROI and source matrix dims&quot;</span><span class="p">,</span> <span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_width</span> <span class="o">=</span> <span class="n">roi</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_height</span> <span class="o">=</span> <span class="n">roi</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_pitch</span> <span class="o">=</span> <span class="n">mat</span><span class="p">.</span><span class="n">pitch</span><span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">mat</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">roi</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">roi</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_memtype</span> <span class="o">=</span> <span class="n">mat</span><span class="p">.</span><span class="n">memType</span><span class="p">();</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">NcvBool</span> <span class="n">isMemReused</span><span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">bReused</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+    <span class="n">NcvBool</span> <span class="n">bReused</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm">* Operations with rectangles</span>
+<span class="cm">*/</span>
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">ncvGroupRectangles_host</span><span class="p">(</span><span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">NcvRect32u</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">hypotheses</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="o">&amp;</span><span class="n">numHypotheses</span><span class="p">,</span>
+                                              <span class="n">Ncv32u</span> <span class="n">minNeighbors</span><span class="p">,</span> <span class="n">Ncv32f</span> <span class="n">intersectEps</span><span class="p">,</span> <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">Ncv32u</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">hypothesesWeights</span><span class="p">);</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">ncvDrawRects_8u_host</span><span class="p">(</span><span class="n">Ncv8u</span> <span class="o">*</span><span class="n">h_dst</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstStride</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstWidth</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstHeight</span><span class="p">,</span>
+                                           <span class="n">NcvRect32u</span> <span class="o">*</span><span class="n">h_rects</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">numRects</span><span class="p">,</span> <span class="n">Ncv8u</span> <span class="n">color</span><span class="p">);</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">ncvDrawRects_32u_host</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="o">*</span><span class="n">h_dst</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstStride</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstWidth</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstHeight</span><span class="p">,</span>
+                                            <span class="n">NcvRect32u</span> <span class="o">*</span><span class="n">h_rects</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">numRects</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">color</span><span class="p">);</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">ncvDrawRects_8u_device</span><span class="p">(</span><span class="n">Ncv8u</span> <span class="o">*</span><span class="n">d_dst</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstStride</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstWidth</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstHeight</span><span class="p">,</span>
+                                             <span class="n">NcvRect32u</span> <span class="o">*</span><span class="n">d_rects</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">numRects</span><span class="p">,</span> <span class="n">Ncv8u</span> <span class="n">color</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">);</span>
+
+<span class="n">NCV_EXPORTS</span> <span class="n">NCVStatus</span> <span class="nf">ncvDrawRects_32u_device</span><span class="p">(</span><span class="n">Ncv32u</span> <span class="o">*</span><span class="n">d_dst</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstStride</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstWidth</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">dstHeight</span><span class="p">,</span>
+                                              <span class="n">NcvRect32u</span> <span class="o">*</span><span class="n">d_rects</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">numRects</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="n">color</span><span class="p">,</span> <span class="n">cudaStream_t</span> <span class="n">cuStream</span><span class="p">);</span>
+
+<span class="cp">#define CLAMP(x,a,b)        ( (x) &gt; (b) ? (b) : ( (x) &lt; (a) ? (a) : (x) ) )</span>
+<span class="cp">#define CLAMP_TOP(x, a)     (((x) &gt; (a)) ? (a) : (x))</span>
+<span class="cp">#define CLAMP_BOTTOM(x, a)  (((x) &lt; (a)) ? (a) : (x))</span>
+<span class="cp">#define CLAMP_0_255(x)      CLAMP(x,0,255)</span>
+
+<span class="cp">#define SUB_BEGIN(type, name)    struct { __inline type name</span>
+<span class="cp">#define SUB_END(name)            } name;</span>
+<span class="cp">#define SUB_CALL(name)           name.name</span>
+
+<span class="cp">#define SQR(x)              ((x)*(x))</span>
+
+<span class="cp">#define ncvSafeMatAlloc(name, type, alloc, width, height, err) \</span>
+<span class="cp">    NCVMatrixAlloc&lt;type&gt; name(alloc, width, height); \</span>
+<span class="cp">    ncvAssertReturn(name.isMemAllocated(), err);</span>
+
+<span class="cp">#endif </span><span class="c1">// PCL_GPU_PEOPLE__NCV_HPP_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

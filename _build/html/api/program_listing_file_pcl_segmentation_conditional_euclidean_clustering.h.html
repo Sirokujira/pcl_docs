@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File conditional_euclidean_clustering.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File conditional_euclidean_clustering.hpp" href="file_pcl_segmentation_impl_conditional_euclidean_clustering.hpp.html" />
+    <link rel="prev" title="File conditional_euclidean_clustering.h" href="file_pcl_segmentation_conditional_euclidean_clustering.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_segmentation_conditional_euclidean_clustering.h.html">File conditional_euclidean_clustering.h</a> &raquo;</li>
+        
+      <li>Program Listing for File conditional_euclidean_clustering.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_segmentation_conditional_euclidean_clustering.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-conditional-euclidean-clustering-h">
+<span id="program-listing-file-pcl-segmentation-conditional-euclidean-clustering-h"></span><h1>Program Listing for File conditional_euclidean_clustering.h<a class="headerlink" href="#program-listing-for-file-conditional-euclidean-clustering-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_segmentation_conditional_euclidean_clustering.h.html#file-pcl-segmentation-conditional-euclidean-clustering-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\segmentation\conditional_euclidean_clustering.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/function.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_base.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/search/pcl_search.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="n">IndicesClusters</span><span class="p">;</span>
+  <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">IndicesClustersPtr</span><span class="p">;</span>
+
+  <span class="cm">/** \brief @b ConditionalEuclideanClustering performs segmentation based on Euclidean distance and a user-defined clustering condition.</span>
+<span class="cm">    * \details The condition that need to hold is currently passed using a function pointer.</span>
+<span class="cm">    * For more information check the documentation of setConditionFunction() or the usage example below:</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * bool</span>
+<span class="cm">    * enforceIntensitySimilarity (const pcl::PointXYZI&amp; point_a, const pcl::PointXYZI&amp; point_b, float squared_distance)</span>
+<span class="cm">    * {</span>
+<span class="cm">    *   if (fabs (point_a.intensity - point_b.intensity) &lt; 0.1f)</span>
+<span class="cm">    *     return (true);</span>
+<span class="cm">    *   else</span>
+<span class="cm">    *     return (false);</span>
+<span class="cm">    * }</span>
+<span class="cm">    * // ...</span>
+<span class="cm">    * // Somewhere down to the main code</span>
+<span class="cm">    * // ...</span>
+<span class="cm">    * pcl::ConditionalEuclideanClustering&lt;pcl::PointXYZI&gt; cec (true);</span>
+<span class="cm">    * cec.setInputCloud (cloud_in);</span>
+<span class="cm">    * cec.setConditionFunction (&amp;enforceIntensitySimilarity);</span>
+<span class="cm">    * // Points within this distance from one another are going to need to validate the enforceIntensitySimilarity function to be part of the same cluster:</span>
+<span class="cm">    * cec.setClusterTolerance (0.09f);</span>
+<span class="cm">    * // Size constraints for the clusters:</span>
+<span class="cm">    * cec.setMinClusterSize (5);</span>
+<span class="cm">    * cec.setMaxClusterSize (30);</span>
+<span class="cm">    * // The resulting clusters (an array of pointindices):</span>
+<span class="cm">    * cec.segment (*clusters);</span>
+<span class="cm">    * // The clusters that are too small or too large in size can also be extracted separately:</span>
+<span class="cm">    * cec.getRemovedClusters (small_clusters, large_clusters);</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    * \author Frits Florentinus</span>
+<span class="cm">    * \ingroup segmentation</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">ConditionalEuclideanClustering</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">Search</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">SearcherPtr</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">initCompute</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">deinitCompute</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Constructor.</span>
+<span class="cm">        * \param[in] extract_removed_clusters Set to true if you want to be able to extract the clusters that are too large or too small (default = false)</span>
+<span class="cm">        */</span>
+      <span class="n">ConditionalEuclideanClustering</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">extract_removed_clusters</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="o">:</span>
+          <span class="n">searcher_</span> <span class="p">(),</span>
+          <span class="n">condition_function_</span> <span class="p">(),</span>
+          <span class="n">cluster_tolerance_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+          <span class="n">min_cluster_size_</span> <span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+          <span class="n">max_cluster_size_</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">()),</span>
+          <span class="n">extract_removed_clusters_</span> <span class="p">(</span><span class="n">extract_removed_clusters</span><span class="p">),</span>
+          <span class="n">small_clusters_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">IndicesClusters</span><span class="p">),</span>
+          <span class="n">large_clusters_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">IndicesClusters</span><span class="p">)</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the search object.</span>
+<span class="cm">        * \param[in] tree a pointer to the spatial search object.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSearchMethod</span> <span class="p">(</span><span class="k">const</span> <span class="n">SearcherPtr</span> <span class="o">&amp;</span><span class="n">tree</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">searcher_</span> <span class="o">=</span> <span class="n">tree</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get a pointer to the search method used.</span>
+<span class="cm">       */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">SearcherPtr</span><span class="o">&amp;</span>
+      <span class="n">getSearchMethod</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">searcher_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the condition that needs to hold for neighboring points to be considered part of the same cluster.</span>
+<span class="cm">        * \details Any two points within a certain distance from one another will need to evaluate this condition in order to be made part of the same cluster.</span>
+<span class="cm">        * The distance can be set using setClusterTolerance().</span>
+<span class="cm">        * &lt;br&gt;</span>
+<span class="cm">        * Note that for a point to be part of a cluster, the condition only needs to hold for at least 1 point pair.</span>
+<span class="cm">        * To clarify, the following statement is false:</span>
+<span class="cm">        * Any two points within a cluster always evaluate this condition function to true.</span>
+<span class="cm">        * &lt;br&gt;&lt;br&gt;</span>
+<span class="cm">        * The input arguments of the condition function are:</span>
+<span class="cm">        * &lt;ul&gt;</span>
+<span class="cm">        *  &lt;li&gt;PointT The first point of the point pair&lt;/li&gt;</span>
+<span class="cm">        *  &lt;li&gt;PointT The second point of the point pair&lt;/li&gt;</span>
+<span class="cm">        *  &lt;li&gt;float The squared distance between the points&lt;/li&gt;</span>
+<span class="cm">        * &lt;/ul&gt;</span>
+<span class="cm">        * The output argument is a boolean, returning true will merge the second point into the cluster of the first point.</span>
+<span class="cm">        * \param[in] condition_function The condition function that needs to hold for clustering</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setConditionFunction</span> <span class="p">(</span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">condition_function</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span><span class="p">,</span> <span class="kt">float</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">condition_function_</span> <span class="o">=</span> <span class="n">condition_function</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the condition that needs to hold for neighboring points to be considered part of the same cluster.</span>
+<span class="cm">        * This is an overloaded function provided for convenience. See the documentation for setConditionFunction(). */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setConditionFunction</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span><span class="p">,</span> <span class="kt">float</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">condition_function</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">condition_function_</span> <span class="o">=</span> <span class="n">condition_function</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the spatial tolerance for new cluster candidates.</span>
+<span class="cm">        * \details Any two points within this distance from one another will need to evaluate a certain condition in order to be made part of the same cluster.</span>
+<span class="cm">        * The condition can be set using setConditionFunction().</span>
+<span class="cm">        * \param[in] cluster_tolerance The distance to scan for cluster candidates (default = 0.0)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setClusterTolerance</span> <span class="p">(</span><span class="kt">float</span> <span class="n">cluster_tolerance</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">cluster_tolerance_</span> <span class="o">=</span> <span class="n">cluster_tolerance</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the spatial tolerance for new cluster candidates.*/</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getClusterTolerance</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">cluster_tolerance_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the minimum number of points that a cluster needs to contain in order to be considered valid.</span>
+<span class="cm">        * \param[in] min_cluster_size The minimum cluster size (default = 1)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setMinClusterSize</span> <span class="p">(</span><span class="kt">int</span> <span class="n">min_cluster_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">min_cluster_size_</span> <span class="o">=</span> <span class="n">min_cluster_size</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the minimum number of points that a cluster needs to contain in order to be considered valid.*/</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="n">getMinClusterSize</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">min_cluster_size_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the maximum number of points that a cluster needs to contain in order to be considered valid.</span>
+<span class="cm">        * \param[in] max_cluster_size The maximum cluster size (default = unlimited)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setMaxClusterSize</span> <span class="p">(</span><span class="kt">int</span> <span class="n">max_cluster_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">max_cluster_size_</span> <span class="o">=</span> <span class="n">max_cluster_size</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the maximum number of points that a cluster needs to contain in order to be considered valid.*/</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="n">getMaxClusterSize</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">max_cluster_size_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Segment the input into separate clusters.</span>
+<span class="cm">        * \details The input can be set using setInputCloud() and setIndices().</span>
+<span class="cm">        * &lt;br&gt;</span>
+<span class="cm">        * The size constraints for the resulting clusters can be set using setMinClusterSize() and setMaxClusterSize().</span>
+<span class="cm">        * &lt;br&gt;</span>
+<span class="cm">        * The region growing parameters can be set using setConditionFunction() and setClusterTolerance().</span>
+<span class="cm">        * &lt;br&gt;</span>
+<span class="cm">        * \param[out] clusters The resultant set of indices, indexing the points of the input cloud that correspond to the clusters</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">segment</span> <span class="p">(</span><span class="n">IndicesClusters</span> <span class="o">&amp;</span><span class="n">clusters</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Get the clusters that are invalidated due to size constraints.</span>
+<span class="cm">        * \note The constructor of this class needs to be initialized with true, and the segment method needs to have been called prior to using this method.</span>
+<span class="cm">        * \param[out] small_clusters The resultant clusters that contain less than min_cluster_size points</span>
+<span class="cm">        * \param[out] large_clusters The resultant clusters that contain more than max_cluster_size points</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getRemovedClusters</span> <span class="p">(</span><span class="n">IndicesClustersPtr</span> <span class="o">&amp;</span><span class="n">small_clusters</span><span class="p">,</span> <span class="n">IndicesClustersPtr</span> <span class="o">&amp;</span><span class="n">large_clusters</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">extract_removed_clusters_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">PCL_WARN</span><span class="p">(</span><span class="s">&quot;[pcl::ConditionalEuclideanClustering::getRemovedClusters] You need to set extract_removed_clusters to true (in this class&#39; constructor) if you want to use this functionality.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">small_clusters</span> <span class="o">=</span> <span class="n">small_clusters_</span><span class="p">;</span>
+        <span class="n">large_clusters</span> <span class="o">=</span> <span class="n">large_clusters_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="cm">/** \brief A pointer to the spatial search object */</span>
+      <span class="n">SearcherPtr</span> <span class="n">searcher_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The condition function that needs to hold for clustering */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span><span class="p">,</span> <span class="kt">float</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">condition_function_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The distance to scan for cluster candidates (default = 0.0) */</span>
+      <span class="kt">float</span> <span class="n">cluster_tolerance_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The minimum cluster size (default = 1) */</span>
+      <span class="kt">int</span> <span class="n">min_cluster_size_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The maximum cluster size (default = unlimited) */</span>
+      <span class="kt">int</span> <span class="n">max_cluster_size_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Set to true if you want to be able to extract the clusters that are too large or too small (default = false) */</span>
+      <span class="kt">bool</span> <span class="n">extract_removed_clusters_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The resultant clusters that contain less than min_cluster_size points */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">IndicesClustersPtr</span> <span class="n">small_clusters_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The resultant clusters that contain more than max_cluster_size points */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">IndicesClustersPtr</span> <span class="n">large_clusters_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/segmentation/impl/conditional_euclidean_clustering.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_segmentation_impl_conditional_euclidean_clustering.hpp.html" class="btn btn-neutral float-right" title="File conditional_euclidean_clustering.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_segmentation_conditional_euclidean_clustering.h.html" class="btn btn-neutral float-left" title="File conditional_euclidean_clustering.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

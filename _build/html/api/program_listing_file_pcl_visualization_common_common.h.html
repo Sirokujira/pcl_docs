@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File common.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File common.hpp" href="file_pcl_common_impl_common.hpp.html" />
+    <link rel="prev" title="File common.h" href="file_pcl_visualization_common_common.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_visualization_common_common.h.html">File common.h</a> &raquo;</li>
+        
+      <li>Program Listing for File common.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_visualization_common_common.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-common-h">
+<span id="program-listing-file-pcl-visualization-common-common-h"></span><h1>Program Listing for File common.h<a class="headerlink" href="#program-listing-for-file-common-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_visualization_common_common.h.html#file-pcl-visualization-common-common-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\visualization\common\common.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Copyright (c) 2010, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#if defined __GNUC__</span>
+<span class="cp">#pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkMatrix4x4.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkSmartPointer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkLookupTable.h&gt;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">vtkCamera</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkRenderWindow</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">RGB</span><span class="p">;</span>
+
+  <span class="k">namespace</span> <span class="n">visualization</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief Get (good) random values for R/G/B.</span>
+<span class="cm">      * \param[out] r the resultant R color value</span>
+<span class="cm">      * \param[out] g the resultant G color value</span>
+<span class="cm">      * \param[out] b the resultant B color value</span>
+<span class="cm">      * \param[in] min minimum value for the colors</span>
+<span class="cm">      * \param[in] max maximum value for the colors</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="n">getRandomColors</span> <span class="p">(</span><span class="kt">double</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">g</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max</span> <span class="o">=</span> <span class="mf">2.8</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Get (good) random values for R/G/B.</span>
+<span class="cm">      * \param[out] rgb the resultant RGB color value</span>
+<span class="cm">      * \param[in] min minimum value for the colors</span>
+<span class="cm">      * \param[in] max maximum value for the colors</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">getRandomColors</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span> <span class="o">&amp;</span><span class="n">rgb</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max</span> <span class="o">=</span> <span class="mf">2.8</span><span class="p">);</span>
+
+    <span class="n">PCL_EXPORTS</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span>
+    <span class="n">vtkToEigen</span> <span class="p">(</span><span class="n">vtkMatrix4x4</span><span class="o">*</span> <span class="n">vtk_matrix</span><span class="p">);</span>
+
+    <span class="n">PCL_EXPORTS</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2i</span>
+    <span class="n">worldToView</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">world_pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span> <span class="o">&amp;</span><span class="n">view_projection_matrix</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">);</span>
+
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">getViewFrustum</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span> <span class="o">&amp;</span><span class="n">view_projection_matrix</span><span class="p">,</span> <span class="kt">double</span> <span class="n">planes</span><span class="p">[</span><span class="mi">24</span><span class="p">]);</span>
+
+    <span class="k">enum</span> <span class="n">FrustumCull</span>
+    <span class="p">{</span>
+      <span class="n">PCL_INSIDE_FRUSTUM</span><span class="p">,</span>
+      <span class="n">PCL_INTERSECT_FRUSTUM</span><span class="p">,</span>
+      <span class="n">PCL_OUTSIDE_FRUSTUM</span>
+    <span class="p">};</span>
+
+    <span class="n">PCL_EXPORTS</span> <span class="kt">int</span>
+    <span class="nf">cullFrustum</span> <span class="p">(</span><span class="kt">double</span> <span class="n">planes</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">min_bb</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">max_bb</span><span class="p">);</span>
+
+    <span class="n">PCL_EXPORTS</span> <span class="kt">float</span>
+    <span class="nf">viewScreenArea</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">eye</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">min_bb</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">max_bb</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span> <span class="o">&amp;</span><span class="n">view_projection_matrix</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Set of rendering properties. */</span>
+    <span class="k">enum</span> <span class="n">RenderingProperties</span>
+    <span class="p">{</span>
+      <span class="n">PCL_VISUALIZER_POINT_SIZE</span><span class="p">,</span>            <span class="cm">/**&lt; integer starting from 1 */</span>
+      <span class="n">PCL_VISUALIZER_OPACITY</span><span class="p">,</span>               <span class="cm">/**&lt; Float going from 0.0 (transparent) to 1.0 (opaque) */</span>
+      <span class="n">PCL_VISUALIZER_LINE_WIDTH</span><span class="p">,</span>            <span class="cm">/**&lt; Integer starting from 1 */</span>
+      <span class="n">PCL_VISUALIZER_FONT_SIZE</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_COLOR</span><span class="p">,</span>                 <span class="cm">/**&lt; 3 floats (R, G, B) going from 0.0 (dark) to 1.0 (light) */</span>
+      <span class="n">PCL_VISUALIZER_REPRESENTATION</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_IMMEDIATE_RENDERING</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_SHADING</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_LUT</span><span class="p">,</span>                   <span class="cm">/**&lt; colormap type \ref pcl::visualization::LookUpTableRepresentationProperties */</span>
+      <span class="n">PCL_VISUALIZER_LUT_RANGE</span>              <span class="cm">/**&lt; two doubles (min and max) or \ref pcl::visualization::LookUpTableRepresentationProperties::PCL_VISUALIZER_LUT_RANGE_AUTO */</span>
+    <span class="p">};</span>
+
+    <span class="k">enum</span> <span class="n">RenderingRepresentationProperties</span>
+    <span class="p">{</span>
+      <span class="n">PCL_VISUALIZER_REPRESENTATION_POINTS</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_REPRESENTATION_WIREFRAME</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_REPRESENTATION_SURFACE</span>
+    <span class="p">};</span>
+
+    <span class="k">enum</span> <span class="n">ShadingRepresentationProperties</span>
+    <span class="p">{</span>
+      <span class="n">PCL_VISUALIZER_SHADING_FLAT</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_SHADING_GOURAUD</span><span class="p">,</span>
+      <span class="n">PCL_VISUALIZER_SHADING_PHONG</span>
+    <span class="p">};</span>
+
+    <span class="cm">/*! Colormap properties. See [mathworks colormap page](http://www.mathworks.com/help/matlab/ref/colormap.html#input_argument_name) for image representations of the colormaps. */</span>
+    <span class="k">enum</span> <span class="n">LookUpTableRepresentationProperties</span>
+    <span class="p">{</span>
+      <span class="n">PCL_VISUALIZER_LUT_JET</span><span class="p">,</span>           <span class="cm">/**&lt; Jet colormap */</span>
+      <span class="n">PCL_VISUALIZER_LUT_JET_INVERSE</span><span class="p">,</span>   <span class="cm">/**&lt; Inverse jet colormap */</span>
+      <span class="n">PCL_VISUALIZER_LUT_HSV</span><span class="p">,</span>           <span class="cm">/**&lt; HSV colormap */</span>
+      <span class="n">PCL_VISUALIZER_LUT_HSV_INVERSE</span><span class="p">,</span>   <span class="cm">/**&lt; Inverse HSV colormap */</span>
+      <span class="n">PCL_VISUALIZER_LUT_GREY</span><span class="p">,</span>          <span class="cm">/**&lt; Grey colormap (black to white) */</span>
+      <span class="n">PCL_VISUALIZER_LUT_BLUE2RED</span><span class="p">,</span>      <span class="cm">/**&lt; Blue to red colormap (blue to white to red) */</span>
+      <span class="n">PCL_VISUALIZER_LUT_RANGE_AUTO</span><span class="p">,</span>    <span class="cm">/**&lt; Set LUT range to min and max values of the data */</span>
+      <span class="n">PCL_VISUALIZER_LUT_VIRIDIS</span>        <span class="cm">/**&lt; Viridis colormap */</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Generate a lookup table for a colormap.</span>
+<span class="cm">      * \param[in] colormap_type</span>
+<span class="cm">      * \param[out] table a vtk lookup table</span>
+<span class="cm">      * \note The list of available colormaps can be found in \ref pcl::visualization::LookUpTableRepresentationProperties.</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">bool</span>
+    <span class="nf">getColormapLUT</span>  <span class="p">(</span><span class="n">LookUpTableRepresentationProperties</span> <span class="n">colormap_type</span><span class="p">,</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkLookupTable</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">table</span><span class="p">);</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="cm">/** \brief Camera class holds a set of camera parameters together with the window pos/size. */</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">Camera</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/** Construct a camera with meaningful default values.</span>
+<span class="cm">          * The camera is positioned at origin, looks along z-axis and has up-vector along y-axis. Window position and</span>
+<span class="cm">          * size are initialized with (0, 0) and (1, 1) respectively. */</span>
+        <span class="n">Camera</span> <span class="p">();</span>
+
+        <span class="cm">/** Construct a camera by copying parameters from a VTK camera.</span>
+<span class="cm">          * Window position and size are initialized with (0, 0) and (1, 1) respectively.*/</span>
+        <span class="n">Camera</span> <span class="p">(</span><span class="n">vtkCamera</span><span class="o">&amp;</span> <span class="n">camera</span><span class="p">);</span>
+
+        <span class="cm">/** Construct a camera by copying parameters from a VTK camera and a VTK render window. */</span>
+        <span class="n">Camera</span> <span class="p">(</span><span class="n">vtkCamera</span><span class="o">&amp;</span> <span class="n">camera</span><span class="p">,</span> <span class="n">vtkRenderWindow</span><span class="o">&amp;</span> <span class="n">window</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Focal point or lookAt.</span>
+<span class="cm">          * \note The view direction can be obtained by (focal-pos).normalized ()</span>
+<span class="cm">          */</span>
+        <span class="kt">double</span> <span class="n">focal</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+        <span class="cm">/** \brief Position of the camera. */</span>
+        <span class="kt">double</span> <span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+        <span class="cm">/** \brief Up vector of the camera.</span>
+<span class="cm">          * \note Not to be confused with the view direction, bad naming here. */</span>
+        <span class="kt">double</span> <span class="n">view</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+        <span class="cm">/** \brief Clipping planes depths.</span>
+<span class="cm">          * clip[0] is near clipping plane, and clip [1] is the far clipping plane</span>
+<span class="cm">          */</span>
+        <span class="kt">double</span> <span class="n">clip</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+        <span class="cm">/** \brief Field of view angle in y direction (radians). */</span>
+        <span class="kt">double</span> <span class="n">fovy</span><span class="p">;</span>
+
+        <span class="c1">// the following variables are the actual position and size of the window on the screen and NOT the viewport!</span>
+        <span class="c1">// except for the size, which is the same the viewport is assumed to be centered and same size as the window.</span>
+        <span class="kt">double</span> <span class="n">window_size</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="kt">double</span> <span class="n">window_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+
+        <span class="cm">/** \brief Computes View matrix for Camera (Based on gluLookAt)</span>
+<span class="cm">          * \param[out] view_mat the resultant matrix</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">computeViewMatrix</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span><span class="o">&amp;</span> <span class="n">view_mat</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Computes Projection Matrix for Camera</span>
+<span class="cm">          *  \param[out] proj the resultant matrix</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">computeProjectionMatrix</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span><span class="o">&amp;</span> <span class="n">proj</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief converts point to window coordiantes</span>
+<span class="cm">          * \param[in] pt xyz point to be converted</span>
+<span class="cm">          * \param[out] window_cord vector containing the pts&#39; window X,Y, Z and 1</span>
+<span class="cm">          *</span>
+<span class="cm">          * This function computes the projection and view matrix every time.</span>
+<span class="cm">          * It is very inefficient to use this for every point in the point cloud!</span>
+<span class="cm">          */</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+        <span class="n">cvtWindowCoordinates</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">pt</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span><span class="o">&amp;</span> <span class="n">window_cord</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief converts point to window coordiantes</span>
+<span class="cm">          * \param[in] pt xyz point to be converted</span>
+<span class="cm">          * \param[out] window_cord vector containing the pts&#39; window X,Y, Z and 1</span>
+<span class="cm">          * \param[in] composite_mat composite transformation matrix (proj*view)</span>
+<span class="cm">          *</span>
+<span class="cm">          * Use this function to compute window coordinates with a precomputed</span>
+<span class="cm">          * transformation function.  The typical composite matrix will be</span>
+<span class="cm">          * the projection matrix * the view matrix.  However, additional</span>
+<span class="cm">          * matrices like a camera disortion matrix can also be added.</span>
+<span class="cm">          */</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+        <span class="n">cvtWindowCoordinates</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">pt</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span><span class="o">&amp;</span> <span class="n">window_cord</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span><span class="o">&amp;</span> <span class="n">composite_mat</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/common/impl/common.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_common_impl_common.hpp.html" class="btn btn-neutral float-right" title="File common.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_visualization_common_common.h.html" class="btn btn-neutral float-left" title="File common.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

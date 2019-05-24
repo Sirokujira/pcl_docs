@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File hough_3d.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File hough_3d.hpp" href="file_pcl_recognition_impl_cg_hough_3d.hpp.html" />
+    <link rel="prev" title="File hough_3d.h" href="file_pcl_recognition_cg_hough_3d.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_cg_hough_3d.h.html">File hough_3d.h</a> &raquo;</li>
+        
+      <li>Program Listing for File hough_3d.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_cg_hough_3d.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-hough-3d-h">
+<span id="program-listing-file-pcl-recognition-cg-hough-3d-h"></span><h1>Program Listing for File hough_3d.h<a class="headerlink" href="#program-listing-for-file-hough-3d-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_cg_hough_3d.h.html#file-pcl-recognition-cg-hough-3d-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\cg\hough_3d.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id:$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/cg/correspondence_grouping.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/boost.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">recognition</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief HoughSpace3D is a 3D voting space. Cast votes can be interpolated in order to better deal with approximations introduced by bin quantization. A weight can also be associated with each vote.</span>
+<span class="cm">      * \author Federico Tombari (original), Tommaso Cavallari (PCL port)</span>
+<span class="cm">      * \ingroup recognition</span>
+<span class="cm">      */</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">HoughSpace3D</span>
+    <span class="p">{</span>
+
+      <span class="k">public</span><span class="o">:</span>
+
+        <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">HoughSpace3D</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Constructor</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] min_coord minimum (x,y,z) coordinates of the Hough space</span>
+<span class="cm">          * \param[in] bin_size  size of each bing of the Hough space.</span>
+<span class="cm">          * \param[in] max_coord maximum (x,y,z) coordinates of the Hough space.</span>
+<span class="cm">          */</span>
+        <span class="n">HoughSpace3D</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">min_coord</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">bin_size</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">max_coord</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Reset all cast votes. */</span>
+        <span class="kt">void</span>
+        <span class="nf">reset</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Casting a vote for a given position in the Hough space.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] single_vote_coord coordinates of the vote being cast (in absolute coordinates)</span>
+<span class="cm">          * \param[in] weight weight associated with the vote.</span>
+<span class="cm">          * \param[in] voter_id the numeric id of the voter. Useful to trace back the voting correspondence, if the vote is returned by findMaxima as part of a maximum of the Hough Space.</span>
+<span class="cm">          * \return the index of the bin in which the vote has been cast.</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">vote</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">single_vote_coord</span><span class="p">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="p">,</span> <span class="kt">int</span> <span class="n">voter_id</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Vote for a given position in the 3D space. The weight is interpolated between the bin pointed by single_vote_coord and its neighbors.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] single_vote_coord coordinates of the vote being cast.</span>
+<span class="cm">          * \param[in] weight weight associated with the vote.</span>
+<span class="cm">          * \param[in] voter_id the numeric id of the voter. Useful to trace back the voting correspondence, if the vote is returned by findMaxima as a part of a maximum of the Hough Space.</span>
+<span class="cm">          * \return the index of the bin in which the vote has been cast.</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">voteInt</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">single_vote_coord</span><span class="p">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="p">,</span> <span class="kt">int</span> <span class="n">voter_id</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Find the bins with most votes.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] min_threshold the minimum number of votes to be included in a bin in order to have its value returned.</span>
+<span class="cm">          * If set to a value between -1 and 0 the Hough space maximum_vote is found and the returned values are all the votes greater than -min_threshold * maximum_vote.</span>
+<span class="cm">          * \param[out] maxima_values the list of Hough Space bin values greater than min_threshold.</span>
+<span class="cm">          * \param[out] maxima_voter_ids for each value returned, a list of the voter ids who cast a vote in that position.</span>
+<span class="cm">          * \return The min_threshold used, either set by the user or found by this method.</span>
+<span class="cm">          */</span>
+        <span class="kt">double</span>
+        <span class="nf">findMaxima</span> <span class="p">(</span><span class="kt">double</span> <span class="n">min_threshold</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">maxima_values</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">maxima_voter_ids</span><span class="p">);</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+
+        <span class="cm">/** \brief Minimum coordinate in the Hough Space. */</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">min_coord_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Size of each bin in the Hough Space. */</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">bin_size_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Number of bins for each dimension. */</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3i</span> <span class="n">bin_count_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Used to access hough_space_ as if it was a matrix. */</span>
+        <span class="kt">int</span> <span class="n">partial_bin_products_</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+        <span class="cm">/** \brief Total number of bins in the Hough Space. */</span>
+        <span class="kt">int</span> <span class="n">total_bins_count_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The Hough Space. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">hough_space_</span><span class="p">;</span>
+        <span class="c1">//boost::unordered_map&lt;int, double&gt; hough_space_;</span>
+
+        <span class="cm">/** \brief List of voters for each bin. */</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">voter_ids_</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Class implementing a 3D correspondence grouping algorithm that can deal with multiple instances of a model template</span>
+<span class="cm">    * found into a given scene. Each correspondence casts a vote for a reference point in a 3D Hough Space.</span>
+<span class="cm">  * The remaining 3 DOF are taken into account by associating each correspondence with a local Reference Frame.</span>
+<span class="cm">    * The suggested PointModelRfT is pcl::ReferenceFrame</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If you use this code in any academic work, please cite the original paper:</span>
+<span class="cm">    *   - F. Tombari, L. Di Stefano:</span>
+<span class="cm">    *     Object recognition in 3D scenes with occlusions and clutter by Hough voting.</span>
+<span class="cm">    *     2010, Fourth Pacific-Rim Symposium on Image and Video Technology</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Federico Tombari (original), Tommaso Cavallari (PCL port)</span>
+<span class="cm">    * \ingroup recognition</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointSceneT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointModelRfT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ReferenceFrame</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointSceneRfT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ReferenceFrame</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">Hough3DGrouping</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CorrespondenceGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointModelRfT</span><span class="o">&gt;</span> <span class="n">ModelRfCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">ModelRfCloud</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">ModelRfCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">ModelRfCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">ModelRfCloudConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointSceneRfT</span><span class="o">&gt;</span> <span class="n">SceneRfCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">SceneRfCloud</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">SceneRfCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">SceneRfCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">SceneRfCloudConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">CorrespondenceGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">SceneCloudConstPtr</span> <span class="n">SceneCloudConstPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor */</span>
+      <span class="n">Hough3DGrouping</span> <span class="p">()</span>
+        <span class="o">:</span> <span class="n">input_rf_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">scene_rf_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">needs_training_</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+        <span class="p">,</span><span class="n">hough_threshold_</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">hough_bin_size_</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">use_interpolation_</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">use_distance_weight_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">local_rf_normals_search_radius_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">local_rf_search_radius_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">hough_space_initialized_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">{}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset.</span>
+<span class="cm">        * \param[in] cloud the const boost shared pointer to a PointCloud message.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="o">&gt;::</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="n">needs_training_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">input_rf_</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset&#39;s reference frames.</span>
+<span class="cm">        * Each point in the reference frame cloud should be the reference frame of</span>
+<span class="cm">        * the correspondent point in the input dataset.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] input_rf the pointer to the input cloud&#39;s reference frames.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputRf</span> <span class="p">(</span><span class="k">const</span> <span class="n">ModelRfCloudConstPtr</span> <span class="o">&amp;</span><span class="n">input_rf</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">input_rf_</span> <span class="o">=</span> <span class="n">input_rf</span><span class="p">;</span>
+        <span class="n">needs_training_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Getter for the input dataset&#39;s reference frames.</span>
+<span class="cm">        * Each point in the reference frame cloud should be the reference frame of</span>
+<span class="cm">        * the correspondent point in the input dataset.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the pointer to the input cloud&#39;s reference frames.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">ModelRfCloudConstPtr</span>
+      <span class="n">getInputRf</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">input_rf_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the scene dataset (i.e. the cloud in which the algorithm has to search for instances of the input model)</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] scene the const boost shared pointer to a PointCloud message.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSceneCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">SceneCloudConstPtr</span> <span class="o">&amp;</span><span class="n">scene</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">scene_</span> <span class="o">=</span> <span class="n">scene</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">scene_rf_</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the scene dataset&#39;s reference frames.</span>
+<span class="cm">        * Each point in the reference frame cloud should be the reference frame of</span>
+<span class="cm">        * the correspondent point in the scene dataset.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] scene_rf the pointer to the scene cloud&#39;s reference frames.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSceneRf</span> <span class="p">(</span><span class="k">const</span> <span class="n">SceneRfCloudConstPtr</span> <span class="o">&amp;</span><span class="n">scene_rf</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">scene_rf_</span> <span class="o">=</span> <span class="n">scene_rf</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Getter for the scene dataset&#39;s reference frames.</span>
+<span class="cm">        * Each point in the reference frame cloud should be the reference frame of</span>
+<span class="cm">        * the correspondent point in the scene dataset.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the pointer to the scene cloud&#39;s reference frames.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">SceneRfCloudConstPtr</span>
+      <span class="n">getSceneRf</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">scene_rf_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the precomputed correspondences between points in the input dataset and</span>
+<span class="cm">        * points in the scene dataset. The correspondences are going to be clustered into different model instances</span>
+<span class="cm">        * by the algorithm.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] corrs the correspondences between the model and the scene.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setModelSceneCorrespondences</span> <span class="p">(</span><span class="k">const</span> <span class="n">CorrespondencesConstPtr</span> <span class="o">&amp;</span><span class="n">corrs</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">model_scene_corrs_</span> <span class="o">=</span> <span class="n">corrs</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the minimum number of votes in the Hough space needed to infer the presence of a model instance into the scene cloud.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] threshold the threshold for the Hough space voting, if set between -1 and 0 the maximum vote in the</span>
+<span class="cm">        * entire space is automatically calculated and -threshold the maximum value is used as a threshold. This means</span>
+<span class="cm">        * that a value between -1 and 0 should be used only if at least one instance of the model is always present in</span>
+<span class="cm">        * the scene, or if this false positive can be filtered later.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setHoughThreshold</span> <span class="p">(</span><span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">hough_threshold_</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Gets the minimum number of votes in the Hough space needed to infer the presence of a model instance into the scene cloud.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the threshold for the Hough space voting.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getHoughThreshold</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">hough_threshold_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets the size of each bin into the Hough space.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] bin_size the size of each Hough space&#39;s bin.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setHoughBinSize</span> <span class="p">(</span><span class="kt">double</span> <span class="n">bin_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">hough_bin_size_</span> <span class="o">=</span> <span class="n">bin_size</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Gets the size of each bin into the Hough space.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the size of each Hough space&#39;s bin.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getHoughBinSize</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">hough_bin_size_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets whether the vote casting procedure interpolates</span>
+<span class="cm">        * the score between neighboring bins of the Hough space or not.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] use_interpolation the algorithm should interpolate the vote score between neighboring bins.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setUseInterpolation</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">use_interpolation</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">use_interpolation_</span> <span class="o">=</span> <span class="n">use_interpolation</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Gets whether the vote casting procedure interpolates</span>
+<span class="cm">        * the score between neighboring bins of the Hough space or not.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return if the algorithm should interpolate the vote score between neighboring bins.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="n">getUseInterpolation</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">use_interpolation_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets whether the vote casting procedure uses the correspondence&#39;s distance as a score.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] use_distance_weight the algorithm should use the weighted distance when calculating the Hough voting score.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setUseDistanceWeight</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">use_distance_weight</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">use_distance_weight_</span> <span class="o">=</span> <span class="n">use_distance_weight</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Gets whether the vote casting procedure uses the correspondence&#39;s distance as a score.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return if the algorithm should use the weighted distance when calculating the Hough voting score.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="n">getUseDistanceWeight</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">use_distance_weight_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief If the Local reference frame has not been set for either the model cloud or the scene cloud,</span>
+<span class="cm">        * this algorithm makes the computation itself but needs a suitable search radius to compute the normals</span>
+<span class="cm">        * in order to subsequently compute the RF (if not set a default 15 nearest neighbors search is performed).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] local_rf_normals_search_radius the normals search radius for the local reference frame calculation.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setLocalRfNormalsSearchRadius</span> <span class="p">(</span><span class="kt">float</span> <span class="n">local_rf_normals_search_radius</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">local_rf_normals_search_radius_</span> <span class="o">=</span> <span class="n">local_rf_normals_search_radius</span><span class="p">;</span>
+        <span class="n">needs_training_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief If the Local reference frame has not been set for either the model cloud or the scene cloud,</span>
+<span class="cm">        * this algorithm makes the computation itself but needs a suitable search radius to compute the normals</span>
+<span class="cm">        * in order to subsequently compute the RF (if not set a default 15 nearest neighbors search is performed).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the normals search radius for the local reference frame calculation.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getLocalRfNormalsSearchRadius</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">local_rf_normals_search_radius_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief If the Local reference frame has not been set for either the model cloud or the scene cloud,</span>
+<span class="cm">        * this algorithm makes the computation itself but needs a suitable search radius to do so.</span>
+<span class="cm">        * \attention This parameter NEEDS to be set if the reference frames are not precomputed externally,</span>
+<span class="cm">        * otherwise the recognition results won&#39;t be correct.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] local_rf_search_radius the search radius for the local reference frame calculation.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setLocalRfSearchRadius</span> <span class="p">(</span><span class="kt">float</span> <span class="n">local_rf_search_radius</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">local_rf_search_radius_</span> <span class="o">=</span> <span class="n">local_rf_search_radius</span><span class="p">;</span>
+        <span class="n">needs_training_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">hough_space_initialized_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief If the Local reference frame has not been set for either the model cloud or the scene cloud,</span>
+<span class="cm">        * this algorithm makes the computation itself but needs a suitable search radius to do so.</span>
+<span class="cm">        * \attention This parameter NEEDS to be set if the reference frames are not precomputed externally,</span>
+<span class="cm">        * otherwise the recognition results won&#39;t be correct.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the search radius for the local reference frame calculation.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getLocalRfSearchRadius</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">local_rf_search_radius_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Call this function after setting the input, the input_rf and the hough_bin_size parameters to perform an off line training of the algorithm. This might be useful if one wants to perform once and for all a pre-computation of votes that only concern the models, increasing the on-line efficiency of the grouping algorithm.</span>
+<span class="cm">        * The algorithm is automatically trained on the first invocation of the recognize method or the cluster method if this training function has not been manually invoked.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return true if the training had been successful or false if errors have occurred.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="n">train</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief The main function, recognizes instances of the model into the scene set by the user.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[out] transformations a vector containing one transformation matrix for each instance of the model recognized into the scene.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return true if the recognition had been successful or false if errors have occurred.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">recognize</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transformations</span><span class="p">);</span>
+
+      <span class="cm">/** \brief The main function, recognizes instances of the model into the scene set by the user.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[out] transformations a vector containing one transformation matrix for each instance of the model recognized into the scene.</span>
+<span class="cm">        * \param[out] clustered_corrs a vector containing the correspondences for each instance of the model found within the input data (the same output of clusterCorrespondences).</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return true if the recognition had been successful or false if errors have occurred.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">recognize</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transformations</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">clustered_corrs</span><span class="p">);</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">CorrespondenceGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">CorrespondenceGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">scene_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">CorrespondenceGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">model_scene_corrs_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The input Rf cloud. */</span>
+      <span class="n">ModelRfCloudConstPtr</span> <span class="n">input_rf_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The scene Rf cloud. */</span>
+      <span class="n">SceneRfCloudConstPtr</span> <span class="n">scene_rf_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief If the training of the Hough space is needed; set on change of either the input cloud or the input_rf. */</span>
+      <span class="kt">bool</span> <span class="n">needs_training_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The result of the training. The vector between each model point and the centroid of the model adjusted by its local reference frame.*/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">model_votes_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The minimum number of votes in the Hough space needed to infer the presence of a model instance into the scene cloud. */</span>
+      <span class="kt">double</span> <span class="n">hough_threshold_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The size of each bin of the hough space. */</span>
+      <span class="kt">double</span> <span class="n">hough_bin_size_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Use the interpolation between neighboring Hough bins when casting votes. */</span>
+      <span class="kt">bool</span> <span class="n">use_interpolation_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Use the weighted correspondence distance when casting votes. */</span>
+      <span class="kt">bool</span> <span class="n">use_distance_weight_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Normals search radius for the potential Rf calculation. */</span>
+      <span class="kt">float</span> <span class="n">local_rf_normals_search_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Search radius for the potential Rf calculation. */</span>
+      <span class="kt">float</span> <span class="n">local_rf_search_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The Hough space. */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">recognition</span><span class="o">::</span><span class="n">HoughSpace3D</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">hough_space_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Transformations found by clusterCorrespondences method. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">found_transformations_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Whether the Hough space already contains the correct votes for the current input parameters and so the cluster and recognize calls don&#39;t need to recompute each value.</span>
+<span class="cm">        * Reset on the change of any parameter except the hough_threshold.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span> <span class="n">hough_space_initialized_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Cluster the input correspondences in order to distinguish between different instances of the model into the scene.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[out] model_instances a vector containing the clustered correspondences for each model found on the scene.</span>
+<span class="cm">        * \return true if the clustering had been successful or false if errors have occurred.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">clusterCorrespondences</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Correspondences</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">model_instances</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/*  \brief Finds the transformation matrix between the input and the scene cloud for a set of correspondences using a RANSAC algorithm.</span>
+<span class="cm">        * \param[in] the scene cloud in which the PointSceneT has been converted to PointModelT.</span>
+<span class="cm">        * \param[in] corrs a set of correspondences.</span>
+<span class="cm">        * \param[out] transform the transformation matrix between the input cloud and the scene cloud that aligns the found correspondences.</span>
+<span class="cm">        * \return true if the recognition had been successful or false if errors have occurred.</span>
+<span class="cm">        */</span>
+      <span class="c1">//bool</span>
+      <span class="c1">//getTransformMatrix (const PointCloudConstPtr &amp;scene_cloud, const Correspondences &amp;corrs, Eigen::Matrix4f &amp;transform);</span>
+
+      <span class="cm">/** \brief The Hough space voting procedure.</span>
+<span class="cm">        * \return true if the voting had been successful or false if errors have occurred.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">houghVoting</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Computes the reference frame for an input cloud.</span>
+<span class="cm">        * \param[in] input the input cloud.</span>
+<span class="cm">        * \param[out] rf the resulting reference frame.</span>
+<span class="cm">        */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointType</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRfType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">computeRf</span> <span class="p">(</span><span class="k">const</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointRfType</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">rf</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/impl/cg/hough_3d.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_recognition_impl_cg_hough_3d.hpp.html" class="btn btn-neutral float-right" title="File hough_3d.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_cg_hough_3d.h.html" class="btn btn-neutral float-left" title="File hough_3d.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

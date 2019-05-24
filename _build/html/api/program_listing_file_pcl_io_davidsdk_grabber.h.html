@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File davidsdk_grabber.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File debayer.h" href="file_pcl_io_debayer.h.html" />
+    <link rel="prev" title="File davidsdk_grabber.h" href="file_pcl_io_davidsdk_grabber.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_io_davidsdk_grabber.h.html">File davidsdk_grabber.h</a> &raquo;</li>
+        
+      <li>Program Listing for File davidsdk_grabber.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_io_davidsdk_grabber.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-davidsdk-grabber-h">
+<span id="program-listing-file-pcl-io-davidsdk-grabber-h"></span><h1>Program Listing for File davidsdk_grabber.h<a class="headerlink" href="#program-listing-for-file-davidsdk-grabber-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_io_davidsdk_grabber.h.html#file-pcl-io-davidsdk-grabber-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\io\davidsdk_grabber.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2014-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Author: Victor Lamoine (victor.lamoine@gmail.com)</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_config.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/io.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PolygonMesh.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/grabber.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;david.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">PointXYZ</span><span class="p">;</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">PointCloud</span><span class="p">;</span>
+
+  <span class="cm">/** @brief Grabber for davidSDK structured light compliant devices.\n</span>
+<span class="cm">   * The [davidSDK SDK](http://www.david-3d.com/en/products/david-sdk) allows to use a structured light scanner to</span>
+<span class="cm">   * fetch clouds/meshes.\n</span>
+<span class="cm">   * The purpose of this grabber is NOT to provide all davidSDK functionalities but rather provide a PCL-unified interface to the sensor for</span>
+<span class="cm">   * basic operations.\n</span>
+<span class="cm">   * Please consult the [David-3d wiki](http://wiki.david-3d.com/david-wiki) for more information.</span>
+<span class="cm">   * @author Victor Lamoine (victor.lamoine@gmail.com)\n</span>
+<span class="cm">   * @ingroup io</span>
+<span class="cm">   */</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">DavidSDKGrabber</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Grabber</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** @cond */</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">DavidSDKGrabber</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">DavidSDKGrabber</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="c1">// Define callback signature typedefs</span>
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_davidsdk_point_cloud</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="p">);</span>
+
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_davidsdk_mesh</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="p">);</span>
+
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_davidsdk_image</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">);</span>
+
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_davidsdk_point_cloud_image</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="p">,</span>
+                                           <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">);</span>
+
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_davidsdk_mesh_image</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="p">,</span>
+                                    <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">);</span>
+      <span class="cm">/** @endcond */</span>
+
+      <span class="cm">/** @brief Constructor */</span>
+      <span class="n">DavidSDKGrabber</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Destructor inherited from the Grabber interface. It never throws. */</span>
+      <span class="k">virtual</span>
+      <span class="o">~</span><span class="n">DavidSDKGrabber</span> <span class="p">()</span> <span class="k">throw</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief [Connect](http://docs.david-3d.com/sdk/en/classdavid_1_1_client_json_rpc.html#a4b948e57a2e5e7f9cdcf1171c500aa24) client</span>
+<span class="cm">       * @param[in] address</span>
+<span class="cm">       * @param[in] port</span>
+<span class="cm">       * @return Server info*/</span>
+      <span class="n">david</span><span class="o">::</span><span class="n">ServerInfo</span>
+      <span class="n">connect</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">address</span> <span class="o">=</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+               <span class="kt">uint16_t</span> <span class="n">port</span> <span class="o">=</span> <span class="n">david</span><span class="o">::</span><span class="n">DAVID_SDK_DefaultPort</span><span class="p">);</span>
+
+      <span class="cm">/** @brief [Disconnect](http://docs.david-3d.com/sdk/en/classdavid_1_1_client_json_rpc.html#a2770728a6de2c708df767bedf8be0814) client</span>
+<span class="cm">       * @param[in] stop_server */</span>
+      <span class="kt">void</span>
+      <span class="nf">disconnect</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">stop_server</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Start the point cloud and or image acquisition */</span>
+      <span class="kt">void</span>
+      <span class="nf">start</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Stop the data acquisition */</span>
+      <span class="kt">void</span>
+      <span class="nf">stop</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Check if the data acquisition is still running</span>
+<span class="cm">       * @return True if running, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isRunning</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Check if the client is connected</span>
+<span class="cm">       * @return True if connected, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isConnected</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get class name</span>
+<span class="cm">       * @returns A string containing the class name */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getName</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get @ref local_path_ path directory</span>
+<span class="cm">       * @returns the path */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getLocalPath</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Get @ref remote_path_ path directory</span>
+<span class="cm">       * @returns the path */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getRemotePath</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Set @ref file_format_ to &quot;obj&quot; */</span>
+      <span class="kt">void</span>
+      <span class="nf">setFileFormatToOBJ</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Set @ref file_format_ to &quot;ply&quot;</span>
+<span class="cm">       * @warning This format is NOT available with trial versions of the davidSDK server! */</span>
+      <span class="kt">void</span>
+      <span class="nf">setFileFormatToPLY</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Set @ref file_format_ to &quot;stl&quot; */</span>
+      <span class="kt">void</span>
+      <span class="nf">setFileFormatToSTL</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Get @ref file_format_</span>
+<span class="cm">       * @returns the file format */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getFileFormat</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Set @ref local_path_ path directory for scanning files</span>
+<span class="cm">       * @param[in] path The directory path</span>
+<span class="cm">       *</span>
+<span class="cm">       * If the path is empty, using default value (&quot;C:/temp&quot;) */</span>
+      <span class="kt">void</span>
+      <span class="nf">setLocalPath</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">path</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Set @ref remote_path_ path directory for scanning files</span>
+<span class="cm">       * @param[in] path The directory path</span>
+<span class="cm">       *</span>
+<span class="cm">       * If the string is empty, @ref remote_path_ = @ref local_path_ */</span>
+      <span class="kt">void</span>
+      <span class="nf">setRemotePath</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">path</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Set @ref local_path_ and @ref remote_path_ directory paths</span>
+<span class="cm">       * @param[in] local_path</span>
+<span class="cm">       * @param[in] remote_path</span>
+<span class="cm">       *</span>
+<span class="cm">       * If the path is empty, using default value (&quot;C:/temp&quot;) */</span>
+      <span class="kt">void</span>
+      <span class="nf">setLocalAndRemotePaths</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_path</span><span class="p">,</span>
+                              <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">remote_path</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Calibrate the scanner</span>
+<span class="cm">       * @param[in] grid_size Size of the calibration grid in millimeters</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       *</span>
+<span class="cm">       * More information [here](http://wiki.david-3d.com/david3_user_manual/structured_light).\n</span>
+<span class="cm">       * Also see [ImportCalibration](http://docs.david-3d.com/sdk/en/classdavid_1_1_i_structured_light_scanner.html#a68e888636883d90aac7891d2ef9e6b27).\n</span>
+<span class="cm">       * and [ExportCalibration](http://docs.david-3d.com/sdk/en/classdavid_1_1_i_structured_light_scanner.html#a66817b07227f9a8852663d9141ae48db).</span>
+<span class="cm">       *</span>
+<span class="cm">       * @warning You MUST perform calibration each time you modify the camera/projector focus or move the camera relatively to the projector.\n</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">calibrate</span> <span class="p">(</span><span class="kt">double</span> <span class="n">grid_size</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Capture a single point cloud and store it</span>
+<span class="cm">       * @param[out] cloud The cloud to be filled</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning Calls [DeleteAllMeshes()](http://docs.david-3d.com/sdk/en/classdavid_1_1_i_shape_fusion.html#aed22e458b51f1361803360c02c2d1403) */</span>
+      <span class="kt">bool</span>
+      <span class="nf">grabSingleCloud</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Capture a single mesh and store it</span>
+<span class="cm">       * @param[out] mesh The mesh to be filled</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning Calls [DeleteAllMeshes()](http://docs.david-3d.com/sdk/en/classdavid_1_1_i_shape_fusion.html#aed22e458b51f1361803360c02c2d1403) */</span>
+      <span class="kt">bool</span>
+      <span class="nf">grabSingleMesh</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span> <span class="o">&amp;</span><span class="n">mesh</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Obtain the number of frames per second (FPS) */</span>
+      <span class="kt">float</span>
+      <span class="nf">getFramesPerSecond</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief davidSDK client */</span>
+      <span class="n">david</span><span class="o">::</span><span class="n">Client</span> <span class="n">david_</span><span class="p">;</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** @brief Grabber thread */</span>
+      <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">grabber_thread_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost point cloud signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_davidsdk_point_cloud</span><span class="o">&gt;*</span> <span class="n">point_cloud_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost mesh signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_davidsdk_mesh</span><span class="o">&gt;*</span> <span class="n">mesh_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost image signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_davidsdk_image</span><span class="o">&gt;*</span> <span class="n">image_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost image + point cloud signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_davidsdk_point_cloud_image</span><span class="o">&gt;*</span> <span class="n">point_cloud_image_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost mesh + image signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_davidsdk_mesh_image</span><span class="o">&gt;*</span> <span class="n">mesh_image_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Whether the client is connected */</span>
+      <span class="kt">bool</span> <span class="n">client_connected_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Whether an davidSDK device is running or not */</span>
+      <span class="kt">bool</span> <span class="n">running_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Local path of directory where the scanning file will be located.</span>
+<span class="cm">       * @note Default value is @c C:/temp */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">local_path_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Remote path of directory where the scanning file will be located.</span>
+<span class="cm">       * @note If this is empty, the @ref local_path_ will be used instead</span>
+<span class="cm">       * Default value is @c C:/temp */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">remote_path_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Export file extension, available formats are STL, OBJ, PLY */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">file_format_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief processGrabbing capture/processing frequency */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">EventFrequency</span> <span class="n">frequency_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Mutual exclusion for FPS computation */</span>
+      <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">fps_mutex_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Continuously asks for images and or point clouds/meshes data from the device and publishes them if available. */</span>
+      <span class="kt">void</span>
+      <span class="nf">processGrabbing</span> <span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">}</span>  <span class="c1">// namespace pcl</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_io_debayer.h.html" class="btn btn-neutral float-right" title="File debayer.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_io_davidsdk_grabber.h.html" class="btn btn-neutral float-left" title="File davidsdk_grabber.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

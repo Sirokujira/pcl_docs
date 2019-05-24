@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree_poisson.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree_poisson.hpp" href="file_pcl_surface_3rdparty_poisson4_octree_poisson.hpp.html" />
+    <link rel="prev" title="File octree_poisson.h" href="file_pcl_surface_3rdparty_poisson4_octree_poisson.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_poisson4_octree_poisson.h.html">File octree_poisson.h</a> &raquo;</li>
+        
+      <li>Program Listing for File octree_poisson.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_poisson4_octree_poisson.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree-poisson-h">
+<span id="program-listing-file-pcl-surface-3rdparty-poisson4-octree-poisson-h"></span><h1>Program Listing for File octree_poisson.h<a class="headerlink" href="#program-listing-for-file-octree-poisson-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_poisson4_octree_poisson.h.html#file-pcl-surface-3rdparty-poisson4-octree-poisson-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\poisson4\octree_poisson.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">Copyright (c) 2006, Michael Kazhdan and Matthew Bolitho</span>
+<span class="cm">All rights reserved.</span>
+
+<span class="cm">Redistribution and use in source and binary forms, with or without modification,</span>
+<span class="cm">are permitted provided that the following conditions are met:</span>
+
+<span class="cm">Redistributions of source code must retain the above copyright notice, this list of</span>
+<span class="cm">conditions and the following disclaimer. Redistributions in binary form must reproduce</span>
+<span class="cm">the above copyright notice, this list of conditions and the following disclaimer</span>
+<span class="cm">in the documentation and/or other materials provided with the distribution.</span>
+
+<span class="cm">Neither the name of the Johns Hopkins University nor the names of its contributors</span>
+<span class="cm">may be used to endorse or promote products derived from this software without specific</span>
+<span class="cm">prior written permission.</span>
+
+<span class="cm">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY</span>
+<span class="cm">EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES</span>
+<span class="cm">OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT</span>
+<span class="cm">SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm">INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED</span>
+<span class="cm">TO, PROCUREMENT OF SUBSTITUTE  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR</span>
+<span class="cm">BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span>
+<span class="cm">CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm">ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH</span>
+<span class="cm">DAMAGE.</span>
+<span class="cm">*/</span>
+
+<span class="cp">#ifndef OCT_NODE_INCLUDED</span>
+<span class="cp">#define OCT_NODE_INCLUDED</span>
+
+<span class="cp">#if defined __GNUC__</span>
+<span class="cp">#  pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;allocator.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;binary_node.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;marching_cubes_poisson.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#define DIMENSION 3</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">poisson</span>
+  <span class="p">{</span>
+
+    <span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">NodeData</span> <span class="p">,</span> <span class="k">class</span> <span class="nc">Real</span><span class="o">=</span><span class="kt">float</span> <span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">OctNode</span>
+    <span class="p">{</span>
+      <span class="k">private</span><span class="o">:</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="n">UseAlloc</span><span class="p">;</span>
+
+        <span class="k">class</span> <span class="nc">AdjacencyCountFunction</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+            <span class="kt">void</span> <span class="nf">Function</span><span class="p">(</span> <span class="k">const</span> <span class="n">OctNode</span><span class="o">&lt;</span><span class="n">NodeData</span><span class="p">,</span><span class="n">Real</span><span class="o">&gt;*</span> <span class="n">node1</span> <span class="p">,</span> <span class="k">const</span> <span class="n">OctNode</span><span class="o">&lt;</span><span class="n">NodeData</span><span class="p">,</span><span class="n">Real</span><span class="o">&gt;*</span> <span class="n">node2</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">__processNodeFaces</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex1</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex2</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex3</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex4</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">__processNodeEdges</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex1</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex2</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">__processNodeNodes</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">__ProcessNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">cWidth2</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">TerminatingNodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">__ProcessTerminatingNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">cWidth2</span><span class="p">,</span><span class="n">TerminatingNodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">PointAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">__ProcessPointAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">cWidth2</span><span class="p">,</span><span class="n">PointAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">__ProcessFixedDepthNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">cWidth2</span><span class="p">,</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">__ProcessMaxDepthNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">cWidth2</span><span class="p">,</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">);</span>
+
+        <span class="c1">// This is made private because the division by two has been pulled out.</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">Overlap</span><span class="p">(</span><span class="kt">int</span> <span class="n">c1</span><span class="p">,</span><span class="kt">int</span> <span class="n">c2</span><span class="p">,</span><span class="kt">int</span> <span class="n">c3</span><span class="p">,</span><span class="kt">int</span> <span class="n">dWidth</span><span class="p">);</span>
+        <span class="kr">inline</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">ChildOverlap</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="kt">int</span> <span class="n">d</span><span class="p">,</span><span class="kt">int</span> <span class="n">cRadius2</span><span class="p">);</span>
+
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">__faceNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">dir</span><span class="p">,</span><span class="kt">int</span> <span class="n">off</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">__edgeNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">o</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="k">const</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">__faceNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">dir</span><span class="p">,</span><span class="kt">int</span> <span class="n">off</span><span class="p">,</span><span class="kt">int</span> <span class="n">forceChildren</span><span class="p">);</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">__edgeNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">o</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="k">const</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="kt">int</span> <span class="n">forceChildren</span><span class="p">);</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">DepthShift</span><span class="p">,</span><span class="n">OffsetShift</span><span class="p">,</span><span class="n">OffsetShift1</span><span class="p">,</span><span class="n">OffsetShift2</span><span class="p">,</span><span class="n">OffsetShift3</span><span class="p">;</span>
+        <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">DepthMask</span><span class="p">,</span><span class="n">OffsetMask</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="n">Allocator</span><span class="o">&lt;</span><span class="n">OctNode</span><span class="o">&gt;</span> <span class="n">internalAllocator</span><span class="p">;</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">UseAllocator</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="nf">SetAllocator</span><span class="p">(</span><span class="kt">int</span> <span class="n">blockSize</span><span class="p">);</span>
+
+        <span class="n">OctNode</span><span class="o">*</span> <span class="n">parent</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="n">children</span><span class="p">;</span>
+        <span class="kt">short</span> <span class="n">d</span> <span class="p">,</span> <span class="n">off</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">];</span>
+        <span class="n">NodeData</span> <span class="n">nodeData</span><span class="p">;</span>
+
+        <span class="n">OctNode</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="o">~</span><span class="n">OctNode</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">initChildren</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">depthAndOffset</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">,</span><span class="kt">int</span> <span class="n">offset</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">])</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">depth</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">DepthAndOffset</span><span class="p">(</span><span class="k">const</span> <span class="kt">long</span> <span class="kt">long</span><span class="o">&amp;</span> <span class="n">index</span><span class="p">,</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">,</span><span class="kt">int</span> <span class="n">offset</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]);</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">CenterAndWidth</span><span class="p">(</span><span class="k">const</span> <span class="kt">long</span> <span class="kt">long</span><span class="o">&amp;</span> <span class="n">index</span><span class="p">,</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">center</span><span class="p">,</span><span class="n">Real</span><span class="o">&amp;</span> <span class="n">width</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">Depth</span><span class="p">(</span><span class="k">const</span> <span class="kt">long</span> <span class="kt">long</span><span class="o">&amp;</span> <span class="n">index</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">Index</span><span class="p">(</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">offset</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="kt">short</span><span class="o">&amp;</span> <span class="n">d</span><span class="p">,</span><span class="kt">short</span> <span class="n">off</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]);</span>
+        <span class="kt">void</span> <span class="nf">centerAndWidth</span><span class="p">(</span> <span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">center</span> <span class="p">,</span> <span class="n">Real</span><span class="o">&amp;</span> <span class="n">width</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="nf">isInside</span><span class="p">(</span> <span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">p</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="nf">leaves</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">maxDepthLeaves</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">nodes</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">maxDepth</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">root</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">nextLeaf</span><span class="p">(</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">currentLeaf</span><span class="o">=</span><span class="nb">NULL</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">nextLeaf</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">currentLeaf</span><span class="o">=</span><span class="nb">NULL</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">nextNode</span><span class="p">(</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">currentNode</span><span class="o">=</span><span class="nb">NULL</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">nextNode</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">currentNode</span><span class="o">=</span><span class="nb">NULL</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">nextBranch</span><span class="p">(</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">current</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">nextBranch</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">current</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">prevBranch</span><span class="p">(</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">current</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">prevBranch</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">current</span><span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">setFullDepth</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">printLeaves</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">printRange</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">processNodeFaces</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">fIndex</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">processNodeEdges</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">eIndex</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">processNodeCorners</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">cIndex</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">processNodeNodes</span><span class="p">(</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">width1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">TerminatingNodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessTerminatingNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">width1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="n">TerminatingNodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">TerminatingNodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessTerminatingNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="n">TerminatingNodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">PointAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessPointAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">center1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="n">PointAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">PointAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessPointAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="n">PointAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessFixedDepthNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">width1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessFixedDepthNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessMaxDepthNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">width1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeAdjacencyFunction</span><span class="o">&gt;</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="n">ProcessMaxDepthNodeAdjacentNodes</span><span class="p">(</span><span class="kt">int</span> <span class="n">dx</span><span class="p">,</span><span class="kt">int</span> <span class="n">dy</span><span class="p">,</span><span class="kt">int</span> <span class="n">dz</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius1</span><span class="p">,</span><span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">radius2</span><span class="p">,</span><span class="kt">int</span> <span class="n">width2</span><span class="p">,</span><span class="kt">int</span> <span class="n">depth</span><span class="p">,</span><span class="n">NodeAdjacencyFunction</span><span class="o">*</span> <span class="n">F</span><span class="p">,</span><span class="kt">int</span> <span class="n">processCurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CornerIndex</span><span class="p">(</span><span class="k">const</span> <span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">center</span><span class="p">,</span><span class="k">const</span> <span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">faceNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">faceIndex</span><span class="p">,</span><span class="kt">int</span> <span class="n">forceChildren</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">faceNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">faceIndex</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">edgeNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">edgeIndex</span><span class="p">,</span><span class="kt">int</span> <span class="n">forceChildren</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">edgeNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">edgeIndex</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">cornerNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">cornerIndex</span><span class="p">,</span><span class="kt">int</span> <span class="n">forceChildren</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">cornerNeighbor</span><span class="p">(</span><span class="kt">int</span> <span class="n">cornerIndex</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="n">OctNode</span><span class="o">*</span> <span class="nf">getNearestLeaf</span><span class="p">(</span><span class="k">const</span> <span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="nf">getNearestLeaf</span><span class="p">(</span><span class="k">const</span> <span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CommonEdge</span><span class="p">(</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="kt">int</span> <span class="n">eIndex1</span><span class="p">,</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">,</span><span class="kt">int</span> <span class="n">eIndex2</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareForwardDepths</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v1</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v2</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareByDepthAndXYZ</span><span class="p">(</span> <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v1</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v2</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareByDepthAndZIndex</span><span class="p">(</span> <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v1</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v2</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareForwardPointerDepths</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v1</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v2</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareBackwardDepths</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v1</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v2</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">CompareBackwardPointerDepths</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v1</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">v2</span><span class="p">);</span>
+
+
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeData2</span><span class="o">&gt;</span>
+        <span class="n">OctNode</span><span class="o">&amp;</span> <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctNode</span><span class="o">&lt;</span><span class="n">NodeData2</span><span class="p">,</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">node</span><span class="p">);</span>
+
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">Overlap2</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">depth1</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">offSet1</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">],</span><span class="k">const</span> <span class="n">Real</span><span class="o">&amp;</span> <span class="n">multiplier1</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">depth2</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">offSet2</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">],</span><span class="k">const</span> <span class="n">Real</span><span class="o">&amp;</span> <span class="n">multiplier2</span><span class="p">);</span>
+
+
+        <span class="kt">int</span> <span class="nf">write</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fileName</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">write</span><span class="p">(</span><span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">read</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fileName</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">read</span><span class="p">(</span><span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">);</span>
+
+        <span class="k">class</span> <span class="nc">Neighbors3</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">OctNode</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+            <span class="n">Neighbors3</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="kt">void</span> <span class="nf">clear</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">NeighborKey3</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">Neighbors3</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">;</span>
+
+            <span class="n">NeighborKey3</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="o">~</span><span class="n">NeighborKey3</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+
+            <span class="kt">void</span> <span class="nf">set</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">);</span>
+            <span class="n">Neighbors3</span><span class="o">&amp;</span> <span class="n">setNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">root</span> <span class="p">,</span> <span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">p</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">d</span> <span class="p">);</span>
+            <span class="n">Neighbors3</span><span class="o">&amp;</span> <span class="n">getNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">root</span> <span class="p">,</span> <span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">p</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">d</span> <span class="p">);</span>
+            <span class="n">Neighbors3</span><span class="o">&amp;</span> <span class="n">setNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">flags</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="p">);</span>
+            <span class="n">Neighbors3</span><span class="o">&amp;</span> <span class="n">setNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="n">Neighbors3</span><span class="o">&amp;</span> <span class="n">getNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">ConstNeighbors3</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+            <span class="n">ConstNeighbors3</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="kt">void</span> <span class="nf">clear</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">ConstNeighborKey3</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">ConstNeighbors3</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">;</span>
+
+            <span class="n">ConstNeighborKey3</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+            <span class="o">~</span><span class="n">ConstNeighborKey3</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+            <span class="kt">void</span> <span class="nf">set</span><span class="p">(</span><span class="kt">int</span> <span class="n">depth</span><span class="p">);</span>
+            <span class="n">ConstNeighbors3</span><span class="o">&amp;</span> <span class="n">getNeighbors</span><span class="p">(</span> <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="n">ConstNeighbors3</span><span class="o">&amp;</span> <span class="n">getNeighbors</span><span class="p">(</span> <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">minDepth</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">Neighbors5</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">OctNode</span><span class="o">*</span>  <span class="n">neighbors</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span>
+            <span class="n">Neighbors5</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="kt">void</span> <span class="nf">clear</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">ConstNeighbors5</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span>
+            <span class="n">ConstNeighbors5</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="kt">void</span> <span class="nf">clear</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="k">class</span> <span class="nc">NeighborKey5</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">_depth</span><span class="p">;</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">Neighbors5</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">;</span>
+
+            <span class="n">NeighborKey5</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="o">~</span><span class="n">NeighborKey5</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+
+            <span class="kt">void</span> <span class="nf">set</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">);</span>
+            <span class="n">Neighbors5</span><span class="o">&amp;</span> <span class="n">getNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="n">Neighbors5</span><span class="o">&amp;</span> <span class="n">setNeighbors</span><span class="p">(</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span>  <span class="kt">int</span> <span class="n">xStart</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">xEnd</span><span class="o">=</span><span class="mi">5</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">yStart</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">yEnd</span><span class="o">=</span><span class="mi">5</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">zStart</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">zEnd</span><span class="o">=</span><span class="mi">5</span> <span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">ConstNeighborKey5</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">_depth</span><span class="p">;</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">ConstNeighbors5</span><span class="o">*</span> <span class="n">neighbors</span><span class="p">;</span>
+
+            <span class="n">ConstNeighborKey5</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+            <span class="o">~</span><span class="n">ConstNeighborKey5</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+
+            <span class="kt">void</span> <span class="nf">set</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">);</span>
+            <span class="n">ConstNeighbors5</span><span class="o">&amp;</span> <span class="n">getNeighbors</span><span class="p">(</span> <span class="k">const</span> <span class="n">OctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="kt">void</span> <span class="nf">centerIndex</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">])</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">width</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxDepth</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="p">};</span>
+
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;octree_poisson.hpp&quot;</span><span class="cp"></span>
+
+
+
+<span class="cp">#endif </span><span class="c1">// OCT_NODE</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_octree_poisson.hpp.html" class="btn btn-neutral float-right" title="File octree_poisson.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_octree_poisson.h.html" class="btn btn-neutral float-left" title="File octree_poisson.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

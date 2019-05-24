@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree_search.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree_search.hpp" href="file_pcl_octree_impl_octree_search.hpp.html" />
+    <link rel="prev" title="File octree_search.h" href="file_pcl_octree_octree_search.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_octree_octree_search.h.html">File octree_search.h</a> &raquo;</li>
+        
+      <li>Program Listing for File octree_search.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_octree_octree_search.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree-search-h">
+<span id="program-listing-file-pcl-octree-octree-search-h"></span><h1>Program Listing for File octree_search.h<a class="headerlink" href="#program-listing-for-file-octree-search-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_octree_octree_search.h.html#file-pcl-octree-octree-search-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\octree\octree_search.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_pointcloud.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">octree</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief @b Octree pointcloud search class</span>
+<span class="cm">      * \note This class provides several methods for spatial neighbor search based on octree structure</span>
+<span class="cm">      * \note typename: PointT: type of point used in pointcloud</span>
+<span class="cm">      * \ingroup octree</span>
+<span class="cm">      * \author Julius Kammerl (julius@kammerl.de)</span>
+<span class="cm">      */</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span> <span class="o">=</span> <span class="n">OctreeContainerPointIndices</span> <span class="p">,</span>  <span class="k">typename</span> <span class="n">BranchContainerT</span> <span class="o">=</span> <span class="n">OctreeContainerEmpty</span> <span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">OctreePointCloudSearch</span> <span class="o">:</span> <span class="k">public</span> <span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="c1">// public typedefs</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">IndicesPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">IndicesConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PointCloud</span><span class="o">&gt;</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&gt;</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+        <span class="c1">// Boost shared pointers</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OctreePointCloudSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">OctreePointCloudSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+        <span class="c1">// Eigen aligned allocator</span>
+        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">AlignedPointTVector</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="n">OctreeT</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">::</span><span class="n">LeafNode</span> <span class="n">LeafNode</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">::</span><span class="n">BranchNode</span> <span class="n">BranchNode</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Constructor.</span>
+<span class="cm">          * \param[in] resolution octree resolution at lowest octree level</span>
+<span class="cm">          */</span>
+        <span class="n">OctreePointCloudSearch</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">resolution</span><span class="p">)</span> <span class="o">:</span>
+          <span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">resolution</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Empty class destructor. */</span>
+
+        <span class="o">~</span><span class="n">OctreePointCloudSearch</span> <span class="p">()</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Search for neighbors within a voxel at given point</span>
+<span class="cm">          * \param[in] point point addressing a leaf node voxel</span>
+<span class="cm">          * \param[out] point_idx_data the resultant indices of the neighboring voxel points</span>
+<span class="cm">          * \return &quot;true&quot; if leaf node exist; &quot;false&quot; otherwise</span>
+<span class="cm">          */</span>
+        <span class="kt">bool</span>
+        <span class="n">voxelSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">point_idx_data</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Search for neighbors within a voxel at given point referenced by a point index</span>
+<span class="cm">          * \param[in] index the index in input cloud defining the query point</span>
+<span class="cm">          * \param[out] point_idx_data the resultant indices of the neighboring voxel points</span>
+<span class="cm">          * \return &quot;true&quot; if leaf node exist; &quot;false&quot; otherwise</span>
+<span class="cm">          */</span>
+        <span class="kt">bool</span>
+        <span class="nf">voxelSearch</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">point_idx_data</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Search for k-nearest neighbors at the query point.</span>
+<span class="cm">          * \param[in] cloud the point cloud data</span>
+<span class="cm">          * \param[in] index the index in \a cloud representing the query point</span>
+<span class="cm">          * \param[in] k the number of neighbors to search for</span>
+<span class="cm">          * \param[out] k_indices the resultant indices of the neighboring points (must be resized to \a k a priori!)</span>
+<span class="cm">          * \param[out] k_sqr_distances the resultant squared distances to the neighboring points (must be resized to \a k</span>
+<span class="cm">          * a priori!)</span>
+<span class="cm">          * \return number of neighbors found</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="nf">nearestKSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_sqr_distances</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">nearestKSearch</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">k_indices</span><span class="p">,</span> <span class="n">k_sqr_distances</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Search for k-nearest neighbors at given query point.</span>
+<span class="cm">          * \param[in] p_q the given query point</span>
+<span class="cm">          * \param[in] k the number of neighbors to search for</span>
+<span class="cm">          * \param[out] k_indices the resultant indices of the neighboring points (must be resized to k a priori!)</span>
+<span class="cm">          * \param[out] k_sqr_distances  the resultant squared distances to the neighboring points (must be resized to k a priori!)</span>
+<span class="cm">          * \return number of neighbors found</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">nearestKSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p_q</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_sqr_distances</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Search for k-nearest neighbors at query point</span>
+<span class="cm">          * \param[in] index index representing the query point in the dataset given by \a setInputCloud.</span>
+<span class="cm">          *        If indices were given in setInputCloud, index will be the position in the indices vector.</span>
+<span class="cm">          * \param[in] k the number of neighbors to search for</span>
+<span class="cm">          * \param[out] k_indices the resultant indices of the neighboring points (must be resized to \a k a priori!)</span>
+<span class="cm">          * \param[out] k_sqr_distances the resultant squared distances to the neighboring points (must be resized to \a k</span>
+<span class="cm">          * a priori!)</span>
+<span class="cm">         * \return number of neighbors found</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">nearestKSearch</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_sqr_distances</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Search for approx. nearest neighbor at the query point.</span>
+<span class="cm">          * \param[in] cloud the point cloud data</span>
+<span class="cm">          * \param[in] query_index the index in \a cloud representing the query point</span>
+<span class="cm">          * \param[out] result_index the resultant index of the neighbor point</span>
+<span class="cm">          * \param[out] sqr_distance the resultant squared distance to the neighboring point</span>
+<span class="cm">          * \return number of neighbors found</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">approxNearestSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">int</span> <span class="n">query_index</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">result_index</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">sqr_distance</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">approxNearestSearch</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">query_index</span><span class="p">],</span> <span class="n">result_index</span><span class="p">,</span> <span class="n">sqr_distance</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Search for approx. nearest neighbor at the query point.</span>
+<span class="cm">          * \param[in] p_q the given query point</span>
+<span class="cm">          * \param[out] result_index the resultant index of the neighbor point</span>
+<span class="cm">          * \param[out] sqr_distance the resultant squared distance to the neighboring point</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">approxNearestSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p_q</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">result_index</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">sqr_distance</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Search for approx. nearest neighbor at the query point.</span>
+<span class="cm">          * \param[in] query_index index representing the query point in the dataset given by \a setInputCloud.</span>
+<span class="cm">          *        If indices were given in setInputCloud, index will be the position in the indices vector.</span>
+<span class="cm">          * \param[out] result_index the resultant index of the neighbor point</span>
+<span class="cm">          * \param[out] sqr_distance the resultant squared distance to the neighboring point</span>
+<span class="cm">          * \return number of neighbors found</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">approxNearestSearch</span> <span class="p">(</span><span class="kt">int</span> <span class="n">query_index</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">result_index</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">sqr_distance</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Search for all neighbors of query point that are within a given radius.</span>
+<span class="cm">          * \param[in] cloud the point cloud data</span>
+<span class="cm">          * \param[in] index the index in \a cloud representing the query point</span>
+<span class="cm">          * \param[in] radius the radius of the sphere bounding all of p_q&#39;s neighbors</span>
+<span class="cm">          * \param[out] k_indices the resultant indices of the neighboring points</span>
+<span class="cm">          * \param[out] k_sqr_distances the resultant squared distances to the neighboring points</span>
+<span class="cm">          * \param[in] max_nn if given, bounds the maximum returned neighbors to this value</span>
+<span class="cm">          * \return number of neighbors found in radius</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">radiusSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_sqr_distances</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_nn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">radius</span><span class="p">,</span> <span class="n">k_indices</span><span class="p">,</span> <span class="n">k_sqr_distances</span><span class="p">,</span> <span class="n">max_nn</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Search for all neighbors of query point that are within a given radius.</span>
+<span class="cm">          * \param[in] p_q the given query point</span>
+<span class="cm">          * \param[in] radius the radius of the sphere bounding all of p_q&#39;s neighbors</span>
+<span class="cm">          * \param[out] k_indices the resultant indices of the neighboring points</span>
+<span class="cm">          * \param[out] k_sqr_distances the resultant squared distances to the neighboring points</span>
+<span class="cm">          * \param[in] max_nn if given, bounds the maximum returned neighbors to this value</span>
+<span class="cm">          * \return number of neighbors found in radius</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">radiusSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p_q</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_sqr_distances</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_nn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Search for all neighbors of query point that are within a given radius.</span>
+<span class="cm">          * \param[in] index index representing the query point in the dataset given by \a setInputCloud.</span>
+<span class="cm">          *        If indices were given in setInputCloud, index will be the position in the indices vector</span>
+<span class="cm">          * \param[in] radius radius of the sphere bounding all of p_q&#39;s neighbors</span>
+<span class="cm">          * \param[out] k_indices the resultant indices of the neighboring points</span>
+<span class="cm">          * \param[out] k_sqr_distances the resultant squared distances to the neighboring points</span>
+<span class="cm">          * \param[in] max_nn if given, bounds the maximum returned neighbors to this value</span>
+<span class="cm">          * \return number of neighbors found in radius</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">radiusSearch</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_sqr_distances</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_nn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Get a PointT vector of centers of all voxels that intersected by a ray (origin, direction).</span>
+<span class="cm">          * \param[in] origin ray origin</span>
+<span class="cm">          * \param[in] direction ray direction vector</span>
+<span class="cm">          * \param[out] voxel_center_list results are written to this vector of PointT elements</span>
+<span class="cm">          * \param[in] max_voxel_count stop raycasting when this many voxels intersected (0: disable)</span>
+<span class="cm">          * \return number of intersected voxels</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">getIntersectedVoxelCenters</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">origin</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">direction</span><span class="p">,</span>
+                                    <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_voxel_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Get indices of all voxels that are intersected by a ray (origin, direction).</span>
+<span class="cm">          * \param[in] origin ray origin</span>
+<span class="cm">          * \param[in] direction ray direction vector</span>
+<span class="cm">          * \param[out] k_indices resulting point indices from intersected voxels</span>
+<span class="cm">          * \param[in] max_voxel_count stop raycasting when this many voxels intersected (0: disable)</span>
+<span class="cm">         * \return number of intersected voxels</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">getIntersectedVoxelIndices</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">origin</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">direction</span><span class="p">,</span>
+                                    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                                    <span class="kt">int</span> <span class="n">max_voxel_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+        <span class="cm">/** \brief Search for points within rectangular search area</span>
+<span class="cm">         * Points exactly on the edges of the search rectangle are included.</span>
+<span class="cm">         * \param[in] min_pt lower corner of search area</span>
+<span class="cm">         * \param[in] max_pt upper corner of search area</span>
+<span class="cm">         * \param[out] k_indices the resultant point indices</span>
+<span class="cm">         * \return number of points found within search area</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">boxSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">min_pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">max_pt</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Octree-based search routines &amp; helpers</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="cm">/** \brief @b Priority queue entry for branch nodes</span>
+<span class="cm">         *  \note This class defines priority queue entries for the nearest neighbor search.</span>
+<span class="cm">         *  \author Julius Kammerl (julius@kammerl.de)</span>
+<span class="cm">         */</span>
+        <span class="k">class</span> <span class="nc">prioBranchQueueEntry</span>
+        <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+          <span class="cm">/** \brief Empty constructor  */</span>
+          <span class="n">prioBranchQueueEntry</span> <span class="p">()</span> <span class="o">:</span>
+              <span class="n">node</span> <span class="p">(),</span> <span class="n">point_distance</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+          <span class="p">{</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Constructor for initializing priority queue entry.</span>
+<span class="cm">           * \param _node pointer to octree node</span>
+<span class="cm">           * \param _key octree key addressing voxel in octree structure</span>
+<span class="cm">           * \param[in] _point_distance distance of query point to voxel center</span>
+<span class="cm">           */</span>
+          <span class="n">prioBranchQueueEntry</span> <span class="p">(</span><span class="n">OctreeNode</span><span class="o">*</span> <span class="n">_node</span><span class="p">,</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">_key</span><span class="p">,</span> <span class="kt">float</span> <span class="n">_point_distance</span><span class="p">)</span> <span class="o">:</span>
+              <span class="n">node</span> <span class="p">(</span><span class="n">_node</span><span class="p">),</span> <span class="n">point_distance</span> <span class="p">(</span><span class="n">_point_distance</span><span class="p">),</span> <span class="n">key</span> <span class="p">(</span><span class="n">_key</span><span class="p">)</span>
+          <span class="p">{</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Operator&lt; for comparing priority queue entries with each other.</span>
+<span class="cm">           * \param[in] rhs the priority queue to compare this against</span>
+<span class="cm">           */</span>
+          <span class="kt">bool</span>
+          <span class="k">operator</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">prioBranchQueueEntry</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">point_distance</span> <span class="o">&gt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">point_distance</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Pointer to octree node. */</span>
+          <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">node</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Distance to query point. */</span>
+          <span class="kt">float</span> <span class="n">point_distance</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Octree key. */</span>
+          <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="cm">/** \brief @b Priority queue entry for point candidates</span>
+<span class="cm">          * \note This class defines priority queue entries for the nearest neighbor point candidates.</span>
+<span class="cm">          * \author Julius Kammerl (julius@kammerl.de)</span>
+<span class="cm">         */</span>
+        <span class="k">class</span> <span class="nc">prioPointQueueEntry</span>
+        <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+
+          <span class="cm">/** \brief Empty constructor  */</span>
+          <span class="n">prioPointQueueEntry</span> <span class="p">()</span> <span class="o">:</span>
+              <span class="n">point_idx_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">point_distance_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+          <span class="p">{</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Constructor for initializing priority queue entry.</span>
+<span class="cm">           * \param[in] point_idx an index representing a point in the dataset given by \a setInputCloud</span>
+<span class="cm">           * \param[in] point_distance distance of query point to voxel center</span>
+<span class="cm">           */</span>
+          <span class="n">prioPointQueueEntry</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">point_idx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">point_distance</span><span class="p">)</span> <span class="o">:</span>
+              <span class="n">point_idx_</span> <span class="p">(</span><span class="n">point_idx</span><span class="p">),</span> <span class="n">point_distance_</span> <span class="p">(</span><span class="n">point_distance</span><span class="p">)</span>
+          <span class="p">{</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Operator&lt; for comparing priority queue entries with each other.</span>
+<span class="cm">           * \param[in] rhs priority queue to compare this against</span>
+<span class="cm">           */</span>
+          <span class="kt">bool</span>
+          <span class="k">operator</span><span class="o">&lt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">prioPointQueueEntry</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">point_distance_</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">point_distance_</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Index representing a point in the dataset given by \a setInputCloud. */</span>
+          <span class="kt">int</span> <span class="n">point_idx_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief Distance to query point. */</span>
+          <span class="kt">float</span> <span class="n">point_distance_</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="cm">/** \brief Helper function to calculate the squared distance between two points</span>
+<span class="cm">          * \param[in] point_a point A</span>
+<span class="cm">          * \param[in] point_b point B</span>
+<span class="cm">          * \return squared distance between point A and point B</span>
+<span class="cm">          */</span>
+        <span class="kt">float</span>
+        <span class="nf">pointSquaredDist</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_a</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_b</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Recursive search routine methods</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Recursive search method that explores the octree and finds neighbors within a given radius</span>
+<span class="cm">          * \param[in] point query point</span>
+<span class="cm">          * \param[in] radiusSquared squared search radius</span>
+<span class="cm">          * \param[in] node current octree node to be explored</span>
+<span class="cm">          * \param[in] key octree key addressing a leaf node.</span>
+<span class="cm">          * \param[in] tree_depth current depth/level in the octree</span>
+<span class="cm">          * \param[out] k_indices vector of indices found to be neighbors of query point</span>
+<span class="cm">          * \param[out] k_sqr_distances squared distances of neighbors to query point</span>
+<span class="cm">          * \param[in] max_nn maximum of neighbors to be found</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">getNeighborsWithinRadiusRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">radiusSquared</span><span class="p">,</span>
+                                           <span class="k">const</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span>
+                                           <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">k_indices</span><span class="p">,</span>
+                                           <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">k_sqr_distances</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_nn</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Recursive search method that explores the octree and finds the K nearest neighbors</span>
+<span class="cm">          * \param[in] point query point</span>
+<span class="cm">          * \param[in] K amount of nearest neighbors to be found</span>
+<span class="cm">          * \param[in] node current octree node to be explored</span>
+<span class="cm">          * \param[in] key octree key addressing a leaf node.</span>
+<span class="cm">          * \param[in] tree_depth current depth/level in the octree</span>
+<span class="cm">          * \param[in] squared_search_radius squared search radius distance</span>
+<span class="cm">          * \param[out] point_candidates priority queue of nearest neigbor point candidates</span>
+<span class="cm">          * \return squared search radius based on current point candidate set found</span>
+<span class="cm">          */</span>
+        <span class="kt">double</span>
+        <span class="nf">getKNearestNeighborRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">K</span><span class="p">,</span> <span class="k">const</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span>
+                                      <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth</span><span class="p">,</span>
+                                      <span class="k">const</span> <span class="kt">double</span> <span class="n">squared_search_radius</span><span class="p">,</span>
+                                      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">prioPointQueueEntry</span><span class="o">&gt;&amp;</span> <span class="n">point_candidates</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Recursive search method that explores the octree and finds the approximate nearest neighbor</span>
+<span class="cm">          * \param[in] point query point</span>
+<span class="cm">          * \param[in] node current octree node to be explored</span>
+<span class="cm">          * \param[in] key octree key addressing a leaf node.</span>
+<span class="cm">          * \param[in] tree_depth current depth/level in the octree</span>
+<span class="cm">          * \param[out] result_index result index is written to this reference</span>
+<span class="cm">          * \param[out] sqr_distance squared distance to search</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">approxNearestSearchRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span>
+                                      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">result_index</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">sqr_distance</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Recursively search the tree for all intersected leaf nodes and return a vector of voxel centers.</span>
+<span class="cm">          * This algorithm is based off the paper An Efficient Parametric Algorithm for Octree Traversal:</span>
+<span class="cm">          * http://wscg.zcu.cz/wscg2000/Papers_2000/X31.pdf</span>
+<span class="cm">          * \param[in] min_x octree nodes X coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_y octree nodes Y coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_z octree nodes Z coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] max_x octree nodes X coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] max_y octree nodes Y coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] max_z octree nodes Z coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] a</span>
+<span class="cm">          * \param[in] node current octree node to be explored</span>
+<span class="cm">          * \param[in] key octree key addressing a leaf node.</span>
+<span class="cm">          * \param[out] voxel_center_list results are written to this vector of PointT elements</span>
+<span class="cm">          * \param[in] max_voxel_count stop raycasting when this many voxels intersected (0: disable)</span>
+<span class="cm">          * \return number of voxels found</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">getIntersectedVoxelCentersRecursive</span> <span class="p">(</span><span class="kt">double</span> <span class="n">min_x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_z</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max_x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max_y</span><span class="p">,</span>
+                                             <span class="kt">double</span> <span class="n">max_z</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span>
+                                             <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span> <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list</span><span class="p">,</span>
+                                             <span class="kt">int</span> <span class="n">max_voxel_count</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+        <span class="cm">/** \brief Recursive search method that explores the octree and finds points within a rectangular search area</span>
+<span class="cm">         * \param[in] min_pt lower corner of search area</span>
+<span class="cm">         * \param[in] max_pt upper corner of search area</span>
+<span class="cm">         * \param[in] node current octree node to be explored</span>
+<span class="cm">         * \param[in] key octree key addressing a leaf node.</span>
+<span class="cm">         * \param[in] tree_depth current depth/level in the octree</span>
+<span class="cm">         * \param[out] k_indices the resultant point indices</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">boxSearchRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">min_pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">max_pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">k_indices</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Recursively search the tree for all intersected leaf nodes and return a vector of indices.</span>
+<span class="cm">          * This algorithm is based off the paper An Efficient Parametric Algorithm for Octree Traversal:</span>
+<span class="cm">          * http://wscg.zcu.cz/wscg2000/Papers_2000/X31.pdf</span>
+<span class="cm">          * \param[in] min_x octree nodes X coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_y octree nodes Y coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_z octree nodes Z coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] max_x octree nodes X coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] max_y octree nodes Y coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] max_z octree nodes Z coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] a</span>
+<span class="cm">          * \param[in] node current octree node to be explored</span>
+<span class="cm">          * \param[in] key octree key addressing a leaf node.</span>
+<span class="cm">          * \param[out] k_indices resulting indices</span>
+<span class="cm">          * \param[in] max_voxel_count stop raycasting when this many voxels intersected (0: disable)</span>
+<span class="cm">          * \return number of voxels found</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span>
+        <span class="nf">getIntersectedVoxelIndicesRecursive</span> <span class="p">(</span><span class="kt">double</span> <span class="n">min_x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_z</span><span class="p">,</span>
+                                             <span class="kt">double</span> <span class="n">max_x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max_y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max_z</span><span class="p">,</span>
+                                             <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span>
+                                             <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">k_indices</span><span class="p">,</span>
+                                             <span class="kt">int</span> <span class="n">max_voxel_count</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Initialize raytracing algorithm</span>
+<span class="cm">          * \param origin</span>
+<span class="cm">          * \param direction</span>
+<span class="cm">          * \param[in] min_x octree nodes X coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_y octree nodes Y coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_z octree nodes Z coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] max_x octree nodes X coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] max_y octree nodes Y coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] max_z octree nodes Z coordinate of upper bounding box corner</span>
+<span class="cm">          * \param a</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">initIntersectedVoxel</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">origin</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">direction</span><span class="p">,</span>
+                              <span class="kt">double</span> <span class="o">&amp;</span><span class="n">min_x</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">min_y</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">min_z</span><span class="p">,</span>
+                              <span class="kt">double</span> <span class="o">&amp;</span><span class="n">max_x</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">max_y</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">max_z</span><span class="p">,</span>
+                              <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="c1">// Account for division by zero when direction vector is 0.0</span>
+          <span class="k">const</span> <span class="kt">float</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="n">f</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">=</span> <span class="n">epsilon</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">=</span> <span class="n">epsilon</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">=</span> <span class="n">epsilon</span><span class="p">;</span>
+
+          <span class="c1">// Voxel childIdx remapping</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="c1">// Handle negative axis direction vector</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">)</span> <span class="o">+</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">max_x_</span><span class="p">)</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+            <span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">=</span> <span class="o">-</span><span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+            <span class="n">a</span> <span class="o">|=</span> <span class="mi">4</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">)</span> <span class="o">+</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">max_y_</span><span class="p">)</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+            <span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">=</span> <span class="o">-</span><span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+            <span class="n">a</span> <span class="o">|=</span> <span class="mi">2</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">)</span> <span class="o">+</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">max_z_</span><span class="p">)</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+            <span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">=</span> <span class="o">-</span><span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+            <span class="n">a</span> <span class="o">|=</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="n">min_x</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="p">())</span> <span class="o">/</span> <span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+          <span class="n">max_x</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">max_x_</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="p">())</span> <span class="o">/</span> <span class="n">direction</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+          <span class="n">min_y</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="p">())</span> <span class="o">/</span> <span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+          <span class="n">max_y</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">max_y_</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="p">())</span> <span class="o">/</span> <span class="n">direction</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+          <span class="n">min_z</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="p">())</span> <span class="o">/</span> <span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+          <span class="n">max_z</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">max_z_</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="p">())</span> <span class="o">/</span> <span class="n">direction</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Find first child node ray will enter</span>
+<span class="cm">          * \param[in] min_x octree nodes X coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_y octree nodes Y coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] min_z octree nodes Z coordinate of lower bounding box corner</span>
+<span class="cm">          * \param[in] mid_x octree nodes X coordinate of bounding box mid line</span>
+<span class="cm">          * \param[in] mid_y octree nodes Y coordinate of bounding box mid line</span>
+<span class="cm">          * \param[in] mid_z octree nodes Z coordinate of bounding box mid line</span>
+<span class="cm">          * \return the first child node ray will enter</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="nf">getFirstIntersectedNode</span> <span class="p">(</span><span class="kt">double</span> <span class="n">min_x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_z</span><span class="p">,</span> <span class="kt">double</span> <span class="n">mid_x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">mid_y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">mid_z</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="kt">int</span> <span class="n">currNode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">min_x</span> <span class="o">&gt;</span> <span class="n">min_y</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">min_x</span> <span class="o">&gt;</span> <span class="n">min_z</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="c1">// max(min_x, min_y, min_z) is min_x. Entry plane is YZ.</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_y</span> <span class="o">&lt;</span> <span class="n">min_x</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">2</span><span class="p">;</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_z</span> <span class="o">&lt;</span> <span class="n">min_x</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+              <span class="c1">// max(min_x, min_y, min_z) is min_z. Entry plane is XY.</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_x</span> <span class="o">&lt;</span> <span class="n">min_z</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">4</span><span class="p">;</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_y</span> <span class="o">&lt;</span> <span class="n">min_z</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+          <span class="k">else</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">min_y</span> <span class="o">&gt;</span> <span class="n">min_z</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="c1">// max(min_x, min_y, min_z) is min_y. Entry plane is XZ.</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_x</span> <span class="o">&lt;</span> <span class="n">min_y</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">4</span><span class="p">;</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_z</span> <span class="o">&lt;</span> <span class="n">min_y</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+              <span class="c1">// max(min_x, min_y, min_z) is min_z. Entry plane is XY.</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_x</span> <span class="o">&lt;</span> <span class="n">min_z</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">4</span><span class="p">;</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">mid_y</span> <span class="o">&lt;</span> <span class="n">min_z</span><span class="p">)</span>
+                <span class="n">currNode</span> <span class="o">|=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="n">currNode</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the next visited node given the current node upper</span>
+<span class="cm">          *   bounding box corner. This function accepts three float values, and</span>
+<span class="cm">          *   three int values. The function returns the ith integer where the</span>
+<span class="cm">          *   ith float value is the minimum of the three float values.</span>
+<span class="cm">          * \param[in] x current nodes X coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] y current nodes Y coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] z current nodes Z coordinate of upper bounding box corner</span>
+<span class="cm">          * \param[in] a next node if exit Plane YZ</span>
+<span class="cm">          * \param[in] b next node if exit Plane XZ</span>
+<span class="cm">          * \param[in] c next node if exit Plane XY</span>
+<span class="cm">          * \return the next child node ray will enter or 8 if exiting</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="nf">getNextIntersectedNode</span> <span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">z</span><span class="p">)</span>
+              <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+            <span class="k">else</span>
+              <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">else</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">z</span><span class="p">)</span>
+              <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+            <span class="k">else</span>
+              <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/impl/octree_search.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_octree_impl_octree_search.hpp.html" class="btn btn-neutral float-right" title="File octree_search.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_octree_octree_search.h.html" class="btn btn-neutral float-left" title="File octree_search.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

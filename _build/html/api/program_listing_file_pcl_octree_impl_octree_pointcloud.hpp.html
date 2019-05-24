@@ -1,0 +1,1067 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree_pointcloud.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree_pointcloud_adjacency.h" href="file_pcl_octree_octree_pointcloud_adjacency.h.html" />
+    <link rel="prev" title="File octree_pointcloud.hpp" href="file_pcl_octree_impl_octree_pointcloud.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_octree_impl_octree_pointcloud.hpp.html">File octree_pointcloud.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File octree_pointcloud.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_octree_impl_octree_pointcloud.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree-pointcloud-hpp">
+<span id="program-listing-file-pcl-octree-impl-octree-pointcloud-hpp"></span><h1>Program Listing for File octree_pointcloud.hpp<a class="headerlink" href="#program-listing-for-file-octree-pointcloud-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_octree_impl_octree_pointcloud.hpp.html#file-pcl-octree-impl-octree-pointcloud-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\octree\impl\octree_pointcloud.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_OCTREE_POINTCLOUD_HPP_</span>
+<span class="cp">#define PCL_OCTREE_POINTCLOUD_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/impl/octree_base.hpp&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">OctreePointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">resolution</span><span class="p">)</span> <span class="o">:</span>
+    <span class="n">OctreeT</span> <span class="p">(),</span> <span class="n">input_</span> <span class="p">(</span><span class="n">PointCloudConstPtr</span> <span class="p">()),</span> <span class="n">indices_</span> <span class="p">(</span><span class="n">IndicesConstPtr</span> <span class="p">()),</span>
+    <span class="n">epsilon_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">resolution_</span> <span class="p">(</span><span class="n">resolution</span><span class="p">),</span> <span class="n">min_x_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span> <span class="n">max_x_</span> <span class="p">(</span><span class="n">resolution</span><span class="p">),</span> <span class="n">min_y_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+    <span class="n">max_y_</span> <span class="p">(</span><span class="n">resolution</span><span class="p">),</span> <span class="n">min_z_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span> <span class="n">max_z_</span> <span class="p">(</span><span class="n">resolution</span><span class="p">),</span> <span class="n">bounding_box_defined_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">max_objs_per_leaf_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">resolution</span> <span class="o">&gt;</span> <span class="mf">0.0f</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::~</span><span class="n">OctreePointCloud</span> <span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">addPointsFromInputCloud</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">indices_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">index</span> <span class="p">:</span> <span class="o">*</span><span class="n">indices_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">assert</span><span class="p">(</span> <span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())));</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+      <span class="p">{</span>
+        <span class="c1">// add points to octree</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">addPointIdx</span> <span class="p">(</span><span class="n">index</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+      <span class="p">{</span>
+        <span class="c1">// add points to octree</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">addPointIdx</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">addPointFromCloud</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">point_idx_arg</span><span class="p">,</span> <span class="n">IndicesPtr</span> <span class="n">indices_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">addPointIdx</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">indices_arg</span><span class="p">)</span>
+    <span class="n">indices_arg</span><span class="o">-&gt;</span><span class="n">push_back</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">addPointToCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">,</span> <span class="n">PointCloudPtr</span> <span class="n">cloud_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">==</span><span class="n">input_</span><span class="p">);</span>
+
+  <span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">push_back</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">addPointIdx</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">addPointToCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">,</span> <span class="n">PointCloudPtr</span> <span class="n">cloud_arg</span><span class="p">,</span>
+                                                           <span class="n">IndicesPtr</span> <span class="n">indices_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">==</span><span class="n">input_</span><span class="p">);</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">indices_arg</span><span class="o">==</span><span class="n">indices_</span><span class="p">);</span>
+
+  <span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">push_back</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">addPointFromCloud</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">indices_arg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isPointWithinBoundingBox</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+
+  <span class="c1">// generate key for point</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+
+  <span class="c1">// search for key in octree</span>
+  <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">existLeaf</span> <span class="p">(</span><span class="n">key</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// retrieve point from input cloud</span>
+  <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">point_idx_arg</span><span class="p">];</span>
+
+  <span class="c1">// search for voxel at point in octree</span>
+  <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="n">point</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">isVoxelOccupiedAtPoint</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">point_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_z_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// create a new point with the argument coordinates</span>
+  <span class="n">PointT</span> <span class="n">point</span><span class="p">;</span>
+  <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point_x_arg</span><span class="p">;</span>
+  <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point_y_arg</span><span class="p">;</span>
+  <span class="n">point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">point_z_arg</span><span class="p">;</span>
+
+  <span class="c1">// search for voxel at point in octree</span>
+  <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="n">point</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">deleteVoxelAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isPointWithinBoundingBox</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+
+  <span class="c1">// generate key for point</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">removeLeaf</span> <span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">deleteVoxelAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// retrieve point from input cloud</span>
+  <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">point_idx_arg</span><span class="p">];</span>
+
+  <span class="c1">// delete leaf at point</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">deleteVoxelAtPoint</span> <span class="p">(</span><span class="n">point</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getOccupiedVoxelCenters</span> <span class="p">(</span>
+    <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+  <span class="n">key</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="n">voxel_center_list_arg</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+  <span class="k">return</span> <span class="nf">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">voxel_center_list_arg</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getApproxIntersectedVoxelCentersBySegment</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">end</span><span class="p">,</span>
+    <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">precision</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">direction</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">origin</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">direction</span><span class="p">.</span><span class="n">norm</span> <span class="p">();</span>
+  <span class="n">direction</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">step_size</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">resolution_</span><span class="p">)</span> <span class="o">*</span> <span class="n">precision</span><span class="p">;</span>
+  <span class="c1">// Ensure we get at least one step for the first voxel.</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">nsteps</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">norm</span> <span class="o">/</span> <span class="n">step_size</span><span class="p">));</span>
+
+  <span class="n">OctreeKey</span> <span class="n">prev_key</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="n">bkeyDefined</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="c1">// Walk along the line segment with small steps.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nsteps</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">p</span> <span class="o">=</span> <span class="n">origin</span> <span class="o">+</span> <span class="p">(</span><span class="n">direction</span> <span class="o">*</span> <span class="n">step_size</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">));</span>
+
+    <span class="n">PointT</span> <span class="n">octree_p</span><span class="p">;</span>
+    <span class="n">octree_p</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+    <span class="n">octree_p</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+    <span class="n">octree_p</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+
+    <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+    <span class="k">this</span><span class="o">-&gt;</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">octree_p</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+
+    <span class="c1">// Not a new key, still the same voxel.</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">key</span> <span class="o">==</span> <span class="n">prev_key</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">bkeyDefined</span><span class="p">)</span> <span class="p">)</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">prev_key</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="n">bkeyDefined</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">PointT</span> <span class="n">center</span><span class="p">;</span>
+    <span class="n">genLeafNodeCenterFromOctreeKey</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">center</span><span class="p">);</span>
+    <span class="n">voxel_center_list</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">center</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">OctreeKey</span> <span class="n">end_key</span><span class="p">;</span>
+  <span class="n">PointT</span> <span class="n">end_p</span><span class="p">;</span>
+  <span class="n">end_p</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">end</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+  <span class="n">end_p</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">end</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+  <span class="n">end_p</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">end</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">end_p</span><span class="p">,</span> <span class="n">end_key</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">end_key</span> <span class="o">==</span> <span class="n">prev_key</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">PointT</span> <span class="n">center</span><span class="p">;</span>
+    <span class="n">genLeafNodeCenterFromOctreeKey</span> <span class="p">(</span><span class="n">end_key</span><span class="p">,</span> <span class="n">center</span><span class="p">);</span>
+    <span class="n">voxel_center_list</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">center</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">voxel_center_list</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">defineBoundingBox</span> <span class="p">()</span>
+<span class="p">{</span>
+
+  <span class="kt">double</span> <span class="n">minX</span><span class="p">,</span> <span class="n">minY</span><span class="p">,</span> <span class="n">minZ</span><span class="p">,</span> <span class="n">maxX</span><span class="p">,</span> <span class="n">maxY</span><span class="p">,</span> <span class="n">maxZ</span><span class="p">;</span>
+
+  <span class="n">PointT</span> <span class="n">min_pt</span><span class="p">;</span>
+  <span class="n">PointT</span> <span class="n">max_pt</span><span class="p">;</span>
+
+  <span class="c1">// bounding box cannot be changed once the octree contains elements</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">getMinMax3D</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">min_pt</span><span class="p">,</span> <span class="n">max_pt</span><span class="p">);</span>
+
+  <span class="kt">float</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">epsilon</span> <span class="p">()</span> <span class="o">*</span> <span class="mf">512.0f</span><span class="p">;</span>
+
+  <span class="n">minX</span> <span class="o">=</span> <span class="n">min_pt</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+  <span class="n">minY</span> <span class="o">=</span> <span class="n">min_pt</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+  <span class="n">minZ</span> <span class="o">=</span> <span class="n">min_pt</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+  <span class="n">maxX</span> <span class="o">=</span> <span class="n">max_pt</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">minValue</span><span class="p">;</span>
+  <span class="n">maxY</span> <span class="o">=</span> <span class="n">max_pt</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">minValue</span><span class="p">;</span>
+  <span class="n">maxZ</span> <span class="o">=</span> <span class="n">max_pt</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">minValue</span><span class="p">;</span>
+
+  <span class="c1">// generate bit masks for octree</span>
+  <span class="n">defineBoundingBox</span> <span class="p">(</span><span class="n">minX</span><span class="p">,</span> <span class="n">minY</span><span class="p">,</span> <span class="n">minZ</span><span class="p">,</span> <span class="n">maxX</span><span class="p">,</span> <span class="n">maxY</span><span class="p">,</span> <span class="n">maxZ</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">defineBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">min_x_arg</span><span class="p">,</span>
+                                                                          <span class="k">const</span> <span class="kt">double</span> <span class="n">min_y_arg</span><span class="p">,</span>
+                                                                          <span class="k">const</span> <span class="kt">double</span> <span class="n">min_z_arg</span><span class="p">,</span>
+                                                                          <span class="k">const</span> <span class="kt">double</span> <span class="n">max_x_arg</span><span class="p">,</span>
+                                                                          <span class="k">const</span> <span class="kt">double</span> <span class="n">max_y_arg</span><span class="p">,</span>
+                                                                          <span class="k">const</span> <span class="kt">double</span> <span class="n">max_z_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// bounding box cannot be changed once the octree contains elements</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">assert</span> <span class="p">(</span><span class="n">max_x_arg</span> <span class="o">&gt;=</span> <span class="n">min_x_arg</span><span class="p">);</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">max_y_arg</span> <span class="o">&gt;=</span> <span class="n">min_y_arg</span><span class="p">);</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">max_z_arg</span> <span class="o">&gt;=</span> <span class="n">min_z_arg</span><span class="p">);</span>
+
+  <span class="n">min_x_</span> <span class="o">=</span> <span class="n">min_x_arg</span><span class="p">;</span>
+  <span class="n">max_x_</span> <span class="o">=</span> <span class="n">max_x_arg</span><span class="p">;</span>
+
+  <span class="n">min_y_</span> <span class="o">=</span> <span class="n">min_y_arg</span><span class="p">;</span>
+  <span class="n">max_y_</span> <span class="o">=</span> <span class="n">max_y_arg</span><span class="p">;</span>
+
+  <span class="n">min_z_</span> <span class="o">=</span> <span class="n">min_z_arg</span><span class="p">;</span>
+  <span class="n">max_z_</span> <span class="o">=</span> <span class="n">max_z_arg</span><span class="p">;</span>
+
+  <span class="n">min_x_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_x_</span><span class="p">,</span> <span class="n">max_x_</span><span class="p">);</span>
+  <span class="n">min_y_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_y_</span><span class="p">,</span> <span class="n">max_y_</span><span class="p">);</span>
+  <span class="n">min_z_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_z_</span><span class="p">,</span> <span class="n">max_z_</span><span class="p">);</span>
+
+  <span class="n">max_x_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_x_</span><span class="p">,</span> <span class="n">max_x_</span><span class="p">);</span>
+  <span class="n">max_y_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_y_</span><span class="p">,</span> <span class="n">max_y_</span><span class="p">);</span>
+  <span class="n">max_z_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_z_</span><span class="p">,</span> <span class="n">max_z_</span><span class="p">);</span>
+
+  <span class="c1">// generate bit masks for octree</span>
+  <span class="n">getKeyBitSize</span> <span class="p">();</span>
+
+  <span class="n">bounding_box_defined_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">defineBoundingBox</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">max_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">max_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">max_z_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// bounding box cannot be changed once the octree contains elements</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">assert</span> <span class="p">(</span><span class="n">max_x_arg</span> <span class="o">&gt;=</span> <span class="mf">0.0f</span><span class="p">);</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">max_y_arg</span> <span class="o">&gt;=</span> <span class="mf">0.0f</span><span class="p">);</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">max_z_arg</span> <span class="o">&gt;=</span> <span class="mf">0.0f</span><span class="p">);</span>
+
+  <span class="n">min_x_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">max_x_</span> <span class="o">=</span> <span class="n">max_x_arg</span><span class="p">;</span>
+
+  <span class="n">min_y_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">max_y_</span> <span class="o">=</span> <span class="n">max_y_arg</span><span class="p">;</span>
+
+  <span class="n">min_z_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">max_z_</span> <span class="o">=</span> <span class="n">max_z_arg</span><span class="p">;</span>
+
+  <span class="n">min_x_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_x_</span><span class="p">,</span> <span class="n">max_x_</span><span class="p">);</span>
+  <span class="n">min_y_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_y_</span><span class="p">,</span> <span class="n">max_y_</span><span class="p">);</span>
+  <span class="n">min_z_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_z_</span><span class="p">,</span> <span class="n">max_z_</span><span class="p">);</span>
+
+  <span class="n">max_x_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_x_</span><span class="p">,</span> <span class="n">max_x_</span><span class="p">);</span>
+  <span class="n">max_y_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_y_</span><span class="p">,</span> <span class="n">max_y_</span><span class="p">);</span>
+  <span class="n">max_z_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_z_</span><span class="p">,</span> <span class="n">max_z_</span><span class="p">);</span>
+
+  <span class="c1">// generate bit masks for octree</span>
+  <span class="n">getKeyBitSize</span> <span class="p">();</span>
+
+  <span class="n">bounding_box_defined_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">defineBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">cubeLen_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// bounding box cannot be changed once the octree contains elements</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">assert</span> <span class="p">(</span><span class="n">cubeLen_arg</span> <span class="o">&gt;=</span> <span class="mf">0.0f</span><span class="p">);</span>
+
+  <span class="n">min_x_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">max_x_</span> <span class="o">=</span> <span class="n">cubeLen_arg</span><span class="p">;</span>
+
+  <span class="n">min_y_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">max_y_</span> <span class="o">=</span> <span class="n">cubeLen_arg</span><span class="p">;</span>
+
+  <span class="n">min_z_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">max_z_</span> <span class="o">=</span> <span class="n">cubeLen_arg</span><span class="p">;</span>
+
+  <span class="n">min_x_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_x_</span><span class="p">,</span> <span class="n">max_x_</span><span class="p">);</span>
+  <span class="n">min_y_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_y_</span><span class="p">,</span> <span class="n">max_y_</span><span class="p">);</span>
+  <span class="n">min_z_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_z_</span><span class="p">,</span> <span class="n">max_z_</span><span class="p">);</span>
+
+  <span class="n">max_x_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_x_</span><span class="p">,</span> <span class="n">max_x_</span><span class="p">);</span>
+  <span class="n">max_y_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_y_</span><span class="p">,</span> <span class="n">max_y_</span><span class="p">);</span>
+  <span class="n">max_z_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">min_z_</span><span class="p">,</span> <span class="n">max_z_</span><span class="p">);</span>
+
+  <span class="c1">// generate bit masks for octree</span>
+  <span class="n">getKeyBitSize</span> <span class="p">();</span>
+
+  <span class="n">bounding_box_defined_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getBoundingBox</span> <span class="p">(</span>
+    <span class="kt">double</span><span class="o">&amp;</span> <span class="n">min_x_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">min_y_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">min_z_arg</span><span class="p">,</span>
+    <span class="kt">double</span><span class="o">&amp;</span> <span class="n">max_x_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">max_y_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">max_z_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">min_x_arg</span> <span class="o">=</span> <span class="n">min_x_</span><span class="p">;</span>
+  <span class="n">min_y_arg</span> <span class="o">=</span> <span class="n">min_y_</span><span class="p">;</span>
+  <span class="n">min_z_arg</span> <span class="o">=</span> <span class="n">min_z_</span><span class="p">;</span>
+
+  <span class="n">max_x_arg</span> <span class="o">=</span> <span class="n">max_x_</span><span class="p">;</span>
+  <span class="n">max_y_arg</span> <span class="o">=</span> <span class="n">max_y_</span><span class="p">;</span>
+  <span class="n">max_z_arg</span> <span class="o">=</span> <span class="n">max_z_</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span>
+<span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">adoptBoundingBoxToPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">epsilon</span> <span class="p">();</span>
+
+  <span class="c1">// increase octree size until point fits into bounding box</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">bLowerBoundViolationX</span> <span class="o">=</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">min_x_</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="n">bLowerBoundViolationY</span> <span class="o">=</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">min_y_</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="n">bLowerBoundViolationZ</span> <span class="o">=</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="n">min_z_</span><span class="p">);</span>
+
+    <span class="kt">bool</span> <span class="n">bUpperBoundViolationX</span> <span class="o">=</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">max_x_</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="n">bUpperBoundViolationY</span> <span class="o">=</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">max_y_</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="n">bUpperBoundViolationZ</span> <span class="o">=</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">&gt;=</span> <span class="n">max_z_</span><span class="p">);</span>
+
+    <span class="c1">// do we violate any bounds?</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bLowerBoundViolationX</span> <span class="o">||</span> <span class="n">bLowerBoundViolationY</span> <span class="o">||</span> <span class="n">bLowerBoundViolationZ</span> <span class="o">||</span> <span class="n">bUpperBoundViolationX</span>
+        <span class="o">||</span> <span class="n">bUpperBoundViolationY</span> <span class="o">||</span> <span class="n">bUpperBoundViolationZ</span> <span class="o">||</span> <span class="p">(</span><span class="o">!</span><span class="n">bounding_box_defined_</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">bounding_box_defined_</span><span class="p">)</span>
+      <span class="p">{</span>
+
+        <span class="kt">double</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx</span><span class="p">;</span>
+
+        <span class="c1">// octree not empty - we add another tree level and thus increase its size by a factor of 2*2*2</span>
+        <span class="n">child_idx</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="p">(((</span><span class="o">!</span><span class="n">bUpperBoundViolationX</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="o">!</span><span class="n">bUpperBoundViolationY</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">|</span> <span class="p">((</span><span class="o">!</span><span class="n">bUpperBoundViolationZ</span><span class="p">)));</span>
+
+        <span class="n">BranchNode</span><span class="o">*</span> <span class="n">newRootBranch</span><span class="p">;</span>
+
+        <span class="n">newRootBranch</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BranchNode</span><span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">branch_count_</span><span class="o">++</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">setBranchChildPtr</span> <span class="p">(</span><span class="o">*</span><span class="n">newRootBranch</span><span class="p">,</span> <span class="n">child_idx</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span> <span class="o">=</span> <span class="n">newRootBranch</span><span class="p">;</span>
+
+        <span class="n">octreeSideLen</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">)</span> <span class="o">*</span> <span class="n">resolution_</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">bUpperBoundViolationX</span><span class="p">)</span>
+          <span class="n">min_x_</span> <span class="o">-=</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">bUpperBoundViolationY</span><span class="p">)</span>
+          <span class="n">min_y_</span> <span class="o">-=</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">bUpperBoundViolationZ</span><span class="p">)</span>
+          <span class="n">min_z_</span> <span class="o">-=</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+
+        <span class="c1">// configure tree depth of octree</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">setTreeDepth</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">);</span>
+
+        <span class="c1">// recalculate bounding box width</span>
+        <span class="n">octreeSideLen</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">)</span> <span class="o">*</span> <span class="n">resolution_</span> <span class="o">-</span> <span class="n">minValue</span><span class="p">;</span>
+
+        <span class="c1">// increase octree bounding box</span>
+        <span class="n">max_x_</span> <span class="o">=</span> <span class="n">min_x_</span> <span class="o">+</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+        <span class="n">max_y_</span> <span class="o">=</span> <span class="n">min_y_</span> <span class="o">+</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+        <span class="n">max_z_</span> <span class="o">=</span> <span class="n">min_z_</span> <span class="o">+</span> <span class="n">octreeSideLen</span><span class="p">;</span>
+
+      <span class="p">}</span>
+      <span class="c1">// bounding box is not defined - set it to point position</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="c1">// octree is empty - we set the center of the bounding box to our first pixel</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span> <span class="o">=</span> <span class="n">point_idx_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span> <span class="o">=</span> <span class="n">point_idx_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span> <span class="o">=</span> <span class="n">point_idx_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">max_x_</span> <span class="o">=</span> <span class="n">point_idx_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">max_y_</span> <span class="o">=</span> <span class="n">point_idx_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">max_z_</span> <span class="o">=</span> <span class="n">point_idx_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="n">getKeyBitSize</span> <span class="p">();</span>
+
+        <span class="n">bounding_box_defined_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="k">else</span>
+      <span class="c1">// no bound violations anymore - leave while loop</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">expandLeafNode</span> <span class="p">(</span><span class="n">LeafNode</span><span class="o">*</span> <span class="n">leaf_node</span><span class="p">,</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">parent_branch</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">depth_mask</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// get amount of objects in leaf container</span>
+    <span class="kt">size_t</span> <span class="n">leaf_obj_count</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">leaf_node</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getSize</span> <span class="p">();</span>
+
+  <span class="c1">// copy leaf data</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">leafIndices</span><span class="p">;</span>
+    <span class="n">leafIndices</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">leaf_obj_count</span><span class="p">);</span>
+
+    <span class="p">(</span><span class="o">*</span><span class="n">leaf_node</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getPointIndices</span><span class="p">(</span><span class="n">leafIndices</span><span class="p">);</span>
+
+    <span class="c1">// delete current leaf node</span>
+    <span class="k">this</span><span class="o">-&gt;</span><span class="n">deleteBranchChild</span><span class="p">(</span><span class="o">*</span><span class="n">parent_branch</span><span class="p">,</span> <span class="n">child_idx</span><span class="p">);</span>
+    <span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">--</span><span class="p">;</span>
+
+    <span class="c1">// create new branch node</span>
+    <span class="n">BranchNode</span><span class="o">*</span> <span class="n">childBranch</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">createBranchChild</span> <span class="p">(</span><span class="o">*</span><span class="n">parent_branch</span><span class="p">,</span> <span class="n">child_idx</span><span class="p">);</span>
+    <span class="k">this</span><span class="o">-&gt;</span><span class="n">branch_count_</span> <span class="o">++</span><span class="p">;</span>
+
+    <span class="c1">// add data to new branch</span>
+    <span class="n">OctreeKey</span> <span class="n">new_index_key</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">leafIndex</span> <span class="p">:</span> <span class="n">leafIndices</span><span class="p">)</span>
+    <span class="p">{</span>
+
+      <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_from_index</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">leafIndex</span><span class="p">];</span>
+      <span class="c1">// generate key</span>
+      <span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">point_from_index</span><span class="p">,</span> <span class="n">new_index_key</span><span class="p">);</span>
+
+      <span class="n">LeafNode</span><span class="o">*</span> <span class="n">newLeaf</span><span class="p">;</span>
+      <span class="n">BranchNode</span><span class="o">*</span> <span class="n">newBranchParent</span><span class="p">;</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">createLeafRecursive</span> <span class="p">(</span><span class="n">new_index_key</span><span class="p">,</span> <span class="n">depth_mask</span><span class="p">,</span> <span class="n">childBranch</span><span class="p">,</span> <span class="n">newLeaf</span><span class="p">,</span> <span class="n">newBranchParent</span><span class="p">);</span>
+
+      <span class="p">(</span><span class="o">*</span><span class="n">newLeaf</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addPointIndex</span><span class="p">(</span><span class="n">leafIndex</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+
+<span class="p">}</span>
+
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">addPointIdx</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">point_idx_arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+
+  <span class="n">assert</span> <span class="p">(</span><span class="n">point_idx_arg</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+
+  <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">point_idx_arg</span><span class="p">];</span>
+
+  <span class="c1">// make sure bounding box is big enough</span>
+  <span class="n">adoptBoundingBoxToPoint</span> <span class="p">(</span><span class="n">point</span><span class="p">);</span>
+
+  <span class="c1">// generate key</span>
+  <span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+
+  <span class="n">LeafNode</span><span class="o">*</span> <span class="n">leaf_node</span><span class="p">;</span>
+  <span class="n">BranchNode</span><span class="o">*</span> <span class="n">parent_branch_of_leaf_node</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">createLeafRecursive</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">depth_mask_</span> <span class="p">,</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span><span class="p">,</span> <span class="n">leaf_node</span><span class="p">,</span> <span class="n">parent_branch_of_leaf_node</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">dynamic_depth_enabled_</span> <span class="o">&amp;&amp;</span> <span class="n">depth_mask</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// get amount of objects in leaf container</span>
+    <span class="kt">size_t</span> <span class="n">leaf_obj_count</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">leaf_node</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getSize</span> <span class="p">();</span>
+
+    <span class="k">while</span>  <span class="p">(</span><span class="n">leaf_obj_count</span><span class="o">&gt;=</span><span class="n">max_objs_per_leaf_</span> <span class="o">&amp;&amp;</span> <span class="n">depth_mask</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// index to branch child</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">getChildIdxWithDepthMask</span> <span class="p">(</span><span class="n">depth_mask</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+
+      <span class="n">expandLeafNode</span> <span class="p">(</span><span class="n">leaf_node</span><span class="p">,</span>
+                      <span class="n">parent_branch_of_leaf_node</span><span class="p">,</span>
+                      <span class="n">child_idx</span><span class="p">,</span>
+                      <span class="n">depth_mask</span><span class="p">);</span>
+
+      <span class="n">depth_mask</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">createLeafRecursive</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">depth_mask_</span> <span class="p">,</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span><span class="p">,</span> <span class="n">leaf_node</span><span class="p">,</span> <span class="n">parent_branch_of_leaf_node</span><span class="p">);</span>
+      <span class="n">leaf_obj_count</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">leaf_node</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getSize</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+
+  <span class="p">(</span><span class="o">*</span><span class="n">leaf_node</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addPointIndex</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getPointByIndex</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// retrieve point from input cloud</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">index_arg</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+  <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index_arg</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getKeyBitSize</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_voxels</span><span class="p">;</span>
+
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_key_x</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_key_y</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_key_z</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="n">octree_side_len</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">minValue</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">epsilon</span><span class="p">();</span>
+
+  <span class="c1">// find maximum key values for x, y, z</span>
+  <span class="n">max_key_x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">ceil</span> <span class="p">((</span><span class="n">max_x_</span> <span class="o">-</span> <span class="n">min_x_</span> <span class="o">-</span> <span class="n">minValue</span><span class="p">)</span> <span class="o">/</span> <span class="n">resolution_</span><span class="p">));</span>
+  <span class="n">max_key_y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">ceil</span> <span class="p">((</span><span class="n">max_y_</span> <span class="o">-</span> <span class="n">min_y_</span> <span class="o">-</span> <span class="n">minValue</span><span class="p">)</span> <span class="o">/</span> <span class="n">resolution_</span><span class="p">));</span>
+  <span class="n">max_key_z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">ceil</span> <span class="p">((</span><span class="n">max_z_</span> <span class="o">-</span> <span class="n">min_z_</span> <span class="o">-</span> <span class="n">minValue</span><span class="p">)</span> <span class="o">/</span> <span class="n">resolution_</span><span class="p">));</span>
+
+  <span class="c1">// find maximum amount of keys</span>
+  <span class="n">max_voxels</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_key_x</span><span class="p">,</span> <span class="n">max_key_y</span><span class="p">),</span> <span class="n">max_key_z</span><span class="p">),</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+
+
+  <span class="c1">// tree depth == amount of bits of max_voxels</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">OctreeKey</span><span class="o">::</span><span class="n">maxDepth</span><span class="p">),</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">log2</span> <span class="p">(</span><span class="n">max_voxels</span><span class="p">)</span> <span class="o">-</span> <span class="n">minValue</span><span class="p">)))),</span>
+                                  <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+
+  <span class="n">octree_side_len</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">)</span> <span class="o">*</span> <span class="n">resolution_</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">octree_oversize_x</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">octree_oversize_y</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">octree_oversize_z</span><span class="p">;</span>
+
+    <span class="n">octree_oversize_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">octree_side_len</span> <span class="o">-</span> <span class="p">(</span><span class="n">max_x_</span> <span class="o">-</span> <span class="n">min_x_</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+    <span class="n">octree_oversize_y</span> <span class="o">=</span> <span class="p">(</span><span class="n">octree_side_len</span> <span class="o">-</span> <span class="p">(</span><span class="n">max_y_</span> <span class="o">-</span> <span class="n">min_y_</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+    <span class="n">octree_oversize_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">octree_side_len</span> <span class="o">-</span> <span class="p">(</span><span class="n">max_z_</span> <span class="o">-</span> <span class="n">min_z_</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">octree_oversize_x</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">minValue</span><span class="p">);</span>
+    <span class="n">assert</span> <span class="p">(</span><span class="n">octree_oversize_y</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">minValue</span><span class="p">);</span>
+    <span class="n">assert</span> <span class="p">(</span><span class="n">octree_oversize_z</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">minValue</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">octree_oversize_x</span> <span class="o">&gt;</span> <span class="n">minValue</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">min_x_</span> <span class="o">-=</span> <span class="n">octree_oversize_x</span><span class="p">;</span>
+      <span class="n">max_x_</span> <span class="o">+=</span> <span class="n">octree_oversize_x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">octree_oversize_y</span> <span class="o">&gt;</span> <span class="n">minValue</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">min_y_</span> <span class="o">-=</span> <span class="n">octree_oversize_y</span><span class="p">;</span>
+      <span class="n">max_y_</span> <span class="o">+=</span> <span class="n">octree_oversize_y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">octree_oversize_z</span> <span class="o">&gt;</span> <span class="n">minValue</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">min_z_</span> <span class="o">-=</span> <span class="n">octree_oversize_z</span><span class="p">;</span>
+      <span class="n">max_z_</span> <span class="o">+=</span> <span class="n">octree_oversize_z</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="n">max_x_</span> <span class="o">=</span> <span class="n">min_x_</span> <span class="o">+</span> <span class="n">octree_side_len</span><span class="p">;</span>
+    <span class="n">max_y_</span> <span class="o">=</span> <span class="n">min_y_</span> <span class="o">+</span> <span class="n">octree_side_len</span><span class="p">;</span>
+    <span class="n">max_z_</span> <span class="o">=</span> <span class="n">min_z_</span> <span class="o">+</span> <span class="n">octree_side_len</span><span class="p">;</span>
+  <span class="p">}</span>
+
+ <span class="c1">// configure tree depth of octree</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">setTreeDepth</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">,</span>
+                                                                             <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span>
+  <span class="p">{</span>
+    <span class="c1">// calculate integer key for point coordinates</span>
+    <span class="n">key_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">point_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">)</span> <span class="o">/</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span><span class="p">);</span>
+    <span class="n">key_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">point_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">)</span> <span class="o">/</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span><span class="p">);</span>
+    <span class="n">key_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">point_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">)</span> <span class="o">/</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span><span class="p">);</span>
+
+    <span class="n">assert</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">max_key_</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">assert</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">max_key_</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+    <span class="n">assert</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">max_key_</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">point_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_y_arg</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">point_z_arg</span><span class="p">,</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">PointT</span> <span class="n">temp_point</span><span class="p">;</span>
+
+  <span class="n">temp_point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_x_arg</span><span class="p">);</span>
+  <span class="n">temp_point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_y_arg</span><span class="p">);</span>
+  <span class="n">temp_point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_z_arg</span><span class="p">);</span>
+
+  <span class="c1">// generate key for point</span>
+  <span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">temp_point</span><span class="p">,</span> <span class="n">key_arg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">genOctreeKeyForDataT</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">data_arg</span><span class="p">,</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">PointT</span> <span class="n">temp_point</span> <span class="o">=</span> <span class="n">getPointByIndex</span> <span class="p">(</span><span class="n">data_arg</span><span class="p">);</span>
+
+  <span class="c1">// generate key for point</span>
+  <span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">temp_point</span><span class="p">,</span> <span class="n">key_arg</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">genLeafNodeCenterFromOctreeKey</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span> <span class="n">PointT</span> <span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// define point to leaf node voxel center</span>
+  <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5f</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">);</span>
+  <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5f</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">);</span>
+  <span class="n">point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5f</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">genVoxelCenterFromOctreeKey</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">,</span>
+    <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// generate point for voxel center defined by treedepth (bitLen) and key</span>
+  <span class="n">point_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5f</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span> <span class="o">-</span> <span class="n">tree_depth_arg</span><span class="p">)))</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">);</span>
+  <span class="n">point_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5f</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span> <span class="o">-</span> <span class="n">tree_depth_arg</span><span class="p">)))</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">);</span>
+  <span class="n">point_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5f</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span> <span class="o">-</span> <span class="n">tree_depth_arg</span><span class="p">)))</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">genVoxelBoundsFromOctreeKey</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">,</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">min_pt</span><span class="p">,</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">max_pt</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// calculate voxel size of current tree depth</span>
+  <span class="kt">double</span> <span class="n">voxel_side_len</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span> <span class="o">-</span> <span class="n">tree_depth_arg</span><span class="p">));</span>
+
+  <span class="c1">// calculate voxel bounds</span>
+  <span class="n">min_pt</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_side_len</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">);</span>
+  <span class="n">min_pt</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_side_len</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">);</span>
+  <span class="n">min_pt</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_side_len</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">);</span>
+
+  <span class="n">max_pt</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_side_len</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">);</span>
+  <span class="n">max_pt</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_side_len</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">);</span>
+  <span class="n">max_pt</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_side_len</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">double</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getVoxelSquaredSideLen</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">side_len</span><span class="p">;</span>
+
+  <span class="c1">// side length of the voxel cube increases exponentially with the octree depth</span>
+  <span class="n">side_len</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span> <span class="o">-</span> <span class="n">tree_depth_arg</span><span class="p">));</span>
+
+  <span class="c1">// squared voxel side length</span>
+  <span class="n">side_len</span> <span class="o">*=</span> <span class="n">side_len</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">side_len</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">double</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getVoxelSquaredDiameter</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// return the squared side length of the voxel cube as a function of the octree depth</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">getVoxelSquaredSideLen</span> <span class="p">(</span><span class="n">tree_depth_arg</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">node_arg</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+    <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list_arg</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">voxel_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// iterate over all children</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">child_idx</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">child_idx</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">branchHasChild</span> <span class="p">(</span><span class="o">*</span><span class="n">node_arg</span><span class="p">,</span> <span class="n">child_idx</span><span class="p">))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="n">OctreeNode</span> <span class="o">*</span> <span class="n">child_node</span><span class="p">;</span>
+    <span class="n">child_node</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">getBranchChildPtr</span> <span class="p">(</span><span class="o">*</span><span class="n">node_arg</span><span class="p">,</span> <span class="n">child_idx</span><span class="p">);</span>
+
+    <span class="c1">// generate new key for current branch voxel</span>
+    <span class="n">OctreeKey</span> <span class="n">new_key</span><span class="p">;</span>
+    <span class="n">new_key</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">child_idx</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)));</span>
+    <span class="n">new_key</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">child_idx</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)));</span>
+    <span class="n">new_key</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="o">!!</span><span class="p">(</span><span class="n">child_idx</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)));</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="n">child_node</span><span class="o">-&gt;</span><span class="n">getNodeType</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="k">case</span> <span class="nl">BRANCH_NODE</span><span class="p">:</span>
+      <span class="p">{</span>
+        <span class="c1">// recursively proceed with indexed child branch</span>
+        <span class="n">voxel_count</span> <span class="o">+=</span> <span class="n">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">child_node</span><span class="p">),</span> <span class="n">new_key</span><span class="p">,</span> <span class="n">voxel_center_list_arg</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">case</span> <span class="nl">LEAF_NODE</span><span class="p">:</span>
+      <span class="p">{</span>
+        <span class="n">PointT</span> <span class="n">new_point</span><span class="p">;</span>
+
+        <span class="n">genLeafNodeCenterFromOctreeKey</span> <span class="p">(</span><span class="n">new_key</span><span class="p">,</span> <span class="n">new_point</span><span class="p">);</span>
+        <span class="n">voxel_center_list_arg</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">new_point</span><span class="p">);</span>
+
+        <span class="n">voxel_count</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">default</span><span class="o">:</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">voxel_count</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_OctreePointCloudSingleBufferWithLeafDataTVector(T) template class PCL_EXPORTS pcl::octree::OctreePointCloud&lt;T, pcl::octree::OctreeContainerPointIndices, pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeBase&lt;pcl::octree::OctreeContainerPointIndices, pcl::octree::OctreeContainerEmpty &gt; &gt;;</span>
+<span class="cp">#define PCL_INSTANTIATE_OctreePointCloudDoubleBufferWithLeafDataTVector(T) template class PCL_EXPORTS pcl::octree::OctreePointCloud&lt;T, pcl::octree::OctreeContainerPointIndices, pcl::octree::OctreeContainerEmpty, pcl::octree::Octree2BufBase&lt;pcl::octree::OctreeContainerPointIndices, pcl::octree::OctreeContainerEmpty &gt; &gt;;</span>
+
+<span class="cp">#define PCL_INSTANTIATE_OctreePointCloudSingleBufferWithLeafDataT(T) template class PCL_EXPORTS pcl::octree::OctreePointCloud&lt;T, pcl::octree::OctreeContainerPointIndex, pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeBase&lt;pcl::octree::OctreeContainerPointIndex, pcl::octree::OctreeContainerEmpty &gt; &gt;;</span>
+<span class="cp">#define PCL_INSTANTIATE_OctreePointCloudDoubleBufferWithLeafDataT(T) template class PCL_EXPORTS pcl::octree::OctreePointCloud&lt;T, pcl::octree::OctreeContainerPointIndex, pcl::octree::OctreeContainerEmpty, pcl::octree::Octree2BufBase&lt;pcl::octree::OctreeContainerPointIndex, pcl::octree::OctreeContainerEmpty &gt; &gt;;</span>
+
+<span class="cp">#define PCL_INSTANTIATE_OctreePointCloudSingleBufferWithEmptyLeaf(T) template class PCL_EXPORTS pcl::octree::OctreePointCloud&lt;T, pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeBase&lt;pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeContainerEmpty &gt; &gt;;</span>
+<span class="cp">#define PCL_INSTANTIATE_OctreePointCloudDoubleBufferWithEmptyLeaf(T) template class PCL_EXPORTS pcl::octree::OctreePointCloud&lt;T, pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeContainerEmpty, pcl::octree::Octree2BufBase&lt;pcl::octree::OctreeContainerEmpty, pcl::octree::OctreeContainerEmpty &gt; &gt;;</span>
+
+<span class="cp">#endif </span><span class="cm">/* OCTREE_POINTCLOUD_HPP_ */</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_octree_octree_pointcloud_adjacency.h.html" class="btn btn-neutral float-right" title="File octree_pointcloud_adjacency.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_octree_impl_octree_pointcloud.hpp.html" class="btn btn-neutral float-left" title="File octree_pointcloud.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

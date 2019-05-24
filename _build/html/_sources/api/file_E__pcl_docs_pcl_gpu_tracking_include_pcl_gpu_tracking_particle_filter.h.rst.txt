@@ -1,0 +1,69 @@
+
+.. _file_E__pcl_docs_pcl_gpu_tracking_include_pcl_gpu_tracking_particle_filter.h:
+
+File particle_filter.h
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_E__pcl_docs_pcl_gpu_tracking_include_pcl_gpu_tracking>` (``E:\pcl_docs\pcl\gpu\tracking\include\pcl\gpu\tracking``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``E:\pcl_docs\pcl\gpu\tracking\include\pcl\gpu\tracking\particle_filter.h``)
+----------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_E__pcl_docs_pcl_gpu_tracking_include_pcl_gpu_tracking_particle_filter.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``Eigen/Dense``
+
+- ``internal.h`` (:ref:`file_E__pcl_docs_pcl_gpu_kinfu_src_internal.h`)
+
+- ``pcl/PointIndices.h``
+
+- ``pcl/gpu/containers/device_array.h``
+
+- ``pcl/gpu/kinfu/pixel_rgb.h``
+
+- ``pcl/pcl_macros.h``
+
+- ``pcl/point_cloud.h``
+
+- ``pcl/point_types.h``
+
+- ``pcl/tracking/particle_filter.h``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_pcl`
+
+- :ref:`namespace_pcl__gpu`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classpcl_1_1gpu_1_1_particle_filter_g_p_u_tracker`
+

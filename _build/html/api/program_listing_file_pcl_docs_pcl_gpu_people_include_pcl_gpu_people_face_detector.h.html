@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File face_detector.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File face_detector.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_pcl_gpu_people_include_pcl_gpu_people_face_detector.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-face-detector-h">
+<span id="program-listing-file-pcl-docs-pcl-gpu-people-include-pcl-gpu-people-face-detector-h"></span><h1>Program Listing for File face_detector.h<a class="headerlink" href="#program-listing-for-file-face-detector-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_pcl_gpu_people_include_pcl_gpu_people_face_detector.h.html#file-pcl-docs-pcl-gpu-people-include-pcl-gpu-people-face-detector-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\pcl\gpu\people\include\pcl\gpu\people\face_detector.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Copyright (c) 2011, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @author: Koen Buys</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/shared_ptr.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cuda_runtime_api.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;NCVHaarObjectDetection.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">gpu</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">people</span>
+    <span class="p">{</span>
+      <span class="k">class</span> <span class="nc">FaceDetector</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">FaceDetector</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+          <span class="c1">//typedef DeviceArray2D&lt;unsigned char&gt; Labels;</span>
+          <span class="c1">//typedef DeviceArray2D&lt;unsigned short&gt; Depth;</span>
+          <span class="c1">//typedef DeviceArray2D&lt;pcl::RGB&gt; Image;</span>
+
+          <span class="cm">/** \brief This is the constructor **/</span>
+          <span class="n">FaceDetector</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">cols</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rows</span><span class="p">);</span>
+
+          <span class="n">NCVStatus</span>
+          <span class="nf">loadFromXML2</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>                   <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span>
+                       <span class="n">HaarClassifierCascadeDescriptor</span>     <span class="o">&amp;</span><span class="n">haar</span><span class="p">,</span>
+                       <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;</span>            <span class="o">&amp;</span><span class="n">haar_stages</span><span class="p">,</span>
+                       <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HaarClassifierNode128</span><span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">haarClassifierNodes</span><span class="p">,</span>
+                       <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HaarFeature64</span><span class="o">&gt;</span>          <span class="o">&amp;</span><span class="n">haar_features</span><span class="p">);</span>
+
+          <span class="k">static</span> <span class="n">NCVStatus</span>
+          <span class="nf">loadFromNVBIN</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span>
+                        <span class="n">HaarClassifierCascadeDescriptor</span> <span class="o">&amp;</span><span class="n">haar</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">haar_stages</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HaarClassifierNode128</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">haarClassifierNodes</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HaarFeature64</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">haar_features</span><span class="p">);</span>
+
+          <span class="n">NCVStatus</span>
+          <span class="nf">ncvHaarLoadFromFile_host</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span>
+                                   <span class="n">HaarClassifierCascadeDescriptor</span> <span class="o">&amp;</span><span class="n">haar</span><span class="p">,</span>
+                                   <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">h_haar_stages</span><span class="p">,</span>
+                                   <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarClassifierNode128</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">h_haar_nodes</span><span class="p">,</span>
+                                   <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarFeature64</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">h_haar_features</span><span class="p">);</span>
+
+          <span class="n">NCVStatus</span>
+          <span class="nf">ncvHaarGetClassifierSize</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="o">&amp;</span><span class="n">numStages</span><span class="p">,</span>
+                                   <span class="n">Ncv32u</span> <span class="o">&amp;</span><span class="n">numNodes</span><span class="p">,</span> <span class="n">Ncv32u</span> <span class="o">&amp;</span><span class="n">numFeatures</span><span class="p">);</span>
+
+          <span class="n">NCVStatus</span>
+          <span class="nf">NCVprocess</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span><span class="o">&gt;&amp;</span>           <span class="n">cloud_in</span><span class="p">,</span>
+                     <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Intensity32u</span><span class="o">&gt;&amp;</span>  <span class="n">cloud_out</span><span class="p">,</span>
+                     <span class="n">HaarClassifierCascadeDescriptor</span>      <span class="o">&amp;</span><span class="n">haar</span><span class="p">,</span>
+                     <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;</span>               <span class="o">&amp;</span><span class="n">d_haar_stages</span><span class="p">,</span>
+                     <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarClassifierNode128</span><span class="o">&gt;</span>     <span class="o">&amp;</span><span class="n">d_haar_nodes</span><span class="p">,</span>
+                     <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarFeature64</span><span class="o">&gt;</span>             <span class="o">&amp;</span><span class="n">d_haar_features</span><span class="p">,</span>
+                     <span class="n">NCVVector</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;</span>               <span class="o">&amp;</span><span class="n">h_haar_stages</span><span class="p">,</span>
+                     <span class="n">INCVMemAllocator</span>                     <span class="o">&amp;</span><span class="n">gpu_allocator</span><span class="p">,</span>
+                     <span class="n">INCVMemAllocator</span>                     <span class="o">&amp;</span><span class="n">cpu_allocator</span><span class="p">,</span>
+                     <span class="n">cudaDeviceProp</span>                       <span class="o">&amp;</span><span class="n">device_properties</span><span class="p">,</span>
+                     <span class="n">Ncv32u</span>                               <span class="n">width</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span>
+                     <span class="n">Ncv32u</span>                               <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span>
+                     <span class="n">NcvBool</span>                              <span class="n">bFilterRects</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span>
+                     <span class="n">NcvBool</span>                              <span class="n">bLargestFace</span><span class="o">=</span><span class="nb">true</span><span class="p">);</span>
+
+          <span class="kt">int</span>
+          <span class="nf">configure</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">cascade_file_name</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Process step, this wraps the Nvidia code **/</span>
+          <span class="kt">void</span> <span class="nf">process</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">,</span>
+                        <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Intensity32u</span><span class="o">&gt;&amp;</span> <span class="n">cloud_out</span><span class="p">);</span>
+
+          <span class="cm">/** \brief largest object sets return configuration **/</span>
+          <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">setLargestObject</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">largest_object</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">largest_object_</span> <span class="o">=</span> <span class="n">largest_object</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">getLargestObject</span> <span class="p">()</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="n">largest_object_</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Set the cuda GPU to use **/</span>
+          <span class="kt">void</span> <span class="nf">setDeviceId</span> <span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+
+          <span class="kt">int</span> <span class="nf">getCols</span> <span class="p">()</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="n">cols_</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="kt">void</span> <span class="nf">setCols</span> <span class="p">(</span><span class="kt">int</span> <span class="n">cols</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">cols_</span> <span class="o">=</span> <span class="n">cols</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="kt">int</span> <span class="nf">getRows</span> <span class="p">()</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="n">rows_</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="kt">void</span> <span class="nf">setRows</span> <span class="p">(</span><span class="kt">int</span> <span class="n">rows</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">rows_</span> <span class="o">=</span> <span class="n">rows</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+          <span class="n">getCascadeFileName</span> <span class="p">()</span> <span class="k">const</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="n">cascade_file_name_</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="kt">void</span>
+          <span class="n">setCascadeFileName</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">cascadeFileName</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">cascade_file_name_</span> <span class="o">=</span> <span class="n">cascadeFileName</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Get the cuda GPU device id in use **/</span>
+          <span class="kt">int</span>
+          <span class="n">getDeviceId</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">cuda_dev_id_</span><span class="p">;}</span>
+
+        <span class="k">private</span><span class="o">:</span>
+          <span class="kt">bool</span>                <span class="n">largest_object_</span><span class="p">;</span>      <span class="cm">/** \brief only give back largest object **/</span>
+          <span class="kt">bool</span>                <span class="n">filter_rects_</span><span class="p">;</span>        <span class="cm">/** \brief rectangular filter **/</span>
+
+          <span class="kt">int</span>                 <span class="n">cuda_dev_id_</span><span class="p">;</span>         <span class="cm">/** \brief indicates which GPU to use for this **/</span>
+          <span class="n">cudaDeviceProp</span>      <span class="n">cuda_dev_prop_</span><span class="p">;</span>
+
+          <span class="n">std</span><span class="o">::</span><span class="n">string</span>         <span class="n">cascade_file_name_</span><span class="p">;</span>
+
+          <span class="kt">int</span>                 <span class="n">rows_</span><span class="p">;</span>                <span class="c1">// should default to 480</span>
+          <span class="kt">int</span>                 <span class="n">cols_</span><span class="p">;</span>                <span class="c1">// should default to 640</span>
+
+          <span class="n">HaarClassifierCascadeDescriptor</span>         <span class="n">haar_clas_casc_descr_</span><span class="p">;</span>
+          <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;*</span>            <span class="n">haar_stages_dev_</span><span class="p">;</span>
+          <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">HaarStage64</span><span class="o">&gt;*</span>            <span class="n">haar_stages_host_</span><span class="p">;</span>
+          <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">HaarClassifierNode128</span><span class="o">&gt;*</span>  <span class="n">haar_nodes_dev_</span><span class="p">;</span>
+          <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">HaarClassifierNode128</span><span class="o">&gt;*</span>  <span class="n">haar_nodes_host_</span><span class="p">;</span>
+          <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">HaarFeature64</span><span class="o">&gt;*</span>          <span class="n">haar_features_dev_</span><span class="p">;</span>
+          <span class="n">NCVVectorAlloc</span><span class="o">&lt;</span><span class="n">HaarFeature64</span><span class="o">&gt;*</span>          <span class="n">haar_features_host_</span><span class="p">;</span>
+
+          <span class="n">INCVMemAllocator</span><span class="o">*</span>                       <span class="n">gpu_allocator_</span><span class="p">;</span>
+          <span class="n">INCVMemAllocator</span><span class="o">*</span>                       <span class="n">cpu_allocator_</span><span class="p">;</span>
+
+          <span class="n">NCVMemStackAllocator</span><span class="o">*</span>                   <span class="n">gpu_stack_allocator_</span><span class="p">;</span>
+          <span class="n">NCVMemStackAllocator</span><span class="o">*</span>                   <span class="n">cpu_stack_allocator_</span><span class="p">;</span>
+
+          <span class="n">NCVMemStackAllocator</span><span class="o">*</span>                   <span class="n">gpu_counter_</span><span class="p">;</span>
+          <span class="n">NCVMemStackAllocator</span><span class="o">*</span>                   <span class="n">cpu_counter_</span><span class="p">;</span>
+
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

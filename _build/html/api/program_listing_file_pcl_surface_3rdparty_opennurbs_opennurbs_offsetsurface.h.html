@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_offsetsurface.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_optimize.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_optimize.h.html" />
+    <link rel="prev" title="File opennurbs_offsetsurface.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_offsetsurface.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_offsetsurface.h.html">File opennurbs_offsetsurface.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_offsetsurface.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_offsetsurface.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-offsetsurface-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-offsetsurface-h"></span><h1>Program Listing for File opennurbs_offsetsurface.h<a class="headerlink" href="#program-listing-for-file-opennurbs-offsetsurface-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_offsetsurface.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-offsetsurface-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_offsetsurface.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(ON_OFFSETSURFACE_INC_)</span>
+<span class="cp">#define ON_OFFSETSURFACE_INC_</span>
+
+<span class="c1">// This file is to be used in V3 plug-ins.</span>
+<span class="c1">// In V4, this will be included as part of opennurbs.</span>
+<span class="c1">// Ask Dale Lear if you have any questions.</span>
+
+<span class="k">class</span> <span class="nc">ON_BumpFunction</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_BumpFunction</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BumpFunction</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BumpFunction</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BumpFunction</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="nf">ValueAt</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Evaluate</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span>
+    <span class="kt">double</span><span class="o">*</span> <span class="n">value</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_2dPoint</span> <span class="n">m_point</span><span class="p">;</span> <span class="c1">// center of bump</span>
+  <span class="kt">int</span> <span class="n">m_type</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="c1">// 1 = linear, 5 = quintic;</span>
+
+  <span class="c1">// numbers used in evaluation</span>
+  <span class="kt">double</span> <span class="n">m_x0</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">m_y0</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">m_sx</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="c1">// 1/(suppor radius)</span>
+  <span class="kt">double</span> <span class="n">m_sy</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="c1">// 1/(suppor radius)</span>
+  <span class="kt">double</span> <span class="n">m_a</span><span class="p">;</span>         <span class="c1">// evaluation coefficient</span>
+
+  <span class="kt">void</span> <span class="nf">EvaluateHelperLinearBump</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">,</span> <span class="kt">double</span> <span class="n">dt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">value</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">EvaluateHelperQuinticBump</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">,</span> <span class="kt">double</span> <span class="n">dt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">value</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">ON_OffsetSurfaceValue</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">m_s</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">m_t</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">m_distance</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">m_radius</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">m_index</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cp">#if defined(ON_DLL_TEMPLATE)</span>
+<span class="c1">// This stuff is here because of a limitation in the way Microsoft</span>
+<span class="c1">// handles templates and DLLs.  See Microsoft&#39;s knowledge base</span>
+<span class="c1">// article ID Q168958 for details.</span>
+<span class="cp">#pragma warning( push )</span>
+<span class="cp">#pragma warning( disable : 4231 )</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_BumpFunction</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_OffsetSurfaceValue</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="cp">#pragma warning( pop )</span>
+<span class="cp">#endif</span>
+
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_OffsetSurfaceFunction</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_OffsetSurfaceFunction</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">ON_OffsetSurfaceFunction</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets base surface for the offset function.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    srf - [in] pointer to the base surface.</span>
+<span class="cm">               This surface must remain valid while</span>
+<span class="cm">               the ON_OffsetSurfaceFunction class is used.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetBaseSurface</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Surface</span><span class="o">*</span> <span class="n">srf</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Base surface specified SetBaseSurface().</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_Surface</span><span class="o">*</span> <span class="nf">BaseSurface</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Use set SetSideTangency if you want the offset</span>
+<span class="cm">    surface and base surface to have the same unit</span>
+<span class="cm">    normals along a side of the surfaces&#39;s parameter</span>
+<span class="cm">    spaces.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    side - [in]</span>
+<span class="cm">               0 = south side</span>
+<span class="cm">               1 = east side</span>
+<span class="cm">               2 = north side</span>
+<span class="cm">               3 = west side</span>
+<span class="cm">    bEnable - [in] true to enable tangency,</span>
+<span class="cm">                   false to disable tangency</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetSideTangency</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">side</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bEnable</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    side - [in]</span>
+<span class="cm">               0 = south side</span>
+<span class="cm">               1 = east side</span>
+<span class="cm">               2 = north side</span>
+<span class="cm">               3 = west side</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if side tangency is enabled.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SideTangency</span><span class="p">(</span><span class="kt">int</span> <span class="n">side</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets the offset distance at a point.  Call this function</span>
+<span class="cm">    once for each point wher the user specifies an offset.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in]</span>
+<span class="cm">    t - [in] (s,t) is a base surface evaluation parameter</span>
+<span class="cm">    distance - [in] distance is the offset distance.</span>
+<span class="cm">    radius - [in] if radius&gt;0, then this value will be the</span>
+<span class="cm">                  the approximate radius of the offset &quot;bump&quot;.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetOffsetPoint</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">distance</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">radius</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets the surface parameters of an existing offset point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    index - [in] index of the point to set</span>
+<span class="cm">    s - [in]</span>
+<span class="cm">    t - [in] (s,t) is a base surface evaluation parameter</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetPoint</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span>
+    <span class="p">);</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set the offset distance for an existing point</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    index - [in] index of the point to set</span>
+<span class="cm">    distance - [in] new distance</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetDistance</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">distance</span><span class="p">);</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of points specified using SetOffsetPoint().</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">OffsetPointCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    i - [in] an index &gt;= 0 and &lt; OffsetPointCount()</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Surface parameter specified using SetOffsetPoint().</span>
+<span class="cm">  */</span>
+  <span class="n">ON_2dPoint</span> <span class="nf">OffsetSurfaceParameter</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    i - [in] an index &gt;= 0 and &lt; OffsetPointCount()</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Offset distance specified using SetOffsetPoint().</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">OffsetDistance</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Value of the offset distance at any surface parameter.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in]</span>
+<span class="cm">    t - [in] (s,t) is a base surface evaluation parameter</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    offset distance at the surface parameter</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">DistanceAt</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Value of the offset distance at any surface parameter.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in]</span>
+<span class="cm">    t - [in] (s,t) is a base surface evaluation parameter</span>
+<span class="cm">    num_der - [in] number of derivatives</span>
+<span class="cm">    value - [out] value and derivatives of distance function</span>
+<span class="cm">                  value[0] = distance, value[1] = 1rst derivative,</span>
+<span class="cm">                  value[2] = 2nd derivative, ...</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">EvaluateDistance</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">num_der</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">value</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Value of the offset function at any surface parameter.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in]</span>
+<span class="cm">    t - [in] (s,t) is a base surface evaluation parameter</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Point on the offset surface.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Resets this class if you want to reuse it.</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="k">friend</span> <span class="k">class</span> <span class="nc">ON_OffsetSurface</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">Initialize</span><span class="p">();</span>
+
+  <span class="k">const</span> <span class="n">ON_Surface</span><span class="o">*</span> <span class="n">m_srf</span><span class="p">;</span>
+
+  <span class="n">ON_Interval</span> <span class="n">m_domain</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+  <span class="kt">bool</span> <span class="n">m_bZeroSideDerivative</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>   <span class="c1">// S,E,N,W side</span>
+
+  <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_OffsetSurfaceValue</span><span class="o">&gt;</span> <span class="n">m_offset_value</span><span class="p">;</span>
+
+
+  <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">ON_BumpFunction</span><span class="o">&gt;</span> <span class="n">m_bumps</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="n">m_bValid</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="nl">ON_OffsetSurface</span> <span class="p">:</span> <span class="k">public</span> <span class="n">ON_SurfaceProxy</span>
+<span class="p">{</span>
+  <span class="c1">// This is still a work in progress.  In particular,</span>
+  <span class="c1">// this surface class can not be saved in files, used</span>
+  <span class="c1">// as a brep surface, added to Rhino, etc.</span>
+  <span class="c1">//</span>
+  <span class="c1">// As of January 2004, it is useful for calculating</span>
+  <span class="c1">// offset meshes and any other fitting and approximation</span>
+  <span class="c1">// tools that requires a surface evaluator but do not need</span>
+  <span class="c1">// NURBS forms, isocurves, and so on.</span>
+  <span class="n">ON_OBJECT_DECLARE</span><span class="p">(</span><span class="n">ON_OffsetSurface</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_OffsetSurface</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">ON_OffsetSurface</span><span class="p">();</span>
+  <span class="n">ON_OffsetSurface</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_OffsetSurface</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">);</span>
+  <span class="n">ON_OffsetSurface</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_OffsetSurface</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">);</span>
+
+  <span class="n">ON_BOOL32</span> <span class="nf">GetBBox</span><span class="p">(</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">bbox_min</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">bbox_max</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_BOOL32</span> <span class="nf">Evaluate</span><span class="p">(</span> <span class="c1">// returns false if unable to evaluate</span>
+         <span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="c1">// evaluation parameters</span>
+         <span class="kt">int</span><span class="p">,</span>            <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">derivatives</span> <span class="p">(</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="kt">int</span><span class="p">,</span>            <span class="c1">// array stride (&gt;=Dimension())</span>
+         <span class="kt">double</span><span class="o">*</span><span class="p">,</span>        <span class="c1">// array of length stride*(ndir+1)*(ndir+2)/2</span>
+         <span class="kt">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>        <span class="c1">// optional - determines which quadrant to evaluate from</span>
+                         <span class="c1">//         0 = default</span>
+                         <span class="c1">//         1 from NE quadrant</span>
+                         <span class="c1">//         2 from NW quadrant</span>
+                         <span class="c1">//         3 from SW quadrant</span>
+                         <span class="c1">//         4 from SE quadrant</span>
+         <span class="kt">int</span><span class="o">*</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">// optional - evaluation hint (int[2]) used to speed</span>
+                         <span class="c1">//            repeated evaluations</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets base surface to a surface that is not managed</span>
+<span class="cm">    by the ON_OffsetSurface class.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    base_surface - [in] points to a base surface the</span>
+<span class="cm">       caller insures will exist for the lifetimes</span>
+<span class="cm">       of the ON_OffsetSurface class.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetBaseSurface</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Surface</span><span class="o">*</span> <span class="n">base_surface</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets base surface to a surface that is optionally managed</span>
+<span class="cm">    by the ON_OffsetSurface class.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    base_surface - [in] points to a base surface the</span>
+<span class="cm">       caller insures will exist for the lifetimes</span>
+<span class="cm">       of the ON_OffsetSurface class.</span>
+<span class="cm">    bManage - [in] if true, the base_surface must point</span>
+<span class="cm">       to a surface that is on the heap and the surface</span>
+<span class="cm">       will be deleted by ~ON_OffsetSurface.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetBaseSurface</span><span class="p">(</span>
+        <span class="n">ON_Surface</span><span class="o">*</span> <span class="n">base_surface</span><span class="p">,</span>
+        <span class="kt">bool</span> <span class="n">bManage</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Base surface;</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_Surface</span><span class="o">*</span> <span class="nf">BaseSurface</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_OffsetSurfaceFunction</span><span class="o">&amp;</span> <span class="n">OffsetFunction</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">ON_OffsetSurfaceFunction</span><span class="o">&amp;</span> <span class="n">OffsetFunction</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="c1">// If not NULL, this points to the base surface</span>
+  <span class="n">ON_Surface</span><span class="o">*</span> <span class="n">m__pSrf</span><span class="p">;</span>
+  <span class="n">ON_OffsetSurfaceFunction</span> <span class="n">m_offset_function</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_optimize.h.html" class="btn btn-neutral float-right" title="File opennurbs_optimize.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_offsetsurface.h.html" class="btn btn-neutral float-left" title="File opennurbs_offsetsurface.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

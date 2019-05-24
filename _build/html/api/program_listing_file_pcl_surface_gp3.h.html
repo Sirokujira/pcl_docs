@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File gp3.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File gp3.hpp" href="file_pcl_surface_impl_gp3.hpp.html" />
+    <link rel="prev" title="File gp3.h" href="file_pcl_surface_gp3.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_gp3.h.html">File gp3.h</a> &raquo;</li>
+        
+      <li>Program Listing for File gp3.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_gp3.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-gp3-h">
+<span id="program-listing-file-pcl-surface-gp3-h"></span><h1>Program Listing for File gp3.h<a class="headerlink" href="#program-listing-for-file-gp3-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_gp3.h.html#file-pcl-surface-gp3-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\gp3.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="c1">// PCL includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/surface/reconstruction.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/surface/boost.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/conversions.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/kdtree/kdtree.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PolygonMesh.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief Returns if a point X is visible from point R (or the origin)</span>
+<span class="cm">    * when taking into account the segment between the points S1 and S2</span>
+<span class="cm">    * \param X 2D coordinate of the point</span>
+<span class="cm">    * \param S1 2D coordinate of the segment&#39;s first point</span>
+<span class="cm">    * \param S2 2D coordinate of the segment&#39;s second point</span>
+<span class="cm">    * \param R 2D coordinate of the reference point (defaults to 0,0)</span>
+<span class="cm">    * \ingroup surface</span>
+<span class="cm">    */</span>
+  <span class="kr">inline</span> <span class="kt">bool</span>
+  <span class="n">isVisible</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">X</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">S1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">S2</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">R</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">a0</span> <span class="o">=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">b0</span> <span class="o">=</span> <span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">c0</span> <span class="o">=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">a1</span> <span class="o">=</span> <span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">R</span> <span class="o">!=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">::</span><span class="n">Zero</span><span class="p">())</span>
+    <span class="p">{</span>
+      <span class="n">a1</span> <span class="o">+=</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+      <span class="n">b1</span> <span class="o">-=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="n">c1</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="kt">double</span> <span class="n">div</span> <span class="o">=</span> <span class="n">a0</span><span class="o">*</span><span class="n">b1</span> <span class="o">-</span> <span class="n">b0</span><span class="o">*</span><span class="n">a1</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">b0</span><span class="o">*</span><span class="n">c1</span> <span class="o">-</span> <span class="n">b1</span><span class="o">*</span><span class="n">c0</span><span class="p">)</span> <span class="o">/</span> <span class="n">div</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">c0</span> <span class="o">-</span> <span class="n">a0</span><span class="o">*</span><span class="n">c1</span><span class="p">)</span> <span class="o">/</span> <span class="n">div</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">intersection_outside_XR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">R</span> <span class="o">==</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">::</span><span class="n">Zero</span><span class="p">())</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="k">else</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="k">else</span>
+        <span class="n">intersection_outside_XR</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">intersection_outside_XR</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">S2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">S2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">S1</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="k">else</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief GreedyProjectionTriangulation is an implementation of a greedy triangulation algorithm for 3D points</span>
+<span class="cm">    * based on local 2D projections. It assumes locally smooth surfaces and relatively smooth transitions between</span>
+<span class="cm">    * areas with different point densities.</span>
+<span class="cm">    * \author Zoltan Csaba Marton</span>
+<span class="cm">    * \ingroup surface</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">GreedyProjectionTriangulation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GreedyProjectionTriangulation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">GreedyProjectionTriangulation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">tree_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">KdTree</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">KdTreePtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudInPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudInConstPtr</span><span class="p">;</span>
+
+      <span class="k">enum</span> <span class="n">GP3Type</span>
+      <span class="p">{</span>
+        <span class="n">NONE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>    <span class="c1">// not-defined</span>
+        <span class="n">FREE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">FRINGE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">BOUNDARY</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">COMPLETED</span> <span class="o">=</span> <span class="mi">3</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">GreedyProjectionTriangulation</span> <span class="p">()</span> <span class="o">:</span>
+        <span class="n">mu_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">search_radius_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// must be set by user</span>
+        <span class="n">nnn_</span> <span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">minimum_angle_</span> <span class="p">(</span><span class="n">M_PI</span><span class="o">/</span><span class="mi">18</span><span class="p">),</span> <span class="c1">// 10 degrees</span>
+        <span class="n">maximum_angle_</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">M_PI</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="c1">// 120 degrees</span>
+        <span class="n">eps_angle_</span><span class="p">(</span><span class="n">M_PI</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="c1">//45 degrees,</span>
+        <span class="n">consistent_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">consistent_ordering_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">angles_</span> <span class="p">(),</span>
+        <span class="n">R_</span> <span class="p">(),</span>
+        <span class="n">is_current_free_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">current_index_</span> <span class="p">(),</span>
+        <span class="n">prev_is_ffn_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">prev_is_sfn_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">next_is_ffn_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">next_is_sfn_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">changed_1st_fn_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">changed_2nd_fn_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+        <span class="n">new2boundary_</span> <span class="p">(),</span>
+        <span class="n">already_connected_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">{};</span>
+
+      <span class="cm">/** \brief Set the multiplier of the nearest neighbor distance to obtain the final search radius for each point</span>
+<span class="cm">       *  (this will make the algorithm adapt to different point densities in the cloud).</span>
+<span class="cm">        * \param[in] mu the multiplier</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMu</span> <span class="p">(</span><span class="kt">double</span> <span class="n">mu</span><span class="p">)</span> <span class="p">{</span> <span class="n">mu_</span> <span class="o">=</span> <span class="n">mu</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the nearest neighbor distance multiplier. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getMu</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">mu_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the maximum number of nearest neighbors to be searched for.</span>
+<span class="cm">        * \param[in] nnn the maximum number of nearest neighbors</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMaximumNearestNeighbors</span> <span class="p">(</span><span class="kt">int</span> <span class="n">nnn</span><span class="p">)</span> <span class="p">{</span> <span class="n">nnn_</span> <span class="o">=</span> <span class="n">nnn</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the maximum number of nearest neighbors to be searched for. */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">getMaximumNearestNeighbors</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">nnn_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the sphere radius that is to be used for determining the k-nearest neighbors used for triangulating.</span>
+<span class="cm">        * \param[in] radius the sphere radius that is to contain all k-nearest neighbors</span>
+<span class="cm">        * \note This distance limits the maximum edge length!</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setSearchRadius</span> <span class="p">(</span><span class="kt">double</span> <span class="n">radius</span><span class="p">)</span> <span class="p">{</span> <span class="n">search_radius_</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the sphere radius used for determining the k-nearest neighbors. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getSearchRadius</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">search_radius_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the minimum angle each triangle should have.</span>
+<span class="cm">        * \param[in] minimum_angle the minimum angle each triangle should have</span>
+<span class="cm">        * \note As this is a greedy approach, this will have to be violated from time to time</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMinimumAngle</span> <span class="p">(</span><span class="kt">double</span> <span class="n">minimum_angle</span><span class="p">)</span> <span class="p">{</span> <span class="n">minimum_angle_</span> <span class="o">=</span> <span class="n">minimum_angle</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the parameter for distance based weighting of neighbors. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getMinimumAngle</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">minimum_angle_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the maximum angle each triangle can have.</span>
+<span class="cm">        * \param[in] maximum_angle the maximum angle each triangle can have</span>
+<span class="cm">        * \note For best results, its value should be around 120 degrees</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMaximumAngle</span> <span class="p">(</span><span class="kt">double</span> <span class="n">maximum_angle</span><span class="p">)</span> <span class="p">{</span> <span class="n">maximum_angle_</span> <span class="o">=</span> <span class="n">maximum_angle</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the parameter for distance based weighting of neighbors. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getMaximumAngle</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">maximum_angle_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Don&#39;t consider points for triangulation if their normal deviates more than this value from the query point&#39;s normal.</span>
+<span class="cm">        * \param[in] eps_angle maximum surface angle</span>
+<span class="cm">        * \note As normal estimation methods usually give smooth transitions at sharp edges, this ensures correct triangulation</span>
+<span class="cm">        *       by avoiding connecting points from one side to points from the other through forcing the use of the edge points.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMaximumSurfaceAngle</span> <span class="p">(</span><span class="kt">double</span> <span class="n">eps_angle</span><span class="p">)</span> <span class="p">{</span> <span class="n">eps_angle_</span> <span class="o">=</span> <span class="n">eps_angle</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the maximum surface angle. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getMaximumSurfaceAngle</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">eps_angle_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the flag if the input normals are oriented consistently.</span>
+<span class="cm">        * \param[in] consistent set it to true if the normals are consistently oriented</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setNormalConsistency</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">consistent</span><span class="p">)</span> <span class="p">{</span> <span class="n">consistent_</span> <span class="o">=</span> <span class="n">consistent</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the flag for consistently oriented normals. */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getNormalConsistency</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">consistent_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the flag to order the resulting triangle vertices consistently (positive direction around normal).</span>
+<span class="cm">        * @note Assumes consistently oriented normals (towards the viewpoint) -- see setNormalConsistency ()</span>
+<span class="cm">        * \param[in] consistent_ordering set it to true if triangle vertices should be ordered consistently</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setConsistentVertexOrdering</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">consistent_ordering</span><span class="p">)</span> <span class="p">{</span> <span class="n">consistent_ordering_</span> <span class="o">=</span> <span class="n">consistent_ordering</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the flag signaling consistently ordered triangle vertices. */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getConsistentVertexOrdering</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">consistent_ordering_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the state of each point after reconstruction.</span>
+<span class="cm">        * \note Options are defined as constants: FREE, FRINGE, COMPLETED, BOUNDARY and NONE</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>
+      <span class="n">getPointStates</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">state_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the ID of each point after reconstruction.</span>
+<span class="cm">        * \note parts are numbered from 0, a -1 denotes unconnected points</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>
+      <span class="n">getPartIDs</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">part_</span><span class="p">);</span> <span class="p">}</span>
+
+
+      <span class="cm">/** \brief Get the sfn list. */</span>
+      <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>
+      <span class="n">getSFN</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">sfn_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the ffn list. */</span>
+      <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>
+      <span class="n">getFFN</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">ffn_</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief The nearest neighbor distance multiplier to obtain the final search radius. */</span>
+      <span class="kt">double</span> <span class="n">mu_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The nearest neighbors search radius for each point and the maximum edge length. */</span>
+      <span class="kt">double</span> <span class="n">search_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The maximum number of nearest neighbors accepted by searching. */</span>
+      <span class="kt">int</span> <span class="n">nnn_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The preferred minimum angle for the triangles. */</span>
+      <span class="kt">double</span> <span class="n">minimum_angle_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The maximum angle for the triangles. */</span>
+      <span class="kt">double</span> <span class="n">maximum_angle_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Maximum surface angle. */</span>
+      <span class="kt">double</span> <span class="n">eps_angle_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Set this to true if the normals of the input are consistently oriented. */</span>
+      <span class="kt">bool</span> <span class="n">consistent_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Set this to true if the output triangle vertices should be consistently oriented. */</span>
+      <span class="kt">bool</span> <span class="n">consistent_ordering_</span><span class="p">;</span>
+
+     <span class="k">private</span><span class="o">:</span>
+      <span class="cm">/** \brief Struct for storing the angles to nearest neighbors **/</span>
+      <span class="k">struct</span> <span class="n">nnAngle</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">angle</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">nnIndex</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">visible</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Struct for storing the edges starting from a fringe point **/</span>
+      <span class="k">struct</span> <span class="n">doubleEdge</span>
+      <span class="p">{</span>
+        <span class="n">doubleEdge</span> <span class="p">()</span> <span class="o">:</span> <span class="n">index</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">first</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">second</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="c1">// Variables made global to decrease the number of parameters to helper functions</span>
+
+      <span class="cm">/** \brief Temporary variable to store a triangle (as a set of point indices) **/</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span> <span class="n">triangle_</span><span class="p">;</span>
+      <span class="cm">/** \brief Temporary variable to store point coordinates **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">coords_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief A list of angles to neighbors **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">nnAngle</span><span class="o">&gt;</span> <span class="n">angles_</span><span class="p">;</span>
+      <span class="cm">/** \brief Index of the current query point **/</span>
+      <span class="kt">int</span> <span class="n">R_</span><span class="p">;</span>
+      <span class="cm">/** \brief List of point states **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">state_</span><span class="p">;</span>
+      <span class="cm">/** \brief List of sources **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">source_</span><span class="p">;</span>
+      <span class="cm">/** \brief List of fringe neighbors in one direction **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ffn_</span><span class="p">;</span>
+      <span class="cm">/** \brief List of fringe neighbors in other direction **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sfn_</span><span class="p">;</span>
+      <span class="cm">/** \brief Connected component labels for each point **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">part_</span><span class="p">;</span>
+      <span class="cm">/** \brief Points on the outer edge from which the mesh has to be grown **/</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">fringe_queue_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Flag to set if the current point is free **/</span>
+      <span class="kt">bool</span> <span class="n">is_current_free_</span><span class="p">;</span>
+      <span class="cm">/** \brief Current point&#39;s index **/</span>
+      <span class="kt">int</span> <span class="n">current_index_</span><span class="p">;</span>
+      <span class="cm">/** \brief Flag to set if the previous point is the first fringe neighbor **/</span>
+      <span class="kt">bool</span> <span class="n">prev_is_ffn_</span><span class="p">;</span>
+      <span class="cm">/** \brief Flag to set if the next point is the second fringe neighbor **/</span>
+      <span class="kt">bool</span> <span class="n">prev_is_sfn_</span><span class="p">;</span>
+      <span class="cm">/** \brief Flag to set if the next point is the first fringe neighbor **/</span>
+      <span class="kt">bool</span> <span class="n">next_is_ffn_</span><span class="p">;</span>
+      <span class="cm">/** \brief Flag to set if the next point is the second fringe neighbor **/</span>
+      <span class="kt">bool</span> <span class="n">next_is_sfn_</span><span class="p">;</span>
+      <span class="cm">/** \brief Flag to set if the first fringe neighbor was changed **/</span>
+      <span class="kt">bool</span> <span class="n">changed_1st_fn_</span><span class="p">;</span>
+      <span class="cm">/** \brief Flag to set if the second fringe neighbor was changed **/</span>
+      <span class="kt">bool</span> <span class="n">changed_2nd_fn_</span><span class="p">;</span>
+      <span class="cm">/** \brief New boundary point **/</span>
+      <span class="kt">int</span> <span class="n">new2boundary_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Flag to set if the next neighbor was already connected in the previous step.</span>
+<span class="cm">        * To avoid inconsistency it should not be connected again.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span> <span class="n">already_connected_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Point coordinates projected onto the plane defined by the point normal **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">proj_qp_</span><span class="p">;</span>
+      <span class="cm">/** \brief First coordinate vector of the 2D coordinate frame **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">u_</span><span class="p">;</span>
+      <span class="cm">/** \brief Second coordinate vector of the 2D coordinate frame **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">v_</span><span class="p">;</span>
+      <span class="cm">/** \brief 2D coordinates of the first fringe neighbor **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">uvn_ffn_</span><span class="p">;</span>
+      <span class="cm">/** \brief 2D coordinates of the second fringe neighbor **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">uvn_sfn_</span><span class="p">;</span>
+      <span class="cm">/** \brief 2D coordinates of the first fringe neighbor of the next point **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">uvn_next_ffn_</span><span class="p">;</span>
+      <span class="cm">/** \brief 2D coordinates of the second fringe neighbor of the next point **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">uvn_next_sfn_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Temporary variable to store 3 coordinates **/</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">tmp_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The actual surface reconstruction method.</span>
+<span class="cm">        * \param[out] output the resultant polygonal mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">performReconstruction</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The actual surface reconstruction method.</span>
+<span class="cm">        * \param[out] polygons the resultant polygons, as a set of vertices. The Vertices structure contains an array of point indices.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">performReconstruction</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polygons</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The actual surface reconstruction method.</span>
+<span class="cm">        * \param[out] polygons the resultant polygons, as a set of vertices. The Vertices structure contains an array of point indices.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">reconstructPolygons</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polygons</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Class get name method. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getClassName</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="s">&quot;GreedyProjectionTriangulation&quot;</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Forms a new triangle by connecting the current neighbor to the query point</span>
+<span class="cm">        * and the previous neighbor</span>
+<span class="cm">        * \param[out] polygons the polygon mesh to be updated</span>
+<span class="cm">        * \param[in] prev_index index of the previous point</span>
+<span class="cm">        * \param[in] next_index index of the next point</span>
+<span class="cm">        * \param[in] next_next_index index of the point after the next one</span>
+<span class="cm">        * \param[in] uvn_current 2D coordinate of the current point</span>
+<span class="cm">        * \param[in] uvn_prev 2D coordinates of the previous point</span>
+<span class="cm">        * \param[in] uvn_next 2D coordinates of the next point</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">connectPoint</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polygons</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="kt">int</span> <span class="n">prev_index</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="kt">int</span> <span class="n">next_index</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="kt">int</span> <span class="n">next_next_index</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">uvn_current</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">uvn_prev</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">uvn_next</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Whenever a query point is part of a boundary loop containing 3 points, that triangle is created</span>
+<span class="cm">        * (called if angle constraints make it possible)</span>
+<span class="cm">        * \param[out] polygons the polygon mesh to be updated</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">closeTriangle</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polygons</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Get the list of containing triangles for each vertex in a PolygonMesh</span>
+<span class="cm">        * \param[in] polygonMesh the input polygon mesh</span>
+<span class="cm">        */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+      <span class="n">getTriangleList</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Add a new triangle to the current polygon mesh</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        * \param[out] polygons the polygon mesh to be updated</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">addTriangle</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polygons</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">consistent_ordering_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="n">PointInT</span> <span class="n">p</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">a</span><span class="p">));</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">pv</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">getNormalVector3fMap</span> <span class="p">().</span><span class="n">dot</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">pv</span> <span class="o">-</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">b</span><span class="p">)).</span><span class="n">getVector3fMap</span> <span class="p">()).</span><span class="n">cross</span> <span class="p">(</span>
+                 <span class="n">pv</span> <span class="o">-</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">c</span><span class="p">)).</span><span class="n">getVector3fMap</span> <span class="p">())</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+            <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+            <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">else</span>
+          <span class="p">{</span>
+            <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+            <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+            <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+          <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+          <span class="n">triangle_</span><span class="p">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">polygons</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">triangle_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Add a new vertex to the advancing edge front and set its source point</span>
+<span class="cm">        * \param[in] v index of the vertex that was connected</span>
+<span class="cm">        * \param[in] s index of the source point</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">addFringePoint</span> <span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">source_</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="n">part_</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">part_</span><span class="p">[</span><span class="n">s</span><span class="p">];</span>
+        <span class="n">fringe_queue_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Function for ascending sort of nnAngle, taking visibility into account</span>
+<span class="cm">        * (angles to visible neighbors will be first, to the invisible ones after).</span>
+<span class="cm">        * \param[in] a1 the first angle</span>
+<span class="cm">        * \param[in] a2 the second angle</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">nnAngleSortAsc</span> <span class="p">(</span><span class="k">const</span> <span class="n">nnAngle</span><span class="o">&amp;</span> <span class="n">a1</span><span class="p">,</span> <span class="k">const</span> <span class="n">nnAngle</span><span class="o">&amp;</span> <span class="n">a2</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="n">visible</span> <span class="o">==</span> <span class="n">a2</span><span class="p">.</span><span class="n">visible</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="n">angle</span> <span class="o">&lt;</span> <span class="n">a2</span><span class="p">.</span><span class="n">angle</span><span class="p">);</span>
+        <span class="k">else</span>
+          <span class="k">return</span> <span class="n">a1</span><span class="p">.</span><span class="n">visible</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace pcl</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/surface/impl/gp3.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_impl_gp3.hpp.html" class="btn btn-neutral float-right" title="File gp3.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_gp3.h.html" class="btn btn-neutral float-left" title="File gp3.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

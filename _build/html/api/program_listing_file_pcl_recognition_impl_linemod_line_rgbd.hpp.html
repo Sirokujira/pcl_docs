@@ -1,0 +1,1192 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File line_rgbd.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File linear_least_squares_normal.h" href="file_pcl_features_linear_least_squares_normal.h.html" />
+    <link rel="prev" title="File line_rgbd.hpp" href="file_pcl_recognition_impl_linemod_line_rgbd.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_impl_linemod_line_rgbd.hpp.html">File line_rgbd.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File line_rgbd.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_impl_linemod_line_rgbd.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-line-rgbd-hpp">
+<span id="program-listing-file-pcl-recognition-impl-linemod-line-rgbd-hpp"></span><h1>Program Listing for File line_rgbd.hpp<a class="headerlink" href="#program-listing-for-file-line-rgbd-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_impl_linemod_line_rgbd.hpp.html#file-pcl-recognition-impl-linemod-line-rgbd-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\impl\linemod\line_rgbd.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_RECOGNITION_LINEMOD_LINE_RGBD_IMPL_HPP_</span>
+<span class="cp">#define PCL_RECOGNITION_LINEMOD_LINE_RGBD_IMPL_HPP_</span>
+
+<span class="c1">//#include &lt;pcl/recognition/linemod/line_rgbd.h&gt;</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/pcd_io.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;limits&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">readLTMHeader</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">TARHeader</span> <span class="o">&amp;</span><span class="n">header</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Read in the header</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">::</span><span class="n">read</span> <span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">header</span><span class="p">.</span><span class="n">file_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">512</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="c1">// We only support regular files for now.</span>
+  <span class="c1">// Additional file types in TAR include: hard links, symbolic links, device/special files, block devices,</span>
+  <span class="c1">// directories, and named pipes.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">header</span><span class="p">.</span><span class="n">file_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">header</span><span class="p">.</span><span class="n">file_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="c1">// We only support USTAR version 0 files for now</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="p">(</span><span class="n">header</span><span class="p">.</span><span class="n">ustar</span><span class="p">).</span><span class="n">substr</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&quot;ustar&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">header</span><span class="p">.</span><span class="n">getFileSize</span> <span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">loadTemplates</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">object_id</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Open the file</span>
+  <span class="kt">int</span> <span class="n">ltm_fd</span> <span class="o">=</span> <span class="n">io</span><span class="o">::</span><span class="n">raw_open</span><span class="p">(</span><span class="n">file_name</span><span class="p">.</span><span class="n">c_str</span> <span class="p">(),</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ltm_fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">ltm_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">TARHeader</span> <span class="n">ltm_header</span><span class="p">;</span>
+  <span class="n">PCDReader</span> <span class="n">pcd_reader</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">pcd_ext</span> <span class="p">(</span><span class="s">&quot;.pcd&quot;</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sqmmt_ext</span> <span class="p">(</span><span class="s">&quot;.sqmmt&quot;</span><span class="p">);</span>
+
+  <span class="c1">// While there still is an LTM header to be read</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">readLTMHeader</span> <span class="p">(</span><span class="n">ltm_fd</span><span class="p">,</span> <span class="n">ltm_header</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">ltm_offset</span> <span class="o">+=</span> <span class="mi">512</span><span class="p">;</span>
+
+    <span class="c1">// Search for extension</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">chunk_name</span> <span class="p">(</span><span class="n">ltm_header</span><span class="p">.</span><span class="n">file_name</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">transform</span> <span class="p">(</span><span class="n">chunk_name</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">chunk_name</span><span class="p">.</span><span class="n">end</span> <span class="p">(),</span> <span class="n">chunk_name</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="o">::</span><span class="n">tolower</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">size_type</span> <span class="n">it</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">it</span> <span class="o">=</span> <span class="n">chunk_name</span><span class="p">.</span><span class="n">find</span> <span class="p">(</span><span class="n">pcd_ext</span><span class="p">))</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span> <span class="o">&amp;&amp;</span>
+        <span class="p">(</span><span class="n">pcd_ext</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="n">chunk_name</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="n">it</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::LineRGBD::loadTemplates] Reading and parsing %s as a PCD file.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">chunk_name</span><span class="p">.</span><span class="n">c_str</span> <span class="p">());</span>
+      <span class="c1">// Read the next PCD file</span>
+      <span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="n">pcd_reader</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ltm_offset</span><span class="p">);</span>
+
+      <span class="c1">// Increment the offset for the next file</span>
+      <span class="n">ltm_offset</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ltm_header</span><span class="p">.</span><span class="n">getFileSize</span> <span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="mi">512</span> <span class="o">-</span> <span class="n">ltm_header</span><span class="p">.</span><span class="n">getFileSize</span> <span class="p">()</span> <span class="o">%</span> <span class="mi">512</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">it</span> <span class="o">=</span> <span class="n">chunk_name</span><span class="p">.</span><span class="n">find</span> <span class="p">(</span><span class="n">sqmmt_ext</span><span class="p">))</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span> <span class="o">&amp;&amp;</span>
+             <span class="p">(</span><span class="n">sqmmt_ext</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="n">chunk_name</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="n">it</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::LineRGBD::loadTemplates] Reading and parsing %s as a SQMMT file.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">chunk_name</span><span class="p">.</span><span class="n">c_str</span> <span class="p">());</span>
+
+      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fsize</span> <span class="o">=</span> <span class="n">ltm_header</span><span class="p">.</span><span class="n">getFileSize</span> <span class="p">();</span>
+      <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">fsize</span><span class="p">];</span>
+      <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">::</span><span class="n">read</span> <span class="p">(</span><span class="n">ltm_fd</span><span class="p">,</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">fsize</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">delete</span> <span class="p">[]</span> <span class="n">buffer</span><span class="p">;</span>
+        <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::LineRGBD::loadTemplates] Error reading SQMMT template from file!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Read a SQMMT file</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">stream</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span> <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+      <span class="n">stream</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">fsize</span><span class="p">);</span>
+      <span class="n">SparseQuantizedMultiModTemplate</span> <span class="n">sqmmt</span><span class="p">;</span>
+      <span class="n">sqmmt</span><span class="p">.</span><span class="n">deserialize</span> <span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+
+      <span class="n">linemod_</span><span class="p">.</span><span class="n">addTemplate</span> <span class="p">(</span><span class="n">sqmmt</span><span class="p">);</span>
+      <span class="n">object_ids_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">object_id</span><span class="p">);</span>
+
+      <span class="c1">// Increment the offset for the next file</span>
+      <span class="n">ltm_offset</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ltm_header</span><span class="p">.</span><span class="n">getFileSize</span> <span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="mi">512</span> <span class="o">-</span> <span class="n">ltm_header</span><span class="p">.</span><span class="n">getFileSize</span> <span class="p">()</span> <span class="o">%</span> <span class="mi">512</span><span class="p">);</span>
+
+      <span class="k">delete</span> <span class="p">[]</span> <span class="n">buffer</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">io</span><span class="o">::</span><span class="n">raw_lseek</span><span class="p">(</span><span class="n">ltm_fd</span><span class="p">,</span> <span class="n">ltm_offset</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Close the file</span>
+  <span class="n">io</span><span class="o">::</span><span class="n">raw_close</span><span class="p">(</span><span class="n">ltm_fd</span><span class="p">);</span>
+
+  <span class="c1">// Compute 3D bounding boxes from the template point clouds</span>
+  <span class="n">bounding_boxes_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">template_point_cloud</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span> <span class="n">bb</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+    <span class="kt">float</span> <span class="n">center_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">min_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">min_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">min_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_x</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_z</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">size_t</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="n">PointXYZRGBA</span> <span class="o">&amp;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">min_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">min_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_y</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+      <span class="n">min_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_z</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+      <span class="n">max_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">max_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_y</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+      <span class="n">max_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_z</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+      <span class="n">center_x</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+      <span class="n">center_y</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">center_z</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+      <span class="o">++</span><span class="n">counter</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">center_x</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_y</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_z</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+
+    <span class="n">bb</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">max_x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">-</span> <span class="n">min_y</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">depth</span>  <span class="o">=</span> <span class="n">max_z</span> <span class="o">-</span> <span class="n">min_z</span><span class="p">;</span>
+
+    <span class="n">bb</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_x</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_x</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_y</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_y</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_z</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PointXYZRGBA</span> <span class="n">p</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">center_x</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">center_y</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">-=</span> <span class="n">center_z</span><span class="p">;</span>
+
+      <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">createAndAddTemplate</span> <span class="p">(</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span>
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">object_id</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">MaskMap</span> <span class="o">&amp;</span> <span class="n">mask_xyz</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">MaskMap</span> <span class="o">&amp;</span> <span class="n">mask_rgb</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">RegionXY</span> <span class="o">&amp;</span> <span class="n">region</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// add point cloud</span>
+  <span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">copyPointCloud</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+
+  <span class="c1">// add template</span>
+  <span class="n">object_ids_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">object_id</span><span class="p">);</span>
+
+  <span class="c1">// Compute 3D bounding boxes from the template point clouds</span>
+  <span class="n">bounding_boxes_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">template_point_cloud</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span> <span class="n">bb</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+    <span class="kt">float</span> <span class="n">center_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">min_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">min_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">min_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_x</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_z</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">size_t</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="n">PointXYZRGBA</span> <span class="o">&amp;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">min_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">min_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_y</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+      <span class="n">min_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_z</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+      <span class="n">max_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">max_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_y</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+      <span class="n">max_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_z</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+      <span class="n">center_x</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+      <span class="n">center_y</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">center_z</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+      <span class="o">++</span><span class="n">counter</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">center_x</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_y</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_z</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+
+    <span class="n">bb</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">max_x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">-</span> <span class="n">min_y</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">depth</span>  <span class="o">=</span> <span class="n">max_z</span> <span class="o">-</span> <span class="n">min_z</span><span class="p">;</span>
+
+    <span class="n">bb</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_x</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_x</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_y</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_y</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_z</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PointXYZRGBA</span> <span class="n">p</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">center_x</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">center_y</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">-=</span> <span class="n">center_z</span><span class="p">;</span>
+
+      <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">QuantizableModality</span><span class="o">*&gt;</span> <span class="n">modalities</span><span class="p">;</span>
+  <span class="n">modalities</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">color_gradient_mod_</span><span class="p">);</span>
+  <span class="n">modalities</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">surface_normal_mod_</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">MaskMap</span><span class="o">*&gt;</span> <span class="n">masks</span><span class="p">;</span>
+  <span class="n">masks</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">MaskMap</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mask_rgb</span><span class="p">));</span>
+  <span class="n">masks</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">MaskMap</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mask_xyz</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">linemod_</span><span class="p">.</span><span class="n">createAndAddTemplate</span> <span class="p">(</span><span class="n">modalities</span><span class="p">,</span> <span class="n">masks</span><span class="p">,</span> <span class="n">region</span><span class="p">));</span>
+<span class="p">}</span>
+
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">addTemplate</span> <span class="p">(</span><span class="k">const</span> <span class="n">SparseQuantizedMultiModTemplate</span> <span class="o">&amp;</span> <span class="n">sqmmt</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">object_id</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// add point cloud</span>
+  <span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">copyPointCloud</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+
+  <span class="c1">// add template</span>
+  <span class="n">linemod_</span><span class="p">.</span><span class="n">addTemplate</span> <span class="p">(</span><span class="n">sqmmt</span><span class="p">);</span>
+  <span class="n">object_ids_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">object_id</span><span class="p">);</span>
+
+  <span class="c1">// Compute 3D bounding boxes from the template point clouds</span>
+  <span class="n">bounding_boxes_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">template_point_cloud</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span> <span class="n">bb</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+    <span class="kt">float</span> <span class="n">center_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">min_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">min_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">min_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_x</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_z</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">size_t</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="n">PointXYZRGBA</span> <span class="o">&amp;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">min_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">min_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_y</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+      <span class="n">min_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_z</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+      <span class="n">max_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+      <span class="n">max_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_y</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+      <span class="n">max_z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_z</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+      <span class="n">center_x</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+      <span class="n">center_y</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">center_z</span> <span class="o">+=</span> <span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+      <span class="o">++</span><span class="n">counter</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">center_x</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_y</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_z</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+
+    <span class="n">bb</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">max_x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">-</span> <span class="n">min_y</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">depth</span>  <span class="o">=</span> <span class="n">max_z</span> <span class="o">-</span> <span class="n">min_z</span><span class="p">;</span>
+
+    <span class="n">bb</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_x</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_x</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_y</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_y</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">bb</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_z</span> <span class="o">+</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_z</span> <span class="o">-</span> <span class="n">bb</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PointXYZRGBA</span> <span class="n">p</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">center_x</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">center_y</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">-=</span> <span class="n">center_z</span><span class="p">;</span>
+
+      <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">detect</span> <span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">detections</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">QuantizableModality</span><span class="o">*&gt;</span> <span class="n">modalities</span><span class="p">;</span>
+  <span class="n">modalities</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">color_gradient_mod_</span><span class="p">);</span>
+  <span class="n">modalities</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">surface_normal_mod_</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">LINEMODDetection</span><span class="o">&gt;</span> <span class="n">linemod_detections</span><span class="p">;</span>
+  <span class="n">linemod_</span><span class="p">.</span><span class="n">detectTemplates</span> <span class="p">(</span><span class="n">modalities</span><span class="p">,</span> <span class="n">linemod_detections</span><span class="p">);</span>
+
+  <span class="n">detections_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">detections_</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">linemod_detections</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">detections</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">detections</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">linemod_detections</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_id</span> <span class="o">&lt;</span> <span class="n">linemod_detections</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">detection_id</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">LINEMODDetection</span> <span class="o">&amp;</span> <span class="n">linemod_detection</span> <span class="o">=</span> <span class="n">linemod_detections</span><span class="p">[</span><span class="n">detection_id</span><span class="p">];</span>
+
+    <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span> <span class="n">detection</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">template_id</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">object_ids_</span><span class="p">[</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">];</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">detection_id</span> <span class="o">=</span> <span class="n">detection_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">response</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">score</span><span class="p">;</span>
+
+    <span class="c1">// compute bounding box:</span>
+    <span class="c1">// we assume that the bounding boxes of the templates are relative to the center of mass</span>
+    <span class="c1">// of the template points; so we also compute the center of mass of the points</span>
+    <span class="c1">// covered by the</span>
+
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SparseQuantizedMultiModTemplate</span> <span class="o">&amp;</span> <span class="n">linemod_template</span> <span class="o">=</span>
+      <span class="n">linemod_</span><span class="p">.</span><span class="n">getTemplate</span> <span class="p">(</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">end_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">start_x</span> <span class="o">+</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span><span class="p">),</span>
+                                   <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_xyz_</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">));</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">start_y</span> <span class="o">+</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span><span class="p">),</span>
+                                   <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_xyz_</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">));</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+
+    <span class="c1">//std::cerr &lt;&lt; &quot;detection region: &quot; &lt;&lt; linemod_detection.x &lt;&lt; &quot;, &quot;</span>
+    <span class="c1">//  &lt;&lt; linemod_detection.y &lt;&lt; &quot;, &quot;</span>
+    <span class="c1">//  &lt;&lt; linemod_template.region.width &lt;&lt; &quot;, &quot;</span>
+    <span class="c1">//  &lt;&lt; linemod_template.region.height &lt;&lt; std::endl;</span>
+
+    <span class="kt">float</span> <span class="n">center_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row_index</span> <span class="o">=</span> <span class="n">start_y</span><span class="p">;</span> <span class="n">row_index</span> <span class="o">&lt;</span> <span class="n">end_y</span><span class="p">;</span> <span class="o">++</span><span class="n">row_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">col_index</span> <span class="o">=</span> <span class="n">start_x</span><span class="p">;</span> <span class="n">col_index</span> <span class="o">&lt;</span> <span class="n">end_x</span><span class="p">;</span> <span class="o">++</span><span class="n">col_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">PointXYZT</span> <span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud_xyz_</span><span class="p">)</span> <span class="p">(</span><span class="n">col_index</span><span class="p">,</span> <span class="n">row_index</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="n">center_x</span> <span class="o">+=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+          <span class="n">center_y</span> <span class="o">+=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+          <span class="n">center_z</span> <span class="o">+=</span> <span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+          <span class="o">++</span><span class="n">counter</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">inv_counter</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_x</span> <span class="o">*=</span> <span class="n">inv_counter</span><span class="p">;</span>
+    <span class="n">center_y</span> <span class="o">*=</span> <span class="n">inv_counter</span><span class="p">;</span>
+    <span class="n">center_z</span> <span class="o">*=</span> <span class="n">inv_counter</span><span class="p">;</span>
+
+    <span class="n">pcl</span><span class="o">::</span><span class="n">BoundingBoxXYZ</span> <span class="n">template_bounding_box</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">];</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span> <span class="o">=</span> <span class="n">template_bounding_box</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">center_x</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">center_y</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">center_z</span><span class="p">;</span>
+
+    <span class="n">detections_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detection</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// refine detections along depth</span>
+  <span class="n">refineDetectionsAlongDepth</span> <span class="p">();</span>
+  <span class="c1">//applyprojectivedepthicpondetections();</span>
+
+  <span class="c1">// remove overlaps</span>
+  <span class="n">removeOverlappingDetections</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_index</span> <span class="o">&lt;</span> <span class="n">detections_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">detection_index</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">detections</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detections_</span><span class="p">[</span><span class="n">detection_index</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">detectSemiScaleInvariant</span> <span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">detections</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">min_scale</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">max_scale</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">scale_multiplier</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">QuantizableModality</span><span class="o">*&gt;</span> <span class="n">modalities</span><span class="p">;</span>
+  <span class="n">modalities</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">color_gradient_mod_</span><span class="p">);</span>
+  <span class="n">modalities</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">surface_normal_mod_</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">LINEMODDetection</span><span class="o">&gt;</span> <span class="n">linemod_detections</span><span class="p">;</span>
+  <span class="n">linemod_</span><span class="p">.</span><span class="n">detectTemplatesSemiScaleInvariant</span> <span class="p">(</span><span class="n">modalities</span><span class="p">,</span> <span class="n">linemod_detections</span><span class="p">,</span> <span class="n">min_scale</span><span class="p">,</span> <span class="n">max_scale</span><span class="p">,</span> <span class="n">scale_multiplier</span><span class="p">);</span>
+
+  <span class="n">detections_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">detections_</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">linemod_detections</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">detections</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">detections</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">linemod_detections</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_id</span> <span class="o">&lt;</span> <span class="n">linemod_detections</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">detection_id</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">LINEMODDetection</span> <span class="o">&amp;</span> <span class="n">linemod_detection</span> <span class="o">=</span> <span class="n">linemod_detections</span><span class="p">[</span><span class="n">detection_id</span><span class="p">];</span>
+
+    <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span> <span class="n">detection</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">template_id</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">object_ids_</span><span class="p">[</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">];</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">detection_id</span> <span class="o">=</span> <span class="n">detection_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">response</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">score</span><span class="p">;</span>
+
+    <span class="c1">// compute bounding box:</span>
+    <span class="c1">// we assume that the bounding boxes of the templates are relative to the center of mass</span>
+    <span class="c1">// of the template points; so we also compute the center of mass of the points</span>
+    <span class="c1">// covered by the</span>
+
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SparseQuantizedMultiModTemplate</span> <span class="o">&amp;</span> <span class="n">linemod_template</span> <span class="o">=</span>
+      <span class="n">linemod_</span><span class="p">.</span><span class="n">getTemplate</span> <span class="p">(</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">linemod_detection</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">end_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">start_x</span> <span class="o">+</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">scale</span><span class="p">),</span>
+                                   <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_xyz_</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">));</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">start_y</span> <span class="o">+</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">scale</span><span class="p">),</span>
+                                   <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_xyz_</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">));</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">scale</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">linemod_template</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">linemod_detection</span><span class="p">.</span><span class="n">scale</span><span class="p">;</span>
+
+    <span class="c1">//std::cerr &lt;&lt; &quot;detection region: &quot; &lt;&lt; linemod_detection.x &lt;&lt; &quot;, &quot;</span>
+    <span class="c1">//  &lt;&lt; linemod_detection.y &lt;&lt; &quot;, &quot;</span>
+    <span class="c1">//  &lt;&lt; linemod_template.region.width &lt;&lt; &quot;, &quot;</span>
+    <span class="c1">//  &lt;&lt; linemod_template.region.height &lt;&lt; std::endl;</span>
+
+    <span class="kt">float</span> <span class="n">center_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">center_z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row_index</span> <span class="o">=</span> <span class="n">start_y</span><span class="p">;</span> <span class="n">row_index</span> <span class="o">&lt;</span> <span class="n">end_y</span><span class="p">;</span> <span class="o">++</span><span class="n">row_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">col_index</span> <span class="o">=</span> <span class="n">start_x</span><span class="p">;</span> <span class="n">col_index</span> <span class="o">&lt;</span> <span class="n">end_x</span><span class="p">;</span> <span class="o">++</span><span class="n">col_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">PointXYZT</span> <span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud_xyz_</span><span class="p">)</span> <span class="p">(</span><span class="n">col_index</span><span class="p">,</span> <span class="n">row_index</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="n">center_x</span> <span class="o">+=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+          <span class="n">center_y</span> <span class="o">+=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+          <span class="n">center_z</span> <span class="o">+=</span> <span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+          <span class="o">++</span><span class="n">counter</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">inv_counter</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">counter</span><span class="p">);</span>
+    <span class="n">center_x</span> <span class="o">*=</span> <span class="n">inv_counter</span><span class="p">;</span>
+    <span class="n">center_y</span> <span class="o">*=</span> <span class="n">inv_counter</span><span class="p">;</span>
+    <span class="n">center_z</span> <span class="o">*=</span> <span class="n">inv_counter</span><span class="p">;</span>
+
+    <span class="n">pcl</span><span class="o">::</span><span class="n">BoundingBoxXYZ</span> <span class="n">template_bounding_box</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">];</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span> <span class="o">=</span> <span class="n">template_bounding_box</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">center_x</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">center_y</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">center_z</span><span class="p">;</span>
+
+    <span class="n">detections_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detection</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// refine detections along depth</span>
+  <span class="c1">//refineDetectionsAlongDepth ();</span>
+  <span class="c1">//applyProjectiveDepthICPOnDetections();</span>
+
+  <span class="c1">// remove overlaps</span>
+  <span class="n">removeOverlappingDetections</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_index</span> <span class="o">&lt;</span> <span class="n">detections_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">detection_index</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">detections</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detections_</span><span class="p">[</span><span class="n">detection_index</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">computeTransformedTemplatePoints</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">detection_id</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">detection_id</span> <span class="o">&gt;=</span> <span class="n">detections_</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;ERROR pcl::LineRGBD::computeTransformedTemplatePoints - detection_id is out of bounds</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">template_id</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_id</span><span class="p">].</span><span class="n">template_id</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">template_point_cloud</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">template_id</span><span class="p">];</span>
+
+  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span> <span class="n">template_bounding_box</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">template_id</span><span class="p">];</span>
+  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span> <span class="n">detection_bounding_box</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_id</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">;</span>
+
+  <span class="c1">//std::cerr &lt;&lt; &quot;detection: &quot;</span>
+  <span class="c1">//  &lt;&lt; detection_bounding_box.x &lt;&lt; &quot;, &quot;</span>
+  <span class="c1">//  &lt;&lt; detection_bounding_box.y &lt;&lt; &quot;, &quot;</span>
+  <span class="c1">//  &lt;&lt; detection_bounding_box.z &lt;&lt; std::endl;</span>
+  <span class="c1">//std::cerr &lt;&lt; &quot;template: &quot;</span>
+  <span class="c1">//  &lt;&lt; template_bounding_box.x &lt;&lt; &quot;, &quot;</span>
+  <span class="c1">//  &lt;&lt; template_bounding_box.y &lt;&lt; &quot;, &quot;</span>
+  <span class="c1">//  &lt;&lt; template_bounding_box.z &lt;&lt; std::endl;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">translation_x</span> <span class="o">=</span> <span class="n">detection_bounding_box</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">template_bounding_box</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">translation_y</span> <span class="o">=</span> <span class="n">detection_bounding_box</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">template_bounding_box</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">translation_z</span> <span class="o">=</span> <span class="n">detection_bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="n">template_bounding_box</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+  <span class="c1">//std::cerr &lt;&lt; &quot;translation: &quot;</span>
+  <span class="c1">//  &lt;&lt; translation_x &lt;&lt; &quot;, &quot;</span>
+  <span class="c1">//  &lt;&lt; translation_y &lt;&lt; &quot;, &quot;</span>
+  <span class="c1">//  &lt;&lt; translation_z &lt;&lt; std::endl;</span>
+
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_points</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="n">cloud</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">nr_points</span><span class="p">);</span>
+  <span class="n">cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+  <span class="n">cloud</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">point_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">point_index</span> <span class="o">&lt;</span> <span class="n">nr_points</span><span class="p">;</span> <span class="o">++</span><span class="n">point_index</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span> <span class="n">point</span> <span class="o">=</span> <span class="n">template_point_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">point_index</span><span class="p">];</span>
+
+    <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">translation_x</span><span class="p">;</span>
+    <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">translation_y</span><span class="p">;</span>
+    <span class="n">point</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">translation_z</span><span class="p">;</span>
+
+    <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">point_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">point</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">refineDetectionsAlongDepth</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_detections</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_index</span> <span class="o">&lt;</span> <span class="n">nr_detections</span><span class="p">;</span> <span class="o">++</span><span class="n">detection_index</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">typename</span> <span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span> <span class="o">&amp;</span> <span class="n">detection</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index</span><span class="p">];</span>
+
+    <span class="c1">// find depth with most valid points</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">end_x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span><span class="p">),</span>
+                                   <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_xyz_</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">));</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span><span class="p">),</span>
+                                   <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_xyz_</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">));</span>
+
+
+    <span class="kt">float</span> <span class="n">min_depth</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row_index</span> <span class="o">=</span> <span class="n">start_y</span><span class="p">;</span> <span class="n">row_index</span> <span class="o">&lt;</span> <span class="n">end_y</span><span class="p">;</span> <span class="o">++</span><span class="n">row_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">col_index</span> <span class="o">=</span> <span class="n">start_x</span><span class="p">;</span> <span class="n">col_index</span> <span class="o">&lt;</span> <span class="n">end_x</span><span class="p">;</span> <span class="o">++</span><span class="n">col_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">PointXYZT</span> <span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud_xyz_</span><span class="p">)</span> <span class="p">(</span><span class="n">col_index</span><span class="p">,</span> <span class="n">row_index</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="cm">/*std::isfinite (point.x) &amp;&amp; std::isfinite (point.y) &amp;&amp; */</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="n">min_depth</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">min_depth</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+          <span class="n">max_depth</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_bins</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">step_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_depth</span> <span class="o">-</span> <span class="n">min_depth</span><span class="p">)</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">nr_bins</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="n">depth_bins</span> <span class="p">(</span><span class="n">nr_bins</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row_index</span> <span class="o">=</span> <span class="n">start_y</span><span class="p">;</span> <span class="n">row_index</span> <span class="o">&lt;</span> <span class="n">end_y</span><span class="p">;</span> <span class="o">++</span><span class="n">row_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">col_index</span> <span class="o">=</span> <span class="n">start_x</span><span class="p">;</span> <span class="n">col_index</span> <span class="o">&lt;</span> <span class="n">end_x</span><span class="p">;</span> <span class="o">++</span><span class="n">col_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">PointXYZT</span> <span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud_xyz_</span><span class="p">)</span> <span class="p">(</span><span class="n">col_index</span><span class="p">,</span> <span class="n">row_index</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="cm">/*std::isfinite (point.x) &amp;&amp; std::isfinite (point.y) &amp;&amp; */</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="kt">size_t</span> <span class="n">bin_index</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">point</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="n">min_depth</span><span class="p">)</span> <span class="o">/</span> <span class="n">step_size</span><span class="p">);</span>
+          <span class="o">++</span><span class="n">depth_bins</span><span class="p">[</span><span class="n">bin_index</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="n">integral_depth_bins</span> <span class="p">(</span><span class="n">nr_bins</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">integral_depth_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">depth_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">bin_index</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">bin_index</span> <span class="o">&lt;</span> <span class="n">nr_bins</span><span class="p">;</span> <span class="o">++</span><span class="n">bin_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">integral_depth_bins</span><span class="p">[</span><span class="n">bin_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">depth_bins</span><span class="p">[</span><span class="n">bin_index</span><span class="p">]</span> <span class="o">+</span> <span class="n">integral_depth_bins</span><span class="p">[</span><span class="n">bin_index</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">bb_depth_range</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="n">step_size</span><span class="p">);</span>
+
+    <span class="kt">size_t</span> <span class="n">max_nr_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">max_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">bin_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">(</span><span class="n">bin_index</span><span class="o">+</span><span class="n">bb_depth_range</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nr_bins</span><span class="p">;</span> <span class="o">++</span><span class="n">bin_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_points_in_range</span> <span class="o">=</span> <span class="n">integral_depth_bins</span><span class="p">[</span><span class="n">bin_index</span><span class="o">+</span><span class="n">bb_depth_range</span><span class="p">]</span> <span class="o">-</span> <span class="n">integral_depth_bins</span><span class="p">[</span><span class="n">bin_index</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">nr_points_in_range</span> <span class="o">&gt;</span> <span class="n">max_nr_points</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">max_nr_points</span> <span class="o">=</span> <span class="n">nr_points_in_range</span><span class="p">;</span>
+        <span class="n">max_index</span> <span class="o">=</span> <span class="n">bin_index</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">max_index</span><span class="p">)</span> <span class="o">*</span> <span class="n">step_size</span> <span class="o">+</span> <span class="n">min_depth</span><span class="p">;</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">applyProjectiveDepthICPOnDetections</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_detections</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_index</span> <span class="o">&lt;</span> <span class="n">nr_detections</span><span class="p">;</span> <span class="o">++</span><span class="n">detection_index</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span> <span class="o">&amp;</span> <span class="n">detection</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index</span><span class="p">];</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">template_id</span> <span class="o">=</span> <span class="n">detection</span><span class="p">.</span><span class="n">template_id</span><span class="p">;</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">point_cloud</span> <span class="o">=</span> <span class="n">template_point_clouds_</span><span class="p">[</span><span class="n">template_id</span><span class="p">];</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_x</span> <span class="o">=</span> <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">start_y</span> <span class="o">=</span> <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">pc_width</span> <span class="o">=</span> <span class="n">point_cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">pc_height</span> <span class="o">=</span> <span class="n">point_cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">depth_matches</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">row_index</span> <span class="o">&lt;</span> <span class="n">pc_height</span><span class="p">;</span> <span class="o">++</span><span class="n">row_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">col_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">col_index</span> <span class="o">&lt;</span> <span class="n">pc_width</span><span class="p">;</span> <span class="o">++</span><span class="n">col_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGBA</span> <span class="o">&amp;</span> <span class="n">point_template</span> <span class="o">=</span> <span class="n">point_cloud</span> <span class="p">(</span><span class="n">col_index</span><span class="p">,</span> <span class="n">row_index</span><span class="p">);</span>
+        <span class="k">const</span> <span class="n">PointXYZT</span> <span class="o">&amp;</span> <span class="n">point_input</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud_xyz_</span><span class="p">)</span> <span class="p">(</span><span class="n">col_index</span> <span class="o">+</span> <span class="n">start_x</span><span class="p">,</span> <span class="n">row_index</span> <span class="o">+</span> <span class="n">start_y</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point_template</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">point_input</span><span class="p">.</span><span class="n">z</span><span class="p">))</span>
+          <span class="k">continue</span><span class="p">;</span>
+
+        <span class="n">depth_matches</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span> <span class="p">(</span><span class="n">point_template</span><span class="p">.</span><span class="n">z</span><span class="p">,</span> <span class="n">point_input</span><span class="p">.</span><span class="n">z</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// apply ransac on matches</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_matches</span> <span class="o">=</span> <span class="n">depth_matches</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_iterations</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// todo: should be a parameter...</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">inlier_threshold</span> <span class="o">=</span> <span class="mf">0.01f</span><span class="p">;</span> <span class="c1">// 5cm // todo: should be a parameter...</span>
+    <span class="kt">size_t</span> <span class="n">best_nr_inliers</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">best_z_translation</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">iteration_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iteration_index</span> <span class="o">&lt;</span> <span class="n">nr_iterations</span><span class="p">;</span> <span class="o">++</span><span class="n">iteration_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">size_t</span> <span class="n">rand_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">rand</span> <span class="p">()</span> <span class="o">*</span> <span class="n">nr_matches</span><span class="p">)</span> <span class="o">/</span> <span class="n">RAND_MAX</span><span class="p">;</span>
+
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">z_translation</span> <span class="o">=</span> <span class="n">depth_matches</span><span class="p">[</span><span class="n">rand_index</span><span class="p">].</span><span class="n">second</span> <span class="o">-</span> <span class="n">depth_matches</span><span class="p">[</span><span class="n">rand_index</span><span class="p">].</span><span class="n">first</span><span class="p">;</span>
+
+      <span class="kt">size_t</span> <span class="n">nr_inliers</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">match_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">match_index</span> <span class="o">&lt;</span> <span class="n">nr_matches</span><span class="p">;</span> <span class="o">++</span><span class="n">match_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">float</span> <span class="n">error</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="n">depth_matches</span><span class="p">[</span><span class="n">match_index</span><span class="p">].</span><span class="n">first</span> <span class="o">+</span> <span class="n">z_translation</span> <span class="o">-</span> <span class="n">depth_matches</span><span class="p">[</span><span class="n">match_index</span><span class="p">].</span><span class="n">second</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">&lt;=</span> <span class="n">inlier_threshold</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="o">++</span><span class="n">nr_inliers</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">nr_inliers</span> <span class="o">&gt;</span> <span class="n">best_nr_inliers</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">best_nr_inliers</span> <span class="o">=</span> <span class="n">nr_inliers</span><span class="p">;</span>
+        <span class="n">best_z_translation</span> <span class="o">=</span> <span class="n">z_translation</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span> <span class="n">average_depth</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">average_counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">match_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">match_index</span> <span class="o">&lt;</span> <span class="n">nr_matches</span><span class="p">;</span> <span class="o">++</span><span class="n">match_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">error</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="n">depth_matches</span><span class="p">[</span><span class="n">match_index</span><span class="p">].</span><span class="n">first</span> <span class="o">+</span> <span class="n">best_z_translation</span> <span class="o">-</span> <span class="n">depth_matches</span><span class="p">[</span><span class="n">match_index</span><span class="p">].</span><span class="n">second</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">&lt;=</span> <span class="n">inlier_threshold</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">//average_depth += depth_matches[match_index].second;</span>
+        <span class="n">average_depth</span> <span class="o">+=</span> <span class="n">depth_matches</span><span class="p">[</span><span class="n">match_index</span><span class="p">].</span><span class="n">second</span> <span class="o">-</span> <span class="n">depth_matches</span><span class="p">[</span><span class="n">match_index</span><span class="p">].</span><span class="n">first</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">average_counter</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">average_depth</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">average_counter</span><span class="p">);</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">bounding_boxes_</span><span class="p">[</span><span class="n">template_id</span><span class="p">].</span><span class="n">z</span> <span class="o">+</span> <span class="n">average_depth</span><span class="p">;</span><span class="c1">// - detection.bounding_box.depth/2.0f;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">removeOverlappingDetections</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">// compute overlap between each detection</span>
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_detections</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="n">overlaps</span> <span class="p">(</span><span class="n">nr_detections</span><span class="p">,</span> <span class="n">nr_detections</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index_1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_index_1</span> <span class="o">&lt;</span> <span class="n">nr_detections</span><span class="p">;</span> <span class="o">++</span><span class="n">detection_index_1</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index_2</span> <span class="o">=</span> <span class="n">detection_index_1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">detection_index_2</span> <span class="o">&lt;</span> <span class="n">nr_detections</span><span class="p">;</span> <span class="o">++</span><span class="n">detection_index_2</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">bounding_box_volume</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_1</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">width</span>
+                                      <span class="o">*</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_1</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">height</span>
+                                      <span class="o">*</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_1</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">depth</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_1</span><span class="p">].</span><span class="n">object_id</span> <span class="o">!=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_2</span><span class="p">].</span><span class="n">object_id</span><span class="p">)</span>
+        <span class="n">overlaps</span> <span class="p">(</span><span class="n">detection_index_1</span><span class="p">,</span> <span class="n">detection_index_2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+      <span class="k">else</span>
+        <span class="nf">overlaps</span> <span class="p">(</span><span class="n">detection_index_1</span><span class="p">,</span> <span class="n">detection_index_2</span><span class="p">)</span> <span class="o">=</span> <span class="n">computeBoundingBoxIntersectionVolume</span> <span class="p">(</span>
+          <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_1</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">,</span>
+          <span class="n">detections_</span><span class="p">[</span><span class="n">detection_index_2</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">)</span> <span class="o">/</span> <span class="n">bounding_box_volume</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// create clusters of detections</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">detection_to_cluster_mapping</span> <span class="p">(</span><span class="n">nr_detections</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">clusters</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">detection_index</span> <span class="o">&lt;</span> <span class="n">nr_detections</span><span class="p">;</span> <span class="o">++</span><span class="n">detection_index</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">detection_to_cluster_mapping</span><span class="p">[</span><span class="n">detection_index</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+      <span class="k">continue</span><span class="p">;</span> <span class="c1">// already part of a cluster</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="n">cluster</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">cluster_id</span> <span class="o">=</span> <span class="n">clusters</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+
+    <span class="n">cluster</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detection_index</span><span class="p">);</span>
+    <span class="n">detection_to_cluster_mapping</span><span class="p">[</span><span class="n">detection_index</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cluster_id</span><span class="p">);</span>
+
+    <span class="c1">// check for detections which have sufficient overlap with a detection in the cluster</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">cluster_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cluster_index</span> <span class="o">&lt;</span> <span class="n">cluster</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">cluster_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">size_t</span> <span class="n">detection_index_1</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">cluster_index</span><span class="p">];</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">detection_index_2</span> <span class="o">=</span> <span class="n">detection_index_1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">detection_index_2</span> <span class="o">&lt;</span> <span class="n">nr_detections</span><span class="p">;</span> <span class="o">++</span><span class="n">detection_index_2</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">detection_to_cluster_mapping</span><span class="p">[</span><span class="n">detection_index_2</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+          <span class="k">continue</span><span class="p">;</span> <span class="c1">// already part of a cluster</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">overlaps</span> <span class="p">(</span><span class="n">detection_index_1</span><span class="p">,</span> <span class="n">detection_index_2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">intersection_volume_threshold_</span><span class="p">)</span>
+          <span class="k">continue</span><span class="p">;</span> <span class="c1">// not enough overlap</span>
+
+        <span class="n">cluster</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detection_index_2</span><span class="p">);</span>
+        <span class="n">detection_to_cluster_mapping</span><span class="p">[</span><span class="n">detection_index_2</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cluster_id</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">clusters</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">cluster</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// compute detection representatives for every cluster</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span><span class="o">&gt;</span> <span class="n">clustered_detections</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">nr_clusters</span> <span class="o">=</span> <span class="n">clusters</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">cluster_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cluster_id</span> <span class="o">&lt;</span> <span class="n">nr_clusters</span><span class="p">;</span> <span class="o">++</span><span class="n">cluster_id</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">clusters</span><span class="p">[</span><span class="n">cluster_id</span><span class="p">];</span>
+
+    <span class="kt">float</span> <span class="n">average_center_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">average_center_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">average_center_z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">weight_sum</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+    <span class="kt">float</span> <span class="n">best_response</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">best_detection_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kt">float</span> <span class="n">average_region_x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">average_region_y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">elements_in_cluster</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">cluster_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cluster_index</span> <span class="o">&lt;</span> <span class="n">elements_in_cluster</span><span class="p">;</span> <span class="o">++</span><span class="n">cluster_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">size_t</span> <span class="n">detection_id</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">cluster_index</span><span class="p">];</span>
+
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_id</span><span class="p">].</span><span class="n">response</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">weight</span> <span class="o">&gt;</span> <span class="n">best_response</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">best_response</span> <span class="o">=</span> <span class="n">weight</span><span class="p">;</span>
+        <span class="n">best_detection_id</span> <span class="o">=</span> <span class="n">detection_id</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">const</span> <span class="n">Detection</span> <span class="o">&amp;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">detection_id</span><span class="p">];</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">p_center_x</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">d</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">p_center_y</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">d</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">p_center_z</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">d</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">depth</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+
+      <span class="n">average_center_x</span> <span class="o">+=</span> <span class="n">p_center_x</span> <span class="o">*</span> <span class="n">weight</span><span class="p">;</span>
+      <span class="n">average_center_y</span> <span class="o">+=</span> <span class="n">p_center_y</span> <span class="o">*</span> <span class="n">weight</span><span class="p">;</span>
+      <span class="n">average_center_z</span> <span class="o">+=</span> <span class="n">p_center_z</span> <span class="o">*</span> <span class="n">weight</span><span class="p">;</span>
+      <span class="n">weight_sum</span> <span class="o">+=</span> <span class="n">weight</span><span class="p">;</span>
+
+      <span class="n">average_region_x</span> <span class="o">+=</span> <span class="kt">float</span> <span class="p">(</span><span class="n">detections_</span><span class="p">[</span><span class="n">detection_id</span><span class="p">].</span><span class="n">region</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">weight</span><span class="p">;</span>
+      <span class="n">average_region_y</span> <span class="o">+=</span> <span class="kt">float</span> <span class="p">(</span><span class="n">detections_</span><span class="p">[</span><span class="n">detection_id</span><span class="p">].</span><span class="n">region</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">weight</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">typename</span> <span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">Detection</span> <span class="n">detection</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">template_id</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">template_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">object_id</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">object_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">detection_id</span> <span class="o">=</span> <span class="n">cluster_id</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">response</span> <span class="o">=</span> <span class="n">best_response</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">inv_weight_sum</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="n">weight_sum</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">best_detection_bb_width</span>  <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">best_detection_bb_height</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">best_detection_bb_depth</span>  <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">depth</span><span class="p">;</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">average_center_x</span> <span class="o">*</span> <span class="n">inv_weight_sum</span> <span class="o">-</span> <span class="n">best_detection_bb_width</span><span class="o">/</span><span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">average_center_y</span> <span class="o">*</span> <span class="n">inv_weight_sum</span> <span class="o">-</span> <span class="n">best_detection_bb_height</span><span class="o">/</span><span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">average_center_z</span> <span class="o">*</span> <span class="n">inv_weight_sum</span> <span class="o">-</span> <span class="n">best_detection_bb_depth</span><span class="o">/</span><span class="mf">2.0f</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">best_detection_bb_width</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">best_detection_bb_height</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">.</span><span class="n">depth</span>  <span class="o">=</span> <span class="n">best_detection_bb_depth</span><span class="p">;</span>
+
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="kt">int</span> <span class="p">(</span><span class="n">average_region_x</span> <span class="o">*</span> <span class="n">inv_weight_sum</span><span class="p">);</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="kt">int</span> <span class="p">(</span><span class="n">average_region_y</span> <span class="o">*</span> <span class="n">inv_weight_sum</span><span class="p">);</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">region</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">detection</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">detections_</span><span class="p">[</span><span class="n">best_detection_id</span><span class="p">].</span><span class="n">region</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+
+    <span class="n">clustered_detections</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">detection</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">detections_</span> <span class="o">=</span> <span class="n">clustered_detections</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointXYZT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRGBT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">LineRGBD</span><span class="o">&lt;</span><span class="n">PointXYZT</span><span class="p">,</span> <span class="n">PointRGBT</span><span class="o">&gt;::</span><span class="n">computeBoundingBoxIntersectionVolume</span> <span class="p">(</span>
+  <span class="k">const</span> <span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span><span class="n">box1</span><span class="p">,</span> <span class="k">const</span> <span class="n">BoundingBoxXYZ</span> <span class="o">&amp;</span><span class="n">box2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">x1_min</span> <span class="o">=</span> <span class="n">box1</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">y1_min</span> <span class="o">=</span> <span class="n">box1</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">z1_min</span> <span class="o">=</span> <span class="n">box1</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">x1_max</span> <span class="o">=</span> <span class="n">box1</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">box1</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">y1_max</span> <span class="o">=</span> <span class="n">box1</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">box1</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">z1_max</span> <span class="o">=</span> <span class="n">box1</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">box1</span><span class="p">.</span><span class="n">depth</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">x2_min</span> <span class="o">=</span> <span class="n">box2</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">y2_min</span> <span class="o">=</span> <span class="n">box2</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">z2_min</span> <span class="o">=</span> <span class="n">box2</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">x2_max</span> <span class="o">=</span> <span class="n">box2</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">box2</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">y2_max</span> <span class="o">=</span> <span class="n">box2</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">box2</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">z2_max</span> <span class="o">=</span> <span class="n">box2</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">box2</span><span class="p">.</span><span class="n">depth</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">xi_min</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">x1_min</span><span class="p">,</span> <span class="n">x2_min</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">yi_min</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">y1_min</span><span class="p">,</span> <span class="n">y2_min</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">zi_min</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">z1_min</span><span class="p">,</span> <span class="n">z2_min</span><span class="p">);</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">xi_max</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">x1_max</span><span class="p">,</span> <span class="n">x2_max</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">yi_max</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">y1_max</span><span class="p">,</span> <span class="n">y2_max</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">zi_max</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">z1_max</span><span class="p">,</span> <span class="n">z2_max</span><span class="p">);</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">intersection_width</span>  <span class="o">=</span> <span class="n">xi_max</span> <span class="o">-</span> <span class="n">xi_min</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">intersection_height</span> <span class="o">=</span> <span class="n">yi_max</span> <span class="o">-</span> <span class="n">yi_min</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">intersection_depth</span>  <span class="o">=</span> <span class="n">zi_max</span> <span class="o">-</span> <span class="n">zi_min</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">intersection_width</span> <span class="o">&lt;=</span> <span class="mf">0.0f</span> <span class="o">||</span> <span class="n">intersection_height</span> <span class="o">&lt;=</span> <span class="mf">0.0f</span> <span class="o">||</span> <span class="n">intersection_depth</span> <span class="o">&lt;=</span> <span class="mf">0.0f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">intersection_volume</span> <span class="o">=</span> <span class="n">intersection_width</span> <span class="o">*</span> <span class="n">intersection_height</span> <span class="o">*</span> <span class="n">intersection_depth</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">intersection_volume</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="cp">#endif        </span><span class="c1">// PCL_RECOGNITION_LINEMOD_LINE_RGBD_IMPL_HPP_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_linear_least_squares_normal.h.html" class="btn btn-neutral float-right" title="File linear_least_squares_normal.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_impl_linemod_line_rgbd.hpp.html" class="btn btn-neutral float-left" title="File line_rgbd.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

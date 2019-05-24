@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree_pointcloud.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree_pointcloud.hpp" href="file_pcl_octree_impl_octree_pointcloud.hpp.html" />
+    <link rel="prev" title="File octree_pointcloud.h" href="file_pcl_octree_octree_pointcloud.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_octree_octree_pointcloud.h.html">File octree_pointcloud.h</a> &raquo;</li>
+        
+      <li>Program Listing for File octree_pointcloud.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_octree_octree_pointcloud.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree-pointcloud-h">
+<span id="program-listing-file-pcl-octree-octree-pointcloud-h"></span><h1>Program Listing for File octree_pointcloud.h<a class="headerlink" href="#program-listing-for-file-octree-pointcloud-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_octree_octree_pointcloud.h.html#file-pcl-octree-octree-pointcloud-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\octree\octree_pointcloud.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_base.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">octree</span>
+  <span class="p">{</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="cm">/** \brief @b Octree pointcloud class</span>
+<span class="cm">     *  \note Octree implementation for pointclouds. Only indices are stored by the octree leaf nodes (zero-copy).</span>
+<span class="cm">     *  \note The octree pointcloud class needs to be initialized with its voxel resolution. Its bounding box is automatically adjusted</span>
+<span class="cm">     *  \note according to the pointcloud dimension or it can be predefined.</span>
+<span class="cm">     *  \note Note: The tree depth equates to the resolution and the bounding box dimensions of the octree.</span>
+<span class="cm">     *  \note</span>
+<span class="cm">     *  \note typename: PointT: type of point used in pointcloud</span>
+<span class="cm">     *  \note typename: LeafContainerT:  leaf node container (</span>
+<span class="cm">     *  \note typename: BranchContainerT:  branch node container</span>
+<span class="cm">     *  \note typename: OctreeT: octree implementation ()</span>
+<span class="cm">     *  \ingroup octree</span>
+<span class="cm">     *  \author Julius Kammerl (julius@kammerl.de)</span>
+<span class="cm">     */</span>
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafContainerT</span> <span class="o">=</span> <span class="n">OctreeContainerPointIndices</span><span class="p">,</span>
+        <span class="k">typename</span> <span class="n">BranchContainerT</span> <span class="o">=</span> <span class="n">OctreeContainerEmpty</span><span class="p">,</span>
+        <span class="k">typename</span> <span class="n">OctreeT</span> <span class="o">=</span> <span class="n">OctreeBase</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+
+    <span class="k">class</span> <span class="nc">OctreePointCloud</span> <span class="o">:</span> <span class="k">public</span> <span class="n">OctreeT</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">OctreeT</span> <span class="n">Base</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">::</span><span class="n">LeafNode</span> <span class="n">LeafNode</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">::</span><span class="n">BranchNode</span> <span class="n">BranchNode</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Octree pointcloud constructor.</span>
+<span class="cm">         * \param[in] resolution_arg octree resolution at lowest octree level</span>
+<span class="cm">         */</span>
+        <span class="n">OctreePointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">resolution_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Empty deconstructor. */</span>
+
+        <span class="o">~</span><span class="n">OctreePointCloud</span> <span class="p">();</span>
+
+        <span class="c1">// public typedefs</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">IndicesPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">IndicesConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PointCloud</span><span class="o">&gt;</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&gt;</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+        <span class="c1">// public typedefs for single/double buffering</span>
+        <span class="k">typedef</span> <span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeBase</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">SingleBuffer</span><span class="p">;</span>
+       <span class="c1">// typedef OctreePointCloud&lt;PointT, LeafContainerT, BranchContainerT, Octree2BufBase&lt;LeafContainerT&gt; &gt; DoubleBuffer;</span>
+
+        <span class="c1">// Boost shared pointers</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">OctreePointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+        <span class="c1">// Eigen aligned allocator</span>
+        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">AlignedPointTVector</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointXYZ</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">PointXYZ</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">AlignedPointXYZVector</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Provide a pointer to the input data set.</span>
+<span class="cm">         * \param[in] cloud_arg the const boost shared pointer to a PointCloud message</span>
+<span class="cm">         * \param[in] indices_arg the point indices subset that is to be used from \a cloud - if 0 the whole point cloud is used</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">setInputCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud_arg</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">IndicesConstPtr</span> <span class="o">&amp;</span><span class="n">indices_arg</span> <span class="o">=</span> <span class="n">IndicesConstPtr</span> <span class="p">())</span>
+        <span class="p">{</span>
+          <span class="n">input_</span> <span class="o">=</span> <span class="n">cloud_arg</span><span class="p">;</span>
+          <span class="n">indices_</span> <span class="o">=</span> <span class="n">indices_arg</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the vector of indices used.</span>
+<span class="cm">         * \return pointer to vector of indices used.</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="n">IndicesConstPtr</span> <span class="k">const</span> <span class="nf">getIndices</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">indices_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the input point cloud dataset.</span>
+<span class="cm">         * \return pointer to pointcloud input class.</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudConstPtr</span> <span class="nf">getInputCloud</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">input_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the search epsilon precision (error bound) for nearest neighbors searches.</span>
+<span class="cm">         * \param[in] eps precision (error bound) for nearest neighbors searches</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">setEpsilon</span> <span class="p">(</span><span class="kt">double</span> <span class="n">eps</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">epsilon_</span> <span class="o">=</span> <span class="n">eps</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the search epsilon precision (error bound) for nearest neighbors searches. */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="nf">getEpsilon</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">epsilon_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set/change the octree voxel resolution</span>
+<span class="cm">         * \param[in] resolution_arg side length of voxels at lowest tree level</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">setResolution</span> <span class="p">(</span><span class="kt">double</span> <span class="n">resolution_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// octree needs to be empty to change its resolution</span>
+          <span class="n">assert</span><span class="p">(</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+          <span class="n">resolution_</span> <span class="o">=</span> <span class="n">resolution_arg</span><span class="p">;</span>
+
+          <span class="n">getKeyBitSize</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get octree voxel resolution</span>
+<span class="cm">         * \return voxel resolution at lowest tree level</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="nf">getResolution</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">resolution_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the maximum depth of the octree.</span>
+<span class="cm">         *  \return depth_arg: maximum depth of octree</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">getTreeDepth</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Add points from input point cloud to octree. */</span>
+        <span class="kt">void</span>
+        <span class="nf">addPointsFromInputCloud</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Add point at given index from input point cloud to octree. Index will be also added to indices vector.</span>
+<span class="cm">         * \param[in] point_idx_arg index of point to be added</span>
+<span class="cm">         * \param[in] indices_arg pointer to indices vector of the dataset (given by \a setInputCloud)</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">addPointFromCloud</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">point_idx_arg</span><span class="p">,</span> <span class="n">IndicesPtr</span> <span class="n">indices_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Add point simultaneously to octree and input point cloud.</span>
+<span class="cm">         *  \param[in] point_arg point to be added</span>
+<span class="cm">         *  \param[in] cloud_arg pointer to input point cloud dataset (given by \a setInputCloud)</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">addPointToCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">,</span> <span class="n">PointCloudPtr</span> <span class="n">cloud_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Add point simultaneously to octree and input point cloud. A corresponding index will be added to the indices vector.</span>
+<span class="cm">         * \param[in] point_arg point to be added</span>
+<span class="cm">         * \param[in] cloud_arg pointer to input point cloud dataset (given by \a setInputCloud)</span>
+<span class="cm">         * \param[in] indices_arg pointer to indices vector of the dataset (given by \a setInputCloud)</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">addPointToCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">,</span> <span class="n">PointCloudPtr</span> <span class="n">cloud_arg</span><span class="p">,</span> <span class="n">IndicesPtr</span> <span class="n">indices_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Check if voxel at given point exist.</span>
+<span class="cm">         * \param[in] point_arg point to be checked</span>
+<span class="cm">         * \return &quot;true&quot; if voxel exist; &quot;false&quot; otherwise</span>
+<span class="cm">         */</span>
+        <span class="kt">bool</span>
+        <span class="nf">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Delete the octree structure and its leaf nodes.</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span> <span class="nf">deleteTree</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="c1">// reset bounding box</span>
+          <span class="n">min_x_</span> <span class="o">=</span> <span class="n">min_y_</span> <span class="o">=</span> <span class="n">max_y_</span> <span class="o">=</span> <span class="n">min_z_</span> <span class="o">=</span> <span class="n">max_z_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">bounding_box_defined_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+          <span class="n">OctreeT</span><span class="o">::</span><span class="n">deleteTree</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Check if voxel at given point coordinates exist.</span>
+<span class="cm">         * \param[in] point_x_arg X coordinate of point to be checked</span>
+<span class="cm">         * \param[in] point_y_arg Y coordinate of point to be checked</span>
+<span class="cm">         * \param[in] point_z_arg Z coordinate of point to be checked</span>
+<span class="cm">         * \return &quot;true&quot; if voxel exist; &quot;false&quot; otherwise</span>
+<span class="cm">         */</span>
+        <span class="kt">bool</span>
+        <span class="nf">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">point_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_z_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Check if voxel at given point from input cloud exist.</span>
+<span class="cm">         * \param[in] point_idx_arg point to be checked</span>
+<span class="cm">         * \return &quot;true&quot; if voxel exist; &quot;false&quot; otherwise</span>
+<span class="cm">         */</span>
+        <span class="kt">bool</span>
+        <span class="nf">isVoxelOccupiedAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Get a PointT vector of centers of all occupied voxels.</span>
+<span class="cm">         * \param[out] voxel_center_list_arg results are written to this vector of PointT elements</span>
+<span class="cm">         * \return number of occupied voxels</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">getOccupiedVoxelCenters</span> <span class="p">(</span><span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Get a PointT vector of centers of voxels intersected by a line segment.</span>
+<span class="cm">         * This returns a approximation of the actual intersected voxels by walking</span>
+<span class="cm">         * along the line with small steps. Voxels are ordered, from closest to</span>
+<span class="cm">         * furthest w.r.t. the origin.</span>
+<span class="cm">         * \param[in] origin origin of the line segment</span>
+<span class="cm">         * \param[in] end end of the line segment</span>
+<span class="cm">         * \param[out] voxel_center_list results are written to this vector of PointT elements</span>
+<span class="cm">         * \param[in] precision determines the size of the steps: step_size = octree_resolution x precision</span>
+<span class="cm">         * \return number of intersected voxels</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">getApproxIntersectedVoxelCentersBySegment</span> <span class="p">(</span>
+            <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">end</span><span class="p">,</span>
+            <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list</span><span class="p">,</span> <span class="kt">float</span> <span class="n">precision</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Delete leaf node / voxel at given point</span>
+<span class="cm">         * \param[in] point_arg point addressing the voxel to be deleted.</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">deleteVoxelAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Delete leaf node / voxel at given point from input cloud</span>
+<span class="cm">         *  \param[in] point_idx_arg index of point addressing the voxel to be deleted.</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">deleteVoxelAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">);</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Bounding box methods</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Investigate dimensions of pointcloud data set and define corresponding bounding box for octree. */</span>
+        <span class="kt">void</span>
+        <span class="nf">defineBoundingBox</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Define bounding box for octree</span>
+<span class="cm">         * \note Bounding box cannot be changed once the octree contains elements.</span>
+<span class="cm">         * \param[in] min_x_arg X coordinate of lower bounding box corner</span>
+<span class="cm">         * \param[in] min_y_arg Y coordinate of lower bounding box corner</span>
+<span class="cm">         * \param[in] min_z_arg Z coordinate of lower bounding box corner</span>
+<span class="cm">         * \param[in] max_x_arg X coordinate of upper bounding box corner</span>
+<span class="cm">         * \param[in] max_y_arg Y coordinate of upper bounding box corner</span>
+<span class="cm">         * \param[in] max_z_arg Z coordinate of upper bounding box corner</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">defineBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">min_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">min_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">min_z_arg</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="kt">double</span> <span class="n">max_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">max_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">max_z_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Define bounding box for octree</span>
+<span class="cm">         * \note Lower bounding box point is set to (0, 0, 0)</span>
+<span class="cm">         * \note Bounding box cannot be changed once the octree contains elements.</span>
+<span class="cm">         * \param[in] max_x_arg X coordinate of upper bounding box corner</span>
+<span class="cm">         * \param[in] max_y_arg Y coordinate of upper bounding box corner</span>
+<span class="cm">         * \param[in] max_z_arg Z coordinate of upper bounding box corner</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">defineBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">max_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">max_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">max_z_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Define bounding box cube for octree</span>
+<span class="cm">         * \note Lower bounding box corner is set to (0, 0, 0)</span>
+<span class="cm">         * \note Bounding box cannot be changed once the octree contains elements.</span>
+<span class="cm">         * \param[in] cubeLen_arg side length of bounding box cube.</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">defineBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">cubeLen_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Get bounding box for octree</span>
+<span class="cm">         * \note Bounding box cannot be changed once the octree contains elements.</span>
+<span class="cm">         * \param[in] min_x_arg X coordinate of lower bounding box corner</span>
+<span class="cm">         * \param[in] min_y_arg Y coordinate of lower bounding box corner</span>
+<span class="cm">         * \param[in] min_z_arg Z coordinate of lower bounding box corner</span>
+<span class="cm">         * \param[in] max_x_arg X coordinate of upper bounding box corner</span>
+<span class="cm">         * \param[in] max_y_arg Y coordinate of upper bounding box corner</span>
+<span class="cm">         * \param[in] max_z_arg Z coordinate of upper bounding box corner</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">getBoundingBox</span> <span class="p">(</span><span class="kt">double</span><span class="o">&amp;</span> <span class="n">min_x_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">min_y_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">min_z_arg</span><span class="p">,</span>
+                        <span class="kt">double</span><span class="o">&amp;</span> <span class="n">max_x_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">max_y_arg</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">max_z_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Calculates the squared diameter of a voxel at given tree depth</span>
+<span class="cm">         * \param[in] tree_depth_arg depth/level in octree</span>
+<span class="cm">         * \return squared diameter</span>
+<span class="cm">         */</span>
+        <span class="kt">double</span>
+        <span class="nf">getVoxelSquaredDiameter</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Calculates the squared diameter of a voxel at leaf depth</span>
+<span class="cm">         * \return squared diameter</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">double</span>
+        <span class="nf">getVoxelSquaredDiameter</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">getVoxelSquaredDiameter</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Calculates the squared voxel cube side length at given tree depth</span>
+<span class="cm">         * \param[in] tree_depth_arg depth/level in octree</span>
+<span class="cm">         * \return squared voxel cube side length</span>
+<span class="cm">         */</span>
+        <span class="kt">double</span>
+        <span class="nf">getVoxelSquaredSideLen</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Calculates the squared voxel cube side length at leaf level</span>
+<span class="cm">         * \return squared voxel cube side length</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="nf">getVoxelSquaredSideLen</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">getVoxelSquaredSideLen</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Generate bounds of the current voxel of an octree iterator</span>
+<span class="cm">         * \param[in] iterator: octree iterator</span>
+<span class="cm">         * \param[out] min_pt lower bound of voxel</span>
+<span class="cm">         * \param[out] max_pt upper bound of voxel</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">getVoxelBounds</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeIteratorBase</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;&amp;</span> <span class="n">iterator</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">min_pt</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">max_pt</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">genVoxelBoundsFromOctreeKey</span> <span class="p">(</span><span class="n">iterator</span><span class="p">.</span><span class="n">getCurrentOctreeKey</span> <span class="p">(),</span>
+              <span class="n">iterator</span><span class="p">.</span><span class="n">getCurrentOctreeDepth</span> <span class="p">(),</span> <span class="n">min_pt</span><span class="p">,</span> <span class="n">max_pt</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Enable dynamic octree structure</span>
+<span class="cm">         *  \note Leaf nodes are kept as close to the root as possible and are only expanded if the number of DataT objects within a leaf node exceeds a fixed limit.</span>
+<span class="cm">         *  \param maxObjsPerLeaf: maximum number of DataT objects per leaf</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">enableDynamicDepth</span> <span class="p">(</span> <span class="kt">size_t</span> <span class="n">maxObjsPerLeaf</span> <span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">assert</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span><span class="o">==</span><span class="mi">0</span><span class="p">);</span>
+          <span class="n">max_objs_per_leaf_</span> <span class="o">=</span> <span class="n">maxObjsPerLeaf</span><span class="p">;</span>
+
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">dynamic_depth_enabled_</span> <span class="o">=</span> <span class="n">max_objs_per_leaf_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+      <span class="k">protected</span><span class="o">:</span>
+
+        <span class="cm">/** \brief Add point at index from input pointcloud dataset to octree</span>
+<span class="cm">         * \param[in] point_idx_arg the index representing the point in the dataset given by \a setInputCloud to be added</span>
+<span class="cm">         */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="n">addPointIdx</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">point_idx_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Add point at index from input pointcloud dataset to octree</span>
+<span class="cm">         * \param[in] leaf_node to be expanded</span>
+<span class="cm">         * \param[in] parent_branch parent of leaf node to be expanded</span>
+<span class="cm">         * \param[in] child_idx child index of leaf node (in parent branch)</span>
+<span class="cm">         * \param[in] depth_mask of leaf node to be expanded</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">expandLeafNode</span> <span class="p">(</span><span class="n">LeafNode</span><span class="o">*</span> <span class="n">leaf_node</span><span class="p">,</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">parent_branch</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Get point at index from input pointcloud dataset</span>
+<span class="cm">         * \param[in] index_arg index representing the point in the dataset given by \a setInputCloud</span>
+<span class="cm">         * \return PointT from input pointcloud dataset</span>
+<span class="cm">         */</span>
+        <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span>
+        <span class="n">getPointByIndex</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Find octree leaf node at a given point</span>
+<span class="cm">         * \param[in] point_arg query point</span>
+<span class="cm">         * \return pointer to leaf node. If leaf node does not exist, pointer is 0.</span>
+<span class="cm">         */</span>
+        <span class="n">LeafContainerT</span><span class="o">*</span>
+        <span class="nf">findLeafAtPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="n">OctreeKey</span> <span class="n">key</span><span class="p">;</span>
+
+          <span class="c1">// generate key for point</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">genOctreeKeyforPoint</span> <span class="p">(</span><span class="n">point_arg</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+
+          <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">findLeaf</span> <span class="p">(</span><span class="n">key</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Protected octree methods based on octree keys</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Define octree key setting and octree depth based on defined bounding box. */</span>
+        <span class="kt">void</span>
+        <span class="nf">getKeyBitSize</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Grow the bounding box/octree until point fits</span>
+<span class="cm">         * \param[in] point_idx_arg point that should be within bounding box;</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">adoptBoundingBoxToPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Checks if given point is within the bounding box of the octree</span>
+<span class="cm">         * \param[in] point_idx_arg point to be checked for bounding box violations</span>
+<span class="cm">         * \return &quot;true&quot; - no bound violation</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">isPointWithinBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_idx_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="o">!</span> <span class="p">(</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">min_x_</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">min_y_</span><span class="p">)</span>
+                   <span class="o">||</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="n">min_z_</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">max_x_</span><span class="p">)</span>
+                   <span class="o">||</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">max_y_</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">point_idx_arg</span><span class="p">.</span><span class="n">z</span> <span class="o">&gt;=</span> <span class="n">max_z_</span><span class="p">)));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Generate octree key for voxel at a given point</span>
+<span class="cm">         * \param[in] point_arg the point addressing a voxel</span>
+<span class="cm">         * \param[out] key_arg write octree key to this reference</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">genOctreeKeyforPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">,</span>
+            <span class="n">OctreeKey</span> <span class="o">&amp;</span><span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Generate octree key for voxel at a given point</span>
+<span class="cm">         * \param[in] point_x_arg X coordinate of point addressing a voxel</span>
+<span class="cm">         * \param[in] point_y_arg Y coordinate of point addressing a voxel</span>
+<span class="cm">         * \param[in] point_z_arg Z coordinate of point addressing a voxel</span>
+<span class="cm">         * \param[out] key_arg write octree key to this reference</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">genOctreeKeyforPoint</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">point_x_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_y_arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">point_z_arg</span><span class="p">,</span>
+                              <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Virtual method for generating octree key for a given point index.</span>
+<span class="cm">         * \note This method enables to assign indices to leaf nodes during octree deserialization.</span>
+<span class="cm">         * \param[in] data_arg index value representing a point in the dataset given by \a setInputCloud</span>
+<span class="cm">         * \param[out] key_arg write octree key to this reference</span>
+<span class="cm">         * \return &quot;true&quot; - octree keys are assignable</span>
+<span class="cm">         */</span>
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">genOctreeKeyForDataT</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">data_arg</span><span class="p">,</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Generate a point at center of leaf node voxel</span>
+<span class="cm">         * \param[in] key_arg octree key addressing a leaf node.</span>
+<span class="cm">         * \param[out] point_arg write leaf node voxel center to this point reference</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">genLeafNodeCenterFromOctreeKey</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+            <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Generate a point at center of octree voxel at given tree level</span>
+<span class="cm">         * \param[in] key_arg octree key addressing an octree node.</span>
+<span class="cm">         * \param[in] tree_depth_arg octree depth of query voxel</span>
+<span class="cm">         * \param[out] point_arg write leaf node center point to this reference</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">genVoxelCenterFromOctreeKey</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Generate bounds of an octree voxel using octree key and tree depth arguments</span>
+<span class="cm">         * \param[in] key_arg octree key addressing an octree node.</span>
+<span class="cm">         * \param[in] tree_depth_arg octree depth of query voxel</span>
+<span class="cm">         * \param[out] min_pt lower bound of voxel</span>
+<span class="cm">         * \param[out] max_pt upper bound of voxel</span>
+<span class="cm">         */</span>
+        <span class="kt">void</span>
+        <span class="nf">genVoxelBoundsFromOctreeKey</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tree_depth_arg</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">min_pt</span><span class="p">,</span>
+            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">max_pt</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Recursively search the tree for all leaf nodes and return a vector of voxel centers.</span>
+<span class="cm">         * \param[in] node_arg current octree node to be explored</span>
+<span class="cm">         * \param[in] key_arg octree key addressing a leaf node.</span>
+<span class="cm">         * \param[out] voxel_center_list_arg results are written to this vector of PointT elements</span>
+<span class="cm">         * \return number of voxels found</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span>
+        <span class="nf">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">*</span> <span class="n">node_arg</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+            <span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_center_list_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Globals</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="cm">/** \brief Pointer to input point cloud dataset. */</span>
+        <span class="n">PointCloudConstPtr</span> <span class="n">input_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to the vector of point indices to use. */</span>
+        <span class="n">IndicesConstPtr</span> <span class="n">indices_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Epsilon precision (error bound) for nearest neighbors searches. */</span>
+        <span class="kt">double</span> <span class="n">epsilon_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Octree resolution. */</span>
+        <span class="kt">double</span> <span class="n">resolution_</span><span class="p">;</span>
+
+        <span class="c1">// Octree bounding box coordinates</span>
+        <span class="kt">double</span> <span class="n">min_x_</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">max_x_</span><span class="p">;</span>
+
+        <span class="kt">double</span> <span class="n">min_y_</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">max_y_</span><span class="p">;</span>
+
+        <span class="kt">double</span> <span class="n">min_z_</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">max_z_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Flag indicating if octree has defined bounding box. */</span>
+        <span class="kt">bool</span> <span class="n">bounding_box_defined_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Amount of DataT objects per leafNode before expanding branch</span>
+<span class="cm">         *  \note zero indicates a fixed/maximum depth octree structure</span>
+<span class="cm">         * **/</span>
+        <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">max_objs_per_leaf_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/impl/octree_pointcloud.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_octree_impl_octree_pointcloud.hpp.html" class="btn btn-neutral float-right" title="File octree_pointcloud.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_octree_octree_pointcloud.h.html" class="btn btn-neutral float-left" title="File octree_pointcloud.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

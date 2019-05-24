@@ -1,0 +1,1170 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree2buf_base.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree2buf_base.hpp" href="file_pcl_octree_impl_octree2buf_base.hpp.html" />
+    <link rel="prev" title="File octree2buf_base.h" href="file_pcl_octree_octree2buf_base.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_octree_octree2buf_base.h.html">File octree2buf_base.h</a> &raquo;</li>
+        
+      <li>Program Listing for File octree2buf_base.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_octree_octree2buf_base.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree2buf-base-h">
+<span id="program-listing-file-pcl-octree-octree2buf-base-h"></span><h1>Program Listing for File octree2buf_base.h<a class="headerlink" href="#program-listing-for-file-octree2buf-base-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_octree_octree2buf_base.h.html#file-pcl-octree-octree2buf-base-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\octree\octree2buf_base.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_nodes.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_container.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_key.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_iterator.h&gt;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">octree</span>
+  <span class="p">{</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">BufferedBranchNode</span> <span class="o">:</span> <span class="k">public</span> <span class="n">OctreeNode</span>
+    <span class="p">{</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">BufferedBranchNode</span> <span class="p">()</span> <span class="o">:</span> <span class="n">OctreeNode</span><span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">reset</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Copy constructor. */</span>
+        <span class="n">BufferedBranchNode</span> <span class="p">(</span><span class="k">const</span> <span class="n">BufferedBranchNode</span><span class="o">&amp;</span> <span class="n">source</span><span class="p">)</span> <span class="o">:</span> <span class="n">OctreeNode</span><span class="p">()</span>
+        <span class="p">{</span>
+          <span class="o">*</span><span class="k">this</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Copy operator. */</span>
+        <span class="kr">inline</span> <span class="n">BufferedBranchNode</span><span class="o">&amp;</span>
+        <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">BufferedBranchNode</span> <span class="o">&amp;</span><span class="n">source_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">memset</span> <span class="p">(</span><span class="n">child_node_array_</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">child_node_array_</span><span class="p">));</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="o">++</span><span class="n">b</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">source_arg</span><span class="p">.</span><span class="n">child_node_array_</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">child_node_array_</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">source_arg</span><span class="p">.</span><span class="n">child_node_array_</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">deepCopy</span> <span class="p">();</span>
+
+          <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="o">~</span><span class="n">BufferedBranchNode</span> <span class="p">()</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Method to perform a deep copy of the octree */</span>
+        <span class="n">BufferedBranchNode</span><span class="o">*</span>
+        <span class="n">deepCopy</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="n">BufferedBranchNode</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get child pointer in current branch node</span>
+<span class="cm">         *  \param buffer_arg: buffer selector</span>
+<span class="cm">         *  \param index_arg: index of child in node</span>
+<span class="cm">         *  \return pointer to child node</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="n">OctreeNode</span><span class="o">*</span>
+        <span class="n">getChildPtr</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buffer_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">index_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="n">assert</span><span class="p">(</span> <span class="p">(</span><span class="n">buffer_arg</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">index_arg</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">));</span>
+          <span class="k">return</span> <span class="n">child_node_array_</span><span class="p">[</span><span class="n">buffer_arg</span><span class="p">][</span><span class="n">index_arg</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set child pointer in current branch node</span>
+<span class="cm">         *  \param buffer_arg: buffer selector</span>
+<span class="cm">         *  \param index_arg: index of child in node</span>
+<span class="cm">         *  \param newNode_arg: pointer to new child node</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setChildPtr</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buffer_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">index_arg</span><span class="p">,</span>
+            <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">newNode_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">assert</span><span class="p">(</span> <span class="p">(</span><span class="n">buffer_arg</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">index_arg</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">));</span>
+          <span class="n">child_node_array_</span><span class="p">[</span><span class="n">buffer_arg</span><span class="p">][</span><span class="n">index_arg</span><span class="p">]</span> <span class="o">=</span> <span class="n">newNode_arg</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Check if branch is pointing to a particular child node</span>
+<span class="cm">         *  \param buffer_arg: buffer selector</span>
+<span class="cm">         *  \param index_arg: index of child in node</span>
+<span class="cm">         *  \return &quot;true&quot; if pointer to child node exists; &quot;false&quot; otherwise</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">hasChild</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buffer_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">index_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="n">assert</span><span class="p">(</span> <span class="p">(</span><span class="n">buffer_arg</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">index_arg</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">));</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">child_node_array_</span><span class="p">[</span><span class="n">buffer_arg</span><span class="p">][</span><span class="n">index_arg</span><span class="p">]</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the type of octree node. Returns LEAVE_NODE type */</span>
+        <span class="n">node_type_t</span> <span class="n">getNodeType</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">BRANCH_NODE</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Reset branch node container for every branch buffer. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">reset</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">memset</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">child_node_array_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">OctreeNode</span><span class="o">*</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get const pointer to container */</span>
+        <span class="k">const</span> <span class="n">ContainerT</span><span class="o">*</span>
+        <span class="k">operator</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="o">&amp;</span><span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get pointer to container */</span>
+        <span class="n">ContainerT</span><span class="o">*</span>
+        <span class="k">operator</span><span class="o">-&gt;</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="o">&amp;</span><span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get const reference to container */</span>
+        <span class="k">const</span> <span class="n">ContainerT</span><span class="o">&amp;</span>
+        <span class="k">operator</span><span class="o">*</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get reference to container */</span>
+        <span class="n">ContainerT</span><span class="o">&amp;</span>
+        <span class="k">operator</span><span class="o">*</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get const reference to container */</span>
+        <span class="k">const</span> <span class="n">ContainerT</span><span class="o">&amp;</span>
+        <span class="n">getContainer</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get reference to container */</span>
+        <span class="n">ContainerT</span><span class="o">&amp;</span>
+        <span class="n">getContainer</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get const pointer to container */</span>
+        <span class="k">const</span> <span class="n">ContainerT</span><span class="o">*</span>
+        <span class="n">getContainerPtr</span><span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="o">&amp;</span><span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get pointer to container */</span>
+        <span class="n">ContainerT</span><span class="o">*</span>
+        <span class="n">getContainerPtr</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="o">&amp;</span><span class="n">container_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="n">ContainerT</span> <span class="n">container_</span><span class="p">;</span>
+
+        <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">child_node_array_</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">8</span><span class="p">];</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief @b Octree double buffer class</span>
+<span class="cm">     *</span>
+<span class="cm">     * \note This octree implementation keeps two separate octree structures</span>
+<span class="cm">     * in memory.</span>
+<span class="cm">     *</span>
+<span class="cm">     * \note This allows for differentially compare the octree structures (change detection, differential encoding).</span>
+<span class="cm">     * \note The tree depth defines the maximum amount of octree voxels / leaf nodes (should be initially defined).</span>
+<span class="cm">     * \note All leaf nodes are addressed by integer indices.</span>
+<span class="cm">     * \note Note: The tree depth equates to the bit length of the voxel indices.</span>
+<span class="cm">     * \ingroup octree</span>
+<span class="cm">     * \author Julius Kammerl (julius@kammerl.de)</span>
+<span class="cm">     */</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">LeafContainerT</span> <span class="o">=</span> <span class="kt">int</span><span class="p">,</span>
+             <span class="k">typename</span> <span class="n">BranchContainerT</span> <span class="o">=</span> <span class="n">OctreeContainerEmpty</span> <span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">Octree2BufBase</span>
+    <span class="p">{</span>
+
+      <span class="k">public</span><span class="o">:</span>
+
+        <span class="k">typedef</span> <span class="n">Octree2BufBase</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="p">,</span> <span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="n">OctreeT</span><span class="p">;</span>
+
+        <span class="c1">// iterators are friends</span>
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">OctreeIteratorBase</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="p">;</span>
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">OctreeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="p">;</span>
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">OctreeBreadthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="p">;</span>
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">OctreeLeafNodeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="p">;</span>
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">OctreeLeafNodeBreadthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">BufferedBranchNode</span><span class="o">&lt;</span><span class="n">BranchContainerT</span><span class="o">&gt;</span> <span class="n">BranchNode</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">OctreeLeafNode</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">&gt;</span> <span class="n">LeafNode</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">BranchContainerT</span> <span class="n">BranchContainer</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">LeafContainerT</span> <span class="n">LeafContainer</span><span class="p">;</span>
+
+        <span class="c1">// Octree default iterators</span>
+        <span class="k">typedef</span> <span class="n">OctreeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">Iterator</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">const</span> <span class="n">OctreeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">ConstIterator</span><span class="p">;</span>
+        <span class="n">Iterator</span> <span class="nf">begin</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_depth_arg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">Iterator</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">max_depth_arg</span><span class="p">);};</span>
+        <span class="k">const</span> <span class="n">Iterator</span> <span class="nf">end</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">Iterator</span><span class="p">();};</span>
+
+        <span class="c1">// Octree leaf node iterators</span>
+        <span class="c1">// The previous deprecated names</span>
+        <span class="c1">// LeafNodeIterator and ConstLeafNodeIterator are deprecated.</span>
+        <span class="c1">// Please use LeafNodeDepthFirstIterator and ConstLeafNodeDepthFirstIterator instead.</span>
+        <span class="k">typedef</span> <span class="n">OctreeLeafNodeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">LeafNodeIterator</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">const</span> <span class="n">OctreeLeafNodeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">ConstLeafNodeIterator</span><span class="p">;</span>
+
+        <span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;use leaf_depth_begin() instead&quot;</span><span class="p">)]]</span>
+        <span class="n">LeafNodeIterator</span> <span class="n">leaf_begin</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_depth_arg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">LeafNodeIterator</span> <span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">max_depth_arg</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;use leaf_depth_end() instead&quot;</span><span class="p">)]]</span>
+        <span class="k">const</span> <span class="n">LeafNodeIterator</span> <span class="n">leaf_end</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">LeafNodeIterator</span> <span class="p">();</span>
+        <span class="p">};</span>
+
+        <span class="c1">// The currently valide names</span>
+        <span class="k">typedef</span> <span class="n">OctreeLeafNodeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">LeafNodeDepthFirstIterator</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">const</span> <span class="n">OctreeLeafNodeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">ConstLeafNodeDepthFirstIterator</span><span class="p">;</span>
+        <span class="n">LeafNodeDepthFirstIterator</span> <span class="nf">leaf_depth_begin</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_depth_arg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">LeafNodeDepthFirstIterator</span> <span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">max_depth_arg</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="k">const</span> <span class="n">LeafNodeDepthFirstIterator</span> <span class="nf">leaf_depth_end</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">LeafNodeDepthFirstIterator</span><span class="p">();</span>
+        <span class="p">};</span>
+
+        <span class="c1">// Octree depth-first iterators</span>
+        <span class="k">typedef</span> <span class="n">OctreeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">DepthFirstIterator</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">const</span> <span class="n">OctreeDepthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">ConstDepthFirstIterator</span><span class="p">;</span>
+        <span class="n">DepthFirstIterator</span> <span class="nf">depth_begin</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">maxDepth_arg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">DepthFirstIterator</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">maxDepth_arg</span><span class="p">);};</span>
+        <span class="k">const</span> <span class="n">DepthFirstIterator</span> <span class="nf">depth_end</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">DepthFirstIterator</span><span class="p">();};</span>
+
+        <span class="c1">// Octree breadth-first iterators</span>
+        <span class="k">typedef</span> <span class="n">OctreeBreadthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">BreadthFirstIterator</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">const</span> <span class="n">OctreeBreadthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">ConstBreadthFirstIterator</span><span class="p">;</span>
+        <span class="n">BreadthFirstIterator</span> <span class="nf">breadth_begin</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_depth_arg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">BreadthFirstIterator</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">max_depth_arg</span><span class="p">);};</span>
+        <span class="k">const</span> <span class="n">BreadthFirstIterator</span> <span class="nf">breadth_end</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">BreadthFirstIterator</span><span class="p">();};</span>
+
+        <span class="c1">// Octree leaf node iterators</span>
+        <span class="k">typedef</span> <span class="n">OctreeLeafNodeBreadthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">LeafNodeBreadthIterator</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">const</span> <span class="n">OctreeLeafNodeBreadthFirstIterator</span><span class="o">&lt;</span><span class="n">OctreeT</span><span class="o">&gt;</span> <span class="n">ConstLeafNodeBreadthIterator</span><span class="p">;</span>
+
+        <span class="n">LeafNodeBreadthIterator</span> <span class="nf">leaf_breadth_begin</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_depth_arg</span> <span class="o">=</span> <span class="mi">0u</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">LeafNodeBreadthIterator</span> <span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">max_depth_arg</span><span class="o">?</span> <span class="nl">max_depth_arg</span> <span class="p">:</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="k">const</span> <span class="n">LeafNodeBreadthIterator</span> <span class="nf">leaf_breadth_end</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">LeafNodeBreadthIterator</span> <span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">Octree2BufBase</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Empty deconstructor. */</span>
+        <span class="k">virtual</span>
+        <span class="o">~</span><span class="n">Octree2BufBase</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Copy constructor. */</span>
+        <span class="n">Octree2BufBase</span> <span class="p">(</span><span class="k">const</span> <span class="n">Octree2BufBase</span><span class="o">&amp;</span> <span class="n">source</span><span class="p">)</span> <span class="o">:</span>
+            <span class="n">leaf_count_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">leaf_count_</span><span class="p">),</span>
+            <span class="n">branch_count_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">branch_count_</span><span class="p">),</span>
+            <span class="n">root_node_</span> <span class="p">(</span><span class="k">new</span> <span class="p">(</span><span class="n">BranchNode</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">root_node_</span><span class="p">))),</span>
+            <span class="n">depth_mask_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">depth_mask_</span><span class="p">),</span>
+            <span class="n">max_key_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">max_key_</span><span class="p">),</span>
+            <span class="n">buffer_selector_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">buffer_selector_</span><span class="p">),</span>
+            <span class="n">tree_dirty_flag_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">tree_dirty_flag_</span><span class="p">),</span>
+            <span class="n">octree_depth_</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">octree_depth_</span><span class="p">),</span>
+            <span class="n">dynamic_depth_enabled_</span><span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">dynamic_depth_enabled_</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Copy constructor. */</span>
+        <span class="kr">inline</span> <span class="n">Octree2BufBase</span><span class="o">&amp;</span>
+        <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">Octree2BufBase</span><span class="o">&amp;</span> <span class="n">source</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">leaf_count_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">leaf_count_</span><span class="p">;</span>
+          <span class="n">branch_count_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">branch_count_</span><span class="p">;</span>
+          <span class="n">root_node_</span> <span class="o">=</span> <span class="k">new</span> <span class="p">(</span><span class="n">BranchNode</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span> <span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">root_node_</span><span class="p">));</span>
+          <span class="n">depth_mask_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">depth_mask_</span><span class="p">;</span>
+          <span class="n">max_key_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">max_key_</span><span class="p">;</span>
+          <span class="n">buffer_selector_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">buffer_selector_</span><span class="p">;</span>
+          <span class="n">tree_dirty_flag_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">tree_dirty_flag_</span><span class="p">;</span>
+          <span class="n">octree_depth_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">octree_depth_</span><span class="p">;</span>
+          <span class="n">dynamic_depth_enabled_</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">dynamic_depth_enabled_</span><span class="p">;</span>
+          <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the maximum amount of voxels per dimension.</span>
+<span class="cm">         *  \param max_voxel_index_arg: maximum amount of voxels per dimension</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="n">setMaxVoxelIndex</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_voxel_index_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Set the maximum depth of the octree.</span>
+<span class="cm">         *  \param depth_arg: maximum depth of octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">setTreeDepth</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Get the maximum depth of the octree.</span>
+<span class="cm">         *  \return depth_arg: maximum depth of octree</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">getTreeDepth</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">octree_depth_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Create new leaf node at (idx_x_arg, idx_y_arg, idx_z_arg).</span>
+<span class="cm">         *  \note If leaf node already exist, this method returns the existing node</span>
+<span class="cm">         *  \param idx_x_arg: index of leaf node in the X axis.</span>
+<span class="cm">         *  \param idx_y_arg: index of leaf node in the Y axis.</span>
+<span class="cm">         *  \param idx_z_arg: index of leaf node in the Z axis.</span>
+<span class="cm">         *  \return pointer to new leaf node container.</span>
+<span class="cm">         * */</span>
+        <span class="n">LeafContainerT</span><span class="o">*</span>
+        <span class="nf">createLeaf</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_x_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_y_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_z_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Find leaf node at (idx_x_arg, idx_y_arg, idx_z_arg).</span>
+<span class="cm">         *  \note If leaf node already exist, this method returns the existing node</span>
+<span class="cm">         *  \param idx_x_arg: index of leaf node in the X axis.</span>
+<span class="cm">         *  \param idx_y_arg: index of leaf node in the Y axis.</span>
+<span class="cm">         *  \param idx_z_arg: index of leaf node in the Z axis.</span>
+<span class="cm">         *  \return pointer to leaf node container if found, null pointer otherwise.</span>
+<span class="cm">         * */</span>
+        <span class="n">LeafContainerT</span><span class="o">*</span>
+        <span class="nf">findLeaf</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_x_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_y_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_z_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Check for the existence of leaf node at (idx_x_arg, idx_y_arg, idx_z_arg).</span>
+<span class="cm">         *  \param idx_x_arg: index of leaf node in the X axis.</span>
+<span class="cm">         *  \param idx_y_arg: index of leaf node in the Y axis.</span>
+<span class="cm">         *  \param idx_z_arg: index of leaf node in the Z axis.</span>
+<span class="cm">         *  \return &quot;true&quot; if leaf node search is successful, otherwise it returns &quot;false&quot;.</span>
+<span class="cm">         * */</span>
+        <span class="kt">bool</span>
+        <span class="nf">existLeaf</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_x_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_y_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_z_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Remove leaf node at (idx_x_arg, idx_y_arg, idx_z_arg).</span>
+<span class="cm">         *  \param idx_x_arg: index of leaf node in the X axis.</span>
+<span class="cm">         *  \param idx_y_arg: index of leaf node in the Y axis.</span>
+<span class="cm">         *  \param idx_z_arg: index of leaf node in the Z axis.</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">removeLeaf</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_x_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_y_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx_z_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Return the amount of existing leafs in the octree.</span>
+<span class="cm">         *  \return amount of registered leaf nodes.</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">getLeafCount</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">leaf_count_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Return the amount of existing branches in the octree.</span>
+<span class="cm">         *  \return amount of branch nodes.</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">getBranchCount</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">branch_count_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Delete the octree structure and its leaf nodes.</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="n">deleteTree</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Delete octree structure of previous buffer. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">deletePreviousBuffer</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">treeCleanUpRecursive</span> <span class="p">(</span><span class="n">root_node_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Delete the octree structure in the current buffer. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">deleteCurrentBuffer</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">buffer_selector_</span> <span class="o">=</span> <span class="o">!</span><span class="n">buffer_selector_</span><span class="p">;</span>
+          <span class="n">treeCleanUpRecursive</span> <span class="p">(</span><span class="n">root_node_</span><span class="p">);</span>
+          <span class="n">leaf_count_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Switch buffers and reset current octree structure. */</span>
+        <span class="kt">void</span>
+        <span class="nf">switchBuffers</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Serialize octree into a binary output vector describing its branch node structure.</span>
+<span class="cm">         *  \param binary_tree_out_arg: reference to output vector for writing binary tree structure.</span>
+<span class="cm">         *  \param do_XOR_encoding_arg: select if binary tree structure should be generated based on current octree (false) of based on a XOR comparison between current and previous octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">serializeTree</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">binary_tree_out_arg</span><span class="p">,</span>
+                       <span class="kt">bool</span> <span class="n">do_XOR_encoding_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Serialize octree into a binary output vector describing its branch node structure and and push all DataT elements stored in the octree to a vector.</span>
+<span class="cm">         * \param binary_tree_out_arg: reference to output vector for writing binary tree structure.</span>
+<span class="cm">         * \param leaf_container_vector_arg: pointer to all LeafContainerT objects in the octree</span>
+<span class="cm">         * \param do_XOR_encoding_arg: select if binary tree structure should be generated based on current octree (false) of based on a XOR comparison between current and previous octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">serializeTree</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">binary_tree_out_arg</span><span class="p">,</span>
+                       <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;&amp;</span> <span class="n">leaf_container_vector_arg</span><span class="p">,</span>
+                       <span class="kt">bool</span> <span class="n">do_XOR_encoding_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Outputs a vector of all DataT elements that are stored within the octree leaf nodes.</span>
+<span class="cm">         *  \param leaf_container_vector_arg: vector of pointers to all LeafContainerT objects in the octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">serializeLeafs</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;&amp;</span> <span class="n">leaf_container_vector_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Outputs a vector of all DataT elements from leaf nodes, that do not exist in the previous octree buffer.</span>
+<span class="cm">         *  \param leaf_container_vector_arg: vector of pointers to all LeafContainerT objects in the octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">serializeNewLeafs</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;&amp;</span> <span class="n">leaf_container_vector_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Deserialize a binary octree description vector and create a corresponding octree structure. Leaf nodes are initialized with getDataTByKey(..).</span>
+<span class="cm">         *  \param binary_tree_in_arg: reference to input vector for reading binary tree structure.</span>
+<span class="cm">         *  \param do_XOR_decoding_arg: select if binary tree structure is based on current octree (false) of based on a XOR comparison between current and previous octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">deserializeTree</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">binary_tree_in_arg</span><span class="p">,</span>
+                         <span class="kt">bool</span> <span class="n">do_XOR_decoding_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Deserialize a binary octree description and create a corresponding octree structure. Leaf nodes are initialized with DataT elements from the dataVector.</span>
+<span class="cm">         *  \param binary_tree_in_arg: reference to inpvectoream for reading binary tree structure.</span>
+<span class="cm">         *  \param leaf_container_vector_arg: vector of pointers to all LeafContainerT objects in the octree</span>
+<span class="cm">         *  \param do_XOR_decoding_arg: select if binary tree structure is based on current octree (false) of based on a XOR comparison between current and previous octree</span>
+<span class="cm">         * */</span>
+        <span class="kt">void</span>
+        <span class="nf">deserializeTree</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">binary_tree_in_arg</span><span class="p">,</span>
+                         <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;&amp;</span> <span class="n">leaf_container_vector_arg</span><span class="p">,</span>
+                         <span class="kt">bool</span> <span class="n">do_XOR_decoding_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Protected octree methods based on octree keys</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Retrieve root node */</span>
+        <span class="n">OctreeNode</span><span class="o">*</span>
+        <span class="n">getRootNode</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Find leaf node</span>
+<span class="cm">         *  \param key_arg: octree key addressing a leaf node.</span>
+<span class="cm">         *  \return pointer to leaf container. If leaf node is not found, this pointer returns 0.</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="n">LeafContainerT</span><span class="o">*</span>
+        <span class="n">findLeaf</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="n">LeafContainerT</span><span class="o">*</span> <span class="n">result</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+          <span class="n">findLeafRecursive</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">,</span> <span class="n">depth_mask_</span><span class="p">,</span> <span class="n">root_node_</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+          <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Create a leaf node.</span>
+<span class="cm">         *  \note If the leaf node at the given octree node does not exist, it will be created and added to the tree.</span>
+<span class="cm">         *  \param key_arg: octree key addressing a leaf node.</span>
+<span class="cm">         *  \return pointer to an existing or created leaf container.</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="n">LeafContainerT</span><span class="o">*</span>
+        <span class="n">createLeaf</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">LeafNode</span><span class="o">*</span> <span class="n">leaf_node</span><span class="p">;</span>
+          <span class="n">BranchNode</span><span class="o">*</span> <span class="n">leaf_node_parent</span><span class="p">;</span>
+
+          <span class="n">createLeafRecursive</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">,</span> <span class="n">depth_mask_</span> <span class="p">,</span><span class="n">root_node_</span><span class="p">,</span> <span class="n">leaf_node</span><span class="p">,</span> <span class="n">leaf_node_parent</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
+          <span class="n">LeafContainerT</span><span class="o">*</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">leaf_node</span><span class="o">-&gt;</span><span class="n">getContainerPtr</span><span class="p">();</span>
+
+          <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Check if leaf doesn&#39;t exist in the octree</span>
+<span class="cm">         *  \param key_arg: octree key addressing a leaf node.</span>
+<span class="cm">         *  \return &quot;true&quot; if leaf node is found; &quot;false&quot; otherwise</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">existLeaf</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">findLeaf</span><span class="p">(</span><span class="n">key_arg</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Remove leaf node from octree</span>
+<span class="cm">         *  \param key_arg: octree key addressing a leaf node.</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">removeLeaf</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">key_arg</span> <span class="o">&lt;=</span> <span class="n">max_key_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">deleteLeafRecursive</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">,</span> <span class="n">depth_mask_</span><span class="p">,</span> <span class="n">root_node_</span><span class="p">);</span>
+
+            <span class="c1">// we changed the octree structure -&gt; dirty</span>
+            <span class="n">tree_dirty_flag_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Branch node accessor inline functions</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Check if branch is pointing to a particular child node</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param child_idx_arg: index to child node</span>
+<span class="cm">         *  \return &quot;true&quot; if pointer to child node exists; &quot;false&quot; otherwise</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span>
+        <span class="n">branchHasChild</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="c1">// test occupancyByte for child existence</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Retrieve a child node pointer for child node at child_idx.</span>
+<span class="cm">         * \param branch_arg: reference to octree branch class</span>
+<span class="cm">         * \param child_idx_arg: index to child node</span>
+<span class="cm">         * \return pointer to octree child node class</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="n">OctreeNode</span><span class="o">*</span>
+        <span class="n">getBranchChildPtr</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Assign new child node to branch</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param child_idx_arg: index to child node</span>
+<span class="cm">         *  \param new_child_arg: pointer to new child node</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setBranchChildPtr</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">,</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">new_child_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">branch_arg</span><span class="p">.</span><span class="n">setChildPtr</span> <span class="p">(</span><span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">,</span> <span class="n">new_child_arg</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Generate bit pattern reflecting the existence of child node pointers for current buffer</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \return a single byte with 8 bits of child node information</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">char</span> <span class="n">getBranchBitPattern</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="kt">char</span> <span class="n">node_bits</span><span class="p">;</span>
+
+          <span class="c1">// create bit pattern</span>
+          <span class="n">node_bits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">node_bits</span> <span class="o">|=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span> <span class="p">(</span><span class="o">!!</span><span class="n">child</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="p">(</span><span class="n">node_bits</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Generate bit pattern reflecting the existence of child node pointers in specific buffer</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param bufferSelector_arg: buffer selector</span>
+<span class="cm">         *  \return a single byte with 8 bits of child node information</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">char</span> <span class="n">getBranchBitPattern</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bufferSelector_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="kt">char</span> <span class="n">node_bits</span><span class="p">;</span>
+
+          <span class="c1">// create bit pattern</span>
+          <span class="n">node_bits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="n">bufferSelector_arg</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">node_bits</span> <span class="o">|=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span> <span class="p">(</span><span class="o">!!</span><span class="n">child</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="p">(</span><span class="n">node_bits</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Generate XOR bit pattern reflecting differences between the two octree buffers</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \return a single byte with 8 bits of child node XOR difference information</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">char</span> <span class="n">getBranchXORBitPattern</span> <span class="p">(</span>
+            <span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="kt">char</span> <span class="n">node_bits</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+          <span class="c1">// create bit pattern for both buffers</span>
+          <span class="n">node_bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_bits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">childA</span> <span class="o">=</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="k">const</span> <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">childB</span> <span class="o">=</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+            <span class="n">node_bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span> <span class="p">(</span><span class="o">!!</span><span class="n">childA</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">node_bits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">|=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span> <span class="p">(</span><span class="o">!!</span><span class="n">childB</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="n">node_bits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="n">node_bits</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Test if branch changed between previous and current buffer</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \return &quot;true&quot;, if child node information differs between current and previous octree buffer</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">hasBranchChanges</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">getBranchXORBitPattern</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Delete child node and all its subchilds from octree in specific buffer</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param buffer_selector_arg: buffer selector</span>
+<span class="cm">         *  \param child_idx_arg: index to child node</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">deleteBranchChild</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buffer_selector_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">.</span><span class="n">hasChild</span><span class="p">(</span><span class="n">buffer_selector_arg</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">))</span>
+          <span class="p">{</span>
+            <span class="n">OctreeNode</span><span class="o">*</span> <span class="n">branchChild</span> <span class="o">=</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="n">buffer_selector_arg</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">);</span>
+
+            <span class="k">switch</span> <span class="p">(</span><span class="n">branchChild</span><span class="o">-&gt;</span><span class="n">getNodeType</span> <span class="p">())</span>
+            <span class="p">{</span>
+              <span class="k">case</span> <span class="nl">BRANCH_NODE</span><span class="p">:</span>
+              <span class="p">{</span>
+                <span class="c1">// free child branch recursively</span>
+                <span class="n">deleteBranch</span> <span class="p">(</span><span class="o">*</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">BranchNode</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">branchChild</span><span class="p">));</span>
+
+                <span class="c1">// delete unused branch</span>
+                <span class="k">delete</span> <span class="p">(</span><span class="n">branchChild</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+              <span class="p">}</span>
+
+              <span class="k">case</span> <span class="nl">LEAF_NODE</span><span class="p">:</span>
+              <span class="p">{</span>
+                <span class="c1">// push unused leaf to branch pool</span>
+                <span class="k">delete</span> <span class="p">(</span><span class="n">branchChild</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+              <span class="p">}</span>
+              <span class="k">default</span><span class="o">:</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// set branch child pointer to 0</span>
+            <span class="n">branch_arg</span><span class="p">.</span><span class="n">setChildPtr</span><span class="p">(</span><span class="n">buffer_selector_arg</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Delete child node and all its subchilds from octree in current buffer</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param child_idx_arg: index to child node</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">deleteBranchChild</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">deleteBranchChild</span><span class="p">(</span><span class="n">branch_arg</span><span class="p">,</span> <span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Delete branch and all its subchilds from octree (both buffers)</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">deleteBranch</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// delete all branch node children</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+            <span class="p">{</span>
+              <span class="c1">// reference was copied - there is only one child instance to be deleted</span>
+              <span class="n">deleteBranchChild</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+              <span class="c1">// remove pointers from both buffers</span>
+              <span class="n">branch_arg</span><span class="p">.</span><span class="n">setChildPtr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+              <span class="n">branch_arg</span><span class="p">.</span><span class="n">setChildPtr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+              <span class="n">deleteBranchChild</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+              <span class="n">deleteBranchChild</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Fetch and add a new branch child to a branch class in current buffer</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param child_idx_arg: index to child node</span>
+<span class="cm">         *  \return pointer of new branch child to this reference</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span>  <span class="n">BranchNode</span><span class="o">*</span> <span class="n">createBranchChild</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span>
+            <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">BranchNode</span><span class="o">*</span> <span class="n">new_branch_child</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BranchNode</span><span class="p">();</span>
+
+          <span class="n">branch_arg</span><span class="p">.</span><span class="n">setChildPtr</span> <span class="p">(</span><span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">,</span>
+              <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">OctreeNode</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">new_branch_child</span><span class="p">));</span>
+
+          <span class="k">return</span> <span class="n">new_branch_child</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Fetch and add a new leaf child to a branch class</span>
+<span class="cm">         *  \param branch_arg: reference to octree branch class</span>
+<span class="cm">         *  \param child_idx_arg: index to child node</span>
+<span class="cm">         *  \return pointer of new leaf child to this reference</span>
+<span class="cm">         * */</span>
+        <span class="kr">inline</span> <span class="n">LeafNode</span><span class="o">*</span>
+        <span class="n">createLeafChild</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">child_idx_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">LeafNode</span><span class="o">*</span> <span class="n">new_leaf_child</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LeafNode</span><span class="p">();</span>
+
+          <span class="n">branch_arg</span><span class="p">.</span><span class="n">setChildPtr</span><span class="p">(</span><span class="n">buffer_selector_</span><span class="p">,</span> <span class="n">child_idx_arg</span><span class="p">,</span> <span class="n">new_leaf_child</span><span class="p">);</span>
+
+          <span class="k">return</span> <span class="n">new_leaf_child</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Recursive octree methods</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Create a leaf node at octree key. If leaf node does already exist, it is returned.</span>
+<span class="cm">         *  \param key_arg: reference to an octree key</span>
+<span class="cm">         *  \param depth_mask_arg: depth mask used for octree key analysis and for branch depth indicator</span>
+<span class="cm">         *  \param branch_arg: current branch node</span>
+<span class="cm">         *  \param return_leaf_arg: return pointer to leaf container</span>
+<span class="cm">         *  \param parent_of_leaf_arg: return pointer to parent of leaf node</span>
+<span class="cm">         *  \param branch_reset_arg: Reset pointer array of current branch</span>
+<span class="cm">         *  \return depth mask at which leaf node was created/found</span>
+<span class="cm">         **/</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span>
+        <span class="n">createLeafRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+                             <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask_arg</span><span class="p">,</span>
+                             <span class="n">BranchNode</span><span class="o">*</span> <span class="n">branch_arg</span><span class="p">,</span>
+                             <span class="n">LeafNode</span><span class="o">*&amp;</span> <span class="n">return_leaf_arg</span><span class="p">,</span>
+                             <span class="n">BranchNode</span><span class="o">*&amp;</span> <span class="n">parent_of_leaf_arg</span><span class="p">,</span>
+                             <span class="kt">bool</span> <span class="n">branch_reset_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+
+        <span class="cm">/** \brief Recursively search for a given leaf node and return a pointer.</span>
+<span class="cm">         *  \note  If leaf node does not exist, a 0 pointer is returned.</span>
+<span class="cm">         *  \param key_arg: reference to an octree key</span>
+<span class="cm">         *  \param depth_mask_arg: depth mask used for octree key analysis and for branch depth indicator</span>
+<span class="cm">         *  \param branch_arg: current branch node</span>
+<span class="cm">         *  \param result_arg: pointer to leaf container class</span>
+<span class="cm">         **/</span>
+        <span class="kt">void</span>
+        <span class="nf">findLeafRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+                           <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask_arg</span><span class="p">,</span>
+                           <span class="n">BranchNode</span><span class="o">*</span> <span class="n">branch_arg</span><span class="p">,</span>
+                           <span class="n">LeafContainerT</span><span class="o">*&amp;</span> <span class="n">result_arg</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+        <span class="cm">/** \brief Recursively search and delete leaf node</span>
+<span class="cm">         *  \param key_arg: reference to an octree key</span>
+<span class="cm">         *  \param depth_mask_arg: depth mask used for octree key analysis and branch depth indicator</span>
+<span class="cm">         *  \param branch_arg: current branch node</span>
+<span class="cm">         *  \return &quot;true&quot; if branch does not contain any childs; &quot;false&quot; otherwise. This indicates if current branch can be deleted.</span>
+<span class="cm">         **/</span>
+        <span class="kt">bool</span>
+        <span class="nf">deleteLeafRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+                             <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask_arg</span><span class="p">,</span>
+                             <span class="n">BranchNode</span><span class="o">*</span> <span class="n">branch_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Recursively explore the octree and output binary octree description together with a vector of leaf node DataT content.</span>
+<span class="cm">         *  \param branch_arg: current branch node</span>
+<span class="cm">         *  \param key_arg: reference to an octree key</span>
+<span class="cm">         *  \param binary_tree_out_arg: binary output vector</span>
+<span class="cm">         *  \param leaf_container_vector_arg: vector to return pointers to all leaf container in the tree.</span>
+<span class="cm">         *  \param do_XOR_encoding_arg: select if binary tree structure should be generated based on current octree (false) of based on a XOR comparison between current and previous octree</span>
+<span class="cm">         *  \param new_leafs_filter_arg: execute callback only for leaf nodes that did not exist in preceding buffer</span>
+<span class="cm">         **/</span>
+        <span class="kt">void</span>
+        <span class="nf">serializeTreeRecursive</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">*</span> <span class="n">branch_arg</span><span class="p">,</span>
+                                <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+                                <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;*</span> <span class="n">binary_tree_out_arg</span><span class="p">,</span>
+                                <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;*</span> <span class="n">leaf_container_vector_arg</span><span class="p">,</span>
+                                <span class="kt">bool</span> <span class="n">do_XOR_encoding_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                                <span class="kt">bool</span> <span class="n">new_leafs_filter_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Rebuild an octree based on binary XOR octree description and DataT objects for leaf node initialization.</span>
+<span class="cm">         *  \param branch_arg: current branch node</span>
+<span class="cm">         *  \param depth_mask_arg: depth mask used for octree key analysis and branch depth indicator</span>
+<span class="cm">         *  \param key_arg: reference to an octree key</span>
+<span class="cm">         *  \param binary_tree_in_it_arg iterator of binary input data</span>
+<span class="cm">         *  \param binary_tree_in_it_end_arg</span>
+<span class="cm">         *  \param leaf_container_vector_it_arg: iterator pointing to leaf container pointers to be added to a leaf node</span>
+<span class="cm">         *  \param leaf_container_vector_it_end_arg: iterator pointing to leaf container pointers pointing to last object in input container.</span>
+<span class="cm">         *  \param branch_reset_arg: Reset pointer array of current branch</span>
+<span class="cm">         *  \param do_XOR_decoding_arg: select if binary tree structure is based on current octree (false) of based on a XOR comparison between current and previous octree</span>
+<span class="cm">         **/</span>
+        <span class="kt">void</span>
+        <span class="nf">deserializeTreeRecursive</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">*</span> <span class="n">branch_arg</span><span class="p">,</span>
+                                  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask_arg</span><span class="p">,</span>
+                                  <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">,</span>
+                                  <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="o">&amp;</span> <span class="n">binary_tree_in_it_arg</span><span class="p">,</span>
+                                  <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="o">&amp;</span> <span class="n">binary_tree_in_it_end_arg</span><span class="p">,</span>
+                                  <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;::</span><span class="n">const_iterator</span><span class="o">*</span> <span class="n">leaf_container_vector_it_arg</span><span class="p">,</span>
+                                  <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LeafContainerT</span><span class="o">*&gt;::</span><span class="n">const_iterator</span><span class="o">*</span> <span class="n">leaf_container_vector_it_end_arg</span><span class="p">,</span>
+                                  <span class="kt">bool</span> <span class="n">branch_reset_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                                  <span class="kt">bool</span> <span class="n">do_XOR_decoding_arg</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Serialization callbacks</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Callback executed for every leaf node data during serialization</span>
+<span class="cm">         **/</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">serializeTreeCallback</span> <span class="p">(</span><span class="n">LeafContainerT</span> <span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Callback executed for every leaf node data during deserialization</span>
+<span class="cm">         **/</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">deserializeTreeCallback</span> <span class="p">(</span><span class="n">LeafContainerT</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Helpers</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Recursively explore the octree and remove unused branch and leaf nodes</span>
+<span class="cm">         *  \param branch_arg: current branch node</span>
+<span class="cm">         **/</span>
+        <span class="kt">void</span>
+        <span class="nf">treeCleanUpRecursive</span> <span class="p">(</span><span class="n">BranchNode</span><span class="o">*</span> <span class="n">branch_arg</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Helper function to calculate the binary logarithm</span>
+<span class="cm">         * \param n_arg: some value</span>
+<span class="cm">         * \return binary logarithm (log2) of argument n_arg</span>
+<span class="cm">         */</span>
+        <span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;use std::log2 instead&quot;</span><span class="p">)]]</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="n">Log2</span> <span class="p">(</span><span class="kt">double</span> <span class="n">n_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">log2</span> <span class="p">(</span><span class="n">n_arg</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Test if octree is able to dynamically change its depth. This is required for adaptive bounding box adjustment.</span>
+<span class="cm">         *  \return &quot;false&quot; - not resizeable due to XOR serialization</span>
+<span class="cm">         **/</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">octreeCanResize</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Prints binary representation of a byte - used for debugging</span>
+<span class="cm">         *  \param data_arg - byte to be printed to stdout</span>
+<span class="cm">         **/</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">printBinary</span> <span class="p">(</span><span class="kt">char</span> <span class="n">data_arg</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// Bit mask</span>
+
+          <span class="c1">// Extract the bits</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="c1">// Mask each bit in the byte and print it</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="n">data_arg</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">))</span> <span class="o">?</span> <span class="s">&quot;1&quot;</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+        <span class="c1">// Globals</span>
+        <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+
+        <span class="cm">/** \brief Amount of leaf nodes   **/</span>
+        <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">leaf_count_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Amount of branch nodes   **/</span>
+        <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">branch_count_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Pointer to root branch node of octree   **/</span>
+        <span class="n">BranchNode</span><span class="o">*</span> <span class="n">root_node_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Depth mask based on octree depth   **/</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depth_mask_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief key range */</span>
+        <span class="n">OctreeKey</span> <span class="n">max_key_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Currently active octree buffer  **/</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buffer_selector_</span><span class="p">;</span>
+
+        <span class="c1">// flags indicating if unused branches and leafs might exist in previous buffer</span>
+        <span class="kt">bool</span> <span class="n">tree_dirty_flag_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Octree depth */</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">octree_depth_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Enable dynamic_depth</span>
+<span class="cm">         *  \note Note that this parameter is ignored in octree2buf! */</span>
+        <span class="kt">bool</span> <span class="n">dynamic_depth_enabled_</span><span class="p">;</span>
+
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/impl/octree2buf_base.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_octree_impl_octree2buf_base.hpp.html" class="btn btn-neutral float-right" title="File octree2buf_base.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_octree_octree2buf_base.h.html" class="btn btn-neutral float-left" title="File octree2buf_base.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

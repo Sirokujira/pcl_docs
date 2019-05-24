@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_workspace.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_xform.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_xform.h.html" />
+    <link rel="prev" title="File opennurbs_workspace.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_workspace.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_workspace.h.html">File opennurbs_workspace.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_workspace.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_workspace.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-workspace-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-workspace-h"></span><h1>Program Listing for File opennurbs_workspace.h<a class="headerlink" href="#program-listing-for-file-opennurbs-workspace-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_workspace.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-workspace-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_workspace.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(OPENNURBS_WORKSPACE_INC_)</span>
+<span class="cp">#define OPENNURBS_WORKSPACE_INC_</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  Use ON_Workspace classes on the stack to efficiently get</span>
+<span class="cm">  and automatically clean up workspace memory and scratch</span>
+<span class="cm">  files.</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_Workspace</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    ON_Workspace classes should be on the stack</span>
+<span class="cm">    or as members on classes that are never copied.</span>
+<span class="cm">    The destructor frees memory that was allocated by</span>
+<span class="cm">    ON_Workspace::GetMemory and closes files that were</span>
+<span class="cm">    opened with ON_Workspace::OpenFile.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Workspace</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    The destructor frees memory that was allocated by</span>
+<span class="cm">    ON_Workspace::GetMemory and closes files that were</span>
+<span class="cm">    opened with ON_Workspace::OpenFile.</span>
+<span class="cm">  */</span>
+  <span class="o">~</span><span class="n">ON_Workspace</span><span class="p">();</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    The destructor frees memory that was allocated by</span>
+<span class="cm">    ON_Workspace::GetMemory and closes files that were</span>
+<span class="cm">    opened with ON_Workspace::OpenFile.  The workspace</span>
+<span class="cm">    can be used again after calling destroy.</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets a block of heap memory that will be freed by</span>
+<span class="cm">    ~ON_Workspace. The intent of ON_Workspace::GetMemory</span>
+<span class="cm">    is to provide an easy way to get blocks of scratch</span>
+<span class="cm">    memory without having to worry about cleaning up</span>
+<span class="cm">    before returning.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sz - [in] (&gt;0) size of memory block in bytes.</span>
+<span class="cm">              If sz &lt;= 0, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the memory block.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    onmalloc() is used to get the block of memory.</span>
+<span class="cm">    Do NOT free the pointer returned by GetMemory().</span>
+<span class="cm">    ~ON_Workspace() will free the memory.  If you decide</span>
+<span class="cm">    you want to keep the memory block, pass the pointer</span>
+<span class="cm">    to KeepMemory before ~ON_Workspace is called.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::::~ON_Workspace</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">    ON_Workspace::GrowMemory</span>
+<span class="cm">    ON_Workspace::GetIntMemory</span>
+<span class="cm">    ON_Workspace::GetDoubleMemory</span>
+<span class="cm">    ON_Workspace::GetPointMemory</span>
+<span class="cm">    ON_Workspace::GetVectorMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="nf">GetMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">sz</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets an array of integers that will be freed by ~ON_Workspace.</span>
+<span class="cm">    The intent of ON_Workspace::GetIntMemory is to provide</span>
+<span class="cm">    an easy way to get scratch integer arrays without</span>
+<span class="cm">    having to worry about cleaning up before returning.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    count - [in] (&gt;0) number of integers in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the array of integers.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    This is a simple helper function so you don&#39;t have to</span>
+<span class="cm">    mess around with (int*) casts and sizeof(int)s in a call</span>
+<span class="cm">    to GetMemory().  It is exactly like calling</span>
+<span class="cm">    (int*)GetMemory(count*sizeof(int));</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">    ON_Workspace::GrowIntMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span><span class="o">*</span> <span class="nf">GetIntMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets an matrix of integers</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    row_count - [in] (&gt;0) number of  rows</span>
+<span class="cm">    col_count - [in] (&gt;0) number of columns</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer p so that p[i][j] is an integer when</span>
+<span class="cm">    0 &lt;= i &lt; row_count and 0 &lt;= j &lt; col_count.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    This is a simple helper function so you don&#39;t have to</span>
+<span class="cm">    mess around building the 2d array.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span><span class="o">**</span> <span class="nf">GetIntMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">row_count</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">col_count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets an array of doubles that will be freed by ~ON_Workspace.</span>
+<span class="cm">    The intent of ON_Workspace::GetDoubleMemory is to provide</span>
+<span class="cm">    an easy way to get scratch double arrays without</span>
+<span class="cm">    having to worry about cleaning up before returning.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    count - [in] (&gt;0) number of doubles in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the array of doubles.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    This is a simple helper function so you don&#39;t have to</span>
+<span class="cm">    mess around with (double*) casts and sizeof(double)s</span>
+<span class="cm">    in a call to GetMemory().  It is exactly like calling</span>
+<span class="cm">    (double*)GetMemory(count*sizeof(double));</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">    ON_Workspace::GrowIntMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">GetDoubleMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets an matrix of doubles</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    row_count - [in] (&gt;0) number of  rows</span>
+<span class="cm">    col_count - [in] (&gt;0) number of columns</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer p so that p[i][j] is an double when</span>
+<span class="cm">    0 &lt;= i &lt; row_count and 0 &lt;= j &lt; col_count.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    This is a simple helper function so you don&#39;t have to</span>
+<span class="cm">    mess around building the 2d array.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">**</span> <span class="nf">GetDoubleMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">row_count</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">col_count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets an array of ON_3dPoints that will be freed by ~ON_Workspace.</span>
+<span class="cm">    The intent of ON_Workspace::GetPointMemory is to</span>
+<span class="cm">    provide an easy way to get scratch point arrays without</span>
+<span class="cm">    having to worry about cleaning up before returning.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    count - [in] (&gt;0) number of points in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the memory block.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    This is a simple helper function so you don&#39;t have to</span>
+<span class="cm">    mess around with (ON_3dPoint*) casts and sizeof(ON_3dPoint)s</span>
+<span class="cm">    in a call to GetMemory().  It is exactly like calling</span>
+<span class="cm">    (ON_3dPoint*)GetMemory(count*sizeof(ON_3dPoint));</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">    ON_Workspace::GrowIntMemory</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span><span class="o">*</span> <span class="nf">GetPointMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets an array of ON_3dVectors that will be freed by ~ON_Workspace.</span>
+<span class="cm">    The intent of ON_Workspace::GetVectorMemory is to</span>
+<span class="cm">    provide an easy way to get scratch Vector arrays without</span>
+<span class="cm">    having to worry about cleaning up before returning.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    count - [in] (&gt;0) number of Vectors in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the memory block.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    This is a simple helper function so you don&#39;t have to</span>
+<span class="cm">    mess around with (ON_3dVector*) casts and sizeof(ON_3dVector)s</span>
+<span class="cm">    in a call to GetMemory().  It is exactly like calling</span>
+<span class="cm">    (ON_3dVector*)GetMemory(count*sizeof(ON_3dVector));</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">    ON_Workspace::GrowIntMemory</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dVector</span><span class="o">*</span> <span class="nf">GetVectorMemory</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Grows a block of heap memory that was allocated by</span>
+<span class="cm">    ON_Workspace::GetMemory.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    ptr - [in] pointer returned by an earlier call to</span>
+<span class="cm">               GetMemory or GrowMemory.</span>
+<span class="cm">    sz - [in] (&gt;0) size of memory block in bytes.</span>
+<span class="cm">              If sz &lt;= 0, then NULL is returned.</span>
+<span class="cm">              If ptr is not NULL and was not allocated by an</span>
+<span class="cm">              earlier call to GetMemory or GrowMemory, then</span>
+<span class="cm">              NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the memory block.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    onrealloc() is used to grow the block of memory.</span>
+<span class="cm">    Do NOT free the pointer returned by GrowMemory().</span>
+<span class="cm">    ~ON_Workspace() will free the memory.  If you decide</span>
+<span class="cm">    you want to keep the memory block, pass the pointer</span>
+<span class="cm">    to KeepMemory before ~ON_Workspace is called.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">    ON_Workspace::GrowIntMemory</span>
+<span class="cm">    ON_Workspace::GrowDoubleMemory</span>
+<span class="cm">    ON_Workspace::GrowPointMemory</span>
+<span class="cm">    ON_Workspace::GrowVectorMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="nf">GrowMemory</span><span class="p">(</span> <span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">sz</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Grows the array of integers that was allocated by</span>
+<span class="cm">    GetIntMemory or GrowIntMemory.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    ptr - [in] pointer returned by an earlier call to</span>
+<span class="cm">               GetIntMemory or GrowIntMemory.</span>
+<span class="cm">    count - [in] (&gt;0) number of integers in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">              If ptr was not allocated by this ON_Workspace</span>
+<span class="cm">              class, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the integer array.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    onrealloc() is used to grow the block of memory.</span>
+<span class="cm">    Do NOT free the pointer returned by GrowIntMemory().</span>
+<span class="cm">    ~ON_Workspace() will free the memory.  If you decide</span>
+<span class="cm">    you want to keep the memory block, pass the pointer</span>
+<span class="cm">    to KeepMemory before ~ON_Workspace is called.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetIntMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span><span class="o">*</span> <span class="nf">GrowIntMemory</span><span class="p">(</span> <span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Grows the array of doubles that was allocated by</span>
+<span class="cm">    GetDoubleMemory or GrowDoubleMemory.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    ptr - [in] pointer returned by an earlier call to</span>
+<span class="cm">               GetDoubleMemory or GrowDoubleMemory.</span>
+<span class="cm">    count - [in] (&gt;0) number of doubles in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">              If ptr was not allocated by this ON_Workspace</span>
+<span class="cm">              class, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the double array.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    onrealloc() is used to grow the block of memory.</span>
+<span class="cm">    Do NOT free the pointer returned by GrowDoubleMemory().</span>
+<span class="cm">    ~ON_Workspace() will free the memory.  If you decide</span>
+<span class="cm">    you want to keep the memory block, pass the pointer</span>
+<span class="cm">    to KeepMemory before ~ON_Workspace is called.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetDoubleMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">GrowDoubleMemory</span><span class="p">(</span> <span class="kt">double</span><span class="o">*</span> <span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Grows the array of points that was allocated by</span>
+<span class="cm">    GetPointMemory or GrowPointMemory.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    ptr - [in] pointer returned by an earlier call to</span>
+<span class="cm">               GetPointMemory or GrowPointMemory.</span>
+<span class="cm">    count - [in] (&gt;0) number of points in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">              If ptr was not allocated by this ON_Workspace</span>
+<span class="cm">              class, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the point array.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    onrealloc() is used to grow the block of memory.</span>
+<span class="cm">    Do NOT free the pointer returned by GrowMemory().</span>
+<span class="cm">    ~ON_Workspace() will free the memory.  If you decide</span>
+<span class="cm">    you want to keep the memory block, pass the pointer</span>
+<span class="cm">    to KeepMemory before ~ON_Workspace is called.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetPointMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span><span class="o">*</span> <span class="nf">GrowPointMemory</span><span class="p">(</span> <span class="n">ON_3dPoint</span><span class="o">*</span> <span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Grows the array of vectors that was allocated by</span>
+<span class="cm">    GetVectorMemory or GrowVectorMemory.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    ptr - [in] pointer returned by an earlier call to</span>
+<span class="cm">               GetVectorMemory or GrowVectorMemory.</span>
+<span class="cm">    count - [in] (&gt;0) number of vectors in memory block.</span>
+<span class="cm">              If count &lt;= 0, then NULL is returned.</span>
+<span class="cm">              If ptr was not allocated by this ON_Workspace</span>
+<span class="cm">              class, then NULL is returned.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A pointer to the vector array.</span>
+<span class="cm">  Remarks.</span>
+<span class="cm">    onrealloc() is used to grow the block of memory.</span>
+<span class="cm">    Do NOT free the pointer returned by GrowMemory().</span>
+<span class="cm">    ~ON_Workspace() will free the memory.  If you decide</span>
+<span class="cm">    you want to keep the memory block, pass the pointer</span>
+<span class="cm">    to KeepMemory before ~ON_Workspace is called.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::GetVectorMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dVector</span><span class="o">*</span> <span class="nf">GrowVectorMemory</span><span class="p">(</span> <span class="n">ON_3dVector</span><span class="o">*</span> <span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Calling the KeepMemory() function with a pointer</span>
+<span class="cm">    returned from one of the Get...() or Grow...() calls</span>
+<span class="cm">    keeps the workspace destructor from freeing the memory.</span>
+<span class="cm">    After calling KeepMemory(), you can no longer use</span>
+<span class="cm">    Grow...() on the pointer.  The caller is responsible</span>
+<span class="cm">    for using onfree() to release the memory when it is no</span>
+<span class="cm">    longer needed.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    ptr - [in] pointer returned by a Get...() or Grow()</span>
+<span class="cm">               call to this ON_Workspace.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the pointer was successfully found and removed</span>
+<span class="cm">    from this ON_Workspace.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::~ON_Workspace</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepAllMemory</span>
+<span class="cm">  */</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">KeepMemory</span><span class="p">(</span> <span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Calling KeepAllMemory() has the same effect as calling</span>
+<span class="cm">    KeepMemory(p) for every active allocation in the workspace.</span>
+<span class="cm">    After calling KeepAllMemory(), you can no longer use</span>
+<span class="cm">    Grow...() on the pointers and you are responsible</span>
+<span class="cm">    for using onfree() to release the memory when it is no</span>
+<span class="cm">    longer needed.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::~ON_Workspace</span>
+<span class="cm">    ON_Workspace::GetMemory</span>
+<span class="cm">    ON_Workspace::KeepMemory</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">KeepAllMemory</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Uses ON::OpenFile to open a file.  ~ON_Workspace will</span>
+<span class="cm">    close the file.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    filename - [in] name of file</span>
+<span class="cm">    filemode - [in] open mode (just like second argument to fopen).</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Pointer to opened file.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    ~ON_Workspace will close the file.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::~ON_Workspace</span>
+<span class="cm">    ON_Workspace::KeepFile</span>
+<span class="cm">    ON::OpenFile</span>
+<span class="cm">  */</span>
+  <span class="kt">FILE</span><span class="o">*</span> <span class="nf">OpenFile</span><span class="p">(</span>
+          <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filename</span><span class="p">,</span>
+          <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filemode</span>
+          <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Uses ON::OpenFile to open a file.  ~ON_Workspace will</span>
+<span class="cm">    close the file.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    filename - [in] name of file</span>
+<span class="cm">    filemode - [in] open mode (just like second argument to _wfopen).</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Pointer to opened file.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    ~ON_Workspace will close the file.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::~ON_Workspace</span>
+<span class="cm">    ON_Workspace::KeepFile</span>
+<span class="cm">    ON::OpenFile</span>
+<span class="cm">  */</span>
+  <span class="kt">FILE</span><span class="o">*</span> <span class="nf">OpenFile</span><span class="p">(</span>
+          <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">filename</span><span class="p">,</span>
+          <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">filemode</span>
+          <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    If you want to prevent ~ON_Workspace from closing a file</span>
+<span class="cm">    that was opened with ON_Workspace::OpenFile, then pass</span>
+<span class="cm">    the returned FILE pointer to KeepFile.  After calling</span>
+<span class="cm">    KeepFile, the caller is responsible for calling</span>
+<span class="cm">    ON::CloseFile to close the file.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    fileptr - [in] pointer returned by OpenFile.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if file was successfully closed.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Workspace::~ON_Workspace</span>
+<span class="cm">    ON_Workspace::OpenFile</span>
+<span class="cm">    ON::OpenFile</span>
+<span class="cm">    ON::CloseFile</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">KeepFile</span><span class="p">(</span><span class="kt">FILE</span><span class="o">*</span> <span class="n">fileptr</span><span class="p">);</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="k">struct</span> <span class="n">ON_Workspace_FBLK</span> <span class="o">*</span> <span class="n">m_pFileBlk</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">ON_Workspace_MBLK</span> <span class="o">*</span> <span class="n">m_pMemBlk</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="c1">// There is no implementation of the following to prevent use.</span>
+  <span class="c1">// ON_Workspaces should never be copied, or you will get</span>
+  <span class="c1">// multiple attempts to free the same pointer.</span>
+  <span class="n">ON_Workspace</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Workspace</span><span class="o">&amp;</span> <span class="p">);</span>
+  <span class="n">ON_Workspace</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Workspace</span><span class="o">&amp;</span> <span class="p">);</span>
+<span class="p">};</span>
+
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_xform.h.html" class="btn btn-neutral float-right" title="File opennurbs_xform.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_workspace.h.html" class="btn btn-neutral float-left" title="File opennurbs_workspace.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

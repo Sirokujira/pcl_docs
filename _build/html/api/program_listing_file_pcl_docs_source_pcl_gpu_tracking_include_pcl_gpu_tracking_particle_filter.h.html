@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File particle_filter.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File particle_filter.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_source_pcl_gpu_tracking_include_pcl_gpu_tracking_particle_filter.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-particle-filter-h">
+<span id="program-listing-file-pcl-docs-source-pcl-gpu-tracking-include-pcl-gpu-tracking-particle-filter-h"></span><h1>Program Listing for File particle_filter.h<a class="headerlink" href="#program-listing-for-file-particle-filter-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_source_pcl_gpu_tracking_include_pcl_gpu_tracking_particle_filter.h.html#file-pcl-docs-source-pcl-gpu-tracking-include-pcl-gpu-tracking-particle-filter-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\source\pcl\gpu\tracking\include\pcl\gpu\tracking\particle_filter.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/containers/device_array.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PointIndices.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu/pixel_rgb.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/tracking/particle_filter.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;internal.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">gpu</span>
+  <span class="p">{</span>
+    <span class="k">class</span> <span class="nc">ParticleFilterGPUTracker</span>
+    <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Point type supported */</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span> <span class="n">PointType</span><span class="p">;</span>
+      <span class="c1">//typedef pcl::Normal   NormalType;</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span>      <span class="n">PixelRGB</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span>   <span class="n">StateXYZ</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span>   <span class="n">StateRPY</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">tracking</span><span class="o">::</span><span class="n">ParticleXYZRPY</span> <span class="n">StateType</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">ParticleFilterGPUTracker</span> <span class="p">()</span>
+      <span class="c1">//: ParticleFilterTracker&lt;PointInT, StateT&gt; ()</span>
+      <span class="p">{</span>
+        <span class="n">tracker_name_</span> <span class="o">=</span> <span class="s">&quot;ParticleFilterGPUTracker&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief set the number of the particles.</span>
+<span class="cm">      * \param particle_num the number of the particles.</span>
+<span class="cm">      */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setParticleNum</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">particle_num</span><span class="p">)</span> <span class="p">{</span> <span class="n">particle_num_</span> <span class="o">=</span> <span class="n">particle_num</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief get the number of the particles. */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="n">getParticleNum</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">particle_num_</span><span class="p">;</span> <span class="p">}</span>
+
+       <span class="cm">/** \brief set a pointer to a reference dataset to be tracked.</span>
+<span class="cm">       * \param ref a pointer to a PointCloud message</span>
+<span class="cm">       */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setReferenceCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">ref</span><span class="p">)</span> <span class="p">{</span> <span class="n">ref_</span> <span class="o">=</span> <span class="n">ref</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief get a pointer to a reference dataset to be tracked. */</span>
+      <span class="kr">inline</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="k">const</span>
+        <span class="n">getReferenceCloud</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ref_</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="kt">int</span>
+        <span class="n">cols</span> <span class="p">();</span>
+
+      <span class="kt">int</span>
+        <span class="nf">rows</span> <span class="p">();</span>
+
+      <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">operator</span><span class="p">()</span> <span class="p">(</span><span class="k">const</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="k">const</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PixelRGB</span><span class="o">&gt;&amp;</span> <span class="n">input_colors</span><span class="p">)</span>
+      <span class="p">{</span>
+
+      <span class="p">}</span>
+
+      <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">setMotion</span> <span class="p">(</span><span class="n">StateType</span> <span class="n">motion</span><span class="p">)</span>
+      <span class="p">{</span> <span class="n">motion_</span> <span class="o">=</span> <span class="n">motion</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="k">virtual</span> <span class="n">StateType</span>
+        <span class="nf">getResult</span><span class="p">();</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">tracker_name_</span><span class="p">;</span>
+
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="nf">initCompute</span><span class="p">()</span>
+      <span class="p">{</span>
+
+        <span class="c1">//pcl::device::initParticles(particle_num_, particle_xyz_, particle_rpy_, particle_weight_ );</span>
+      <span class="p">}</span>
+
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">computeTracking</span><span class="p">()</span>
+      <span class="p">{</span>
+
+      <span class="p">}</span>
+
+      <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">allocateBuffers</span><span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">particles_</span><span class="p">.</span><span class="n">create</span><span class="p">(</span> <span class="n">particle_num_</span> <span class="p">);</span>
+
+        <span class="n">random_number_generator_</span><span class="p">.</span><span class="n">create</span><span class="p">(</span> <span class="n">particle_num_</span> <span class="p">);</span>
+
+      <span class="p">}</span>
+
+      <span class="c1">// reference point cloud</span>
+      <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="n">ref_</span><span class="p">;</span>
+
+      <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PixelRGB</span><span class="o">&gt;</span> <span class="n">ref_colors_</span><span class="p">;</span>
+
+      <span class="c1">//DeviceArray2D&lt;NormalType&gt; ref_normals_;</span>
+
+      <span class="c1">// input point cloud</span>
+      <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="n">input_</span><span class="p">;</span>
+
+      <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">PixelRGB</span><span class="o">&gt;</span> <span class="n">input_colors_</span><span class="p">;</span>
+
+      <span class="c1">//DeviceArray2D&lt;NormalType&gt; input_normals_;</span>
+
+      <span class="c1">//StateCloud particles_;</span>
+      <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">StateType</span><span class="o">&gt;</span> <span class="n">particles_</span><span class="p">;</span>
+
+      <span class="c1">// random number generate state</span>
+      <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">curandState</span><span class="o">&gt;</span> <span class="n">rng_states</span><span class="p">;</span>
+
+      <span class="kt">int</span> <span class="n">particle_num_</span><span class="p">;</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">step_noise_covariance_</span><span class="p">;</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">initial_noise_covariance_</span><span class="p">;</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">initial_noise_mean_</span><span class="p">;</span>
+
+      <span class="n">StateType</span> <span class="n">motion_</span><span class="p">;</span>
+
+      <span class="kt">float</span> <span class="n">motion_ratio_</span><span class="p">;</span>
+
+      <span class="kt">bool</span> <span class="n">use_colors_</span><span class="p">;</span>
+
+      <span class="n">StateType</span> <span class="n">representative_state_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Height of input depth image. */</span>
+      <span class="kt">int</span> <span class="n">rows_</span><span class="p">;</span>
+      <span class="cm">/** \brief Width of input depth image. */</span>
+      <span class="kt">int</span> <span class="n">cols_</span><span class="p">;</span>
+
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

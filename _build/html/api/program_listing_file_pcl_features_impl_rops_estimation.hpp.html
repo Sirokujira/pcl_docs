@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File rops_estimation.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File rransac.h" href="file_pcl_sample_consensus_rransac.h.html" />
+    <link rel="prev" title="File rops_estimation.hpp" href="file_pcl_features_impl_rops_estimation.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_impl_rops_estimation.hpp.html">File rops_estimation.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File rops_estimation.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_impl_rops_estimation.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-rops-estimation-hpp">
+<span id="program-listing-file-pcl-features-impl-rops-estimation-hpp"></span><h1>Program Listing for File rops_estimation.hpp<a class="headerlink" href="#program-listing-for-file-rops-estimation-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_impl_rops_estimation.hpp.html#file-pcl-features-impl-rops-estimation-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\impl\rops_estimation.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Author : Sergey Ushakov</span>
+<span class="cm"> * Email  : sergey.s.ushakov@mail.ru</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_ROPS_ESTIMATION_HPP_</span>
+<span class="cp">#define PCL_ROPS_ESTIMATION_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/rops_estimation.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">ROPSEstimation</span> <span class="p">()</span> <span class="o">:</span>
+  <span class="n">number_of_bins_</span> <span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+  <span class="n">number_of_rotations_</span> <span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+  <span class="n">support_radius_</span> <span class="p">(</span><span class="mf">1.0f</span><span class="p">),</span>
+  <span class="n">sqr_support_radius_</span> <span class="p">(</span><span class="mf">1.0f</span><span class="p">),</span>
+  <span class="n">step_</span> <span class="p">(</span><span class="mf">22.5f</span><span class="p">),</span>
+  <span class="n">triangles_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+  <span class="n">triangles_of_the_point_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::~</span><span class="n">ROPSEstimation</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">triangles_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">triangles_of_the_point_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">setNumberOfPartitionBins</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_bins</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">number_of_bins</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">number_of_bins_</span> <span class="o">=</span> <span class="n">number_of_bins</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getNumberOfPartitionBins</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">number_of_bins_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">setNumberOfRotations</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_rotations</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">number_of_rotations</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">number_of_rotations_</span> <span class="o">=</span> <span class="n">number_of_rotations</span><span class="p">;</span>
+    <span class="n">step_</span> <span class="o">=</span> <span class="mf">90.0f</span> <span class="o">/</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">number_of_rotations_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getNumberOfRotations</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">number_of_rotations_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">setSupportRadius</span> <span class="p">(</span><span class="kt">float</span> <span class="n">support_radius</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">support_radius</span> <span class="o">&gt;</span> <span class="mf">0.0f</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">support_radius_</span> <span class="o">=</span> <span class="n">support_radius</span><span class="p">;</span>
+    <span class="n">sqr_support_radius_</span> <span class="o">=</span> <span class="n">support_radius</span> <span class="o">*</span> <span class="n">support_radius</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getSupportRadius</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">support_radius_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">setTriangles</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">triangles</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">triangles_</span> <span class="o">=</span> <span class="n">triangles</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getTriangles</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">triangles</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">triangles</span> <span class="o">=</span> <span class="n">triangles_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computeFeature</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">triangles_</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">buildListOfPointsTriangles</span> <span class="p">();</span>
+
+  <span class="c1">//feature size = number_of_rotations * number_of_axis_to_rotate_around * number_of_projections * number_of_central_moments</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">feature_size</span> <span class="o">=</span> <span class="n">number_of_rotations_</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_points</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">number_of_points</span><span class="p">,</span> <span class="n">PointOutT</span> <span class="p">());</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_point</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_point</span> <span class="o">&lt;</span> <span class="n">number_of_points</span><span class="p">;</span> <span class="n">i_point</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">set</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">local_triangles</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">local_points</span><span class="p">;</span>
+    <span class="n">getLocalSurface</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i_point</span><span class="p">]],</span> <span class="n">local_triangles</span><span class="p">,</span> <span class="n">local_points</span><span class="p">);</span>
+
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">lrf_matrix</span><span class="p">;</span>
+    <span class="n">computeLRF</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i_point</span><span class="p">]],</span> <span class="n">local_triangles</span><span class="p">,</span> <span class="n">lrf_matrix</span><span class="p">);</span>
+
+    <span class="n">PointCloudIn</span> <span class="n">transformed_cloud</span><span class="p">;</span>
+    <span class="n">transformCloud</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i_point</span><span class="p">]],</span> <span class="n">lrf_matrix</span><span class="p">,</span> <span class="n">local_points</span><span class="p">,</span> <span class="n">transformed_cloud</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">axes</span><span class="p">;</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">feature</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">axis</span> <span class="p">:</span> <span class="n">axes</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">step_</span><span class="p">;</span>
+      <span class="k">do</span>
+      <span class="p">{</span>
+        <span class="c1">//rotate local surface and get bounding box</span>
+        <span class="n">PointCloudIn</span> <span class="n">rotated_cloud</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">;</span>
+        <span class="n">rotateCloud</span> <span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">transformed_cloud</span><span class="p">,</span> <span class="n">rotated_cloud</span><span class="p">,</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">);</span>
+
+        <span class="c1">//for each projection (XY, XZ and YZ) compute distribution matrix and central moments</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_proj</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_proj</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i_proj</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="n">distribution_matrix</span><span class="p">;</span>
+          <span class="n">distribution_matrix</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">number_of_bins_</span><span class="p">,</span> <span class="n">number_of_bins_</span><span class="p">);</span>
+          <span class="n">getDistributionMatrix</span> <span class="p">(</span><span class="n">i_proj</span><span class="p">,</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">rotated_cloud</span><span class="p">,</span> <span class="n">distribution_matrix</span><span class="p">);</span>
+
+          <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">moments</span><span class="p">;</span>
+          <span class="n">computeCentralMoments</span> <span class="p">(</span><span class="n">distribution_matrix</span><span class="p">,</span> <span class="n">moments</span><span class="p">);</span>
+
+          <span class="n">feature</span><span class="p">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">feature</span><span class="p">.</span><span class="n">end</span> <span class="p">(),</span> <span class="n">moments</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">moments</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="n">theta</span> <span class="o">+=</span> <span class="n">step_</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&lt;</span> <span class="mf">90.0f</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span> <span class="n">norm</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_dim</span> <span class="o">&lt;</span> <span class="n">feature_size</span><span class="p">;</span> <span class="n">i_dim</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">norm</span> <span class="o">+=</span> <span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="n">i_dim</span><span class="p">]);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">norm</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">epsilon</span> <span class="p">())</span>
+      <span class="n">norm</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="n">norm</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="n">norm</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_dim</span> <span class="o">&lt;</span> <span class="n">feature_size</span><span class="p">;</span> <span class="n">i_dim</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i_dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="n">i_dim</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">buildListOfPointsTriangles</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">triangles_of_the_point_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_triangles</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">triangles_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">dummy</span><span class="p">;</span>
+  <span class="n">dummy</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">triangles_of_the_point_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span> <span class="n">size</span> <span class="p">(),</span> <span class="n">dummy</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_triangle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_triangle</span> <span class="o">&lt;</span> <span class="n">number_of_triangles</span><span class="p">;</span> <span class="n">i_triangle</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_vertex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_vertex</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i_vertex</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">triangles_of_the_point_</span><span class="p">[</span><span class="n">triangles_</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]].</span><span class="n">push_back</span> <span class="p">(</span><span class="n">i_triangle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getLocalSurface</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">local_triangles</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">local_points</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">distances</span><span class="p">;</span>
+  <span class="n">tree_</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">support_radius_</span><span class="p">,</span> <span class="n">local_points</span><span class="p">,</span> <span class="n">distances</span><span class="p">);</span>
+
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_indices</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">local_points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">number_of_indices</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">local_triangles</span><span class="p">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">triangles_of_the_point_</span><span class="p">[</span><span class="n">local_points</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">triangles_of_the_point_</span><span class="p">[</span><span class="n">local_points</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">end</span> <span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computeLRF</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">local_triangles</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&amp;</span> <span class="n">lrf_matrix</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_triangles</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">local_triangles</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">scatter_matrices</span> <span class="p">(</span><span class="n">number_of_triangles</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">triangle_area</span> <span class="p">(</span><span class="n">number_of_triangles</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">distance_weight</span> <span class="p">(</span><span class="n">number_of_triangles</span><span class="p">);</span>
+
+  <span class="kt">float</span> <span class="n">total_area</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">coeff</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="mf">12.0f</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">coeff_1_div_3</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="mf">3.0f</span><span class="p">;</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">feature_point</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_triangle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">local_triangles</span><span class="p">.</span><span class="n">cbegin</span> <span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">local_triangles</span><span class="p">.</span><span class="n">cend</span> <span class="p">();</span> <span class="n">it</span><span class="o">++</span><span class="p">,</span> <span class="n">i_triangle</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">pt</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_vertex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_vertex</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i_vertex</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">triangles_</span><span class="p">[</span><span class="o">*</span><span class="n">it</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">];</span>
+      <span class="n">pt</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+      <span class="n">pt</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">pt</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">z</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">curr_area</span> <span class="o">=</span> <span class="p">((</span><span class="n">pt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pt</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="n">cross</span> <span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">pt</span><span class="p">[</span><span class="mi">0</span><span class="p">])).</span><span class="n">norm</span> <span class="p">();</span>
+    <span class="n">triangle_area</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">=</span> <span class="n">curr_area</span><span class="p">;</span>
+    <span class="n">total_area</span> <span class="o">+=</span> <span class="n">curr_area</span><span class="p">;</span>
+
+    <span class="n">distance_weight</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pow</span> <span class="p">(</span><span class="n">support_radius_</span> <span class="o">-</span> <span class="p">(</span><span class="n">feature_point</span> <span class="o">-</span> <span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pt</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">coeff_1_div_3</span><span class="p">).</span><span class="n">norm</span> <span class="p">(),</span> <span class="mf">2.0f</span><span class="p">);</span>
+
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">curr_scatter_matrix</span><span class="p">;</span>
+    <span class="n">curr_scatter_matrix</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i_pt</span> <span class="p">:</span> <span class="n">pt</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">i_pt</span> <span class="o">-</span> <span class="n">feature_point</span><span class="p">;</span>
+      <span class="n">curr_scatter_matrix</span> <span class="o">+=</span> <span class="n">vec</span> <span class="o">*</span> <span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">transpose</span> <span class="p">());</span>
+      <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">j_pt</span> <span class="p">:</span> <span class="n">pt</span><span class="p">)</span>
+        <span class="n">curr_scatter_matrix</span> <span class="o">+=</span> <span class="n">vec</span> <span class="o">*</span> <span class="p">((</span><span class="n">j_pt</span> <span class="o">-</span> <span class="n">feature_point</span><span class="p">).</span><span class="n">transpose</span> <span class="p">());</span>
+    <span class="p">}</span>
+    <span class="n">scatter_matrices</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">=</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">curr_scatter_matrix</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">total_area</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">epsilon</span> <span class="p">())</span>
+    <span class="n">total_area</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="n">total_area</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">total_area</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">overall_scatter_matrix</span><span class="p">;</span>
+  <span class="n">overall_scatter_matrix</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">total_weight</span> <span class="p">(</span><span class="n">number_of_triangles</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">denominator</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">/</span> <span class="mf">6.0f</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_triangle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_triangle</span> <span class="o">&lt;</span> <span class="n">number_of_triangles</span><span class="p">;</span> <span class="n">i_triangle</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">factor</span> <span class="o">=</span> <span class="n">distance_weight</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">*</span> <span class="n">triangle_area</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">*</span> <span class="n">total_area</span><span class="p">;</span>
+    <span class="n">overall_scatter_matrix</span> <span class="o">+=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">scatter_matrices</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">];</span>
+    <span class="n">total_weight</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">denominator</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">;</span>
+  <span class="n">computeEigenVectors</span> <span class="p">(</span><span class="n">overall_scatter_matrix</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">);</span>
+
+  <span class="kt">float</span> <span class="n">h1</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">h3</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">i_triangle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">local_triangles</span><span class="p">.</span><span class="n">cbegin</span> <span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">local_triangles</span><span class="p">.</span><span class="n">cend</span> <span class="p">();</span> <span class="n">it</span><span class="o">++</span><span class="p">,</span> <span class="n">i_triangle</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">pt</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_vertex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_vertex</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i_vertex</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">triangles_</span><span class="p">[</span><span class="o">*</span><span class="n">it</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">];</span>
+      <span class="n">pt</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+      <span class="n">pt</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+      <span class="n">pt</span><span class="p">[</span><span class="n">i_vertex</span><span class="p">]</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">z</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span> <span class="n">factor1</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">factor3</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">i_pt</span> <span class="p">:</span> <span class="n">pt</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">i_pt</span> <span class="o">-</span> <span class="n">feature_point</span><span class="p">;</span>
+      <span class="n">factor1</span> <span class="o">+=</span> <span class="n">vec</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">v1</span><span class="p">);</span>
+      <span class="n">factor3</span> <span class="o">+=</span> <span class="n">vec</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">v3</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">h1</span> <span class="o">+=</span> <span class="n">total_weight</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">*</span> <span class="n">factor1</span><span class="p">;</span>
+    <span class="n">h3</span> <span class="o">+=</span> <span class="n">total_weight</span><span class="p">[</span><span class="n">i_triangle</span><span class="p">]</span> <span class="o">*</span> <span class="n">factor3</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">h1</span> <span class="o">&lt;</span> <span class="mf">0.0f</span><span class="p">)</span> <span class="n">v1</span> <span class="o">=</span> <span class="o">-</span><span class="n">v1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">h3</span> <span class="o">&lt;</span> <span class="mf">0.0f</span><span class="p">)</span> <span class="n">v3</span> <span class="o">=</span> <span class="o">-</span><span class="n">v3</span><span class="p">;</span>
+
+  <span class="n">v2</span> <span class="o">=</span> <span class="n">v3</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">v1</span><span class="p">);</span>
+
+  <span class="n">lrf_matrix</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">v1</span><span class="p">;</span>
+  <span class="n">lrf_matrix</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">v2</span><span class="p">;</span>
+  <span class="n">lrf_matrix</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">v3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computeEigenVectors</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&amp;</span> <span class="n">matrix</span><span class="p">,</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">major_axis</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">middle_axis</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">minor_axis</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">EigenSolver</span> <span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&gt;</span> <span class="n">eigen_solver</span><span class="p">;</span>
+  <span class="n">eigen_solver</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="n">matrix</span><span class="p">);</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">EigenSolver</span> <span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&gt;::</span><span class="n">EigenvectorsType</span> <span class="n">eigen_vectors</span><span class="p">;</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">EigenSolver</span> <span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&gt;::</span><span class="n">EigenvalueType</span> <span class="n">eigen_values</span><span class="p">;</span>
+  <span class="n">eigen_vectors</span> <span class="o">=</span> <span class="n">eigen_solver</span><span class="p">.</span><span class="n">eigenvectors</span> <span class="p">();</span>
+  <span class="n">eigen_values</span> <span class="o">=</span> <span class="n">eigen_solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">();</span>
+
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">major_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">middle_index</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">minor_index</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">eigen_values</span><span class="p">.</span><span class="n">real</span> <span class="p">()</span> <span class="p">(</span><span class="n">major_index</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eigen_values</span><span class="p">.</span><span class="n">real</span> <span class="p">()</span> <span class="p">(</span><span class="n">middle_index</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">major_index</span><span class="p">;</span>
+    <span class="n">major_index</span> <span class="o">=</span> <span class="n">middle_index</span><span class="p">;</span>
+    <span class="n">middle_index</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">eigen_values</span><span class="p">.</span><span class="n">real</span> <span class="p">()</span> <span class="p">(</span><span class="n">major_index</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eigen_values</span><span class="p">.</span><span class="n">real</span> <span class="p">()</span> <span class="p">(</span><span class="n">minor_index</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">major_index</span><span class="p">;</span>
+    <span class="n">major_index</span> <span class="o">=</span> <span class="n">minor_index</span><span class="p">;</span>
+    <span class="n">minor_index</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">eigen_values</span><span class="p">.</span><span class="n">real</span> <span class="p">()</span> <span class="p">(</span><span class="n">middle_index</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eigen_values</span><span class="p">.</span><span class="n">real</span> <span class="p">()</span> <span class="p">(</span><span class="n">minor_index</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">minor_index</span><span class="p">;</span>
+    <span class="n">minor_index</span> <span class="o">=</span> <span class="n">middle_index</span><span class="p">;</span>
+    <span class="n">middle_index</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">major_axis</span> <span class="o">=</span> <span class="n">eigen_vectors</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">major_index</span><span class="p">).</span><span class="n">real</span> <span class="p">();</span>
+  <span class="n">middle_axis</span> <span class="o">=</span> <span class="n">eigen_vectors</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">middle_index</span><span class="p">).</span><span class="n">real</span> <span class="p">();</span>
+  <span class="n">minor_axis</span> <span class="o">=</span> <span class="n">eigen_vectors</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">minor_index</span><span class="p">).</span><span class="n">real</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">transformCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span><span class="o">&amp;</span> <span class="n">matrix</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">local_points</span><span class="p">,</span> <span class="n">PointCloudIn</span><span class="o">&amp;</span> <span class="n">transformed_cloud</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_points</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">local_points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">transformed_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">number_of_points</span><span class="p">,</span> <span class="n">PointInT</span> <span class="p">());</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">number_of_points</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">transformed_point</span> <span class="p">(</span>
+      <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">local_points</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+      <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">local_points</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+      <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">local_points</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span> <span class="o">-</span> <span class="n">point</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+    <span class="n">transformed_point</span> <span class="o">=</span> <span class="n">matrix</span> <span class="o">*</span> <span class="n">transformed_point</span><span class="p">;</span>
+
+    <span class="n">PointInT</span> <span class="n">new_point</span><span class="p">;</span>
+    <span class="n">new_point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">transformed_point</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">new_point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">transformed_point</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">new_point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">transformed_point</span> <span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">transformed_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_point</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">rotateCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span><span class="o">&amp;</span> <span class="n">axis</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="n">angle</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointCloudIn</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">PointCloudIn</span><span class="o">&amp;</span> <span class="n">rotated_cloud</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">rotation_matrix</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">axis</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">axis</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">z</span> <span class="o">=</span> <span class="n">axis</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">rad</span> <span class="o">=</span> <span class="n">M_PI</span> <span class="o">/</span> <span class="mf">180.0f</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">cosine</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">cos</span> <span class="p">(</span><span class="n">angle</span> <span class="o">*</span> <span class="n">rad</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">sine</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">sin</span> <span class="p">(</span><span class="n">angle</span> <span class="o">*</span> <span class="n">rad</span><span class="p">);</span>
+  <span class="n">rotation_matrix</span> <span class="o">&lt;&lt;</span> <span class="n">cosine</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span>      <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">sine</span> <span class="o">*</span> <span class="n">z</span><span class="p">,</span>    <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="n">sine</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span>
+                     <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">sine</span> <span class="o">*</span> <span class="n">z</span><span class="p">,</span>    <span class="n">cosine</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span>      <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span> <span class="o">-</span> <span class="n">sine</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span>
+                     <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">sine</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span>    <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">sine</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span>    <span class="n">cosine</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cosine</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">*</span> <span class="n">z</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_points</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="n">rotated_cloud</span><span class="p">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+  <span class="n">rotated_cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">number_of_points</span><span class="p">;</span>
+  <span class="n">rotated_cloud</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">rotated_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">number_of_points</span><span class="p">,</span> <span class="n">PointInT</span> <span class="p">());</span>
+
+  <span class="n">min</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="n">min</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="n">min</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="n">max</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="n">max</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="n">max</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_point</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_point</span> <span class="o">&lt;</span> <span class="n">number_of_points</span><span class="p">;</span> <span class="n">i_point</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">point</span> <span class="p">(</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">x</span><span class="p">,</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">y</span><span class="p">,</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">z</span><span class="p">);</span>
+
+    <span class="n">point</span> <span class="o">=</span> <span class="n">rotation_matrix</span> <span class="o">*</span> <span class="n">point</span><span class="p">;</span>
+    <span class="n">PointInT</span> <span class="n">rotated_point</span><span class="p">;</span>
+    <span class="n">rotated_point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">rotated_point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">rotated_point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">point</span> <span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">rotated_cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">]</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">min</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="n">min</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">min</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="n">min</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">min</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="n">min</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">max</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="n">max</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">max</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="n">max</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">max</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="n">max</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">rotated_point</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getDistributionMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">projection</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointCloudIn</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="o">&amp;</span> <span class="n">matrix</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">matrix</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_points</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">coord</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}};</span>
+
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">u_bin_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">max</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">min</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span> <span class="o">/</span> <span class="n">number_of_bins_</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">v_bin_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">max</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">min</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="n">number_of_bins_</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_point</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_point</span> <span class="o">&lt;</span> <span class="n">number_of_points</span><span class="p">;</span> <span class="n">i_point</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">point</span> <span class="p">(</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">x</span><span class="p">,</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">y</span><span class="p">,</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_point</span><span class="p">].</span><span class="n">z</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">u_length</span> <span class="o">=</span> <span class="n">point</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">min</span><span class="p">[</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">0</span><span class="p">]];</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">v_length</span> <span class="o">=</span> <span class="n">point</span> <span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">min</span><span class="p">[</span><span class="n">coord</span><span class="p">[</span><span class="n">projection</span><span class="p">][</span><span class="mi">1</span><span class="p">]];</span>
+
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">u_ratio</span> <span class="o">=</span> <span class="n">u_length</span> <span class="o">/</span> <span class="n">u_bin_length</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">u_ratio</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">row</span> <span class="o">==</span> <span class="n">number_of_bins_</span><span class="p">)</span> <span class="n">row</span><span class="o">--</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">v_ratio</span> <span class="o">=</span> <span class="n">v_length</span> <span class="o">/</span> <span class="n">v_bin_length</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">v_ratio</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">col</span> <span class="o">==</span> <span class="n">number_of_bins_</span><span class="p">)</span> <span class="n">col</span><span class="o">--</span><span class="p">;</span>
+
+    <span class="n">matrix</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">+=</span> <span class="mf">1.0f</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">matrix</span> <span class="o">/=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">number_of_points</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">ROPSEstimation</span> <span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computeCentralMoments</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="o">&amp;</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">moments</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="kt">float</span> <span class="n">mean_i</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">mean_j</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">number_of_bins_</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">number_of_bins_</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">m</span> <span class="o">=</span> <span class="n">matrix</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+      <span class="n">mean_i</span> <span class="o">+=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
+      <span class="n">mean_j</span> <span class="o">+=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+
+  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number_of_moments_to_compute</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">float</span> <span class="n">power</span><span class="p">[</span><span class="n">number_of_moments_to_compute</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">},</span>
+    <span class="p">{</span><span class="mf">2.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">},</span>
+    <span class="p">{</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">},</span>
+    <span class="p">{</span><span class="mf">2.0f</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">}};</span>
+
+  <span class="kt">float</span> <span class="n">entropy</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+  <span class="n">moments</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">number_of_moments_to_compute</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">number_of_bins_</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">i_factor</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean_i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">number_of_bins_</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">j_factor</span> <span class="o">=</span> <span class="k">static_cast</span> <span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean_j</span><span class="p">;</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">m</span> <span class="o">=</span> <span class="n">matrix</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;</span> <span class="mf">0.0f</span><span class="p">)</span>
+        <span class="n">entropy</span> <span class="o">-=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">std</span><span class="o">::</span><span class="n">log</span> <span class="p">(</span><span class="n">m</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i_moment</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_moment</span> <span class="o">&lt;</span> <span class="n">number_of_moments_to_compute</span><span class="p">;</span> <span class="n">i_moment</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">moments</span><span class="p">[</span><span class="n">i_moment</span><span class="p">]</span> <span class="o">+=</span> <span class="n">std</span><span class="o">::</span><span class="n">pow</span> <span class="p">(</span><span class="n">i_factor</span><span class="p">,</span> <span class="n">power</span><span class="p">[</span><span class="n">i_moment</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">std</span><span class="o">::</span><span class="n">pow</span> <span class="p">(</span><span class="n">j_factor</span><span class="p">,</span> <span class="n">power</span><span class="p">[</span><span class="n">i_moment</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">moments</span><span class="p">[</span><span class="n">number_of_moments_to_compute</span><span class="p">]</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#endif    </span><span class="c1">// PCL_ROPS_ESTIMATION_HPP_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_sample_consensus_rransac.h.html" class="btn btn-neutral float-right" title="File rransac.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_impl_rops_estimation.hpp.html" class="btn btn-neutral float-left" title="File rops_estimation.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

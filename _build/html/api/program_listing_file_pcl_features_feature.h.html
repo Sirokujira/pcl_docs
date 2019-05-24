@@ -1,0 +1,711 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File feature.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File feature.hpp" href="file_pcl_features_impl_feature.hpp.html" />
+    <link rel="prev" title="File feature.h" href="file_pcl_features_feature.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_feature.h.html">File feature.h</a> &raquo;</li>
+        
+      <li>Program Listing for File feature.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_feature.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-feature-h">
+<span id="program-listing-file-pcl-features-feature-h"></span><h1>Program Listing for File feature.h<a class="headerlink" href="#program-listing-for-file-feature-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_feature.h.html#file-pcl-features-feature-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\feature.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#if defined __GNUC__</span>
+<span class="cp">#  pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/function.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/bind.hpp&gt;</span><span class="cp"></span>
+<span class="c1">// PCL includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_base.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/search/search.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief Solve the eigenvalues and eigenvectors of a given 3x3 covariance matrix, and estimate the least-squares</span>
+<span class="cm">    * plane normal and surface curvature.</span>
+<span class="cm">    * \param covariance_matrix the 3x3 covariance matrix</span>
+<span class="cm">    * \param point a point lying on the least-squares plane (SSE aligned)</span>
+<span class="cm">    * \param plane_parameters the resultant plane parameters as: a, b, c, d (ax + by + cz + d = 0)</span>
+<span class="cm">    * \param curvature the estimated surface curvature as a measure of</span>
+<span class="cm">    * \f[</span>
+<span class="cm">    * \lambda_0 / (\lambda_0 + \lambda_1 + \lambda_2)</span>
+<span class="cm">    * \f]</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">solvePlaneParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span>
+                        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">plane_parameters</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">curvature</span><span class="p">);</span>
+
+  <span class="cm">/** \brief Solve the eigenvalues and eigenvectors of a given 3x3 covariance matrix, and estimate the least-squares</span>
+<span class="cm">    * plane normal and surface curvature.</span>
+<span class="cm">    * \param covariance_matrix the 3x3 covariance matrix</span>
+<span class="cm">    * \param nx the resultant X component of the plane normal</span>
+<span class="cm">    * \param ny the resultant Y component of the plane normal</span>
+<span class="cm">    * \param nz the resultant Z component of the plane normal</span>
+<span class="cm">    * \param curvature the estimated surface curvature as a measure of</span>
+<span class="cm">    * \f[</span>
+<span class="cm">    * \lambda_0 / (\lambda_0 + \lambda_1 + \lambda_2)</span>
+<span class="cm">    * \f]</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="nf">solvePlaneParameters</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                        <span class="kt">float</span> <span class="o">&amp;</span><span class="n">nx</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">ny</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">nz</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">curvature</span><span class="p">);</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="cm">/** \brief Feature represents the base feature class. Some generic 3D operations that</span>
+<span class="cm">    * are applicable to all features are defined here as static methods.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \attention</span>
+<span class="cm">    * The convention for a feature descriptor is:</span>
+<span class="cm">    *   - if the nearest neighbors for the query point at which the descriptor is to be computed cannot be</span>
+<span class="cm">    *     determined, the descriptor values will be set to NaN (not a number)</span>
+<span class="cm">    *   - it is impossible to estimate a feature descriptor for a point that doesn&#39;t have finite 3D coordinates.</span>
+<span class="cm">    *     Therefore, any point that has NaN data on x, y, or z, will most likely have its descriptor set to NaN.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Radu B. Rusu</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">Feature</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">BaseClass</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">Search</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">KdTree</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">KdTreePtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudInPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudInConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="o">&gt;</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span> <span class="p">(</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">SearchMethod</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudIn</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">index</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">SearchMethodSurface</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">Feature</span> <span class="p">()</span> <span class="o">:</span>
+        <span class="n">feature_name_</span> <span class="p">(),</span> <span class="n">search_method_surface_</span> <span class="p">(),</span>
+        <span class="n">surface_</span><span class="p">(),</span> <span class="n">tree_</span><span class="p">(),</span>
+        <span class="n">search_parameter_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">search_radius_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">k_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">fake_surface_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">{}</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">Feature</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Provide a pointer to a dataset to add additional information</span>
+<span class="cm">        * to estimate the features for every point in the input dataset.  This</span>
+<span class="cm">        * is optional, if this is not set, it will only use the data in the</span>
+<span class="cm">        * input cloud to estimate the features.  This is useful when you only</span>
+<span class="cm">        * need to compute the features for a downsampled cloud.</span>
+<span class="cm">        * \param[in] cloud a pointer to a PointCloud message</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSearchSurface</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudInConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">surface_</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">;</span>
+        <span class="n">fake_surface_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="c1">//use_surface_  = true;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get a pointer to the surface point cloud dataset. */</span>
+      <span class="kr">inline</span> <span class="n">PointCloudInConstPtr</span>
+      <span class="n">getSearchSurface</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">surface_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the search object.</span>
+<span class="cm">        * \param[in] tree a pointer to the spatial search object.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSearchMethod</span> <span class="p">(</span><span class="k">const</span> <span class="n">KdTreePtr</span> <span class="o">&amp;</span><span class="n">tree</span><span class="p">)</span> <span class="p">{</span> <span class="n">tree_</span> <span class="o">=</span> <span class="n">tree</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get a pointer to the search method used. */</span>
+      <span class="kr">inline</span> <span class="n">KdTreePtr</span>
+      <span class="n">getSearchMethod</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">tree_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the internal search parameter. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getSearchParameter</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_parameter_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the number of k nearest neighbors to use for the feature estimation.</span>
+<span class="cm">        * \param[in] k the number of k-nearest neighbors</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setKSearch</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="n">k_</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief get the number of k nearest neighbors used for the feature estimation. */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="n">getKSearch</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">k_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the sphere radius that is to be used for determining the nearest neighbors used for the feature</span>
+<span class="cm">        * estimation.</span>
+<span class="cm">        * \param[in] radius the sphere radius used as the maximum distance to consider a point a neighbor</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setRadiusSearch</span> <span class="p">(</span><span class="kt">double</span> <span class="n">radius</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">search_radius_</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the sphere radius used for determining the neighbors. */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getRadiusSearch</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_radius_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Base method for feature estimation for all points given in</span>
+<span class="cm">        * &lt;setInputCloud (), setIndices ()&gt; using the surface in setSearchSurface ()</span>
+<span class="cm">        * and the spatial locator in setSearchMethod ()</span>
+<span class="cm">        * \param[out] output the resultant point cloud model dataset containing the estimated features</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">compute</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief The feature name. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">feature_name_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The search method template for points. */</span>
+      <span class="n">SearchMethodSurface</span> <span class="n">search_method_surface_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief An input point cloud describing the surface that is to be used</span>
+<span class="cm">        * for nearest neighbors estimation.</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloudInConstPtr</span> <span class="n">surface_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief A pointer to the spatial search object. */</span>
+      <span class="n">KdTreePtr</span> <span class="n">tree_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The actual search parameter (from either \a search_radius_ or \a k_). */</span>
+      <span class="kt">double</span> <span class="n">search_parameter_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The nearest neighbors search radius for each point. */</span>
+      <span class="kt">double</span> <span class="n">search_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The number of K nearest neighbors to use for each point. */</span>
+      <span class="kt">int</span> <span class="n">k_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Get a string representation of the name of this class. */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span>
+      <span class="n">getClassName</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">feature_name_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief This method should get called before starting the actual computation. */</span>
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="n">initCompute</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief This method should get called after ending the actual computation. */</span>
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="nf">deinitCompute</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief If no surface is given, we use the input PointCloud as the surface. */</span>
+      <span class="kt">bool</span> <span class="n">fake_surface_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Search for k-nearest neighbors using the spatial locator from</span>
+<span class="cm">        * \a setSearchmethod, and the given surface from \a setSearchSurface.</span>
+<span class="cm">        * \param[in] index the index of the query point</span>
+<span class="cm">        * \param[in] parameter the search parameter (either k or radius)</span>
+<span class="cm">        * \param[out] indices the resultant vector of indices representing the k-nearest neighbors</span>
+<span class="cm">        * \param[out] distances the resultant vector of distances representing the distances from the query point to the</span>
+<span class="cm">        * k-nearest neighbors</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the number of neighbors found. If no neighbors are found or an error occurred, return 0.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">searchForNeighbors</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span><span class="p">,</span> <span class="kt">double</span> <span class="n">parameter</span><span class="p">,</span>
+                          <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">distances</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_method_surface_</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">distances</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Search for k-nearest neighbors using the spatial locator from</span>
+<span class="cm">        * \a setSearchmethod, and the given surface from \a setSearchSurface.</span>
+<span class="cm">        * \param[in] cloud the query point cloud</span>
+<span class="cm">        * \param[in] index the index of the query point in \a cloud</span>
+<span class="cm">        * \param[in] parameter the search parameter (either k or radius)</span>
+<span class="cm">        * \param[out] indices the resultant vector of indices representing the k-nearest neighbors</span>
+<span class="cm">        * \param[out] distances the resultant vector of distances representing the distances from the query point to the</span>
+<span class="cm">        * k-nearest neighbors</span>
+<span class="cm">        *</span>
+<span class="cm">        * \return the number of neighbors found. If no neighbors are found or an error occurred, return 0.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">searchForNeighbors</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudIn</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">index</span><span class="p">,</span> <span class="kt">double</span> <span class="n">parameter</span><span class="p">,</span>
+                          <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">distances</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_method_surface_</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">distances</span><span class="p">));</span>
+      <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="cm">/** \brief Abstract feature estimation method.</span>
+<span class="cm">        * \param[out] output the resultant features</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="n">computeFeature</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+
+
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">FeatureFromNormals</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudInPtr</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudInConstPtr</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudOut</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointNT</span><span class="o">&gt;</span> <span class="n">PointCloudN</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudN</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudNPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudN</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudNConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="c1">// Members derived from the base class</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">FeatureFromNormals</span> <span class="p">()</span> <span class="o">:</span> <span class="n">normals_</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">FeatureFromNormals</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset that contains the point normals of</span>
+<span class="cm">        * the XYZ dataset.</span>
+<span class="cm">        * In case of search surface is set to be different from the input cloud,</span>
+<span class="cm">        * normals should correspond to the search surface, not the input cloud!</span>
+<span class="cm">        * \param[in] normals the const boost shared pointer to a PointCloud of normals.</span>
+<span class="cm">        * By convention, L2 norm of each normal should be 1.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputNormals</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudNConstPtr</span> <span class="o">&amp;</span><span class="n">normals</span><span class="p">)</span> <span class="p">{</span> <span class="n">normals_</span> <span class="o">=</span> <span class="n">normals</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get a pointer to the normals of the input XYZ point cloud dataset. */</span>
+      <span class="kr">inline</span> <span class="n">PointCloudNConstPtr</span>
+      <span class="n">getInputNormals</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">normals_</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief A pointer to the input dataset that contains the point normals of the XYZ</span>
+<span class="cm">        * dataset.</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloudNConstPtr</span> <span class="n">normals_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief This method should get called before starting the actual computation. */</span>
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="nf">initCompute</span> <span class="p">();</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointLT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">FeatureFromLabels</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudInPtr</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudInConstPtr</span><span class="p">;</span>
+
+    <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointLT</span><span class="o">&gt;</span> <span class="n">PointCloudL</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudL</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudNPtr</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudL</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudLConstPtr</span><span class="p">;</span>
+
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudOut</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">FeatureFromLabels</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointLT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">FeatureFromLabels</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointLT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="c1">// Members derived from the base class</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">FeatureFromLabels</span> <span class="p">()</span> <span class="o">:</span> <span class="n">labels_</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">k_</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Search tree is not always used here.</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">FeatureFromLabels</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset that contains the point labels of</span>
+<span class="cm">        * the XYZ dataset.</span>
+<span class="cm">        * In case of search surface is set to be different from the input cloud,</span>
+<span class="cm">        * labels should correspond to the search surface, not the input cloud!</span>
+<span class="cm">        * \param[in] labels the const boost shared pointer to a PointCloud of labels.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputLabels</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudLConstPtr</span> <span class="o">&amp;</span><span class="n">labels</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">labels_</span> <span class="o">=</span> <span class="n">labels</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get a pointer to the labels of the input XYZ point cloud dataset. */</span>
+      <span class="kr">inline</span> <span class="n">PointCloudLConstPtr</span>
+      <span class="n">getInputLabels</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">labels_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief A pointer to the input dataset that contains the point labels of the XYZ</span>
+<span class="cm">        * dataset.</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloudLConstPtr</span> <span class="n">labels_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief This method should get called before starting the actual computation. */</span>
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="nf">initCompute</span> <span class="p">();</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">////////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="cm">/** \brief FeatureWithLocalReferenceFrames provides a public interface for descriptor</span>
+<span class="cm">    * extractor classes which need a local reference frame at each input keypoint.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \attention</span>
+<span class="cm">    * This interface is for backward compatibility with existing code and in the future it could be</span>
+<span class="cm">    * merged with pcl::Feature. Subclasses should call the protected method initLocalReferenceFrames ()</span>
+<span class="cm">    * to correctly initialize the frames_ member.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Nicola Fioraio</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">FeatureWithLocalReferenceFrames</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointRFT</span><span class="o">&gt;</span> <span class="n">PointCloudLRF</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudLRF</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudLRFPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudLRF</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudLRFConstPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">FeatureWithLocalReferenceFrames</span> <span class="p">()</span> <span class="o">:</span> <span class="n">frames_</span> <span class="p">(),</span> <span class="n">frames_never_defined_</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{}</span>
+
+       <span class="cm">/** \brief Empty destructor. */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">FeatureWithLocalReferenceFrames</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset that contains the local</span>
+<span class="cm">        * reference frames of the XYZ dataset.</span>
+<span class="cm">        * In case of search surface is set to be different from the input cloud,</span>
+<span class="cm">        * local reference frames should correspond to the input cloud, not the search surface!</span>
+<span class="cm">        * \param[in] frames the const boost shared pointer to a PointCloud of reference frames.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputReferenceFrames</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudLRFConstPtr</span> <span class="o">&amp;</span><span class="n">frames</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">frames_</span> <span class="o">=</span> <span class="n">frames</span><span class="p">;</span>
+        <span class="n">frames_never_defined_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get a pointer to the local reference frames. */</span>
+      <span class="kr">inline</span> <span class="n">PointCloudLRFConstPtr</span>
+      <span class="n">getInputReferenceFrames</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">frames_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief A boost shared pointer to the local reference frames. */</span>
+      <span class="n">PointCloudLRFConstPtr</span> <span class="n">frames_</span><span class="p">;</span>
+      <span class="cm">/** \brief The user has never set the frames. */</span>
+      <span class="kt">bool</span> <span class="n">frames_never_defined_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Check if frames_ has been correctly initialized and compute it if needed.</span>
+<span class="cm">        * \param input the subclass&#39; input cloud dataset.</span>
+<span class="cm">        * \param lrf_estimation a pointer to a local reference frame estimation class to be used as default.</span>
+<span class="cm">        * \return true if frames_ has been correctly initialized.</span>
+<span class="cm">        */</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">LRFEstimationPtr</span><span class="p">;</span>
+      <span class="k">virtual</span> <span class="kt">bool</span>
+      <span class="nf">initLocalReferenceFrames</span> <span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span><span class="o">&amp;</span> <span class="n">indices_size</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="n">LRFEstimationPtr</span><span class="o">&amp;</span> <span class="n">lrf_estimation</span> <span class="o">=</span> <span class="n">LRFEstimationPtr</span><span class="p">());</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/impl/feature.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_impl_feature.hpp.html" class="btn btn-neutral float-right" title="File feature.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_feature.h.html" class="btn btn-neutral float-left" title="File feature.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

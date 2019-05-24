@@ -1,0 +1,1133 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_beam.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_bezier.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.html" />
+    <link rel="prev" title="File opennurbs_beam.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_beam.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_beam.h.html">File opennurbs_beam.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_beam.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_beam.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-beam-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-beam-h"></span><h1>Program Listing for File opennurbs_beam.h<a class="headerlink" href="#program-listing-for-file-opennurbs-beam-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_beam.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-beam-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_beam.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#if !defined(OPENNURBS_EXTRUSION_INC_)</span>
+<span class="cp">#define OPENNURBS_EXTRUSION_INC_</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  Get the transformation that maps the ON_Extrusion</span>
+<span class="cm">  2d xy profile to 3d world space.</span>
+<span class="cm">Parameters:</span>
+<span class="cm">  P - [in] start or end of path</span>
+<span class="cm">  T - [in] unit tangent to path</span>
+<span class="cm">  U - [in] unit up vector perpendicular to T</span>
+<span class="cm">  Normal - [in] optional unit vector with Normal-&gt;z &gt; 0 that</span>
+<span class="cm">     defines the unit normal to the miter plane.</span>
+<span class="cm">  xform - [out]</span>
+<span class="cm">    transformation that maps the profile curve to 3d world space</span>
+<span class="cm">  scale2d - [out]</span>
+<span class="cm">    If not NULL, this is the scale part of the transformation.</span>
+<span class="cm">    If there is no mitering, then this is the identity.</span>
+<span class="cm">  rot2d - [out]</span>
+<span class="cm">    If not null, this is the part of the transformation</span>
+<span class="cm">    that rotates the xy plane into its 3d world location.</span>
+<span class="cm">Returns:</span>
+<span class="cm">  true if successful.</span>
+<span class="cm">*/</span>
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span> <span class="nf">ON_GetEndCapTransformation</span><span class="p">(</span>
+          <span class="n">ON_3dPoint</span> <span class="n">P</span><span class="p">,</span>
+          <span class="n">ON_3dVector</span> <span class="n">T</span><span class="p">,</span>
+          <span class="n">ON_3dVector</span> <span class="n">U</span><span class="p">,</span>
+          <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">*</span> <span class="n">Normal</span><span class="p">,</span>
+          <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span><span class="p">,</span> <span class="c1">// = rot3d*scale2d</span>
+          <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">scale2d</span><span class="p">,</span>
+          <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">rot2d</span>
+          <span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="nl">ON_Extrusion</span> <span class="p">:</span> <span class="k">public</span> <span class="n">ON_Surface</span>
+<span class="p">{</span>
+  <span class="n">ON_OBJECT_DECLARE</span><span class="p">(</span><span class="n">ON_Extrusion</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_Extrusion</span><span class="p">();</span>
+  <span class="n">ON_Extrusion</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Extrusion</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">);</span>
+  <span class="o">~</span><span class="n">ON_Extrusion</span><span class="p">();</span>
+
+  <span class="n">ON_Extrusion</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Extrusion</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////</span>
+  <span class="c1">//</span>
+  <span class="c1">// overrides of virtual ON_Object functions</span>
+  <span class="c1">//</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">IsValid</span><span class="p">(</span> <span class="n">ON_TextLog</span><span class="o">*</span> <span class="n">text_log</span> <span class="o">=</span> <span class="nb">NULL</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span> <span class="n">ON_TextLog</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">SizeOf</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON__UINT32</span> <span class="nf">DataCRC</span><span class="p">(</span> <span class="n">ON__UINT32</span> <span class="n">current_remainder</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Write</span><span class="p">(</span> <span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="n">binary_archive</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Read</span><span class="p">(</span> <span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="n">binary_archive</span> <span class="p">);</span>
+  <span class="n">ON</span><span class="o">::</span><span class="n">object_type</span> <span class="n">ObjectType</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////</span>
+  <span class="c1">//</span>
+  <span class="c1">// overrides of virtual ON_Geometry functions</span>
+  <span class="c1">//</span>
+  <span class="kt">int</span> <span class="nf">Dimension</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">GetBBox</span><span class="p">(</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">boxmin</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">boxmax</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">GetTightBoundingBox</span><span class="p">(</span>
+        <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">tight_bbox</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Build a brep form of the extrusion.  The outer profile is always</span>
+<span class="cm">    the first face in the brep.  If there are inner profiles,</span>
+<span class="cm">    additional brep faces are created for each profile.  If the</span>
+<span class="cm">    outer profile is closed, then end caps are added as the last</span>
+<span class="cm">    two faces in the brep.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    brep - [in]</span>
+<span class="cm">      If the brep pointer is not null, then the brep form is constructed</span>
+<span class="cm">      in brep.  If the brep pointer is null, then an ON_Brep is allocated</span>
+<span class="cm">      on the heap.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If successful, a pointer to the brep form.  If unsuccessful, null.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Brep</span><span class="o">*</span> <span class="nf">BrepForm</span><span class="p">(</span>
+        <span class="n">ON_Brep</span><span class="o">*</span> <span class="n">brep</span> <span class="o">=</span> <span class="nb">NULL</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Build a brep form of the extrusion.  The outer profile is always</span>
+<span class="cm">    the first face in the brep.  If there are inner profiles,</span>
+<span class="cm">    additional brep faces are created for each profile.  If the</span>
+<span class="cm">    outer profile is closed, then end caps are added as the last</span>
+<span class="cm">    two faces in the brep.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    brep - [in]</span>
+<span class="cm">      If the brep pointer is not null, then the brep form is constructed</span>
+<span class="cm">      in brep.  If the brep pointer is null, then an ON_Brep is allocated</span>
+<span class="cm">      on the heap.</span>
+<span class="cm">    bSmoothFaces - [in]</span>
+<span class="cm">      If true and the profiles have kinks, then the faces corresponding</span>
+<span class="cm">      to those profiles are split so they will be G1.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If successful, a pointer to the brep form.  If unsuccessful, null.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Brep</span><span class="o">*</span> <span class="nf">BrepForm</span><span class="p">(</span>
+    <span class="n">ON_Brep</span><span class="o">*</span> <span class="n">brep</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bSmoothFaces</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Build a sum surface form of the extrusion.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sum_surface - [in]</span>
+<span class="cm">      If the sum_surface pointer is not null, then the sum surface</span>
+<span class="cm">      form is constructed in sum_surface.  If the sum_surface pointer</span>
+<span class="cm">      is null, then an ON_SumSurface is allocated on the heap.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If successful, a pointer to the sum surface form.</span>
+<span class="cm">    If unsuccessful, null. In particular, extrusions with</span>
+<span class="cm">    mitered ends do not have sum surface forms.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_SumSurface</span><span class="o">*</span> <span class="nf">SumSurfaceForm</span><span class="p">(</span>
+    <span class="n">ON_SumSurface</span><span class="o">*</span> <span class="n">sum_surface</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Convert a component index that identifies a part of this extrusion</span>
+<span class="cm">    to a component index that identifies a part of the brep created</span>
+<span class="cm">    by BrepForm(...,false).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    extrusion_ci - [in]</span>
+<span class="cm">    extrusion_profile_parameter - [in]</span>
+<span class="cm">    brep_form - [in]</span>
+<span class="cm">      brep created by ON_Extrusion::BrepForm()</span>
+<span class="cm">    brep_ci - [out]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.  False if input is not valid, in which case brep_ci</span>
+<span class="cm">    is set by calling ON_COMPONENT_INDEX::UnSet().</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If the wall surfaces have creases, then this function cannot</span>
+<span class="cm">    be used to identify brep components created by BrepForm(...,true).</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetBrepFormComponentIndex</span><span class="p">(</span>
+    <span class="n">ON_COMPONENT_INDEX</span> <span class="n">extrusion_ci</span><span class="p">,</span>
+    <span class="n">ON_COMPONENT_INDEX</span><span class="o">&amp;</span> <span class="n">brep_ci</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetBrepFormComponentIndex</span><span class="p">(</span>
+    <span class="n">ON_COMPONENT_INDEX</span> <span class="n">extrusion_ci</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">extrusion_profile_parameter</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_Brep</span><span class="o">&amp;</span> <span class="n">brep_form</span><span class="p">,</span>
+    <span class="n">ON_COMPONENT_INDEX</span><span class="o">&amp;</span> <span class="n">brep_ci</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////</span>
+  <span class="c1">//</span>
+  <span class="c1">// overrides of virtual ON_Surface functions</span>
+  <span class="c1">//</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">SetDomain</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">t0</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">t1</span>
+        <span class="p">);</span>
+  <span class="n">ON_Interval</span> <span class="nf">Domain</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">GetSurfaceSize</span><span class="p">(</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">width</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">height</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="nf">SpanCount</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">GetSpanVector</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">span_vector</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">GetSpanVectorIndex</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">side</span><span class="p">,</span>
+        <span class="kt">int</span><span class="o">*</span> <span class="n">span_vector_index</span><span class="p">,</span>
+        <span class="n">ON_Interval</span><span class="o">*</span> <span class="n">span_interval</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="nf">Degree</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">GetParameterTolerance</span><span class="p">(</span>
+         <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">tminus</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">tplus</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ISO</span> <span class="nf">IsIsoparametric</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">&amp;</span> <span class="n">curve</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">*</span> <span class="n">curve_domain</span> <span class="o">=</span> <span class="nb">NULL</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">IsPlanar</span><span class="p">(</span>
+        <span class="n">ON_Plane</span><span class="o">*</span> <span class="n">plane</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="n">ON_ZERO_TOLERANCE</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">IsClosed</span><span class="p">(</span>
+        <span class="kt">int</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">IsPeriodic</span><span class="p">(</span>
+        <span class="kt">int</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">GetNextDiscontinuity</span><span class="p">(</span>
+                  <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+                  <span class="n">ON</span><span class="o">::</span><span class="n">continuity</span> <span class="n">c</span><span class="p">,</span>
+                  <span class="kt">double</span> <span class="n">t0</span><span class="p">,</span>
+                  <span class="kt">double</span> <span class="n">t1</span><span class="p">,</span>
+                  <span class="kt">double</span><span class="o">*</span> <span class="n">t</span><span class="p">,</span>
+                  <span class="kt">int</span><span class="o">*</span> <span class="n">hint</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span>
+                  <span class="kt">int</span><span class="o">*</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span>
+                  <span class="kt">double</span> <span class="n">cos_angle_tolerance</span><span class="o">=</span><span class="n">ON_DEFAULT_ANGLE_TOLERANCE_COSINE</span><span class="p">,</span>
+                  <span class="kt">double</span> <span class="n">curvature_tolerance</span><span class="o">=</span><span class="n">ON_SQRT_EPSILON</span>
+                  <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">IsContinuous</span><span class="p">(</span>
+    <span class="n">ON</span><span class="o">::</span><span class="n">continuity</span> <span class="n">c</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+    <span class="kt">int</span><span class="o">*</span> <span class="n">hint</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">point_tolerance</span><span class="o">=</span><span class="n">ON_ZERO_TOLERANCE</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">d1_tolerance</span><span class="o">=</span><span class="n">ON_ZERO_TOLERANCE</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">d2_tolerance</span><span class="o">=</span><span class="n">ON_ZERO_TOLERANCE</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">cos_angle_tolerance</span><span class="o">=</span><span class="n">ON_DEFAULT_ANGLE_TOLERANCE_COSINE</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">curvature_tolerance</span><span class="o">=</span><span class="n">ON_SQRT_EPSILON</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ISO</span> <span class="nf">IsIsoparametric</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Reverse</span><span class="p">(</span> <span class="kt">int</span> <span class="n">dir</span> <span class="p">);</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Transpose</span><span class="p">();</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Evaluate</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">u</span><span class="p">,</span> <span class="kt">double</span> <span class="n">v</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">num_der</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">array_stride</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">der_array</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">quadrant</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="kt">int</span><span class="o">*</span> <span class="n">hint</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_Curve</span><span class="o">*</span> <span class="nf">IsoCurve</span><span class="p">(</span>
+         <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">c</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_BOOL32</span> <span class="nf">Trim</span><span class="p">(</span>
+         <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span> <span class="n">domain</span>
+         <span class="p">);</span>
+  <span class="kt">bool</span> <span class="nf">Extend</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span> <span class="n">domain</span>
+    <span class="p">);</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Split</span><span class="p">(</span>
+         <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">c</span><span class="p">,</span>
+         <span class="n">ON_Surface</span><span class="o">*&amp;</span> <span class="n">west_or_south_side</span><span class="p">,</span>
+         <span class="n">ON_Surface</span><span class="o">*&amp;</span> <span class="n">east_or_north_side</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetClosestPoint</span><span class="p">(</span>
+          <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span><span class="p">,</span>
+          <span class="kt">double</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span>
+          <span class="kt">double</span><span class="o">*</span> <span class="n">t</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">maximum_distance</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">*</span> <span class="n">sdomain</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">*</span> <span class="n">tdomain</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_BOOL32</span> <span class="nf">GetLocalClosestPoint</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// test_point</span>
+          <span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="p">,</span>     <span class="c1">// seed_parameters</span>
+          <span class="kt">double</span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="o">*</span><span class="p">,</span>   <span class="c1">// parameters of local closest point returned here</span>
+          <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">*</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="c1">// first parameter sub_domain</span>
+          <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">*</span> <span class="o">=</span> <span class="nb">NULL</span>  <span class="c1">// second parameter sub_domain</span>
+          <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">//ON_Surface* Offset(</span>
+  <span class="c1">//      double offset_distance,</span>
+  <span class="c1">//      double tolerance,</span>
+  <span class="c1">//      double* max_deviation = NULL</span>
+  <span class="c1">//      ) const;</span>
+
+  <span class="kt">int</span> <span class="nf">GetNurbForm</span><span class="p">(</span>
+        <span class="n">ON_NurbsSurface</span><span class="o">&amp;</span> <span class="n">nurbs_surface</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="nf">HasNurbForm</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">GetSurfaceParameterFromNurbFormParameter</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">nurbs_s</span><span class="p">,</span> <span class="kt">double</span> <span class="n">nurbs_t</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">surface_s</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">surface_t</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">GetNurbFormParameterFromSurfaceParameter</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">surface_s</span><span class="p">,</span> <span class="kt">double</span> <span class="n">surface_t</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">nurbs_s</span><span class="p">,</span>  <span class="kt">double</span><span class="o">*</span> <span class="n">nurbs_t</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">////////////////////////////////////////////////////////////</span>
+  <span class="c1">//</span>
+  <span class="c1">// ON_Extrusion interface</span>
+  <span class="c1">//</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets m_path to (A,B), m_path_domain to [0,Length(AB)],</span>
+<span class="cm">    and m_t to [0,1].</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    A - [in] path start</span>
+<span class="cm">    B - [in] path end</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true  A and B are valid, the distance from A to B is larger</span>
+<span class="cm">          than ON_ZERO_TOLERANCE, and the path was set.</span>
+<span class="cm">    false A or B is not valid or the distance from A to B is</span>
+<span class="cm">          at most ON_ZERO_TOLERANCE. In this case nothing is set.</span>
+<span class="cm">  Remark:</span>
+<span class="cm">    You must also set the up direction to be perpendicular to the path.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetPath</span><span class="p">(</span><span class="n">ON_3dPoint</span> <span class="n">A</span><span class="p">,</span> <span class="n">ON_3dPoint</span> <span class="n">B</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets m_path to (A,B), m_path_domain to [0,Length(AB)],</span>
+<span class="cm">    m_t to [0,1], and m_up.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    A - [in] path start</span>
+<span class="cm">    B - [in] path end</span>
+<span class="cm">    up - [in] up direction</span>
+<span class="cm">      If up is a unit vector and perpendicular to the line</span>
+<span class="cm">      segment from A to B, then m_up is set to up.</span>
+<span class="cm">      Otherwise up will be adjusted so it is perpendicular</span>
+<span class="cm">      to the line segment from A to B and unitized.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true  A and B are valid, the distance from A to B is larger</span>
+<span class="cm">          than ON_ZERO_TOLERANCE, and the path was set.</span>
+<span class="cm">    false A or B is not valid, or the distance from A to B is</span>
+<span class="cm">          at most ON_ZERO_TOLERANCE, or up is invalid, or up</span>
+<span class="cm">          is zero, or up is parallel to the line segment.</span>
+<span class="cm">          In this case nothing is set.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetPathAndUp</span><span class="p">(</span><span class="n">ON_3dPoint</span> <span class="n">A</span><span class="p">,</span> <span class="n">ON_3dPoint</span> <span class="n">B</span><span class="p">,</span> <span class="n">ON_3dVector</span> <span class="n">up</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the surface parameter for the path.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    0: The first surface parameter corresponds to the path direction.</span>
+<span class="cm">       (m_bTransposed = true)</span>
+<span class="cm">    1: The second surface parameter corresponds to the path direction.</span>
+<span class="cm">       (m_bTransposed = false)</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    The default ON_Extrusion constructor sets</span>
+<span class="cm">    m_bTransposed = false which corresponds to the 1 = PathParameter().</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">PathParameter</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dPoint</span> <span class="nf">PathStart</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PathEnd</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="nf">PathTangent</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set miter plane normal.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    N - [in] If ON_UNSET_VECTOR or N is parallel to the z-axis,</span>
+<span class="cm">             then the miter plane is the default plane</span>
+<span class="cm">             perpendicular to the path.</span>
+<span class="cm">             If N is valid and the z coordinate of a unitized</span>
+<span class="cm">             N is greater than m_Nz_tol, then the miter plane</span>
+<span class="cm">             normal is set.</span>
+<span class="cm">    end - [in] 0 = set miter plane at the start of the path.</span>
+<span class="cm">               1 = set miter plane at the end of the path.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetMiterPlaneNormal</span><span class="p">(</span><span class="n">ON_3dVector</span> <span class="n">N</span><span class="p">,</span> <span class="kt">int</span> <span class="n">end</span><span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">GetMiterPlaneNormal</span><span class="p">(</span><span class="kt">int</span> <span class="n">end</span><span class="p">,</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">N</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    0: not mitered.</span>
+<span class="cm">    1: start of path is mitered.</span>
+<span class="cm">    2: end of path is mitered.</span>
+<span class="cm">    3: start and end are mitered.</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">IsMitered</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if extrusion object is a capped solid.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsSolid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    0: no or profile is open</span>
+<span class="cm">    1: bottom cap</span>
+<span class="cm">    2: top cap</span>
+<span class="cm">    3: both ends capped.</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">IsCapped</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    0: no caps</span>
+<span class="cm">    1: exrusion has either a top cap or a bottom cap</span>
+<span class="cm">    2: both ends are capped.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Extrusion::ProfileCount()</span>
+<span class="cm">    ON_Extrusion::ProfileSmoothSegmentCount()</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">CapCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Deprecated function.</span>
+
+<span class="cm">    Use CapCount() to determine how many end caps there are.</span>
+<span class="cm">    Use ProfileCount() to determine how many profiles there are.</span>
+<span class="cm">    Use ProfileSmoothSegmentCount() to determine how many</span>
+<span class="cm">    smooth subsegments are in a profile. Each smooth subsegment</span>
+<span class="cm">    becomes a wall face in the brep form.</span>
+
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of &quot;faces&quot; the extrusion has.</span>
+<span class="cm">    0: extrusion is not valid</span>
+<span class="cm">    1: extrusion is not capped</span>
+<span class="cm">    2: extrusion has a closed outer profile and one cap</span>
+<span class="cm">    3: extrusion has a closed outer profile and two caps</span>
+
+<span class="cm">  Remarks:</span>
+<span class="cm">    This function was written before extrusions supported &quot;holes&quot;</span>
+<span class="cm">    and before the brep form was divided at profile creases.</span>
+<span class="cm">    At this point it simply leads to confusion. See the Description</span>
+<span class="cm">    function replacements.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_DEPRECATED</span> <span class="kt">int</span> <span class="nf">FaceCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the transformation that maps the xy profile curve</span>
+<span class="cm">    to its 3d location.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in] 0.0 = starting profile</span>
+<span class="cm">             1.0 = ending profile</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetProfileTransformation</span><span class="p">(</span> <span class="kt">double</span> <span class="n">s</span><span class="p">,</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the the 3d plane containing the profile curve at a</span>
+<span class="cm">    normalized path parameter.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in] 0.0 = starting plane</span>
+<span class="cm">             1.0 = ending plane</span>
+<span class="cm">    plane - [out]</span>
+<span class="cm">      Plane containing profile is returned in plane.  If</span>
+<span class="cm">      false is returned, then the input value of plane</span>
+<span class="cm">      is not changed.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if plane was set.  False if this is invalid and plane</span>
+<span class="cm">    could not be set.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    When no mitering is happening, GetPathPlane() and</span>
+<span class="cm">    GetProfilePlane() return the same plane.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetProfilePlane</span><span class="p">(</span> <span class="kt">double</span> <span class="n">s</span><span class="p">,</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the the 3d plane perpendicular to the path at a</span>
+<span class="cm">    normalized path parameter.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    s - [in] 0.0 = starting plane</span>
+<span class="cm">             1.0 = ending plane</span>
+<span class="cm">    plane - [out]</span>
+<span class="cm">      Plane is returned here.  If</span>
+<span class="cm">      false is returned, then the input value of plane</span>
+<span class="cm">      is not changed.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if plane was set.  False if this is invalid and plane</span>
+<span class="cm">    could not be set.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    When no mitering is happening, GetPathPlane() and</span>
+<span class="cm">    GetProfilePlane() return the same plane.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetPathPlane</span><span class="p">(</span> <span class="kt">double</span> <span class="n">s</span><span class="p">,</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set the outer profile of the extrusion.</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    outer_profile - [in]</span>
+<span class="cm">      curve in the xy plane or a 2d curve.</span>
+<span class="cm">    bCap - [in]</span>
+<span class="cm">      If outer_profile is a closed curve, then bCap</span>
+<span class="cm">      determines if the extrusion has end caps.</span>
+<span class="cm">      If outer_profile is an open curve, bCap is ignored.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the profile was set. In this case the ON_Extrusion class</span>
+<span class="cm">    manages the curve and ~ON_Extrusion will delete it.  If the outer</span>
+<span class="cm">    profile is closed, then the extrusion may also have inner profiles.</span>
+<span class="cm">    If the outer profile is open, the extrusion may not have inner</span>
+<span class="cm">    profiles. If the extrusion already has a profile, the set will</span>
+<span class="cm">    fail.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If needed, outer_profile will be converted to a 2d</span>
+<span class="cm">    curve. If outer_curve is closed but not correctly oriented,</span>
+<span class="cm">    it will reversed so it has a counter-clockwise orientation.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetOuterProfile</span><span class="p">(</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">outer_profile</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">bCap</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Add an inner profile.</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    inner_profile - [in]</span>
+<span class="cm">      closed curve in the xy plane or a 2d curve.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the profile was set. In this case the</span>
+<span class="cm">    ON_Extrusion class  manages the curve and ~ON_Extrusion will</span>
+<span class="cm">    delete it. The extrusion must already have an outer profile.</span>
+<span class="cm">    If the extrusion already has a profile, the set will</span>
+<span class="cm">    fail.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If needed, innter_profile will be converted to a 2d</span>
+<span class="cm">    curve. If inner_profile is not correctly oriented, it</span>
+<span class="cm">    will be reversed so it has a clockwise orientation.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">AddInnerProfile</span><span class="p">(</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">inner_profile</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of profile curves.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Extrusion::CapCount()</span>
+<span class="cm">    ON_Extrusion::ProfileSmoothSegmentCount()</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">ProfileCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameter:</span>
+<span class="cm">    profile_index - [in]</span>
+<span class="cm">      0 &lt;= profile_index &lt; ProfileCount().</span>
+<span class="cm">      The outer profile has index 0.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of smooth segments in the profile curve.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Extrusion::CapCount()</span>
+<span class="cm">    ON_Extrusion::GetProfileKinkParameters()</span>
+<span class="cm">    ON_Extrusion::ProfileCount()</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">ProfileSmoothSegmentCount</span><span class="p">(</span> <span class="kt">int</span> <span class="n">profile_index</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the surface parameter for the profile.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    0: The first surface parameter corresponds to the profile direction.</span>
+<span class="cm">       (m_bTransposed = false)</span>
+<span class="cm">    1: The second surface parameter corresponds to the profile direction.</span>
+<span class="cm">       (m_bTransposed = true)</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    The default ON_Extrusion constructor sets</span>
+<span class="cm">    m_bTransposed = false which corresponds to the 0 = ProfileParameter().</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">ProfileParameter</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    profile_index - [in]</span>
+<span class="cm">      0 &lt;= profile_index &lt; ProfileCount().</span>
+<span class="cm">      The outer profile has index 0.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Pointer to the i-th 2d profile.  The ON_Extrusion</span>
+<span class="cm">    class manages this curve.  Do not delete it</span>
+<span class="cm">    and do not use the pointer if the ON_Extrusion</span>
+<span class="cm">    class changes.</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="nf">Profile</span><span class="p">(</span><span class="kt">int</span> <span class="n">profile_index</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    profile_index - [in]</span>
+<span class="cm">      0 &lt;= profile_index &lt; ProfileCount().</span>
+<span class="cm">      The outer profile has index 0.</span>
+<span class="cm">    s - [in] ( 0.0 &lt;= s &lt;= 1.0 )</span>
+<span class="cm">      A relative parameter controling which priofile</span>
+<span class="cm">      is returned. s = 0.0 returns the bottom profile</span>
+<span class="cm">      and s = 1.0 returns the top profile.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    NULL if the input parameters or the ON_Extrusion class is</span>
+<span class="cm">    not valid.  Otherwise a pointer to a 3d curve for</span>
+<span class="cm">    the requested profile. This curve is on the heap and</span>
+<span class="cm">    the caller is responsible for deleting this curve.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Curve</span><span class="o">*</span> <span class="nf">Profile3d</span><span class="p">(</span><span class="kt">int</span> <span class="n">profile_index</span><span class="p">,</span> <span class="kt">double</span> <span class="n">s</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    ci - [in]</span>
+<span class="cm">      component index identifying a 3d extrusion profile curve.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    NULL if the component index or the ON_Extrusion class is</span>
+<span class="cm">    not valid.  Otherwise a pointer to a 3d curve for</span>
+<span class="cm">    the requested profile. This curve is on the heap and</span>
+<span class="cm">    the caller is responsible for deleting this curve.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Curve</span><span class="o">*</span> <span class="nf">Profile3d</span><span class="p">(</span> <span class="n">ON_COMPONENT_INDEX</span> <span class="n">ci</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    ci - [in]</span>
+<span class="cm">      component index identifying a wall edge curve.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    NULL if the component index or the ON_Extrusion class is</span>
+<span class="cm">    not valid.  Otherwise a pointer to a 3d curve for</span>
+<span class="cm">    the requested wall edge. This curve is on the heap and</span>
+<span class="cm">    the caller is responsible for deleting this curve.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Curve</span><span class="o">*</span> <span class="nf">WallEdge</span><span class="p">(</span> <span class="n">ON_COMPONENT_INDEX</span> <span class="n">ci</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    ci - [in]</span>
+<span class="cm">      component index identifying a wall surface.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    NULL if the component index or the ON_Extrusion class is</span>
+<span class="cm">    not valid.  Otherwise a pointer to a surface for</span>
+<span class="cm">    the requested wall surface. This curve is on the heap and</span>
+<span class="cm">    the caller is responsible for deleting this curve.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Surface</span><span class="o">*</span> <span class="nf">WallSurface</span><span class="p">(</span> <span class="n">ON_COMPONENT_INDEX</span> <span class="n">ci</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    line_curve - [in]</span>
+<span class="cm">      If null, a line curve will be allocated using new.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Null if the extrusion path is not valid.  Otherwise</span>
+<span class="cm">    a pointer to an ON_LineCurve that is set to the</span>
+<span class="cm">    extrusion&#39;s path. The caller must delete this curve.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_LineCurve</span><span class="o">*</span> <span class="nf">PathLineCurve</span><span class="p">(</span><span class="n">ON_LineCurve</span><span class="o">*</span> <span class="n">line_curve</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Paramters:</span>
+<span class="cm">    profile_parameter - [in]</span>
+<span class="cm">      parameter on profile curve</span>
+<span class="cm">  Returns:</span>
+<span class="cm">      -1: if the profile_parameter does not correspond</span>
+<span class="cm">          to a point on the profile curve.</span>
+<span class="cm">    &gt;= 0: index of the profile curve with domain containing</span>
+<span class="cm">          this paramter.  When the profile_parameter corresponds</span>
+<span class="cm">          to the end of one profile and the beginning of the next</span>
+<span class="cm">          profile, the index of the next profile is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">ProfileIndex</span><span class="p">(</span> <span class="kt">double</span> <span class="n">profile_parameter</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If m_profile_count &gt;= 2 and m_profile is an ON_PolyCurve</span>
+<span class="cm">    with m_profile_count segments defining outer and inner</span>
+<span class="cm">    profiles, a pointer to the polycurve is returned.</span>
+<span class="cm">    Otherwise null is returned.</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_PolyCurve</span><span class="o">*</span> <span class="nf">PolyProfile</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get a list of the 2d profile curves.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of curves appended to the list.</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">GetProfileCurves</span><span class="p">(</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">ON_Curve</span><span class="o">*&gt;&amp;</span> <span class="n">profile_curves</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the parameters where a profile curve has kinks.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    profile_index - [in]</span>
+<span class="cm">    profile_kink_parameters - [out]</span>
+<span class="cm">      parameters at internal kinks are appended to this array.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Number of parameters appended to profile_kink_parameters[]</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    This function is used when making the brep form that has</span>
+<span class="cm">    smooth faces.</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">GetProfileKinkParameters</span><span class="p">(</span> <span class="kt">int</span> <span class="n">profile_index</span><span class="p">,</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">profile_kink_parameters</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    profile_index - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the profile has at least one kink.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">ProfileIsKinked</span><span class="p">(</span> <span class="kt">int</span> <span class="n">profile_index</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test a polycurve to determine if it meets the necessary</span>
+<span class="cm">    conditions to be used as a multi-segment profile in a extrusion.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the returned polycurve can be used a a multi-segment</span>
+<span class="cm">    profile in a extrusion.</span>
+<span class="cm">  */</span>
+  <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsValidPolyCurveProfile</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_PolyCurve</span><span class="o">&amp;</span> <span class="n">polycurve</span><span class="p">,</span> <span class="n">ON_TextLog</span><span class="o">*</span> <span class="n">text_log</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    If possible, modify a polycurve so it meets the necessary conditions</span>
+<span class="cm">    to be used as a multi-segment profile in a extrusion.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the returned polycurve can be used a a multi-segment</span>
+<span class="cm">    profile in a extrusion.</span>
+<span class="cm">  */</span>
+  <span class="k">static</span> <span class="kt">bool</span> <span class="nf">CleanupPolyCurveProfile</span><span class="p">(</span> <span class="n">ON_PolyCurve</span><span class="o">&amp;</span> <span class="n">polycurve</span> <span class="p">);</span>
+
+  <span class="c1">// path definition:</span>
+  <span class="c1">//   The line m_path must have length &gt; m_path_length_min.</span>
+  <span class="c1">//   The interval m_t must statisfy 0 &lt;= m_t[0] &lt; m_t[1] &lt;= 1.</span>
+  <span class="c1">//   The extrusion starts at m_path.PointAt(m_t[0]) and ends</span>
+  <span class="c1">//   at m_path.PointAt(m_t[1]).</span>
+  <span class="c1">//   The &quot;up&quot; direction m_up is a unit vector that must</span>
+  <span class="c1">//   be perpendicular to m_path.Tangent().</span>
+  <span class="n">ON_Line</span> <span class="n">m_path</span><span class="p">;</span>
+  <span class="n">ON_Interval</span> <span class="n">m_t</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="n">m_up</span><span class="p">;</span>
+
+  <span class="c1">// profile information:</span>
+  <span class="c1">//   In general, use SetOuterProfile() and AddInnerProfile()</span>
+  <span class="c1">//   to set m_profile_count and m_profile.  If you are</span>
+  <span class="c1">//   a glutton for punishment, then you might be interested</span>
+  <span class="c1">//   in the following.</span>
+  <span class="c1">//   The profile curves must be in the x-y plane.</span>
+  <span class="c1">//   The profile&#39;s &quot;y&quot; axis corresponds to m_up.</span>
+  <span class="c1">//   The point (0,0) is extruded along the m_path line.</span>
+  <span class="c1">//   If m_profile_count = 1, then m_profile can be any</span>
+  <span class="c1">//   type of continous curve.  If m_profile_count &gt; 1,</span>
+  <span class="c1">//   then m_profile must be an ON_PolyCurve with</span>
+  <span class="c1">//   m_profile_count segments, the domain of each segment</span>
+  <span class="c1">//   must exactly match the polycurve&#39;s segment domain,</span>
+  <span class="c1">//   every segment must be continuous and closed,</span>
+  <span class="c1">//   the first segement curve must have counter-clockwise</span>
+  <span class="c1">//   orientation, and the rest must have clockwise</span>
+  <span class="c1">//   orientations.</span>
+  <span class="kt">int</span> <span class="n">m_profile_count</span><span class="p">;</span>
+  <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">m_profile</span><span class="p">;</span>
+
+  <span class="c1">// capped end information:</span>
+  <span class="c1">//   If the profile is closed, then m_bCap[] determines</span>
+  <span class="c1">//   if the ends are capped.</span>
+  <span class="kt">bool</span> <span class="n">m_bCap</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+  <span class="c1">// mitered end information:</span>
+  <span class="c1">//   The normals m_N[] are with respect to the xy plane.</span>
+  <span class="c1">//   A normal parallel to the z axis has no mitering.</span>
+  <span class="c1">//   If m_bHaveN[i] is true, then m_N[i] must be a 3d unit</span>
+  <span class="c1">//   vector with m_N[i].z &gt; m_Nz_tol;  If m_bHaveN[i]</span>
+  <span class="c1">//   is false, then m_N[i] is ignored.  The normal m_N[0]</span>
+  <span class="c1">//   defines the start miter plane and m_N[1] defines the</span>
+  <span class="c1">//   end miter plane.</span>
+  <span class="kt">bool</span> <span class="n">m_bHaveN</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">ON_3dVector</span> <span class="n">m_N</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+  <span class="c1">// Surface parameterization information</span>
+  <span class="n">ON_Interval</span> <span class="n">m_path_domain</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_bTransposed</span><span class="p">;</span> <span class="c1">// false: (s,t) = (profile,path)</span>
+
+  <span class="c1">// The z coordinates of miter plane normals must be</span>
+  <span class="c1">// greater than m_Nz_tol</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">m_Nz_min</span><span class="p">;</span> <span class="c1">// 1/64;</span>
+
+  <span class="c1">// The length of the m_path line must be greater than</span>
+  <span class="c1">// m_path_length_min</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">m_path_length_min</span><span class="p">;</span> <span class="c1">// ON_ZERO_TOLERANCE;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get an ON_Exrusion form of a cylinder.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    cylinder - [in] cylinder.IsFinite() must be true</span>
+<span class="cm">    bCapBottom - [in] if true, the end at cylinder.m_height[0] will be capped</span>
+<span class="cm">    bCapTop - [in] if true, the end at cylinder.m_height[1] will be capped</span>
+<span class="cm">    extrusion - [in]</span>
+<span class="cm">      If the input extrusion pointer is null, one will be allocated on the heap</span>
+<span class="cm">      and it is the caller&#39;s responsibility to delte it at an appropriate time.</span>
+<span class="cm">      If the input pointer is not null, this extrusion will be used and the same</span>
+<span class="cm">      pointer will be returned, provided the input is valid.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the input is valid, a pointer to an ON_Exrusion form of the cylinder.</span>
+<span class="cm">    If the input is not valid, then null, even when the input extrusion</span>
+<span class="cm">    object is not null.</span>
+<span class="cm">  Example:</span>
+
+<span class="cm">          ON_Cylinder cylinder = ...;</span>
+<span class="cm">          bool bCapBottom = true;</span>
+<span class="cm">          bool bCapTop = true;</span>
+<span class="cm">          ON_Extrusion extrusion;</span>
+<span class="cm">          if ( 0 == ON_Extrusion::Cylinder(cylinder,bCapBottom,bCapTop,&amp;extrusion) )</span>
+<span class="cm">          {</span>
+<span class="cm">            // input is not valid - nothing set</span>
+<span class="cm">            ...</span>
+<span class="cm">          }</span>
+<span class="cm">          else</span>
+<span class="cm">          {</span>
+<span class="cm">            // extrusion = cylinder</span>
+<span class="cm">            ...</span>
+<span class="cm">          }</span>
+<span class="cm">  */</span>
+  <span class="k">static</span> <span class="n">ON_Extrusion</span><span class="o">*</span> <span class="nf">Cylinder</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Cylinder</span><span class="o">&amp;</span> <span class="n">cylinder</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bCapBottom</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bCapTop</span><span class="p">,</span>
+    <span class="n">ON_Extrusion</span><span class="o">*</span> <span class="n">extrusion</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get an ON_Exrusion form of a pipe.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    cylinder - [in] cylinder.IsFinite() must be true</span>
+<span class="cm">      The cylinder can be either the inner or outer wall of the pipe.</span>
+<span class="cm">    other_radius - [in] ( != cylinder.Radius() )</span>
+<span class="cm">      If cylinder.Radius() &lt; other_radius, then the cylinder will be</span>
+<span class="cm">      the inside of the pipe.  If cylinder.Radius() &gt; other_radius, then</span>
+<span class="cm">      the cylinder will be the outside of the pipe.</span>
+<span class="cm">    bCapBottom - [in] if true, the end at cylinder.m_height[0] will be capped</span>
+<span class="cm">    bCapTop - [in] if true, the end at cylinder.m_height[1] will be capped</span>
+<span class="cm">    extrusion - [in]</span>
+<span class="cm">      If the input extrusion pointer is null, one will be allocated on the heap</span>
+<span class="cm">      and it is the caller&#39;s responsibility to delte it at an appropriate time.</span>
+<span class="cm">      If the input pointer is not null, this extrusion will be used and the same</span>
+<span class="cm">      pointer will be returned, provided the input is valid.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the input is valid, a pointer to an ON_Exrusion form of the pipe.</span>
+<span class="cm">    If the input is not valid, then null, even when the input extrusion</span>
+<span class="cm">    object is not null.</span>
+<span class="cm">  Example:</span>
+
+<span class="cm">          ON_Cylinder cylinder = ...;</span>
+<span class="cm">          double other_radius = cylinder.Radius()+1.0;</span>
+<span class="cm">          bool bCapBottom = true;</span>
+<span class="cm">          bool bCapTop = true;</span>
+<span class="cm">          ON_Extrusion extrusion;</span>
+<span class="cm">          if ( 0 == ON_Extrusion::Pipe(cylinder,other_radius,bCapBottom,bCapTop,&amp;extrusion) )</span>
+<span class="cm">          {</span>
+<span class="cm">            // input is not valid - nothing set</span>
+<span class="cm">            ...</span>
+<span class="cm">          }</span>
+<span class="cm">          else</span>
+<span class="cm">          {</span>
+<span class="cm">            // extrusion = pipe</span>
+<span class="cm">            ...</span>
+<span class="cm">          }</span>
+<span class="cm">  */</span>
+  <span class="k">static</span> <span class="n">ON_Extrusion</span><span class="o">*</span> <span class="nf">Pipe</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Cylinder</span><span class="o">&amp;</span> <span class="n">cylinder</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">other_radius</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bCapBottom</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bCapTop</span><span class="p">,</span>
+    <span class="n">ON_Extrusion</span><span class="o">*</span> <span class="n">extrusion</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Create an ON_Exrusion from a 3d curve, a plane and a height.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    curve - [in]</span>
+<span class="cm">      A continuous 3d curve.</span>
+<span class="cm">    plane - [in]</span>
+<span class="cm">      If plane is null, then the plane returned by curve.IsPlanar() is used.</span>
+<span class="cm">      The 3d curve is projected to this plane and the result is passed to</span>
+<span class="cm">      ON_Extrusion::SetOuterProfile().</span>
+<span class="cm">    height - [in]</span>
+<span class="cm">      If the height &gt; 0, the bottom of the extrusion will be in plane and</span>
+<span class="cm">      the top will be height units above the plane.</span>
+<span class="cm">      If the height &lt; 0, the top of the extrusion will be in plane and</span>
+<span class="cm">      the bottom will be height units below the plane.</span>
+<span class="cm">    bCap - [in]</span>
+<span class="cm">      If the curve is closed and bCap is true, then the resulting extrusion</span>
+<span class="cm">      is capped.</span>
+<span class="cm">    extrusion - [in]</span>
+<span class="cm">      If the input extrusion pointer is null, one will be allocated on the heap</span>
+<span class="cm">      and it is the caller&#39;s responsibility to delte it at an appropriate time.</span>
+<span class="cm">      If the input pointer is not null, this extrusion will be used and the same</span>
+<span class="cm">      pointer will be returned, provided the input is valid.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If the input is valid, a pointer to an ON_Exrusion form of the pipe.</span>
+<span class="cm">    If the input is not valid, then null, even when the input extrusion</span>
+<span class="cm">    object is not null.</span>
+<span class="cm">  */</span>
+  <span class="k">static</span> <span class="n">ON_Extrusion</span><span class="o">*</span> <span class="nf">CreateFrom3dCurve</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">&amp;</span> <span class="n">curve</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_Plane</span><span class="o">*</span> <span class="n">plane</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">height</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bCap</span><span class="p">,</span>
+    <span class="n">ON_Extrusion</span><span class="o">*</span> <span class="n">extrusion</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">);</span>
+
+<span class="p">};</span>
+
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.html" class="btn btn-neutral float-right" title="File opennurbs_bezier.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_beam.h.html" class="btn btn-neutral float-left" title="File opennurbs_beam.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

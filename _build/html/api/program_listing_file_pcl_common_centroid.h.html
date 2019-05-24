@@ -1,0 +1,1311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File centroid.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File centroid.hpp" href="file_pcl_common_impl_centroid.hpp.html" />
+    <link rel="prev" title="File centroid.h" href="file_pcl_common_centroid.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_common_centroid.h.html">File centroid.h</a> &raquo;</li>
+        
+      <li>Program Listing for File centroid.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_common_centroid.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-centroid-h">
+<span id="program-listing-file-pcl-common-centroid-h"></span><h1>Program Listing for File centroid.h<a class="headerlink" href="#program-listing-for-file-centroid-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_common_centroid.h.html#file-pcl-common-centroid-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\common\centroid.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_traits.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PointIndices.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/cloud_iterator.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/**</span>
+<span class="cm">  * \file pcl/common/centroid.h</span>
+<span class="cm">  * Define methods for centroid estimation and covariance matrix calculus</span>
+<span class="cm">  * \ingroup common</span>
+<span class="cm">  */</span>
+
+<span class="cm">/*@{*/</span>
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief Compute the 3D (X-Y-Z) centroid of a set of points and return it as a 3D vector.</span>
+<span class="cm">    * \param[in] cloud_iterator an iterator over the input point cloud</span>
+<span class="cm">    * \param[out] centroid the output centroid</span>
+<span class="cm">    * \return number of valid points used to determine the centroid. In case of dense point clouds, this is the same as the size of input cloud.</span>
+<span class="cm">    * \note if return value is 0, the centroid is not changed, thus not valid.</span>
+<span class="cm">    * The last component of the vector is set to 1, this allows to transform the centroid vector with 4x4 matrices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the 3D (X-Y-Z) centroid of a set of points and return it as a 3D vector.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[out] centroid the output centroid</span>
+<span class="cm">    * \return number of valid points used to determine the centroid. In case of dense point clouds, this is the same as the size of input cloud.</span>
+<span class="cm">    * \note if return value is 0, the centroid is not changed, thus not valid.</span>
+<span class="cm">    * The last component of the vector is set to 1, this allows to transform the centroid vector with 4x4 matrices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the 3D (X-Y-Z) centroid of a set of points using their indices and</span>
+<span class="cm">    * return it as a 3D vector.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param[out] centroid the output centroid</span>
+<span class="cm">    * \return number of valid points used to determine the centroid. In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \note if return value is 0, the centroid is not changed, thus not valid.</span>
+<span class="cm">    * The last component of the vector is set to 1, this allows to transform the centroid vector with 4x4 matrices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the 3D (X-Y-Z) centroid of a set of points using their indices and</span>
+<span class="cm">    * return it as a 3D vector.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param[out] centroid the output centroid</span>
+<span class="cm">    * \return number of valid points used to determine the centroid. In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \note if return value is 0, the centroid is not changed, thus not valid.</span>
+<span class="cm">    * The last component of the vector is set to 1, this allows to transform the centroid vector with 4x4 matrices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">compute3DCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">compute3DCentroid</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the 3x3 covariance matrix of a given set of points.</span>
+<span class="cm">    * The result is returned as a Eigen::Matrix3f.</span>
+<span class="cm">    * Note: the covariance matrix is not normalized with the number of</span>
+<span class="cm">    * points. For a normalized covariance, please use</span>
+<span class="cm">    * computeCovarianceMatrixNormalized.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input cloud.</span>
+<span class="cm">    * \note if return value is 0, the covariance matrix is not changed, thus not valid.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute normalized the 3x3 covariance matrix of a given set of points.</span>
+<span class="cm">    * The result is returned as a Eigen::Matrix3f.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of points in the point cloud.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, use computeCovarianceMatrix</span>
+<span class="cm">    * and scale the covariance matrix with 1 / (n-1), where n is the number of points used to calculate</span>
+<span class="cm">    * the covariance matrix and is returned by the computeCovarianceMatrix function.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input cloud.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrixNormalized</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrixNormalized</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the 3x3 covariance matrix of a given set of points using their indices.</span>
+<span class="cm">    * The result is returned as a Eigen::Matrix3f.</span>
+<span class="cm">    * Note: the covariance matrix is not normalized with the number of</span>
+<span class="cm">    * points. For a normalized covariance, please use</span>
+<span class="cm">    * computeCovarianceMatrixNormalized.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param[in] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the 3x3 covariance matrix of a given set of points using their indices.</span>
+<span class="cm">    * The result is returned as a Eigen::Matrix3f.</span>
+<span class="cm">    * Note: the covariance matrix is not normalized with the number of</span>
+<span class="cm">    * points. For a normalized covariance, please use</span>
+<span class="cm">    * computeCovarianceMatrixNormalized.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param[in] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix of a given set of points using</span>
+<span class="cm">    * their indices.</span>
+<span class="cm">    * The result is returned as a Eigen::Matrix3f.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in indices.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, use computeCovarianceMatrix</span>
+<span class="cm">    * and scale the covariance matrix with 1 / (n-1), where n is the number of points used to calculate</span>
+<span class="cm">    * the covariance matrix and is returned by the computeCovarianceMatrix function.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param[in] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrixNormalized</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrixNormalized</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix of a given set of points using</span>
+<span class="cm">    * their indices. The result is returned as a Eigen::Matrix3f.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in indices.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, use computeCovarianceMatrix</span>
+<span class="cm">    * and scale the covariance matrix with 1 / (n-1), where n is the number of points used to calculate</span>
+<span class="cm">    * the covariance matrix and is returned by the computeCovarianceMatrix function.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param[in] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrixNormalized</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrixNormalized</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrixNormalized</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix and the centroid of a given set of points in a single loop.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of valid entries in the point cloud.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, scale the covariance matrix</span>
+<span class="cm">    * with n / (n-1), where n is the number of points used to calculate the covariance matrix and is returned by this function.</span>
+<span class="cm">    * \note This method is theoretically exact. However using float for internal calculations reduces the accuracy but increases the efficiency.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \param[out] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input cloud.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeMeanAndCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeMeanAndCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix and the centroid of a given set of points in a single loop.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in indices.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, scale the covariance matrix</span>
+<span class="cm">    * with n / (n-1), where n is the number of points used to calculate the covariance matrix and is returned by this function.</span>
+<span class="cm">    * \note This method is theoretically exact. However using float for internal calculations reduces the accuracy but increases the efficiency.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices subset of points given by their indices</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \param[out] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeMeanAndCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeMeanAndCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix and the centroid of a given set of points in a single loop.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in indices.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, scale the covariance matrix</span>
+<span class="cm">    * with n / (n-1), where n is the number of points used to calculate the covariance matrix and is returned by this function.</span>
+<span class="cm">    * \note This method is theoretically exact. However using float for internal calculations reduces the accuracy but increases the efficiency.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices subset of points given by their indices</span>
+<span class="cm">    * \param[out] centroid the centroid of the set of points in the cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeMeanAndCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeMeanAndCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix for a already demeaned point cloud.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in the input point cloud.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, scale the covariance matrix</span>
+<span class="cm">    * with n / (n-1), where n is the number of points used to calculate the covariance matrix and is returned by this function.</span>
+<span class="cm">    * \note This method is theoretically exact. However using float for internal calculations reduces the accuracy but increases the efficiency.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input cloud.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix for a already demeaned point cloud.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in indices.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, scale the covariance matrix</span>
+<span class="cm">    * with n / (n-1), where n is the number of points used to calculate the covariance matrix and is returned by this function.</span>
+<span class="cm">    * \note This method is theoretically exact. However using float for internal calculations reduces the accuracy but increases the efficiency.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices subset of points given by their indices</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Compute the normalized 3x3 covariance matrix for a already demeaned point cloud.</span>
+<span class="cm">    * Normalized means that every entry has been divided by the number of entries in indices.</span>
+<span class="cm">    * For small number of points, or if you want explicitly the sample-variance, scale the covariance matrix</span>
+<span class="cm">    * with n / (n-1), where n is the number of points used to calculate the covariance matrix and is returned by this function.</span>
+<span class="cm">    * \note This method is theoretically exact. However using float for internal calculations reduces the accuracy but increases the efficiency.</span>
+<span class="cm">    * \param[in] cloud the input point cloud</span>
+<span class="cm">    * \param[in] indices subset of points given by their indices</span>
+<span class="cm">    * \param[out] covariance_matrix the resultant 3x3 covariance matrix</span>
+<span class="cm">    * \return number of valid points used to determine the covariance matrix.</span>
+<span class="cm">    * In case of dense point clouds, this is the same as the size of input indices.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span>
+  <span class="n">computeCovarianceMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">covariance_matrix</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeCovarianceMatrix</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned representation</span>
+<span class="cm">    * \param[in] cloud_iterator an iterator over the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param[out] cloud_out the resultant output point cloud</span>
+<span class="cm">    * \param[in] npts the number of samples guaranteed to be left in the input cloud, accessible by the iterator. If not given, it will be calculated.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">npts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">npts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">,</span> <span class="n">npts</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">npts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">,</span> <span class="n">npts</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned representation</span>
+<span class="cm">    * \param[in] cloud_in the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param[out] cloud_out the resultant output point cloud</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned representation</span>
+<span class="cm">    * \param[in] cloud_in the input point cloud</span>
+<span class="cm">    * \param[in] indices the set of point indices to use from the input point cloud</span>
+<span class="cm">    * \param[out] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param cloud_out the resultant output point cloud</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned representation</span>
+<span class="cm">    * \param[in] cloud_in the input point cloud</span>
+<span class="cm">    * \param[in] indices the set of point indices to use from the input point cloud</span>
+<span class="cm">    * \param[out] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param cloud_out the resultant output point cloud</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned</span>
+<span class="cm">    * representation as an Eigen matrix</span>
+<span class="cm">    * \param[in] cloud_iterator an iterator over the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param[out] cloud_out the resultant output XYZ0 dimensions of \a cloud_in as</span>
+<span class="cm">    * an Eigen matrix (4 rows, N pts columns)</span>
+<span class="cm">    * \param[in] npts the number of samples guaranteed to be left in the input cloud, accessible by the iterator. If not given, it will be calculated.</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">npts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">npts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">,</span> <span class="n">npts</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="n">ConstCloudIterator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_iterator</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">npts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_iterator</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">,</span> <span class="n">npts</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned</span>
+<span class="cm">    * representation as an Eigen matrix</span>
+<span class="cm">    * \param[in] cloud_in the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param[out] cloud_out the resultant output XYZ0 dimensions of \a cloud_in as</span>
+<span class="cm">    * an Eigen matrix (4 rows, N pts columns)</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned</span>
+<span class="cm">    * representation as an Eigen matrix</span>
+<span class="cm">    * \param[in] cloud_in the input point cloud</span>
+<span class="cm">    * \param[in] indices the set of point indices to use from the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param[out] cloud_out the resultant output XYZ0 dimensions of \a cloud_in as</span>
+<span class="cm">    * an Eigen matrix (4 rows, N pts columns)</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Subtract a centroid from a point cloud and return the de-meaned</span>
+<span class="cm">    * representation as an Eigen matrix</span>
+<span class="cm">    * \param[in] cloud_in the input point cloud</span>
+<span class="cm">    * \param[in] indices the set of point indices to use from the input point cloud</span>
+<span class="cm">    * \param[in] centroid the centroid of the point cloud</span>
+<span class="cm">    * \param[out] cloud_out the resultant output XYZ0 dimensions of \a cloud_in as</span>
+<span class="cm">    * an Eigen matrix (4 rows, N pts columns)</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">demeanPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">,</span>
+                    <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">demeanPointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Helper functor structure for n-D centroid estimation. */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span>
+  <span class="k">struct</span> <span class="n">NdCentroidFunctor</span>
+  <span class="p">{</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">POD</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Pod</span><span class="p">;</span>
+
+    <span class="n">NdCentroidFunctor</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">f_idx_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">centroid_</span> <span class="p">(</span><span class="n">centroid</span><span class="p">),</span>
+        <span class="n">p_</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Pod</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="k">operator</span><span class="p">()</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">T</span><span class="p">;</span>
+      <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">raw_ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p_</span><span class="p">)</span> <span class="o">+</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+      <span class="k">const</span> <span class="n">T</span><span class="o">*</span> <span class="n">data_ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">T</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">raw_ptr</span><span class="p">);</span>
+
+      <span class="c1">// Check if the value is invalid</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="o">*</span><span class="n">data_ptr</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">f_idx_</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="n">centroid_</span><span class="p">[</span><span class="n">f_idx_</span><span class="o">++</span><span class="p">]</span> <span class="o">+=</span> <span class="o">*</span><span class="n">data_ptr</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="kt">int</span> <span class="n">f_idx_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid_</span><span class="p">;</span>
+      <span class="k">const</span> <span class="n">Pod</span> <span class="o">&amp;</span><span class="n">p_</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief General, all purpose nD centroid estimation for a set of points using their</span>
+<span class="cm">    * indices.</span>
+<span class="cm">    * \param cloud the input point cloud</span>
+<span class="cm">    * \param centroid the output centroid</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeNDCentroid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeNDCentroid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief General, all purpose nD centroid estimation for a set of points using their</span>
+<span class="cm">    * indices.</span>
+<span class="cm">    * \param cloud the input point cloud</span>
+<span class="cm">    * \param indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param centroid the output centroid</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeNDCentroid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeNDCentroid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief General, all purpose nD centroid estimation for a set of points using their</span>
+<span class="cm">    * indices.</span>
+<span class="cm">    * \param cloud the input point cloud</span>
+<span class="cm">    * \param indices the point cloud indices that need to be used</span>
+<span class="cm">    * \param centroid the output centroid</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">);</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeNDCentroid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">computeNDCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                     <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span><span class="n">centroid</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">computeNDCentroid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">centroid</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/impl/accumulators.hpp&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+
+  <span class="cm">/** A generic class that computes the centroid of points fed to it.</span>
+<span class="cm">    *</span>
+<span class="cm">    * Here by &quot;centroid&quot; we denote not just the mean of 3D point coordinates,</span>
+<span class="cm">    * but also mean of values in the other data fields. The general-purpose</span>
+<span class="cm">    * \ref computeNDCentroid() function also implements this sort of</span>
+<span class="cm">    * functionality, however it does it in a &quot;dumb&quot; way, i.e. regardless of the</span>
+<span class="cm">    * semantics of the data inside a field it simply averages the values. In</span>
+<span class="cm">    * certain cases (e.g. for \c x, \c y, \c z, \c intensity fields) this</span>
+<span class="cm">    * behavior is reasonable, however in other cases (e.g. \c rgb, \c rgba,</span>
+<span class="cm">    * \c label fields) this does not lead to meaningful results.</span>
+<span class="cm">    *</span>
+<span class="cm">    * This class is capable of computing the centroid in a &quot;smart&quot; way, i.e.</span>
+<span class="cm">    * taking into account the meaning of the data inside fields. Currently the</span>
+<span class="cm">    * following fields are supported:</span>
+<span class="cm">    *</span>
+<span class="cm">    *  Data      | Point fields                          | Algorithm</span>
+<span class="cm">    *  --------- | ------------------------------------- | -------------------------------------------------------------------------------------------</span>
+<span class="cm">    *  XYZ       | \c x, \c y, \c z                      | Average (separate for each field)</span>
+<span class="cm">    *  Normal    | \c normal_x, \c normal_y, \c normal_z | Average (separate for each field), resulting vector is normalized</span>
+<span class="cm">    *  Curvature | \c curvature                          | Average</span>
+<span class="cm">    *  Color     | \c rgb or \c rgba                     | Average (separate for R, G, B, and alpha channels)</span>
+<span class="cm">    *  Intensity | \c intensity                          | Average</span>
+<span class="cm">    *  Label     | \c label                              | Majority vote; if several labels have the same largest support then the  smaller label wins</span>
+<span class="cm">    *</span>
+<span class="cm">    * The template parameter defines the type of points that may be accumulated</span>
+<span class="cm">    * with this class. This may be an arbitrary PCL point type, and centroid</span>
+<span class="cm">    * computation will happen only for the fields that are present in it and are</span>
+<span class="cm">    * supported.</span>
+<span class="cm">    *</span>
+<span class="cm">    * Current centroid may be retrieved at any time using get(). Note that the</span>
+<span class="cm">    * function is templated on point type, so it is possible to fetch the</span>
+<span class="cm">    * centroid into a point type that differs from the type of points that are</span>
+<span class="cm">    * being accumulated. All the &quot;extra&quot; fields for which the centroid is not</span>
+<span class="cm">    * being calculated will be left untouched.</span>
+<span class="cm">    *</span>
+<span class="cm">    * Example usage:</span>
+<span class="cm">    *</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * // Create and accumulate points</span>
+<span class="cm">    * CentroidPoint&lt;pcl::PointXYZ&gt; centroid;</span>
+<span class="cm">    * centroid.add (pcl::PointXYZ (1, 2, 3);</span>
+<span class="cm">    * centroid.add (pcl::PointXYZ (5, 6, 7);</span>
+<span class="cm">    * // Fetch centroid using `get()`</span>
+<span class="cm">    * pcl::PointXYZ c1;</span>
+<span class="cm">    * centroid.get (c1);</span>
+<span class="cm">    * // The expected result is: c1.x == 3, c1.y == 4, c1.z == 5</span>
+<span class="cm">    * // It is also okay to use `get()` with a different point type</span>
+<span class="cm">    * pcl::PointXYZRGB c2;</span>
+<span class="cm">    * centroid.get (c2);</span>
+<span class="cm">    * // The expected result is: c2.x == 3, c2.y == 4, c2.z == 5,</span>
+<span class="cm">    * // and c2.rgb is left untouched</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note Assumes that the points being inserted are valid.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note This class template can be successfully instantiated for *any*</span>
+<span class="cm">    * PCL point type. Of course, each of the field averages is computed only if</span>
+<span class="cm">    * the point type has the corresponding field.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \ingroup common</span>
+<span class="cm">    * \author Sergey Alexandrov */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">CentroidPoint</span>
+  <span class="p">{</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="n">CentroidPoint</span> <span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+      <span class="cm">/** Add a new point to the centroid computation.</span>
+<span class="cm">        *</span>
+<span class="cm">        * In this function only the accumulators and point counter are updated,</span>
+<span class="cm">        * actual centroid computation does not happen until get() is called. */</span>
+      <span class="kt">void</span>
+      <span class="nf">add</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">);</span>
+
+      <span class="cm">/** Retrieve the current centroid.</span>
+<span class="cm">        *</span>
+<span class="cm">        * Computation (division of accumulated values by the number of points</span>
+<span class="cm">        * and normalization where applicable) happens here. The result is not</span>
+<span class="cm">        * cached, so any subsequent call to this function will trigger</span>
+<span class="cm">        * re-computation.</span>
+<span class="cm">        *</span>
+<span class="cm">        * If the number of accumulated points is zero, then the point will be</span>
+<span class="cm">        * left untouched. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">get</span> <span class="p">(</span><span class="n">PointOutT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the total number of points that were added. */</span>
+      <span class="kr">inline</span> <span class="kt">size_t</span>
+      <span class="nf">getSize</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">num_points_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+
+    <span class="k">private</span><span class="o">:</span>
+
+      <span class="kt">size_t</span> <span class="n">num_points_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Accumulators</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">accumulators_</span><span class="p">;</span>
+
+  <span class="p">};</span>
+
+  <span class="cm">/** Compute the centroid of a set of points and return it as a point.</span>
+<span class="cm">    *</span>
+<span class="cm">    * Implementation leverages \ref CentroidPoint class and therefore behaves</span>
+<span class="cm">    * differently from \ref compute3DCentroid() and \ref computeNDCentroid().</span>
+<span class="cm">    * See \ref CentroidPoint documentation for explanation.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \param[in] cloud input point cloud</span>
+<span class="cm">    * \param[out] centroid output centroid</span>
+<span class="cm">    *</span>
+<span class="cm">    * \return number of valid points used to determine the centroid (will be the</span>
+<span class="cm">    * same as the size of the cloud if it is dense)</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If return value is \c 0, then the centroid is not changed, thus is</span>
+<span class="cm">    * not valid.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \ingroup common */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">size_t</span>
+  <span class="n">computeCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">,</span>
+                   <span class="n">PointOutT</span><span class="o">&amp;</span> <span class="n">centroid</span><span class="p">);</span>
+
+  <span class="cm">/** Compute the centroid of a set of points and return it as a point.</span>
+<span class="cm">    * \param[in] cloud</span>
+<span class="cm">    * \param[in] indices point cloud indices that need to be used</span>
+<span class="cm">    * \param[out] centroid</span>
+<span class="cm">    * This is an overloaded function provided for convenience. See the</span>
+<span class="cm">    * documentation for computeCentroid().</span>
+<span class="cm">    *</span>
+<span class="cm">    * \ingroup common */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">size_t</span>
+  <span class="n">computeCentroid</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                   <span class="n">PointOutT</span><span class="o">&amp;</span> <span class="n">centroid</span><span class="p">);</span>
+
+<span class="p">}</span>
+<span class="cm">/*@}*/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/impl/centroid.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_common_impl_centroid.hpp.html" class="btn btn-neutral float-right" title="File centroid.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_common_centroid.h.html" class="btn btn-neutral float-left" title="File centroid.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

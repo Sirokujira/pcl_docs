@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File internal.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File internal.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_pcl_gpu_kinfu_large_scale_src_internal.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-internal-h">
+<span id="program-listing-file-pcl-docs-pcl-gpu-kinfu-large-scale-src-internal-h"></span><h1>Program Listing for File internal.h<a class="headerlink" href="#program-listing-for-file-internal-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_pcl_gpu_kinfu_large_scale_src_internal.h.html#file-pcl-docs-pcl-gpu-kinfu-large-scale-src-internal-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\pcl\gpu\kinfu_large_scale\src\internal.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/utils/safe_call.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu_large_scale/device.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//using namespace pcl::gpu;</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">device</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">kinfuLS</span>
+    <span class="p">{</span>
+      <span class="cm">/** \brief Light source collection</span>
+<span class="cm">        */</span>
+      <span class="k">struct</span> <span class="n">LightSource</span>
+      <span class="p">{</span>
+        <span class="n">float3</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">number</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// Maps</span>
+
+      <span class="cm">/** \brief Performs bilateral filtering of disparity map</span>
+<span class="cm">        * \param[in] src source map</span>
+<span class="cm">        * \param[out] dst output map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">bilateralFilter</span> <span class="p">(</span><span class="k">const</span> <span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">,</span> <span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">dst</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Computes depth pyramid</span>
+<span class="cm">        * \param[in] src source</span>
+<span class="cm">        * \param[out] dst destination</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">pyrDown</span> <span class="p">(</span><span class="k">const</span> <span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">,</span> <span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">dst</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Computes vertex map</span>
+<span class="cm">        * \param[in] intr depth camera intrinsics</span>
+<span class="cm">        * \param[in] depth depth</span>
+<span class="cm">        * \param[out] vmap vertex map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">createVMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span> <span class="k">const</span> <span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Computes normal map using cross product</span>
+<span class="cm">        * \param[in] vmap vertex map</span>
+<span class="cm">        * \param[out] nmap normal map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">createNMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Computes normal map using Eigen/PCA approach</span>
+<span class="cm">        * \param[in] vmap vertex map</span>
+<span class="cm">        * \param[out] nmap normal map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeNormalsEigen</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs affine transform of vertex and normal maps</span>
+<span class="cm">        * \param[in] vmap_src source vertex map</span>
+<span class="cm">        * \param[in] nmap_src source vertex map</span>
+<span class="cm">        * \param[in] Rmat Rotation mat</span>
+<span class="cm">        * \param[in] tvec translation</span>
+<span class="cm">        * \param[out] vmap_dst destination vertex map</span>
+<span class="cm">        * \param[out] nmap_dst destination vertex map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">transformMaps</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_src</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_src</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rmat</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_dst</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_dst</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs depth truncation</span>
+<span class="cm">        * \param[out] depth depth map to truncation</span>
+<span class="cm">        * \param[in] max_distance truncation threshold, values that are higher than the threshold are reset to zero (means not measurement)</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">truncateDepth</span><span class="p">(</span><span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">,</span> <span class="kt">float</span> <span class="n">max_distance</span><span class="p">);</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">//   ICP</span>
+
+      <span class="cm">/** \brief (now it&#39;s extra code) Computes corespondances map</span>
+<span class="cm">        * \param[in] vmap_g_curr current vertex map in global coo space</span>
+<span class="cm">        * \param[in] nmap_g_curr current normals map in global coo space</span>
+<span class="cm">        * \param[in] Rprev_inv inverse camera rotation at previous pose</span>
+<span class="cm">        * \param[in] tprev camera translation at previous pose</span>
+<span class="cm">        * \param[in] intr camera intrinsics</span>
+<span class="cm">        * \param[in] vmap_g_prev previous vertex map in global coo space</span>
+<span class="cm">        * \param[in] nmap_g_prev previous vertex map in global coo space</span>
+<span class="cm">        * \param[in] distThres distance filtering threshold</span>
+<span class="cm">        * \param[in] angleThres angle filtering threshold. Represents sine of angle between normals</span>
+<span class="cm">        * \param[out] coresp</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">findCoresp</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_g_curr</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_g_curr</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rprev_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tprev</span><span class="p">,</span> <span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_g_prev</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_g_prev</span><span class="p">,</span> <span class="kt">float</span> <span class="n">distThres</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angleThres</span><span class="p">,</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">coresp</span><span class="p">);</span>
+
+      <span class="cm">/** \brief (now it&#39;s extra code) Computation Ax=b for ICP iteration</span>
+<span class="cm">        * \param[in] v_dst destination vertex map (previous frame cloud)</span>
+<span class="cm">        * \param[in] n_dst destination normal map (previous frame normals)</span>
+<span class="cm">        * \param[in] v_src source normal map (current frame cloud)</span>
+<span class="cm">        * \param[in] coresp Corespondances</span>
+<span class="cm">        * \param[out] gbuf temp buffer for GPU reduction</span>
+<span class="cm">        * \param[out] mbuf output GPU buffer for matrix computed</span>
+<span class="cm">        * \param[out] matrixA_host A</span>
+<span class="cm">        * \param[out] vectorB_host b</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">estimateTransform</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">v_dst</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">n_dst</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">v_src</span><span class="p">,</span> <span class="k">const</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">coresp</span><span class="p">,</span>
+                        <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">gbuf</span><span class="p">,</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">mbuf</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">matrixA_host</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">vectorB_host</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Computation Ax=b for ICP iteration</span>
+<span class="cm">        * \param[in] Rcurr Rotation of current camera pose guess</span>
+<span class="cm">        * \param[in] tcurr translation of current camera pose guess</span>
+<span class="cm">        * \param[in] vmap_curr current vertex map in camera coo space</span>
+<span class="cm">        * \param[in] nmap_curr current vertex map in camera coo space</span>
+<span class="cm">        * \param[in] Rprev_inv inverse camera rotation at previous pose</span>
+<span class="cm">        * \param[in] tprev camera translation at previous pose</span>
+<span class="cm">        * \param[in] intr camera intrinsics</span>
+<span class="cm">        * \param[in] vmap_g_prev previous vertex map in global coo space</span>
+<span class="cm">        * \param[in] nmap_g_prev previous vertex map in global coo space</span>
+<span class="cm">        * \param[in] distThres distance filtering threshold</span>
+<span class="cm">        * \param[in] angleThres angle filtering threshold. Represents sine of angle between normals</span>
+<span class="cm">        * \param[out] gbuf temp buffer for GPU reduction</span>
+<span class="cm">        * \param[out] mbuf output GPU buffer for matrix computed</span>
+<span class="cm">        * \param[out] matrixA_host A</span>
+<span class="cm">        * \param[out] vectorB_host b</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">estimateCombined</span> <span class="p">(</span><span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rcurr</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tcurr</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_curr</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_curr</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rprev_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tprev</span><span class="p">,</span> <span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_g_prev</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_g_prev</span><span class="p">,</span> <span class="kt">float</span> <span class="n">distThres</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angleThres</span><span class="p">,</span>
+                        <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">gbuf</span><span class="p">,</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">mbuf</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">matrixA_host</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">vectorB_host</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Computation Ax=b for ICP iteration</span>
+<span class="cm">        * \param[in] Rcurr Rotation of current camera pose guess</span>
+<span class="cm">        * \param[in] tcurr translation of current camera pose guess</span>
+<span class="cm">        * \param[in] vmap_curr current vertex map in camera coo space</span>
+<span class="cm">        * \param[in] nmap_curr current vertex map in camera coo space</span>
+<span class="cm">        * \param[in] Rprev_inv inverse camera rotation at previous pose</span>
+<span class="cm">        * \param[in] tprev camera translation at previous pose</span>
+<span class="cm">        * \param[in] intr camera intrinsics</span>
+<span class="cm">        * \param[in] vmap_g_prev previous vertex map in global coo space</span>
+<span class="cm">        * \param[in] nmap_g_prev previous vertex map in global coo space</span>
+<span class="cm">        * \param[in] distThres distance filtering threshold</span>
+<span class="cm">        * \param[in] angleThres angle filtering threshold. Represents sine of angle between normals</span>
+<span class="cm">        * \param[out] gbuf temp buffer for GPU reduction</span>
+<span class="cm">        * \param[out] mbuf output GPU buffer for matrix computed</span>
+<span class="cm">        * \param[out] matrixA_host A</span>
+<span class="cm">        * \param[out] vectorB_host b</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">estimateCombined</span> <span class="p">(</span><span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rcurr</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tcurr</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_curr</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_curr</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rprev_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tprev</span><span class="p">,</span> <span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap_g_prev</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap_g_prev</span><span class="p">,</span> <span class="kt">float</span> <span class="n">distThres</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angleThres</span><span class="p">,</span>
+                        <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">gbuf</span><span class="p">,</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">mbuf</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">matrixA_host</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">vectorB_host</span><span class="p">);</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// TSDF volume functions</span>
+
+      <span class="cm">/** \brief Perform tsdf volume initialization</span>
+<span class="cm">        *  \param[out] array volume to be initialized</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">initVolume</span><span class="p">(</span><span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">array</span><span class="p">);</span>
+
+      <span class="c1">//first version</span>
+      <span class="cm">/** \brief Performs Tsfg volume uptation (extra obsolete now)</span>
+<span class="cm">        * \param[in] depth_raw Kinect depth image</span>
+<span class="cm">        * \param[in] intr camera intrinsics</span>
+<span class="cm">        * \param[in] volume_size size of volume in mm</span>
+<span class="cm">        * \param[in] Rcurr_inv inverse rotation for current camera pose</span>
+<span class="cm">        * \param[in] tcurr translation for current camera pose</span>
+<span class="cm">        * \param[in] tranc_dist tsdf truncation distance</span>
+<span class="cm">        * \param[in] volume tsdf volume to be updated</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">integrateTsdfVolume</span> <span class="p">(</span><span class="k">const</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">ushort</span><span class="o">&gt;&amp;</span> <span class="n">depth_raw</span><span class="p">,</span> <span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rcurr_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tcurr</span><span class="p">,</span> <span class="kt">float</span> <span class="n">tranc_dist</span><span class="p">,</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">volume</span><span class="p">);</span>
+
+      <span class="c1">//second version</span>
+      <span class="cm">/** \brief Function that integrates volume if volume element contains: 2 bytes for round(tsdf*SHORT_MAX) and 2 bytes for integer weight.</span>
+<span class="cm">        * \param[in] depth Kinect depth image</span>
+<span class="cm">        * \param[in] intr camera intrinsics</span>
+<span class="cm">        * \param[in] volume_size size of volume in mm</span>
+<span class="cm">        * \param[in] Rcurr_inv inverse rotation for current camera pose</span>
+<span class="cm">        * \param[in] tcurr translation for current camera pose</span>
+<span class="cm">        * \param[in] tranc_dist tsdf truncation distance</span>
+<span class="cm">        * \param[in] volume tsdf volume to be updated</span>
+<span class="cm">        * \param[in] buffer cyclical buffer structure</span>
+<span class="cm">        * \param[out] depthScaled Buffer for scaled depth along ray</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">integrateTsdfVolume</span> <span class="p">(</span><span class="k">const</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">ushort</span><span class="o">&gt;&amp;</span> <span class="n">depth</span><span class="p">,</span> <span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rcurr_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tcurr</span><span class="p">,</span> <span class="kt">float</span> <span class="n">tranc_dist</span><span class="p">,</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">tsdf_buffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">depthScaled</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Function that clears the TSDF values. The clearing takes place from the origin (in indices) to an offset in X,Y,Z values accordingly</span>
+<span class="cm">        * \param[in] volume Pointer to TSDF volume in GPU</span>
+<span class="cm">        * \param[in] buffer Pointer to the buffer struct that contains information about memory addresses of the tsdf volume memory block, which are used for the cyclic buffer.</span>
+<span class="cm">        * \param[in] shiftX Offset in indices that will be cleared from the TSDF volume. The clearing start from buffer.OriginX and stops in OriginX + shiftX</span>
+<span class="cm">        * \param[in] shiftY Offset in indices that will be cleared from the TSDF volume. The clearing start from buffer.OriginY and stops in OriginY + shiftY</span>
+<span class="cm">        * \param[in] shiftZ Offset in indices that will be cleared from the TSDF volume. The clearing start from buffer.OriginZ and stops in OriginZ + shiftZ</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">clearTSDFSlice</span> <span class="p">(</span><span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">volume</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">tsdf_buffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="kt">int</span> <span class="n">shiftX</span><span class="p">,</span> <span class="kt">int</span> <span class="n">shiftY</span><span class="p">,</span> <span class="kt">int</span> <span class="n">shiftZ</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Initialzied color volume</span>
+<span class="cm">        * \param[out] color_volume color volume for initialization</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">initColorVolume</span><span class="p">(</span><span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">uchar4</span><span class="o">&gt;</span> <span class="n">color_volume</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs integration in color volume</span>
+<span class="cm">        * \param[in] intr Depth camera intrionsics structure</span>
+<span class="cm">        * \param[in] tranc_dist tsdf truncation distance</span>
+<span class="cm">        * \param[in] R_inv Inverse camera rotation</span>
+<span class="cm">        * \param[in] t camera translation</span>
+<span class="cm">        * \param[in] vmap Raycasted vertex map</span>
+<span class="cm">        * \param[in] colors RGB colors for current frame</span>
+<span class="cm">        * \param[in] volume_size volume size in meters</span>
+<span class="cm">        * \param[in] color_volume color volume to be integrated</span>
+<span class="cm">        * \param[in] max_weight max weight for running color average. Zero means not average, one means average with prev value, etc.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">updateColorVolume</span><span class="p">(</span><span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span> <span class="kt">float</span> <span class="n">tranc_dist</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">R_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span>
+              <span class="k">const</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">uchar3</span><span class="o">&gt;&amp;</span> <span class="n">colors</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">uchar4</span><span class="o">&gt;</span> <span class="n">color_volume</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_weight</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// Raycast and view generation</span>
+      <span class="cm">/** \brief Generation vertex and normal maps from volume for current camera pose</span>
+<span class="cm">        * \param[in] intr camera intrinsices</span>
+<span class="cm">        * \param[in] Rcurr current rotation</span>
+<span class="cm">        * \param[in] tcurr current translation</span>
+<span class="cm">        * \param[in] tranc_dist volume truncation distance</span>
+<span class="cm">        * \param[in] volume_size volume size in mm</span>
+<span class="cm">        * \param[in] volume tsdf volume</span>
+<span class="cm">        * \param[in] buffer cyclical buffer structure</span>
+<span class="cm">        * \param[out] vmap output vertex map</span>
+<span class="cm">        * \param[out] nmap output normals map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">raycast</span> <span class="p">(</span><span class="k">const</span> <span class="n">Intr</span><span class="o">&amp;</span> <span class="n">intr</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">Rcurr</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">tcurr</span><span class="p">,</span> <span class="kt">float</span> <span class="n">tranc_dist</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span>
+              <span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">tsdf_buffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Renders 3D image of the scene</span>
+<span class="cm">        * \param[in] vmap vertex map</span>
+<span class="cm">        * \param[in] nmap normals map</span>
+<span class="cm">        * \param[in] light pose of light source</span>
+<span class="cm">        * \param[out] dst buffer where image is generated</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">generateImage</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">nmap</span><span class="p">,</span> <span class="k">const</span> <span class="n">LightSource</span><span class="o">&amp;</span> <span class="n">light</span><span class="p">,</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">uchar3</span><span class="o">&gt;</span> <span class="n">dst</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Renders depth image from give pose</span>
+<span class="cm">        * \param[in] R_inv inverse camera rotation</span>
+<span class="cm">        * \param[in] t camera translation</span>
+<span class="cm">        * \param[in] vmap vertex map</span>
+<span class="cm">        * \param[out] dst buffer where depth is generated</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">generateDepth</span> <span class="p">(</span><span class="k">const</span> <span class="n">Mat33</span><span class="o">&amp;</span> <span class="n">R_inv</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">DepthMap</span><span class="o">&amp;</span> <span class="n">dst</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Paints 3D view with color map</span>
+<span class="cm">        * \param[in] colors rgb color frame from OpenNI</span>
+<span class="cm">        * \param[out] dst output 3D view</span>
+<span class="cm">        * \param[in] colors_weight weight for colors</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">paint3DView</span><span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">uchar3</span><span class="o">&gt;&amp;</span> <span class="n">colors</span><span class="p">,</span> <span class="n">PtrStepSz</span><span class="o">&lt;</span><span class="n">uchar3</span><span class="o">&gt;</span> <span class="n">dst</span><span class="p">,</span> <span class="kt">float</span> <span class="n">colors_weight</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs resize of vertex map to next pyramid level by averaging each four points</span>
+<span class="cm">        * \param[in] input vertext map</span>
+<span class="cm">        * \param[out] output resized vertex map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">resizeVMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">output</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs resize of vertex map to next pyramid level by averaging each four normals</span>
+<span class="cm">        * \param[in] input normal map</span>
+<span class="cm">        * \param[out] output vertex map</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">resizeNMap</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">output</span><span class="p">);</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// Push data to TSDF</span>
+
+          <span class="cm">/** \brief Loads the values of a tsdf point cloud to the tsdf volume in GPU</span>
+<span class="cm">        * \param[in] volume tsdf volume</span>
+<span class="cm">        * \param[in] cloud_gpu contains the data to be pushed to the tsdf volume</span>
+<span class="cm">        * \param[in] buffer Pointer to the buffer struct that contains information about memory addresses of the tsdf volume memory block, which are used for the cyclic buffer.</span>
+<span class="cm">        */</span>
+      <span class="cm">/*PCL_EXPORTS*/</span> <span class="kt">void</span>
+      <span class="nf">pushCloudAsSliceGPU</span> <span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="n">cloud_gpu</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">tsdf_buffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">);</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// Cloud extraction</span>
+
+      <span class="cm">/** \brief Perform point cloud extraction from tsdf volume</span>
+<span class="cm">        * \param[in] volume tsdf volume</span>
+<span class="cm">        * \param[in] volume_size size of the volume</span>
+<span class="cm">        * \param[out] output buffer large enough to store point cloud</span>
+<span class="cm">        * \return number of point stored to passed buffer</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">size_t</span>
+      <span class="nf">extractCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span> <span class="n">PtrSz</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="n">output</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Perform point cloud extraction of a slice from tsdf volume</span>
+<span class="cm">        * \param[in] volume tsdf volume on GPU</span>
+<span class="cm">        * \param[in] volume_size size of the volume</span>
+<span class="cm">        * \param[in] buffer Pointer to the buffer struct that contains information about memory addresses of the tsdf volume memory block, which are used for the cyclic buffer.</span>
+<span class="cm">        * \param[in] shiftX Offset in indices that will be cleared from the TSDF volume. The clearing start from buffer.OriginX and stops in OriginX + shiftX</span>
+<span class="cm">        * \param[in] shiftY Offset in indices that will be cleared from the TSDF volume. The clearing start from buffer.OriginY and stops in OriginY + shiftY</span>
+<span class="cm">        * \param[in] shiftZ Offset in indices that will be cleared from the TSDF volume. The clearing start from buffer.OriginZ and stops in OriginZ + shiftZ</span>
+<span class="cm">        * \param[out] output_xyz buffer large enough to store point cloud xyz values</span>
+<span class="cm">        * \param[out] output_intensities buffer large enough to store point cloud intensity values</span>
+<span class="cm">        * \return number of point stored to passed buffer</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">size_t</span>
+      <span class="nf">extractSliceAsCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">tsdf_buffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">shiftX</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">shiftY</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">shiftZ</span><span class="p">,</span> <span class="n">PtrSz</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;</span> <span class="n">output_xyz</span><span class="p">,</span> <span class="n">PtrSz</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">output_intensities</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs normals computation for given points using tsdf volume</span>
+<span class="cm">        * \param[in] volume tsdf volume</span>
+<span class="cm">        * \param[in] volume_size volume size</span>
+<span class="cm">        * \param[in] input points where normals are computed</span>
+<span class="cm">        * \param[out] output normals. Could be float4 or float8. If for a point normal can&#39;t be computed, such normal is marked as nan.</span>
+<span class="cm">        */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">NormalType</span><span class="o">&gt;</span>
+      <span class="kt">void</span>
+      <span class="n">extractNormals</span> <span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span> <span class="k">const</span> <span class="n">PtrSz</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;&amp;</span> <span class="n">input</span><span class="p">,</span> <span class="n">NormalType</span><span class="o">*</span> <span class="n">output</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Performs colors exctraction from color volume</span>
+<span class="cm">        * \param[in] color_volume color volume</span>
+<span class="cm">        * \param[in] volume_size volume size</span>
+<span class="cm">        * \param[in] points points for which color are computed</span>
+<span class="cm">        * \param[out] colors output array with colors.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">exctractColors</span><span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">uchar4</span><span class="o">&gt;&amp;</span> <span class="n">color_volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span> <span class="k">const</span> <span class="n">PtrSz</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;&amp;</span> <span class="n">points</span><span class="p">,</span> <span class="n">uchar4</span><span class="o">*</span> <span class="n">colors</span><span class="p">);</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// Utility</span>
+      <span class="k">struct</span> <span class="n">float8</span>  <span class="p">{</span> <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">;</span> <span class="p">};</span>
+      <span class="k">struct</span> <span class="n">float12</span> <span class="p">{</span> <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">normal_x</span><span class="p">,</span> <span class="n">normal_y</span><span class="p">,</span> <span class="n">normal_z</span><span class="p">,</span> <span class="n">n4</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">;</span> <span class="p">};</span>
+
+      <span class="cm">/** \brief Conversion from SOA to AOS</span>
+<span class="cm">        * \param[in] vmap SOA map</span>
+<span class="cm">        * \param[out] output Array of 3D points. Can be float4 or float8.</span>
+<span class="cm">        */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+      <span class="kt">void</span>
+      <span class="n">convert</span> <span class="p">(</span><span class="k">const</span> <span class="n">MapArr</span><span class="o">&amp;</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">output</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Merges pcl::PointXYZ and pcl::Normal to PointNormal</span>
+<span class="cm">        * \param[in] cloud points cloud</span>
+<span class="cm">        * \param[in] normals normals cloud</span>
+<span class="cm">        * \param[out] output array of PointNomals.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">mergePointNormal</span><span class="p">(</span><span class="k">const</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">float8</span><span class="o">&gt;&amp;</span> <span class="n">normals</span><span class="p">,</span> <span class="k">const</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">float12</span><span class="o">&gt;&amp;</span> <span class="n">output</span><span class="p">);</span>
+
+      <span class="cm">/** \brief  Check for qnan (unused now)</span>
+<span class="cm">        * \param[in] value</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">valid_host</span> <span class="p">(</span><span class="kt">float</span> <span class="n">value</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mh">0x7fffffff</span><span class="p">;</span> <span class="c1">//QNAN</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief synchronizes CUDA execution */</span>
+      <span class="kr">inline</span>
+      <span class="kt">void</span>
+      <span class="nf">sync</span> <span class="p">()</span> <span class="p">{</span> <span class="n">cudaSafeCall</span> <span class="p">(</span><span class="n">cudaDeviceSynchronize</span> <span class="p">());</span> <span class="p">}</span>
+
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">D</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Matx</span><span class="o">&gt;</span> <span class="n">D</span><span class="o">&amp;</span>
+      <span class="n">device_cast</span> <span class="p">(</span><span class="n">Matx</span><span class="o">&amp;</span> <span class="n">matx</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">D</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">matx</span><span class="p">.</span><span class="n">data</span> <span class="p">()));</span>
+      <span class="p">}</span>
+
+      <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+      <span class="c1">// Marching cubes implementation</span>
+
+      <span class="cm">/** \brief Binds marching cubes tables to texture references */</span>
+      <span class="kt">void</span>
+      <span class="n">bindTextures</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="n">edgeBuf</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="n">triBuf</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="n">numVertsBuf</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Unbinds */</span>
+      <span class="kt">void</span>
+      <span class="nf">unbindTextures</span><span class="p">();</span>
+
+      <span class="cm">/** \brief Scans tsdf volume and retrieves occupied voxels</span>
+<span class="cm">        * \param[in] volume tsdf volume</span>
+<span class="cm">        * \param[out] occupied_voxels buffer for occupied voxels. The function fulfills first row with voxel ids and second row with number of vertices.</span>
+<span class="cm">        * \return number of voxels in the buffer</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">getOccupiedVoxels</span><span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">occupied_voxels</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Computes total number of vertices for all voxels and offsets of vertices in final triangle array</span>
+<span class="cm">        * \param[out] occupied_voxels buffer with occupied voxels. The function fulfills 3nd only with offsets</span>
+<span class="cm">        * \return total number of vertices</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">computeOffsetsAndTotalVertexes</span><span class="p">(</span><span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">occupied_voxels</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Generates final triangle array</span>
+<span class="cm">        * \param[in] volume tsdf volume</span>
+<span class="cm">        * \param[in] occupied_voxels occupied voxel ids (first row), number of vertices(second row), offsets(third row).</span>
+<span class="cm">        * \param[in] volume_size volume size in meters</span>
+<span class="cm">        * \param[out] output triangle array</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">generateTriangles</span><span class="p">(</span><span class="k">const</span> <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;&amp;</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">DeviceArray2D</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">occupied_voxels</span><span class="p">,</span> <span class="k">const</span> <span class="n">float3</span><span class="o">&amp;</span> <span class="n">volume_size</span><span class="p">,</span> <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">PointType</span><span class="o">&gt;&amp;</span> <span class="n">output</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

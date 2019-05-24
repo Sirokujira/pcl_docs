@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File texture_mapping.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File texture_mapping.hpp" href="file_pcl_surface_impl_texture_mapping.hpp.html" />
+    <link rel="prev" title="File texture_mapping.h" href="file_pcl_surface_texture_mapping.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_texture_mapping.h.html">File texture_mapping.h</a> &raquo;</li>
+        
+      <li>Program Listing for File texture_mapping.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_texture_mapping.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-texture-mapping-h">
+<span id="program-listing-file-pcl-surface-texture-mapping-h"></span><h1>Program Listing for File texture_mapping.h<a class="headerlink" href="#program-listing-for-file-texture-mapping-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_texture_mapping.h.html#file-pcl-surface-texture-mapping-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\texture_mapping.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/surface/reconstruction.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/transforms.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/TextureMesh.h&gt;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">texture_mapping</span>
+  <span class="p">{</span>
+
+    <span class="cm">/** \brief Structure to store camera pose and focal length.</span>
+<span class="cm">      *</span>
+<span class="cm">      * One can assign a value to focal_length, to be used along</span>
+<span class="cm">      * both camera axes or, optionally, axis-specific values</span>
+<span class="cm">      * (focal_length_w and focal_length_h). Optionally, one can</span>
+<span class="cm">      * also specify center-of-focus using parameters</span>
+<span class="cm">      * center_w and center_h. If the center-of-focus is not</span>
+<span class="cm">      * specified, it will be set to the geometric center of</span>
+<span class="cm">      * the camera, as defined by the width and height parameters.</span>
+<span class="cm">      */</span>
+    <span class="k">struct</span> <span class="n">Camera</span>
+    <span class="p">{</span>
+      <span class="n">Camera</span> <span class="p">()</span> <span class="o">:</span> <span class="n">focal_length</span> <span class="p">(),</span> <span class="n">focal_length_w</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">focal_length_h</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">center_w</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">center_h</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">height</span> <span class="p">(),</span> <span class="n">width</span> <span class="p">()</span> <span class="p">{}</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">pose</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">focal_length</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">focal_length_w</span><span class="p">;</span>  <span class="c1">// optional</span>
+      <span class="kt">double</span> <span class="n">focal_length_h</span><span class="p">;</span>  <span class="c1">// optinoal</span>
+      <span class="kt">double</span> <span class="n">center_w</span><span class="p">;</span>  <span class="c1">// optional</span>
+      <span class="kt">double</span> <span class="n">center_h</span><span class="p">;</span>  <span class="c1">// optional</span>
+      <span class="kt">double</span> <span class="n">height</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">width</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">texture_file</span><span class="p">;</span>
+
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Structure that links a uv coordinate to its 3D point and face.</span>
+<span class="cm">      */</span>
+    <span class="k">struct</span> <span class="n">UvIndex</span>
+    <span class="p">{</span>
+      <span class="n">UvIndex</span> <span class="p">()</span> <span class="o">:</span> <span class="n">idx_cloud</span> <span class="p">(),</span> <span class="n">idx_face</span> <span class="p">()</span> <span class="p">{}</span>
+      <span class="kt">int</span> <span class="n">idx_cloud</span><span class="p">;</span> <span class="c1">// Index of the PointXYZ in the camera&#39;s cloud</span>
+      <span class="kt">int</span> <span class="n">idx_face</span><span class="p">;</span> <span class="c1">// Face corresponding to that projection</span>
+    <span class="p">};</span>
+
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Camera</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Camera</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">CameraVector</span><span class="p">;</span>
+
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief The texture mapping algorithm</span>
+<span class="cm">    * \author Khai Tran, Raphael Favier</span>
+<span class="cm">    * \ingroup surface</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">TextureMapping</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">TextureMapping</span> <span class="o">&lt;</span> <span class="n">PointInT</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">TextureMapping</span> <span class="o">&lt;</span> <span class="n">PointInT</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloudSearch</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">Octree</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Octree</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">OctreePtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Octree</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">OctreeConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">texture_mapping</span><span class="o">::</span><span class="n">Camera</span> <span class="n">Camera</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">texture_mapping</span><span class="o">::</span><span class="n">UvIndex</span> <span class="n">UvIndex</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor. */</span>
+      <span class="n">TextureMapping</span> <span class="p">()</span> <span class="o">:</span>
+        <span class="n">f_</span> <span class="p">()</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="o">~</span><span class="n">TextureMapping</span> <span class="p">()</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set mesh scale control</span>
+<span class="cm">        * \param[in] f</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setF</span> <span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">f_</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set vector field</span>
+<span class="cm">        * \param[in] x data point x</span>
+<span class="cm">        * \param[in] y data point y</span>
+<span class="cm">        * \param[in] z data point z</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setVectorField</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">z</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">vector_field_</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+        <span class="c1">// normalize vector field</span>
+        <span class="n">vector_field_</span> <span class="o">/=</span> <span class="n">std</span><span class="o">::</span><span class="n">sqrt</span> <span class="p">(</span><span class="n">vector_field_</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">vector_field_</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set texture files</span>
+<span class="cm">        * \param[in] tex_files list of texture files</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setTextureFiles</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">tex_files</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">tex_files_</span> <span class="o">=</span> <span class="n">tex_files</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set texture materials</span>
+<span class="cm">        * \param[in] tex_material texture material</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setTextureMaterials</span> <span class="p">(</span><span class="n">TexMaterial</span> <span class="n">tex_material</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">tex_material_</span> <span class="o">=</span> <span class="n">tex_material</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Map texture to a mesh synthesis algorithm</span>
+<span class="cm">        * \param[in] tex_mesh texture mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">mapTexture2Mesh</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Map texture to a mesh UV mapping</span>
+<span class="cm">        * \param[in] tex_mesh texture mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">mapTexture2MeshUV</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Map textures acquired from a set of cameras onto a mesh.</span>
+<span class="cm">        * \details With UV mapping, the mesh must be divided into NbCamera + 1 sub-meshes.</span>
+<span class="cm">        * Each sub-mesh corresponding to the faces visible by one camera. The last submesh containing all non-visible faces</span>
+<span class="cm">        * \param[in] tex_mesh texture mesh</span>
+<span class="cm">        * \param[in] cams cameras used for UV mapping</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">mapMultipleTexturesToMeshUV</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">,</span>
+                                   <span class="n">pcl</span><span class="o">::</span><span class="n">texture_mapping</span><span class="o">::</span><span class="n">CameraVector</span> <span class="o">&amp;</span><span class="n">cams</span><span class="p">);</span>
+
+      <span class="cm">/** \brief computes UV coordinates of point, observed by one particular camera</span>
+<span class="cm">        * \param[in] pt XYZ point to project on camera plane</span>
+<span class="cm">        * \param[in] cam the camera used for projection</span>
+<span class="cm">        * \param[out] UV_coordinates the resulting uv coordinates. Set to (-1.0,-1.0) if the point is not visible by the camera</span>
+<span class="cm">        * \returns false if the point is not visible by the camera</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getPointUVCoordinates</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Camera</span> <span class="o">&amp;</span><span class="n">cam</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="o">&amp;</span><span class="n">UV_coordinates</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// if the point is in front of the camera</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// compute image center and dimension</span>
+          <span class="kt">double</span> <span class="n">sizeX</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+          <span class="kt">double</span> <span class="n">sizeY</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+          <span class="kt">double</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">cam</span><span class="p">.</span><span class="n">center_w</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">cx</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">center_w</span><span class="p">;</span>
+          <span class="k">else</span>
+            <span class="n">cx</span> <span class="o">=</span> <span class="p">(</span><span class="n">sizeX</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">cam</span><span class="p">.</span><span class="n">center_h</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">cy</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">center_h</span><span class="p">;</span>
+          <span class="k">else</span>
+            <span class="n">cy</span> <span class="o">=</span> <span class="p">(</span><span class="n">sizeY</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+
+          <span class="kt">double</span> <span class="n">focal_x</span><span class="p">,</span> <span class="n">focal_y</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">cam</span><span class="p">.</span><span class="n">focal_length_w</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">focal_x</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">focal_length_w</span><span class="p">;</span>
+          <span class="k">else</span>
+            <span class="n">focal_x</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">focal_length</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">cam</span><span class="p">.</span><span class="n">focal_length_h</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">focal_y</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">focal_length_h</span><span class="p">;</span>
+          <span class="k">else</span>
+            <span class="n">focal_y</span> <span class="o">=</span> <span class="n">cam</span><span class="p">.</span><span class="n">focal_length</span><span class="p">;</span>
+
+          <span class="c1">// project point on image frame</span>
+          <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">focal_x</span> <span class="o">*</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">pt</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">cx</span><span class="p">)</span> <span class="o">/</span> <span class="n">sizeX</span><span class="p">);</span> <span class="c1">//horizontal</span>
+          <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(((</span><span class="n">focal_y</span> <span class="o">*</span> <span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">pt</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">cy</span><span class="p">)</span> <span class="o">/</span> <span class="n">sizeY</span><span class="p">));</span> <span class="c1">//vertical</span>
+
+          <span class="c1">// point is visible!</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="o">&amp;&amp;</span> <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">1.0</span> <span class="o">&amp;&amp;</span> <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="o">&amp;&amp;</span> <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                                                                                                 <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// point is NOT visible by the camera</span>
+        <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">;</span>
+        <span class="n">UV_coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check if a point is occluded using raycasting on octree.</span>
+<span class="cm">        * \param[in] pt XYZ from which the ray will start (toward the camera)</span>
+<span class="cm">        * \param[in] octree the octree used for raycasting. It must be initialized with a cloud transformed into the camera&#39;s frame</span>
+<span class="cm">        * \returns true if the point is occluded.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isPointOccluded</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreePtr</span> <span class="n">octree</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Remove occluded points from a point cloud</span>
+<span class="cm">        * \param[in] input_cloud the cloud on which to perform occlusion detection</span>
+<span class="cm">        * \param[out] filtered_cloud resulting cloud, containing only visible points</span>
+<span class="cm">        * \param[in] octree_voxel_size octree resolution (in meters)</span>
+<span class="cm">        * \param[out] visible_indices will contain indices of visible points</span>
+<span class="cm">        * \param[out] occluded_indices will contain indices of occluded points</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">removeOccludedPoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudPtr</span> <span class="o">&amp;</span><span class="n">input_cloud</span><span class="p">,</span>
+                            <span class="n">PointCloudPtr</span> <span class="o">&amp;</span><span class="n">filtered_cloud</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">octree_voxel_size</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">visible_indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">occluded_indices</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Remove occluded points from a textureMesh</span>
+<span class="cm">        * \param[in] tex_mesh input mesh, on witch to perform occlusion detection</span>
+<span class="cm">        * \param[out] cleaned_mesh resulting mesh, containing only visible points</span>
+<span class="cm">        * \param[in] octree_voxel_size octree resolution (in meters)</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">removeOccludedPoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">cleaned_mesh</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">octree_voxel_size</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Remove occluded points from a textureMesh</span>
+<span class="cm">        * \param[in] tex_mesh input mesh, on witch to perform occlusion detection</span>
+<span class="cm">        * \param[out] filtered_cloud resulting cloud, containing only visible points</span>
+<span class="cm">        * \param[in] octree_voxel_size octree resolution (in meters)</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">removeOccludedPoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">,</span> <span class="n">PointCloudPtr</span> <span class="o">&amp;</span><span class="n">filtered_cloud</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">octree_voxel_size</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Segment faces by camera visibility. Point-based segmentation.</span>
+<span class="cm">        * \details With N camera, faces will be arranged into N+1 groups: 1 for each camera, plus 1 for faces not visible from any camera.</span>
+<span class="cm">        * \param[in] tex_mesh input mesh that needs sorting. Must contain only 1 sub-mesh.</span>
+<span class="cm">        * \param[in] sorted_mesh resulting mesh, will contain nbCamera + 1 sub-mesh.</span>
+<span class="cm">        * \param[in] cameras vector containing the cameras used for texture mapping.</span>
+<span class="cm">        * \param[in] octree_voxel_size octree resolution (in meters)</span>
+<span class="cm">        * \param[out] visible_pts cloud containing only visible points</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">sortFacesByCamera</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">,</span>
+                         <span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">sorted_mesh</span><span class="p">,</span>
+                         <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">texture_mapping</span><span class="o">::</span><span class="n">CameraVector</span> <span class="o">&amp;</span><span class="n">cameras</span><span class="p">,</span>
+                         <span class="k">const</span> <span class="kt">double</span> <span class="n">octree_voxel_size</span><span class="p">,</span> <span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">visible_pts</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Colors a point cloud, depending on its occlusions.</span>
+<span class="cm">        * \details If showNbOcclusions is set to True, each point is colored depending on the number of points occluding it.</span>
+<span class="cm">        * Else, each point is given a different a 0 value is not occluded, 1 if occluded.</span>
+<span class="cm">        * By default, the number of occlusions is bounded to 4.</span>
+<span class="cm">        * \param[in] input_cloud input cloud on which occlusions will be computed.</span>
+<span class="cm">        * \param[out] colored_cloud resulting colored cloud showing the number of occlusions per point.</span>
+<span class="cm">        * \param[in] octree_voxel_size octree resolution (in meters).</span>
+<span class="cm">        * \param[in] show_nb_occlusions If false, color information will only represent.</span>
+<span class="cm">        * \param[in] max_occlusions Limit the number of occlusions per point.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">showOcclusions</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudPtr</span> <span class="o">&amp;</span><span class="n">input_cloud</span><span class="p">,</span>
+                      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">colored_cloud</span><span class="p">,</span>
+                      <span class="k">const</span> <span class="kt">double</span> <span class="n">octree_voxel_size</span><span class="p">,</span>
+                      <span class="k">const</span> <span class="kt">bool</span> <span class="n">show_nb_occlusions</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                      <span class="k">const</span> <span class="kt">int</span> <span class="n">max_occlusions</span> <span class="o">=</span> <span class="mi">4</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Colors the point cloud of a Mesh, depending on its occlusions.</span>
+<span class="cm">        * \details If showNbOcclusions is set to True, each point is colored depending on the number of points occluding it.</span>
+<span class="cm">        * Else, each point is given a different a 0 value is not occluded, 1 if occluded.</span>
+<span class="cm">        * By default, the number of occlusions is bounded to 4.</span>
+<span class="cm">        * \param[in] tex_mesh input mesh on which occlusions will be computed.</span>
+<span class="cm">        * \param[out] colored_cloud resulting colored cloud showing the number of occlusions per point.</span>
+<span class="cm">        * \param[in] octree_voxel_size octree resolution (in meters).</span>
+<span class="cm">        * \param[in] show_nb_occlusions If false, color information will only represent.</span>
+<span class="cm">        * \param[in] max_occlusions Limit the number of occlusions per point.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">showOcclusions</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">tex_mesh</span><span class="p">,</span>
+                      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">colored_cloud</span><span class="p">,</span>
+                      <span class="kt">double</span> <span class="n">octree_voxel_size</span><span class="p">,</span>
+                      <span class="kt">bool</span> <span class="n">show_nb_occlusions</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                      <span class="kt">int</span> <span class="n">max_occlusions</span> <span class="o">=</span> <span class="mi">4</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Segment and texture faces by camera visibility. Face-based segmentation.</span>
+<span class="cm">        * \details With N camera, faces will be arranged into N+1 groups: 1 for each camera, plus 1 for faces not visible from any camera.</span>
+<span class="cm">        * The mesh will also contain uv coordinates for each face</span>
+<span class="cm">        * \param mesh input mesh that needs sorting. Should contain only 1 sub-mesh.</span>
+<span class="cm">        * \param[in] cameras vector containing the cameras used for texture mapping.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">textureMeshwithMultipleCameras</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">TextureMesh</span> <span class="o">&amp;</span><span class="n">mesh</span><span class="p">,</span>
+                                      <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">texture_mapping</span><span class="o">::</span><span class="n">CameraVector</span> <span class="o">&amp;</span><span class="n">cameras</span><span class="p">);</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief mesh scale control. */</span>
+      <span class="kt">float</span> <span class="n">f_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief vector field */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">vector_field_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief list of texture files */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">tex_files_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief list of texture materials */</span>
+      <span class="n">TexMaterial</span> <span class="n">tex_material_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Map texture to a face</span>
+<span class="cm">        * \param[in] p1 the first point</span>
+<span class="cm">        * \param[in] p2 the second point</span>
+<span class="cm">        * \param[in] p3 the third point</span>
+<span class="cm">        */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+      <span class="n">mapTexture2Face</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">p3</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Returns the circumcenter of a triangle and the circle&#39;s radius.</span>
+<span class="cm">        * \details see http://en.wikipedia.org/wiki/Circumcenter for formulas.</span>
+<span class="cm">        * \param[in] p1 first point of the triangle.</span>
+<span class="cm">        * \param[in] p2 second point of the triangle.</span>
+<span class="cm">        * \param[in] p3 third point of the triangle.</span>
+<span class="cm">        * \param[out] circumcenter resulting circumcenter</span>
+<span class="cm">        * \param[out] radius the radius of the circumscribed circle.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getTriangleCircumcenterAndSize</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p3</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">circumcenter</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">radius</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Returns the centroid of a triangle and the corresponding circumscribed circle&#39;s radius.</span>
+<span class="cm">        * \details yield a tighter circle than getTriangleCircumcenterAndSize.</span>
+<span class="cm">        * \param[in] p1 first point of the triangle.</span>
+<span class="cm">        * \param[in] p2 second point of the triangle.</span>
+<span class="cm">        * \param[in] p3 third point of the triangle.</span>
+<span class="cm">        * \param[out] circumcenter resulting circumcenter</span>
+<span class="cm">        * \param[out] radius the radius of the circumscribed circle.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getTriangleCircumcscribedCircleCentroid</span> <span class="p">(</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p3</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">circumcenter</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">radius</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief computes UV coordinates of point, observed by one particular camera</span>
+<span class="cm">        * \param[in] pt XYZ point to project on camera plane</span>
+<span class="cm">        * \param[in] cam the camera used for projection</span>
+<span class="cm">        * \param[out] UV_coordinates the resulting UV coordinates. Set to (-1.0,-1.0) if the point is not visible by the camera</span>
+<span class="cm">        * \returns false if the point is not visible by the camera</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getPointUVCoordinates</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">pt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Camera</span> <span class="o">&amp;</span><span class="n">cam</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">UV_coordinates</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Returns true if all the vertices of one face are projected on the camera&#39;s image plane.</span>
+<span class="cm">        * \param[in] camera camera on which to project the face.</span>
+<span class="cm">        * \param[in] p1 first point of the face.</span>
+<span class="cm">        * \param[in] p2 second point of the face.</span>
+<span class="cm">        * \param[in] p3 third point of the face.</span>
+<span class="cm">        * \param[out] proj1 UV coordinates corresponding to p1.</span>
+<span class="cm">        * \param[out] proj2 UV coordinates corresponding to p2.</span>
+<span class="cm">        * \param[out] proj3 UV coordinates corresponding to p3.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isFaceProjected</span> <span class="p">(</span><span class="k">const</span> <span class="n">Camera</span> <span class="o">&amp;</span><span class="n">camera</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">p3</span><span class="p">,</span>
+                       <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">proj1</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">proj2</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">proj3</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Returns True if a point lays within a triangle</span>
+<span class="cm">        * \details see http://www.blackpawn.com/texts/pointinpoly/default.html</span>
+<span class="cm">        * \param[in] p1 first point of the triangle.</span>
+<span class="cm">        * \param[in] p2 second point of the triangle.</span>
+<span class="cm">        * \param[in] p3 third point of the triangle.</span>
+<span class="cm">        * \param[in] pt the querry point.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">checkPointInsideTriangle</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">p3</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXY</span> <span class="o">&amp;</span><span class="n">pt</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Class get name method. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getClassName</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">&quot;TextureMapping&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_impl_texture_mapping.hpp.html" class="btn btn-neutral float-right" title="File texture_mapping.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_texture_mapping.h.html" class="btn btn-neutral float-left" title="File texture_mapping.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

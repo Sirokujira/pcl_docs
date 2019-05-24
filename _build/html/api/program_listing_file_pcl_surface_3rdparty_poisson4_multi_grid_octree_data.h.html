@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File multi_grid_octree_data.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File multi_grid_octree_data.hpp" href="file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.hpp.html" />
+    <link rel="prev" title="File multi_grid_octree_data.h" href="file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.h.html">File multi_grid_octree_data.h</a> &raquo;</li>
+        
+      <li>Program Listing for File multi_grid_octree_data.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-multi-grid-octree-data-h">
+<span id="program-listing-file-pcl-surface-3rdparty-poisson4-multi-grid-octree-data-h"></span><h1>Program Listing for File multi_grid_octree_data.h<a class="headerlink" href="#program-listing-for-file-multi-grid-octree-data-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.h.html#file-pcl-surface-3rdparty-poisson4-multi-grid-octree-data-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\poisson4\multi_grid_octree_data.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">Copyright (c) 2006, Michael Kazhdan and Matthew Bolitho</span>
+<span class="cm">All rights reserved.</span>
+
+<span class="cm">Redistribution and use in source and binary forms, with or without modification,</span>
+<span class="cm">are permitted provided that the following conditions are met:</span>
+
+<span class="cm">Redistributions of source code must retain the above copyright notice, this list of</span>
+<span class="cm">conditions and the following disclaimer. Redistributions in binary form must reproduce</span>
+<span class="cm">the above copyright notice, this list of conditions and the following disclaimer</span>
+<span class="cm">in the documentation and/or other materials provided with the distribution.</span>
+
+<span class="cm">Neither the name of the Johns Hopkins University nor the names of its contributors</span>
+<span class="cm">may be used to endorse or promote products derived from this software without specific</span>
+<span class="cm">prior written permission.</span>
+
+<span class="cm">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY</span>
+<span class="cm">EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES</span>
+<span class="cm">OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT</span>
+<span class="cm">SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm">INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED</span>
+<span class="cm">TO, PROCUREMENT OF SUBSTITUTE  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR</span>
+<span class="cm">BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span>
+<span class="cm">CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm">ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH</span>
+<span class="cm">DAMAGE.</span>
+<span class="cm">*/</span>
+
+<span class="cp">#ifndef MULTI_GRID_OCTREE_DATA_INCLUDED</span>
+<span class="cp">#define MULTI_GRID_OCTREE_DATA_INCLUDED</span>
+
+<span class="cp">#if defined __GNUC__</span>
+<span class="cp">#  pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#define MISHA_DEBUG 1</span>
+
+<span class="cp">#define GRADIENT_DOMAIN_SOLUTION 1  </span><span class="c1">// Given the constraint vector-field V(p), there are two ways to solve for the coefficients, x, of the indicator function</span>
+<span class="c1">// with respect to the B-spline basis {B_i(p)}</span>
+<span class="c1">// 1] Find x minimizing:</span>
+<span class="c1">//      || V(p) - \sum_i \nabla x_i B_i(p) ||^2</span>
+<span class="c1">//    which is solved by the system A_1x = b_1 where:</span>
+<span class="c1">//      A_1[i,j] = &lt; \nabla B_i(p) , \nabla B_j(p) &gt;</span>
+<span class="c1">//      b_1[i]   = &lt; \nabla B_i(p) , V(p) &gt;</span>
+<span class="c1">// 2] Formulate this as a Poisson equation:</span>
+<span class="c1">//      \sum_i x_i \Delta B_i(p) = \nabla \cdot V(p)</span>
+<span class="c1">//    which is solved by the system A_2x = b_2 where:</span>
+<span class="c1">//      A_2[i,j] = - &lt; \Delta B_i(p) , B_j(p) &gt;</span>
+<span class="c1">//      b_2[i]   = - &lt; B_i(p) , \nabla \cdot V(p) &gt;</span>
+<span class="c1">// Although the two system matrices should be the same (assuming that the B_i satisfy dirichlet/neumann boundary conditions)</span>
+<span class="c1">// the constraint vectors can differ when V does not satisfy the Neumann boundary conditions:</span>
+<span class="c1">//    A_1[i,j] = \int_R &lt; \nabla B_i(p) , \nabla B_j(p) &gt;</span>
+<span class="c1">//               = \int_R [ \nabla \cdot ( B_i(p) \nabla B_j(p) ) - B_i(p) \Delta B_j(p) ]</span>
+<span class="c1">//               = \int_dR &lt; N(p) , B_i(p) \nabla B_j(p) &gt; + A_2[i,j]</span>
+<span class="c1">// and the first integral is zero if either f_i is zero on the boundary dR or the derivative of B_i across the boundary is zero.</span>
+<span class="c1">// However, for the constraints we have:</span>
+<span class="c1">//    b_1(i)   = \int_R &lt; \nabla B_i(p) , V(p) &gt;</span>
+<span class="c1">//               = \int_R [ \nabla \cdot ( B_i(p) V(p) ) - B_i(p) \nabla \cdot V(p) ]</span>
+<span class="c1">//               = \int_dR &lt; N(p) ,  B_i(p) V(p) &gt; + b_2[i]</span>
+<span class="c1">// In particular, this implies that if the B_i satisfy the Neumann boundary conditions (rather than Dirichlet),</span>
+<span class="c1">// and V is not zero across the boundary, then the two constraints are different.</span>
+<span class="c1">// Forcing the &lt; V(p) , N(p) &gt; = 0 on the boundary, by killing off the component of the vector-field in the normal direction</span>
+<span class="c1">// (FORCE_NEUMANN_FIELD), makes the two systems equal, and the value of this flag should be immaterial.</span>
+<span class="c1">// Note that under interpretation 1, we have:</span>
+<span class="c1">//    \sum_i b_1(i) = &lt; \nabla \sum_ i B_i(p) , V(p) &gt; = 0</span>
+<span class="c1">// because the B_i&#39;s sum to one. However, in general, we could have</span>
+<span class="c1">//    \sum_i b_2(i) \neq 0.</span>
+<span class="c1">// This could cause trouble because the constant functions are in the kernel of the matrix A, so CG will misbehave if the constraint</span>
+<span class="c1">// has a non-zero DC term. (Again, forcing &lt; V(p) , N(p) &gt; = 0 along the boundary resolves this problem.)</span>
+
+<span class="cp">#define FORCE_NEUMANN_FIELD 1   </span><span class="c1">// This flag forces the normal component across the boundary of the integration domain to be zero.</span>
+<span class="c1">// This should be enabled if GRADIENT_DOMAIN_SOLUTION is not, so that CG doesn&#39;t run into trouble.</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;bspline_data.h&quot;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">poisson</span>
+  <span class="p">{</span>
+
+    <span class="k">typedef</span> <span class="kt">float</span> <span class="n">Real</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="kt">float</span> <span class="n">BSplineDataReal</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">OctNode</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">TreeNodeData</span> <span class="p">,</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">TreeOctNode</span><span class="p">;</span>
+
+
+
+    <span class="k">class</span> <span class="nc">RootInfo</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">edgeIndex</span><span class="p">;</span>
+        <span class="kt">long</span> <span class="kt">long</span> <span class="n">key</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">class</span> <span class="nc">VertexData</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">EdgeIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">eIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">EdgeIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">eIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">FaceIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">fIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span><span class="p">,</span><span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">FaceIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">fIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CornerIndex</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offSet</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">cIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CornerIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">cIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CornerIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">cIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CenterIndex</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offSet</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CenterIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CenterIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">long</span> <span class="kt">long</span> <span class="nf">CornerIndexKey</span><span class="p">(</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">);</span>
+    <span class="p">};</span>
+    <span class="k">class</span> <span class="nc">SortedTreeNodes</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="n">TreeOctNode</span><span class="o">**</span> <span class="n">treeNodes</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="o">*</span><span class="n">nodeCount</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">maxDepth</span><span class="p">;</span>
+        <span class="n">SortedTreeNodes</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="o">~</span><span class="n">SortedTreeNodes</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">set</span><span class="p">(</span> <span class="n">TreeOctNode</span><span class="o">&amp;</span> <span class="n">root</span> <span class="p">);</span>
+        <span class="k">struct</span> <span class="n">CornerIndices</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">idx</span><span class="p">[</span><span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Cube</span><span class="o">::</span><span class="n">CORNERS</span><span class="p">];</span>
+            <span class="n">CornerIndices</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">memset</span><span class="p">(</span> <span class="n">idx</span> <span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="o">*</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Cube</span><span class="o">::</span><span class="n">CORNERS</span> <span class="p">);</span> <span class="p">}</span>
+            <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
+            <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="k">struct</span> <span class="n">CornerTableData</span>
+        <span class="p">{</span>
+            <span class="n">CornerTableData</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">cCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+            <span class="o">~</span><span class="n">CornerTableData</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">clear</span><span class="p">();</span> <span class="p">}</span>
+            <span class="kt">void</span> <span class="n">clear</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">cTable</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span> <span class="p">;</span> <span class="n">cCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+            <span class="n">CornerIndices</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="k">const</span> <span class="n">CornerIndices</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+            <span class="n">CornerIndices</span><span class="o">&amp;</span> <span class="n">cornerIndices</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="k">const</span> <span class="n">CornerIndices</span><span class="o">&amp;</span> <span class="n">cornerIndices</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">cCount</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">CornerIndices</span> <span class="o">&gt;</span> <span class="n">cTable</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">offsets</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="kt">void</span> <span class="nf">setCornerTable</span><span class="p">(</span> <span class="n">CornerTableData</span><span class="o">&amp;</span> <span class="n">cData</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rootNode</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">setCornerTable</span><span class="p">(</span> <span class="n">CornerTableData</span><span class="o">&amp;</span> <span class="n">cData</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rootNode</span> <span class="p">,</span>             <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">setCornerTable</span><span class="p">(</span> <span class="n">cData</span> <span class="p">,</span> <span class="n">rootNode</span> <span class="p">,</span> <span class="n">maxDepth</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span> <span class="n">threads</span> <span class="p">);</span> <span class="p">}</span>
+        <span class="kt">void</span> <span class="nf">setCornerTable</span><span class="p">(</span> <span class="n">CornerTableData</span><span class="o">&amp;</span> <span class="n">cData</span> <span class="p">,</span>                                           <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">setCornerTable</span><span class="p">(</span> <span class="n">cData</span> <span class="p">,</span> <span class="n">treeNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">maxDepth</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span> <span class="n">threads</span> <span class="p">);</span> <span class="p">}</span>
+        <span class="kt">int</span> <span class="nf">getMaxCornerCount</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rootNode</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="k">const</span> <span class="p">;</span>
+        <span class="k">struct</span> <span class="n">EdgeIndices</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">idx</span><span class="p">[</span><span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Cube</span><span class="o">::</span><span class="n">EDGES</span><span class="p">];</span>
+            <span class="n">EdgeIndices</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">memset</span><span class="p">(</span> <span class="n">idx</span> <span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="o">*</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Cube</span><span class="o">::</span><span class="n">EDGES</span> <span class="p">);</span> <span class="p">}</span>
+            <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
+            <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="k">struct</span> <span class="n">EdgeTableData</span>
+        <span class="p">{</span>
+            <span class="n">EdgeTableData</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">eCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+            <span class="o">~</span><span class="n">EdgeTableData</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">clear</span><span class="p">();</span> <span class="p">}</span>
+            <span class="kt">void</span> <span class="n">clear</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">eTable</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span> <span class="p">,</span> <span class="n">eCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+            <span class="n">EdgeIndices</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="k">const</span> <span class="n">EdgeIndices</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+            <span class="n">EdgeIndices</span><span class="o">&amp;</span> <span class="n">edgeIndices</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+            <span class="k">const</span> <span class="n">EdgeIndices</span><span class="o">&amp;</span> <span class="n">edgeIndices</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">eCount</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">EdgeIndices</span> <span class="o">&gt;</span> <span class="n">eTable</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">offsets</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="kt">void</span> <span class="nf">setEdgeTable</span><span class="p">(</span> <span class="n">EdgeTableData</span><span class="o">&amp;</span> <span class="n">eData</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rootNode</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">threads</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">setEdgeTable</span><span class="p">(</span> <span class="n">EdgeTableData</span><span class="o">&amp;</span> <span class="n">eData</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rootNode</span> <span class="p">,</span>             <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="p">{</span> <span class="n">setEdgeTable</span><span class="p">(</span> <span class="n">eData</span> <span class="p">,</span> <span class="n">rootNode</span> <span class="p">,</span> <span class="n">maxDepth</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span> <span class="n">threads</span> <span class="p">);</span> <span class="p">}</span>
+        <span class="kt">void</span> <span class="nf">setEdgeTable</span><span class="p">(</span> <span class="n">EdgeTableData</span><span class="o">&amp;</span> <span class="n">eData</span> <span class="p">,</span>                                           <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="p">{</span> <span class="n">setEdgeTable</span><span class="p">(</span> <span class="n">eData</span> <span class="p">,</span> <span class="n">treeNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">maxDepth</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span> <span class="n">threads</span> <span class="p">);</span> <span class="p">}</span>
+        <span class="kt">int</span> <span class="nf">getMaxEdgeCount</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rootNode</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">threads</span> <span class="p">)</span> <span class="k">const</span> <span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">class</span> <span class="nc">TreeNodeData</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="n">UseIndex</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">nodeIndex</span><span class="p">;</span>
+        <span class="k">union</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">mcIndex</span><span class="p">;</span>
+            <span class="k">struct</span>
+            <span class="p">{</span>
+                <span class="n">Real</span> <span class="n">centerWeightContribution</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="n">normalIndex</span><span class="p">;</span>
+            <span class="p">};</span>
+        <span class="p">};</span>
+        <span class="n">Real</span> <span class="n">constraint</span> <span class="p">,</span> <span class="n">solution</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">pointIndex</span><span class="p">;</span>
+
+        <span class="n">TreeNodeData</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="o">~</span><span class="n">TreeNodeData</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">template</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="n">Degree</span> <span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">Octree</span>
+    <span class="p">{</span>
+        <span class="n">SortedTreeNodes</span> <span class="n">_sNodes</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">_minDepth</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">_constrainValues</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">_pointCount</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">PointData</span>
+        <span class="p">{</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">position</span><span class="p">;</span>
+            <span class="n">Real</span> <span class="n">weight</span><span class="p">;</span>
+            <span class="n">Real</span> <span class="n">value</span><span class="p">;</span>
+            <span class="n">PointData</span><span class="p">(</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">p</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">w</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">v</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span> <span class="p">{</span> <span class="n">position</span> <span class="o">=</span> <span class="n">p</span> <span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">w</span> <span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">PointData</span> <span class="o">&gt;</span> <span class="n">_points</span><span class="p">;</span>
+        <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">NeighborKey3</span> <span class="n">neighborKey</span><span class="p">;</span>
+        <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey3</span> <span class="n">neighborKey2</span><span class="p">;</span>
+
+        <span class="n">Real</span> <span class="n">radius</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
+        <span class="n">Real</span> <span class="nf">GetLaplacian</span><span class="p">(</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">[</span><span class="n">DIMENSION</span><span class="p">]</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="c1">// Note that this is a slight misnomer. We&#39;re only taking the diveregence/Laplacian in the weak sense, so there is a change of sign.</span>
+        <span class="n">Real</span> <span class="nf">GetLaplacian</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">Real</span> <span class="nf">GetDivergence</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span> <span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">normal1</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="n">Real</span> <span class="nf">GetDivergenceMinusLaplacian</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">value1</span> <span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">normal1</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="n">PointInfo</span>
+        <span class="p">{</span>
+            <span class="kt">float</span> <span class="n">splineValues</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+            <span class="kt">float</span> <span class="n">weightedValue</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="n">Real</span> <span class="nf">GetValue</span><span class="p">(</span> <span class="k">const</span> <span class="n">PointInfo</span> <span class="n">points</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">hasPoints</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="k">class</span> <span class="nc">AdjacencyCountFunction</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="kt">int</span> <span class="n">adjacencyCount</span><span class="p">;</span>
+            <span class="kt">void</span> <span class="nf">Function</span><span class="p">(</span><span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">AdjacencySetFunction</span><span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="kt">int</span> <span class="o">*</span><span class="n">adjacencies</span><span class="p">,</span><span class="n">adjacencyCount</span><span class="p">;</span>
+            <span class="kt">void</span> <span class="nf">Function</span><span class="p">(</span><span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="k">class</span> <span class="nc">RefineFunction</span><span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="kt">int</span> <span class="n">depth</span><span class="p">;</span>
+            <span class="kt">void</span> <span class="nf">Function</span><span class="p">(</span><span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span><span class="p">,</span><span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">class</span> <span class="nc">FaceEdgesFunction</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="kt">int</span> <span class="n">fIndex</span> <span class="p">,</span> <span class="n">maxDepth</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span> <span class="n">RootInfo</span> <span class="p">,</span> <span class="n">RootInfo</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">edges</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span> <span class="kt">long</span> <span class="kt">long</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span> <span class="n">RootInfo</span> <span class="p">,</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">vertexCount</span><span class="p">;</span>
+            <span class="kt">void</span> <span class="nf">Function</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node1</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node2</span> <span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="kt">int</span> <span class="nf">SolveFixedDepthMatrix</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">subConstraints</span> <span class="p">,</span>                     <span class="kt">bool</span> <span class="n">showResidual</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">minIters</span> <span class="p">,</span> <span class="kt">double</span> <span class="n">accuracy</span> <span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">SolveFixedDepthMatrix</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">subConstraints</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">startingDepth</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">showResidual</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">minIters</span> <span class="p">,</span> <span class="kt">double</span> <span class="n">accuracy</span> <span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">SetMatrixRowBounds</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">rDepth</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">rOff</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">xStart</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">xEnd</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">yStart</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">yEnd</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">zStart</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">zEnd</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">GetMatrixRowSize</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">Neighbors5</span><span class="o">&amp;</span> <span class="n">neighbors5</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">GetMatrixRowSize</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">Neighbors5</span><span class="o">&amp;</span> <span class="n">neighbors5</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">xStart</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">xEnd</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">yStart</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">yEnd</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">zStart</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">zEnd</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">SetMatrixRow</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">Neighbors5</span><span class="o">&amp;</span> <span class="n">neighbors5</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">MatrixEntry</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;*</span> <span class="n">row</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offset</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">stencil</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">SetMatrixRow</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">Neighbors5</span><span class="o">&amp;</span> <span class="n">neighbors5</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">MatrixEntry</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;*</span> <span class="n">row</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offset</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">stencil</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">xStart</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">xEnd</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">yStart</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">yEnd</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">zStart</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">zEnd</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">SetDivergenceStencil</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="o">&gt;</span> <span class="o">*</span><span class="n">stencil</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">scatter</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">SetLaplacianStencil</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="kt">double</span> <span class="n">stencil</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">C</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="k">struct</span> <span class="n">Stencil</span><span class="p">{</span> <span class="n">C</span> <span class="n">values</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span> <span class="p">};</span>
+        <span class="kt">void</span> <span class="nf">SetLaplacianStencils</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="p">,</span> <span class="mi">5</span> <span class="o">&gt;</span> <span class="n">stencil</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">SetDivergenceStencils</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="o">&gt;</span> <span class="p">,</span> <span class="mi">5</span> <span class="o">&gt;</span> <span class="n">stencil</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">scatter</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">SetEvaluationStencils</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="n">stencil1</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">,</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="n">stencil2</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">8</span><span class="p">]</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="kt">void</span> <span class="nf">UpdateCoarserSupportBounds</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">startX</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">endX</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">startY</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">endY</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">startZ</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">endZ</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">UpdateConstraintsFromCoarser</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">NeighborKey5</span><span class="o">&amp;</span> <span class="n">neighborKey5</span> <span class="p">,</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="p">,</span> <span class="mi">5</span> <span class="o">&gt;&amp;</span> <span class="n">stencil</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">SetCoarserPointValues</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">);</span>
+        <span class="n">Real</span> <span class="nf">WeightedCoarserFunctionValue</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">NeighborKey3</span><span class="o">&amp;</span> <span class="n">neighborKey3</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">UpSampleCoarserSolution</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Vector</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;&amp;</span> <span class="n">solution</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">DownSampleFinerConstraints</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">C</span> <span class="o">&gt;</span> <span class="kt">void</span> <span class="n">DownSample</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">C</span><span class="o">*</span> <span class="n">constraints</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">C</span> <span class="o">&gt;</span> <span class="kt">void</span>   <span class="n">UpSample</span><span class="p">(</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">C</span><span class="o">*</span> <span class="n">coefficients</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nf">GetFixedDepthLaplacian</span><span class="p">(</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">SparseSymmetricMatrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">matrix</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">subConstraints</span> <span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">GetRestrictedFixedDepthLaplacian</span><span class="p">(</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">SparseSymmetricMatrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">matrix</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">entries</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">entryCount</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">rNode</span><span class="p">,</span> <span class="n">Real</span> <span class="n">radius</span> <span class="p">,</span> <span class="k">const</span> <span class="n">SortedTreeNodes</span><span class="o">&amp;</span> <span class="n">sNodes</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">subConstraints</span> <span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">SetIsoCorners</span><span class="p">(</span> <span class="n">Real</span> <span class="n">isoValue</span> <span class="p">,</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">leaf</span> <span class="p">,</span> <span class="n">SortedTreeNodes</span><span class="o">::</span><span class="n">CornerTableData</span><span class="o">&amp;</span> <span class="n">cData</span> <span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">valuesSet</span> <span class="p">,</span> <span class="n">Real</span><span class="o">*</span> <span class="n">values</span> <span class="p">,</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey3</span><span class="o">&amp;</span> <span class="n">nKey</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="n">stencil1</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Stencil</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="p">,</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="n">stencil2</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">8</span><span class="p">]</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">IsBoundaryFace</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">faceIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">subdivideDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">IsBoundaryEdge</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">edgeIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">subdivideDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">IsBoundaryEdge</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">dir</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">x</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">subidivideDepth</span> <span class="p">);</span>
+
+        <span class="c1">// For computing the iso-surface there is a lot of re-computation of information across shared geometry.</span>
+        <span class="c1">// For function values we don&#39;t care so much.</span>
+        <span class="c1">// For edges we need to be careful so that the mesh remains water-tight</span>
+        <span class="k">struct</span> <span class="nl">RootData</span> <span class="p">:</span> <span class="k">public</span> <span class="n">SortedTreeNodes</span><span class="o">::</span><span class="n">CornerTableData</span> <span class="p">,</span> <span class="k">public</span> <span class="n">SortedTreeNodes</span><span class="o">::</span><span class="n">EdgeTableData</span>
+        <span class="p">{</span>
+            <span class="c1">// Edge to iso-vertex map</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span> <span class="kt">long</span> <span class="kt">long</span> <span class="p">,</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">boundaryRoots</span><span class="p">;</span>
+            <span class="c1">// Vertex to ( value , normal ) map</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span> <span class="kt">long</span> <span class="kt">long</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">*</span><span class="n">boundaryValues</span><span class="p">;</span>
+            <span class="kt">int</span><span class="o">*</span> <span class="n">interiorRoots</span><span class="p">;</span>
+            <span class="n">Real</span> <span class="o">*</span><span class="n">cornerValues</span><span class="p">;</span>
+            <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;*</span> <span class="n">cornerNormals</span><span class="p">;</span>
+            <span class="kt">char</span> <span class="o">*</span><span class="n">cornerValuesSet</span> <span class="p">,</span> <span class="o">*</span><span class="n">cornerNormalsSet</span> <span class="p">,</span> <span class="o">*</span><span class="n">edgesSet</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="kt">int</span> <span class="nf">SetBoundaryMCRootPositions</span><span class="p">(</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">isoValue</span> <span class="p">,</span> <span class="n">RootData</span><span class="o">&amp;</span> <span class="n">rootData</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">nonLinearFit</span> <span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">SetMCRootPositions</span><span class="p">(</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">isoValue</span> <span class="p">,</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey5</span><span class="o">&amp;</span> <span class="n">neighborKey5</span> <span class="p">,</span> <span class="n">RootData</span><span class="o">&amp;</span> <span class="n">rootData</span> <span class="p">,</span>
+                                <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">interiorPositions</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">nonLinearFit</span> <span class="p">);</span>
+<span class="cp">#if MISHA_DEBUG</span>
+        <span class="kt">int</span> <span class="nf">GetMCIsoTriangles</span><span class="p">(</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="n">RootData</span><span class="o">&amp;</span> <span class="n">rootData</span> <span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">interiorPositions</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offSet</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">polygonMesh</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">barycenters</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">AddTriangles</span><span class="p">(</span>  <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredPointIndex</span><span class="o">&gt;&amp;</span> <span class="n">edges</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">interiorPositions</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offSet</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">polygonMesh</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">barycenters</span> <span class="p">);</span>
+<span class="cp">#else </span><span class="c1">// !MISHA_DEBUG</span>
+        <span class="kt">int</span> <span class="nf">GetMCIsoTriangles</span><span class="p">(</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span>  <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="n">RootData</span><span class="o">&amp;</span> <span class="n">rootData</span> <span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">interiorPositions</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offSet</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">addBarycenter</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">polygonMesh</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">AddTriangles</span><span class="p">(</span>  <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">CoredPointIndex</span><span class="o">&gt;&amp;</span> <span class="n">edges</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">interiorPositions</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offSet</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">addBarycenter</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">polygonMesh</span> <span class="p">);</span>
+<span class="cp">#endif </span><span class="c1">// MISHA_DEBUG</span>
+
+
+        <span class="kt">void</span> <span class="nf">GetMCIsoEdges</span><span class="p">(</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span> <span class="n">RootInfo</span> <span class="p">,</span> <span class="n">RootInfo</span> <span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">edges</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">GetEdgeLoops</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span> <span class="n">RootInfo</span> <span class="p">,</span> <span class="n">RootInfo</span> <span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">edges</span> <span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span> <span class="n">RootInfo</span> <span class="p">,</span> <span class="n">RootInfo</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">loops</span><span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">InteriorFaceRootCount</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">faceIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">EdgeRootCount</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">edgeIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">void</span> <span class="nf">GetRootSpan</span><span class="p">(</span> <span class="k">const</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">ri</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;&amp;</span> <span class="n">start</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;&amp;</span> <span class="n">end</span> <span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">GetRoot</span><span class="p">(</span> <span class="k">const</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">ri</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">isoValue</span> <span class="p">,</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey5</span><span class="o">&amp;</span> <span class="n">neighborKey5</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">position</span> <span class="p">,</span> <span class="n">RootData</span><span class="o">&amp;</span> <span class="n">rootData</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">nonLinearFit</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">GetRootIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">edgeIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">ri</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">GetRootIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">edgeIndex</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">sDepth</span> <span class="p">,</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">ri</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">GetRootIndex</span><span class="p">(</span> <span class="k">const</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">ri</span> <span class="p">,</span> <span class="n">RootData</span><span class="o">&amp;</span> <span class="n">rootData</span> <span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredPointIndex</span><span class="o">&amp;</span> <span class="n">index</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">GetRootPair</span><span class="p">(</span> <span class="k">const</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">root</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="n">RootInfo</span><span class="o">&amp;</span> <span class="n">pair</span> <span class="p">);</span>
+
+        <span class="kt">int</span> <span class="nf">NonLinearUpdateWeightContribution</span><span class="p">(</span><span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">position</span><span class="p">,</span><span class="n">Real</span> <span class="n">weight</span><span class="o">=</span><span class="n">Real</span><span class="p">(</span><span class="mf">1.0</span><span class="p">));</span>
+        <span class="n">Real</span> <span class="nf">NonLinearGetSampleWeight</span><span class="p">(</span><span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">position</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">NonLinearGetSampleDepthAndWeight</span><span class="p">(</span><span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">position</span><span class="p">,</span><span class="n">Real</span> <span class="n">samplesPerNode</span><span class="p">,</span><span class="n">Real</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">,</span><span class="n">Real</span><span class="o">&amp;</span> <span class="n">weight</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">NonLinearSplatOrientedPoint</span><span class="p">(</span><span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">point</span><span class="p">,</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">normal</span><span class="p">);</span>
+        <span class="n">Real</span> <span class="nf">NonLinearSplatOrientedPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">point</span><span class="p">,</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">normal</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">kernelDepth</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">samplesPerNode</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">minDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="nf">HasNormals</span><span class="p">(</span><span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span><span class="p">,</span><span class="n">Real</span> <span class="n">epsilon</span><span class="p">);</span>
+        <span class="n">Real</span> <span class="nf">getCornerValue</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey3</span><span class="o">&amp;</span> <span class="n">neighborKey3</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">corner</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">);</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span> <span class="n">Real</span> <span class="o">&gt;</span> <span class="n">getCornerNormal</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey5</span><span class="o">&amp;</span> <span class="n">neighborKey5</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">corner</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">);</span>
+        <span class="n">Real</span> <span class="nf">getCornerValue</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey3</span><span class="o">&amp;</span> <span class="n">neighborKey3</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">corner</span> <span class="p">,</span> <span class="k">const</span> <span class="n">Real</span><span class="o">*</span> <span class="n">metSolution</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">stencil1</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">stencil2</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="p">);</span>
+        <span class="n">Real</span> <span class="nf">getCenterValue</span><span class="p">(</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">::</span><span class="n">ConstNeighborKey3</span><span class="o">&amp;</span> <span class="n">neighborKey3</span> <span class="p">,</span> <span class="k">const</span> <span class="n">TreeOctNode</span><span class="o">*</span> <span class="n">node</span> <span class="p">);</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="kt">int</span> <span class="n">threads</span><span class="p">;</span>
+        <span class="k">static</span> <span class="kt">double</span> <span class="n">maxMemoryUsage</span><span class="p">;</span>
+        <span class="k">static</span> <span class="kt">double</span> <span class="nf">MemoryUsage</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;</span> <span class="o">&gt;*</span> <span class="n">normals</span><span class="p">;</span>
+        <span class="n">Real</span> <span class="n">postNormalSmooth</span><span class="p">;</span>
+        <span class="n">TreeOctNode</span> <span class="n">tree</span><span class="p">;</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">BSplineData</span><span class="o">&lt;</span><span class="n">Degree</span><span class="p">,</span><span class="n">BSplineDataReal</span><span class="o">&gt;</span> <span class="n">fData</span><span class="p">;</span>
+        <span class="n">Octree</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">setBSplineData</span><span class="p">(</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">normalSmooth</span><span class="o">=-</span><span class="mi">1</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">reflectBoundary</span><span class="o">=</span><span class="nb">false</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">finalize</span><span class="p">(</span> <span class="kt">void</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">RefineBoundary</span><span class="p">(</span> <span class="kt">int</span> <span class="n">subdivisionDepth</span> <span class="p">);</span>
+        <span class="n">Real</span><span class="o">*</span> <span class="nf">GetWeightGrid</span><span class="p">(</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">res</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span><span class="o">=-</span><span class="mi">1</span> <span class="p">);</span>
+        <span class="n">Real</span><span class="o">*</span> <span class="nf">GetSolutionGrid</span><span class="p">(</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">res</span> <span class="p">,</span> <span class="kt">float</span> <span class="n">isoValue</span><span class="o">=</span><span class="mf">0.f</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">depth</span><span class="o">=-</span><span class="mi">1</span> <span class="p">);</span>
+
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointNT</span><span class="o">&gt;</span> <span class="kt">int</span>
+        <span class="n">setTree</span><span class="p">(</span><span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointNT</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="n">input_</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">minDepth</span> <span class="p">,</span>
+                 <span class="kt">int</span> <span class="n">kernelDepth</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">samplesPerNode</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">scaleFactor</span> <span class="p">,</span> <span class="n">Point3D</span><span class="o">&lt;</span><span class="n">Real</span><span class="o">&gt;&amp;</span> <span class="n">center</span> <span class="p">,</span> <span class="n">Real</span><span class="o">&amp;</span> <span class="n">scale</span> <span class="p">,</span>
+                 <span class="kt">int</span> <span class="n">useConfidence</span> <span class="p">,</span> <span class="n">Real</span> <span class="n">constraintWeight</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">adaptiveWeights</span> <span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">SetLaplacianConstraints</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">ClipTree</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nf">LaplacianMatrixIteration</span><span class="p">(</span> <span class="kt">int</span> <span class="n">subdivideDepth</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">showResidual</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">minIters</span> <span class="p">,</span> <span class="kt">double</span> <span class="n">accuracy</span> <span class="p">);</span>
+
+        <span class="n">Real</span> <span class="nf">GetIsoValue</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">GetMCIsoTriangles</span><span class="p">(</span> <span class="n">Real</span> <span class="n">isoValue</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">subdivideDepth</span> <span class="p">,</span>  <span class="n">pcl</span><span class="o">::</span><span class="n">poisson</span><span class="o">::</span><span class="n">CoredMeshData</span><span class="o">*</span> <span class="n">mesh</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">fullDepthIso</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">nonLinearFit</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">addBarycenter</span><span class="o">=</span><span class="nb">false</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">polygonMesh</span><span class="o">=</span><span class="nb">false</span> <span class="p">);</span>
+    <span class="p">};</span>
+
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+
+
+<span class="cp">#include</span> <span class="cpf">&quot;multi_grid_octree_data.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#endif </span><span class="c1">// MULTI_GRID_OCTREE_DATA_INCLUDED</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.hpp.html" class="btn btn-neutral float-right" title="File multi_grid_octree_data.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_multi_grid_octree_data.h.html" class="btn btn-neutral float-left" title="File multi_grid_octree_data.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

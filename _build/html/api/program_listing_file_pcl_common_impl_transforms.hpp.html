@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File transforms.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File tree.h" href="file_E__pcl_docs_pcl_gpu_people_include_pcl_gpu_people_tree.h.html" />
+    <link rel="prev" title="File transforms.hpp" href="file_pcl_common_impl_transforms.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_common_impl_transforms.hpp.html">File transforms.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File transforms.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_common_impl_transforms.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-transforms-hpp">
+<span id="program-listing-file-pcl-common-impl-transforms-hpp"></span><h1>Program Listing for File transforms.hpp<a class="headerlink" href="#program-listing-for-file-transforms-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_common_impl_transforms.hpp.html#file-pcl-common-impl-transforms-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\common\impl\transforms.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#if defined(__SSE2__)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;xmmintrin.h&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if defined(__AVX__)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;immintrin.h&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+
+  <span class="k">namespace</span> <span class="n">detail</span>
+  <span class="p">{</span>
+
+    <span class="cm">/** A helper struct to apply an SO3 or SE3 transform to a 3D point.</span>
+<span class="cm">      * Supports single and double precision transform matrices. */</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">Transformer</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;&amp;</span> <span class="n">tf</span><span class="p">;</span>
+
+      <span class="cm">/** Construct a transformer object.</span>
+<span class="cm">        * The transform matrix is captured by const reference. Make sure that it does not go out of scope before this</span>
+<span class="cm">        * object does. */</span>
+      <span class="n">Transformer</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;&amp;</span> <span class="n">transform</span><span class="p">)</span> <span class="o">:</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">)</span> <span class="p">{</span> <span class="p">};</span>
+
+      <span class="cm">/** Apply SO3 transform (top-left corner of the transform matrix).</span>
+<span class="cm">        * \param[in] src input 3D point (pointer to 3 floats)</span>
+<span class="cm">        * \param[out] tgt output 3D point (pointer to 4 floats), can be the same as input. The fourth element is set to 0. */</span>
+      <span class="kt">void</span> <span class="nf">so3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Scalar</span> <span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">};</span>  <span class="c1">// need this when src == tgt</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** Apply SE3 transform.</span>
+<span class="cm">        * \param[in] src input 3D point (pointer to 3 floats)</span>
+<span class="cm">        * \param[out] tgt output 3D point (pointer to 4 floats), can be the same as input. The fourth element is set to 1. */</span>
+      <span class="kt">void</span> <span class="nf">se3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Scalar</span> <span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">};</span>  <span class="c1">// need this when src == tgt</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">tf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+        <span class="n">tgt</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+<span class="cp">#if defined(__SSE2__)</span>
+
+    <span class="cm">/** Optimized version for single-precision transforms using SSE2 intrinsics. */</span>
+    <span class="k">template</span><span class="o">&lt;&gt;</span>
+    <span class="k">struct</span> <span class="n">Transformer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="c1">/// Columns of the transform matrix stored in XMM registers.</span>
+      <span class="kr">__m128</span> <span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+      <span class="n">Transformer</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&amp;</span> <span class="n">tf</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_mm_load_ps</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">data</span> <span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">so3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kr">__m128</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm_mul_ps</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="kr">__m128</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm_mul_ps</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="kr">__m128</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">_mm_mul_ps</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+        <span class="n">_mm_store_ps</span> <span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">_mm_add_ps</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">_mm_add_ps</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">se3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kr">__m128</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm_mul_ps</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="kr">__m128</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm_mul_ps</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="kr">__m128</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">_mm_mul_ps</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+        <span class="n">_mm_store_ps</span> <span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">_mm_add_ps</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">_mm_add_ps</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">_mm_add_ps</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]))));</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+<span class="cp">#if !defined(__AVX__)</span>
+
+    <span class="cm">/** Optimized version for double-precision transform using SSE2 intrinsics. */</span>
+    <span class="k">template</span><span class="o">&lt;&gt;</span>
+    <span class="k">struct</span> <span class="n">Transformer</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="c1">/// Columns of the transform matrix stored in XMM registers.</span>
+      <span class="kr">__m128d</span> <span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+
+      <span class="n">Transformer</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span><span class="o">&amp;</span> <span class="n">tf</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">_mm_load_pd</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">data</span> <span class="p">()</span> <span class="o">+</span> <span class="mi">0</span><span class="p">);</span>
+          <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">_mm_load_pd</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">data</span> <span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">so3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kr">__m128d</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">_mm_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+        <span class="kr">__m128d</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm_mul_pd</span> <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="kr">__m128d</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm_mul_pd</span> <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kr">__m128d</span> <span class="n">vv</span> <span class="o">=</span> <span class="n">_mm_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+          <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm_add_pd</span> <span class="p">(</span><span class="n">_mm_mul_pd</span> <span class="p">(</span><span class="n">vv</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="n">p0</span><span class="p">);</span>
+          <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm_add_pd</span> <span class="p">(</span><span class="n">_mm_mul_pd</span> <span class="p">(</span><span class="n">vv</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> <span class="n">p1</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">_mm_store_ps</span> <span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">_mm_movelh_ps</span> <span class="p">(</span><span class="n">_mm_cvtpd_ps</span> <span class="p">(</span><span class="n">p0</span><span class="p">),</span> <span class="n">_mm_cvtpd_ps</span> <span class="p">(</span><span class="n">p1</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">se3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kr">__m128d</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="kr">__m128d</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kr">__m128d</span> <span class="n">vv</span> <span class="o">=</span> <span class="n">_mm_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+          <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm_add_pd</span> <span class="p">(</span><span class="n">_mm_mul_pd</span> <span class="p">(</span><span class="n">vv</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="n">p0</span><span class="p">);</span>
+          <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm_add_pd</span> <span class="p">(</span><span class="n">_mm_mul_pd</span> <span class="p">(</span><span class="n">vv</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> <span class="n">p1</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">_mm_store_ps</span> <span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">_mm_movelh_ps</span> <span class="p">(</span><span class="n">_mm_cvtpd_ps</span> <span class="p">(</span><span class="n">p0</span><span class="p">),</span> <span class="n">_mm_cvtpd_ps</span> <span class="p">(</span><span class="n">p1</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+    <span class="p">};</span>
+
+<span class="cp">#else</span>
+
+  <span class="cm">/** Optimized version for double-precision transform using AVX intrinsics. */</span>
+  <span class="k">template</span><span class="o">&lt;&gt;</span>
+  <span class="k">struct</span> <span class="n">Transformer</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="n">__m256d</span> <span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+    <span class="n">Transformer</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span><span class="o">&amp;</span> <span class="n">tf</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_mm256_load_pd</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">data</span> <span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">so3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">__m256d</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm256_mul_pd</span> <span class="p">(</span><span class="n">_mm256_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="n">__m256d</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm256_mul_pd</span> <span class="p">(</span><span class="n">_mm256_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="n">__m256d</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">_mm256_mul_pd</span> <span class="p">(</span><span class="n">_mm256_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">])),</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="n">_mm_store_ps</span> <span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">_mm256_cvtpd_ps</span> <span class="p">(</span><span class="n">_mm256_add_pd</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">_mm256_add_pd</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">))));</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">se3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">tgt</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">__m256d</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">_mm256_mul_pd</span> <span class="p">(</span><span class="n">_mm256_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="n">__m256d</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">_mm256_mul_pd</span> <span class="p">(</span><span class="n">_mm256_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="n">__m256d</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">_mm256_mul_pd</span> <span class="p">(</span><span class="n">_mm256_cvtps_pd</span> <span class="p">(</span><span class="n">_mm_load_ps1</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">])),</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="n">_mm_store_ps</span> <span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">_mm256_cvtpd_ps</span> <span class="p">(</span><span class="n">_mm256_add_pd</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">_mm256_add_pd</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">_mm256_add_pd</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">])))));</span>
+    <span class="p">}</span>
+
+  <span class="p">};</span>
+
+<span class="cp">#endif</span>
+<span class="cp">#endif</span>
+
+  <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                          <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">,</span>
+                          <span class="kt">bool</span> <span class="n">copy_all_fields</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud_in</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">header</span>   <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">copy_all_fields</span><span class="p">)</span>
+      <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">assign</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+    <span class="k">else</span>
+      <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_orientation_</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_origin_</span>      <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Transformer</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">matrix</span> <span class="p">());</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// If the dataset is dense, simply transform it!</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="c1">// Dataset might contain NaNs and Infs, so check for them first,</span>
+    <span class="c1">// otherwise we get errors during the multiplication (?)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                          <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">,</span>
+                          <span class="kt">bool</span> <span class="n">copy_all_fields</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">size_t</span> <span class="n">npts</span> <span class="o">=</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="c1">// In order to transform the data, we need to remove NaNs</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">header</span>   <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">npts</span><span class="p">);</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">npts</span><span class="p">);</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_orientation_</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_origin_</span>      <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">;</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Transformer</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">matrix</span> <span class="p">());</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// If the dataset is dense, simply transform it!</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">npts</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Copy fields first, then transform xyz data</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">copy_all_fields</span><span class="p">)</span>
+        <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="c1">// Dataset might contain NaNs and Infs, so check for them first,</span>
+    <span class="c1">// otherwise we get errors during the multiplication (?)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">npts</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">copy_all_fields</span><span class="p">)</span>
+        <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointCloudWithNormals</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                                     <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">,</span>
+                                     <span class="kt">bool</span> <span class="n">copy_all_fields</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud_in</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Note: could be replaced by cloud_out = cloud_in</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">header</span>   <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">copy_all_fields</span><span class="p">)</span>
+      <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">assign</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+    <span class="k">else</span>
+      <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_orientation_</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">;</span>
+    <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_origin_</span>      <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Transformer</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">matrix</span> <span class="p">());</span>
+  <span class="c1">// If the data is dense, we don&#39;t need to check for NaN</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">so3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data_n</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data_n</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// Dataset might contain NaNs and Infs, so check for them first.</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">so3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data_n</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data_n</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointCloudWithNormals</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                     <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">,</span>
+                                     <span class="kt">bool</span> <span class="n">copy_all_fields</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">size_t</span> <span class="n">npts</span> <span class="o">=</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+  <span class="c1">// In order to transform the data, we need to remove NaNs</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">header</span>   <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">npts</span><span class="p">);</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">npts</span><span class="p">);</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_orientation_</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">;</span>
+  <span class="n">cloud_out</span><span class="p">.</span><span class="n">sensor_origin_</span>      <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">;</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Transformer</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">matrix</span> <span class="p">());</span>
+  <span class="c1">// If the data is dense, we don&#39;t need to check for NaN</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Copy fields first, then transform</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">copy_all_fields</span><span class="p">)</span>
+        <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">so3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">data_n</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data_n</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// Dataset might contain NaNs and Infs, so check for them first.</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Copy fields first, then transform</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">copy_all_fields</span><span class="p">)</span>
+        <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">)</span> <span class="o">||</span>
+          <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">);</span>
+      <span class="n">tf</span><span class="p">.</span><span class="n">so3</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">data_n</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data_n</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                          <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">offset</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternion</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">rotation</span><span class="p">,</span>
+                          <span class="kt">bool</span> <span class="n">copy_all_fields</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Translation</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">translation</span> <span class="p">(</span><span class="n">offset</span><span class="p">);</span>
+  <span class="c1">// Assemble an Eigen Transform</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="n">t</span> <span class="p">(</span><span class="n">translation</span> <span class="o">*</span> <span class="n">rotation</span><span class="p">);</span>
+  <span class="n">transformPointCloud</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">copy_all_fields</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointCloudWithNormals</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_in</span><span class="p">,</span>
+                                     <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_out</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">offset</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternion</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">rotation</span><span class="p">,</span>
+                                     <span class="kt">bool</span> <span class="n">copy_all_fields</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Translation</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">translation</span> <span class="p">(</span><span class="n">offset</span><span class="p">);</span>
+  <span class="c1">// Assemble an Eigen Transform</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="n">t</span> <span class="p">(</span><span class="n">translation</span> <span class="o">*</span> <span class="n">rotation</span><span class="p">);</span>
+  <span class="n">transformPointCloudWithNormals</span> <span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">cloud_out</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">copy_all_fields</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="n">PointT</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">PointT</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">point</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Transformer</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">matrix</span> <span class="p">());</span>
+  <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">ret</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="n">PointT</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">transformPointWithNormal</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">PointT</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">point</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">Transformer</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">tf</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">matrix</span> <span class="p">());</span>
+  <span class="n">tf</span><span class="p">.</span><span class="n">se3</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">ret</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+  <span class="n">tf</span><span class="p">.</span><span class="n">so3</span> <span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">data_n</span><span class="p">,</span> <span class="n">ret</span><span class="p">.</span><span class="n">data_n</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">double</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">getPrincipalTransformation</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                                 <span class="n">Eigen</span><span class="o">::</span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">EIGEN_ALIGN16</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">covariance_matrix</span><span class="p">;</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="n">centroid</span><span class="p">;</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">centroid</span><span class="p">);</span>
+
+  <span class="n">EIGEN_ALIGN16</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">eigen_vects</span><span class="p">;</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="n">eigen_vals</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">eigen33</span> <span class="p">(</span><span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">eigen_vects</span><span class="p">,</span> <span class="n">eigen_vals</span><span class="p">);</span>
+
+  <span class="kt">double</span> <span class="n">rel1</span> <span class="o">=</span> <span class="n">eigen_vals</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">eigen_vals</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="n">rel2</span> <span class="o">=</span> <span class="n">eigen_vals</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">eigen_vals</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="n">transform</span><span class="p">.</span><span class="n">translation</span> <span class="p">()</span> <span class="o">=</span> <span class="n">centroid</span><span class="p">.</span><span class="n">head</span> <span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="n">transform</span><span class="p">.</span><span class="n">linear</span> <span class="p">()</span> <span class="o">=</span> <span class="n">eigen_vects</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="n">rel1</span><span class="p">,</span> <span class="n">rel2</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_people_include_pcl_gpu_people_tree.h.html" class="btn btn-neutral float-right" title="File tree.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_common_impl_transforms.hpp.html" class="btn btn-neutral float-left" title="File transforms.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

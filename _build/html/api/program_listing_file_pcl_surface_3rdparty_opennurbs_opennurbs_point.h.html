@@ -1,0 +1,1804 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_point.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_pointcloud.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_pointcloud.h.html" />
+    <link rel="prev" title="File opennurbs_point.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_point.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_point.h.html">File opennurbs_point.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_point.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_point.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-point-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-point-h"></span><h1>Program Listing for File opennurbs_point.h<a class="headerlink" href="#program-listing-for-file-opennurbs-point-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_point.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-point-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_point.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   defines double precision point, vector, and array classes</span>
+<span class="c1">//</span>
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="cp">#if !defined(ON_POINT_INC_)</span>
+<span class="cp">#define ON_POINT_INC_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">ON_BoundingBox</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_Xform</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_Line</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_Plane</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ON_2dPoint</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_3dPoint</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_4dPoint</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ON_2dVector</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_3dVector</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ON_2fVector</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_3fVector</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ON_Interval</span><span class="p">;</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_Interval</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_Interval</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_Interval</span> <span class="n">EmptyInterval</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+  <span class="c1">////////</span>
+  <span class="c1">// The default constructor creates an empty interval (ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+  <span class="n">ON_Interval</span><span class="p">();</span>
+
+  <span class="n">ON_Interval</span><span class="p">(</span><span class="kt">double</span> <span class="n">t0</span><span class="p">,</span><span class="kt">double</span> <span class="n">t1</span><span class="p">);</span>
+
+  <span class="o">~</span><span class="n">ON_Interval</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Interval = [m_t[0], m_t[1]]</span>
+  <span class="kt">double</span> <span class="n">m_t</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets interval to (ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Interval::Set</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets interval to [t0,t1]</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    t0 - [in]</span>
+<span class="cm">    t1 - [in]</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Interval::ON_Interval( double, double )</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Set</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">t0</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">t1</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Convert normalized parameter to interval value, or pair of values.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    normalized_parameter - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Interval parameter</span>
+<span class="cm">    min*(1.0-normalized_parameter) + max*normalized_parameter</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Interval::NormalizedParameterAt</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">ParameterAt</span> <span class="p">(</span>
+    <span class="kt">double</span> <span class="n">normalized_parameter</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_Interval</span> <span class="nf">ParameterAt</span> <span class="p">(</span>
+    <span class="n">ON_Interval</span> <span class="n">normalized_interval</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Convert interval value, or pair of values, to normalized parameter.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    interval_parameter - [in] value in interval</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Normalized parameter x so that</span>
+<span class="cm">    min*(1.0-x) + max*x = interval_parameter.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Interval::ParameterAt</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">NormalizedParameterAt</span> <span class="p">(</span>
+    <span class="kt">double</span> <span class="n">interval_parameter</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_Interval</span> <span class="nf">NormalizedParameterAt</span> <span class="p">(</span>
+    <span class="n">ON_Interval</span> <span class="n">interval_parameter</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// returns (index&lt;=0) ? m_t[0] : m_t[1]</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns (index&lt;=0) ? m_t[0] : m_t[1]</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">// returns (index&lt;=0) ? m_t[0] : m_t[1]</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns (index&lt;=0) ? m_t[0] : m_t[1]</span>
+
+  <span class="kt">double</span> <span class="nf">Min</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns smaller of m_t[0] and m_t[1]</span>
+  <span class="kt">double</span> <span class="nf">Max</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns larger of m_t[0] and m_t[1]</span>
+  <span class="kt">double</span> <span class="nf">Mid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns 0.5*(m_t[0] + m_t[1])</span>
+  <span class="kt">double</span> <span class="nf">Length</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsIncreasing</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns true if m_t[0] &lt; m_t[1]</span>
+  <span class="kt">bool</span> <span class="nf">IsDecreasing</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// returns true if m_t[0] &gt; m_t[0];</span>
+  <span class="kt">bool</span> <span class="nf">IsInterval</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>   <span class="c1">// returns truc if m_t[0] != m_t[1]</span>
+  <span class="kt">bool</span> <span class="nf">IsSingleton</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>  <span class="c1">// returns true if m_t[0] == m_t[1] != ON_UNSET_VALUE</span>
+  <span class="kt">bool</span> <span class="nf">IsEmptyInterval</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>   <span class="c1">// returns true if m_t[0] == m_t[1] == ON_UNSET_VALUE</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>      <span class="c1">// returns ON_IsValid(m_t[0]) &amp;&amp; ON_IsValid(m_t[1])</span>
+
+  <span class="c1">// OBSOLETE - Use IsEmptyInterval()</span>
+  <span class="kt">bool</span> <span class="nf">IsEmptySet</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>   <span class="c1">// returns true if m_t[0] == m_t[1] == ON_UNSET_VALUE</span>
+
+  <span class="kt">bool</span> <span class="nf">MakeIncreasing</span><span class="p">();</span>    <span class="c1">// returns true if resulting interval IsIncreasing()</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    @untitled table</span>
+<span class="cm">     0      this is idential to other</span>
+<span class="cm">    -1      this[0] &lt; other[0]</span>
+<span class="cm">    +1      this[0] &gt; other[0]</span>
+<span class="cm">    -1      this[0] == other[0] and this[1] &lt; other[1]</span>
+<span class="cm">    +1      this[0] == other[0] and this[1] &gt; other[1]</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">Compare</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span> <span class="n">other</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test a value t to see if it is inside the interval.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    t - [in] value to test</span>
+<span class="cm">    bTestOpenInterval - [in]</span>
+<span class="cm">        If false, t is tested to see if it satisfies min &lt;= t &lt;= max.</span>
+<span class="cm">        If true, t is tested to see if it satisfies min &lt; t &lt; max.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if t is in the interval and false if t is not</span>
+<span class="cm">    in the interval.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Includes</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bTestOpenInterval</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test an interval to see if it is contained in this interval.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    other - [in] interval to test</span>
+<span class="cm">    bProperSubSet - [in] if true, then the test is for a proper subinterval.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    If bProperSubSet is false, then the result is true when</span>
+<span class="cm">    this-&gt;Min() &lt;= other.Min() and other.Max() &lt;= this-&gt;Max().</span>
+<span class="cm">    If bProperSubSet is true, then the result is true when</span>
+<span class="cm">    this-&gt;Min() &lt;= other.Min() and other.Max() &lt;= this-&gt;Max()</span>
+<span class="cm">    and at least one of the inequalites is strict.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Includes</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bProperSubSet</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Changes interval to [-m_t[1],-m_t[0]].</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Reverse</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Swaps m_t[0] and m_t[1].</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Swap</span><span class="p">();</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// If the intersection is not empty, then</span>
+  <span class="c1">// intersection = [max(this.Min(),arg.Min()), min(this.Max(),arg.Max())]</span>
+  <span class="c1">// Intersection() returns true if the intersection is not empty.</span>
+  <span class="c1">// The interval [ON_UNSET_VALUE,ON_UNSET_VALUE] is considered to be</span>
+  <span class="c1">// the empty set interval.  The result of any intersection involving an</span>
+  <span class="c1">// empty set interval or disjoint intervals is the empty set interval.</span>
+  <span class="kt">bool</span> <span class="nf">Intersection</span><span class="p">(</span> <span class="c1">// this = this intersect arg</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// If the intersection is not empty, then</span>
+  <span class="c1">// intersection = [max(argA.Min(),argB.Min()), min(argA.Max(),argB.Max())]</span>
+  <span class="c1">// Intersection() returns true if the intersection is not empty.</span>
+  <span class="c1">// The interval [ON_UNSET_VALUE,ON_UNSET_VALUE] is considered to be</span>
+  <span class="c1">// the empty set interval.  The result of any intersection involving an</span>
+  <span class="c1">// empty set interval or disjoint intervals is the empty set interval.</span>
+  <span class="kt">bool</span> <span class="nf">Intersection</span><span class="p">(</span> <span class="c1">// this = intersection of two args</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span><span class="p">,</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// The union of an empty set and an increasing interval is the increasing</span>
+  <span class="c1">// interval.  The union of two empty sets is empty. The union of an empty</span>
+  <span class="c1">// set an a non-empty interval is the non-empty interval.</span>
+  <span class="c1">// The union of two non-empty intervals is</span>
+  <span class="c1">// union = [min(this.Min(),arg.Min()), max(this.Max(),arg.Max()),]</span>
+  <span class="c1">// Union() returns true if the union is not empty.</span>
+  <span class="kt">bool</span> <span class="nf">Union</span><span class="p">(</span> <span class="c1">// this = this union arg</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Union</span><span class="p">(</span> <span class="c1">// this = this union arg</span>
+         <span class="kt">double</span> <span class="n">t</span>
+         <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Union</span><span class="p">(</span> <span class="c1">// this = this union arg</span>
+         <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+         <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">t</span>
+         <span class="p">);</span>
+
+  <span class="c1">//////////</span>
+  <span class="c1">// The union of an empty set and an increasing interval is the increasing</span>
+  <span class="c1">// interval.  The union of two empty sets is empty. The union of an empty</span>
+  <span class="c1">// set an a non-empty interval is the non-empty interval.</span>
+  <span class="c1">// The union of two non-empty intervals is</span>
+  <span class="c1">// union = [min(argA.Min(),argB.Min()), max(argA.Max(),argB.Max()),]</span>
+  <span class="c1">// Union() returns true if the union is not empty.</span>
+  <span class="kt">bool</span> <span class="nf">Union</span><span class="p">(</span> <span class="c1">// this = union of two args</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span><span class="p">,</span>
+         <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_2dPoint</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_2dPoint</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dPoint</span> <span class="n">Origin</span><span class="p">;</span>     <span class="c1">// (0.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dPoint</span> <span class="n">UnsetPoint</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+  <span class="c1">// use implicit destructor, copy constructor</span>
+  <span class="n">ON_2dPoint</span><span class="p">();</span>                         <span class="c1">// x,y not initialized</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="p">);</span>       <span class="c1">// from 3d point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="p">);</span>       <span class="c1">// from 4d point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="p">);</span>      <span class="c1">// from 2d vector</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="p">);</span>      <span class="c1">// from 3d vector</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span>            <span class="c1">// from double[2] array</span>
+
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// from 2f point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// from 3f point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_4fPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// from 4f point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// from 2f point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// from 3f point</span>
+  <span class="n">ON_2dPoint</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>             <span class="c1">// from float[2] array</span>
+
+  <span class="c1">// (double*) conversion operators</span>
+  <span class="k">operator</span> <span class="kt">double</span><span class="o">*</span><span class="p">();</span>
+  <span class="k">operator</span> <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// use implicit operator=(const ON_2dPoint&amp;)</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span> <span class="c1">// point = double[2] support</span>
+
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>  <span class="c1">// point = float[2] support</span>
+
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// Adding this was a mistake - cannot remove without breaking SDK</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// Adding this was a mistake - cannot remove without breaking SDK</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// Adding this was a mistake - cannot remove without breaking SDK</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// Adding this was a mistake - cannot remove without breaking SDK</span>
+
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// dot product for points acting as vectors</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// dot product for points acting as vectors</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// dictionary order comparisons</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// index operators mimic double[2] behavior</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    False if any coordinate is infinte, a nan, or ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if every coordinate is ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsUnsetPoint</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set 2d point value</span>
+  <span class="kt">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">);</span>
+
+  <span class="kt">double</span> <span class="nf">DistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">MaximumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of maximum coordinate</span>
+
+  <span class="kt">int</span> <span class="nf">MinimumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of minimum coordinate</span>
+
+  <span class="kt">void</span> <span class="nf">Zero</span><span class="p">();</span> <span class="c1">// set all coordinates to zero;</span>
+
+  <span class="c1">// These transform the point in place. The transformation matrix acts on</span>
+  <span class="c1">// the left of the point; i.e., result = transformation*point</span>
+  <span class="kt">void</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span> <span class="c1">// rotatation in XY plane</span>
+        <span class="kt">double</span> <span class="n">angle</span><span class="p">,</span>              <span class="c1">// angle in radians</span>
+        <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="n">center</span>   <span class="c1">// center of rotation</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span> <span class="c1">// rotatation in XY plane</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>          <span class="o">//</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>          <span class="c1">// cos(angle)</span>
+        <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="n">center</span>   <span class="c1">// center of rotation</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_2dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_2dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_2dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_3dPoint</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_3dPoint</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">;</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dPoint</span> <span class="n">Origin</span><span class="p">;</span>     <span class="c1">// (0.0,0.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dPoint</span> <span class="n">UnsetPoint</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+  <span class="c1">// use implicit destructor, copy constructor</span>
+  <span class="n">ON_3dPoint</span><span class="p">();</span>                         <span class="c1">// x,y,z not initialized</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">,</span><span class="kt">double</span> <span class="n">z</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="p">);</span>       <span class="c1">// from 2d point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="p">);</span>       <span class="c1">// from 4d point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="p">);</span>      <span class="c1">// from 2d vector</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="p">);</span>      <span class="c1">// from 3d vector</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span>            <span class="c1">// from double[3] array</span>
+
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// from 2f point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// from 3f point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_4fPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// from 4f point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// from 2f point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// from 3f point</span>
+  <span class="n">ON_3dPoint</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>             <span class="c1">// from float[3] array</span>
+
+  <span class="c1">// (double*) conversion operators</span>
+  <span class="k">operator</span> <span class="kt">double</span><span class="o">*</span><span class="p">();</span>
+  <span class="k">operator</span> <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// use implicit operator=(const ON_3dPoint&amp;)</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span> <span class="c1">// point = double[3] support</span>
+
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_4fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>  <span class="c1">// point = float[3] support</span>
+
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// Adding this was a mistake - cannot remove without breaking SDK</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// Adding this was a mistake - cannot remove without breaking SDK</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// dot product for points acting as vectors</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// dot product for points acting as vectors</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// dictionary order comparisons</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// index operators mimic double[3] behavior</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    False if any coordinate is infinte, a nan, or ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if every coordinate is ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsUnsetPoint</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set 3d point value</span>
+  <span class="kt">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">,</span><span class="kt">double</span> <span class="n">z</span><span class="p">);</span>
+
+  <span class="kt">double</span> <span class="nf">DistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">MaximumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of maximum coordinate</span>
+
+  <span class="kt">int</span> <span class="nf">MinimumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of minimum coordinate</span>
+
+  <span class="kt">double</span> <span class="nf">Fuzz</span><span class="p">(</span> <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="n">ON_ZERO_TOLERANCE</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// tolerance to use when comparing 3d points</span>
+
+  <span class="kt">void</span> <span class="nf">Zero</span><span class="p">();</span> <span class="c1">// set all coordinates to zero;</span>
+
+  <span class="c1">// These transform the point in place. The transformation matrix acts on</span>
+  <span class="c1">// the left of the point; i.e., result = transformation*point</span>
+  <span class="kt">void</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">angle</span><span class="p">,</span>             <span class="c1">// angle in radians</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span><span class="p">,</span>  <span class="c1">// axis of rotation</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">center</span>  <span class="c1">// center of rotation</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>         <span class="o">//</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>         <span class="c1">// cos(angle)</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span><span class="p">,</span>  <span class="c1">// axis of rotation</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">center</span>  <span class="c1">// center of rotation</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_4dPoint (homogeneous coordinates)</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_4dPoint</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span>
+
+  <span class="c1">// use implicit destructor, copy constructor</span>
+  <span class="n">ON_4dPoint</span><span class="p">();</span>                       <span class="c1">// x,y,z,w not initialized</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">,</span><span class="kt">double</span> <span class="n">z</span><span class="p">,</span><span class="kt">double</span> <span class="n">w</span><span class="p">);</span>
+
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="p">);</span>     <span class="c1">// from 2d point</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="p">);</span>     <span class="c1">// from 3d point</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="p">);</span>    <span class="c1">// from 2d vector</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="p">);</span>    <span class="c1">// from 3d vector</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span>          <span class="c1">// from double[4] array</span>
+
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span> <span class="p">);</span>     <span class="c1">// from 2f point</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span> <span class="p">);</span>     <span class="c1">// from 3f point</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4fPoint</span><span class="o">&amp;</span> <span class="p">);</span>     <span class="c1">// from 3f point</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span> <span class="p">);</span>    <span class="c1">// from 2f vector</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span> <span class="p">);</span>    <span class="c1">// from 3f vector</span>
+  <span class="n">ON_4dPoint</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>           <span class="c1">// from float[4] array</span>
+
+  <span class="c1">// (double*) conversion operators</span>
+  <span class="k">operator</span> <span class="kt">double</span><span class="o">*</span><span class="p">();</span>
+  <span class="k">operator</span> <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// use implicit operator=(const ON_4dPoint&amp;)</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span> <span class="c1">// point = double[4] support</span>
+
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_4fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="k">class</span> <span class="nc">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>  <span class="c1">// point = float[4] support</span>
+
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sum w = sqrt(|w1*w2|)</span>
+  <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// difference w = sqrt(|w1*w2|)</span>
+
+  <span class="n">ON_4dPoint</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_4dPoint</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_4dPoint</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// sum w = sqrt(|w1*w2|)</span>
+  <span class="n">ON_4dPoint</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// difference w = sqrt(|w1*w2|)</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_4dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// projective comparison</span>
+  <span class="c1">// (i.e., [x,y,z,w] == [c*x,c*y,c*z,c*w] is true for nonzero c)</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">ON_4dPoint</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// index operators mimic double[4] behavior</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    False if any coordinate is infinte, a nan, or ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if every coordinate is ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsUnsetPoint</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set 4d point value</span>
+  <span class="kt">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">,</span><span class="kt">double</span> <span class="n">z</span><span class="p">,</span><span class="kt">double</span> <span class="n">w</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="nf">MaximumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of maximum coordinate</span>
+
+  <span class="kt">int</span> <span class="nf">MinimumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of minimum coordinate</span>
+
+  <span class="kt">void</span> <span class="nf">Zero</span><span class="p">();</span>      <span class="c1">// set all 4 coordinates to zero;</span>
+  <span class="kt">bool</span> <span class="nf">Normalize</span><span class="p">();</span> <span class="c1">// set so x^2 + y^2 + z^2 + w^2 = 1</span>
+
+  <span class="c1">// These transform the point in place. The transformation matrix acts on</span>
+  <span class="c1">// the left of the point; i.e., result = transformation*point</span>
+  <span class="kt">void</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_4dPoint</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_2dVector</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_2dVector</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dVector</span> <span class="n">ZeroVector</span><span class="p">;</span>  <span class="c1">// (0.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dVector</span> <span class="n">XAxis</span><span class="p">;</span>       <span class="c1">// (1.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dVector</span> <span class="n">YAxis</span><span class="p">;</span>       <span class="c1">// (0.0,1.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dVector</span> <span class="n">UnsetVector</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   A index driven function to get unit axis vectors.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   index - [in] 0 returns (1,0), 1 returns (0,1)</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Unit 2d vector with vector[i] = (i==index)?1:0;</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="n">UnitVector</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="c1">// index</span>
+    <span class="p">);</span>
+
+  <span class="c1">// use implicit destructor, copy constructor</span>
+  <span class="n">ON_2dVector</span><span class="p">();</span>                     <span class="c1">// x,y not initialized</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">);</span>
+
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="p">);</span> <span class="c1">// from 3d vector</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 2d point</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 3d point</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span>       <span class="c1">// from double[2] array</span>
+
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span> <span class="p">);</span> <span class="c1">// from 2f vector</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span> <span class="p">);</span> <span class="c1">// from 3f vector</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 2f point</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 3f point</span>
+  <span class="n">ON_2dVector</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>        <span class="c1">// from double[2] array</span>
+
+  <span class="c1">// (double*) conversion operators</span>
+  <span class="k">operator</span> <span class="kt">double</span><span class="o">*</span><span class="p">();</span>
+  <span class="k">operator</span> <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// use implicit operator=(const ON_2dVector&amp;)</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span> <span class="c1">// vector = double[2] support</span>
+
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>  <span class="c1">// vector = float[2] support</span>
+
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="c1">// DO NOT ADD ANY MORE overrides of += or -=</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// inner (dot) product</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// inner (dot) product (point acting as vector)</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// inner (dot) product</span>
+
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_2dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// dictionary order comparisons</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// index operators mimic double[2] behavior</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    False if any coordinate is infinte, a nan, or ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if every coordinate is ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsUnsetVector</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set 2d vector value</span>
+  <span class="kt">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="nf">MaximumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of maximum coordinate</span>
+
+  <span class="kt">int</span> <span class="nf">MinimumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of minimum coordinate</span>
+
+  <span class="kt">double</span> <span class="nf">LengthSquared</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">Length</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Signed area of the parallelagram.  The volume element.</span>
+  <span class="c1">// returns x*B.y - y*B.x</span>
+  <span class="kt">double</span> <span class="nf">WedgeProduct</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="n">B</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Decompose</span><span class="p">(</span> <span class="c1">// Computes a, b such that this vector = a*X + b*Y</span>
+         <span class="c1">// Returns false if unable to solve for a,b.  This happens</span>
+         <span class="c1">// when X,Y is not really a basis.</span>
+         <span class="c1">//</span>
+         <span class="c1">// If X,Y is known to be an orthonormal frame,</span>
+         <span class="c1">// then a = V*X, b = V*Y will compute</span>
+         <span class="c1">// the same result more quickly.</span>
+         <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+         <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Y</span>
+         <span class="kt">double</span><span class="o">*</span><span class="p">,</span> <span class="c1">// a</span>
+         <span class="kt">double</span><span class="o">*</span>  <span class="c1">// b</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">IsParallelTo</span><span class="p">(</span>
+        <span class="c1">// returns  1: this and other vectors are parallel</span>
+        <span class="c1">//         -1: this and other vectors are anti-parallel</span>
+        <span class="c1">//          0: this and other vectors are not parallel</span>
+        <span class="c1">//             or at least one of the vectors is zero</span>
+        <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">,</span>                           <span class="c1">// other vector</span>
+        <span class="kt">double</span> <span class="n">angle_tolerance</span> <span class="o">=</span> <span class="n">ON_DEFAULT_ANGLE_TOLERANCE</span> <span class="o">//</span> <span class="n">optional</span> <span class="n">angle</span> <span class="n">tolerance</span> <span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsPerpendicularTo</span><span class="p">(</span>
+        <span class="c1">// returns true:  this and other vectors are perpendicular</span>
+        <span class="c1">//         false: this and other vectors are not perpendicular</span>
+        <span class="c1">//                or at least one of the vectors is zero</span>
+        <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">,</span>                           <span class="c1">// other vector</span>
+        <span class="kt">double</span> <span class="n">angle_tolerance</span> <span class="o">=</span> <span class="n">ON_DEFAULT_ANGLE_TOLERANCE</span> <span class="o">//</span> <span class="n">optional</span> <span class="n">angle</span> <span class="n">tolerance</span> <span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Zero</span><span class="p">();</span> <span class="c1">// set all coordinates to zero;</span>
+  <span class="kt">void</span> <span class="nf">Reverse</span><span class="p">();</span> <span class="c1">// negate all coordinates</span>
+  <span class="kt">bool</span> <span class="nf">Unitize</span><span class="p">();</span>  <span class="c1">// returns false if vector has zero length</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Test a vector to see if it is very short</span>
+  <span class="c1">//</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   tiny_tol - [in] (default = ON_ZERO_TOLERANCE) a nonzero</span>
+  <span class="c1">//              value used as the coordinate zero tolerance.</span>
+  <span class="c1">//</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   ( fabs(x) &lt;= tiny_tol &amp;&amp; fabs(y) &lt;= tiny_tol )</span>
+  <span class="c1">//</span>
+  <span class="kt">bool</span> <span class="nf">IsTiny</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">tiny_tol</span> <span class="o">=</span> <span class="n">ON_ZERO_TOLERANCE</span> <span class="c1">// tiny_tol</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if vector is the zero vector.</span>
+  <span class="kt">bool</span> <span class="nf">IsZero</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if vector is valid and has length 1.</span>
+  <span class="kt">bool</span> <span class="nf">IsUnitVector</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set this vector to be perpendicular to another vector</span>
+  <span class="kt">bool</span> <span class="nf">PerpendicularTo</span><span class="p">(</span> <span class="c1">// Result is not unitized.</span>
+                        <span class="c1">// returns false if input vector is zero</span>
+        <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span>
+        <span class="p">);</span>
+
+  <span class="c1">// set this vector to be perpendicular to a line defined by 2 points</span>
+  <span class="kt">bool</span> <span class="nf">PerpendicularTo</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span>
+        <span class="p">);</span>
+
+  <span class="c1">// These transform the vector in place. The transformation matrix acts on</span>
+  <span class="c1">// the left of the vector; i.e., result = transformation*vector</span>
+  <span class="kt">void</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="c1">// can use ON_Xform here</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">angle</span>            <span class="c1">// angle in radians</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>       <span class="o">//</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span>        <span class="c1">// cos(angle)</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_2dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_2dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_2dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">// ON_2dVector utilities</span>
+<span class="c1">//</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">double</span>
+<span class="nf">ON_DotProduct</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dVector</span>
+<span class="nf">ON_CrossProduct</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">double</span>
+<span class="nf">ON_WedgeProduct</span><span class="p">(</span>    <span class="c1">// signed area of the parallelagram.  Volume element.</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="n">A</span><span class="p">,</span> <span class="c1">// returns A.x * B.y - A.y * B.x</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="n">B</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span>
+<span class="nf">ON_IsOrthogonalFrame</span><span class="p">(</span> <span class="c1">// true if X, Y are nonzero and mutually perpendicular</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span>  <span class="c1">// Y</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span>
+<span class="nf">ON_IsOrthonormalFrame</span><span class="p">(</span> <span class="c1">// true if X, Y are orthogonal and unit length</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span>  <span class="c1">// Y</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span>
+<span class="nf">ON_IsRightHandFrame</span><span class="p">(</span> <span class="c1">// true if X, Y are orthonormal and right handed</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+    <span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span>  <span class="c1">// Y</span>
+    <span class="p">);</span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_3dVector</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_3dVector</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">;</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">ZeroVector</span><span class="p">;</span>  <span class="c1">// (0.0,0.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">XAxis</span><span class="p">;</span>       <span class="c1">// (1.0,0.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">YAxis</span><span class="p">;</span>       <span class="c1">// (0.0,1.0,0.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">ZAxis</span><span class="p">;</span>       <span class="c1">// (0.0,0.0,1.0)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">UnsetVector</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   A index driven function to get unit axis vectors.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   index - [in] 0 returns (1,0,0), 1 returns (0,1,0),</span>
+  <span class="c1">//                2 returns (0,0,1)</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Unit 3d vector with vector[i] = (i==index)?1:0;</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">UnitVector</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="c1">// index</span>
+    <span class="p">);</span>
+
+  <span class="c1">// use implicit destructor, copy constructor</span>
+  <span class="n">ON_3dVector</span><span class="p">();</span>                     <span class="c1">// x,y,z not initialized</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">,</span><span class="kt">double</span> <span class="n">z</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 2d vector</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span> <span class="p">);</span>   <span class="c1">// from 2d point</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="p">);</span>   <span class="c1">// from 3d point</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span>        <span class="c1">// from double[3] array</span>
+
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 2f vector</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span> <span class="p">);</span>  <span class="c1">// from 3f vector</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span> <span class="p">);</span>   <span class="c1">// from 2f point</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span> <span class="p">);</span>   <span class="c1">// from 3f point</span>
+  <span class="n">ON_3dVector</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>         <span class="c1">// from float[3] array</span>
+
+  <span class="c1">// (double*) conversion operators</span>
+  <span class="k">operator</span> <span class="kt">double</span><span class="o">*</span><span class="p">();</span>
+  <span class="k">operator</span> <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// use implicit operator=(const ON_3dVector&amp;)</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">);</span> <span class="c1">// vector = double[3] support</span>
+
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>  <span class="c1">// vector = float[3] support</span>
+
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="c1">// DO NOT ADD ANY MORE overrides of += or -=</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// inner (dot) product</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// inner (dot) product</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// inner (dot) product</span>
+
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span>  <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span>   <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2fPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// dictionary order comparisons</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// index operators mimic double[3] behavior</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    False if any coordinate is infinte, a nan, or ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if every coordinate is ON_UNSET_VALUE.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsUnsetVector</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set 3d vector value</span>
+  <span class="kt">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="kt">double</span> <span class="n">y</span><span class="p">,</span><span class="kt">double</span> <span class="n">z</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="nf">MaximumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of maximum coordinate</span>
+
+  <span class="kt">int</span> <span class="nf">MinimumCoordinateIndex</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumCoordinate</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// absolute value of minimum coordinate</span>
+
+  <span class="kt">double</span> <span class="nf">LengthSquared</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">Length</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Decompose</span><span class="p">(</span> <span class="c1">// Computes a, b, c such that this vector = a*X + b*Y + c*Z</span>
+         <span class="c1">// Returns false if unable to solve for a,b,c.  This happens</span>
+         <span class="c1">// when X,Y,Z is not really a basis.</span>
+         <span class="c1">//</span>
+         <span class="c1">// If X,Y,Z is known to be an orthonormal frame,</span>
+         <span class="c1">// then a = V*X, b = V*Y, c = V*Z will compute</span>
+         <span class="c1">// the same result more quickly.</span>
+         <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+         <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Y</span>
+         <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Z</span>
+         <span class="kt">double</span><span class="o">*</span><span class="p">,</span> <span class="c1">// a</span>
+         <span class="kt">double</span><span class="o">*</span><span class="p">,</span> <span class="c1">// b</span>
+         <span class="kt">double</span><span class="o">*</span>  <span class="c1">// c</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">IsParallelTo</span><span class="p">(</span>
+        <span class="c1">// returns  1: this and other vectors are parallel</span>
+        <span class="c1">//         -1: this and other vectors are anti-parallel</span>
+        <span class="c1">//          0: this and other vectors are not parallel</span>
+        <span class="c1">//             or at least one of the vectors is zero</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">,</span>                           <span class="c1">// other vector</span>
+        <span class="kt">double</span> <span class="n">angle_tolerance</span> <span class="o">=</span> <span class="n">ON_DEFAULT_ANGLE_TOLERANCE</span> <span class="o">//</span> <span class="n">optional</span> <span class="n">angle</span> <span class="n">tolerance</span> <span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsPerpendicularTo</span><span class="p">(</span>
+        <span class="c1">// returns true:  this and other vectors are perpendicular</span>
+        <span class="c1">//         false: this and other vectors are not perpendicular</span>
+        <span class="c1">//                or at least one of the vectors is zero</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">,</span>                           <span class="c1">// other vector</span>
+        <span class="kt">double</span> <span class="n">angle_tolerance</span> <span class="o">=</span> <span class="n">ON_DEFAULT_ANGLE_TOLERANCE</span> <span class="o">//</span> <span class="n">optional</span> <span class="n">angle</span> <span class="n">tolerance</span> <span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="nf">Fuzz</span><span class="p">(</span> <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="n">ON_ZERO_TOLERANCE</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// tolerance to use when comparing 3d vectors</span>
+
+  <span class="kt">void</span> <span class="nf">Zero</span><span class="p">();</span> <span class="c1">// set all coordinates to zero;</span>
+  <span class="kt">void</span> <span class="nf">Reverse</span><span class="p">();</span> <span class="c1">// negate all coordinates</span>
+  <span class="kt">bool</span> <span class="nf">Unitize</span><span class="p">();</span>  <span class="c1">// returns false if vector has zero length</span>
+  <span class="kt">double</span> <span class="nf">LengthAndUnitize</span><span class="p">();</span> <span class="c1">// unitizes and returns initial length</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Test a vector to see if it is very short</span>
+  <span class="c1">//</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   tiny_tol - [in] (default = ON_ZERO_TOLERANCE) a nonzero</span>
+  <span class="c1">//              value used as the coordinate zero tolerance.</span>
+  <span class="c1">//</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   ( fabs(x) &lt;= tiny_tol &amp;&amp; fabs(y) &lt;= tiny_tol &amp;&amp; fabs(z) &lt;= tiny_tol )</span>
+  <span class="c1">//</span>
+  <span class="kt">bool</span> <span class="nf">IsTiny</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">tiny_tol</span> <span class="o">=</span> <span class="n">ON_ZERO_TOLERANCE</span> <span class="c1">// tiny_tol</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if vector is the zero vector.</span>
+  <span class="kt">bool</span> <span class="nf">IsZero</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if vector is valid and has length 1.</span>
+  <span class="kt">bool</span> <span class="nf">IsUnitVector</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// set this vector to be perpendicular to another vector</span>
+  <span class="kt">bool</span> <span class="nf">PerpendicularTo</span><span class="p">(</span> <span class="c1">// Result is not unitized.</span>
+                        <span class="c1">// returns false if input vector is zero</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>
+        <span class="p">);</span>
+
+  <span class="c1">// set this vector to be perpendicular to a plane defined by 3 points</span>
+  <span class="kt">bool</span> <span class="nf">PerpendicularTo</span><span class="p">(</span>
+               <span class="c1">// about 3 times slower than</span>
+               <span class="o">//</span>    <span class="n">ON_3dVector</span> <span class="n">N</span> <span class="o">=</span> <span class="n">ON_CrossProduct</span><span class="p">(</span><span class="n">P1</span><span class="o">-</span><span class="n">P0</span><span class="p">,</span><span class="n">P2</span><span class="o">-</span><span class="n">P0</span><span class="p">);</span>
+               <span class="c1">//    N.Unitize();</span>
+               <span class="c1">// returns false if points are coincident or colinear</span>
+         <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="c1">// These transform the vector in place. The transformation matrix acts on</span>
+  <span class="c1">// the left of the vector; i.e., result = transformation*vector</span>
+  <span class="kt">void</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="c1">// can use ON_Xform here</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">angle</span><span class="p">,</span>           <span class="c1">// angle in radians</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span> <span class="c1">// axis of rotation</span>
+        <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>        <span class="o">//</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>        <span class="c1">// cos(angle)</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span>  <span class="c1">// axis of rotation</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_3dRay</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_3dRay</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">ON_3dRay</span><span class="p">();</span>
+
+  <span class="n">ON_3dPoint</span>  <span class="n">m_P</span><span class="p">;</span>
+  <span class="n">ON_3dVector</span> <span class="n">m_V</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  Typically the vector portion is a unit vector and</span>
+<span class="cm">  m_d = -(x*P.x + y*P.y + z*P.z) for a point P on the plane.</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="nl">ON_PlaneEquation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">ON_3dVector</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// C++ defaults for construction, destruction, copys, and operator=</span>
+  <span class="c1">// work fine.</span>
+
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_PlaneEquation</span> <span class="n">UnsetPlaneEquation</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE,ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="n">ON_PlaneEquation</span> <span class="n">ZeroPlaneEquation</span><span class="p">;</span> <span class="c1">// (0.0,0.0,0.0,0.0)</span>
+
+  <span class="n">ON_PlaneEquation</span><span class="p">();</span>
+
+  <span class="n">ON_PlaneEquation</span><span class="p">(</span><span class="kt">double</span> <span class="n">xx</span><span class="p">,</span> <span class="kt">double</span> <span class="n">yy</span><span class="p">,</span> <span class="kt">double</span> <span class="n">zz</span><span class="p">,</span> <span class="kt">double</span> <span class="n">dd</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    returns true if x, y, z, d are valid, finite doubles.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    this function will return true if x, y and z are all zero.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_PlaneEquation::IsSet().</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    returns true if x, y, z, d are valid, finite doubles and</span>
+<span class="cm">    at least one of x, y or z is not zero.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsSet</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets (x,y,z) to a unitized N and then sets</span>
+<span class="cm">    d = -(x*P.x + y*P.y + z*P.z).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P - [in] point on the plane</span>
+<span class="cm">    N - [in] vector perpendicular to the plane</span>
+<span class="cm">  Returns:</span>
+<span class="cm">     true if input is valid.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span> <span class="n">ON_3dPoint</span> <span class="n">P</span><span class="p">,</span> <span class="n">ON_3dVector</span> <span class="n">N</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate the plane at a point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    x*P.x + y*P.y + z*P.z + d;</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">ValueAt</span><span class="p">(</span><span class="n">ON_3dPoint</span> <span class="n">P</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">ValueAt</span><span class="p">(</span><span class="n">ON_4dPoint</span> <span class="n">P</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">ValueAt</span><span class="p">(</span><span class="n">ON_3dVector</span> <span class="n">P</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">ValueAt</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate the plane at a list of point values.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    Pcount - [in]</span>
+<span class="cm">      number of points</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">      points</span>
+<span class="cm">    value - [in]</span>
+<span class="cm">      If not null, value[] must be an array of length at least Pcount.</span>
+<span class="cm">      The values will be stored in this array.  If null, the an array</span>
+<span class="cm">      will be allocated with onmalloc() and returned.</span>
+<span class="cm">    value_range - [out]</span>
+<span class="cm">      If not null, the range of values will be returned here.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    An array of Pcount values.  If the input parameter value was null,</span>
+<span class="cm">    then the array is allocated on the heap using onmalloc() and the</span>
+<span class="cm">    caller is responsible for calling onfree() when finished.  If the</span>
+<span class="cm">    input is not valid, null is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">ValueAt</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">Pcount</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3fPoint</span><span class="o">*</span> <span class="n">P</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">value</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">value_range</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">ValueAt</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">Pcount</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">*</span> <span class="n">P</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">value</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">value_range</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    This function calculates and evalutes points that</span>
+<span class="cm">    would be exactly on the plane if double precision</span>
+<span class="cm">    aritmetic were mathematically perfect and returns</span>
+<span class="cm">    the largest value of the evaluations.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">ZeroTolerance</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Transform the plane equation so that, if e0 is the initial</span>
+<span class="cm">    equation, e1 is transformed equation and P is a point,</span>
+<span class="cm">    then e0.ValueAt(P) = e1.ValueAt(xform*P).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    xform - [in]</span>
+<span class="cm">      Invertable transformation.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the plane equation was successfully transformed.</span>
+<span class="cm">    False if xform is not invertable or the equation is not</span>
+<span class="cm">    valid.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    This function has to invert xform.  If you have apply the</span>
+<span class="cm">    same transformation to a bunch of planes, then it will be</span>
+<span class="cm">    more efficient to calculate xform&#39;s inverse transpose</span>
+<span class="cm">    and apply the resultingt transformation to the equation&#39;s</span>
+<span class="cm">    coefficients as if they were 4d point coordinates.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get point on plane that is closest to a given point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    point - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A 3d point on the plane that is closest to the input point.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">ClosestPointTo</span><span class="p">(</span> <span class="n">ON_3dPoint</span> <span class="n">point</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the minimum value of the plane equation</span>
+<span class="cm">    on a bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bbox - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Minimum value of the plane equation on the bounding box.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumValueAt</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the maximum value of the plane equation</span>
+<span class="cm">    on a bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bbox - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Maximum value of the plane equation on the bounding box.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumValueAt</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the maximum value of the plane equation on a set of 3d points.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bRational - [in]</span>
+<span class="cm">      False if the points are euclidean (x,y,z)</span>
+<span class="cm">      True if the points are homogenous rational (x,y,z,w)</span>
+<span class="cm">      (x/w,y/w,z/w) is used to evaluate the value.</span>
+<span class="cm">    point_count - [in]</span>
+<span class="cm">    point_stride - [in]</span>
+<span class="cm">      i-th point&#39;s x coordinate = points[i*point_stride]</span>
+<span class="cm">    points - [in]</span>
+<span class="cm">      coordinates of points</span>
+<span class="cm">    stop_value - [in]</span>
+<span class="cm">      If stop_value is valid and not ON_UNSET_VALUE, then the</span>
+<span class="cm">      evaulation stops if a value &gt; stop_value is found.</span>
+<span class="cm">      If stop_value = ON_UNSET_VALUE, then stop_value is ignored.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Maximum value of the plane equation on the point list.</span>
+<span class="cm">    If the input is not valid, then ON_UNSET_VALUE is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumValueAt</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">bRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">points</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">stop_value</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the minimum value of the plane equation on a set of 3d points.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bRational - [in]</span>
+<span class="cm">      False if the points are euclidean (x,y,z)</span>
+<span class="cm">      True if the points are homogenous rational (x,y,z,w)</span>
+<span class="cm">      (x/w,y/w,z/w) is used to evaluate the value.</span>
+<span class="cm">    point_count - [in]</span>
+<span class="cm">    point_stride - [in]</span>
+<span class="cm">      i-th point&#39;s x coordinate = points[i*point_stride]</span>
+<span class="cm">    points - [in]</span>
+<span class="cm">      coordinates of points</span>
+<span class="cm">    stop_value - [in]</span>
+<span class="cm">      If stop_value is valid and not ON_UNSET_VALUE, then the</span>
+<span class="cm">      evaulation stops if a value &lt; stop_value is found.</span>
+<span class="cm">      If stop_value = ON_UNSET_VALUE, then stop_value is ignored.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Maximum value of the plane equation on the point list.</span>
+<span class="cm">    If the input is not valid, then ON_UNSET_VALUE is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumValueAt</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">bRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">points</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">stop_value</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get the maximum absolute value of the plane equation</span>
+<span class="cm">    on a set of 3d points.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bRational - [in]</span>
+<span class="cm">      False if the points are euclidean (x,y,z)</span>
+<span class="cm">      True if the points are homogenous rational (x,y,z,w)</span>
+<span class="cm">      (x/w,y/w,z/w) is used to evaluate the value.</span>
+<span class="cm">    point_count - [in]</span>
+<span class="cm">    point_stride - [in]</span>
+<span class="cm">      i-th point&#39;s x coordinate = points[i*point_stride]</span>
+<span class="cm">    points - [in]</span>
+<span class="cm">      coordinates of points</span>
+<span class="cm">    stop_value - [in]</span>
+<span class="cm">      If stop_value &gt;= 0.0, then the evaulation stops if an</span>
+<span class="cm">      absolute value &gt; stop_value is found. If stop_value &lt; 0.0</span>
+<span class="cm">      or stop_value is invalid, then stop_value is ignored.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Maximum value of the plane equation on the point list.</span>
+<span class="cm">    If the input is not valid, then ON_UNSET_VALUE is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumAbsoluteValueAt</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">bRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">points</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">stop_value</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test points on a bezier curve to see if they are near the plane.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bezcrv - [in]</span>
+<span class="cm">    s0 - [in]</span>
+<span class="cm">    s1 - [in] the interval from s0 to s1 is tested (s0 &lt; s1)</span>
+<span class="cm">    sample_count - [in] number of interior points to test.</span>
+<span class="cm">                Numbers like 1, 3, 7, 15, ... work best.</span>
+<span class="cm">    endpoint_tolerance - [in] If &gt;= 0, then the end points are</span>
+<span class="cm">              tested to see if the distance from the endpoints</span>
+<span class="cm">              is &lt;= endpoint_tolerance.</span>
+<span class="cm">    interior_tolerance - [in] (&gt;=0 and &gt;=endpoint_tolerance)</span>
+<span class="cm">              This tolerance is used to test the interior sample points.</span>
+<span class="cm">    smin - [put]  If not NULL, *smin = bezier parameter of nearest</span>
+<span class="cm">                  test point.</span>
+<span class="cm">    smax - [put]  If not NULL, *smax = bezier parameter of farthest</span>
+<span class="cm">                  test point.  If false is returned, this is the</span>
+<span class="cm">                  parameter of the test point that failed.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if all the tested points passed the tolerance test.</span>
+<span class="cm">    False if at least one tested point failed the tolerance test.</span>
+<span class="cm">    (The test terminates when the first failure is encountered.)</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsNearerThan</span><span class="p">(</span>
+          <span class="k">const</span> <span class="k">class</span> <span class="nc">ON_BezierCurve</span><span class="o">&amp;</span> <span class="n">bezcrv</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">s0</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">s1</span><span class="p">,</span>
+          <span class="kt">int</span> <span class="n">sample_count</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">endpoint_tolerance</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">interior_tolerance</span><span class="p">,</span>
+          <span class="kt">double</span><span class="o">*</span> <span class="n">smin</span><span class="p">,</span>
+          <span class="kt">double</span><span class="o">*</span> <span class="n">smax</span>
+          <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PlaneEquation</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PlaneEquation</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="n">d</span><span class="p">;</span> <span class="c1">// 4th coefficient of the plane equation.</span>
+<span class="p">};</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dVector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">);</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">// ON_3dVector utilities</span>
+<span class="c1">//</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">double</span>
+<span class="nf">ON_DotProduct</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>
+    <span class="p">);</span>
+
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dVector</span>
+<span class="nf">ON_CrossProduct</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="n">ON_3dVector</span>
+<span class="nf">ON_CrossProduct</span><span class="p">(</span> <span class="c1">// 3d cross product for old fashioned arrays</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">,</span> <span class="c1">// array of 3d doubles</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span>  <span class="c1">// array of 3d doubles</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">double</span>
+<span class="nf">ON_TripleProduct</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">double</span>
+<span class="nf">ON_TripleProduct</span><span class="p">(</span>  <span class="c1">// 3d triple product for old fashioned arrays</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">,</span> <span class="c1">// array of 3d doubles</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span><span class="p">,</span> <span class="c1">// array of 3d doubles</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span>  <span class="c1">// array of 3d doubles</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span>
+<span class="nf">ON_IsOrthogonalFrame</span><span class="p">(</span> <span class="c1">// true if X, Y, Z are nonzero and mutually perpendicular</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Y</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>  <span class="c1">// Z</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span>
+<span class="nf">ON_IsOrthonormalFrame</span><span class="p">(</span> <span class="c1">// true if X, Y, Z are orthogonal and unit length</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Y</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>  <span class="c1">// Z</span>
+    <span class="p">);</span>
+
+<span class="n">ON_DECL</span>
+<span class="kt">bool</span>
+<span class="nf">ON_IsRightHandFrame</span><span class="p">(</span> <span class="c1">// true if X, Y, Z are orthonormal and right handed</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// X</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Y</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>  <span class="c1">// Z</span>
+    <span class="p">);</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">// common points and vectors</span>
+<span class="c1">//</span>
+<span class="c1">// ON_unset_point is obsolete - use ON_3dPoint::UnsetPoint</span>
+<span class="cp">#define ON_unset_point ON_UNSET_POINT</span>
+
+<span class="c1">// ON_UNSET_POINT is OBSOLETE - use ON_3dPoint::UnsetPoint</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_3dPoint</span>  <span class="n">ON_UNSET_POINT</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+<span class="c1">// ON_UNSET_VECTOR is OBSOLETE - use ON_3dPoint::UnsetVector</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">ON_UNSET_VECTOR</span><span class="p">;</span> <span class="c1">// (ON_UNSET_VALUE,ON_UNSET_VALUE,ON_UNSET_VALUE)</span>
+
+<span class="c1">// ON_origin is OBSOLETE - use ON_3dPoint::Origin</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_3dPoint</span>  <span class="n">ON_origin</span><span class="p">;</span> <span class="c1">// (0.0, 0.0, 0.0)</span>
+
+<span class="c1">// ON_xaxis is OBSOLETE - use ON_3dPoint::XAxis</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">ON_xaxis</span><span class="p">;</span> <span class="c1">// (1.0, 0.0, 0.0)</span>
+
+<span class="c1">// ON_yaxis is OBSOLETE - use ON_3dPoint::YAxis</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">ON_yaxis</span><span class="p">;</span> <span class="c1">// (0.0, 1.0, 0.0)</span>
+
+<span class="c1">// ON_zaxis is OBSOLETE - use ON_3dPoint::ZAxis</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_3dVector</span> <span class="n">ON_zaxis</span><span class="p">;</span> <span class="c1">// (0.0, 0.0, 1.0)</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;opennurbs_fpoint.h&quot;</span><span class="cp"></span>
+
+<span class="c1">////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">//   ON_SurfaceCurvature</span>
+<span class="c1">//</span>
+<span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ON_CLASS</span> <span class="n">ON_SurfaceCurvature</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">double</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">;</span> <span class="c1">// principal curvatures</span>
+
+  <span class="kt">double</span> <span class="nf">GaussianCurvature</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MeanCurvature</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumRadius</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumRadius</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_pointcloud.h.html" class="btn btn-neutral float-right" title="File opennurbs_pointcloud.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_point.h.html" class="btn btn-neutral float-left" title="File opennurbs_point.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

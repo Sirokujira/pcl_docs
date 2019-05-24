@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File gpu_seeded_hue_segmentation.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File gpu_seeded_hue_segmentation.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_pcl_gpu_segmentation_include_pcl_gpu_segmentation_impl_gpu_seeded_hue_segmentation.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-gpu-seeded-hue-segmentation-hpp">
+<span id="program-listing-file-pcl-docs-pcl-gpu-segmentation-include-pcl-gpu-segmentation-impl-gpu-seeded-hue-segmentation-hpp"></span><h1>Program Listing for File gpu_seeded_hue_segmentation.hpp<a class="headerlink" href="#program-listing-for-file-gpu-seeded-hue-segmentation-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_pcl_gpu_segmentation_include_pcl_gpu_segmentation_impl_gpu_seeded_hue_segmentation.hpp.html#file-pcl-docs-pcl-gpu-segmentation-include-pcl-gpu-segmentation-impl-gpu-seeded-hue-segmentation-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\pcl\gpu\segmentation\include\pcl\gpu\segmentation\impl\gpu_seeded_hue_segmentation.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2009, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id:$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_GPU_SEGMENTATION_IMPL_SEEDED_HUE_SEGMENTATION_H_</span>
+<span class="cp">#define PCL_GPU_SEGMENTATION_IMPL_SEEDED_HUE_SEGMENTATION_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/segmentation/gpu_seeded_hue_segmentation.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kt">void</span>
+<span class="nf">seededHueSegmentation</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZRGB</span><span class="o">&gt;</span> <span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">host_cloud_</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">Octree</span><span class="o">::</span><span class="n">Ptr</span>                                  <span class="o">&amp;</span><span class="n">tree</span><span class="p">,</span>
+                       <span class="kt">float</span>                                                        <span class="n">tolerance</span><span class="p">,</span>
+                       <span class="n">PointIndices</span>                                                 <span class="o">&amp;</span><span class="n">indices_in</span><span class="p">,</span>
+                       <span class="n">PointIndices</span>                                                 <span class="o">&amp;</span><span class="n">indices_out</span><span class="p">,</span>
+                       <span class="kt">float</span>                                                        <span class="n">delta_hue</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="c1">// Create a bool vector of processed point indices, and initialize it to false</span>
+  <span class="c1">// cloud is a DeviceArray&lt;PointType&gt;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">processed</span> <span class="p">(</span><span class="n">host_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">max_answers</span> <span class="o">=</span> <span class="n">host_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+
+  <span class="c1">// Process all points in the indices vector</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">indices_in</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">k</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">indices_in</span><span class="p">.</span><span class="n">indices</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+    <span class="c1">// if we already processed this point continue with the next one</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">processed</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="c1">// now we will process this point</span>
+    <span class="n">processed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">PointXYZRGB</span>  <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">host_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">PointXYZHSV</span> <span class="n">h</span><span class="p">;</span>
+    <span class="n">PointXYZRGBtoXYZHSV</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">);</span>
+
+    <span class="c1">// Create the query queue on the device, point based not indices</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">Octree</span><span class="o">::</span><span class="n">Queries</span> <span class="n">queries_device</span><span class="p">;</span>
+    <span class="c1">// Create the query queue on the host</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">VectorType</span> <span class="n">queries_host</span><span class="p">;</span>
+    <span class="c1">// Push the starting point in the vector</span>
+    <span class="n">queries_host</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">host_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">found_points</span> <span class="o">=</span> <span class="n">queries_host</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">previous_found_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">NeighborIndices</span> <span class="n">result_device</span><span class="p">;</span>
+
+    <span class="c1">// Host buffer for results</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">data</span><span class="p">;</span>
+
+    <span class="c1">// once the area stop growing, stop also iterating.</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">previous_found_points</span> <span class="o">&lt;</span> <span class="n">found_points</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Move queries to GPU</span>
+      <span class="n">queries_device</span><span class="p">.</span><span class="n">upload</span><span class="p">(</span><span class="n">queries_host</span><span class="p">);</span>
+      <span class="c1">// Execute search</span>
+      <span class="n">tree</span><span class="o">-&gt;</span><span class="n">radiusSearch</span><span class="p">(</span><span class="n">queries_device</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">max_answers</span><span class="p">,</span> <span class="n">result_device</span><span class="p">);</span>
+
+      <span class="c1">// Store the previously found number of points</span>
+      <span class="n">previous_found_points</span> <span class="o">=</span> <span class="n">found_points</span><span class="p">;</span>
+
+      <span class="c1">// Clear the Host vectors</span>
+      <span class="n">sizes</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span> <span class="n">data</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+      <span class="c1">// Copy results from GPU to Host</span>
+      <span class="n">result_device</span><span class="p">.</span><span class="n">sizes</span><span class="p">.</span><span class="n">download</span> <span class="p">(</span><span class="n">sizes</span><span class="p">);</span>
+      <span class="n">result_device</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">download</span> <span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+      <span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">qp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">qp</span> <span class="o">&lt;</span> <span class="n">sizes</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">qp</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">qp_r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">qp_r</span> <span class="o">&lt;</span> <span class="n">sizes</span><span class="p">[</span><span class="n">qp</span><span class="p">];</span> <span class="n">qp_r</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span><span class="p">(</span><span class="n">processed</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">qp_r</span> <span class="o">+</span> <span class="n">qp</span> <span class="o">*</span> <span class="n">max_answers</span><span class="p">]])</span>
+            <span class="k">continue</span><span class="p">;</span>
+
+          <span class="n">PointXYZRGB</span>  <span class="n">p_l</span><span class="p">;</span>
+          <span class="n">p_l</span> <span class="o">=</span> <span class="n">host_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">qp_r</span> <span class="o">+</span> <span class="n">qp</span> <span class="o">*</span> <span class="n">max_answers</span><span class="p">]];</span>
+          <span class="n">PointXYZHSV</span> <span class="n">h_l</span><span class="p">;</span>
+          <span class="n">PointXYZRGBtoXYZHSV</span><span class="p">(</span><span class="n">p_l</span><span class="p">,</span> <span class="n">h_l</span><span class="p">);</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">h_l</span><span class="p">.</span><span class="n">h</span> <span class="o">-</span> <span class="n">h</span><span class="p">.</span><span class="n">h</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">delta_hue</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">processed</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">qp_r</span> <span class="o">+</span> <span class="n">qp</span> <span class="o">*</span> <span class="n">max_answers</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="n">queries_host</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">host_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">qp_r</span> <span class="o">+</span> <span class="n">qp</span> <span class="o">*</span> <span class="n">max_answers</span><span class="p">]]);</span>
+            <span class="n">found_points</span><span class="o">++</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">qp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">qp</span> <span class="o">&lt;</span> <span class="n">sizes</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">qp</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">qp_r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">qp_r</span> <span class="o">&lt;</span> <span class="n">sizes</span><span class="p">[</span><span class="n">qp</span><span class="p">];</span> <span class="n">qp_r</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">indices_out</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">qp_r</span> <span class="o">+</span> <span class="n">qp</span> <span class="o">*</span> <span class="n">max_answers</span><span class="p">]);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// @todo: do we need to sort here and remove double points?</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">SeededHueSegmentation</span><span class="o">::</span><span class="n">segment</span> <span class="p">(</span><span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices_in</span><span class="p">,</span> <span class="n">PointIndices</span> <span class="o">&amp;</span><span class="n">indices_out</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Initialize the GPU search tree</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tree_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">tree_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">gpu</span><span class="o">::</span><span class="n">Octree</span><span class="p">());</span>
+    <span class="c1">///@todo what do we do if input isn&#39;t a PointXYZ cloud?</span>
+    <span class="n">tree_</span><span class="o">-&gt;</span><span class="n">setCloud</span><span class="p">(</span><span class="n">input_</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tree_</span><span class="o">-&gt;</span><span class="n">isBuild</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">tree_</span><span class="o">-&gt;</span><span class="n">build</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="cm">/*</span>
+<span class="cm">  if(tree_-&gt;cloud_.size() != host_cloud.points.size ())</span>
+<span class="cm">  {</span>
+<span class="cm">    PCL_ERROR(&quot;[pcl::gpu::SeededHueSegmentation] size of host cloud and device cloud don&#39;t match!\n&quot;);</span>
+<span class="cm">    return;</span>
+<span class="cm">  }</span>
+<span class="cm">*/</span>
+  <span class="c1">// Extract the actual clusters</span>
+  <span class="n">seededHueSegmentation</span> <span class="p">(</span><span class="n">host_cloud_</span><span class="p">,</span> <span class="n">tree_</span><span class="p">,</span> <span class="n">cluster_tolerance_</span><span class="p">,</span> <span class="n">indices_in</span><span class="p">,</span> <span class="n">indices_out</span><span class="p">,</span> <span class="n">delta_hue_</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endif </span><span class="c1">//PCL_GPU_SEGMENTATION_IMPL_SEEDED_HUE_SEGMENTATION_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

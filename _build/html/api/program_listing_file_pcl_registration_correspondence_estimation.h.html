@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File correspondence_estimation.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File correspondence_estimation.hpp" href="file_pcl_registration_impl_correspondence_estimation.hpp.html" />
+    <link rel="prev" title="File correspondence_estimation.h" href="file_pcl_registration_correspondence_estimation.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_correspondence_estimation.h.html">File correspondence_estimation.h</a> &raquo;</li>
+        
+      <li>Program Listing for File correspondence_estimation.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_correspondence_estimation.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-correspondence-estimation-h">
+<span id="program-listing-file-pcl-registration-correspondence-estimation-h"></span><h1>Program Listing for File correspondence_estimation.h<a class="headerlink" href="#program-listing-for-file-correspondence-estimation-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_correspondence_estimation.h.html#file-pcl-registration-correspondence-estimation-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\correspondence_estimation.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_base.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/transforms.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/search/kdtree.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/correspondence_types.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">registration</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief Abstract @b CorrespondenceEstimationBase class.</span>
+<span class="cm">      * All correspondence estimation methods should inherit from this.</span>
+<span class="cm">      * \author Radu B. Rusu</span>
+<span class="cm">      * \ingroup registration</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span> <span class="o">=</span> <span class="kt">float</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">CorrespondenceEstimationBase</span><span class="o">:</span> <span class="k">public</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+        <span class="c1">// using PCLBase&lt;PointSource&gt;::initCompute;</span>
+        <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;::</span><span class="n">deinitCompute</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;::</span><span class="n">setIndices</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">KdTree</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">KdTreePtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span> <span class="n">KdTreeReciprocal</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">KdTreeReciprocalPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span> <span class="n">PointCloudSource</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudSourcePtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudSourceConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">PointCloudTarget</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudTargetPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudTargetConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">PointRepresentationConstPtr</span> <span class="n">PointRepresentationConstPtr</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">CorrespondenceEstimationBase</span> <span class="p">()</span>
+          <span class="o">:</span> <span class="n">corr_name_</span> <span class="p">(</span><span class="s">&quot;CorrespondenceEstimationBase&quot;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">tree_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">tree_reciprocal_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">target_</span> <span class="p">()</span>
+          <span class="p">,</span> <span class="n">point_representation_</span> <span class="p">()</span>
+          <span class="p">,</span> <span class="n">input_transformed_</span> <span class="p">()</span>
+          <span class="p">,</span> <span class="n">target_cloud_updated_</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">source_cloud_updated_</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">force_no_recompute_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">force_no_recompute_reciprocal_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Empty destructor */</span>
+        <span class="o">~</span><span class="n">CorrespondenceEstimationBase</span> <span class="p">()</span> <span class="p">{}</span>
+
+        <span class="cm">/** \brief Provide a pointer to the input source</span>
+<span class="cm">          * (e.g., the point cloud that we want to align to the target)</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] cloud the input point cloud source</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setInputSource</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudSourceConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">source_cloud_updated_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;::</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">getFields</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud</span><span class="p">,</span> <span class="n">input_fields_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the input point cloud dataset target. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudSourceConstPtr</span> <span class="k">const</span>
+        <span class="n">getInputSource</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">input_</span> <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Provide a pointer to the input target</span>
+<span class="cm">          * (e.g., the point cloud that we want to align the input source to)</span>
+<span class="cm">          * \param[in] cloud the input point cloud target</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setInputTarget</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudTargetConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Get a pointer to the input point cloud dataset target. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudTargetConstPtr</span> <span class="k">const</span>
+        <span class="nf">getInputTarget</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">target_</span> <span class="p">);</span> <span class="p">}</span>
+
+
+        <span class="cm">/** \brief See if this rejector requires source normals */</span>
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">requiresSourceNormals</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Abstract method for setting the source normals */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">setSourceNormals</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="cm">/*cloud2*/</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::registration::%s::setSourceNormals] This class does not require input source normals&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief See if this rejector requires target normals */</span>
+        <span class="k">virtual</span> <span class="kt">bool</span>
+        <span class="nf">requiresTargetNormals</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Abstract method for setting the target normals */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">setTargetNormals</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="cm">/*cloud2*/</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;[pcl::registration::%s::setTargetNormals] This class does not require input target normals&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Provide a pointer to the vector of indices that represent the</span>
+<span class="cm">          * input source point cloud.</span>
+<span class="cm">          * \param[in] indices a pointer to the vector of indices</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setIndicesSource</span> <span class="p">(</span><span class="k">const</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">setIndices</span> <span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the vector of indices used for the source dataset. */</span>
+        <span class="kr">inline</span> <span class="n">IndicesPtr</span> <span class="k">const</span>
+        <span class="nf">getIndicesSource</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">indices_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Provide a pointer to the vector of indices that represent the input target point cloud.</span>
+<span class="cm">          * \param[in] indices a pointer to the vector of indices</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setIndicesTarget</span> <span class="p">(</span><span class="k">const</span> <span class="n">IndicesPtr</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">target_cloud_updated_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="n">target_indices_</span> <span class="o">=</span> <span class="n">indices</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the vector of indices used for the target dataset. */</span>
+        <span class="kr">inline</span> <span class="n">IndicesPtr</span> <span class="k">const</span>
+        <span class="nf">getIndicesTarget</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">target_indices_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Provide a pointer to the search object used to find correspondences in</span>
+<span class="cm">          * the target cloud.</span>
+<span class="cm">          * \param[in] tree a pointer to the spatial search object.</span>
+<span class="cm">          * \param[in] force_no_recompute If set to true, this tree will NEVER be</span>
+<span class="cm">          * recomputed, regardless of calls to setInputTarget. Only use if you are</span>
+<span class="cm">          * confident that the tree will be set correctly.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setSearchMethodTarget</span> <span class="p">(</span><span class="k">const</span> <span class="n">KdTreePtr</span> <span class="o">&amp;</span><span class="n">tree</span><span class="p">,</span>
+                               <span class="kt">bool</span> <span class="n">force_no_recompute</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">tree_</span> <span class="o">=</span> <span class="n">tree</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">force_no_recompute</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">force_no_recompute_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="c1">// Since we just set a new tree, we need to check for updates</span>
+          <span class="n">target_cloud_updated_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the search method used to find correspondences in the</span>
+<span class="cm">          * target cloud. */</span>
+        <span class="kr">inline</span> <span class="n">KdTreePtr</span>
+        <span class="nf">getSearchMethodTarget</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">tree_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Provide a pointer to the search object used to find correspondences in</span>
+<span class="cm">          * the source cloud (usually used by reciprocal correspondence finding).</span>
+<span class="cm">          * \param[in] tree a pointer to the spatial search object.</span>
+<span class="cm">          * \param[in] force_no_recompute If set to true, this tree will NEVER be</span>
+<span class="cm">          * recomputed, regardless of calls to setInputSource. Only use if you are</span>
+<span class="cm">          * extremely confident that the tree will be set correctly.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setSearchMethodSource</span> <span class="p">(</span><span class="k">const</span> <span class="n">KdTreeReciprocalPtr</span> <span class="o">&amp;</span><span class="n">tree</span><span class="p">,</span>
+                               <span class="kt">bool</span> <span class="n">force_no_recompute</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">tree_reciprocal_</span> <span class="o">=</span> <span class="n">tree</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span> <span class="n">force_no_recompute</span> <span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">force_no_recompute_reciprocal_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="c1">// Since we just set a new tree, we need to check for updates</span>
+          <span class="n">source_cloud_updated_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the search method used to find correspondences in the</span>
+<span class="cm">          * source cloud. */</span>
+        <span class="kr">inline</span> <span class="n">KdTreeReciprocalPtr</span>
+        <span class="nf">getSearchMethodSource</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">tree_reciprocal_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Determine the correspondences between input and target cloud.</span>
+<span class="cm">          * \param[out] correspondences the found correspondences (index of query point, index of target point, distance)</span>
+<span class="cm">          * \param[in] max_distance maximum allowed distance between correspondences</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">determineCorrespondences</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span> <span class="o">&amp;</span><span class="n">correspondences</span><span class="p">,</span>
+                                  <span class="kt">double</span> <span class="n">max_distance</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Determine the reciprocal correspondences between input and target cloud.</span>
+<span class="cm">          * A correspondence is considered reciprocal if both Src_i has Tgt_i as a</span>
+<span class="cm">          * correspondence, and Tgt_i has Src_i as one.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[out] correspondences the found correspondences (index of query and target point, distance)</span>
+<span class="cm">          * \param[in] max_distance maximum allowed distance between correspondences</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">void</span>
+        <span class="nf">determineReciprocalCorrespondences</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span> <span class="o">&amp;</span><span class="n">correspondences</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">max_distance</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Provide a boost shared pointer to the PointRepresentation to be used</span>
+<span class="cm">          * when searching for nearest neighbors.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] point_representation the PointRepresentation to be used by the</span>
+<span class="cm">          * k-D tree for nearest neighbor search</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setPointRepresentation</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointRepresentationConstPtr</span> <span class="o">&amp;</span><span class="n">point_representation</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">point_representation_</span> <span class="o">=</span> <span class="n">point_representation</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Clone and cast to CorrespondenceEstimationBase */</span>
+        <span class="k">virtual</span> <span class="k">typename</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">clone</span> <span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="cm">/** \brief The correspondence estimation method name. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">corr_name_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to the spatial search object used for the target dataset. */</span>
+        <span class="n">KdTreePtr</span> <span class="n">tree_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to the spatial search object used for the source dataset. */</span>
+        <span class="n">KdTreeReciprocalPtr</span> <span class="n">tree_reciprocal_</span><span class="p">;</span>
+
+
+
+        <span class="cm">/** \brief The input point cloud dataset target. */</span>
+        <span class="n">PointCloudTargetConstPtr</span> <span class="n">target_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The target point cloud dataset indices. */</span>
+        <span class="n">IndicesPtr</span> <span class="n">target_indices_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The point representation used (internal). */</span>
+        <span class="n">PointRepresentationConstPtr</span> <span class="n">point_representation_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The transformed input source point cloud dataset. */</span>
+        <span class="n">PointCloudTargetPtr</span> <span class="n">input_transformed_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The types of input point fields available. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;</span> <span class="n">input_fields_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Abstract class get name method. */</span>
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span>
+        <span class="n">getClassName</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">corr_name_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Internal computation initialization. */</span>
+        <span class="kt">bool</span>
+        <span class="n">initCompute</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Internal computation initialization for reciprocal correspondences. */</span>
+        <span class="kt">bool</span>
+        <span class="nf">initComputeReciprocal</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Variable that stores whether we have a new target cloud, meaning we need to pre-process it again.</span>
+<span class="cm">         * This way, we avoid rebuilding the kd-tree for the target cloud every time the determineCorrespondences () method</span>
+<span class="cm">         * is called. */</span>
+        <span class="kt">bool</span> <span class="n">target_cloud_updated_</span><span class="p">;</span>
+        <span class="cm">/** \brief Variable that stores whether we have a new source cloud, meaning we need to pre-process it again.</span>
+<span class="cm">         * This way, we avoid rebuilding the reciprocal kd-tree for the source cloud every time the determineCorrespondences () method</span>
+<span class="cm">         * is called. */</span>
+        <span class="kt">bool</span> <span class="n">source_cloud_updated_</span><span class="p">;</span>
+        <span class="cm">/** \brief A flag which, if set, means the tree operating on the target cloud</span>
+<span class="cm">         * will never be recomputed*/</span>
+        <span class="kt">bool</span> <span class="n">force_no_recompute_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A flag which, if set, means the tree operating on the source cloud</span>
+<span class="cm">         * will never be recomputed*/</span>
+        <span class="kt">bool</span> <span class="n">force_no_recompute_reciprocal_</span><span class="p">;</span>
+
+     <span class="p">};</span>
+
+    <span class="cm">/** \brief @b CorrespondenceEstimation represents the base class for</span>
+<span class="cm">      * determining correspondences between target and query point</span>
+<span class="cm">      * sets/features.</span>
+<span class="cm">      *</span>
+<span class="cm">      * Code example:</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * pcl::PointCloud&lt;pcl::PointXYZRGBA&gt;::Ptr source, target;</span>
+<span class="cm">      * // ... read or fill in source and target</span>
+<span class="cm">      * pcl::CorrespondenceEstimation&lt;pcl::PointXYZ, pcl::PointXYZ&gt; est;</span>
+<span class="cm">      * est.setInputSource (source);</span>
+<span class="cm">      * est.setInputTarget (target);</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::Correspondences all_correspondences;</span>
+<span class="cm">      * // Determine all reciprocal correspondences</span>
+<span class="cm">      * est.determineReciprocalCorrespondences (all_correspondences);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \author Radu B. Rusu, Michael Dixon, Dirk Holz</span>
+<span class="cm">      * \ingroup registration</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Scalar</span> <span class="o">=</span> <span class="kt">float</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">CorrespondenceEstimation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CorrespondenceEstimation</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">CorrespondenceEstimation</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">point_representation_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">input_transformed_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">tree_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">tree_reciprocal_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">target_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">corr_name_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">target_indices_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">initCompute</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">initComputeReciprocal</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">input_fields_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">PCLBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;::</span><span class="n">deinitCompute</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">KdTree</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">KdTreePtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span> <span class="n">PointCloudSource</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudSourcePtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudSourceConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">PointCloudTarget</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudTargetPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudTargetConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">KdTree</span><span class="o">::</span><span class="n">PointRepresentationConstPtr</span> <span class="n">PointRepresentationConstPtr</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">CorrespondenceEstimation</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">corr_name_</span>  <span class="o">=</span> <span class="s">&quot;CorrespondenceEstimation&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Empty destructor */</span>
+        <span class="o">~</span><span class="n">CorrespondenceEstimation</span> <span class="p">()</span> <span class="p">{}</span>
+
+        <span class="cm">/** \brief Determine the correspondences between input and target cloud.</span>
+<span class="cm">          * \param[out] correspondences the found correspondences (index of query point, index of target point, distance)</span>
+<span class="cm">          * \param[in] max_distance maximum allowed distance between correspondences</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">determineCorrespondences</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span> <span class="o">&amp;</span><span class="n">correspondences</span><span class="p">,</span>
+                                  <span class="kt">double</span> <span class="n">max_distance</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Determine the reciprocal correspondences between input and target cloud.</span>
+<span class="cm">          * A correspondence is considered reciprocal if both Src_i has Tgt_i as a</span>
+<span class="cm">          * correspondence, and Tgt_i has Src_i as one.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[out] correspondences the found correspondences (index of query and target point, distance)</span>
+<span class="cm">          * \param[in] max_distance maximum allowed distance between correspondences</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="nf">determineReciprocalCorrespondences</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span> <span class="o">&amp;</span><span class="n">correspondences</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">max_distance</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span> <span class="k">override</span><span class="p">;</span>
+
+
+        <span class="cm">/** \brief Clone and cast to CorrespondenceEstimationBase */</span>
+        <span class="k">typename</span> <span class="n">CorrespondenceEstimationBase</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;::</span><span class="n">Ptr</span>
+        <span class="n">clone</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+        <span class="p">{</span>
+          <span class="n">Ptr</span> <span class="n">copy</span> <span class="p">(</span><span class="k">new</span> <span class="n">CorrespondenceEstimation</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">));</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">copy</span><span class="p">);</span>
+        <span class="p">}</span>
+     <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/impl/correspondence_estimation.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_registration_impl_correspondence_estimation.hpp.html" class="btn btn-neutral float-right" title="File correspondence_estimation.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_correspondence_estimation.h.html" class="btn btn-neutral float-left" title="File correspondence_estimation.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

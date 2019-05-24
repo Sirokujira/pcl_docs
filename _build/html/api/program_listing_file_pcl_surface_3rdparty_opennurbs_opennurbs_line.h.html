@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_line.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_linecurve.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_linecurve.h.html" />
+    <link rel="prev" title="File opennurbs_line.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_line.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_line.h.html">File opennurbs_line.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_line.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_line.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-line-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-line-h"></span><h1>Program Listing for File opennurbs_line.h<a class="headerlink" href="#program-listing-for-file-opennurbs-line-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_line.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-line-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_line.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(ON_LINE_INC_)</span>
+<span class="cp">#define ON_LINE_INC_</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_Line</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+  <span class="n">ON_Line</span><span class="p">();</span>
+  <span class="n">ON_Line</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">start</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">end</span> <span class="p">);</span>
+  <span class="o">~</span><span class="n">ON_Line</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if from != to.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// line[0] = start point line[1] = end point</span>
+  <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Create a line from two points.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   start - [in] point at start of line segment</span>
+  <span class="c1">//   end - [in] point at end of line segment</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if start and end are distinct points.</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">start</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">end</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get line&#39;s 3d axis aligned bounding box.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    3d bounding box.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_BoundingBox</span> <span class="nf">BoundingBox</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get line&#39;s 3d axis aligned bounding box or the</span>
+<span class="cm">    union of the input box with the object&#39;s bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bbox - [in/out] 3d axis aligned bounding box</span>
+<span class="cm">    bGrowBox - [in] (default=false)</span>
+<span class="cm">      If true, then the union of the input bbox and the</span>
+<span class="cm">      object&#39;s bounding box is returned in bbox.</span>
+<span class="cm">      If false, the object&#39;s bounding box is returned in bbox.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if object has bounding box and calculation was successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetBoundingBox</span><span class="p">(</span>
+         <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get tight bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    tight_bbox - [in/out] tight bounding box</span>
+<span class="cm">    bGrowBox -[in]  (default=false)</span>
+<span class="cm">      If true and the input tight_bbox is valid, then returned</span>
+<span class="cm">      tight_bbox is the union of the input tight_bbox and the</span>
+<span class="cm">      line&#39;s tight bounding box.</span>
+<span class="cm">    xform -[in] (default=NULL)</span>
+<span class="cm">      If not NULL, the tight bounding box of the transformed</span>
+<span class="cm">      line is calculated.  The line is not modified.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if a valid tight_bbox is returned.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetTightBoundingBox</span><span class="p">(</span>
+      <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">tight_bbox</span><span class="p">,</span>
+      <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+      <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get a plane that contains the line.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    plane - [out] a plane that contains the line.  The orgin</span>
+<span class="cm">       of the plane is at the start of the line.  The distance</span>
+<span class="cm">       from the end of the line to the plane is &lt;= tolerance.</span>
+<span class="cm">       If possible a plane parallel to the world xy, yz or zx</span>
+<span class="cm">       plane is returned.</span>
+<span class="cm">    tolerance - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if a coordinate of the line&#39;s direction vector is</span>
+<span class="cm">    larger than tolerance.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">InPlane</span><span class="p">(</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span><span class="p">,</span> <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Length of line</span>
+  <span class="kt">double</span> <span class="nf">Length</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   direction vector = line.to - line.from</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Line::Tangent</span>
+  <span class="n">ON_3dVector</span> <span class="nf">Direction</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Unit tangent vector.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Line::Direction</span>
+  <span class="n">ON_3dVector</span> <span class="nf">Tangent</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate point on (infinite) line.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    t - [in] evaluation parameter. t=0 returns line.from</span>
+<span class="cm">             and t=1 returns line.to.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    (1-t)*line.from + t*line.to.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Line::Direction</span>
+<span class="cm">    ON_Line::Tangent</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">t</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Find the point on the (infinite) line that is</span>
+<span class="cm">    closest to the test_point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    test_point - [in]</span>
+<span class="cm">    t - [out] line.PointAt(*t) is the point on the line</span>
+<span class="cm">              that is closest to test_point.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">ClosestPointTo</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">test_point</span><span class="p">,</span>
+    <span class="kt">double</span><span class="o">*</span> <span class="n">t</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Find the point on the (infinite) line that is</span>
+<span class="cm">    closest to the test_point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    test_point - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    The point on the line that is closest to test_point.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">ClosestPointTo</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">test_point</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Find the point on the (infinite) line that is</span>
+<span class="cm">    closest to the test_point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    test_point - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    distance from the point on the line that is closest</span>
+<span class="cm">    to test_point.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_3dPoint::DistanceTo</span>
+<span class="cm">    ON_Line::ClosestPointTo</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">DistanceTo</span><span class="p">(</span> <span class="n">ON_3dPoint</span> <span class="n">test_point</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Finds the shortest distance between the line as a finite</span>
+<span class="cm">    chord and the other object.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">    L - [in] (another finite chord)</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A value d such that if Q is any point on</span>
+<span class="cm">    this line and P is any point on the other object,</span>
+<span class="cm">    then d &lt;= Q.DistanceTo(P).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MinimumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span> <span class="n">L</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Finds the longest distance between the line as a finite</span>
+<span class="cm">    chord and the other object.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">    L - [in] (another finite chord)</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A value d such that if Q is any point on this line and P is any</span>
+<span class="cm">    point on the other object, then d &gt;= Q.DistanceTo(P).</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="nf">MaximumDistanceTo</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span> <span class="n">other</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Quickly determine if the shortest distance from</span>
+<span class="cm">    this line to the other object is greater than d.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    d - [in] distance (&gt; 0.0)</span>
+<span class="cm">    P - [in]</span>
+<span class="cm">    L - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if if the shortest distance from this line</span>
+<span class="cm">    to the other object is greater than d.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">P</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">IsFartherThan</span><span class="p">(</span> <span class="kt">double</span> <span class="n">d</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_Line</span><span class="o">&amp;</span> <span class="n">L</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="c1">// For intersections see ON_Intersect();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Reverse line by swapping from and to.</span>
+  <span class="kt">void</span> <span class="nf">Reverse</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span>
+    <span class="p">);</span>
+
+  <span class="c1">// rotate line about a point and axis</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis_of_rotation</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">center_of_rotation</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">angle_in_radians</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis_of_rotation</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">center_of_rotation</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">Translate</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">delta</span>
+        <span class="p">);</span>
+
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_3dPoint</span> <span class="n">from</span><span class="p">;</span> <span class="c1">// start point</span>
+  <span class="n">ON_3dPoint</span> <span class="n">to</span><span class="p">;</span>   <span class="c1">// end point</span>
+<span class="p">};</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_linecurve.h.html" class="btn btn-neutral float-right" title="File opennurbs_linecurve.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_line.h.html" class="btn btn-neutral float-left" title="File opennurbs_line.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

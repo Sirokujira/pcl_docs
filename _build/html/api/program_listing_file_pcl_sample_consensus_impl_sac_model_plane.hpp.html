@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File sac_model_plane.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File sac_model_registration.h" href="file_pcl_sample_consensus_sac_model_registration.h.html" />
+    <link rel="prev" title="File sac_model_plane.hpp" href="file_pcl_sample_consensus_impl_sac_model_plane.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_sample_consensus_impl_sac_model_plane.hpp.html">File sac_model_plane.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File sac_model_plane.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_sample_consensus_impl_sac_model_plane.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-sac-model-plane-hpp">
+<span id="program-listing-file-pcl-sample-consensus-impl-sac-model-plane-hpp"></span><h1>Program Listing for File sac_model_plane.hpp<a class="headerlink" href="#program-listing-for-file-sac-model-plane-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_sample_consensus_impl_sac_model_plane.hpp.html#file-pcl-sample-consensus-impl-sac-model-plane-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\sample_consensus\impl\sac_model_plane.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2009, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_SAMPLE_CONSENSUS_IMPL_SAC_MODEL_PLANE_H_</span>
+<span class="cp">#define PCL_SAMPLE_CONSENSUS_IMPL_SAC_MODEL_PLANE_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/sac_model_plane.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/centroid.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/concatenate.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">isSampleGood</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Need an extra check in case the sample selection is empty</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">samples</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="c1">// Get the values at the two points</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">Array4fMapConst</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]].</span><span class="n">getArray4fMap</span> <span class="p">();</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">Array4fMapConst</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="mi">1</span><span class="p">]].</span><span class="n">getArray4fMap</span> <span class="p">();</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">Array4fMapConst</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">]].</span><span class="n">getArray4fMap</span> <span class="p">();</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Array4f</span> <span class="n">dy1dy2</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">p0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p0</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span> <span class="p">(</span><span class="n">dy1dy2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">dy1dy2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="n">dy1dy2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="n">dy1dy2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">computeModelCoefficients</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Need 3 samples</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">samples</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">sample_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::computeModelCoefficients] Invalid set of samples given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">Array4fMapConst</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]].</span><span class="n">getArray4fMap</span> <span class="p">();</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">Array4fMapConst</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="mi">1</span><span class="p">]].</span><span class="n">getArray4fMap</span> <span class="p">();</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">Array4fMapConst</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">]].</span><span class="n">getArray4fMap</span> <span class="p">();</span>
+
+  <span class="c1">// Compute the segment values (in 3d) between p1 and p0</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Array4f</span> <span class="n">p1p0</span> <span class="o">=</span> <span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">;</span>
+  <span class="c1">// Compute the segment values (in 3d) between p2 and p0</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Array4f</span> <span class="n">p2p0</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p0</span><span class="p">;</span>
+
+  <span class="c1">// Avoid some crashes by checking for collinearity here</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Array4f</span> <span class="n">dy1dy2</span> <span class="o">=</span> <span class="n">p1p0</span> <span class="o">/</span> <span class="n">p2p0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="n">dy1dy2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">dy1dy2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">dy1dy2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">dy1dy2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>          <span class="c1">// Check for collinearity</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="c1">// Compute the plane coefficients from the 3 given points in a straightforward manner</span>
+  <span class="c1">// calculate the plane normal n = (p2-p1) x (p3-p1) = cross (p2-p1, p3-p1)</span>
+  <span class="n">model_coefficients</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+  <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p1p0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">p2p0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1p0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">p2p0</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p1p0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">p2p0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1p0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">p2p0</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">p1p0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">p2p0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1p0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">p2p0</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Normalize</span>
+  <span class="n">model_coefficients</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+
+  <span class="c1">// ... + d = 0</span>
+  <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="k">template</span> <span class="n">head</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">().</span><span class="n">dot</span> <span class="p">(</span><span class="n">p0</span><span class="p">.</span><span class="n">matrix</span> <span class="p">()));</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getDistancesToModel</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">distances</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Needs a valid set of model coefficients</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">model_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::getDistancesToModel] Invalid number of model coefficients given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">distances</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="c1">// Iterate through the 3d points and calculate the distances from them to the plane</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Calculate the distance from the point to the plane normal as the dot product</span>
+    <span class="c1">// D = (P-A).N/|N|</span>
+    <span class="cm">/*distances[i] = fabs (model_coefficients[0] * input_-&gt;points[(*indices_)[i]].x +</span>
+<span class="cm">                         model_coefficients[1] * input_-&gt;points[(*indices_)[i]].y +</span>
+<span class="cm">                         model_coefficients[2] * input_-&gt;points[(*indices_)[i]].z +</span>
+<span class="cm">                         model_coefficients[3]);*/</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">pt</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">);</span>
+    <span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">pt</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">selectWithinDistance</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Needs a valid set of model coefficients</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">model_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::selectWithinDistance] Invalid number of model coefficients given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">nr_p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">inliers</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">error_sqr_dists_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="c1">// Iterate through the 3d points and calculate the distances from them to the plane</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Calculate the distance from the point to the plane normal as the dot product</span>
+    <span class="c1">// D = (P-A).N/|N|</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">pt</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">);</span>
+
+    <span class="kt">float</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">pt</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Returns the indices of the points whose distances are smaller than the threshold</span>
+      <span class="n">inliers</span><span class="p">[</span><span class="n">nr_p</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">error_sqr_dists_</span><span class="p">[</span><span class="n">nr_p</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">distance</span><span class="p">);</span>
+      <span class="o">++</span><span class="n">nr_p</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">inliers</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">nr_p</span><span class="p">);</span>
+  <span class="n">error_sqr_dists_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">nr_p</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">countWithinDistance</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Needs a valid set of model coefficients</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">model_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::countWithinDistance] Invalid number of model coefficients given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">nr_p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Iterate through the 3d points and calculate the distances from them to the plane</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Calculate the distance from the point to the plane normal as the dot product</span>
+    <span class="c1">// D = (P-A).N/|N|</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">pt</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">pt</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span>
+      <span class="n">nr_p</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">nr_p</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">optimizeModelCoefficients</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">optimized_coefficients</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Needs a valid set of model coefficients</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">model_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::optimizeModelCoefficients] Invalid number of model coefficients given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">optimized_coefficients</span> <span class="o">=</span> <span class="n">model_coefficients</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Need more than the minimum sample size to make a difference</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">inliers</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;=</span> <span class="n">sample_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::optimizeModelCoefficients] Not enough inliers found to optimize model coefficients (%lu)! Returning the same coefficients.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">inliers</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">optimized_coefficients</span> <span class="o">=</span> <span class="n">model_coefficients</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">plane_parameters</span><span class="p">;</span>
+
+  <span class="c1">// Use Least-Squares to fit the plane through all the given sample points and find out its coefficients</span>
+  <span class="n">EIGEN_ALIGN16</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">covariance_matrix</span><span class="p">;</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">xyz_centroid</span><span class="p">;</span>
+
+  <span class="n">computeMeanAndCovarianceMatrix</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">,</span> <span class="n">inliers</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">xyz_centroid</span><span class="p">);</span>
+
+  <span class="c1">// Compute the model coefficients</span>
+  <span class="n">EIGEN_ALIGN16</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">Scalar</span> <span class="n">eigen_value</span><span class="p">;</span>
+  <span class="n">EIGEN_ALIGN16</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">eigen_vector</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">eigen33</span> <span class="p">(</span><span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">eigen_value</span><span class="p">,</span> <span class="n">eigen_vector</span><span class="p">);</span>
+
+  <span class="c1">// Hessian form (D = nc . p_plane (centroid here) + p)</span>
+  <span class="n">optimized_coefficients</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+  <span class="n">optimized_coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigen_vector</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">optimized_coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigen_vector</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">optimized_coefficients</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">eigen_vector</span> <span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">optimized_coefficients</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">optimized_coefficients</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">optimized_coefficients</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">xyz_centroid</span><span class="p">);</span>
+
+  <span class="c1">// Make sure it results in a valid model</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isModelValid</span> <span class="p">(</span><span class="n">optimized_coefficients</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">optimized_coefficients</span> <span class="o">=</span> <span class="n">model_coefficients</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">projectPoints</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inliers</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">projected_points</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">copy_data_fields</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Needs a valid set of model coefficients</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">model_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::projectPoints] Invalid number of model coefficients given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">projected_points</span><span class="p">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">;</span>
+  <span class="n">projected_points</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">is_dense</span><span class="p">;</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">mc</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">model_coefficients</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">// normalize the vector perpendicular to the plane...</span>
+  <span class="n">mc</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+  <span class="c1">// ... and store the resulting normal as a local copy of the model coefficients</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">tmp_mc</span> <span class="o">=</span> <span class="n">model_coefficients</span><span class="p">;</span>
+  <span class="n">tmp_mc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">mc</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">tmp_mc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mc</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">tmp_mc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mc</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+  <span class="c1">// Copy all the data fields from the input cloud to the projected one?</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">copy_data_fields</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Allocate enough space and copy the basics</span>
+    <span class="n">projected_points</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">projected_points</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">projected_points</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span>
+
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">fieldList</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">FieldList</span><span class="p">;</span>
+    <span class="c1">// Iterate over each point</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+      <span class="c1">// Iterate over each dimension</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">for_each_type</span> <span class="o">&lt;</span><span class="n">FieldList</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">NdConcatenateFunctor</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">projected_points</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+
+    <span class="c1">// Iterate through the 3d points and calculate the distances from them to the plane</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">inlier</span> <span class="p">:</span> <span class="n">inliers</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Calculate the distance from the point to the plane</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">p</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inlier</span><span class="p">].</span><span class="n">x</span><span class="p">,</span>
+                         <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inlier</span><span class="p">].</span><span class="n">y</span><span class="p">,</span>
+                         <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inlier</span><span class="p">].</span><span class="n">z</span><span class="p">,</span>
+                         <span class="mi">1</span><span class="p">);</span>
+      <span class="c1">// use normalized coefficients to calculate the scalar projection</span>
+      <span class="kt">float</span> <span class="n">distance_to_plane</span> <span class="o">=</span> <span class="n">tmp_mc</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+      <span class="n">pcl</span><span class="o">::</span><span class="n">Vector4fMap</span> <span class="n">pp</span> <span class="o">=</span> <span class="n">projected_points</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">inlier</span><span class="p">].</span><span class="n">getVector4fMap</span> <span class="p">();</span>
+      <span class="n">pp</span><span class="p">.</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">p</span> <span class="o">-</span> <span class="n">mc</span> <span class="o">*</span> <span class="n">distance_to_plane</span><span class="p">;</span>        <span class="c1">// mc[3] = 0, therefore the 3rd coordinate is safe</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="c1">// Allocate enough space and copy the basics</span>
+    <span class="n">projected_points</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">inliers</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">projected_points</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">inliers</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">projected_points</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">fieldList</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">FieldList</span><span class="p">;</span>
+    <span class="c1">// Iterate over each point</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">inliers</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+      <span class="c1">// Iterate over each dimension</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">for_each_type</span> <span class="o">&lt;</span><span class="n">FieldList</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">NdConcatenateFunctor</span> <span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inliers</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">projected_points</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+
+    <span class="c1">// Iterate through the 3d points and calculate the distances from them to the plane</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">inliers</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Calculate the distance from the point to the plane</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">p</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inliers</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">,</span>
+                         <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inliers</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">,</span>
+                         <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">inliers</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">,</span>
+                         <span class="mi">1</span><span class="p">);</span>
+      <span class="c1">// use normalized coefficients to calculate the scalar projection</span>
+      <span class="kt">float</span> <span class="n">distance_to_plane</span> <span class="o">=</span> <span class="n">tmp_mc</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+      <span class="n">pcl</span><span class="o">::</span><span class="n">Vector4fMap</span> <span class="n">pp</span> <span class="o">=</span> <span class="n">projected_points</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getVector4fMap</span> <span class="p">();</span>
+      <span class="n">pp</span><span class="p">.</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">p</span> <span class="o">-</span> <span class="n">mc</span> <span class="o">*</span> <span class="n">distance_to_plane</span><span class="p">;</span>        <span class="c1">// mc[3] = 0, therefore the 3rd coordinate is safe</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">SampleConsensusModelPlane</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">doSamplesVerifyModel</span> <span class="p">(</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">model_coefficients</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Needs a valid set of model coefficients</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">model_size_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::SampleConsensusModelPlane::doSamplesVerifyModel] Invalid number of model coefficients given (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">model_coefficients</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">index</span> <span class="p">:</span> <span class="n">indices</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">pt</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">y</span><span class="p">,</span>
+                        <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">z</span><span class="p">,</span>
+                        <span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">model_coefficients</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">pt</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_SampleConsensusModelPlane(T) template class PCL_EXPORTS pcl::SampleConsensusModelPlane&lt;T&gt;;</span>
+
+<span class="cp">#endif    </span><span class="c1">// PCL_SAMPLE_CONSENSUS_IMPL_SAC_MODEL_PLANE_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_sample_consensus_sac_model_registration.h.html" class="btn btn-neutral float-right" title="File sac_model_registration.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_sample_consensus_impl_sac_model_plane.hpp.html" class="btn btn-neutral float-left" title="File sac_model_plane.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

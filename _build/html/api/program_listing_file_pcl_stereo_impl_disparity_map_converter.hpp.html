@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File disparity_map_converter.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File disparity_to_cloud.h" href="file_E__pcl_docs_pcl_cuda_io_include_pcl_cuda_io_disparity_to_cloud.h.html" />
+    <link rel="prev" title="File disparity_map_converter.hpp" href="file_pcl_stereo_impl_disparity_map_converter.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_stereo_impl_disparity_map_converter.hpp.html">File disparity_map_converter.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File disparity_map_converter.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_stereo_impl_disparity_map_converter.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-disparity-map-converter-hpp">
+<span id="program-listing-file-pcl-stereo-impl-disparity-map-converter-hpp"></span><h1>Program Listing for File disparity_map_converter.hpp<a class="headerlink" href="#program-listing-for-file-disparity-map-converter-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_stereo_impl_disparity_map_converter.hpp.html#file-pcl-stereo-impl-disparity-map-converter-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\stereo\impl\disparity_map_converter.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2014-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef PCL_DISPARITY_MAP_CONVERTER_IMPL_H_</span>
+<span class="cp">#define PCL_DISPARITY_MAP_CONVERTER_IMPL_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/stereo/disparity_map_converter.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;limits&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/intensity.h&gt;</span><span class="cp"></span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">DisparityMapConverter</span> <span class="p">()</span> <span class="o">:</span>
+    <span class="n">center_x_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+    <span class="n">center_y_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+    <span class="n">focal_length_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+    <span class="n">baseline_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+    <span class="n">is_color_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+    <span class="n">disparity_map_width_</span> <span class="p">(</span><span class="mi">640</span><span class="p">),</span>
+    <span class="n">disparity_map_height_</span> <span class="p">(</span><span class="mi">480</span><span class="p">),</span>
+    <span class="n">disparity_threshold_min_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span>
+    <span class="n">disparity_threshold_max_</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::~</span><span class="n">DisparityMapConverter</span> <span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setImageCenterX</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">center_x</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">center_x_</span> <span class="o">=</span> <span class="n">center_x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getImageCenterX</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">center_x_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setImageCenterY</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">center_y</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">center_y_</span> <span class="o">=</span> <span class="n">center_y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getImageCenterY</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">center_y_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setFocalLength</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">focal_length</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">focal_length_</span> <span class="o">=</span> <span class="n">focal_length</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getFocalLength</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">focal_length_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setBaseline</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">baseline</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">baseline_</span> <span class="o">=</span> <span class="n">baseline</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getBaseline</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">baseline_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setDisparityThresholdMin</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">disparity_threshold_min</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">disparity_threshold_min_</span> <span class="o">=</span> <span class="n">disparity_threshold_min</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getDisparityThresholdMin</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">disparity_threshold_min_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setDisparityThresholdMax</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="kt">float</span> <span class="n">disparity_threshold_max</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">disparity_threshold_max_</span> <span class="o">=</span> <span class="n">disparity_threshold_max</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getDisparityThresholdMax</span> <span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">disparity_threshold_max_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setImage</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span><span class="n">image</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">image_</span> <span class="o">=</span> <span class="n">image</span><span class="p">;</span>
+
+  <span class="c1">// Set disparity map&#39;s size same with the image size.</span>
+  <span class="n">disparity_map_width_</span> <span class="o">=</span> <span class="n">image_</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">;</span>
+  <span class="n">disparity_map_height_</span> <span class="o">=</span> <span class="n">image_</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span>
+
+  <span class="n">is_color_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span><span class="o">&gt;::</span><span class="n">Ptr</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getImage</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">image_pointer</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">RGB</span><span class="o">&gt;</span><span class="p">);</span>
+  <span class="o">*</span><span class="n">image_pointer</span> <span class="o">=</span> <span class="o">*</span><span class="n">image_</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">image_pointer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">loadDisparityMap</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">fstream</span> <span class="n">disparity_file</span><span class="p">;</span>
+
+  <span class="c1">// Open the disparity file</span>
+  <span class="n">disparity_file</span><span class="p">.</span><span class="n">open</span> <span class="p">(</span><span class="n">file_name</span><span class="p">.</span><span class="n">c_str</span> <span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">fstream</span><span class="o">::</span><span class="n">in</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">disparity_file</span><span class="p">.</span><span class="n">is_open</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::DisparityMapConverter::loadDisparityMap] Can&#39;t load the file.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Allocate memory for the disparity map.</span>
+  <span class="n">disparity_map_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">disparity_map_width_</span> <span class="o">*</span> <span class="n">disparity_map_height_</span><span class="p">);</span>
+
+  <span class="c1">// Reading the disparity map.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">disparity_map_height_</span><span class="p">;</span> <span class="o">++</span><span class="n">row</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">disparity_map_width_</span><span class="p">;</span> <span class="o">++</span><span class="n">column</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span> <span class="n">disparity</span><span class="p">;</span>
+      <span class="n">disparity_file</span> <span class="o">&gt;&gt;</span> <span class="n">disparity</span><span class="p">;</span>
+
+      <span class="n">disparity_map_</span><span class="p">[</span><span class="n">column</span> <span class="o">+</span> <span class="n">row</span> <span class="o">*</span> <span class="n">disparity_map_width_</span><span class="p">]</span> <span class="o">=</span> <span class="n">disparity</span><span class="p">;</span>
+    <span class="p">}</span> <span class="c1">// column</span>
+  <span class="p">}</span> <span class="c1">// row</span>
+
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">loadDisparityMap</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">width</span><span class="p">,</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">height</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Initialize disparity map&#39;s size.</span>
+  <span class="n">disparity_map_width_</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+  <span class="n">disparity_map_height_</span> <span class="o">=</span> <span class="n">height</span><span class="p">;</span>
+
+  <span class="c1">// Load the disparity map.</span>
+  <span class="k">return</span> <span class="nf">loadDisparityMap</span> <span class="p">(</span><span class="n">file_name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setDisparityMap</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">disparity_map</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">disparity_map_</span> <span class="o">=</span> <span class="n">disparity_map</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setDisparityMap</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">disparity_map</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">width</span><span class="p">,</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">height</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">disparity_map_width_</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+  <span class="n">disparity_map_height_</span> <span class="o">=</span> <span class="n">height</span><span class="p">;</span>
+
+  <span class="n">disparity_map_</span> <span class="o">=</span> <span class="n">disparity_map</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getDisparityMap</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">disparity_map_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">compute</span> <span class="p">(</span><span class="n">PointCloud</span> <span class="o">&amp;</span><span class="n">out_cloud</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Initialize the output cloud.</span>
+  <span class="n">out_cloud</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">out_cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">disparity_map_width_</span><span class="p">;</span>
+  <span class="n">out_cloud</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">disparity_map_height_</span><span class="p">;</span>
+  <span class="n">out_cloud</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">out_cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">out_cloud</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_color_</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">image_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::DisparityMapConverter::compute] Memory for the image was not allocated.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">disparity_map_height_</span><span class="p">;</span> <span class="o">++</span><span class="n">row</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">disparity_map_width_</span><span class="p">;</span> <span class="o">++</span><span class="n">column</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// ID of current disparity point.</span>
+      <span class="kt">size_t</span> <span class="n">disparity_point</span> <span class="o">=</span> <span class="n">column</span> <span class="o">+</span> <span class="n">row</span> <span class="o">*</span> <span class="n">disparity_map_width_</span><span class="p">;</span>
+
+      <span class="c1">// Disparity value.</span>
+      <span class="kt">float</span> <span class="n">disparity</span> <span class="o">=</span> <span class="n">disparity_map_</span><span class="p">[</span><span class="n">disparity_point</span><span class="p">];</span>
+
+      <span class="c1">// New point for the output cloud.</span>
+      <span class="n">PointT</span> <span class="n">new_point</span><span class="p">;</span>
+
+      <span class="c1">// Init color</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">is_color_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">common</span><span class="o">::</span><span class="n">IntensityFieldAccessor</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">intensity_accessor</span><span class="p">;</span>
+        <span class="n">intensity_accessor</span><span class="p">.</span><span class="n">set</span> <span class="p">(</span><span class="n">new_point</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span>
+            <span class="n">image_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">disparity_point</span><span class="p">].</span><span class="n">r</span> <span class="o">+</span>
+            <span class="n">image_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">disparity_point</span><span class="p">].</span><span class="n">g</span> <span class="o">+</span>
+            <span class="n">image_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">disparity_point</span><span class="p">].</span><span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3.0f</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Init coordinates.</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">disparity_threshold_min_</span> <span class="o">&lt;</span> <span class="n">disparity</span> <span class="o">&amp;&amp;</span> <span class="n">disparity</span> <span class="o">&lt;</span> <span class="n">disparity_threshold_max_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// Compute new coordinates.</span>
+        <span class="n">PointXYZ</span> <span class="n">point_3D</span> <span class="p">(</span><span class="n">translateCoordinates</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">disparity</span><span class="p">));</span>
+        <span class="n">new_point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point_3D</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">new_point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point_3D</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+        <span class="n">new_point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">point_3D</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">new_point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+        <span class="n">new_point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+        <span class="n">new_point</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+      <span class="p">}</span>
+      <span class="c1">// Put the point to the output cloud.</span>
+      <span class="n">out_cloud</span><span class="p">[</span><span class="n">disparity_point</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_point</span><span class="p">;</span>
+    <span class="p">}</span> <span class="c1">// column</span>
+  <span class="p">}</span> <span class="c1">// row</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">DisparityMapConverter</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">translateCoordinates</span> <span class="p">(</span>
+    <span class="kt">size_t</span> <span class="n">row</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">column</span><span class="p">,</span> <span class="kt">float</span> <span class="n">disparity</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="c1">// Returning point.</span>
+  <span class="n">PointXYZ</span> <span class="n">point_3D</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">disparity</span> <span class="o">!=</span> <span class="mf">0.0f</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Compute 3D-coordinates based on the image coordinates, the disparity and the camera parameters.</span>
+    <span class="kt">float</span> <span class="n">z_value</span> <span class="o">=</span> <span class="n">focal_length_</span> <span class="o">*</span> <span class="n">baseline_</span> <span class="o">/</span> <span class="n">disparity</span><span class="p">;</span>
+    <span class="n">point_3D</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z_value</span><span class="p">;</span>
+    <span class="n">point_3D</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">column</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_x_</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">z_value</span> <span class="o">/</span> <span class="n">focal_length_</span><span class="p">);</span>
+    <span class="n">point_3D</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">-</span> <span class="n">center_y_</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">z_value</span> <span class="o">/</span> <span class="n">focal_length_</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">point_3D</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_DisparityMapConverter(T) template class PCL_EXPORTS pcl::DisparityMapConverter&lt;T&gt;;</span>
+
+<span class="cp">#endif </span><span class="c1">// PCL_DISPARITY_MAP_CONVERTER_IMPL_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_cuda_io_include_pcl_cuda_io_disparity_to_cloud.h.html" class="btn btn-neutral float-right" title="File disparity_to_cloud.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_stereo_impl_disparity_map_converter.hpp.html" class="btn btn-neutral float-left" title="File disparity_map_converter.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

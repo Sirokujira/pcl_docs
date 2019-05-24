@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File geometric_consistency.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File geometry.doxy" href="file_E__pcl_docs_pcl_geometry_geometry.doxy.html" />
+    <link rel="prev" title="File geometric_consistency.hpp" href="file_pcl_recognition_impl_cg_geometric_consistency.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_impl_cg_geometric_consistency.hpp.html">File geometric_consistency.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File geometric_consistency.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_impl_cg_geometric_consistency.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-geometric-consistency-hpp">
+<span id="program-listing-file-pcl-recognition-impl-cg-geometric-consistency-hpp"></span><h1>Program Listing for File geometric_consistency.hpp<a class="headerlink" href="#program-listing-for-file-geometric-consistency-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_impl_cg_geometric_consistency.hpp.html#file-pcl-recognition-impl-cg-geometric-consistency-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\impl\cg\geometric_consistency.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_RECOGNITION_GEOMETRIC_CONSISTENCY_IMPL_H_</span>
+<span class="cp">#define PCL_RECOGNITION_GEOMETRIC_CONSISTENCY_IMPL_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/cg/geometric_consistency.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/correspondence_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/correspondence_rejection_sample_consensus.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/io.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="kr">inline</span> <span class="kt">bool</span>
+<span class="nf">gcCorrespSorter</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondence</span> <span class="n">i</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Correspondence</span> <span class="n">j</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">.</span><span class="n">distance</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointSceneT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">GeometricConsistencyGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">clusterCorrespondences</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Correspondences</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">model_instances</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">model_instances</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">found_transformations_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">model_scene_corrs_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span><span class="p">(</span>
+      <span class="s">&quot;[pcl::GeometricConsistencyGrouping::clusterCorrespondences()] Error! Correspondences not set, please set them before calling again this function.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">CorrespondencesPtr</span> <span class="n">sorted_corrs</span> <span class="p">(</span><span class="k">new</span> <span class="n">Correspondences</span> <span class="p">(</span><span class="o">*</span><span class="n">model_scene_corrs_</span><span class="p">));</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">sort</span> <span class="p">(</span><span class="n">sorted_corrs</span><span class="o">-&gt;</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">sorted_corrs</span><span class="o">-&gt;</span><span class="n">end</span> <span class="p">(),</span> <span class="n">gcCorrespSorter</span><span class="p">);</span>
+
+  <span class="n">model_scene_corrs_</span> <span class="o">=</span> <span class="n">sorted_corrs</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">consensus_set</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">taken_corresps</span> <span class="p">(</span><span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">dist_ref</span><span class="p">,</span> <span class="n">dist_trg</span><span class="p">;</span>
+
+  <span class="c1">//temp copy of scene cloud with the type cast to ModelT in order to use Ransac</span>
+  <span class="n">PointCloudPtr</span> <span class="nf">temp_scene_cloud_ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">PointCloud</span> <span class="p">());</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">copyPointCloud</span><span class="o">&lt;</span><span class="n">PointSceneT</span><span class="p">,</span> <span class="n">PointModelT</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">scene_</span><span class="p">,</span> <span class="o">*</span><span class="n">temp_scene_cloud_ptr</span><span class="p">);</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">registration</span><span class="o">::</span><span class="n">CorrespondenceRejectorSampleConsensus</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="o">&gt;</span> <span class="n">corr_rejector</span><span class="p">;</span>
+  <span class="n">corr_rejector</span><span class="p">.</span><span class="n">setMaximumIterations</span> <span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+  <span class="n">corr_rejector</span><span class="p">.</span><span class="n">setInlierThreshold</span> <span class="p">(</span><span class="n">gc_size_</span><span class="p">);</span>
+  <span class="n">corr_rejector</span><span class="p">.</span><span class="n">setInputSource</span><span class="p">(</span><span class="n">input_</span><span class="p">);</span>
+  <span class="n">corr_rejector</span><span class="p">.</span><span class="n">setInputTarget</span> <span class="p">(</span><span class="n">temp_scene_cloud_ptr</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">taken_corresps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">consensus_set</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+    <span class="n">consensus_set</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">));</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span> <span class="o">&amp;&amp;</span>  <span class="o">!</span><span class="n">taken_corresps</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="c1">//Let&#39;s check if j fits into the current consensus set</span>
+        <span class="kt">bool</span> <span class="n">is_a_good_candidate</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">k</span> <span class="p">:</span> <span class="n">consensus_set</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">int</span> <span class="n">scene_index_k</span> <span class="o">=</span> <span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">k</span><span class="p">).</span><span class="n">index_match</span><span class="p">;</span>
+          <span class="kt">int</span> <span class="n">model_index_k</span> <span class="o">=</span> <span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">k</span><span class="p">).</span><span class="n">index_query</span><span class="p">;</span>
+          <span class="kt">int</span> <span class="n">scene_index_j</span> <span class="o">=</span> <span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">j</span><span class="p">).</span><span class="n">index_match</span><span class="p">;</span>
+          <span class="kt">int</span> <span class="n">model_index_j</span> <span class="o">=</span> <span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">j</span><span class="p">).</span><span class="n">index_query</span><span class="p">;</span>
+
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">scene_point_k</span> <span class="o">=</span> <span class="n">scene_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">scene_index_k</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">model_point_k</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">model_index_k</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">scene_point_j</span> <span class="o">=</span> <span class="n">scene_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">scene_index_j</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">model_point_j</span> <span class="o">=</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">model_index_j</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+
+          <span class="n">dist_ref</span> <span class="o">=</span> <span class="n">scene_point_k</span> <span class="o">-</span> <span class="n">scene_point_j</span><span class="p">;</span>
+          <span class="n">dist_trg</span> <span class="o">=</span> <span class="n">model_point_k</span> <span class="o">-</span> <span class="n">model_point_j</span><span class="p">;</span>
+
+          <span class="kt">double</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">dist_ref</span><span class="p">.</span><span class="n">norm</span> <span class="p">()</span> <span class="o">-</span> <span class="n">dist_trg</span><span class="p">.</span><span class="n">norm</span> <span class="p">());</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">distance</span> <span class="o">&gt;</span> <span class="n">gc_size_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">is_a_good_candidate</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">is_a_good_candidate</span><span class="p">)</span>
+          <span class="n">consensus_set</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">j</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">consensus_set</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">&gt;</span> <span class="n">gc_threshold_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Correspondences</span> <span class="n">temp_corrs</span><span class="p">,</span> <span class="n">filtered_corrs</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">j</span> <span class="p">:</span> <span class="n">consensus_set</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">temp_corrs</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">model_scene_corrs_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">j</span><span class="p">));</span>
+        <span class="n">taken_corresps</span><span class="p">[</span> <span class="n">j</span> <span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="c1">//ransac filtering</span>
+      <span class="n">corr_rejector</span><span class="p">.</span><span class="n">getRemainingCorrespondences</span> <span class="p">(</span><span class="n">temp_corrs</span><span class="p">,</span> <span class="n">filtered_corrs</span><span class="p">);</span>
+      <span class="c1">//save transformations for recognize</span>
+      <span class="n">found_transformations_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">corr_rejector</span><span class="p">.</span><span class="n">getBestTransformation</span> <span class="p">());</span>
+
+      <span class="n">model_instances</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">filtered_corrs</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointSceneT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">GeometricConsistencyGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">recognize</span> <span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transformations</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span><span class="o">&gt;</span> <span class="n">model_instances</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">recognize</span> <span class="p">(</span><span class="n">transformations</span><span class="p">,</span> <span class="n">model_instances</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointSceneT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">GeometricConsistencyGrouping</span><span class="o">&lt;</span><span class="n">PointModelT</span><span class="p">,</span> <span class="n">PointSceneT</span><span class="o">&gt;::</span><span class="n">recognize</span> <span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transformations</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">clustered_corrs</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">transformations</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">initCompute</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span><span class="p">(</span>
+      <span class="s">&quot;[pcl::GeometricConsistencyGrouping::recognize()] Error! Model cloud or Scene cloud not set, please set them before calling again this function.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">clusterCorrespondences</span> <span class="p">(</span><span class="n">clustered_corrs</span><span class="p">);</span>
+
+  <span class="n">transformations</span> <span class="o">=</span> <span class="n">found_transformations_</span><span class="p">;</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">deinitCompute</span> <span class="p">();</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_GeometricConsistencyGrouping(T,ST) template class PCL_EXPORTS pcl::GeometricConsistencyGrouping&lt;T,ST&gt;;</span>
+
+<span class="cp">#endif </span><span class="c1">// PCL_RECOGNITION_GEOMETRIC_CONSISTENCY_IMPL_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_geometry_geometry.doxy.html" class="btn btn-neutral float-right" title="File geometry.doxy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_impl_cg_geometric_consistency.hpp.html" class="btn btn-neutral float-left" title="File geometric_consistency.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

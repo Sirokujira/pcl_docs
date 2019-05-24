@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File 3dsc.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File 3dsc.hpp" href="file_pcl_features_impl_3dsc.hpp.html" />
+    <link rel="prev" title="File 3dsc.h" href="file_pcl_features_3dsc.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_3dsc.h.html">File 3dsc.h</a> &raquo;</li>
+        
+      <li>Program Listing for File 3dsc.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_3dsc.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-3dsc-h">
+<span id="program-listing-file-pcl-features-3dsc-h"></span><h1>Program Listing for File 3dsc.h<a class="headerlink" href="#program-listing-for-file-3dsc-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_3dsc.h.html#file-pcl-features-3dsc-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\3dsc.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;random&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/boost.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/feature.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief ShapeContext3DEstimation implements the 3D shape context descriptor as</span>
+<span class="cm">    * described in:</span>
+<span class="cm">    *   - Andrea Frome, Daniel Huber, Ravi Kolluri and Thomas Bülow, Jitendra Malik</span>
+<span class="cm">    *     Recognizing Objects in Range Data Using Regional Point Descriptors,</span>
+<span class="cm">    *     In proceedings of the 8th European Conference on Computer Vision (ECCV),</span>
+<span class="cm">    *     Prague, May 11-14, 2004</span>
+<span class="cm">    *</span>
+<span class="cm">    * The suggested PointOutT is pcl::ShapeContext1980</span>
+<span class="cm">    *</span>
+<span class="cm">    * \attention</span>
+<span class="cm">    * The convention for a 3D shape context descriptor is:</span>
+<span class="cm">    *   - if a query point&#39;s nearest neighbors cannot be estimated, the feature descriptor will be set to NaN (not a number), and the RF to 0</span>
+<span class="cm">    *   - it is impossible to estimate a 3D shape context descriptor for a</span>
+<span class="cm">    *     point that doesn&#39;t have finite 3D coordinates. Therefore, any point</span>
+<span class="cm">    *     that contains NaN data on x, y, or z, will have its boundary feature</span>
+<span class="cm">    *     property set to NaN.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Alessandro Franchi, Samuele Salti, Federico Tombari (original code)</span>
+<span class="cm">    * \author Nizar Sallem (port to PCL)</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ShapeContext1980</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">ShapeContext3DEstimation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ShapeContext3DEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">ShapeContext3DEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">feature_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">search_parameter_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">search_radius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">searchForNeighbors</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">normals_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudOut</span> <span class="n">PointCloudOut</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor.</span>
+<span class="cm">        * \param[in] random If true the random seed is set to current time, else it is</span>
+<span class="cm">        * set to 12345 prior to computing the descriptor (used to select X axis)</span>
+<span class="cm">        */</span>
+      <span class="n">ShapeContext3DEstimation</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">random</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">radii_interval_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">theta_divisions_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">phi_divisions_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">volume_lut_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">azimuth_bins_</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span>
+        <span class="n">elevation_bins_</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>
+        <span class="n">radius_bins_</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+        <span class="n">min_radius_</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span>
+        <span class="n">point_density_radius_</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+        <span class="n">descriptor_length_</span> <span class="p">(),</span>
+        <span class="n">rng_dist_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">feature_name_</span> <span class="o">=</span> <span class="s">&quot;ShapeContext3DEstimation&quot;</span><span class="p">;</span>
+        <span class="n">search_radius_</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">;</span>
+
+        <span class="c1">// Create a random number generator object</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">random</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">random_device</span> <span class="n">rd</span><span class="p">;</span>
+          <span class="n">rng_</span><span class="p">.</span><span class="n">seed</span> <span class="p">(</span><span class="n">rd</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+          <span class="n">rng_</span><span class="p">.</span><span class="n">seed</span> <span class="p">(</span><span class="mi">12345u</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="o">~</span><span class="n">ShapeContext3DEstimation</span><span class="p">()</span> <span class="p">{}</span>
+
+      <span class="c1">//inline void</span>
+      <span class="c1">//setAzimuthBins (size_t bins) { azimuth_bins_ = bins; }</span>
+
+      <span class="cm">/** \return the number of bins along the azimuth */</span>
+      <span class="kr">inline</span> <span class="kt">size_t</span>
+      <span class="n">getAzimuthBins</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">azimuth_bins_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="c1">//inline void</span>
+      <span class="c1">//setElevationBins (size_t bins) { elevation_bins_ = bins; }</span>
+
+      <span class="cm">/** \return The number of bins along the elevation */</span>
+      <span class="kr">inline</span> <span class="kt">size_t</span>
+      <span class="n">getElevationBins</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">elevation_bins_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="c1">//inline void</span>
+      <span class="c1">//setRadiusBins (size_t bins) { radius_bins_ = bins; }</span>
+
+      <span class="cm">/** \return The number of bins along the radii direction */</span>
+      <span class="kr">inline</span> <span class="kt">size_t</span>
+      <span class="n">getRadiusBins</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">radius_bins_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief The minimal radius value for the search sphere (rmin) in the original paper</span>
+<span class="cm">        * \param[in] radius the desired minimal radius</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setMinimalRadius</span> <span class="p">(</span><span class="kt">double</span> <span class="n">radius</span><span class="p">)</span> <span class="p">{</span> <span class="n">min_radius_</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \return The minimal sphere radius */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getMinimalRadius</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">min_radius_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief This radius is used to compute local point density</span>
+<span class="cm">        * density = number of points within this radius</span>
+<span class="cm">        * \param[in] radius value of the point density search radius</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setPointDensityRadius</span> <span class="p">(</span><span class="kt">double</span> <span class="n">radius</span><span class="p">)</span> <span class="p">{</span> <span class="n">point_density_radius_</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \return The point density search radius */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="n">getPointDensityRadius</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">point_density_radius_</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Initialize computation by allocating all the intervals and the volume lookup table. */</span>
+      <span class="kt">bool</span>
+      <span class="n">initCompute</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Estimate a descriptor for a given point.</span>
+<span class="cm">        * \param[in] index the index of the point to estimate a descriptor for</span>
+<span class="cm">        * \param[in] normals a pointer to the set of normals</span>
+<span class="cm">        * \param[in] rf the reference frame</span>
+<span class="cm">        * \param[out] desc the resultant estimated descriptor</span>
+<span class="cm">        * \return true if the descriptor was computed successfully, false if there was an error</span>
+<span class="cm">        * (e.g. the nearest neighbor didn&#39;t return any neighbors)</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">computePoint</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointNT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">normals</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rf</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">desc</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Estimate the actual feature.</span>
+<span class="cm">        * \param[out] output the resultant feature</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeFeature</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Values of the radii interval */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">radii_interval_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Theta divisions interval */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">theta_divisions_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Phi divisions interval */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">phi_divisions_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Volumes look up table */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">volume_lut_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Bins along the azimuth dimension */</span>
+      <span class="kt">size_t</span> <span class="n">azimuth_bins_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Bins along the elevation dimension */</span>
+      <span class="kt">size_t</span> <span class="n">elevation_bins_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Bins along the radius dimension */</span>
+      <span class="kt">size_t</span> <span class="n">radius_bins_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Minimal radius value */</span>
+      <span class="kt">double</span> <span class="n">min_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Point density radius */</span>
+      <span class="kt">double</span> <span class="n">point_density_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Descriptor length */</span>
+      <span class="kt">size_t</span> <span class="n">descriptor_length_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Random number generator algorithm. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">mt19937</span> <span class="n">rng_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Random number generator distribution. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">uniform_real_distribution</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">rng_dist_</span><span class="p">;</span>
+
+     <span class="cm">/*  \brief Shift computed descriptor &quot;L&quot; times along the azimuthal direction</span>
+<span class="cm">       * \param[in] block_size the size of each azimuthal block</span>
+<span class="cm">       * \param[in] desc at input desc == original descriptor and on output it contains</span>
+<span class="cm">       *  shifted descriptor resized descriptor_length_ * azimuth_bins_</span>
+<span class="cm">       */</span>
+      <span class="c1">//void</span>
+      <span class="c1">//shiftAlongAzimuth (size_t block_size, std::vector&lt;float&gt;&amp; desc);</span>
+
+      <span class="cm">/** \brief Boost-based random number generator. */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">rnd</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rng_dist_</span> <span class="p">(</span><span class="n">rng_</span><span class="p">));</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/impl/3dsc.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_impl_3dsc.hpp.html" class="btn btn-neutral float-right" title="File 3dsc.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_3dsc.h.html" class="btn btn-neutral float-left" title="File 3dsc.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

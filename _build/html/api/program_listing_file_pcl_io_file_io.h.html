@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File file_io.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File file_io.hpp" href="file_pcl_common_impl_file_io.hpp.html" />
+    <link rel="prev" title="File file_io.h" href="file_pcl_io_file_io.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_io_file_io.h.html">File file_io.h</a> &raquo;</li>
+        
+      <li>Program Listing for File file_io.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_io_file_io.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-file-io-h">
+<span id="program-listing-file-pcl-io-file-io-h"></span><h1>Program Listing for File file_io.h<a class="headerlink" href="#program-listing-for-file-file-io-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_io_file_io.h.html#file-pcl-io-file-io-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\io\file_io.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Copyright (c) 2009, Willow Garage, Inc.</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id: file_io.h 827 2011-05-04 02:00:04Z nizar $</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/io.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/boost.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PolygonMesh.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/TextureMesh.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief Point Cloud Data (FILE) file format reader interface.</span>
+<span class="cm">    * Any (FILE) format file reader should implement its virtual methods.</span>
+<span class="cm">    * \author Nizar Sallem</span>
+<span class="cm">    * \ingroup io</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">FileReader</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief empty constructor */</span>
+      <span class="n">FileReader</span><span class="p">()</span> <span class="p">{}</span>
+      <span class="cm">/** \brief empty destructor */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">FileReader</span><span class="p">()</span> <span class="p">{}</span>
+      <span class="cm">/** \brief Read a point cloud data header from a FILE file.</span>
+<span class="cm">        *</span>
+<span class="cm">        * Load only the meta information (number of points, their types, etc),</span>
+<span class="cm">        * and not the points themselves, from a given FILE file. Useful for fast</span>
+<span class="cm">        * evaluation of the underlying data structure.</span>
+<span class="cm">        *</span>
+<span class="cm">        * Returns:</span>
+<span class="cm">        *  * &lt; 0 (-1) on error</span>
+<span class="cm">        *  * &gt; 0 on success</span>
+<span class="cm">        * \param[in] file_name the name of the file to load</span>
+<span class="cm">        * \param[out] cloud the resultant point cloud dataset (only the header will be filled)</span>
+<span class="cm">        * \param[out] origin the sensor acquisition origin (only for &gt; FILE_V7 - null if not present)</span>
+<span class="cm">        * \param[out] orientation the sensor acquisition orientation (only for &gt; FILE_V7 - identity if not present)</span>
+<span class="cm">        * \param[out] file_version the FILE version of the file (either FILE_V6 or FILE_V7)</span>
+<span class="cm">        * \param[out] data_type the type of data (binary data=1, ascii=0, etc)</span>
+<span class="cm">        * \param[out] data_idx the offset of cloud data within the file</span>
+<span class="cm">        * \param[in] offset the offset in the file where to expect the true header to begin.</span>
+<span class="cm">        * One usage example for setting the offset parameter is for reading</span>
+<span class="cm">        * data from a TAR &quot;archive containing multiple files: TAR files always</span>
+<span class="cm">        * add a 512 byte header in front of the actual file, so set the offset</span>
+<span class="cm">        * to the next byte after the header (e.g., 513).</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">int</span>
+      <span class="n">readHeader</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">origin</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="o">&amp;</span><span class="n">orientation</span><span class="p">,</span>
+                  <span class="kt">int</span> <span class="o">&amp;</span><span class="n">file_version</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">data_type</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">data_idx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Read a point cloud data from a FILE file and store it into a pcl/PCLPointCloud2.</span>
+<span class="cm">        * \param[in] file_name the name of the file containing the actual PointCloud data</span>
+<span class="cm">        * \param[out] cloud the resultant PointCloud message read from disk</span>
+<span class="cm">        * \param[out] origin the sensor acquisition origin (only for &gt; FILE_V7 - null if not present)</span>
+<span class="cm">        * \param[out] orientation the sensor acquisition orientation (only for &gt; FILE_V7 - identity if not present)</span>
+<span class="cm">        * \param[out] file_version the FILE version of the file (either FILE_V6 or FILE_V7)</span>
+<span class="cm">        * \param[in] offset the offset in the file where to expect the true header to begin.</span>
+<span class="cm">        * One usage example for setting the offset parameter is for reading</span>
+<span class="cm">        * data from a TAR &quot;archive containing multiple files: TAR files always</span>
+<span class="cm">        * add a 512 byte header in front of the actual file, so set the offset</span>
+<span class="cm">        * to the next byte after the header (e.g., 513).</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">int</span>
+      <span class="nf">read</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">origin</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="o">&amp;</span><span class="n">orientation</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">file_version</span><span class="p">,</span>
+            <span class="k">const</span> <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Read a point cloud data from a FILE file (FILE_V6 only!) and store it into a pcl/PCLPointCloud2.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \note This function is provided for backwards compatibility only and</span>
+<span class="cm">        * it can only read FILE_V6 files correctly, as pcl::PCLPointCloud2</span>
+<span class="cm">        * does not contain a sensor origin/orientation. Reading any file</span>
+<span class="cm">        * &gt; FILE_V6 will generate a warning.</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] file_name the name of the file containing the actual PointCloud data</span>
+<span class="cm">        * \param[out] cloud the resultant PointCloud message read from disk</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] offset the offset in the file where to expect the true header to begin.</span>
+<span class="cm">        * One usage example for setting the offset parameter is for reading</span>
+<span class="cm">        * data from a TAR &quot;archive containing multiple files: TAR files always</span>
+<span class="cm">        * add a 512 byte header in front of the actual file, so set the offset</span>
+<span class="cm">        * to the next byte after the header (e.g., 513).</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">read</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">origin</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="n">orientation</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">file_version</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">read</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">file_version</span><span class="p">,</span> <span class="n">offset</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Read a point cloud data from any FILE file, and convert it to the given template format.</span>
+<span class="cm">        * \param[in] file_name the name of the file containing the actual PointCloud data</span>
+<span class="cm">        * \param[out] cloud the resultant PointCloud message read from disk</span>
+<span class="cm">        * \param[in] offset the offset in the file where to expect the true header to begin.</span>
+<span class="cm">        * One usage example for setting the offset parameter is for reading</span>
+<span class="cm">        * data from a TAR &quot;archive containing multiple files: TAR files always</span>
+<span class="cm">        * add a 512 byte header in front of the actual file, so set the offset</span>
+<span class="cm">        * to the next byte after the header (e.g., 513).</span>
+<span class="cm">        */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="n">read</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offset</span>  <span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="n">blob</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">file_version</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">read</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">blob</span><span class="p">,</span> <span class="n">cloud</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">,</span> <span class="n">cloud</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">,</span>
+                        <span class="n">file_version</span><span class="p">,</span> <span class="n">offset</span><span class="p">);</span>
+
+        <span class="c1">// Exit in case of error</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">fromPCLPointCloud2</span> <span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="n">cloud</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief Point Cloud Data (FILE) file format writer.</span>
+<span class="cm">    * Any (FILE) format file reader should implement its virtual methods</span>
+<span class="cm">    * \author Nizar Sallem</span>
+<span class="cm">    * \ingroup io</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">FileWriter</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Empty constructor */</span>
+      <span class="n">FileWriter</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">FileWriter</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Save point cloud data to a FILE file containing n-D points</span>
+<span class="cm">        * \param[in] file_name the output file name</span>
+<span class="cm">        * \param[in] cloud the point cloud data message</span>
+<span class="cm">        * \param[in] origin the sensor acquisition origin</span>
+<span class="cm">        * \param[in] orientation the sensor acquisition orientation</span>
+<span class="cm">        * \param[in] binary set to true if the file is to be written in a binary</span>
+<span class="cm">        * FILE format, false (default) for ASCII</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">int</span>
+      <span class="n">write</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">origin</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">(),</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="o">&amp;</span><span class="n">orientation</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+             <span class="k">const</span> <span class="kt">bool</span> <span class="n">binary</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Save point cloud data to a FILE file containing n-D points</span>
+<span class="cm">        * \param[in] file_name the output file name</span>
+<span class="cm">        * \param[in] cloud the point cloud data message (boost shared pointer)</span>
+<span class="cm">        * \param[in] binary set to true if the file is to be written in a binary</span>
+<span class="cm">        * FILE format, false (default) for ASCII</span>
+<span class="cm">        * \param[in] origin the sensor acquisition origin</span>
+<span class="cm">        * \param[in] orientation the sensor acquisition orientation</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">write</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">origin</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">(),</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="o">&amp;</span><span class="n">orientation</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+             <span class="k">const</span> <span class="kt">bool</span> <span class="n">binary</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">write</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="o">*</span><span class="n">cloud</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">binary</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Save point cloud data to a FILE file containing n-D points</span>
+<span class="cm">        * \param[in] file_name the output file name</span>
+<span class="cm">        * \param[in] cloud the pcl::PointCloud data</span>
+<span class="cm">        * \param[in] binary set to true if the file is to be written in a binary</span>
+<span class="cm">        * FILE format, false (default) for ASCII</span>
+<span class="cm">        */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="n">write</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">file_name</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+             <span class="k">const</span> <span class="kt">bool</span> <span class="n">binary</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="n">orientation</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">;</span>
+
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="n">blob</span><span class="p">;</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">toPCLPointCloud2</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">blob</span><span class="p">);</span>
+
+        <span class="c1">// Save the data</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">write</span> <span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">blob</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">binary</span><span class="p">));</span>
+      <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief inserts a value of type Type (uchar, char, uint, int, float, double, ...) into a stringstream.</span>
+<span class="cm">    *</span>
+<span class="cm">    * If the value is NaN, it inserts &quot;nan&quot;.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \param[in] cloud the cloud to copy from</span>
+<span class="cm">    * \param[in] point_index the index of the point</span>
+<span class="cm">    * \param[in] point_size the size of the point in the cloud</span>
+<span class="cm">    * \param[in] field_idx the index of the dimension/field</span>
+<span class="cm">    * \param[in] fields_count the current fields count</span>
+<span class="cm">    * \param[out] stream the ostringstream to copy into</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Type</span><span class="o">&gt;</span> <span class="kr">inline</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_floating_point</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;::</span><span class="n">value</span><span class="o">&gt;</span>
+  <span class="n">copyValueString</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">int</span> <span class="n">point_size</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">,</span>
+                   <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">stream</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Type</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">point_size</span> <span class="o">+</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span> <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">)],</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isnan</span> <span class="p">(</span><span class="n">value</span><span class="p">))</span>
+      <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;nan&quot;</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Type</span><span class="o">&gt;</span> <span class="kr">inline</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;::</span><span class="n">value</span><span class="o">&gt;</span>
+  <span class="n">copyValueString</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">int</span> <span class="n">point_size</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">,</span>
+                   <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">stream</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Type</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">point_size</span> <span class="o">+</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span> <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">)],</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">));</span>
+    <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">copyValueString</span><span class="o">&lt;</span><span class="kt">int8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="kt">int</span> <span class="n">point_size</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">,</span>
+                           <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">stream</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int8_t</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">point_size</span> <span class="o">+</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span> <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int8_t</span><span class="p">)],</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int8_t</span><span class="p">));</span>
+    <span class="c1">//Cast to int to prevent value is handled as char</span>
+    <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">numeric_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">copyValueString</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">int</span> <span class="n">point_size</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">stream</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">point_size</span> <span class="o">+</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span> <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)],</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+    <span class="c1">//Cast to unsigned int to prevent value is handled as char</span>
+    <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">numeric_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Check whether a given value of type Type (uchar, char, uint, int, float, double, ...) is finite or not</span>
+<span class="cm">    *</span>
+<span class="cm">    * \param[in] cloud the cloud that contains the data</span>
+<span class="cm">    * \param[in] point_index the index of the point</span>
+<span class="cm">    * \param[in] point_size the size of the point in the cloud</span>
+<span class="cm">    * \param[in] field_idx the index of the dimension/field</span>
+<span class="cm">    * \param[in] fields_count the current fields count</span>
+<span class="cm">    *</span>
+<span class="cm">    * \return true if the value is finite, false otherwise</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Type</span><span class="o">&gt;</span> <span class="kr">inline</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_floating_point</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span>
+  <span class="n">isValueFinite</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">int</span> <span class="n">point_size</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Type</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">point_size</span> <span class="o">+</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span> <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">)],</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">value</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Type</span><span class="o">&gt;</span> <span class="kr">inline</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span>
+  <span class="n">isValueFinite</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span> <span class="cm">/* cloud */</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="cm">/* point_index */</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">int</span> <span class="cm">/* point_size */</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="cm">/* field_idx */</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="cm">/* fields_count */</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Copy one single value of type T (uchar, char, uint, int, float, double, ...) from a string</span>
+<span class="cm">    *</span>
+<span class="cm">    * Uses aoti/atof to do the conversion.</span>
+<span class="cm">    * Checks if the st is &quot;nan&quot; and converts it accordingly.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \param[in] st the string containing the value to convert and copy</span>
+<span class="cm">    * \param[out] cloud the cloud to copy it to</span>
+<span class="cm">    * \param[in] point_index the index of the point</span>
+<span class="cm">    * \param[in] field_idx the index of the dimension/field</span>
+<span class="cm">    * \param[in] fields_count the current fields count</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Type</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">copyStringValue</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                   <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Type</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">iequals</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="s">&quot;nan&quot;</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">istringstream</span> <span class="n">is</span> <span class="p">(</span><span class="n">st</span><span class="p">);</span>
+      <span class="n">is</span><span class="p">.</span><span class="n">imbue</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">locale</span><span class="o">::</span><span class="n">classic</span> <span class="p">());</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">value</span><span class="p">))</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">atof</span> <span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">c_str</span> <span class="p">()));</span>
+    <span class="p">}</span>
+
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span> <span class="o">+</span>
+                        <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span>
+                        <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">)],</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">Type</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">copyStringValue</span><span class="o">&lt;</span><span class="kt">int8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int8_t</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">iequals</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="s">&quot;nan&quot;</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">istringstream</span> <span class="n">is</span> <span class="p">(</span><span class="n">st</span><span class="p">);</span>
+      <span class="n">is</span><span class="p">.</span><span class="n">imbue</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">locale</span><span class="o">::</span><span class="n">classic</span> <span class="p">());</span>
+      <span class="c1">//is &gt;&gt; val;  -- unfortunately this fails on older GCC versions and CLANG on MacOS</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">val</span><span class="p">))</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">atof</span> <span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">c_str</span> <span class="p">()));</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">val</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span> <span class="o">+</span>
+                        <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span>
+                        <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int8_t</span><span class="p">)],</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int8_t</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">copyStringValue</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+                           <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">point_index</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">field_idx</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">fields_count</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">iequals</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="s">&quot;nan&quot;</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+      <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">istringstream</span> <span class="n">is</span> <span class="p">(</span><span class="n">st</span><span class="p">);</span>
+      <span class="n">is</span><span class="p">.</span><span class="n">imbue</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">locale</span><span class="o">::</span><span class="n">classic</span> <span class="p">());</span>
+      <span class="c1">//is &gt;&gt; val;  -- unfortunately this fails on older GCC versions and CLANG on MacOS</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">val</span><span class="p">))</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">atof</span> <span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">c_str</span> <span class="p">()));</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">val</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span> <span class="o">+</span>
+                        <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_idx</span><span class="p">].</span><span class="n">offset</span> <span class="o">+</span>
+                        <span class="n">fields_count</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)],</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_common_impl_file_io.hpp.html" class="btn btn-neutral float-right" title="File file_io.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_io_file_io.h.html" class="btn btn-neutral float-left" title="File file_io.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

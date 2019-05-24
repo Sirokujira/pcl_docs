@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File organized_fast_mesh.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File organized_fast_mesh.hpp" href="file_pcl_surface_impl_organized_fast_mesh.hpp.html" />
+    <link rel="prev" title="File organized_fast_mesh.h" href="file_pcl_surface_organized_fast_mesh.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_organized_fast_mesh.h.html">File organized_fast_mesh.h</a> &raquo;</li>
+        
+      <li>Program Listing for File organized_fast_mesh.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_organized_fast_mesh.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-organized-fast-mesh-h">
+<span id="program-listing-file-pcl-surface-organized-fast-mesh-h"></span><h1>Program Listing for File organized_fast_mesh.h<a class="headerlink" href="#program-listing-for-file-organized-fast-mesh-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_organized_fast_mesh.h.html#file-pcl-surface-organized-fast-mesh-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\organized_fast_mesh.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2011, Dirk Holz, University of Bonn.</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/angles.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/surface/reconstruction.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+
+  <span class="cm">/** \brief Simple triangulation/surface reconstruction for organized point</span>
+<span class="cm">    * clouds. Neighboring points (pixels in image space) are connected to</span>
+<span class="cm">    * construct a triangular (or quad) mesh.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If you use this code in any academic work, please cite:</span>
+<span class="cm">    *   D. Holz and S. Behnke.</span>
+<span class="cm">    *   Fast Range Image Segmentation and Smoothing using Approximate Surface Reconstruction and Region Growing.</span>
+<span class="cm">    *   In Proceedings of the 12th International Conference on Intelligent Autonomous Systems (IAS),</span>
+<span class="cm">    *   Jeju Island, Korea, June 26-29 2012.</span>
+<span class="cm">    *   &lt;a href=&quot;http://purl.org/holz/papers/holz_2012_ias.pdf&quot;&gt;http://purl.org/holz/papers/holz_2012_ias.pdf&lt;/a&gt;</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Dirk Holz, Radu B. Rusu</span>
+<span class="cm">    * \ingroup surface</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">OrganizedFastMesh</span> <span class="o">:</span> <span class="k">public</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OrganizedFastMesh</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">OrganizedFastMesh</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="k">using</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">MeshConstruction</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">check_tree_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="n">Polygons</span><span class="p">;</span>
+
+      <span class="k">enum</span> <span class="n">TriangulationType</span>
+      <span class="p">{</span>
+        <span class="n">TRIANGLE_RIGHT_CUT</span><span class="p">,</span>     <span class="c1">// _always_ &quot;cuts&quot; a quad from top left to bottom right</span>
+        <span class="n">TRIANGLE_LEFT_CUT</span><span class="p">,</span>      <span class="c1">// _always_ &quot;cuts&quot; a quad from top right to bottom left</span>
+        <span class="n">TRIANGLE_ADAPTIVE_CUT</span><span class="p">,</span>  <span class="c1">// &quot;cuts&quot; where possible and prefers larger differences in &#39;z&#39; direction</span>
+        <span class="n">QUAD_MESH</span>               <span class="c1">// create a simple quad mesh</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Constructor. Triangulation type defaults to \a QUAD_MESH. */</span>
+      <span class="n">OrganizedFastMesh</span> <span class="p">()</span>
+      <span class="o">:</span> <span class="n">max_edge_length_a_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">max_edge_length_b_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">max_edge_length_c_</span> <span class="p">(</span><span class="mf">0.0f</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">max_edge_length_set_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">max_edge_length_dist_dependent_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">triangle_pixel_size_rows_</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">triangle_pixel_size_columns_</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">triangulation_type_</span> <span class="p">(</span><span class="n">QUAD_MESH</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">viewpoint_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">())</span>
+      <span class="p">,</span> <span class="n">store_shadowed_faces_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">cos_angle_tolerance_</span> <span class="p">(</span><span class="n">fabsf</span> <span class="p">(</span><span class="n">cosf</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">12.5f</span><span class="p">))))</span>
+      <span class="p">,</span> <span class="n">distance_tolerance_</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0f</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">distance_dependent_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">use_depth_as_distance_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">check_tree_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="o">~</span><span class="n">OrganizedFastMesh</span> <span class="p">()</span> <span class="p">{};</span>
+
+      <span class="cm">/** \brief Set a maximum edge length.</span>
+<span class="cm">        * Using not only the scalar \a a, but also \a b and \a c, allows for using a distance threshold in the form of:</span>
+<span class="cm">        * threshold(x) = c*x*x + b*x + a</span>
+<span class="cm">        * \param[in] a scalar coefficient of the (distance-dependent polynom) threshold</span>
+<span class="cm">        * \param[in] b linear coefficient of the (distance-dependent polynom) threshold</span>
+<span class="cm">        * \param[in] c quadratic coefficient of the (distance-dependent polynom) threshold</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setMaxEdgeLength</span> <span class="p">(</span><span class="kt">float</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="kt">float</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">max_edge_length_a_</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">max_edge_length_b_</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">max_edge_length_c_</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">max_edge_length_a_</span> <span class="o">+</span> <span class="n">max_edge_length_b_</span> <span class="o">+</span> <span class="n">max_edge_length_c_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">min</span><span class="p">())</span>
+          <span class="n">max_edge_length_set_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="k">else</span>
+          <span class="n">max_edge_length_set_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">unsetMaxEdgeLength</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">max_edge_length_set_</span>  <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the edge length (in pixels) used for constructing the fixed mesh.</span>
+<span class="cm">        * \param[in] triangle_size edge length in pixels</span>
+<span class="cm">        * (Default: 1 = neighboring pixels are connected)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setTrianglePixelSize</span> <span class="p">(</span><span class="kt">int</span> <span class="n">triangle_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">setTrianglePixelSizeRows</span> <span class="p">(</span><span class="n">triangle_size</span><span class="p">);</span>
+        <span class="n">setTrianglePixelSizeColumns</span> <span class="p">(</span><span class="n">triangle_size</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the edge length (in pixels) used for iterating over rows when constructing the fixed mesh.</span>
+<span class="cm">        * \param[in] triangle_size edge length in pixels</span>
+<span class="cm">        * (Default: 1 = neighboring pixels are connected)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setTrianglePixelSizeRows</span> <span class="p">(</span><span class="kt">int</span> <span class="n">triangle_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">triangle_pixel_size_rows_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">triangle_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the edge length (in pixels) used for iterating over columns when constructing the fixed mesh.</span>
+<span class="cm">        * \param[in] triangle_size edge length in pixels</span>
+<span class="cm">        * (Default: 1 = neighboring pixels are connected)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setTrianglePixelSizeColumns</span> <span class="p">(</span><span class="kt">int</span> <span class="n">triangle_size</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">triangle_pixel_size_columns_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">triangle_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the triangulation type (see \a TriangulationType)</span>
+<span class="cm">        * \param[in] type quad mesh, triangle mesh with fixed left, right cut,</span>
+<span class="cm">        * or adaptive cut (splits a quad w.r.t. the depth (z) of the points)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setTriangulationType</span> <span class="p">(</span><span class="n">TriangulationType</span> <span class="n">type</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">triangulation_type_</span> <span class="o">=</span> <span class="n">type</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the viewpoint from where the input point cloud has been acquired.</span>
+<span class="cm">       * \param[in] viewpoint Vector containing the viewpoint coordinates (in the coordinate system of the data)</span>
+<span class="cm">       */</span>
+      <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">setViewpoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">viewpoint</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">viewpoint_</span> <span class="o">=</span> <span class="n">viewpoint</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the viewpoint from where the input point cloud has been acquired. */</span>
+      <span class="k">const</span> <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">getViewpoint</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="n">viewpoint_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Store shadowed faces or not.</span>
+<span class="cm">       * \param[in] enable set to true to store shadowed faces</span>
+<span class="cm">       */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">storeShadowedFaces</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">store_shadowed_faces_</span> <span class="o">=</span> <span class="n">enable</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the angle tolerance used for checking whether or not an edge is occluded.</span>
+<span class="cm">       * Standard values are 5deg to 15deg (input in rad!). Set a value smaller than zero to</span>
+<span class="cm">       * disable the check for shadowed edges.</span>
+<span class="cm">       * \param[in] angle_tolerance Angle tolerance (in rad). Set a value &lt;0 to disable.</span>
+<span class="cm">       */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setAngleTolerance</span><span class="p">(</span><span class="kt">float</span> <span class="n">angle_tolerance</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">angle_tolerance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="n">cos_angle_tolerance_</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="n">cosf</span> <span class="p">(</span><span class="n">angle_tolerance</span><span class="p">));</span>
+        <span class="k">else</span>
+          <span class="n">cos_angle_tolerance_</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0f</span><span class="p">;</span>
+      <span class="p">}</span>
+
+
+      <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setDistanceTolerance</span><span class="p">(</span><span class="kt">float</span> <span class="n">distance_tolerance</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">depth_dependent</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">distance_tolerance_</span> <span class="o">=</span> <span class="n">distance_tolerance</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">distance_tolerance_</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="k">return</span><span class="p">;</span>
+
+        <span class="n">distance_dependent_</span> <span class="o">=</span> <span class="n">depth_dependent</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">distance_dependent_</span><span class="p">)</span>
+          <span class="n">distance_tolerance_</span> <span class="o">*=</span> <span class="n">distance_tolerance_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Use the points&#39; depths (z-coordinates) instead of measured distances (points&#39; distances to the viewpoint).</span>
+<span class="cm">        * \param[in] enable Set to true skips comptations and further speeds up computation by using depth instead of computing distance. false to disable. */</span>
+      <span class="kr">inline</span> <span class="kt">void</span> <span class="n">useDepthAsDistance</span><span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">use_depth_as_distance_</span> <span class="o">=</span> <span class="n">enable</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief max length of edge, scalar component */</span>
+      <span class="kt">float</span> <span class="n">max_edge_length_a_</span><span class="p">;</span>
+      <span class="cm">/** \brief max length of edge, scalar component */</span>
+      <span class="kt">float</span> <span class="n">max_edge_length_b_</span><span class="p">;</span>
+      <span class="cm">/** \brief max length of edge, scalar component */</span>
+      <span class="kt">float</span> <span class="n">max_edge_length_c_</span><span class="p">;</span>
+      <span class="cm">/** \brief flag whether or not edges are limited in length */</span>
+      <span class="kt">bool</span> <span class="n">max_edge_length_set_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief flag whether or not max edge length is distance dependent. */</span>
+      <span class="kt">bool</span> <span class="n">max_edge_length_dist_dependent_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief size of triangle edges (in pixels) for iterating over rows. */</span>
+      <span class="kt">int</span> <span class="n">triangle_pixel_size_rows_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief size of triangle edges (in pixels) for iterating over columns*/</span>
+      <span class="kt">int</span> <span class="n">triangle_pixel_size_columns_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Type of meshing scheme (quads vs. triangles, left cut vs. right cut ... */</span>
+      <span class="n">TriangulationType</span> <span class="n">triangulation_type_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Viewpoint from which the point cloud has been acquired (in the same coordinate frame as the data). */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">viewpoint_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Whether or not shadowed faces are stored, e.g., for exploration */</span>
+      <span class="kt">bool</span> <span class="n">store_shadowed_faces_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief (Cosine of the) angle tolerance used when checking whether or not an edge between two points is shadowed. */</span>
+      <span class="kt">float</span> <span class="n">cos_angle_tolerance_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief distance tolerance for filtering out shadowed/occluded edges */</span>
+      <span class="kt">float</span> <span class="n">distance_tolerance_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief flag whether or not \a distance_tolerance_ is distance dependent (multiplied by the squared distance to the point) or not. */</span>
+      <span class="kt">bool</span> <span class="n">distance_dependent_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief flag whether or not the points&#39; depths are used instead of measured distances (points&#39; distances to the viewpoint).</span>
+<span class="cm">          This flag may be set using useDepthAsDistance(true) for (RGB-)Depth cameras to skip computations and gain additional speed up. */</span>
+      <span class="kt">bool</span> <span class="n">use_depth_as_distance_</span><span class="p">;</span>
+
+
+      <span class="cm">/** \brief Perform the actual polygonal reconstruction.</span>
+<span class="cm">        * \param[out] polygons the resultant polygons</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">reconstructPolygons</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create the surface.</span>
+<span class="cm">        * \param[out] polygons the resultant polygons, as a set of vertices. The Vertices structure contains an array of point indices.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">performReconstruction</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polygons</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Create the surface.</span>
+<span class="cm">        *</span>
+<span class="cm">        * Simply uses image indices to create an initial polygonal mesh for organized point clouds.</span>
+<span class="cm">        * \a indices_ are ignored!</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[out] output the resultant polygonal mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">performReconstruction</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Add a new triangle to the current polygon mesh</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        * \param[in] idx the index in the set of polygon vertices (assumes \a idx is valid in \a polygons)</span>
+<span class="cm">        * \param[out] polygons the polygon mesh to be updated</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">addTriangle</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">idx</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">polygons</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Add a new quad to the current polygon mesh</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        * \param[in] d index of the fourth vertex</span>
+<span class="cm">        * \param[in] idx the index in the set of polygon vertices (assumes \a idx is valid in \a polygons)</span>
+<span class="cm">        * \param[out] polygons the polygon mesh to be updated</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">addQuad</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">idx</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">polygons</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">polygons</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">vertices</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Set (all) coordinates of a particular point to the specified value</span>
+<span class="cm">        * \param[in] point_index index of point</span>
+<span class="cm">        * \param[out] mesh to modify</span>
+<span class="cm">        * \param[in] value value to use when re-setting</span>
+<span class="cm">        * \param[in] field_x_idx the X coordinate of the point</span>
+<span class="cm">        * \param[in] field_y_idx the Y coordinate of the point</span>
+<span class="cm">        * \param[in] field_z_idx the Z coordinate of the point</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">resetPointData</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">point_index</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PolygonMesh</span> <span class="o">&amp;</span><span class="n">mesh</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">,</span>
+                      <span class="kt">int</span> <span class="n">field_x_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">field_y_idx</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">field_z_idx</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">new_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+        <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span> <span class="o">+</span> <span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_x_idx</span><span class="p">].</span><span class="n">offset</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">new_value</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+        <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span> <span class="o">+</span> <span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_y_idx</span><span class="p">].</span><span class="n">offset</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">new_value</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+        <span class="n">memcpy</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">point_index</span> <span class="o">*</span> <span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span> <span class="o">+</span> <span class="n">mesh</span><span class="p">.</span><span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">field_z_idx</span><span class="p">].</span><span class="n">offset</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">new_value</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check if a point is shadowed by another point</span>
+<span class="cm">        * \param[in] point_a the first point</span>
+<span class="cm">        * \param[in] point_b the second point</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isShadowed</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span><span class="o">&amp;</span> <span class="n">point_a</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointInT</span><span class="o">&amp;</span> <span class="n">point_b</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">valid</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">dir_a</span> <span class="o">=</span> <span class="n">viewpoint_</span> <span class="o">-</span> <span class="n">point_a</span><span class="p">.</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">dir_b</span> <span class="o">=</span> <span class="n">point_b</span><span class="p">.</span><span class="n">getVector3fMap</span> <span class="p">()</span> <span class="o">-</span> <span class="n">point_a</span><span class="p">.</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+        <span class="kt">float</span> <span class="n">distance_to_points</span> <span class="o">=</span> <span class="n">dir_a</span><span class="p">.</span><span class="n">norm</span> <span class="p">();</span>
+        <span class="kt">float</span> <span class="n">distance_between_points</span> <span class="o">=</span> <span class="n">dir_b</span><span class="p">.</span><span class="n">norm</span> <span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">cos_angle_tolerance_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">float</span> <span class="n">cos_angle</span> <span class="o">=</span> <span class="n">dir_a</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">dir_b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">distance_to_points</span><span class="o">*</span><span class="n">distance_between_points</span><span class="p">);</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">isnan</span><span class="p">(</span><span class="n">cos_angle</span><span class="p">))</span>
+            <span class="n">cos_angle</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+          <span class="kt">bool</span> <span class="n">check_angle</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">fabs</span> <span class="p">(</span><span class="n">cos_angle</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">cos_angle_tolerance_</span><span class="p">;</span>
+
+          <span class="kt">bool</span> <span class="n">check_distance</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">check_angle</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">distance_tolerance_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span>
+          <span class="p">{</span>
+            <span class="kt">float</span> <span class="n">dist_thresh</span> <span class="o">=</span> <span class="n">distance_tolerance_</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">distance_dependent_</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="kt">float</span> <span class="n">d</span> <span class="o">=</span> <span class="n">distance_to_points</span><span class="p">;</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">use_depth_as_distance_</span><span class="p">)</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">point_a</span><span class="p">.</span><span class="n">z</span><span class="p">,</span> <span class="n">point_b</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+              <span class="n">dist_thresh</span> <span class="o">*=</span> <span class="n">d</span><span class="o">*</span><span class="n">d</span><span class="p">;</span>
+              <span class="n">dist_thresh</span> <span class="o">*=</span> <span class="n">dist_thresh</span><span class="p">;</span>  <span class="c1">// distance_tolerance_ is already squared if distance_dependent_ is false.</span>
+            <span class="p">}</span>
+            <span class="n">check_distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance_between_points</span> <span class="o">&gt;</span> <span class="n">dist_thresh</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="n">valid</span> <span class="o">=</span> <span class="o">!</span><span class="p">(</span><span class="n">check_angle</span> <span class="o">&amp;&amp;</span> <span class="n">check_distance</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// check if max. edge length is not exceeded</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">max_edge_length_set_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">float</span> <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">use_depth_as_distance_</span> <span class="o">?</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">point_a</span><span class="p">.</span><span class="n">z</span><span class="p">,</span> <span class="n">point_b</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">:</span> <span class="n">distance_to_points</span><span class="p">);</span>
+          <span class="kt">float</span> <span class="n">dist_thresh</span> <span class="o">=</span> <span class="n">max_edge_length_a_</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">fabs</span><span class="p">(</span><span class="n">max_edge_length_b_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">min</span><span class="p">())</span>
+            <span class="n">dist_thresh</span> <span class="o">+=</span> <span class="n">max_edge_length_b_</span> <span class="o">*</span> <span class="n">dist</span><span class="p">;</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">fabs</span><span class="p">(</span><span class="n">max_edge_length_c_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">min</span><span class="p">())</span>
+            <span class="n">dist_thresh</span> <span class="o">+=</span> <span class="n">max_edge_length_c_</span> <span class="o">*</span> <span class="n">dist</span> <span class="o">*</span> <span class="n">dist</span><span class="p">;</span>
+          <span class="n">valid</span> <span class="o">=</span> <span class="p">(</span><span class="n">distance_between_points</span> <span class="o">&lt;=</span> <span class="n">dist_thresh</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="o">!</span><span class="n">valid</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check if a triangle is valid.</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isValidTriangle</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">a</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">b</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check if a triangle is shadowed.</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isShadowedTriangle</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">b</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">b</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">a</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check if a quad is valid.</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        * \param[in] d index of the fourth vertex</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isValidQuad</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">d</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">a</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">b</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pcl</span><span class="o">::</span><span class="n">isFinite</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">d</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Check if a triangle is shadowed.</span>
+<span class="cm">        * \param[in] a index of the first vertex</span>
+<span class="cm">        * \param[in] b index of the second vertex</span>
+<span class="cm">        * \param[in] c index of the third vertex</span>
+<span class="cm">        * \param[in] d index of the fourth vertex</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isShadowedQuad</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">d</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">b</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">b</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">d</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isShadowed</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">a</span><span class="p">]))</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Create a quad mesh.</span>
+<span class="cm">        * \param[out] polygons the resultant mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">makeQuadMesh</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create a right cut mesh.</span>
+<span class="cm">        * \param[out] polygons the resultant mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">makeRightCutMesh</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create a left cut mesh.</span>
+<span class="cm">        * \param[out] polygons the resultant mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">makeLeftCutMesh</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create an adaptive cut mesh.</span>
+<span class="cm">        * \param[out] polygons the resultant mesh</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">makeAdaptiveCutMesh</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Vertices</span><span class="o">&gt;&amp;</span> <span class="n">polygons</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/surface/impl/organized_fast_mesh.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_impl_organized_fast_mesh.hpp.html" class="btn btn-neutral float-right" title="File organized_fast_mesh.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_organized_fast_mesh.h.html" class="btn btn-neutral float-left" title="File organized_fast_mesh.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

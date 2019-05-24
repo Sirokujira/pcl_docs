@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File world_model.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File world_model.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_source_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_impl_world_model.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-world-model-hpp">
+<span id="program-listing-file-pcl-docs-source-pcl-gpu-kinfu-large-scale-include-pcl-gpu-kinfu-large-scale-impl-world-model-hpp"></span><h1>Program Listing for File world_model.hpp<a class="headerlink" href="#program-listing-for-file-world-model-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_source_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_impl_world_model.hpp.html#file-pcl-docs-source-pcl-gpu-kinfu-large-scale-include-pcl-gpu-kinfu-large-scale-impl-world-model-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\source\pcl\gpu\kinfu_large_scale\include\pcl\gpu\kinfu_large_scale\impl\world_model.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Author: Raphael Favier, Technical University Eindhoven, (r.mysurname &lt;aT&gt; tue.nl)</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_WORLD_MODEL_IMPL_HPP_</span>
+<span class="cp">#define PCL_WORLD_MODEL_IMPL_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu_large_scale/world_model.h&gt;</span><span class="cp"></span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addSlice</span> <span class="p">(</span> <span class="n">PointCloudPtr</span> <span class="n">new_cloud</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;Adding new cloud. Current world contains %d points.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">world_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;New slice contains %d points.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">new_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="o">*</span><span class="n">world_</span> <span class="o">+=</span> <span class="o">*</span><span class="n">new_cloud</span><span class="p">;</span>
+
+  <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;World now contains  %d points.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">world_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+<span class="p">}</span>
+
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getExistingData</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">previous_origin_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">previous_origin_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">previous_origin_z</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">offset_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">offset_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">offset_z</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">volume_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">volume_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">volume_z</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">existing_slice</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">newOriginX</span> <span class="o">=</span> <span class="n">previous_origin_x</span> <span class="o">+</span> <span class="n">offset_x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">newOriginY</span> <span class="o">=</span> <span class="n">previous_origin_y</span> <span class="o">+</span> <span class="n">offset_y</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">newOriginZ</span> <span class="o">=</span> <span class="n">previous_origin_z</span> <span class="o">+</span> <span class="n">offset_z</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">newLimitX</span> <span class="o">=</span> <span class="n">newOriginX</span> <span class="o">+</span> <span class="n">volume_x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">newLimitY</span> <span class="o">=</span> <span class="n">newOriginY</span> <span class="o">+</span> <span class="n">volume_y</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">newLimitZ</span> <span class="o">=</span> <span class="n">newOriginZ</span> <span class="o">+</span> <span class="n">volume_z</span><span class="p">;</span>
+
+  <span class="c1">// filter points in the space of the new cube</span>
+  <span class="n">PointCloudPtr</span> <span class="nf">newCube</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">);</span>
+  <span class="c1">// condition</span>
+  <span class="n">ConditionAndPtr</span> <span class="nf">range_condAND</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionAnd</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">range_condAND</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span> <span class="n">newOriginX</span><span class="p">)));</span>
+  <span class="n">range_condAND</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span> <span class="n">newLimitX</span><span class="p">)));</span>
+  <span class="n">range_condAND</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span> <span class="n">newOriginY</span><span class="p">)));</span>
+  <span class="n">range_condAND</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span> <span class="n">newLimitY</span><span class="p">)));</span>
+  <span class="n">range_condAND</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span> <span class="n">newOriginZ</span><span class="p">)));</span>
+  <span class="n">range_condAND</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span> <span class="n">newLimitZ</span><span class="p">)));</span>
+
+  <span class="c1">// build the filter</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionalRemoval</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">condremAND</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">condremAND</span><span class="p">.</span><span class="n">setCondition</span> <span class="p">(</span><span class="n">range_condAND</span><span class="p">);</span>
+  <span class="n">condremAND</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">world_</span><span class="p">);</span>
+  <span class="n">condremAND</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="c1">// apply filter</span>
+  <span class="n">condremAND</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">newCube</span><span class="p">);</span>
+
+  <span class="c1">// filter points that belong to the new slice</span>
+  <span class="n">ConditionOrPtr</span> <span class="nf">range_condOR</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionOr</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">());</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">offset_x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">range_condOR</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_origin_x</span> <span class="o">+</span> <span class="n">volume_x</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)));</span>
+  <span class="k">else</span>
+  <span class="n">range_condOR</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_x</span> <span class="p">)));</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">offset_y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">range_condOR</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_origin_y</span> <span class="o">+</span> <span class="n">volume_y</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)));</span>
+  <span class="k">else</span>
+  <span class="n">range_condOR</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_y</span> <span class="p">)));</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">offset_z</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">range_condOR</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_origin_z</span> <span class="o">+</span> <span class="n">volume_z</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)));</span>
+  <span class="k">else</span>
+  <span class="n">range_condOR</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_z</span> <span class="p">)));</span>
+
+  <span class="c1">// build the filter</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionalRemoval</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">condrem</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">condrem</span><span class="p">.</span><span class="n">setCondition</span> <span class="p">(</span><span class="n">range_condOR</span><span class="p">);</span>
+  <span class="n">condrem</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">newCube</span><span class="p">);</span>
+  <span class="n">condrem</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="c1">// apply filter</span>
+  <span class="n">condrem</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="n">existing_slice</span><span class="p">);</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">existing_slice</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+  <span class="c1">//transform the slice in new cube coordinates</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">transformation</span><span class="p">;</span>
+  <span class="n">transformation</span><span class="p">.</span><span class="n">translation</span> <span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">newOriginX</span><span class="p">;</span>
+  <span class="n">transformation</span><span class="p">.</span><span class="n">translation</span> <span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">newOriginY</span><span class="p">;</span>
+  <span class="n">transformation</span><span class="p">.</span><span class="n">translation</span> <span class="p">()[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">newOriginZ</span><span class="p">;</span>
+
+  <span class="n">transformation</span><span class="p">.</span><span class="n">linear</span> <span class="p">().</span><span class="n">setIdentity</span> <span class="p">();</span>
+
+  <span class="n">transformPointCloud</span> <span class="p">(</span><span class="n">existing_slice</span><span class="p">,</span> <span class="n">existing_slice</span><span class="p">,</span> <span class="n">transformation</span><span class="p">.</span><span class="n">inverse</span> <span class="p">());</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getWorldAsCubes</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">size</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">PointCloudPtr</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cubes</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">transforms</span><span class="p">,</span> <span class="kt">double</span> <span class="n">overlap</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">world_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+  <span class="n">PCL_INFO</span><span class="p">(</span><span class="s">&quot;The world is empty, returning nothing</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Getting world as cubes. World contains %d points.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">world_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="c1">// remove nans from world cloud</span>
+  <span class="n">world_</span><span class="o">-&gt;</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">indices</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">removeNaNFromPointCloud</span> <span class="p">(</span> <span class="o">*</span><span class="n">world_</span><span class="p">,</span> <span class="o">*</span><span class="n">world_</span><span class="p">,</span> <span class="n">indices</span><span class="p">);</span>
+
+  <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;World contains %d points after nan removal.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">world_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+
+  <span class="c1">// check cube size value</span>
+  <span class="kt">double</span> <span class="n">cubeSide</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cubeSide</span> <span class="o">&lt;=</span> <span class="mf">0.0f</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;Size of the cube must be positive and non null (%f given). Setting it to 3.0 meters.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cubeSide</span><span class="p">);</span>
+  <span class="n">cubeSide</span> <span class="o">=</span> <span class="mf">512.0f</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cube size is set to &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">cubeSide</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// check overlap value</span>
+  <span class="kt">double</span> <span class="n">step_increment</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">-</span> <span class="n">overlap</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">overlap</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;Overlap ratio must be positive or null (%f given). Setting it to 0.0 procent.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">overlap</span><span class="p">);</span>
+  <span class="n">step_increment</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">overlap</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;Overlap ratio must be less or equal to 1.0 (%f given). Setting it to 10 procent.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">overlap</span><span class="p">);</span>
+  <span class="n">step_increment</span> <span class="o">=</span> <span class="mf">0.1f</span><span class="p">;</span>
+  <span class="p">}</span>
+
+
+  <span class="c1">// get world&#39;s bounding values on XYZ</span>
+  <span class="n">PointT</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">getMinMax3D</span><span class="p">(</span><span class="o">*</span><span class="n">world_</span><span class="p">,</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">);</span>
+
+  <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Bounding box for the world: </span><span class="se">\n\t</span><span class="s"> [%f - %f] </span><span class="se">\n\t</span><span class="s"> [%f - %f] </span><span class="se">\n\t</span><span class="s"> [%f - %f] </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">min</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">max</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">min</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">max</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">min</span><span class="p">.</span><span class="n">z</span><span class="p">,</span> <span class="n">max</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+  <span class="n">PointT</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">min</span><span class="p">;</span>
+
+  <span class="c1">// clear returned vectors</span>
+  <span class="n">cubes</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">transforms</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+
+  <span class="c1">// iterate with box filter</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">min</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">min</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="c1">// extract cube here</span>
+    <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Extracting cube at: [%f, %f, %f].</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>  <span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>  <span class="n">origin</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>  <span class="n">origin</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+    <span class="c1">// pointcloud for current cube.</span>
+    <span class="n">PointCloudPtr</span> <span class="nf">box</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">);</span>
+
+
+    <span class="c1">// set conditional filter</span>
+    <span class="n">ConditionAndPtr</span> <span class="nf">range_cond</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionAnd</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">());</span>
+    <span class="n">range_cond</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">)));</span>
+    <span class="n">range_cond</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cubeSide</span><span class="p">)));</span>
+    <span class="n">range_cond</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span><span class="p">)));</span>
+    <span class="n">range_cond</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">cubeSide</span><span class="p">)));</span>
+    <span class="n">range_cond</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span> <span class="n">origin</span><span class="p">.</span><span class="n">z</span><span class="p">)));</span>
+    <span class="n">range_cond</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span> <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">cubeSide</span><span class="p">)));</span>
+
+    <span class="c1">// build the filter</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionalRemoval</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">condrem</span><span class="p">;</span>
+    <span class="n">condrem</span><span class="p">.</span><span class="n">setCondition</span> <span class="p">(</span><span class="n">range_cond</span><span class="p">);</span>
+    <span class="n">condrem</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">world_</span><span class="p">);</span>
+    <span class="n">condrem</span><span class="p">.</span><span class="n">setKeepOrganized</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+    <span class="c1">// apply filter</span>
+    <span class="n">condrem</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">box</span><span class="p">);</span>
+
+    <span class="c1">// also push transform along with points.</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">box</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">transform</span><span class="p">;</span>
+      <span class="n">transform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">transform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+      <span class="n">transforms</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">transform</span><span class="p">);</span>
+      <span class="n">cubes</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">box</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Extracted cube was empty, skipping this one.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">origin</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">cubeSide</span> <span class="o">*</span> <span class="n">step_increment</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">cubeSide</span> <span class="o">*</span> <span class="n">step_increment</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">cubeSide</span> <span class="o">*</span> <span class="n">step_increment</span><span class="p">;</span>
+  <span class="p">}</span>
+
+
+ <span class="cm">/* for(int c = 0 ; c &lt; cubes.size() ; ++c)</span>
+<span class="cm">  {</span>
+<span class="cm">  std::stringstream name;</span>
+<span class="cm">  name &lt;&lt; &quot;cloud&quot; &lt;&lt; c+1 &lt;&lt; &quot;.pcd&quot;;</span>
+<span class="cm">  pcl::io::savePCDFileASCII(name.str(), *(cubes[c]));</span>
+
+<span class="cm">  }*/</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;returning &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">cubes</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; cubes&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setIndicesAsNans</span> <span class="p">(</span><span class="n">PointCloudPtr</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">IndicesConstPtr</span> <span class="n">indices</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;</span> <span class="n">fields</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">for_each_type</span><span class="o">&lt;</span><span class="n">FieldList</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">FieldAdder</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">fields</span><span class="p">));</span>
+  <span class="kt">float</span> <span class="n">my_nan</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">rii</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">rii</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">indices</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span> <span class="o">++</span><span class="n">rii</span><span class="p">)</span>  <span class="c1">// rii = removed indices iterator</span>
+  <span class="p">{</span>
+    <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">pt_data</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[(</span><span class="o">*</span><span class="n">indices</span><span class="p">)[</span><span class="n">rii</span><span class="p">]]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">field</span> <span class="p">:</span> <span class="n">fields</span><span class="p">)</span>
+      <span class="n">memcpy</span> <span class="p">(</span><span class="n">pt_data</span> <span class="o">+</span> <span class="n">field</span><span class="p">.</span><span class="n">offset</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">my_nan</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+<span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setSliceAsNans</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">origin_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">origin_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">origin_z</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">offset_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">offset_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">offset_z</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">size_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">size_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">size_z</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// PCL_DEBUG (&quot;IN SETSLICE AS NANS\n&quot;);</span>
+
+  <span class="n">PointCloudPtr</span> <span class="n">slice</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">);</span>
+
+  <span class="c1">// prepare filter limits on all dimensions</span>
+  <span class="kt">double</span> <span class="n">previous_origin_x</span> <span class="o">=</span> <span class="n">origin_x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">previous_limit_x</span> <span class="o">=</span> <span class="n">origin_x</span> <span class="o">+</span> <span class="n">size_x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">new_origin_x</span> <span class="o">=</span> <span class="n">origin_x</span> <span class="o">+</span> <span class="n">offset_x</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">new_limit_x</span> <span class="o">=</span> <span class="n">previous_limit_x</span> <span class="o">+</span> <span class="n">offset_x</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="n">previous_origin_y</span> <span class="o">=</span> <span class="n">origin_y</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">previous_limit_y</span> <span class="o">=</span> <span class="n">origin_y</span> <span class="o">+</span> <span class="n">size_y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">new_origin_y</span> <span class="o">=</span> <span class="n">origin_y</span> <span class="o">+</span> <span class="n">offset_y</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">new_limit_y</span> <span class="o">=</span> <span class="n">previous_limit_y</span> <span class="o">+</span> <span class="n">offset_y</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="n">previous_origin_z</span> <span class="o">=</span> <span class="n">origin_z</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">previous_limit_z</span> <span class="o">=</span> <span class="n">origin_z</span> <span class="o">+</span> <span class="n">size_z</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">new_origin_z</span> <span class="o">=</span> <span class="n">origin_z</span> <span class="o">+</span> <span class="n">offset_z</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">new_limit_z</span> <span class="o">=</span> <span class="n">previous_limit_z</span> <span class="o">+</span> <span class="n">offset_z</span><span class="p">;</span>
+
+  <span class="c1">// get points of slice on X (we actually set a negative filter and set the ouliers (so, our slice points) to nan)</span>
+  <span class="kt">double</span> <span class="n">lower_limit_x</span><span class="p">,</span> <span class="n">upper_limit_x</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">offset_x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">lower_limit_x</span> <span class="o">=</span> <span class="n">previous_origin_x</span><span class="p">;</span>
+  <span class="n">upper_limit_x</span> <span class="o">=</span> <span class="n">new_origin_x</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+  <span class="n">lower_limit_x</span> <span class="o">=</span> <span class="n">new_limit_x</span><span class="p">;</span>
+  <span class="n">upper_limit_x</span> <span class="o">=</span> <span class="n">previous_limit_x</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// PCL_DEBUG (&quot;Limit X: [%f - %f]\n&quot;, lower_limit_x, upper_limit_x);</span>
+
+  <span class="n">ConditionOrPtr</span> <span class="n">range_cond_OR_x</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionOr</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">range_cond_OR_x</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">upper_limit_x</span> <span class="p">)));</span> <span class="c1">// filtered dimension</span>
+  <span class="n">range_cond_OR_x</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">lower_limit_x</span> <span class="p">)));</span> <span class="c1">// filtered dimension</span>
+
+  <span class="n">range_cond_OR_x</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_limit_y</span><span class="p">)));</span>
+  <span class="n">range_cond_OR_x</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_y</span> <span class="p">)));</span>
+
+  <span class="n">range_cond_OR_x</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_limit_z</span><span class="p">)));</span>
+  <span class="n">range_cond_OR_x</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_z</span> <span class="p">)));</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionalRemoval</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">condrem_x</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">condrem_x</span><span class="p">.</span><span class="n">setCondition</span> <span class="p">(</span><span class="n">range_cond_OR_x</span><span class="p">);</span>
+  <span class="n">condrem_x</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">world_</span><span class="p">);</span>
+  <span class="n">condrem_x</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="c1">// apply filter</span>
+  <span class="n">condrem_x</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">slice</span><span class="p">);</span>
+  <span class="n">IndicesConstPtr</span> <span class="n">indices_x</span> <span class="o">=</span> <span class="n">condrem_x</span><span class="p">.</span><span class="n">getRemovedIndices</span> <span class="p">();</span>
+
+  <span class="c1">//set outliers (so our slice points) to nan</span>
+  <span class="n">setIndicesAsNans</span><span class="p">(</span><span class="n">world_</span><span class="p">,</span> <span class="n">indices_x</span><span class="p">);</span>
+
+  <span class="c1">// PCL_DEBUG(&quot;%d points set to nan on X\n&quot;, indices_x-&gt;size ());</span>
+
+  <span class="c1">// get points of slice on Y (we actually set a negative filter and set the ouliers (so, our slice points) to nan)</span>
+  <span class="kt">double</span> <span class="n">lower_limit_y</span><span class="p">,</span> <span class="n">upper_limit_y</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">offset_y</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">lower_limit_y</span> <span class="o">=</span> <span class="n">previous_origin_y</span><span class="p">;</span>
+  <span class="n">upper_limit_y</span> <span class="o">=</span> <span class="n">new_origin_y</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+  <span class="n">lower_limit_y</span> <span class="o">=</span> <span class="n">new_limit_y</span><span class="p">;</span>
+  <span class="n">upper_limit_y</span> <span class="o">=</span> <span class="n">previous_limit_y</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// PCL_DEBUG (&quot;Limit Y: [%f - %f]\n&quot;, lower_limit_y, upper_limit_y);</span>
+
+  <span class="n">ConditionOrPtr</span> <span class="n">range_cond_OR_y</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionOr</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">range_cond_OR_y</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_limit_x</span> <span class="p">)));</span>
+  <span class="n">range_cond_OR_y</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_x</span> <span class="p">)));</span>
+
+  <span class="n">range_cond_OR_y</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">upper_limit_y</span><span class="p">)));</span> <span class="c1">// filtered dimension</span>
+  <span class="n">range_cond_OR_y</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">lower_limit_y</span> <span class="p">)));</span> <span class="c1">// filtered dimension</span>
+
+  <span class="n">range_cond_OR_y</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_limit_z</span><span class="p">)));</span>
+  <span class="n">range_cond_OR_y</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_z</span> <span class="p">)));</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionalRemoval</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">condrem_y</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">condrem_y</span><span class="p">.</span><span class="n">setCondition</span> <span class="p">(</span><span class="n">range_cond_OR_y</span><span class="p">);</span>
+  <span class="n">condrem_y</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">world_</span><span class="p">);</span>
+  <span class="n">condrem_y</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="c1">// apply filter</span>
+  <span class="n">condrem_y</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">slice</span><span class="p">);</span>
+  <span class="n">IndicesConstPtr</span> <span class="n">indices_y</span> <span class="o">=</span> <span class="n">condrem_y</span><span class="p">.</span><span class="n">getRemovedIndices</span> <span class="p">();</span>
+
+  <span class="c1">//set outliers (so our slice points) to nan</span>
+  <span class="n">setIndicesAsNans</span><span class="p">(</span><span class="n">world_</span><span class="p">,</span> <span class="n">indices_y</span><span class="p">);</span>
+  <span class="c1">// PCL_DEBUG (&quot;%d points set to nan on Y\n&quot;, indices_y-&gt;size ());</span>
+
+  <span class="c1">// get points of slice on Z (we actually set a negative filter and set the ouliers (so, our slice points) to nan)</span>
+  <span class="kt">double</span> <span class="n">lower_limit_z</span><span class="p">,</span> <span class="n">upper_limit_z</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">offset_z</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="n">lower_limit_z</span> <span class="o">=</span> <span class="n">previous_origin_z</span><span class="p">;</span>
+  <span class="n">upper_limit_z</span> <span class="o">=</span> <span class="n">new_origin_z</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+  <span class="n">lower_limit_z</span> <span class="o">=</span> <span class="n">new_limit_z</span><span class="p">;</span>
+  <span class="n">upper_limit_z</span> <span class="o">=</span> <span class="n">previous_limit_z</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// PCL_DEBUG (&quot;Limit Z: [%f - %f]\n&quot;, lower_limit_z, upper_limit_z);</span>
+
+  <span class="n">ConditionOrPtr</span> <span class="n">range_cond_OR_z</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionOr</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">range_cond_OR_z</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_limit_x</span> <span class="p">)));</span>
+  <span class="n">range_cond_OR_z</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_x</span> <span class="p">)));</span>
+
+  <span class="n">range_cond_OR_z</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">previous_limit_y</span><span class="p">)));</span>
+  <span class="n">range_cond_OR_z</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">previous_origin_y</span> <span class="p">)));</span>
+
+  <span class="n">range_cond_OR_z</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">GE</span><span class="p">,</span>  <span class="n">upper_limit_z</span><span class="p">)));</span> <span class="c1">// filtered dimension</span>
+  <span class="n">range_cond_OR_z</span><span class="o">-&gt;</span><span class="n">addComparison</span> <span class="p">(</span><span class="n">FieldComparisonConstPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">FieldComparison</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ComparisonOps</span><span class="o">::</span><span class="n">LT</span><span class="p">,</span>  <span class="n">lower_limit_z</span> <span class="p">)));</span> <span class="c1">// filtered dimension</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">ConditionalRemoval</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">condrem_z</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">condrem_z</span><span class="p">.</span><span class="n">setCondition</span> <span class="p">(</span><span class="n">range_cond_OR_z</span><span class="p">);</span>
+  <span class="n">condrem_z</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">world_</span><span class="p">);</span>
+  <span class="n">condrem_z</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="c1">// apply filter</span>
+  <span class="n">condrem_z</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">slice</span><span class="p">);</span>
+  <span class="n">IndicesConstPtr</span> <span class="n">indices_z</span> <span class="o">=</span> <span class="n">condrem_z</span><span class="p">.</span><span class="n">getRemovedIndices</span> <span class="p">();</span>
+
+  <span class="c1">//set outliers (so our slice points) to nan</span>
+  <span class="n">setIndicesAsNans</span><span class="p">(</span><span class="n">world_</span><span class="p">,</span> <span class="n">indices_z</span><span class="p">);</span>
+  <span class="c1">// PCL_DEBUG(&quot;%d points set to nan on Z\n&quot;, indices_z-&gt;size ());</span>
+
+
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_WorldModel(T) template class PCL_EXPORTS pcl::kinfuLS::WorldModel&lt;T&gt;;</span>
+
+<span class="cp">#endif </span><span class="c1">// PCL_WORLD_MODEL_IMPL_HPP_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

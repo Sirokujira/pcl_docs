@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File face_detector_data_provider.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File factor.h" href="file_pcl_surface_3rdparty_poisson4_factor.h.html" />
+    <link rel="prev" title="File face_detector_data_provider.h" href="file_pcl_recognition_face_detection_face_detector_data_provider.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_face_detection_face_detector_data_provider.h.html">File face_detector_data_provider.h</a> &raquo;</li>
+        
+      <li>Program Listing for File face_detector_data_provider.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_face_detection_face_detector_data_provider.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-face-detector-data-provider-h">
+<span id="program-listing-file-pcl-recognition-face-detection-face-detector-data-provider-h"></span><h1>Program Listing for File face_detector_data_provider.h<a class="headerlink" href="#program-listing-for-file-face-detector-data-provider-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_face_detection_face_detector_data_provider.h.html#file-pcl-recognition-face-detection-face-detector-data-provider-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\face_detection\face_detector_data_provider.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * face_detector_data_provider.h</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Created on: Sep 2, 2012</span>
+<span class="cm"> *      Author: aitor</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/filesystem/operations.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/shared_ptr.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/algorithm/string.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/face_detection/face_common.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ml/dt/decision_tree_data_provider.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">bf</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">face_detection</span>
+  <span class="p">{</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">FeatureType</span><span class="p">,</span> <span class="k">class</span> <span class="nc">DataSet</span><span class="p">,</span> <span class="k">class</span> <span class="nc">LabelType</span><span class="p">,</span> <span class="k">class</span> <span class="nc">ExampleIndex</span><span class="p">,</span> <span class="k">class</span> <span class="nc">NodeType</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">FaceDetectorDataProvider</span><span class="o">:</span> <span class="k">public</span> <span class="n">pcl</span><span class="o">::</span><span class="n">DecisionTreeTrainerDataProvider</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">LabelType</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="k">private</span><span class="o">:</span>
+        <span class="kt">int</span> <span class="n">num_images_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">image_files_</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">USE_NORMALS_</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">w_size_</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">patches_per_image_</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">min_images_per_bin_</span><span class="p">;</span>
+
+        <span class="kt">void</span> <span class="nf">getFilesInDirectory</span><span class="p">(</span><span class="n">bf</span><span class="o">::</span><span class="n">path</span> <span class="o">&amp;</span> <span class="n">dir</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">rel_path_so_far</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">relative_paths</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">ext</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">bf</span><span class="o">::</span><span class="n">directory_iterator</span> <span class="n">end_itr</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="n">bf</span><span class="o">::</span><span class="n">directory_iterator</span> <span class="n">itr</span> <span class="p">(</span><span class="n">dir</span><span class="p">);</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">end_itr</span><span class="p">;</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="c1">//check if its a directory, then get models in it</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">bf</span><span class="o">::</span><span class="n">is_directory</span> <span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">))</span>
+            <span class="p">{</span>
+              <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">so_far</span> <span class="o">=</span> <span class="n">rel_path_so_far</span> <span class="o">+</span> <span class="p">(</span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">path</span> <span class="p">().</span><span class="n">filename</span> <span class="p">()).</span><span class="n">string</span> <span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+              <span class="n">bf</span><span class="o">::</span><span class="n">path</span> <span class="n">curr_path</span> <span class="o">=</span> <span class="n">itr</span><span class="o">-&gt;</span><span class="n">path</span> <span class="p">();</span>
+              <span class="n">getFilesInDirectory</span> <span class="p">(</span><span class="n">curr_path</span><span class="p">,</span> <span class="n">so_far</span><span class="p">,</span> <span class="n">relative_paths</span><span class="p">,</span> <span class="n">ext</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span>
+            <span class="p">{</span>
+              <span class="c1">//check that it is a ply file and then add, otherwise ignore..</span>
+              <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span> <span class="n">strs</span><span class="p">;</span>
+              <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">file</span> <span class="o">=</span> <span class="p">(</span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">path</span> <span class="p">().</span><span class="n">filename</span> <span class="p">()).</span><span class="n">string</span> <span class="p">();</span>
+              <span class="n">boost</span><span class="o">::</span><span class="n">split</span> <span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="n">is_any_of</span> <span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">));</span>
+              <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">extension</span> <span class="o">=</span> <span class="n">strs</span><span class="p">[</span><span class="n">strs</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+
+              <span class="k">if</span> <span class="p">(</span><span class="n">extension</span> <span class="o">==</span> <span class="n">ext</span><span class="p">)</span>
+              <span class="p">{</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">path</span> <span class="o">=</span> <span class="n">rel_path_so_far</span> <span class="o">+</span> <span class="p">(</span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">path</span> <span class="p">().</span><span class="n">filename</span> <span class="p">()).</span><span class="n">string</span> <span class="p">();</span>
+                <span class="n">relative_paths</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">path</span><span class="p">);</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">readMatrixFromFile</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">file</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span> <span class="n">matrix</span><span class="p">)</span>
+        <span class="p">{</span>
+
+          <span class="n">std</span><span class="o">::</span><span class="n">ifstream</span> <span class="n">in</span><span class="p">;</span>
+          <span class="n">in</span><span class="p">.</span><span class="n">open</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">c_str</span> <span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">in</span><span class="p">);</span>
+          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">in</span><span class="p">.</span><span class="n">is_open</span> <span class="p">())</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="kt">char</span> <span class="n">linebuf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+          <span class="n">in</span><span class="p">.</span><span class="n">getline</span> <span class="p">(</span><span class="n">linebuf</span><span class="p">,</span> <span class="mi">1024</span><span class="p">);</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">line</span> <span class="p">(</span><span class="n">linebuf</span><span class="p">);</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span> <span class="n">strs_2</span><span class="p">;</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">split</span> <span class="p">(</span><span class="n">strs_2</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="n">is_any_of</span> <span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">));</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">matrix</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">atof</span> <span class="p">(</span><span class="n">strs_2</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">c_str</span> <span class="p">()));</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">bool</span> <span class="nf">check_inside</span><span class="p">(</span><span class="kt">int</span> <span class="n">col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">min_col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">min_row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_row</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="n">min_col</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;=</span> <span class="n">max_col</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="n">min_row</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="n">max_row</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">PointInT</span><span class="o">&gt;</span>
+        <span class="kt">void</span> <span class="n">cropCloud</span><span class="p">(</span><span class="kt">int</span> <span class="n">min_col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_col</span><span class="p">,</span> <span class="kt">int</span> <span class="n">min_row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_row</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cloud_in</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cloud_out</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">max_col</span> <span class="o">-</span> <span class="n">min_col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">max_row</span> <span class="o">-</span> <span class="n">min_row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="n">cloud_out</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">width</span><span class="p">;</span> <span class="n">u</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="n">cloud_out</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> <span class="n">v</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">cloud_out</span><span class="p">.</span><span class="n">at</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">at</span> <span class="p">(</span><span class="n">min_col</span> <span class="o">+</span> <span class="n">u</span><span class="p">,</span> <span class="n">min_row</span> <span class="o">+</span> <span class="n">v</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+
+          <span class="n">cloud_out</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">cloud_in</span><span class="p">.</span><span class="n">is_dense</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="k">public</span><span class="o">:</span>
+
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">FaceDetectorDataProvider</span><span class="o">&lt;</span><span class="n">FeatureType</span><span class="p">,</span> <span class="n">DataSet</span><span class="p">,</span> <span class="n">LabelType</span><span class="p">,</span> <span class="n">ExampleIndex</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">&gt;&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+
+        <span class="n">FaceDetectorDataProvider</span><span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">w_size_</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+          <span class="n">USE_NORMALS_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+          <span class="n">num_images_</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+          <span class="n">patches_per_image_</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+          <span class="n">min_images_per_bin_</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">FaceDetectorDataProvider</span><span class="p">()</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">setPatchesPerImage</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">patches_per_image_</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">setMinImagesPerBin</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">min_images_per_bin_</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">setUseNormals</span><span class="p">(</span><span class="kt">bool</span> <span class="n">use</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">USE_NORMALS_</span> <span class="o">=</span> <span class="n">use</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">setWSize</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">w_size_</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">setNumImages</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">num_images_</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">initialize</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">data_dir</span><span class="p">);</span>
+
+        <span class="c1">//shuffle file and get the first num_images_ as requested by a tree</span>
+        <span class="c1">//extract positive and negative samples</span>
+        <span class="c1">//create training examples and labels</span>
+        <span class="kt">void</span> <span class="nf">getDatasetAndLabels</span><span class="p">(</span><span class="n">DataSet</span> <span class="o">&amp;</span> <span class="n">data_set</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LabelType</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">label_data</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ExampleIndex</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">examples</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_factor.h.html" class="btn btn-neutral float-right" title="File factor.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_face_detection_face_detector_data_provider.h.html" class="btn btn-neutral float-left" title="File face_detector_data_provider.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

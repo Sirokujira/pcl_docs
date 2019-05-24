@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File board.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File bodyparts_detector.h" href="file_E__pcl_docs_pcl_gpu_people_include_pcl_gpu_people_bodyparts_detector.h.html" />
+    <link rel="prev" title="File board.hpp" href="file_pcl_features_impl_board.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_impl_board.hpp.html">File board.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File board.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_impl_board.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-board-hpp">
+<span id="program-listing-file-pcl-features-impl-board-hpp"></span><h1>Program Listing for File board.hpp<a class="headerlink" href="#program-listing-for-file-board-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_impl_board.hpp.html#file-pcl-features-impl-board-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\impl\board.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_FEATURES_IMPL_BOARD_H_</span>
+<span class="cp">#define PCL_FEATURES_IMPL_BOARD_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/board.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/transforms.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">directedOrthogonalAxis</span> <span class="p">(</span>
+                                                                                               <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">axis</span><span class="p">,</span>
+                                                                                               <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">axis_origin</span><span class="p">,</span>
+                                                                                               <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span>
+                                                                                               <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">directed_ortho_axis</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">projection</span><span class="p">;</span>
+  <span class="n">projectPointOnPlane</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">axis_origin</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">projection</span><span class="p">);</span>
+  <span class="n">directed_ortho_axis</span> <span class="o">=</span> <span class="n">projection</span> <span class="o">-</span> <span class="n">axis_origin</span><span class="p">;</span>
+
+  <span class="n">directed_ortho_axis</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+
+  <span class="c1">// check if the computed x axis is orthogonal to the normal</span>
+  <span class="c1">//assert(areEquals((float)(directed_ortho_axis.dot(axis)), 0.0f, 1E-3f));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">projectPointOnPlane</span> <span class="p">(</span>
+                                                                                            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span>
+                                                                                            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">origin_point</span><span class="p">,</span>
+                                                                                            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">plane_normal</span><span class="p">,</span>
+                                                                                            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">projected_point</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">float</span> <span class="n">t</span><span class="p">;</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">xo</span><span class="p">;</span>
+
+  <span class="n">xo</span> <span class="o">=</span> <span class="n">point</span> <span class="o">-</span> <span class="n">origin_point</span><span class="p">;</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">plane_normal</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">xo</span><span class="p">);</span>
+
+  <span class="n">projected_point</span> <span class="o">=</span> <span class="n">point</span> <span class="o">-</span> <span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">plane_normal</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getAngleBetweenUnitVectors</span> <span class="p">(</span>
+                                                                                                   <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">v1</span><span class="p">,</span>
+                                                                                                   <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">v2</span><span class="p">,</span>
+                                                                                                   <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">axis</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">angle_orientation</span><span class="p">;</span>
+  <span class="n">angle_orientation</span> <span class="o">=</span> <span class="n">v1</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">v2</span><span class="p">);</span>
+  <span class="kt">float</span> <span class="n">angle_radians</span> <span class="o">=</span> <span class="n">acosf</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0f</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span> <span class="n">v1</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">v2</span><span class="p">))));</span>
+
+  <span class="n">angle_radians</span> <span class="o">=</span> <span class="n">angle_orientation</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.f</span> <span class="o">?</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">M_PI</span><span class="p">)</span> <span class="o">-</span> <span class="n">angle_radians</span><span class="p">)</span> <span class="o">:</span> <span class="n">angle_radians</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">angle_radians</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">randomOrthogonalAxis</span> <span class="p">(</span>
+                                                                                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">axis</span><span class="p">,</span>
+                                                                                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">rand_ortho_axis</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">areEquals</span> <span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">z</span> <span class="p">(),</span> <span class="mf">0.0f</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">rand</span> <span class="p">())</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0f</span> <span class="o">-</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">rand</span> <span class="p">())</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0f</span> <span class="o">-</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">*</span> <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">+</span> <span class="n">axis</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">*</span> <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">y</span> <span class="p">())</span> <span class="o">/</span> <span class="n">axis</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">areEquals</span> <span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">y</span> <span class="p">(),</span> <span class="mf">0.0f</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">rand</span> <span class="p">())</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0f</span> <span class="o">-</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">rand</span> <span class="p">())</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0f</span> <span class="o">-</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">*</span> <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">+</span> <span class="n">axis</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">*</span> <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">z</span> <span class="p">())</span> <span class="o">/</span> <span class="n">axis</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">areEquals</span> <span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">x</span> <span class="p">(),</span> <span class="mf">0.0f</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">rand</span> <span class="p">())</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0f</span> <span class="o">-</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">rand</span> <span class="p">())</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">RAND_MAX</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0f</span> <span class="o">-</span> <span class="mf">1.0f</span><span class="p">;</span>
+    <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">*</span> <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">+</span> <span class="n">axis</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">*</span> <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">z</span> <span class="p">())</span> <span class="o">/</span> <span class="n">axis</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">rand_ortho_axis</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+
+  <span class="c1">// check if the computed x axis is orthogonal to the normal</span>
+  <span class="c1">//assert(areEquals(rand_ortho_axis.dot(axis), 0.0f, 1E-6f));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">planeFitting</span> <span class="p">(</span>
+                                                                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span>
+                                                                                         <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">points</span><span class="p">,</span>
+                                                                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">center</span><span class="p">,</span>
+                                                                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">norm</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// -----------------------------------------------------</span>
+  <span class="c1">// Plane Fitting using Singular Value Decomposition (SVD)</span>
+  <span class="c1">// -----------------------------------------------------</span>
+
+  <span class="kt">int</span> <span class="n">n_points</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">rows</span> <span class="p">());</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n_points</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">//find the center by averaging the points positions</span>
+  <span class="n">center</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_points</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">center</span> <span class="o">+=</span> <span class="n">points</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">center</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">n_points</span><span class="p">);</span>
+
+  <span class="c1">//copy points - average (center)</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">A</span> <span class="p">(</span><span class="n">n_points</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">//PointData</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_points</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">A</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">points</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="p">();</span>
+    <span class="n">A</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">points</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">center</span><span class="p">.</span><span class="n">y</span> <span class="p">();</span>
+    <span class="n">A</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">points</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">center</span><span class="p">.</span><span class="n">z</span> <span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">JacobiSVD</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="o">&gt;</span> <span class="n">svd</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">ComputeFullV</span><span class="p">);</span>
+  <span class="n">norm</span> <span class="o">=</span> <span class="n">svd</span><span class="p">.</span><span class="n">matrixV</span> <span class="p">().</span><span class="n">col</span> <span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">normalDisambiguation</span> <span class="p">(</span>
+                                                                                             <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointNT</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">normal_cloud</span><span class="p">,</span>
+                                                                                             <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">normal_indices</span><span class="p">,</span>
+                                                                                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">normal</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">normal_mean</span><span class="p">;</span>
+  <span class="n">normal_mean</span><span class="p">.</span><span class="n">setZero</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">normal_index</span> <span class="p">:</span> <span class="n">normal_indices</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="n">PointNT</span><span class="o">&amp;</span> <span class="n">curPt</span> <span class="o">=</span> <span class="n">normal_cloud</span><span class="p">[</span><span class="n">normal_index</span><span class="p">];</span>
+
+    <span class="n">normal_mean</span> <span class="o">+=</span> <span class="n">curPt</span><span class="p">.</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">normal_mean</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">normal</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">normal_mean</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">normal</span> <span class="o">=</span> <span class="o">-</span><span class="n">normal</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">float</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computePointLRF</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">index</span><span class="p">,</span>
+                                                                                        <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="o">&amp;</span><span class="n">lrf</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//find Z axis</span>
+
+  <span class="c1">//extract support points for Rz radius</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">neighbours_indices</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">neighbours_distances</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">n_neighbours</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">searchForNeighbors</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">search_parameter_</span><span class="p">,</span> <span class="n">neighbours_indices</span><span class="p">,</span> <span class="n">neighbours_distances</span><span class="p">);</span>
+
+  <span class="c1">//check if there are enough neighbor points, otherwise compute a random X axis and use normal as Z axis</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n_neighbours</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//PCL_WARN(</span>
+    <span class="c1">//    &quot;[pcl::%s::computePointLRF] Warning! Neighborhood has less than 6 vertices. Aborting description of point with index %d\n&quot;,</span>
+    <span class="c1">//    getClassName().c_str(), index);</span>
+
+    <span class="c1">//setting lrf to NaN</span>
+    <span class="n">lrf</span><span class="p">.</span><span class="n">setConstant</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="c1">//copy neighbours coordinates into eigen matrix</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">neigh_points_mat</span> <span class="p">(</span><span class="n">n_neighbours</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_neighbours</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">neigh_points_mat</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">surface_</span><span class="p">)[</span><span class="n">neighbours_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">;</span>
+  <span class="c1">//plane fitting to find direction of Z axis</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">fitted_normal</span><span class="p">;</span> <span class="c1">//z_axis</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">centroid</span><span class="p">;</span>
+  <span class="n">planeFitting</span> <span class="p">(</span><span class="n">neigh_points_mat</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">fitted_normal</span><span class="p">);</span>
+
+  <span class="c1">//disambiguate Z axis with normal mean</span>
+  <span class="n">normalDisambiguation</span> <span class="p">(</span><span class="o">*</span><span class="n">normals_</span><span class="p">,</span> <span class="n">neighbours_indices</span><span class="p">,</span> <span class="n">fitted_normal</span><span class="p">);</span>
+
+  <span class="c1">//setting LRF Z axis</span>
+  <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">;</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////////////////////////////</span>
+  <span class="c1">//find X axis</span>
+
+  <span class="c1">//extract support points for Rx radius</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">tangent_radius_</span> <span class="o">!=</span> <span class="mf">0.0f</span> <span class="o">&amp;&amp;</span> <span class="n">search_parameter_</span> <span class="o">!=</span> <span class="n">tangent_radius_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">n_neighbours</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">searchForNeighbors</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">tangent_radius_</span><span class="p">,</span> <span class="n">neighbours_indices</span><span class="p">,</span> <span class="n">neighbours_distances</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//find point with the &quot;most different&quot; normal (with respect to fittedNormal)</span>
+
+  <span class="kt">float</span> <span class="n">min_normal_cos</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="kt">int</span> <span class="n">min_normal_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="n">margin_point_found</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">best_margin_point</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">best_point_found_on_margins</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="kt">float</span> <span class="n">radius2</span> <span class="o">=</span> <span class="n">tangent_radius_</span> <span class="o">*</span> <span class="n">tangent_radius_</span><span class="p">;</span>
+
+  <span class="kt">float</span> <span class="n">margin_distance2</span> <span class="o">=</span> <span class="n">margin_thresh_</span> <span class="o">*</span> <span class="n">margin_thresh_</span> <span class="o">*</span> <span class="n">radius2</span><span class="p">;</span>
+
+  <span class="kt">float</span> <span class="n">max_boundary_angle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">find_holes_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">randomOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">);</span>
+
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">check_margin_array_size_</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">check_margin_array_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+      <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+      <span class="n">margin_array_min_angle_normal_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">;</span>
+      <span class="n">margin_array_max_angle_normal_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">max_boundary_angle</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">M_PI</span><span class="p">))</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">check_margin_array_size_</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">curr_neigh</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">curr_neigh</span> <span class="o">&lt;</span> <span class="n">n_neighbours</span><span class="p">;</span> <span class="o">++</span><span class="n">curr_neigh</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">curr_neigh_idx</span> <span class="o">=</span> <span class="n">neighbours_indices</span><span class="p">[</span><span class="n">curr_neigh</span><span class="p">];</span>
+    <span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">neigh_distance_sqr</span> <span class="o">=</span> <span class="n">neighbours_distances</span><span class="p">[</span><span class="n">curr_neigh</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">neigh_distance_sqr</span> <span class="o">&lt;=</span> <span class="n">margin_distance2</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//point normalIndex is inside the ring between marginThresh and Radius</span>
+    <span class="n">margin_point_found</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">normal_mean</span> <span class="o">=</span> <span class="n">normals_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">curr_neigh_idx</span><span class="p">).</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+
+    <span class="kt">float</span> <span class="n">normal_cos</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">normal_mean</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">normal_cos</span> <span class="o">&lt;</span> <span class="n">min_normal_cos</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">min_normal_index</span> <span class="o">=</span> <span class="n">curr_neigh_idx</span><span class="p">;</span>
+      <span class="n">min_normal_cos</span> <span class="o">=</span> <span class="n">normal_cos</span><span class="p">;</span>
+      <span class="n">best_point_found_on_margins</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">find_holes_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//find angle with respect to random axis previously calculated</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">indicating_normal_vect</span><span class="p">;</span>
+      <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span>
+                              <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">curr_neigh_idx</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">indicating_normal_vect</span><span class="p">);</span>
+      <span class="kt">float</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">getAngleBetweenUnitVectors</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">indicating_normal_vect</span><span class="p">,</span> <span class="n">fitted_normal</span><span class="p">);</span>
+
+      <span class="kt">int</span> <span class="n">check_margin_array_idx</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">floor</span> <span class="p">(</span><span class="n">angle</span> <span class="o">/</span> <span class="n">max_boundary_angle</span><span class="p">)),</span> <span class="n">check_margin_array_size_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="n">check_margin_array_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">angle</span> <span class="o">&lt;</span> <span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">angle</span><span class="p">;</span>
+        <span class="n">margin_array_min_angle_normal_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">normal_cos</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">angle</span> <span class="o">&gt;</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">angle</span><span class="p">;</span>
+        <span class="n">margin_array_max_angle_normal_</span><span class="p">[</span><span class="n">check_margin_array_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">normal_cos</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span> <span class="c1">//for each neighbor</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">margin_point_found</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//find among points with neighDistance &lt;= marginThresh*radius</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">curr_neigh</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">curr_neigh</span> <span class="o">&lt;</span> <span class="n">n_neighbours</span><span class="p">;</span> <span class="n">curr_neigh</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">curr_neigh_idx</span> <span class="o">=</span> <span class="n">neighbours_indices</span><span class="p">[</span><span class="n">curr_neigh</span><span class="p">];</span>
+      <span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">neigh_distance_sqr</span> <span class="o">=</span> <span class="n">neighbours_distances</span><span class="p">[</span><span class="n">curr_neigh</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">neigh_distance_sqr</span> <span class="o">&gt;</span> <span class="n">margin_distance2</span><span class="p">)</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">normal_mean</span> <span class="o">=</span> <span class="n">normals_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">curr_neigh_idx</span><span class="p">).</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+
+      <span class="kt">float</span> <span class="n">normal_cos</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">normal_mean</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">normal_cos</span> <span class="o">&lt;</span> <span class="n">min_normal_cos</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">min_normal_index</span> <span class="o">=</span> <span class="n">curr_neigh_idx</span><span class="p">;</span>
+        <span class="n">min_normal_cos</span> <span class="o">=</span> <span class="n">normal_cos</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span><span class="c1">//for each neighbor</span>
+
+    <span class="c1">// Check if we are not in a degenerate case (all the neighboring normals are NaNs)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">min_normal_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">lrf</span><span class="p">.</span><span class="n">setConstant</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">());</span>
+    <span class="p">}</span>
+    <span class="c1">//find orthogonal axis directed to minNormalIndex point projection on plane with fittedNormal as axis</span>
+    <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span>
+                            <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">min_normal_index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">x_axis</span><span class="p">);</span>
+    <span class="n">y_axis</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">);</span>
+
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">y_axis</span><span class="p">;</span>
+    <span class="c1">//z axis already set</span>
+
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">min_normal_cos</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">find_holes_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">best_point_found_on_margins</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//if most inclined normal is on support margin</span>
+      <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">best_margin_point</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">);</span>
+      <span class="n">y_axis</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">);</span>
+
+      <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+      <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">y_axis</span><span class="p">;</span>
+      <span class="c1">//z axis already set</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="n">min_normal_cos</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Check if we are not in a degenerate case (all the neighboring normals are NaNs)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">min_normal_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">lrf</span><span class="p">.</span><span class="n">setConstant</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span>
+                            <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">min_normal_index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">x_axis</span><span class="p">);</span>
+    <span class="n">y_axis</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">);</span>
+
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">y_axis</span><span class="p">;</span>
+    <span class="c1">//z axis already set</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">min_normal_cos</span><span class="p">);</span>
+  <span class="p">}</span><span class="c1">// if(!find_holes_)</span>
+
+  <span class="c1">//check if there is at least a hole</span>
+  <span class="kt">bool</span> <span class="n">is_hole_present</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">check_margin_array_size_</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">check_margin_array_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="p">{</span>
+      <span class="n">is_hole_present</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_hole_present</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">best_point_found_on_margins</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//if most inclined normal is on support margin</span>
+      <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">best_margin_point</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">);</span>
+      <span class="n">y_axis</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">);</span>
+
+      <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+      <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">y_axis</span><span class="p">;</span>
+      <span class="c1">//z axis already set</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="n">min_normal_cos</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Check if we are not in a degenerate case (all the neighboring normals are NaNs)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">min_normal_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">lrf</span><span class="p">.</span><span class="n">setConstant</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="c1">//find orthogonal axis directed to minNormalIndex point projection on plane with fittedNormal as axis</span>
+    <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span>
+                            <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">min_normal_index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">x_axis</span><span class="p">);</span>
+    <span class="n">y_axis</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">);</span>
+
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+    <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">y_axis</span><span class="p">;</span>
+    <span class="c1">//z axis already set</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">min_normal_cos</span><span class="p">);</span>
+  <span class="p">}</span><span class="c1">//if (!is_hole_present)</span>
+
+  <span class="c1">//case hole found</span>
+  <span class="c1">//find missing region</span>
+  <span class="kt">float</span> <span class="n">angle</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">hole_end</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">hole_first</span><span class="p">;</span>
+
+  <span class="c1">//find first no border pie</span>
+  <span class="kt">int</span> <span class="n">first_no_border</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">check_margin_array_</span><span class="p">[</span><span class="n">check_margin_array_size_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="p">{</span>
+    <span class="n">first_no_border</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">check_margin_array_size_</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">check_margin_array_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">first_no_border</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">//float steep_prob = 0.0;</span>
+  <span class="kt">float</span> <span class="n">max_hole_prob</span> <span class="o">=</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+
+  <span class="c1">//find holes</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">first_no_border</span><span class="p">;</span> <span class="n">ch</span> <span class="o">&lt;</span> <span class="n">check_margin_array_size_</span><span class="p">;</span> <span class="n">ch</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">check_margin_array_</span><span class="p">[</span><span class="n">ch</span><span class="p">])</span>
+    <span class="p">{</span>
+      <span class="c1">//border beginning found</span>
+      <span class="n">hole_first</span> <span class="o">=</span> <span class="n">ch</span><span class="p">;</span>
+      <span class="n">hole_end</span> <span class="o">=</span> <span class="n">hole_first</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">check_margin_array_</span><span class="p">[</span><span class="n">hole_end</span> <span class="o">%</span> <span class="n">check_margin_array_size_</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="o">++</span><span class="n">hole_end</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="c1">//border end found, find angle</span>
+
+      <span class="k">if</span> <span class="p">((</span><span class="n">hole_end</span> <span class="o">-</span> <span class="n">hole_first</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">//check if hole can be a shapeness hole</span>
+        <span class="kt">int</span> <span class="n">previous_hole</span> <span class="o">=</span> <span class="p">(((</span><span class="n">hole_first</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="n">hole_first</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nl">check_margin_array_size_</span> <span class="p">:</span> <span class="p">(</span><span class="n">hole_first</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="o">%</span> <span class="n">check_margin_array_size_</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">following_hole</span> <span class="o">=</span> <span class="p">(</span><span class="n">hole_end</span><span class="p">)</span> <span class="o">%</span> <span class="n">check_margin_array_size_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">normal_begin</span> <span class="o">=</span> <span class="n">margin_array_max_angle_normal_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">];</span>
+        <span class="kt">float</span> <span class="n">normal_end</span> <span class="o">=</span> <span class="n">margin_array_min_angle_normal_</span><span class="p">[</span><span class="n">following_hole</span><span class="p">];</span>
+        <span class="n">normal_begin</span> <span class="o">-=</span> <span class="n">min_normal_cos</span><span class="p">;</span>
+        <span class="n">normal_end</span> <span class="o">-=</span> <span class="n">min_normal_cos</span><span class="p">;</span>
+        <span class="n">normal_begin</span> <span class="o">=</span> <span class="n">normal_begin</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0f</span> <span class="o">-</span> <span class="n">min_normal_cos</span><span class="p">);</span>
+        <span class="n">normal_end</span> <span class="o">=</span> <span class="n">normal_end</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0f</span> <span class="o">-</span> <span class="n">min_normal_cos</span><span class="p">);</span>
+        <span class="n">normal_begin</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">-</span> <span class="n">normal_begin</span><span class="p">;</span>
+        <span class="n">normal_end</span> <span class="o">=</span> <span class="mf">1.0f</span> <span class="o">-</span> <span class="n">normal_end</span><span class="p">;</span>
+
+        <span class="c1">//evaluate P(Hole);</span>
+        <span class="kt">float</span> <span class="n">hole_width</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">following_hole</span> <span class="o">&lt;</span> <span class="n">previous_hole</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">hole_width</span> <span class="o">=</span> <span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">following_hole</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">M_PI</span><span class="p">)</span>
+              <span class="o">-</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="n">hole_width</span> <span class="o">=</span> <span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">following_hole</span><span class="p">]</span> <span class="o">-</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="kt">float</span> <span class="n">hole_prob</span> <span class="o">=</span> <span class="n">hole_width</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">M_PI</span><span class="p">));</span>
+
+        <span class="c1">//evaluate P(zmin|Hole)</span>
+        <span class="kt">float</span> <span class="n">steep_prob</span> <span class="o">=</span> <span class="p">(</span><span class="n">normal_end</span> <span class="o">+</span> <span class="n">normal_begin</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+
+        <span class="c1">//check hole prob and after that, check steepThresh</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">hole_prob</span> <span class="o">&gt;</span> <span class="n">hole_size_prob_thresh_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">steep_prob</span> <span class="o">&gt;</span> <span class="n">steep_thresh_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">hole_prob</span> <span class="o">&gt;</span> <span class="n">max_hole_prob</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">max_hole_prob</span> <span class="o">=</span> <span class="n">hole_prob</span><span class="p">;</span>
+
+              <span class="kt">float</span> <span class="n">angle_weight</span> <span class="o">=</span> <span class="p">((</span><span class="n">normal_end</span> <span class="o">-</span> <span class="n">normal_begin</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0f</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">;</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">following_hole</span> <span class="o">&lt;</span> <span class="n">previous_hole</span><span class="p">)</span>
+              <span class="p">{</span>
+                <span class="n">angle</span> <span class="o">=</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">following_hole</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+                    <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">M_PI</span><span class="p">)</span> <span class="o">-</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">])</span> <span class="o">*</span> <span class="n">angle_weight</span><span class="p">;</span>
+              <span class="p">}</span>
+              <span class="k">else</span>
+              <span class="p">{</span>
+                <span class="n">angle</span> <span class="o">=</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">margin_array_min_angle_</span><span class="p">[</span><span class="n">following_hole</span><span class="p">]</span>
+                    <span class="o">-</span> <span class="n">margin_array_max_angle_</span><span class="p">[</span><span class="n">previous_hole</span><span class="p">])</span> <span class="o">*</span> <span class="n">angle_weight</span><span class="p">;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="c1">//(hole_end-hole_first) &gt; 0</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">hole_end</span> <span class="o">&gt;=</span> <span class="n">check_margin_array_size_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">hole_end</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">max_hole_prob</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="c1">//hole found</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxisf</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxisf</span> <span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">fitted_normal</span><span class="p">);</span>
+    <span class="n">x_axis</span> <span class="o">=</span> <span class="n">rotation</span> <span class="o">*</span> <span class="n">x_axis</span><span class="p">;</span>
+
+    <span class="n">min_normal_cos</span> <span class="o">-=</span> <span class="mf">10.0f</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">best_point_found_on_margins</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//if most inclined normal is on support margin</span>
+      <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">best_margin_point</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="c1">// Check if we are not in a degenerate case (all the neighboring normals are NaNs)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">min_normal_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">lrf</span><span class="p">.</span><span class="n">setConstant</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span> <span class="p">());</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="c1">//find orthogonal axis directed to minNormalIndex point projection on plane with fittedNormal as axis</span>
+      <span class="n">directedOrthogonalAxis</span> <span class="p">(</span><span class="n">fitted_normal</span><span class="p">,</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span>
+                              <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">min_normal_index</span><span class="p">).</span><span class="n">getVector3fMap</span> <span class="p">(),</span> <span class="n">x_axis</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">y_axis</span> <span class="o">=</span> <span class="n">fitted_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">x_axis</span><span class="p">);</span>
+
+  <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">x_axis</span><span class="p">;</span>
+  <span class="n">lrf</span><span class="p">.</span><span class="n">row</span> <span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">y_axis</span><span class="p">;</span>
+  <span class="c1">//z axis already set</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">min_normal_cos</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">BOARDLocalReferenceFrameEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computeFeature</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//check whether used with search radius or search k-neighbors</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">getKSearch</span> <span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span><span class="p">(</span>
+        <span class="s">&quot;[pcl::%s::computeFeature] Error! Search method set to k-neighborhood. Call setKSearch(0) and setRadiusSearch( radius ) to use this class.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="n">getClassName</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">resetData</span> <span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">point_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">point_idx</span> <span class="o">&lt;</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">point_idx</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">currentLrf</span><span class="p">;</span>
+    <span class="n">PointOutT</span> <span class="o">&amp;</span><span class="n">rf</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="n">point_idx</span><span class="p">];</span>
+
+    <span class="c1">//rf.confidence = computePointLRF (*indices_[point_idx], currentLrf);</span>
+    <span class="c1">//if (rf.confidence == std::numeric_limits&lt;float&gt;::max ())</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">computePointLRF</span> <span class="p">((</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">point_idx</span><span class="p">],</span> <span class="n">currentLrf</span><span class="p">)</span> <span class="o">==</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">rf</span><span class="p">.</span><span class="n">x_axis</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">currentLrf</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+      <span class="n">rf</span><span class="p">.</span><span class="n">y_axis</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">currentLrf</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+      <span class="n">rf</span><span class="p">.</span><span class="n">z_axis</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">currentLrf</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_BOARDLocalReferenceFrameEstimation(T,NT,OutT) template class PCL_EXPORTS pcl::BOARDLocalReferenceFrameEstimation&lt;T,NT,OutT&gt;;</span>
+
+<span class="cp">#endif </span><span class="c1">// PCL_FEATURES_IMPL_BOARD_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_people_include_pcl_gpu_people_bodyparts_detector.h.html" class="btn btn-neutral float-right" title="File bodyparts_detector.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_impl_board.hpp.html" class="btn btn-neutral float-left" title="File board.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

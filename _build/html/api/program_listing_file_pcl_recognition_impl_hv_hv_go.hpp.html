@@ -1,0 +1,957 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File hv_go.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File hv_papazov.h" href="file_pcl_recognition_hv_hv_papazov.h.html" />
+    <link rel="prev" title="File hv_go.hpp" href="file_pcl_recognition_impl_hv_hv_go.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_impl_hv_hv_go.hpp.html">File hv_go.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File hv_go.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_impl_hv_hv_go.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-hv-go-hpp">
+<span id="program-listing-file-pcl-recognition-impl-hv-hv-go-hpp"></span><h1>Program Listing for File hv_go.hpp<a class="headerlink" href="#program-listing-for-file-hv-go-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_impl_hv_hv_go.hpp.html#file-pcl-recognition-impl-hv-hv-go-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\impl\hv\hv_go.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2012 Aitor Aldoma, Federico Tombari</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_RECOGNITION_IMPL_HV_GO_HPP_</span>
+<span class="cp">#define PCL_RECOGNITION_IMPL_HV_GO_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/hv/hv_go.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;numeric&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">NormalT</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">extractEuclideanClustersSmooth</span><span class="p">(</span><span class="k">const</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">NormalT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">normals</span><span class="p">,</span> <span class="kt">float</span> <span class="n">tolerance</span><span class="p">,</span>
+    <span class="k">const</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">Search</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">tree</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">clusters</span><span class="p">,</span> <span class="kt">double</span> <span class="n">eps_angle</span><span class="p">,</span> <span class="kt">float</span> <span class="n">curvature_threshold</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">min_pts_per_cluster</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_pts_per_cluster</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">)</span> <span class="p">())</span>
+<span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">getInputCloud</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span><span class="p">(</span><span class="s">&quot;[pcl::extractEuclideanClusters] Tree built for a different point cloud dataset</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span><span class="p">(</span><span class="s">&quot;[pcl::extractEuclideanClusters] Number of points in the input point cloud different than normals!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Create a bool vector of processed point indices, and initialize it to false</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">processed</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_distances</span><span class="p">;</span>
+  <span class="c1">// Process all points in the indices vector</span>
+  <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">processed</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">seed_queue</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sq_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">seed_queue</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+    <span class="n">processed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">sq_idx</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">()))</span>
+    <span class="p">{</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">curvature</span> <span class="o">&gt;</span> <span class="n">curvature_threshold</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">sq_idx</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Search for sq_idx</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">],</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_distances</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">sq_idx</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nn_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="c1">// nn_indices[0] should be sq_idx</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">processed</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span> <span class="c1">// Has this point been processed before ?</span>
+          <span class="k">continue</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">curvature</span> <span class="o">&gt;</span> <span class="n">curvature_threshold</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//processed[nn_indices[j]] = true;</span>
+        <span class="c1">// [-1;1]</span>
+
+        <span class="kt">double</span> <span class="n">dot_p</span> <span class="o">=</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">acos</span> <span class="p">(</span><span class="n">dot_p</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps_angle</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">processed</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="n">seed_queue</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="n">sq_idx</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If this queue is satisfactory, add to the clusters</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&gt;=</span> <span class="n">min_pts_per_cluster</span> <span class="o">&amp;&amp;</span> <span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;=</span> <span class="n">max_pts_per_cluster</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="n">r</span><span class="p">;</span>
+      <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">seed_queue</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">sort</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+      <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">erase</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">end</span> <span class="p">()),</span> <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+
+      <span class="n">r</span><span class="p">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+      <span class="n">clusters</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="c1">// We could avoid a copy by working directly in the vector</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">SceneT</span><span class="o">&gt;</span>
+<span class="n">mets</span><span class="o">::</span><span class="n">gol_type</span> <span class="n">pcl</span><span class="o">::</span><span class="n">GlobalHypothesesVerification</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">evaluateSolution</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">active</span><span class="p">,</span> <span class="kt">int</span> <span class="n">changed</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">float</span> <span class="n">sign</span> <span class="o">=</span> <span class="mf">1.f</span><span class="p">;</span>
+  <span class="c1">//update explained_by_RM</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">active</span><span class="p">[</span><span class="n">changed</span><span class="p">])</span>
+  <span class="p">{</span>
+    <span class="c1">//it has been activated</span>
+    <span class="n">updateExplainedVector</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">,</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">explained_distances_</span><span class="p">,</span> <span class="n">explained_by_RM_</span><span class="p">,</span>
+        <span class="n">explained_by_RM_distance_weighted</span><span class="p">,</span> <span class="mf">1.f</span><span class="p">);</span>
+    <span class="n">updateUnexplainedVector</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">,</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">,</span>
+        <span class="n">unexplained_by_RM_neighboorhods</span><span class="p">,</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">,</span> <span class="n">explained_by_RM_</span><span class="p">,</span> <span class="mf">1.f</span><span class="p">);</span>
+    <span class="n">updateCMDuplicity</span><span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">complete_cloud_occupancy_indices_</span><span class="p">,</span> <span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">,</span> <span class="mf">1.f</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="c1">//it has been deactivated</span>
+    <span class="n">updateExplainedVector</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">,</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">explained_distances_</span><span class="p">,</span> <span class="n">explained_by_RM_</span><span class="p">,</span>
+        <span class="n">explained_by_RM_distance_weighted</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.f</span><span class="p">);</span>
+    <span class="n">updateUnexplainedVector</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">,</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">,</span>
+        <span class="n">unexplained_by_RM_neighboorhods</span><span class="p">,</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">,</span> <span class="n">explained_by_RM_</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.f</span><span class="p">);</span>
+    <span class="n">updateCMDuplicity</span><span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">complete_cloud_occupancy_indices_</span><span class="p">,</span> <span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.f</span><span class="p">);</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.f</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">duplicity</span> <span class="o">=</span> <span class="n">getDuplicity</span> <span class="p">();</span>
+  <span class="kt">float</span> <span class="n">good_info</span> <span class="o">=</span> <span class="n">getExplainedValue</span> <span class="p">();</span>
+
+  <span class="kt">float</span> <span class="n">unexplained_info</span> <span class="o">=</span> <span class="n">getPreviousUnexplainedValue</span> <span class="p">();</span>
+  <span class="kt">float</span> <span class="n">bad_info</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">getPreviousBadInfo</span> <span class="p">())</span>
+      <span class="o">+</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">outliers_weight_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">bad_information_</span><span class="p">))</span> <span class="o">*</span> <span class="n">sign</span><span class="p">;</span>
+
+  <span class="n">setPreviousBadInfo</span> <span class="p">(</span><span class="n">bad_info</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">n_active_hyp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="o">&amp;</span><span class="nl">i</span> <span class="p">:</span> <span class="n">active</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+      <span class="n">n_active_hyp</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">float</span> <span class="n">duplicity_cm</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">getDuplicityCM</span> <span class="p">())</span> <span class="o">*</span> <span class="n">w_occupied_multiple_cm_</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">mets</span><span class="o">::</span><span class="n">gol_type</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">good_info</span> <span class="o">-</span> <span class="n">bad_info</span> <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">duplicity</span><span class="p">)</span> <span class="o">-</span> <span class="n">unexplained_info</span> <span class="o">-</span> <span class="n">duplicity_cm</span> <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">n_active_hyp</span><span class="p">))</span> <span class="o">*</span> <span class="o">-</span><span class="mf">1.f</span><span class="p">);</span> <span class="c1">//return the dual to our max problem</span>
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">SceneT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">pcl</span><span class="o">::</span><span class="n">GlobalHypothesesVerification</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//clear stuff</span>
+  <span class="n">recognition_models_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">unexplained_by_RM_neighboorhods</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">explained_by_RM_distance_weighted</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">explained_by_RM_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">mask_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">indices_</span><span class="p">.</span><span class="n">clear</span> <span class="p">(),</span>
+  <span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+  <span class="c1">// initialize mask to false</span>
+  <span class="n">mask_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">complete_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">complete_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">mask_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="n">indices_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">complete_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="n">NormalEstimator_</span> <span class="n">n3d</span><span class="p">;</span>
+  <span class="n">scene_normals_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Normal</span><span class="o">&gt;</span> <span class="p">());</span>
+
+  <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">normals_tree</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">SceneT</span><span class="o">&gt;</span><span class="p">);</span>
+  <span class="n">normals_tree</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="p">);</span>
+
+  <span class="n">n3d</span><span class="p">.</span><span class="n">setRadiusSearch</span> <span class="p">(</span><span class="n">radius_normals_</span><span class="p">);</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">setSearchMethod</span> <span class="p">(</span><span class="n">normals_tree</span><span class="p">);</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="p">);</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="o">*</span><span class="n">scene_normals_</span><span class="p">);</span>
+
+  <span class="c1">//check nans...</span>
+  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal_x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal_y</span><span class="p">)</span>
+        <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal_z</span><span class="p">))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">j</span><span class="p">);</span>
+  <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+  <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">j</span><span class="p">);</span>
+  <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+  <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="n">explained_by_RM_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">explained_by_RM_distance_weighted</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="mf">0.f</span><span class="p">);</span>
+  <span class="n">unexplained_by_RM_neighboorhods</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="mf">0.f</span><span class="p">);</span>
+
+  <span class="c1">//compute segmentation of the scene if detect_clutter_</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">detect_clutter_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//initialize kdtree for search</span>
+    <span class="n">scene_downsampled_tree_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">SceneT</span><span class="o">&gt;</span><span class="p">);</span>
+    <span class="n">scene_downsampled_tree_</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="n">clusters</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">eps_angle_threshold</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">min_points</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">curvature_threshold</span> <span class="o">=</span> <span class="mf">0.045f</span><span class="p">;</span>
+
+    <span class="n">extractEuclideanClustersSmooth</span><span class="o">&lt;</span><span class="n">SceneT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Normal</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">scene_cloud_downsampled_</span><span class="p">,</span> <span class="o">*</span><span class="n">scene_normals_</span><span class="p">,</span> <span class="n">inliers_threshold_</span> <span class="o">*</span> <span class="mf">2.f</span><span class="p">,</span> <span class="n">scene_downsampled_tree_</span><span class="p">,</span>
+        <span class="n">clusters</span><span class="p">,</span> <span class="n">eps_angle_threshold</span><span class="p">,</span> <span class="n">curvature_threshold</span><span class="p">,</span> <span class="n">min_points</span><span class="p">);</span>
+
+    <span class="n">clusters_cloud_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;</span><span class="p">);</span>
+    <span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span> <span class="n">p</span><span class="p">;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">getVector3fMap</span> <span class="p">()</span> <span class="o">=</span> <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getVector3fMap</span> <span class="p">();</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span>
+      <span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span> <span class="n">intens_incr</span> <span class="o">=</span> <span class="mf">100.f</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clusters</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="kt">float</span> <span class="n">intens</span> <span class="o">=</span> <span class="n">intens_incr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">cluster</span> <span class="p">:</span> <span class="n">clusters</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">vertex</span> <span class="p">:</span> <span class="n">cluster</span><span class="p">.</span><span class="n">indices</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">vertex</span><span class="p">].</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">intens</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="n">intens</span> <span class="o">+=</span> <span class="n">intens_incr</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">//compute cues</span>
+  <span class="p">{</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">ScopeTime</span> <span class="n">tcues</span> <span class="p">(</span><span class="s">&quot;Computing cues&quot;</span><span class="p">);</span>
+    <span class="n">recognition_models_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">complete_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="kt">int</span> <span class="n">valid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">complete_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//create recognition model</span>
+      <span class="n">recognition_models_</span><span class="p">[</span><span class="n">valid</span><span class="p">].</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">RecognitionModel</span> <span class="p">());</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">addModel</span> <span class="p">(</span><span class="n">visible_models_</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">complete_models_</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">valid</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="n">indices_</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">valid</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">recognition_models_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">valid</span><span class="p">);</span>
+    <span class="n">indices_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">valid</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//compute the bounding boxes for the models</span>
+  <span class="n">ModelT</span> <span class="n">min_pt_all</span><span class="p">,</span> <span class="n">max_pt_all</span><span class="p">;</span>
+  <span class="n">min_pt_all</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">();</span>
+  <span class="n">max_pt_all</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">max_pt_all</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">max_pt_all</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">()</span> <span class="o">-</span> <span class="mf">0.001f</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recognition_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">ModelT</span> <span class="n">min_pt</span><span class="p">,</span> <span class="n">max_pt</span><span class="p">;</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">getMinMax3D</span> <span class="p">(</span><span class="o">*</span><span class="n">complete_models_</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">min_pt</span><span class="p">,</span> <span class="n">max_pt</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">min_pt</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+      <span class="n">min_pt_all</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">min_pt</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">min_pt</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+      <span class="n">min_pt_all</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">min_pt</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">min_pt</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+      <span class="n">min_pt_all</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">min_pt</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">max_pt</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">max_pt_all</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+      <span class="n">max_pt_all</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">max_pt</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">max_pt</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">max_pt_all</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+      <span class="n">max_pt_all</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">max_pt</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">max_pt</span><span class="p">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="n">max_pt_all</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+      <span class="n">max_pt_all</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">max_pt</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">,</span> <span class="n">size_z</span><span class="p">;</span>
+  <span class="n">size_x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">max_pt_all</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">res_occupancy_grid_</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">size_y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">max_pt_all</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">res_occupancy_grid_</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">size_z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">max_pt_all</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="n">res_occupancy_grid_</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">size_x</span> <span class="o">*</span> <span class="n">size_y</span> <span class="o">*</span> <span class="n">size_z</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recognition_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="n">banned</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">banned_it</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">complete_models_</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">pos_x</span><span class="p">,</span> <span class="n">pos_y</span><span class="p">,</span> <span class="n">pos_z</span><span class="p">;</span>
+      <span class="n">pos_x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">floor</span> <span class="p">((</span><span class="n">complete_models_</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">x</span> <span class="o">-</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">res_occupancy_grid_</span><span class="p">));</span>
+      <span class="n">pos_y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">floor</span> <span class="p">((</span><span class="n">complete_models_</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">y</span> <span class="o">-</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">res_occupancy_grid_</span><span class="p">));</span>
+      <span class="n">pos_z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">floor</span> <span class="p">((</span><span class="n">complete_models_</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">z</span> <span class="o">-</span> <span class="n">min_pt_all</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="n">res_occupancy_grid_</span><span class="p">));</span>
+
+      <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">pos_z</span> <span class="o">*</span> <span class="n">size_x</span> <span class="o">*</span> <span class="n">size_y</span> <span class="o">+</span> <span class="n">pos_y</span> <span class="o">*</span> <span class="n">size_x</span> <span class="o">+</span> <span class="n">pos_x</span><span class="p">;</span>
+      <span class="n">banned_it</span> <span class="o">=</span> <span class="n">banned</span><span class="p">.</span><span class="n">find</span> <span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">banned_it</span> <span class="o">==</span> <span class="n">banned</span><span class="p">.</span><span class="n">end</span> <span class="p">())</span>
+      <span class="p">{</span>
+        <span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">recognition_models_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">complete_cloud_occupancy_indices_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+        <span class="n">banned</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="p">{</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">ScopeTime</span> <span class="n">tcues</span> <span class="p">(</span><span class="s">&quot;Computing clutter cues&quot;</span><span class="p">);</span>
+<span class="cp">#pragma omp parallel for schedule(dynamic, 4) num_threads(omp_get_num_procs())</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">computeClutterCue</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="n">cc_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+  <span class="n">n_cc_</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cc_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">n_cc_</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recognition_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">cc_</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">));</span>
+
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">SceneT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">pcl</span><span class="o">::</span><span class="n">GlobalHypothesesVerification</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">SAOptimize</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cc_indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">initial_solution</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="c1">//temporal copy of recogniton_models_</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">RecognitionModelPtr</span><span class="o">&gt;</span> <span class="n">recognition_models_copy</span><span class="p">;</span>
+  <span class="n">recognition_models_copy</span> <span class="o">=</span> <span class="n">recognition_models_</span><span class="p">;</span>
+
+  <span class="n">recognition_models_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">cc_index</span> <span class="p">:</span> <span class="n">cc_indices</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">recognition_models_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">recognition_models_copy</span><span class="p">[</span><span class="n">cc_index</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">recognition_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">RecognitionModelPtr</span> <span class="n">recog_model</span> <span class="o">=</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">explained_by_RM_</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+      <span class="n">explained_by_RM_distance_weighted</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_distances_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">detect_clutter_</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">unexplained_by_RM_neighboorhods</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">occupied_multiple</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">occupied_multiple</span><span class="o">+=</span><span class="n">complete_cloud_occupancy_by_RM_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">setPreviousDuplicityCM</span><span class="p">(</span><span class="n">occupied_multiple</span><span class="p">);</span>
+  <span class="c1">//do optimization</span>
+  <span class="c1">//Define model SAModel, initial solution is all models activated</span>
+
+  <span class="kt">int</span> <span class="n">duplicity</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">good_information_</span> <span class="o">=</span> <span class="n">getTotalExplainedInformation</span> <span class="p">(</span><span class="n">explained_by_RM_</span><span class="p">,</span> <span class="n">explained_by_RM_distance_weighted</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">duplicity</span><span class="p">);</span>
+  <span class="kt">float</span> <span class="n">bad_information_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">unexplained_in_neighboorhod</span> <span class="o">=</span> <span class="n">getUnexplainedInformationInNeighborhood</span> <span class="p">(</span><span class="n">unexplained_by_RM_neighboorhods</span><span class="p">,</span> <span class="n">explained_by_RM_</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">initial_solution</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">initial_solution</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="n">bad_information_</span> <span class="o">+=</span> <span class="n">recognition_models_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">outliers_weight_</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">bad_information_</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">setPreviousExplainedValue</span> <span class="p">(</span><span class="n">good_information_</span><span class="p">);</span>
+  <span class="n">setPreviousDuplicity</span> <span class="p">(</span><span class="n">duplicity</span><span class="p">);</span>
+  <span class="n">setPreviousBadInfo</span> <span class="p">(</span><span class="n">bad_information_</span><span class="p">);</span>
+  <span class="n">setPreviousUnexplainedValue</span> <span class="p">(</span><span class="n">unexplained_in_neighboorhod</span><span class="p">);</span>
+
+  <span class="n">SAModel</span> <span class="n">model</span><span class="p">;</span>
+  <span class="n">model</span><span class="p">.</span><span class="n">cost_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">mets</span><span class="o">::</span><span class="n">gol_type</span><span class="o">&gt;</span> <span class="p">((</span><span class="n">good_information_</span> <span class="o">-</span> <span class="n">bad_information_</span>
+                                               <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">duplicity</span><span class="p">)</span>
+                                               <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">occupied_multiple</span><span class="p">)</span> <span class="o">*</span> <span class="n">w_occupied_multiple_cm_</span>
+                                               <span class="o">-</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recognition_models_</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+                                               <span class="o">-</span> <span class="n">unexplained_in_neighboorhod</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mf">1.f</span><span class="p">);</span>
+
+  <span class="n">model</span><span class="p">.</span><span class="n">setSolution</span> <span class="p">(</span><span class="n">initial_solution</span><span class="p">);</span>
+  <span class="n">model</span><span class="p">.</span><span class="n">setOptimizer</span> <span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="n">SAModel</span> <span class="nf">best</span> <span class="p">(</span><span class="n">model</span><span class="p">);</span>
+
+  <span class="n">move_manager</span> <span class="nf">neigh</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cc_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+
+  <span class="n">mets</span><span class="o">::</span><span class="n">best_ever_solution</span> <span class="n">best_recorder</span> <span class="p">(</span><span class="n">best</span><span class="p">);</span>
+  <span class="n">mets</span><span class="o">::</span><span class="n">noimprove_termination_criteria</span> <span class="n">noimprove</span> <span class="p">(</span><span class="n">max_iterations_</span><span class="p">);</span>
+  <span class="n">mets</span><span class="o">::</span><span class="n">linear_cooling</span> <span class="n">linear_cooling</span><span class="p">;</span>
+  <span class="n">mets</span><span class="o">::</span><span class="n">simulated_annealing</span><span class="o">&lt;</span><span class="n">move_manager</span><span class="o">&gt;</span> <span class="n">sa</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">best_recorder</span><span class="p">,</span> <span class="n">neigh</span><span class="p">,</span> <span class="n">noimprove</span><span class="p">,</span> <span class="n">linear_cooling</span><span class="p">,</span> <span class="n">initial_temp_</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">sa</span><span class="p">.</span><span class="n">setApplyAndEvaluate</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+
+  <span class="p">{</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">ScopeTime</span> <span class="n">t</span> <span class="p">(</span><span class="s">&quot;SA search...&quot;</span><span class="p">);</span>
+    <span class="n">sa</span><span class="p">.</span><span class="n">search</span> <span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">best_seen_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">SAModel</span><span class="o">&amp;&gt;</span> <span class="p">(</span><span class="n">best_recorder</span><span class="p">.</span><span class="n">best_seen</span> <span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">best_seen_</span><span class="p">.</span><span class="n">solution_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">initial_solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_seen_</span><span class="p">.</span><span class="n">solution_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="n">recognition_models_</span> <span class="o">=</span> <span class="n">recognition_models_copy</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">SceneT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">pcl</span><span class="o">::</span><span class="n">GlobalHypothesesVerification</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">verify</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">initialize</span> <span class="p">();</span>
+
+  <span class="c1">//for each connected component, find the optimal solution</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">n_cc_</span><span class="p">;</span> <span class="n">c</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//TODO: Check for trivial case...</span>
+    <span class="c1">//TODO: Check also the number of hypotheses and use exhaustive enumeration if smaller than 10</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">subsolution</span> <span class="p">(</span><span class="n">cc_</span><span class="p">[</span><span class="n">c</span><span class="p">].</span><span class="n">size</span> <span class="p">(),</span> <span class="nb">true</span><span class="p">);</span>
+    <span class="n">SAOptimize</span> <span class="p">(</span><span class="n">cc_</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">subsolution</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">subsolution</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">mask_</span><span class="p">[</span><span class="n">indices_</span><span class="p">[</span><span class="n">cc_</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">i</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">subsolution</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">SceneT</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">pcl</span><span class="o">::</span><span class="n">GlobalHypothesesVerification</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">addModel</span><span class="p">(</span><span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span> <span class="n">model</span><span class="p">,</span>
+    <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span> <span class="n">complete_model</span><span class="p">,</span> <span class="n">RecognitionModelPtr</span> <span class="o">&amp;</span> <span class="n">recog_model</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//voxelize model cloud</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">complete_cloud_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;</span> <span class="p">());</span>
+
+  <span class="kt">float</span> <span class="n">size_model</span> <span class="o">=</span> <span class="n">resolution_</span><span class="p">;</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">VoxelGrid</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;</span> <span class="n">voxel_grid</span><span class="p">;</span>
+  <span class="n">voxel_grid</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">model</span><span class="p">);</span>
+  <span class="n">voxel_grid</span><span class="p">.</span><span class="n">setLeafSize</span> <span class="p">(</span><span class="n">size_model</span><span class="p">,</span> <span class="n">size_model</span><span class="p">,</span> <span class="n">size_model</span><span class="p">);</span>
+  <span class="n">voxel_grid</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="p">));</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">VoxelGrid</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;</span> <span class="n">voxel_grid2</span><span class="p">;</span>
+  <span class="n">voxel_grid2</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">complete_model</span><span class="p">);</span>
+  <span class="n">voxel_grid2</span><span class="p">.</span><span class="n">setLeafSize</span> <span class="p">(</span><span class="n">size_model</span><span class="p">,</span> <span class="n">size_model</span><span class="p">,</span> <span class="n">size_model</span><span class="p">);</span>
+  <span class="n">voxel_grid2</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">complete_cloud_</span><span class="p">));</span>
+
+  <span class="p">{</span>
+    <span class="c1">//check nans...</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">)</span>
+          <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">z</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">j</span><span class="p">);</span>
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_WARN</span><span class="p">(</span><span class="s">&quot;The model cloud has no points..</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">//compute normals unless given (now do it always...)</span>
+  <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">normals_tree</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="o">&gt;</span><span class="p">);</span>
+  <span class="n">pcl</span><span class="o">::</span><span class="n">NormalEstimation</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Normal</span><span class="o">&gt;</span> <span class="n">n3d</span><span class="p">;</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="p">.</span><span class="n">reset</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Normal</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">normals_tree</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="p">);</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">setRadiusSearch</span> <span class="p">(</span><span class="n">radius_normals_</span><span class="p">);</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">setSearchMethod</span> <span class="p">(</span><span class="n">normals_tree</span><span class="p">);</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">((</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="p">));</span>
+  <span class="n">n3d</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="p">));</span>
+
+  <span class="c1">//check nans...</span>
+  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal_x</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal_y</span><span class="p">)</span>
+        <span class="o">||</span> <span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal_z</span><span class="p">))</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">j</span><span class="p">);</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">j</span><span class="p">);</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">explained_indices</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">outliers_weight</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">explained_indices_distances</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">unexplained_indices_weights</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_distances</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">model_explains_scene_points</span><span class="p">;</span> <span class="c1">//which point i from the scene is explained by a points j_k with dist d_k from the model</span>
+
+  <span class="n">outliers_weight</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">outlier_indices_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="kt">size_t</span> <span class="n">o</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">scene_downsampled_tree_</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">inliers_threshold_</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_distances</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">()))</span>
+    <span class="p">{</span>
+      <span class="c1">//outlier</span>
+      <span class="n">outliers_weight</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span class="o">=</span> <span class="n">regularizer_</span><span class="p">;</span>
+      <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">outlier_indices_</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+      <span class="n">o</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">nn_distances</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="n">pair</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">nn_distances</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span> <span class="c1">//i is a index to a model point and then distance</span>
+        <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">model_explains_scene_points</span><span class="p">.</span><span class="n">find</span> <span class="p">(</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">==</span> <span class="n">model_explains_scene_points</span><span class="p">.</span><span class="n">end</span> <span class="p">())</span>
+        <span class="p">{</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">vec</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="p">());</span>
+          <span class="n">vec</span><span class="o">-&gt;</span><span class="n">push_back</span> <span class="p">(</span><span class="n">pair</span><span class="p">);</span>
+          <span class="n">model_explains_scene_points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vec</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">push_back</span> <span class="p">(</span><span class="n">pair</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">outliers_weight</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">o</span><span class="p">);</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">outlier_indices_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">o</span><span class="p">);</span>
+
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">outliers_weight_</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">accumulate</span> <span class="p">(</span><span class="n">outliers_weight</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">outliers_weight</span><span class="p">.</span><span class="n">end</span> <span class="p">(),</span> <span class="mf">0.f</span><span class="p">)</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">outliers_weight</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">outliers_weight</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">outliers_weight_</span> <span class="o">=</span> <span class="mf">1.f</span><span class="p">;</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">IndicesPtr</span> <span class="n">indices_scene</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span>
+  <span class="c1">//go through the map and keep the closest model point in case that several model points explain a scene point</span>
+
+  <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">model_explains_scene_points</span><span class="p">.</span><span class="n">cbegin</span> <span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">model_explains_scene_points</span><span class="p">.</span><span class="n">cend</span> <span class="p">();</span> <span class="n">it</span><span class="o">++</span><span class="p">,</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">closest</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">min_d</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;::</span><span class="n">min</span> <span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">second</span> <span class="o">&gt;</span> <span class="n">min_d</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">min_d</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">second</span><span class="p">;</span>
+        <span class="n">closest</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span> <span class="n">d</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">closest</span><span class="p">).</span><span class="n">second</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">d_weight</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">d</span> <span class="o">*</span> <span class="n">d</span> <span class="o">/</span> <span class="p">(</span><span class="n">inliers_threshold_</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">//it-&gt;first is index to scene point</span>
+    <span class="c1">//using normals to weight inliers</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">scene_p_normal</span> <span class="o">=</span> <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">].</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">model_p_normal</span> <span class="o">=</span> <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">closest</span><span class="p">).</span><span class="n">first</span><span class="p">].</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+    <span class="kt">float</span> <span class="n">dotp</span> <span class="o">=</span> <span class="n">scene_p_normal</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">model_p_normal</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.f</span><span class="p">;</span> <span class="c1">//[-1,1] from antiparallel trough perpendicular to parallel</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dotp</span> <span class="o">&lt;</span> <span class="mf">0.f</span><span class="p">)</span>
+      <span class="n">dotp</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span>
+
+    <span class="n">explained_indices</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">);</span>
+    <span class="n">explained_indices_distances</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">d_weight</span> <span class="o">*</span> <span class="n">dotp</span><span class="p">);</span>
+
+  <span class="p">}</span>
+
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">bad_information_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">outlier_indices_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span> <span class="o">=</span> <span class="n">explained_indices</span><span class="p">;</span>
+  <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_distances_</span> <span class="o">=</span> <span class="n">explained_indices_distances</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ModelT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">SceneT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">pcl</span><span class="o">::</span><span class="n">GlobalHypothesesVerification</span><span class="o">&lt;</span><span class="n">ModelT</span><span class="p">,</span> <span class="n">SceneT</span><span class="o">&gt;::</span><span class="n">computeClutterCue</span><span class="p">(</span><span class="n">RecognitionModelPtr</span> <span class="o">&amp;</span> <span class="n">recog_model</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">detect_clutter_</span><span class="p">)</span>
+  <span class="p">{</span>
+
+    <span class="kt">float</span> <span class="n">rn_sqr</span> <span class="o">=</span> <span class="n">radius_neighborhood_GO_</span> <span class="o">*</span> <span class="n">radius_neighborhood_GO_</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_distances</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">neighborhood_indices</span><span class="p">;</span> <span class="c1">//first is indices to scene point and second is indices to explained_ scene points</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">scene_downsampled_tree_</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">radius_neighborhood_GO_</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span>
+          <span class="n">nn_distances</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">()))</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">nn_distances</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">emplace_back</span> <span class="p">(</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//sort neighborhood indices by id</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">sort</span> <span class="p">(</span><span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">end</span> <span class="p">(),</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">bind</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">first</span><span class="p">,</span> <span class="n">_1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">bind</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">first</span><span class="p">,</span> <span class="n">_2</span><span class="p">));</span>
+
+    <span class="c1">//erase duplicated unexplained points</span>
+    <span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">erase</span> <span class="p">(</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">unique</span> <span class="p">(</span><span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">end</span> <span class="p">(),</span>
+            <span class="n">boost</span><span class="o">::</span><span class="n">bind</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">first</span><span class="p">,</span> <span class="n">_1</span><span class="p">)</span> <span class="o">==</span> <span class="n">boost</span><span class="o">::</span><span class="n">bind</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">first</span><span class="p">,</span> <span class="n">_2</span><span class="p">)),</span> <span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+
+    <span class="c1">//sort explained points</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">exp_idces</span> <span class="p">(</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">sort</span> <span class="p">(</span><span class="n">exp_idces</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">exp_idces</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">neighborhood_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+    <span class="kt">size_t</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">neighborhood_index</span> <span class="p">:</span> <span class="n">neighborhood_indices</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">((</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">exp_idces</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">exp_idces</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+      <span class="p">{</span>
+        <span class="c1">//this index is explained by the hypothesis so ignore it, advance j</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="c1">//indices_in_nb[i] &lt; exp_idces[j]</span>
+        <span class="c1">//recog_model-&gt;unexplained_in_neighborhood.push_back(neighborhood_indices[i]);</span>
+        <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">neighborhood_index</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">second</span><span class="p">]].</span><span class="n">intensity</span> <span class="o">!=</span> <span class="mf">0.f</span>
+            <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">second</span><span class="p">]].</span><span class="n">intensity</span>
+                <span class="o">==</span> <span class="n">clusters_cloud_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">first</span><span class="p">].</span><span class="n">intensity</span><span class="p">))</span>
+        <span class="p">{</span>
+
+          <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">clutter_regularizer_</span><span class="p">;</span>
+
+        <span class="p">}</span> <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="c1">//neighborhood_indices[i].first gives the index to the scene point and second to the explained scene point by the model causing this...</span>
+          <span class="c1">//calculate weight of this clutter point based on the distance of the scene point and the model point causing it</span>
+          <span class="kt">float</span> <span class="n">d</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">pow</span> <span class="p">(</span>
+              <span class="p">(</span><span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">second</span><span class="p">]].</span><span class="n">getVector3fMap</span> <span class="p">()</span>
+                  <span class="o">-</span> <span class="n">scene_cloud_downsampled_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">first</span><span class="p">].</span><span class="n">getVector3fMap</span> <span class="p">()).</span><span class="n">norm</span> <span class="p">(),</span> <span class="mi">2</span><span class="p">));</span>
+          <span class="kt">float</span> <span class="n">d_weight</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="n">rn_sqr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//points that are close have a strong weight*/</span>
+
+          <span class="c1">//using normals to weight clutter points</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">scene_p_normal</span> <span class="o">=</span> <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">first</span><span class="p">].</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">model_p_normal</span> <span class="o">=</span> <span class="n">scene_normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">explained_</span><span class="p">[</span><span class="n">neighborhood_index</span><span class="p">.</span><span class="n">second</span><span class="p">]].</span><span class="n">getNormalVector3fMap</span> <span class="p">();</span>
+          <span class="kt">float</span> <span class="n">dotp</span> <span class="o">=</span> <span class="n">scene_p_normal</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">model_p_normal</span><span class="p">);</span> <span class="c1">//[-1,1] from antiparallel trough perpendicular to parallel</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">dotp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">dotp</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span>
+
+          <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">d_weight</span> <span class="o">*</span> <span class="n">dotp</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">p</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood_weights</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="n">recog_model</span><span class="o">-&gt;</span><span class="n">unexplained_in_neighborhood</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_GoHV(T1,T2) template class PCL_EXPORTS pcl::GlobalHypothesesVerification&lt;T1,T2&gt;;</span>
+
+<span class="cp">#endif </span><span class="cm">/* PCL_RECOGNITION_IMPL_HV_GO_HPP_ */</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_recognition_hv_hv_papazov.h.html" class="btn btn-neutral float-right" title="File hv_papazov.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_impl_hv_hv_go.hpp.html" class="btn btn-neutral float-left" title="File hv_go.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

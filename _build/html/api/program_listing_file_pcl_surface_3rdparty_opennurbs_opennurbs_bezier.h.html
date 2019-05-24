@@ -1,0 +1,2152 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_bezier.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_bitmap.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bitmap.h.html" />
+    <link rel="prev" title="File opennurbs_bezier.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.html">File opennurbs_bezier.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_bezier.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-bezier-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-bezier-h"></span><h1>Program Listing for File opennurbs_bezier.h<a class="headerlink" href="#program-listing-for-file-opennurbs-bezier-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-bezier-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_bezier.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(OPENNURBS_BEZIER_INC_)</span>
+<span class="cp">#define OPENNURBS_BEZIER_INC_</span>
+
+<span class="k">class</span> <span class="nc">ON_PolynomialCurve</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_PolynomialSurface</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_BezierCurve</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_BezierSurface</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_TextLog</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_NurbsCurve</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_NurbsSurface</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">ON_X_EVENT</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_PolynomialCurve</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_PolynomialCurve</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   See ON_PolynomialCurve::Create.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   dim - [in] dimension of the curve</span>
+  <span class="c1">//   bIsRational - [in] true if rational</span>
+  <span class="c1">//   order - [in] (&gt;=2) order = degree+1</span>
+  <span class="n">ON_PolynomialCurve</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="n">ON_BOOL32</span> <span class="n">bIsRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order</span>
+    <span class="p">);</span>
+
+  <span class="o">~</span><span class="n">ON_PolynomialCurve</span><span class="p">();</span>
+
+  <span class="n">ON_PolynomialCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialCurve</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="n">ON_PolynomialCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierCurve</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="n">ON_PolynomialCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialCurve</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="n">ON_PolynomialCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierCurve</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Initializes fields and allocates the m_cv array.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   dim - [in] dimension of the curve</span>
+  <span class="c1">//   bIsRational - [in] true if rational</span>
+  <span class="c1">//   order - [in] (&gt;=2) order = degree+1</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="n">ON_BOOL32</span> <span class="n">bIsRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Deallocates the m_cv array and sets fields to zero.</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate a polynomial curve.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter ( usually in Domain() ).</span>
+  <span class="c1">//   der_count - [in] (&gt;=0) number of derivatives to evaluate</span>
+  <span class="c1">//   v_stride - [in] (&gt;=Dimension()) stride to use for the v[] array</span>
+  <span class="c1">//   v - [out] array of length (der_count+1)*v_stride</span>
+  <span class="c1">//       curve(t) is returned in (v[0],...,v[m_dim-1]),</span>
+  <span class="c1">//       curve&#39;(t) is retuned in (v[v_stride],...,v[v_stride+m_dim-1]),</span>
+  <span class="c1">//       curve&quot;(t) is retuned in (v[2*v_stride],...,v[2*v_stride+m_dim-1]),</span>
+  <span class="c1">//       etc.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   false if unable to evaluate.</span>
+  <span class="n">ON_BOOL32</span> <span class="nf">Evaluate</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">v_stride</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">v</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// dimension of polynomial curve (1,2, or 3)</span>
+  <span class="kt">int</span> <span class="n">m_dim</span><span class="p">;</span>
+
+  <span class="c1">// 1 if polynomial curve is rational, 0 if polynomial curve is not rational</span>
+  <span class="kt">int</span> <span class="n">m_is_rat</span><span class="p">;</span>
+
+  <span class="c1">// order (=degree+1) of polynomial</span>
+  <span class="kt">int</span> <span class="n">m_order</span><span class="p">;</span>
+
+  <span class="c1">// coefficients ( m_cv.Count() = order of monomial )</span>
+  <span class="n">ON_4dPointArray</span> <span class="n">m_cv</span><span class="p">;</span>
+
+  <span class="c1">// domain of polynomial</span>
+  <span class="n">ON_Interval</span> <span class="n">m_domain</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_PolynomialSurface</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_PolynomialSurface</span><span class="p">();</span>
+  <span class="n">ON_PolynomialSurface</span><span class="p">(</span>
+    <span class="kt">int</span><span class="p">,</span>  <span class="c1">// dim,</span>
+    <span class="n">ON_BOOL32</span><span class="p">,</span> <span class="c1">// true if rational</span>
+    <span class="kt">int</span><span class="p">,</span>  <span class="c1">// &quot;u&quot; order</span>
+    <span class="kt">int</span>   <span class="c1">// &quot;v&quot; order</span>
+    <span class="p">);</span>
+  <span class="o">~</span><span class="n">ON_PolynomialSurface</span><span class="p">();</span>
+  <span class="n">ON_PolynomialSurface</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialSurface</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_PolynomialSurface</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierSurface</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_PolynomialSurface</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialSurface</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_PolynomialSurface</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierSurface</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="n">ON_BOOL32</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="kt">int</span><span class="p">,</span>  <span class="c1">// dim,</span>
+    <span class="n">ON_BOOL32</span><span class="p">,</span> <span class="c1">// true if rational</span>
+    <span class="kt">int</span><span class="p">,</span>  <span class="c1">// &quot;u&quot; order</span>
+    <span class="kt">int</span>   <span class="c1">// &quot;v&quot; order</span>
+    <span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="n">ON_BOOL32</span> <span class="nf">Evaluate</span><span class="p">(</span>          <span class="c1">// returns false if unable to evaluate</span>
+         <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>        <span class="c1">// evaluation parameter</span>
+         <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span>   <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">derivatives</span> <span class="p">(</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="kt">int</span> <span class="n">v_stride</span><span class="p">,</span>    <span class="c1">// array stride (&gt;=Dimension())</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">v</span>        <span class="c1">// array of length stride*(ndir+1)*(ndir+2)/2</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="n">m_dim</span><span class="p">;</span>    <span class="c1">// 1,2, or 3</span>
+  <span class="kt">int</span> <span class="n">m_is_rat</span><span class="p">;</span> <span class="c1">// 1 if rational, 0 if not rational</span>
+  <span class="kt">int</span> <span class="n">m_order</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">ON_4dPointArray</span> <span class="n">m_cv</span><span class="p">;</span> <span class="c1">// coefficients ( m_C.Length() = m_order[0]*m_order[1]</span>
+                        <span class="c1">// coefficient of s^m*t^n = m_cv[m_order[1]*m+n]</span>
+  <span class="n">ON_Interval</span> <span class="n">m_domain</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_BezierCurve</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+  <span class="n">ON_BezierCurve</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Creates a bezier with cv memory allocated.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   dim - [in] (&gt;0) dimension of bezier curve</span>
+  <span class="c1">//   bIsRational - [in] true for a rational bezier</span>
+  <span class="c1">//   order - [in] (&gt;=2) order (=degree+1) of bezier curve</span>
+  <span class="n">ON_BezierCurve</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="n">ON_BOOL32</span> <span class="n">bIsRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order</span>
+    <span class="p">);</span>
+
+  <span class="o">~</span><span class="n">ON_BezierCurve</span><span class="p">();</span>
+  <span class="n">ON_BezierCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierCurve</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_BezierCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialCurve</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_BezierCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPointArray</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sets control points</span>
+  <span class="n">ON_BezierCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sets control points</span>
+  <span class="n">ON_BezierCurve</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPointArray</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sets control points</span>
+  <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierCurve</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialCurve</span><span class="o">&amp;</span><span class="p">);</span>
+
+
+  <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_2dPointArray</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sets control points</span>
+  <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sets control points</span>
+  <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_4dPointArray</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// sets control points</span>
+
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span> <span class="n">ON_TextLog</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// for debugging</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Dimension of bezier.</span>
+  <span class="kt">int</span> <span class="nf">Dimension</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Creates a bezier with cv memory allocated.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   dim - [in] (&gt;0) dimension of bezier curve</span>
+  <span class="c1">//   bIsRational - [in] true for a rational bezier</span>
+  <span class="c1">//   order - [in] (&gt;=2) order (=degree+1) of bezier curve</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="n">ON_BOOL32</span> <span class="n">bIsRational</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Deallocates m_cv memory.</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="kt">void</span> <span class="nf">EmergencyDestroy</span><span class="p">();</span> <span class="c1">// call if memory used by ON_NurbsCurve becomes invalid</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Loft a bezier curve through a list of points.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   points - [in] an array of 2 or more points to interpolate</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   The result has order = points.Count() and the loft uses the</span>
+  <span class="c1">//   uniform parameterizaton curve( i/(points.Count()-1) ) = points[i].</span>
+  <span class="kt">bool</span> <span class="nf">Loft</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">points</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Loft a bezier curve through a list of points.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   pt_dim - [in] dimension of points to interpolate</span>
+  <span class="c1">//   pt_count - [in] number of points (&gt;=2)</span>
+  <span class="c1">//   pt_stride - [in] (&gt;=pt_dim) pt[] array stride</span>
+  <span class="c1">//   pt - [in] array of points</span>
+  <span class="c1">//   t_stride - [in] (&gt;=1) t[] array stride</span>
+  <span class="c1">//   t - [in] strictly increasing array of interpolation parameters</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   The result has order = points.Count() and the loft uses the</span>
+  <span class="c1">//   parameterizaton curve( t[i] ) = points[i].</span>
+  <span class="kt">bool</span> <span class="nf">Loft</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">pt_dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">pt_count</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">pt_stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">pt</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">t_stride</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">t</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Gets bounding box.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   box_min - [out] minimum corner of axis aligned bounding box</span>
+  <span class="c1">//       The box_min[] array must have size m_dim.</span>
+  <span class="c1">//   box_max - [out] maximum corner of axis aligned bounding box</span>
+  <span class="c1">//       The box_max[] array must have size m_dim.</span>
+  <span class="c1">//   bGrowBox - [in] if true, input box_min/box_max must be set</span>
+  <span class="c1">//      to valid bounding box corners and this box is enlarged to</span>
+  <span class="c1">//      be the union of the input box and the bezier&#39;s bounding</span>
+  <span class="c1">//      box.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="kt">bool</span> <span class="nf">GetBBox</span><span class="p">(</span> <span class="c1">// returns true if successful</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">box_min</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">box_max</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Gets bounding box.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   bbox - [out] axis aligned bounding box returned here.</span>
+  <span class="c1">//   bGrowBox - [in] if true, input bbox must be a valid</span>
+  <span class="c1">//      bounding box and this box is enlarged to</span>
+  <span class="c1">//      be the union of the input box and the</span>
+  <span class="c1">//      bezier&#39;s bounding box.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="kt">bool</span> <span class="nf">GetBoundingBox</span><span class="p">(</span>
+         <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Gets bounding box.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Axis aligned bounding box.</span>
+  <span class="n">ON_BoundingBox</span> <span class="nf">BoundingBox</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get tight bounding box of the bezier.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    tight_bbox - [in/out] tight bounding box</span>
+<span class="cm">    bGrowBox -[in]  (default=false)</span>
+<span class="cm">      If true and the input tight_bbox is valid, then returned</span>
+<span class="cm">      tight_bbox is the union of the input tight_bbox and the</span>
+<span class="cm">      tight bounding box of the bezier curve.</span>
+<span class="cm">    xform -[in] (default=NULL)</span>
+<span class="cm">      If not NULL, the tight bounding box of the transformed</span>
+<span class="cm">      bezier is calculated.  The bezier curve is not modified.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the returned tight_bbox is set to a valid</span>
+<span class="cm">    bounding box.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetTightBoundingBox</span><span class="p">(</span>
+      <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">tight_bbox</span><span class="p">,</span>
+      <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+      <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">*</span> <span class="n">xform</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Transform the bezier.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   xform - [in] transformation to apply to bezier</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.  false if bezier is invalid</span>
+  <span class="c1">//   and cannot be transformed.</span>
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span>
+         <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Rotates the bezier curve about the specified axis.  A positive</span>
+  <span class="c1">//   rotation angle results in a counter-clockwise rotation</span>
+  <span class="c1">//   about the axis (right hand rule).</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   sin_angle - [in] sine of rotation angle</span>
+  <span class="c1">//   cos_angle - [in] sine of rotation angle</span>
+  <span class="c1">//   rotation_axis - [in] direction of the axis of rotation</span>
+  <span class="c1">//   rotation_center - [in] point on the axis of rotation</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier curve successfully rotated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCurve::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">rotation_axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">rotation_center</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Rotates the bezier curve about the specified axis.  A positive</span>
+  <span class="c1">//   rotation angle results in a counter-clockwise rotation</span>
+  <span class="c1">//   about the axis (right hand rule).</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   rotation_angle - [in] angle of rotation in radians</span>
+  <span class="c1">//   rotation_axis - [in] direction of the axis of rotation</span>
+  <span class="c1">//   rotation_center - [in] point on the axis of rotation</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier curve successfully rotated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCurve::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">rotation_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">rotation_axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">rotation_center</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Translates the bezier curve along the specified vector.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   translation_vector - [in] translation vector</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier curve successfully translated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCurve::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Translate</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">translation_vector</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Scales the bezier curve by the specified facotor.  The scale is</span>
+  <span class="c1">//   centered at the origin.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   scale_factor - [in] scale factor</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier curve successfully scaled</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCurve::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Scale</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">scale_factor</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Domain of bezier (always [0,1]).</span>
+  <span class="n">ON_Interval</span> <span class="nf">Domain</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Reverses bezier by reversing the order</span>
+  <span class="c1">//   of the control points.</span>
+  <span class="kt">bool</span> <span class="nf">Reverse</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate point at a parameter.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Point (location of curve at the parameter t).</span>
+  <span class="n">ON_3dPoint</span>  <span class="nf">PointAt</span><span class="p">(</span>
+                <span class="kt">double</span> <span class="n">t</span>
+                <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate first derivative at a parameter.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   First derivative of the curve at the parameter t.</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   No error handling.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Curve::Ev1Der</span>
+  <span class="n">ON_3dVector</span> <span class="nf">DerivativeAt</span><span class="p">(</span>
+                <span class="kt">double</span> <span class="n">t</span>
+                <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate unit tangent vector at a parameter.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Unit tangent vector of the curve at the parameter t.</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   No error handling.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Curve::EvTangent</span>
+  <span class="n">ON_3dVector</span> <span class="nf">TangentAt</span><span class="p">(</span>
+                <span class="kt">double</span> <span class="n">t</span>
+                <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate the curvature vector at a parameter.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   curvature vector of the curve at the parameter t.</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   No error handling.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Curve::EvCurvature</span>
+  <span class="n">ON_3dVector</span> <span class="nf">CurvatureAt</span><span class="p">(</span>
+                <span class="kt">double</span> <span class="n">t</span>
+                <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate point at a parameter with error checking.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">//   point - [out] value of curve at t</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   false if unable to evaluate.</span>
+  <span class="kt">bool</span> <span class="nf">EvPoint</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate first derivative at a parameter with error checking.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">//   point - [out] value of curve at t</span>
+  <span class="c1">//   first_derivative - [out] value of first derivative at t</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   false if unable to evaluate.</span>
+  <span class="kt">bool</span> <span class="nf">Ev1Der</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+         <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">first_derivative</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate second derivative at a parameter with error checking.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter</span>
+  <span class="c1">//   point - [out] value of curve at t</span>
+  <span class="c1">//   first_derivative - [out] value of first derivative at t</span>
+  <span class="c1">//   second_derivative - [out] value of second derivative at t</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   false if unable to evaluate.</span>
+  <span class="kt">bool</span> <span class="nf">Ev2Der</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+         <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">first_derivative</span><span class="p">,</span>
+         <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">second_derivative</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate unit tangent at a parameter with error checking.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    t - [in] evaluation parameter</span>
+<span class="cm">    point - [out] value of curve at t</span>
+<span class="cm">    tangent - [out] value of unit tangent</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    false if unable to evaluate.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Curve::TangentAt</span>
+<span class="cm">    ON_Curve::Ev1Der</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">EvTangent</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+         <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">tangent</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate unit tangent and curvature at a parameter with error checking.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    t - [in] evaluation parameter</span>
+<span class="cm">    point - [out] value of curve at t</span>
+<span class="cm">    tangent - [out] value of unit tangent</span>
+<span class="cm">    kappa - [out] value of curvature vector</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    false if unable to evaluate.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">EvCurvature</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+         <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">tangent</span><span class="p">,</span>
+         <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">kappa</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Evaluate a bezier.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] evaluation parameter (usually 0 &lt;= t &lt;= 1)</span>
+  <span class="c1">//   der_count - [in] (&gt;=0) number of derivatives to evaluate</span>
+  <span class="c1">//   v_stride - [in] (&gt;=m_dim) stride to use for the v[] array</span>
+  <span class="c1">//   v - [out] array of length (der_count+1)*v_stride</span>
+  <span class="c1">//       bez(t) is returned in (v[0],...,v[m_dim-1]),</span>
+  <span class="c1">//       bez&#39;(t) is retuned in (v[v_stride],...,v[v_stride+m_dim-1]),</span>
+  <span class="c1">//       bez&quot;(t) is retuned in (v[2*v_stride],...,v[2*v_stride+m_dim-1]),</span>
+  <span class="c1">//       etc.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful</span>
+  <span class="kt">bool</span> <span class="nf">Evaluate</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">v_stride</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">v</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Get ON_NurbsCurve form of a bezier.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   nurbs_curve - [out] NURBS curve form of a bezier.</span>
+  <span class="c1">//       The domain is [0,1].</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful</span>
+  <span class="kt">bool</span> <span class="nf">GetNurbForm</span><span class="p">(</span>
+    <span class="n">ON_NurbsCurve</span><span class="o">&amp;</span> <span class="n">nurbs_curve</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier is rational.</span>
+  <span class="kt">bool</span> <span class="nf">IsRational</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Number of doubles per control vertex.</span>
+  <span class="c1">//   (= IsRational() ? Dim()+1 : Dim())</span>
+  <span class="kt">int</span> <span class="nf">CVSize</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Number of control vertices in the bezier.</span>
+  <span class="c1">//   This is always the same as the order of the bezier.</span>
+  <span class="kt">int</span> <span class="nf">CVCount</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Order of the bezier. (order=degree+1)</span>
+  <span class="kt">int</span> <span class="nf">Order</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>        <span class="c1">// order = degree + 1</span>
+
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Degree of the bezier. (degree=order-1)</span>
+  <span class="kt">int</span> <span class="nf">Degree</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Expert user function to get a pointer to control vertex</span>
+<span class="cm">    memory.  If you are not an expert user, please use</span>
+<span class="cm">    ON_BezierCurve::GetCV( ON_3dPoint&amp; ) or</span>
+<span class="cm">    ON_BezierCurve::GetCV( ON_4dPoint&amp; ).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    cv_index - [in] (0 &lt;= cv_index &lt; m_order)</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Pointer to control vertex.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If the Bezier curve is rational, the format of the</span>
+<span class="cm">    returned array is a homogeneos rational point with</span>
+<span class="cm">    length m_dim+1.  If the Bezier curve is not rational,</span>
+<span class="cm">    the format of the returned array is a nonrational</span>
+<span class="cm">    euclidean point with length m_dim.</span>
+<span class="cm">  See Also</span>
+<span class="cm">    ON_BezierCurve::CVStyle</span>
+<span class="cm">    ON_BezierCurve::GetCV</span>
+<span class="cm">    ON_BezierCurve::Weight</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">CV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Returns the style of control vertices in the m_cv array.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    @untitled table</span>
+<span class="cm">    ON::not_rational                m_is_rat is false</span>
+<span class="cm">    ON::homogeneous_rational        m_is_rat is true</span>
+<span class="cm">  */</span>
+  <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span> <span class="n">CVStyle</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0&lt;=i&lt;m_order)</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   Weight of the i-th control vertex.</span>
+  <span class="kt">double</span> <span class="nf">Weight</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Set weight of a control vertex.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   weight - [in] weight</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if the weight can be set.  If weight is not 1 and</span>
+  <span class="c1">//   the bezier is not rational, then false is returned.</span>
+  <span class="c1">//   Use ON_BezierCurve::MakeRational to make a bezier curve</span>
+  <span class="c1">//   rational.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_BezierCurve::SetCV, ON_BezierCurve::MakeRational,</span>
+  <span class="c1">//   ON_BezierCurve::IsRational, ON_BezierCurve::Weight</span>
+  <span class="kt">bool</span> <span class="nf">SetWeight</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">weight</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Set control vertex</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   pointstyle - [in] specifes what kind of values are passed</span>
+  <span class="c1">//      in the cv array.</span>
+  <span class="c1">//        ON::not_rational</span>
+  <span class="c1">//          cv[] is an array of length m_dim that defines</span>
+  <span class="c1">//          a euclidean (world coordinate) point</span>
+  <span class="c1">//        ON::homogeneous_rational</span>
+  <span class="c1">//          cv[] is an array of length (m_dim+1) that defines</span>
+  <span class="c1">//          a rational homogeneous point.</span>
+  <span class="c1">//        ON::euclidean_rational</span>
+  <span class="c1">//          cv[] is an array of length (m_dim+1).  The first</span>
+  <span class="c1">//          m_dim values define the euclidean (world coordinate)</span>
+  <span class="c1">//          location of the point.  cv[m_dim] is the weight</span>
+  <span class="c1">//        ON::intrinsic_point_style</span>
+  <span class="c1">//          If m_is_rat is true, cv[] has ON::homogeneous_rational</span>
+  <span class="c1">//          point style.  If m_is_rat is false, cv[] has</span>
+  <span class="c1">//          ON::not_rational point style.</span>
+  <span class="c1">//   cv - [in] array with control vertex value.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if the point can be set.</span>
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span> <span class="n">pointstyle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">cv</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Set location of a control vertex.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   point - [in] control vertex location.  If the bezier</span>
+  <span class="c1">//      is rational, the weight will be set to 1.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_BezierCurve::CV, ON_BezierCurve::SetCV,</span>
+  <span class="c1">//   ON_BezierCurve::SetWeight, ON_BezierCurve::Weight</span>
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Set value of a control vertex.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   point - [in] control vertex value.  If the bezier</span>
+  <span class="c1">//      is not rational, the euclidean location of</span>
+  <span class="c1">//      homogenoeous point will be used.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_BezierCurve::CV, ON_BezierCurve::SetCV,</span>
+  <span class="c1">//   ON_BezierCurve::SetWeight, ON_BezierCurve::Weight</span>
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Get location of a control vertex.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   pointstyle - [in] specifes what kind of values to get</span>
+  <span class="c1">//        ON::not_rational</span>
+  <span class="c1">//          cv[] is an array of length m_dim that defines</span>
+  <span class="c1">//          a euclidean (world coordinate) point</span>
+  <span class="c1">//        ON::homogeneous_rational</span>
+  <span class="c1">//          cv[] is an array of length (m_dim+1) that defines</span>
+  <span class="c1">//          a rational homogeneous point.</span>
+  <span class="c1">//        ON::euclidean_rational</span>
+  <span class="c1">//          cv[] is an array of length (m_dim+1).  The first</span>
+  <span class="c1">//          m_dim values define the euclidean (world coordinate)</span>
+  <span class="c1">//          location of the point.  cv[m_dim] is the weight</span>
+  <span class="c1">//        ON::intrinsic_point_style</span>
+  <span class="c1">//          If m_is_rat is true, cv[] has ON::homogeneous_rational</span>
+  <span class="c1">//          point style.  If m_is_rat is false, cv[] has</span>
+  <span class="c1">//          ON::not_rational point style.</span>
+  <span class="c1">//   cv - [out] array with control vertex value.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.  false if cv_index is invalid.</span>
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span> <span class="n">pointstyle</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">*</span> <span class="n">cv</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Get location of a control vertex.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   point - [out] Location of control vertex.  If the bezier</span>
+  <span class="c1">//      is rational, the euclidean location is returned.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Get value of a control vertex.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   cv_index - [in] control vertex index (0 &lt;= cv_index &lt; m_order)</span>
+  <span class="c1">//   point - [out] Homogenous value of control vertex.</span>
+  <span class="c1">//      If the bezier is not rational, the weight is 1.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index</span><span class="p">,</span>
+        <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Zeros control vertices and, if rational, sets weights to 1.</span>
+  <span class="kt">bool</span> <span class="nf">ZeroCVs</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Make beizer rational.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Bezier::MakeNonRational</span>
+  <span class="kt">bool</span> <span class="nf">MakeRational</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Make beizer not rational by setting all control</span>
+  <span class="c1">//   vertices to their euclidean locations and setting</span>
+  <span class="c1">//   m_is_rat to false.</span>
+  <span class="c1">// See Also:</span>
+  <span class="c1">//   ON_Bezier::MakeRational</span>
+  <span class="kt">bool</span> <span class="nf">MakeNonRational</span><span class="p">();</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Increase degree of bezier.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   desired_degree - [in]</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.  false if desired_degree &lt; current degree.</span>
+  <span class="kt">bool</span> <span class="nf">IncreaseDegree</span><span class="p">(</span>
+          <span class="kt">int</span> <span class="n">desired_degree</span>
+          <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Change dimension of bezier.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   desired_dimension - [in]</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.  false if desired_dimension &lt; 1</span>
+  <span class="kt">bool</span> <span class="nf">ChangeDimension</span><span class="p">(</span>
+          <span class="kt">int</span> <span class="n">desired_dimension</span>
+          <span class="p">);</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////</span>
+  <span class="c1">// Tools for managing CV and knot memory</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Make sure m_cv array has a certain length.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   desired_cv_capacity - [in] minimum length of m_cv array.</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if successful.</span>
+  <span class="kt">bool</span> <span class="nf">ReserveCVCapacity</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">desired_cv_capacity</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Trims (or extends) the bezier so the bezier so that the</span>
+  <span class="c1">//   result starts bezier(interval[0]) and ends at</span>
+  <span class="c1">//   bezier(interval[1]) (Evaluation performed on input bezier.)</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   interval -[in]</span>
+  <span class="c1">// Example:</span>
+  <span class="c1">//   An interval of [0,1] leaves the bezier unchanged.  An</span>
+  <span class="c1">//   interval of [0.5,1] would trim away the left half.  An</span>
+  <span class="c1">//   interval of [0.0,2.0] would extend the right end.</span>
+  <span class="kt">bool</span> <span class="nf">Trim</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span> <span class="n">interval</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Split() divides the Bezier curve at the specified parameter.</span>
+  <span class="c1">//   The parameter must satisfy 0 &lt; t &lt; 1.  You may pass *this as</span>
+  <span class="c1">//   one of the curves to be returned.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   t - [in] (0 &lt; t &lt; 1 ) parameter to split at</span>
+  <span class="c1">//   left_side - [out]</span>
+  <span class="c1">//   right_side - [out]</span>
+  <span class="c1">// Example:</span>
+  <span class="c1">//       ON_BezierCurve crv = ...;</span>
+  <span class="c1">//       ON_BezierCurve right_side;</span>
+  <span class="c1">//       crv.Split( 0.5, crv, right_side );</span>
+  <span class="c1">//   would split crv at the 1/2, put the left side in crv,</span>
+  <span class="c1">//   and return the right side in right_side.</span>
+  <span class="kt">bool</span> <span class="nf">Split</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="n">left_side</span><span class="p">,</span>
+         <span class="n">ON_BezierCurve</span><span class="o">&amp;</span> <span class="n">right_side</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   returns the length of the control polygon</span>
+  <span class="kt">double</span> <span class="nf">ControlPolygonLength</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Use a linear fractional tranformation for [0,1] to reparameterize</span>
+<span class="cm">    the bezier.  The locus of the curve is not changed, but the</span>
+<span class="cm">    parameterization is changed.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    c - [in]</span>
+<span class="cm">      reparameterization constant (generally speaking, c should be &gt; 0).</span>
+<span class="cm">      If c != 1, then the returned bezier will be rational.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    The reparameterization is performed by composing the input Bezier with</span>
+<span class="cm">    the function lambda: [0,1] -&gt; [0,1] given by</span>
+
+<span class="cm">          t -&gt;  c*t / ( (c-1)*t + 1 )</span>
+
+<span class="cm">    Note that lambda(0) = 0, lambda(1) = 1, lambda&#39;(t) &gt; 0,</span>
+<span class="cm">    lambda&#39;(0) = c and lambda&#39;(1) = 1/c.</span>
+
+<span class="cm">    If the input Bezier has control vertices {B_0, ..., B_d}, then the</span>
+<span class="cm">    output Bezier has control vertices</span>
+
+<span class="cm">          (B_0, ... c^i * B_i, ..., c^d * B_d).</span>
+
+<span class="cm">    To derive this formula, simply compute the i-th Bernstein polynomial</span>
+<span class="cm">    composed with lambda().</span>
+
+<span class="cm">    The inverse parameterization is given by 1/c.  That is, the</span>
+<span class="cm">    cumulative effect of the two calls</span>
+
+<span class="cm">          Reparameterize(c)</span>
+<span class="cm">          Reparameterize(1.0/c)</span>
+
+<span class="cm">    is to leave the bezier unchanged.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Bezier::ScaleConrolPoints</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Reparameterize</span><span class="p">(</span>
+          <span class="kt">double</span> <span class="n">c</span>
+          <span class="p">);</span>
+
+  <span class="c1">// misspelled function name is obsolete</span>
+  <span class="n">ON_DEPRECATED</span> <span class="kt">bool</span> <span class="nf">Reparametrize</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Scale a rational Bezier&#39;s control vertices to set a weight to a</span>
+<span class="cm">    specified value.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    i - [in] (0 &lt;= i &lt; order)</span>
+<span class="cm">    w - [in] w != 0.0</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.  The i-th control vertex will have weight w.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    Each control point is multiplied by w/w0, where w0 is the</span>
+<span class="cm">    input value of Weight(i).</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Bezier::Reparameterize</span>
+<span class="cm">    ON_Bezier::ChangeWeights</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">ScaleConrolPoints</span><span class="p">(</span>
+          <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">w</span>
+          <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Use a combination of scaling and reparameterization to set two</span>
+<span class="cm">    rational Bezier weights to specified values.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    i0 - [in] control point index (0 &lt;= i0 &lt; order, i0 != i1)</span>
+<span class="cm">    w0 - [in] Desired weight for i0-th control point</span>
+<span class="cm">    i1 - [in] control point index (0 &lt;= i1 &lt; order, i0 != i1)</span>
+<span class="cm">    w1 - [in] Desired weight for i1-th control point</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.  The returned bezier has the same locus but</span>
+<span class="cm">    probably has a different parameterization.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    The i0-th cv will have weight w0 and the i1-rst cv will have</span>
+<span class="cm">    weight w1.  If v0 and v1 are the cv&#39;s input weights,</span>
+<span class="cm">    then  v0, v1, w0 and w1 must all be nonzero, and w0*v0</span>
+<span class="cm">    and w1*v1 must have the same sign.</span>
+
+<span class="cm">    The equations</span>
+
+<span class="cm">          s * r^i0 = w0/v0</span>
+<span class="cm">          s * r^i1 = w1/v1</span>
+
+<span class="cm">    determine the scaling and reparameterization necessary to</span>
+<span class="cm">    change v0,v1 to w0,w1.</span>
+
+<span class="cm">    If the input Bezier has control vertices</span>
+
+<span class="cm">          (B_0, ..., B_d),</span>
+
+<span class="cm">    then the output Bezier has control vertices</span>
+
+<span class="cm">          (s*B_0, ... s*r^i * B_i, ..., s*r^d * B_d).</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Bezier::Reparameterize</span>
+<span class="cm">    ON_Bezier::ScaleConrolPoints</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">ChangeWeights</span><span class="p">(</span>
+          <span class="kt">int</span> <span class="n">i0</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">w0</span><span class="p">,</span>
+          <span class="kt">int</span> <span class="n">i1</span><span class="p">,</span>
+          <span class="kt">double</span> <span class="n">w1</span>
+          <span class="p">);</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////</span>
+  <span class="c1">// Implementation</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// NOTE: These members are left &quot;public&quot; so that expert users may efficiently</span>
+  <span class="c1">//       create bezier curves using the default constructor and borrow the</span>
+  <span class="c1">//       knot and CV arrays from their native NURBS representation.</span>
+  <span class="c1">//       No technical support will be provided for users who access these</span>
+  <span class="c1">//       members directly.  If you can&#39;t get your stuff to work, then use</span>
+  <span class="c1">//       the constructor with the arguments and the SetKnot() and SetCV()</span>
+  <span class="c1">//       functions to fill in the arrays.</span>
+
+
+  <span class="c1">// dimension of bezier (&gt;=1)</span>
+  <span class="kt">int</span> <span class="n">m_dim</span><span class="p">;</span>
+
+  <span class="c1">// 1 if bezier is rational, 0 if bezier is not rational</span>
+  <span class="kt">int</span> <span class="n">m_is_rat</span><span class="p">;</span>
+
+  <span class="c1">// order = degree+1</span>
+  <span class="kt">int</span> <span class="n">m_order</span><span class="p">;</span>
+
+  <span class="c1">// Number of doubles per cv ( &gt;= ((m_is_rat)?m_dim+1:m_dim) )</span>
+  <span class="kt">int</span> <span class="n">m_cv_stride</span><span class="p">;</span>
+
+  <span class="c1">// The i-th cv begins at cv[i*m_cv_stride].</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="n">m_cv</span><span class="p">;</span>
+
+  <span class="c1">// Number of doubles in m_cv array.  If m_cv_capacity is zero</span>
+  <span class="c1">// and m_cv is not NULL, an expert user is managing the m_cv</span>
+  <span class="c1">// memory.  ~ON_BezierCurve will not deallocate m_cv unless</span>
+  <span class="c1">// m_cv_capacity is greater than zero.</span>
+  <span class="kt">int</span> <span class="n">m_cv_capacity</span><span class="p">;</span>
+
+<span class="cp">#if 8 == ON_SIZEOF_POINTER</span>
+  <span class="c1">// pad to a multiple of 8 bytes so custom allocators</span>
+  <span class="c1">// will keep m_cv aligned and tail-padding reuse will</span>
+  <span class="c1">// not be an issue.</span>
+  <span class="kt">int</span> <span class="n">m_reserved_ON_BezierCurve</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_BezierSurface</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_BezierSurface</span><span class="p">();</span>
+  <span class="n">ON_BezierSurface</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span>
+    <span class="p">);</span>
+
+  <span class="o">~</span><span class="n">ON_BezierSurface</span><span class="p">();</span>
+  <span class="n">ON_BezierSurface</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierSurface</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_BezierSurface</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialSurface</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_BezierSurface</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierSurface</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">ON_BezierSurface</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_PolynomialSurface</span><span class="o">&amp;</span><span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span> <span class="n">ON_TextLog</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span> <span class="c1">// for debugging</span>
+  <span class="kt">int</span> <span class="nf">Dimension</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span>
+    <span class="p">);</span>
+
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="nf">EmergencyDestroy</span><span class="p">();</span> <span class="c1">// call if memory used by ON_NurbsCurve becomes invalid</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Loft a bezier surface through a list of bezier curves.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    curve_list - [in]  list of curves that have the same degree.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Loft</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_BezierCurve</span><span class="o">&gt;&amp;</span> <span class="n">curve_list</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Loft a bezier surface through a list of bezier curves.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    curve_count - [in] number of curves in curve_list</span>
+<span class="cm">    curve_list - [in]  array of pointers to curves that have the same degree.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Loft</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_BezierCurve</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">curve_list</span>
+    <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">GetBBox</span><span class="p">(</span>        <span class="c1">// returns true if successful</span>
+         <span class="kt">double</span><span class="o">*</span><span class="p">,</span>      <span class="c1">// minimum</span>
+         <span class="kt">double</span><span class="o">*</span><span class="p">,</span>      <span class="c1">// maximum</span>
+         <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>  <span class="c1">// true means grow box</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetBoundingBox</span><span class="p">(</span>
+        <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">bGrowBox</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_BoundingBox</span> <span class="nf">BoundingBox</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span>
+         <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Rotates the bezier surface about the specified axis.  A positive</span>
+  <span class="c1">//   rotation angle results in a counter-clockwise rotation</span>
+  <span class="c1">//   about the axis (right hand rule).</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   sin_angle - [in] sine of rotation angle</span>
+  <span class="c1">//   cos_angle - [in] sine of rotation angle</span>
+  <span class="c1">//   rotation_axis - [in] direction of the axis of rotation</span>
+  <span class="c1">//   rotation_center - [in] point on the axis of rotation</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully rotated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierSurface::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">rotation_axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">rotation_center</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Rotates the bezier surface about the specified axis.  A positive</span>
+  <span class="c1">//   rotation angle results in a counter-clockwise rotation</span>
+  <span class="c1">//   about the axis (right hand rule).</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   rotation_angle - [in] angle of rotation in radians</span>
+  <span class="c1">//   rotation_axis - [in] direction of the axis of rotation</span>
+  <span class="c1">//   rotation_center - [in] point on the axis of rotation</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully rotated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierSurface::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">rotation_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">rotation_axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">rotation_center</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Translates the bezier surface along the specified vector.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   translation_vector - [in] translation vector</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully translated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierSurface::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Translate</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">translation_vector</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Scales the bezier surface by the specified facotor.  The scale is</span>
+  <span class="c1">//   centered at the origin.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   scale_factor - [in] scale factor</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully scaled</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierSurface::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Scale</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">scale_factor</span>
+    <span class="p">);</span>
+
+  <span class="n">ON_Interval</span> <span class="nf">Domain</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="c1">// 0 = &quot;u&quot; domain, 1 = &quot;v&quot; domain</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Reverse</span><span class="p">(</span> <span class="kt">int</span> <span class="p">);</span>  <span class="c1">// reverse parameterizatrion</span>
+                        <span class="c1">// Domain changes from [a,b] to [-b,-a]</span>
+
+  <span class="kt">bool</span> <span class="nf">Transpose</span><span class="p">();</span> <span class="c1">// transpose surface parameterization (swap &quot;s&quot; and &quot;t&quot;)</span>
+
+  <span class="kt">bool</span> <span class="nf">Evaluate</span><span class="p">(</span> <span class="c1">// returns false if unable to evaluate</span>
+         <span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="c1">// evaluation parameter</span>
+         <span class="kt">int</span><span class="p">,</span>            <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">derivatives</span> <span class="p">(</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="kt">int</span><span class="p">,</span>            <span class="c1">// array stride (&gt;=Dimension())</span>
+         <span class="kt">double</span><span class="o">*</span>         <span class="c1">// array of length stride*(ndir+1)*(ndir+2)/2</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span><span class="kt">double</span> <span class="n">s</span><span class="p">,</span> <span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetNurbForm</span><span class="p">(</span> <span class="n">ON_NurbsSurface</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsRational</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>  <span class="c1">// true if NURBS curve is rational</span>
+
+  <span class="kt">int</span> <span class="nf">CVSize</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>       <span class="c1">// number of doubles per control vertex</span>
+                <span class="c1">// = IsRational() ? Dim()+1 : Dim()</span>
+
+  <span class="kt">int</span> <span class="nf">Order</span><span class="p">(</span>        <span class="c1">// order = degree + 1</span>
+        <span class="kt">int</span> <span class="c1">// dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">Degree</span><span class="p">(</span>       <span class="c1">// degree = order - 1</span>
+        <span class="kt">int</span> <span class="c1">// dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Expert user function to get a pointer to control vertex</span>
+<span class="cm">    memory.  If you are not an expert user, please use</span>
+<span class="cm">    ON_BezierSurface::GetCV( ON_3dPoint&amp; ) or</span>
+<span class="cm">    ON_BezierSurface::GetCV( ON_4dPoint&amp; ).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    cv_index0 - [in] (0 &lt;= cv_index0 &lt; m_order[0])</span>
+<span class="cm">    cv_index1 - [in] (0 &lt;= cv_index1 &lt; m_order[1])</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Pointer to control vertex.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If the Bezier surface is rational, the format of the</span>
+<span class="cm">    returned array is a homogeneos rational point with</span>
+<span class="cm">    length m_dim+1.  If the Bezier surface is not rational,</span>
+<span class="cm">    the format of the returned array is a nonrational</span>
+<span class="cm">    euclidean point with length m_dim.</span>
+<span class="cm">  See Also</span>
+<span class="cm">    ON_BezierSurface::CVStyle</span>
+<span class="cm">    ON_BezierSurface::GetCV</span>
+<span class="cm">    ON_BezierSurface::Weight</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">CV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">cv_index0</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">cv_index1</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Returns the style of control vertices in the m_cv array.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    @untitled table</span>
+<span class="cm">    ON::not_rational                m_is_rat is false</span>
+<span class="cm">    ON::homogeneous_rational        m_is_rat is true</span>
+<span class="cm">  */</span>
+  <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span> <span class="n">CVStyle</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="nf">Weight</span><span class="p">(</span>        <span class="c1">// get value of control vertex weight</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span>          <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">SetWeight</span><span class="p">(</span>      <span class="c1">// set value of control vertex weight</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>         <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="kt">double</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>              <span class="c1">// set a single control vertex</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>         <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span><span class="p">,</span> <span class="c1">// style of input point</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span>     <span class="c1">// value of control vertex</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>               <span class="c1">// set a single control vertex</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>         <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="c1">// value of control vertex</span>
+                           <span class="c1">// If NURBS is rational, weight</span>
+                           <span class="c1">// will be set to 1.</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>              <span class="c1">// set a single control vertex</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>         <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="c1">// value of control vertex</span>
+                          <span class="c1">// If NURBS is not rational, euclidean</span>
+                          <span class="c1">// location of homogeneous point will</span>
+                          <span class="c1">// be used.</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>              <span class="c1">// get a single control vertex</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>          <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span><span class="p">,</span> <span class="c1">// style to use for output point</span>
+        <span class="kt">double</span><span class="o">*</span>           <span class="c1">// array of length &gt;= CVSize()</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>              <span class="c1">// get a single control vertex</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>         <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">ON_3dPoint</span><span class="o">&amp;</span>      <span class="c1">// gets euclidean cv when NURBS is rational</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>              <span class="c1">// get a single control vertex</span>
+        <span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span>         <span class="o">//</span> <span class="n">CV</span> <span class="n">index</span> <span class="p">(</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="n">and</span> <span class="o">&lt;</span> <span class="n">CVCount</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">ON_4dPoint</span><span class="o">&amp;</span>      <span class="c1">// gets homogeneous cv</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">ZeroCVs</span><span class="p">();</span> <span class="c1">// zeros control vertices and, if rational, sets weights to 1</span>
+
+  <span class="kt">bool</span> <span class="nf">MakeRational</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="nf">MakeNonRational</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="nf">Split</span><span class="p">(</span>
+         <span class="kt">int</span><span class="p">,</span> <span class="c1">// 0 split at &quot;u&quot;=t, 1= split at &quot;v&quot;=t</span>
+         <span class="kt">double</span><span class="p">,</span> <span class="c1">// t = splitting parameter must 0 &lt; t &lt; 1</span>
+         <span class="n">ON_BezierSurface</span><span class="o">&amp;</span><span class="p">,</span> <span class="o">//</span> <span class="n">west</span><span class="o">/</span><span class="n">south</span> <span class="n">side</span> <span class="n">returned</span> <span class="n">here</span> <span class="p">(</span><span class="n">can</span> <span class="n">pass</span> <span class="o">*</span><span class="k">this</span><span class="p">)</span>
+         <span class="n">ON_BezierSurface</span><span class="o">&amp;</span>  <span class="c1">// east/north side returned here (can pass *this)</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Trim</span><span class="p">(</span>
+       <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+       <span class="k">const</span> <span class="n">ON_Interval</span><span class="o">&amp;</span> <span class="n">domain</span>
+       <span class="p">);</span>
+
+  <span class="c1">// returns the isocurve.</span>
+  <span class="n">ON_BezierCurve</span><span class="o">*</span> <span class="nf">IsoCurve</span><span class="p">(</span>
+       <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>    <span class="c1">// 0 first parameter varies and second parameter is constant</span>
+                   <span class="o">//</span>   <span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.,</span> <span class="n">point</span> <span class="n">on</span> <span class="n">IsoCurve</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="n">at</span> <span class="n">t</span> <span class="n">is</span> <span class="n">srf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+                   <span class="c1">// 1 first parameter is constant and second parameter varies</span>
+                   <span class="c1">//   e.g., point on IsoCurve(1,c) at t is srf(c,t)</span>
+       <span class="kt">double</span> <span class="n">c</span><span class="p">,</span>    <span class="c1">// value of constant parameter</span>
+       <span class="n">ON_BezierCurve</span><span class="o">*</span> <span class="n">iso</span><span class="o">=</span><span class="nb">NULL</span> <span class="c1">// When NULL result is constructed on the heap.</span>
+       <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsSingular</span><span class="p">(</span> <span class="c1">// true if surface side is collapsed to a point</span>
+         <span class="kt">int</span>        <span class="c1">// side of parameter space to test</span>
+                   <span class="c1">// 0 = south, 1 = east, 2 = north, 3 = west</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="c1">/////////////////////////////////////////////////////////////////</span>
+  <span class="c1">// Tools for managing CV and knot memory</span>
+  <span class="kt">bool</span> <span class="nf">ReserveCVCapacity</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="c1">// number of doubles to reserve</span>
+    <span class="p">);</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////</span>
+  <span class="c1">// Implementation</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// NOTE: These members are left &quot;public&quot; so that expert users may efficiently</span>
+  <span class="c1">//       create bezier curves using the default constructor and borrow the</span>
+  <span class="c1">//       knot and CV arrays from their native NURBS representation.</span>
+  <span class="c1">//       No technical support will be provided for users who access these</span>
+  <span class="c1">//       members directly.  If you can&#39;t get your stuff to work, then use</span>
+  <span class="c1">//       the constructor with the arguments and the SetKnot() and SetCV()</span>
+  <span class="c1">//       functions to fill in the arrays.</span>
+
+
+  <span class="kt">int</span>     <span class="n">m_dim</span><span class="p">;</span>           <span class="c1">// &gt;= 1</span>
+  <span class="kt">int</span>     <span class="n">m_is_rat</span><span class="p">;</span>        <span class="c1">// 0 = no, 1 = yes</span>
+  <span class="kt">int</span>     <span class="n">m_order</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="c1">// order = degree+1 &gt;= 2</span>
+  <span class="kt">int</span>     <span class="n">m_cv_stride</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="n">m_cv</span><span class="p">;</span>
+  <span class="kt">int</span>     <span class="n">m_cv_capacity</span><span class="p">;</span>   <span class="c1">// if 0, then destructor does not free m_cv</span>
+<span class="cp">#if 8 == ON_SIZEOF_POINTER</span>
+  <span class="c1">// pad to a multiple of 8 bytes so custom allocators</span>
+  <span class="c1">// will keep m_cv aligned and tail-padding reuse will</span>
+  <span class="c1">// not be an issue.</span>
+  <span class="kt">int</span> <span class="n">m_reserved_ON_BezierSurface</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="p">};</span>
+
+
+
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_BezierCage</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_BezierCage</span><span class="p">();</span>
+
+  <span class="n">ON_BezierCage</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order2</span>
+    <span class="p">);</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a bezier volume that maps the unit cube</span>
+<span class="cm">    to a bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bbox - [in] target bounding box</span>
+<span class="cm">    order0 - [in]</span>
+<span class="cm">    order1 - [in]</span>
+<span class="cm">    order2 - [in]</span>
+<span class="cm">  */</span>
+  <span class="n">ON_BezierCage</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order2</span>
+    <span class="p">);</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a bezier volume that maps the unit cube</span>
+<span class="cm">    to an eight sided box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    box_corners - [in] 8 points that define corners of the</span>
+<span class="cm">                       target volume.</span>
+
+<span class="cm">            7______________6</span>
+<span class="cm">            |\             |\</span>
+<span class="cm">            | \            | \</span>
+<span class="cm">            |  \ _____________\</span>
+<span class="cm">            |   4          |   5</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">            3---|----------2   |</span>
+<span class="cm">            \   |          \   |</span>
+<span class="cm">             \  |t          \  |</span>
+<span class="cm">            s \ |            \ |</span>
+<span class="cm">               \0_____________\1</span>
+<span class="cm">                       r</span>
+
+<span class="cm">    order0 - [in]</span>
+<span class="cm">    order1 - [in]</span>
+<span class="cm">    order2 - [in]</span>
+<span class="cm">  */</span>
+  <span class="n">ON_BezierCage</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">*</span> <span class="n">box_corners</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order2</span>
+    <span class="p">);</span>
+
+  <span class="o">~</span><span class="n">ON_BezierCage</span><span class="p">();</span>
+
+  <span class="n">ON_BezierCage</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierCage</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">);</span>
+
+  <span class="n">ON_BezierCage</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_BezierCage</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">);</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Tests class to make sure members are correctly initialized.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if the orders are all &gt;= 2, dimension is positive,</span>
+<span class="cm">    and the rest of the members have settings that are</span>
+<span class="cm">    valid for the orders and dimension.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span> <span class="n">ON_TextLog</span><span class="o">&amp;</span> <span class="n">text_log</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    The dimension of the image of the bazier volume map.</span>
+<span class="cm">    This is generally three, but can be any positive</span>
+<span class="cm">    integer.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Dimesion of the image space.</span>
+<span class="cm">  */</span>
+  <span class="kt">int</span> <span class="nf">Dimension</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Creates a bezier volume with specified orders.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    dim - [in]</span>
+<span class="cm">    is_rat - [in]</span>
+<span class="cm">    order0 - [in]</span>
+<span class="cm">    order1 - [in]</span>
+<span class="cm">    order2 - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if input was valid and creation succeeded.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">is_rat</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order2</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Create a Bezier volume with corners defined by a bounding box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    bbox - [in] target bounding box - the bezier will</span>
+<span class="cm">               map the unit cube onto this bounding box.</span>
+<span class="cm">    order0 - [in]</span>
+<span class="cm">    order1 - [in]</span>
+<span class="cm">    order2 - [in]</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span> <span class="n">bbox</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order2</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Create a bezier volume from a 3d box</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    box_corners - [in] 8 points that define corners of the volume</span>
+
+<span class="cm">            7______________6</span>
+<span class="cm">            |\             |\</span>
+<span class="cm">            | \            | \</span>
+<span class="cm">            |  \ _____________\</span>
+<span class="cm">            |   4          |   5</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">            3---|----------2   |</span>
+<span class="cm">            \   |          \   |</span>
+<span class="cm">             \  |t          \  |</span>
+<span class="cm">            s \ |            \ |</span>
+<span class="cm">               \0_____________\1</span>
+<span class="cm">                       r</span>
+
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">*</span> <span class="n">box_corners</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order0</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order1</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">order2</span>
+    <span class="p">);</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Frees the CV array and sets all members to zero.</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">Destroy</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Sets all members to zero.  Does not free the CV array</span>
+<span class="cm">    even when m_cv is not NULL.  Generally used when the</span>
+<span class="cm">    CVs were allocated from a memory pool that no longer</span>
+<span class="cm">    exists and the free done in ~ON_BezierCage would</span>
+<span class="cm">    cause a crash.</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">EmergencyDestroy</span><span class="p">();</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Reads the definition of this class from an</span>
+<span class="cm">    archive previously saved by ON_BezierVolue::Write.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    archive - [in] target archive</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Read</span><span class="p">(</span><span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="n">archive</span><span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Saves the definition of this class in serial binary</span>
+<span class="cm">    form that can be read by ON_BezierVolue::Read.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    archive - [in] target archive</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Write</span><span class="p">(</span><span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="n">archive</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Gets the axis aligned bounding box that contains</span>
+<span class="cm">    the bezier&#39;s control points.  The bezier volume</span>
+<span class="cm">    maps the unit cube into this box.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    boxmin - [in] array of Dimension() doubles</span>
+<span class="cm">    boxmax - [in] array of Dimension() doubles</span>
+<span class="cm">    bGrowBox =  [in] if true and the input is a valid box</span>
+<span class="cm">                          then the input box is grown to</span>
+<span class="cm">                          include this object&#39;s bounding box.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">GetBBox</span><span class="p">(</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">boxmin</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">boxmax</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">bGrowBox</span> <span class="o">=</span> <span class="nb">false</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span>
+         <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span>
+         <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Rotates the bezier surface about the specified axis.  A positive</span>
+  <span class="c1">//   rotation angle results in a counter-clockwise rotation</span>
+  <span class="c1">//   about the axis (right hand rule).</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   sin_angle - [in] sine of rotation angle</span>
+  <span class="c1">//   cos_angle - [in] sine of rotation angle</span>
+  <span class="c1">//   rotation_axis - [in] direction of the axis of rotation</span>
+  <span class="c1">//   rotation_center - [in] point on the axis of rotation</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully rotated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCage::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">rotation_axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">rotation_center</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Rotates the bezier surface about the specified axis.  A positive</span>
+  <span class="c1">//   rotation angle results in a counter-clockwise rotation</span>
+  <span class="c1">//   about the axis (right hand rule).</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   rotation_angle - [in] angle of rotation in radians</span>
+  <span class="c1">//   rotation_axis - [in] direction of the axis of rotation</span>
+  <span class="c1">//   rotation_center - [in] point on the axis of rotation</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully rotated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCage::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">rotation_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">rotation_axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">rotation_center</span>
+        <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Translates the bezier surface along the specified vector.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   translation_vector - [in] translation vector</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully translated</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCage::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Translate</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">translation_vector</span>
+    <span class="p">);</span>
+
+  <span class="c1">// Description:</span>
+  <span class="c1">//   Scales the bezier surface by the specified facotor.  The scale is</span>
+  <span class="c1">//   centered at the origin.</span>
+  <span class="c1">// Parameters:</span>
+  <span class="c1">//   scale_factor - [in] scale factor</span>
+  <span class="c1">// Returns:</span>
+  <span class="c1">//   true if bezier surface successfully scaled</span>
+  <span class="c1">// Remarks:</span>
+  <span class="c1">//   Uses ON_BezierCage::Transform() function to calculate the result.</span>
+  <span class="kt">bool</span> <span class="nf">Scale</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">scale_factor</span>
+    <span class="p">);</span>
+
+  <span class="n">ON_Interval</span> <span class="nf">Domain</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="c1">// 0 = &quot;u&quot; domain, 1 = &quot;v&quot; domain, 2 = &quot;w&quot; domain</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// returns false if unable to evaluate</span>
+  <span class="kt">bool</span> <span class="nf">Evaluate</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">r</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">t</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">der_count</span><span class="p">,</span>
+         <span class="kt">int</span> <span class="n">v_stride</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">v</span>        <span class="o">//</span> <span class="n">array</span> <span class="n">of</span> <span class="n">length</span> <span class="n">stride</span><span class="o">*</span><span class="p">(</span><span class="n">ndir</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ndir</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluates bezer volume map.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    rst - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Value of the bezier volume map at (r,s,t).</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span>
+         <span class="kt">double</span> <span class="n">r</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">t</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluates bezer volume map.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    rst - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Value of the bezier volume map at (rst.x,rst.y,rst.z).</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span>
+         <span class="n">ON_3dPoint</span> <span class="n">rst</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">IsRational</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>  <span class="c1">// true if NURBS curve is rational</span>
+
+  <span class="kt">bool</span> <span class="nf">IsSingular</span><span class="p">(</span> <span class="c1">// true if surface side is collapsed to a point</span>
+        <span class="kt">int</span>        <span class="c1">// side of parameter space to test</span>
+                   <span class="c1">// 0 = south, 1 = east, 2 = north, 3 = west</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">CVSize</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>       <span class="c1">// number of doubles per control vertex</span>
+                <span class="c1">// = IsRational() ? Dim()+1 : Dim()</span>
+
+  <span class="kt">int</span> <span class="nf">Order</span><span class="p">(</span>        <span class="c1">// order = degree + 1</span>
+        <span class="kt">int</span> <span class="c1">// dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="nf">Degree</span><span class="p">(</span>       <span class="c1">// degree = order - 1</span>
+        <span class="kt">int</span> <span class="c1">// dir</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Expert user function to get a pointer to control vertex</span>
+<span class="cm">    memory.  If you are not an expert user, please use</span>
+<span class="cm">    ON_BezierCage::GetCV( ON_3dPoint&amp; ) or</span>
+<span class="cm">    ON_BezierCage::GetCV( ON_4dPoint&amp; ).</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    cv_index0 - [in] (0 &lt;= cv_index0 &lt; m_order[0])</span>
+<span class="cm">    cv_index1 - [in] (0 &lt;= cv_index1 &lt; m_order[1])</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Pointer to control vertex.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If the Bezier surface is rational, the format of the</span>
+<span class="cm">    returned array is a homogeneos rational point with</span>
+<span class="cm">    length m_dim+1.  If the Bezier surface is not rational,</span>
+<span class="cm">    the format of the returned array is a nonrational</span>
+<span class="cm">    euclidean point with length m_dim.</span>
+<span class="cm">  See Also</span>
+<span class="cm">    ON_BezierCage::CVStyle</span>
+<span class="cm">    ON_BezierCage::GetCV</span>
+<span class="cm">    ON_BezierCage::Weight</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="nf">CV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Returns the style of control vertices in the m_cv array.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    @untitled table</span>
+<span class="cm">    ON::not_rational                m_is_rat is false</span>
+<span class="cm">    ON::homogeneous_rational        m_is_rat is true</span>
+<span class="cm">  */</span>
+  <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span> <span class="n">CVStyle</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="nf">Weight</span><span class="p">(</span>        <span class="c1">// get value of control vertex weight</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">SetWeight</span><span class="p">(</span>      <span class="c1">// set value of control vertex weight</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">w</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>              <span class="c1">// set a single control vertex</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span><span class="p">,</span> <span class="c1">// style of input point</span>
+        <span class="k">const</span> <span class="kt">double</span><span class="o">*</span>     <span class="c1">// value of control vertex</span>
+        <span class="p">);</span>
+
+  <span class="c1">// set a single control vertex</span>
+  <span class="c1">// If NURBS is rational, weight</span>
+  <span class="c1">// will be set to 1.</span>
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+        <span class="p">);</span>
+
+  <span class="c1">// set a single control vertex</span>
+  <span class="c1">// value of control vertex</span>
+  <span class="c1">// If NURBS is not rational, euclidean</span>
+  <span class="c1">// location of homogeneous point will</span>
+  <span class="c1">// be used.</span>
+  <span class="kt">bool</span> <span class="nf">SetCV</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_4dPoint</span><span class="o">&amp;</span> <span class="n">hpoint</span>
+        <span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>              <span class="c1">// get a single control vertex</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="n">ON</span><span class="o">::</span><span class="n">point_style</span><span class="p">,</span> <span class="c1">// style to use for output point</span>
+        <span class="kt">double</span><span class="o">*</span>           <span class="o">//</span> <span class="n">array</span> <span class="n">of</span> <span class="n">length</span> <span class="o">&gt;=</span> <span class="n">CVSize</span><span class="p">()</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>              <span class="c1">// get a single control vertex</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="n">ON_3dPoint</span><span class="o">&amp;</span>      <span class="c1">// gets euclidean cv when NURBS is rational</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">GetCV</span><span class="p">(</span>              <span class="c1">// get a single control vertex</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">,</span>
+        <span class="n">ON_4dPoint</span><span class="o">&amp;</span>      <span class="c1">// gets homogeneous cv</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">ZeroCVs</span><span class="p">();</span> <span class="c1">// zeros control vertices and, if rational, sets weights to 1</span>
+
+  <span class="kt">bool</span> <span class="nf">MakeRational</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="nf">MakeNonRational</span><span class="p">();</span>
+
+
+  <span class="c1">/////////////////////////////////////////////////////////////////</span>
+  <span class="c1">// Tools for managing CV and knot memory</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    cv_capacity - [in] number of doubles to reserve</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">ReserveCVCapacity</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">cv_capacity</span>
+    <span class="p">);</span>
+
+  <span class="c1">/////////////////////////////////////////////////////////////////</span>
+  <span class="c1">// Implementation</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// NOTE: These members are left &quot;public&quot; so that expert users may efficiently</span>
+  <span class="c1">//       create bezier curves using the default constructor and borrow the</span>
+  <span class="c1">//       knot and CV arrays from their native NURBS representation.</span>
+  <span class="c1">//       No technical support will be provided for users who access these</span>
+  <span class="c1">//       members directly.  If you can&#39;t get your stuff to work, then use</span>
+  <span class="c1">//       the constructor with the arguments and the SetKnot() and SetCV()</span>
+  <span class="c1">//       functions to fill in the arrays.</span>
+
+
+  <span class="kt">int</span>     <span class="n">m_dim</span><span class="p">;</span>
+  <span class="kt">bool</span>    <span class="n">m_is_rat</span><span class="p">;</span>
+  <span class="kt">int</span>     <span class="n">m_order</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="kt">int</span>     <span class="n">m_cv_stride</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="kt">int</span>     <span class="n">m_cv_capacity</span><span class="p">;</span>
+  <span class="kt">double</span><span class="o">*</span> <span class="n">m_cv</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="nl">ON_BezierCageMorph</span> <span class="p">:</span> <span class="k">public</span> <span class="n">ON_SpaceMorph</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_BezierCageMorph</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">ON_BezierCageMorph</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Create a Bezier volume.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    P0 - [in]</span>
+<span class="cm">    P1 - [in]</span>
+<span class="cm">    P2 - [in]</span>
+<span class="cm">    P3 - [in]</span>
+<span class="cm">         P0,P1,P2,P3 defines a parallepiped in world space. The morph</span>
+<span class="cm">         maps this parallepiped to the (0,1)x(0,1)x(0,1) unit cube</span>
+<span class="cm">         and then applies the BezierCage map.</span>
+
+
+<span class="cm">             ______________</span>
+<span class="cm">            |\             |\</span>
+<span class="cm">            | \            | \</span>
+<span class="cm">            |  \P3____________\</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">            |   |          |   |</span>
+<span class="cm">           P2---|----------    |</span>
+<span class="cm">            \   |          \   |</span>
+<span class="cm">             \  |z          \  |</span>
+<span class="cm">            y \ |            \ |</span>
+<span class="cm">               \P0____________P1</span>
+<span class="cm">                       x</span>
+
+
+<span class="cm">    point_countX - [in]</span>
+<span class="cm">    point_countY - [in]</span>
+<span class="cm">    point_countZ - [in]</span>
+<span class="cm">      Number of control points in the bezier volume map.  The</span>
+<span class="cm">      bezier volume in the returned morph is the identity map</span>
+<span class="cm">      which can be modified as needed.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    True if resulting morph is valid.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_BezierCage::SetBezierCage</span>
+<span class="cm">    ON_BezierCage::SetXform</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Create</span><span class="p">(</span>
+    <span class="n">ON_3dPoint</span> <span class="n">P0</span><span class="p">,</span>
+    <span class="n">ON_3dPoint</span> <span class="n">P1</span><span class="p">,</span>
+    <span class="n">ON_3dPoint</span> <span class="n">P2</span><span class="p">,</span>
+    <span class="n">ON_3dPoint</span> <span class="n">P3</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_countX</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_countY</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">point_countZ</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set the world to unit cube map.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    world2unitcube - [in]</span>
+<span class="cm">      Tranformation matrix that maps world coordinates</span>
+<span class="cm">      to the unit cube (0,1)x(0,1)x(0,1).</span>
+<span class="cm">  Returns</span>
+<span class="cm">    True if current bezier volum and input transformation</span>
+<span class="cm">    matrix are valid.  In all cases, the morph&#39;s m_xyz2rst</span>
+<span class="cm">    member is set.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_BezierCage::Create</span>
+<span class="cm">    ON_BezierCage::SetBezierCage</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetXform</span><span class="p">(</span> <span class="n">ON_Xform</span> <span class="n">world2unitcube</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set the unit cube to world map.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    world2unitcube - [in]</span>
+<span class="cm">      Bezier volume map from the unit cube (0,1)x(0,1)x(0,1)</span>
+<span class="cm">      to world space.</span>
+<span class="cm">  Returns</span>
+<span class="cm">    True if current transformation matrix and input</span>
+<span class="cm">    bezier volume are valid.  In all cases, the</span>
+<span class="cm">    morph&#39;s m_rst2xyz member is set.</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_BezierCage::Create</span>
+<span class="cm">    ON_BezierCage::SetXform</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SetBezierCage</span><span class="p">(</span> <span class="n">ON_BezierCage</span><span class="o">&amp;</span> <span class="n">unitcube2world</span> <span class="p">);</span>
+
+  <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">WorldToUnitCube</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">ON_BezierCage</span><span class="o">&amp;</span> <span class="n">BezierCage</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Read</span><span class="p">(</span><span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="n">archive</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="nf">Write</span><span class="p">(</span><span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="n">archive</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Transforms the morph by transforming the bezier volume map.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    xform - [in]</span>
+<span class="cm">  Returns</span>
+<span class="cm">    True if input is valid.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span><span class="p">);</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="kt">bool</span> <span class="n">m_bValid</span><span class="p">;</span>
+
+  <span class="c1">// transforms world (x,y,z) coordinate into</span>
+  <span class="c1">// unit cube.</span>
+  <span class="n">ON_Xform</span> <span class="n">m_xyz2rst</span><span class="p">;</span>
+
+  <span class="c1">// function that maps unit cube into world</span>
+  <span class="n">ON_BezierCage</span> <span class="n">m_rst2xyz</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#if defined(ON_DLL_TEMPLATE)</span>
+
+<span class="c1">// This stuff is here because of a limitation in the way Microsoft</span>
+<span class="c1">// handles templates and DLLs.  See Microsoft&#39;s knowledge base</span>
+<span class="c1">// article ID Q168958 for details.</span>
+<span class="cp">#pragma warning( push )</span>
+<span class="cp">#pragma warning( disable : 4231 )</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_BezierCurve</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_BezierCurve</span><span class="o">*&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_BezierSurface</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_BezierSurface</span><span class="o">*&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_BezierCage</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_BezierCage</span><span class="o">*&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_BezierCageMorph</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_BezierCageMorph</span><span class="o">*&gt;</span><span class="p">;</span>
+<span class="cp">#pragma warning( pop )</span>
+
+<span class="cp">#endif</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bitmap.h.html" class="btn btn-neutral float-right" title="File opennurbs_bitmap.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_bezier.h.html" class="btn btn-neutral float-left" title="File opennurbs_bezier.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

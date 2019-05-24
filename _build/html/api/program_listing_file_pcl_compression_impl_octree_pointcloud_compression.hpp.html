@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree_pointcloud_compression.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree_pointcloud_density.h" href="file_pcl_octree_octree_pointcloud_density.h.html" />
+    <link rel="prev" title="File octree_pointcloud_compression.hpp" href="file_pcl_compression_impl_octree_pointcloud_compression.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_compression_impl_octree_pointcloud_compression.hpp.html">File octree_pointcloud_compression.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File octree_pointcloud_compression.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_compression_impl_octree_pointcloud_compression.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree-pointcloud-compression-hpp">
+<span id="program-listing-file-pcl-compression-impl-octree-pointcloud-compression-hpp"></span><h1>Program Listing for File octree_pointcloud_compression.hpp<a class="headerlink" href="#program-listing-for-file-octree-pointcloud-compression-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_compression_impl_octree_pointcloud_compression.hpp.html#file-pcl-compression-impl-octree-pointcloud-compression-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\compression\impl\octree_pointcloud_compression.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2009-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef OCTREE_COMPRESSION_HPP</span>
+<span class="cp">#define OCTREE_COMPRESSION_HPP</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/compression/entropy_range_coder.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iterator&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">io</span>
+  <span class="p">{</span>
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span>
+        <span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">encodePointCloud</span> <span class="p">(</span>
+        <span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud_arg</span><span class="p">,</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_out_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">recent_tree_depth</span> <span class="o">=</span>
+          <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">getTreeDepth</span> <span class="p">());</span>
+
+      <span class="c1">// initialize octree</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="p">);</span>
+
+      <span class="c1">// add point to octree</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">addPointsFromInputCloud</span> <span class="p">();</span>
+
+      <span class="c1">// make sure cloud contains points</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+
+        <span class="c1">// color field analysis</span>
+        <span class="n">cloud_with_color_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;</span> <span class="n">fields</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">rgba_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">rgba_index</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">getFieldIndex</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="p">,</span> <span class="s">&quot;rgb&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rgba_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">rgba_index</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">getFieldIndex</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="p">,</span> <span class="s">&quot;rgba&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rgba_index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">point_color_offset_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">rgba_index</span><span class="p">].</span><span class="n">offset</span><span class="p">);</span>
+          <span class="n">cloud_with_color_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// apply encoding configuration</span>
+        <span class="n">cloud_with_color_</span> <span class="o">&amp;=</span> <span class="n">do_color_encoding_</span><span class="p">;</span>
+
+
+        <span class="c1">// if octree depth changed, we enforce I-frame encoding</span>
+        <span class="n">i_frame_</span> <span class="o">|=</span> <span class="p">(</span><span class="n">recent_tree_depth</span> <span class="o">!=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">getTreeDepth</span> <span class="p">());</span><span class="c1">// | !(iFrameCounter%10);</span>
+
+        <span class="c1">// enable I-frame rate</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_counter_</span><span class="o">++==</span><span class="n">i_frame_rate_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">i_frame_counter_</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+          <span class="n">i_frame_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// increase frameID</span>
+        <span class="n">frame_ID_</span><span class="o">++</span><span class="p">;</span>
+
+        <span class="c1">// do octree encoding</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">point_count_data_vector_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">point_count_data_vector_</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="c1">// initialize color encoding</span>
+        <span class="n">color_coder_</span><span class="p">.</span><span class="n">initializeEncoding</span> <span class="p">();</span>
+        <span class="n">color_coder_</span><span class="p">.</span><span class="n">setPointCount</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+        <span class="n">color_coder_</span><span class="p">.</span><span class="n">setVoxelCount</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span><span class="p">));</span>
+
+        <span class="c1">// initialize point encoding</span>
+        <span class="n">point_coder_</span><span class="p">.</span><span class="n">initializeEncoding</span> <span class="p">();</span>
+        <span class="n">point_coder_</span><span class="p">.</span><span class="n">setPointCount</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+
+        <span class="c1">// serialize octree</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">)</span>
+          <span class="c1">// i-frame encoding - encode tree structure without referencing previous buffer</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">serializeTree</span> <span class="p">(</span><span class="n">binary_tree_data_vector_</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+        <span class="k">else</span>
+          <span class="c1">// p-frame encoding - XOR encoded tree structure</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">serializeTree</span> <span class="p">(</span><span class="n">binary_tree_data_vector_</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+
+
+        <span class="c1">// write frame header information to stream</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">writeFrameHeader</span> <span class="p">(</span><span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+
+        <span class="c1">// apply entropy coding to the content of all data vectors and send data to output stream</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">entropyEncoding</span> <span class="p">(</span><span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+
+        <span class="c1">// prepare for next frame</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">switchBuffers</span> <span class="p">();</span>
+
+        <span class="c1">// reset object count</span>
+        <span class="n">object_count_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">b_show_statistics_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="kt">float</span> <span class="n">bytes_per_XYZ</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">compressed_point_data_len_</span><span class="p">)</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">);</span>
+          <span class="kt">float</span> <span class="n">bytes_per_color</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">compressed_color_data_len_</span><span class="p">)</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">);</span>
+
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;*** POINTCLOUD ENCODING ***</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Frame ID: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">frame_ID_</span><span class="p">);</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">)</span>
+            <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Encoding Frame: Intra frame</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+          <span class="k">else</span>
+            <span class="nf">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Encoding Frame: Prediction frame</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Number of encoded points: %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">point_count_</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;XYZ compression percentage: %f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_XYZ</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0f</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;XYZ bytes per point: %f bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_XYZ</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Color compression percentage: %f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_color</span> <span class="o">/</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0f</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Color bytes per point: %f bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_color</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Size of uncompressed point cloud: %f kBytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">/</span> <span class="mf">1024.0f</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Size of compressed point cloud: %f kBytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">compressed_point_data_len_</span> <span class="o">+</span> <span class="n">compressed_color_data_len_</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1024.0f</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Total bytes per point: %f bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_XYZ</span> <span class="o">+</span> <span class="n">bytes_per_color</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Total compression percentage: %f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">bytes_per_XYZ</span> <span class="o">+</span> <span class="n">bytes_per_color</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0f</span><span class="p">);</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Compression ratio: %f</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">bytes_per_XYZ</span> <span class="o">+</span> <span class="n">bytes_per_color</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="n">i_frame_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">b_show_statistics_</span><span class="p">)</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Info: Dropping empty point cloud</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">deleteTree</span><span class="p">();</span>
+        <span class="n">i_frame_counter_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">i_frame_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">decodePointCloud</span> <span class="p">(</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_in_arg</span><span class="p">,</span>
+        <span class="n">PointCloudPtr</span> <span class="o">&amp;</span><span class="n">cloud_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+
+      <span class="c1">// synchronize to frame header</span>
+      <span class="n">syncToHeader</span><span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">);</span>
+
+      <span class="c1">// initialize octree</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">switchBuffers</span> <span class="p">();</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">setOutputCloud</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="p">);</span>
+
+      <span class="c1">// color field analysis</span>
+      <span class="n">cloud_with_color_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;</span> <span class="n">fields</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">rgba_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+      <span class="n">rgba_index</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">getFieldIndex</span> <span class="p">(</span><span class="o">*</span><span class="n">output_</span><span class="p">,</span> <span class="s">&quot;rgb&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rgba_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rgba_index</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">getFieldIndex</span> <span class="p">(</span><span class="o">*</span><span class="n">output_</span><span class="p">,</span> <span class="s">&quot;rgba&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rgba_index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">point_color_offset_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="n">rgba_index</span><span class="p">].</span><span class="n">offset</span><span class="p">);</span>
+        <span class="n">cloud_with_color_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="c1">// read header from input stream</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">readFrameHeader</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">);</span>
+
+      <span class="c1">// decode data vectors from stream</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">entropyDecoding</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">);</span>
+
+      <span class="c1">// initialize color and point encoding</span>
+      <span class="n">color_coder_</span><span class="p">.</span><span class="n">initializeDecoding</span> <span class="p">();</span>
+      <span class="n">point_coder_</span><span class="p">.</span><span class="n">initializeDecoding</span> <span class="p">();</span>
+
+      <span class="c1">// initialize output cloud</span>
+      <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+      <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">));</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">)</span>
+        <span class="c1">// i-frame decoding - decode tree structure without referencing previous buffer</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">deserializeTree</span> <span class="p">(</span><span class="n">binary_tree_data_vector_</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+      <span class="k">else</span>
+        <span class="c1">// p-frame decoding - decode XOR encoded tree structure</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">deserializeTree</span> <span class="p">(</span><span class="n">binary_tree_data_vector_</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+
+      <span class="c1">// assign point cloud properties</span>
+      <span class="n">output_</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">output_</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud_arg</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+      <span class="n">output_</span><span class="o">-&gt;</span><span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">b_show_statistics_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">bytes_per_XYZ</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">compressed_point_data_len_</span><span class="p">)</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">bytes_per_color</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">compressed_color_data_len_</span><span class="p">)</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">);</span>
+
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;*** POINTCLOUD DECODING ***</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Frame ID: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">frame_ID_</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">)</span>
+          <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Decoding Frame: Intra frame</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">else</span>
+          <span class="nf">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Decoding Frame: Prediction frame</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Number of decoded points: %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">point_count_</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;XYZ compression percentage: %f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_XYZ</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0f</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;XYZ bytes per point: %f bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_XYZ</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Color compression percentage: %f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_color</span> <span class="o">/</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0f</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Color bytes per point: %f bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_color</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Size of uncompressed point cloud: %f kBytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">/</span> <span class="mf">1024.0f</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Size of compressed point cloud: %f kBytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">compressed_point_data_len_</span> <span class="o">+</span> <span class="n">compressed_color_data_len_</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1024.0f</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Total bytes per point: %f bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">bytes_per_XYZ</span> <span class="o">+</span> <span class="n">bytes_per_color</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Total compression percentage: %f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">bytes_per_XYZ</span> <span class="o">+</span> <span class="n">bytes_per_color</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0f</span><span class="p">);</span>
+        <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;Compression ratio: %f</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="mf">3.0f</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">bytes_per_XYZ</span> <span class="o">+</span> <span class="n">bytes_per_color</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">entropyEncoding</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_out_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">uint64_t</span> <span class="n">binary_tree_data_vector_size</span><span class="p">;</span>
+      <span class="kt">uint64_t</span> <span class="n">point_avg_color_data_vector_size</span><span class="p">;</span>
+
+      <span class="n">compressed_point_data_len_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">compressed_color_data_len_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="c1">// encode binary octree structure</span>
+      <span class="n">binary_tree_data_vector_size</span> <span class="o">=</span> <span class="n">binary_tree_data_vector_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+      <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">binary_tree_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">binary_tree_data_vector_size</span><span class="p">));</span>
+      <span class="n">compressed_point_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">encodeCharVectorToStream</span> <span class="p">(</span><span class="n">binary_tree_data_vector_</span><span class="p">,</span>
+                                                                             <span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">cloud_with_color_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// encode averaged voxel color information</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">pointAvgColorDataVector</span> <span class="o">=</span> <span class="n">color_coder_</span><span class="p">.</span><span class="n">getAverageDataVector</span> <span class="p">();</span>
+        <span class="n">point_avg_color_data_vector_size</span> <span class="o">=</span> <span class="n">pointAvgColorDataVector</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_avg_color_data_vector_size</span><span class="p">),</span>
+                                            <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_avg_color_data_vector_size</span><span class="p">));</span>
+        <span class="n">compressed_color_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">encodeCharVectorToStream</span> <span class="p">(</span><span class="n">pointAvgColorDataVector</span><span class="p">,</span>
+                                                                               <span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">uint64_t</span> <span class="n">pointCountDataVector_size</span><span class="p">;</span>
+        <span class="kt">uint64_t</span> <span class="n">point_diff_data_vector_size</span><span class="p">;</span>
+        <span class="kt">uint64_t</span> <span class="n">point_diff_color_data_vector_size</span><span class="p">;</span>
+
+        <span class="c1">// encode amount of points per voxel</span>
+        <span class="n">pointCountDataVector_size</span> <span class="o">=</span> <span class="n">point_count_data_vector_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">pointCountDataVector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">pointCountDataVector_size</span><span class="p">));</span>
+        <span class="n">compressed_point_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">encodeIntVectorToStream</span> <span class="p">(</span><span class="n">point_count_data_vector_</span><span class="p">,</span>
+                                                                          <span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+
+        <span class="c1">// encode differential point information</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">point_diff_data_vector</span> <span class="o">=</span> <span class="n">point_coder_</span><span class="p">.</span><span class="n">getDifferentialDataVector</span> <span class="p">();</span>
+        <span class="n">point_diff_data_vector_size</span> <span class="o">=</span> <span class="n">point_diff_data_vector</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_diff_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_diff_data_vector_size</span><span class="p">));</span>
+        <span class="n">compressed_point_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">encodeCharVectorToStream</span> <span class="p">(</span><span class="n">point_diff_data_vector</span><span class="p">,</span>
+                                                                               <span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cloud_with_color_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// encode differential color information</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">point_diff_color_data_vector</span> <span class="o">=</span> <span class="n">color_coder_</span><span class="p">.</span><span class="n">getDifferentialDataVector</span> <span class="p">();</span>
+          <span class="n">point_diff_color_data_vector_size</span> <span class="o">=</span> <span class="n">point_diff_color_data_vector</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+          <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_diff_color_data_vector_size</span><span class="p">),</span>
+                                           <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_diff_color_data_vector_size</span><span class="p">));</span>
+          <span class="n">compressed_color_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">encodeCharVectorToStream</span> <span class="p">(</span><span class="n">point_diff_color_data_vector</span><span class="p">,</span>
+                                                                                 <span class="n">compressed_tree_data_out_arg</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="c1">// flush output stream</span>
+      <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">flush</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">entropyDecoding</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_in_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">uint64_t</span> <span class="n">binary_tree_data_vector_size</span><span class="p">;</span>
+      <span class="kt">uint64_t</span> <span class="n">point_avg_color_data_vector_size</span><span class="p">;</span>
+
+      <span class="n">compressed_point_data_len_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">compressed_color_data_len_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="c1">// decode binary octree structure</span>
+      <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">binary_tree_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">binary_tree_data_vector_size</span><span class="p">));</span>
+      <span class="n">binary_tree_data_vector_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">binary_tree_data_vector_size</span><span class="p">));</span>
+      <span class="n">compressed_point_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">decodeStreamToCharVector</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">,</span>
+                                                                         <span class="n">binary_tree_data_vector_</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">data_with_color_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// decode averaged voxel color information</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">point_avg_color_data_vector</span> <span class="o">=</span> <span class="n">color_coder_</span><span class="p">.</span><span class="n">getAverageDataVector</span> <span class="p">();</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_avg_color_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_avg_color_data_vector_size</span><span class="p">));</span>
+        <span class="n">point_avg_color_data_vector</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_avg_color_data_vector_size</span><span class="p">));</span>
+        <span class="n">compressed_color_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">decodeStreamToCharVector</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">,</span>
+                                                                           <span class="n">point_avg_color_data_vector</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">uint64_t</span> <span class="n">point_count_data_vector_size</span><span class="p">;</span>
+        <span class="kt">uint64_t</span> <span class="n">point_diff_data_vector_size</span><span class="p">;</span>
+        <span class="kt">uint64_t</span> <span class="n">point_diff_color_data_vector_size</span><span class="p">;</span>
+
+        <span class="c1">// decode amount of points per voxel</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_count_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_count_data_vector_size</span><span class="p">));</span>
+        <span class="n">point_count_data_vector_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_count_data_vector_size</span><span class="p">));</span>
+        <span class="n">compressed_point_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">decodeStreamToIntVector</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">,</span> <span class="n">point_count_data_vector_</span><span class="p">);</span>
+        <span class="n">point_count_data_vector_iterator_</span> <span class="o">=</span> <span class="n">point_count_data_vector_</span><span class="p">.</span><span class="n">begin</span> <span class="p">();</span>
+
+        <span class="c1">// decode differential point information</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">pointDiffDataVector</span> <span class="o">=</span> <span class="n">point_coder_</span><span class="p">.</span><span class="n">getDifferentialDataVector</span> <span class="p">();</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_diff_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_diff_data_vector_size</span><span class="p">));</span>
+        <span class="n">pointDiffDataVector</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_diff_data_vector_size</span><span class="p">));</span>
+        <span class="n">compressed_point_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">decodeStreamToCharVector</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">,</span>
+                                                                           <span class="n">pointDiffDataVector</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">data_with_color_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// decode differential color information</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">pointDiffColorDataVector</span> <span class="o">=</span> <span class="n">color_coder_</span><span class="p">.</span><span class="n">getDifferentialDataVector</span> <span class="p">();</span>
+          <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_diff_color_data_vector_size</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_diff_color_data_vector_size</span><span class="p">));</span>
+          <span class="n">pointDiffColorDataVector</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_diff_color_data_vector_size</span><span class="p">));</span>
+          <span class="n">compressed_color_data_len_</span> <span class="o">+=</span> <span class="n">entropy_coder_</span><span class="p">.</span><span class="n">decodeStreamToCharVector</span> <span class="p">(</span><span class="n">compressed_tree_data_in_arg</span><span class="p">,</span>
+                                                                             <span class="n">pointDiffColorDataVector</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">writeFrameHeader</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_out_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// encode header identifier</span>
+      <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">frame_header_identifier_</span><span class="p">),</span> <span class="n">strlen</span> <span class="p">(</span><span class="n">frame_header_identifier_</span><span class="p">));</span>
+      <span class="c1">// encode point cloud header id</span>
+      <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">frame_ID_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">frame_ID_</span><span class="p">));</span>
+      <span class="c1">// encode frame type (I/P-frame)</span>
+      <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">i_frame_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">min_z</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">max_z</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">octree_resolution</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">color_bit_depth</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">point_resolution</span><span class="p">;</span>
+
+        <span class="c1">// get current configuration</span>
+        <span class="n">octree_resolution</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">getResolution</span> <span class="p">();</span>
+        <span class="n">color_bit_depth</span>  <span class="o">=</span> <span class="n">color_coder_</span><span class="p">.</span><span class="n">getBitDepth</span> <span class="p">();</span>
+        <span class="n">point_resolution</span><span class="o">=</span> <span class="n">point_coder_</span><span class="p">.</span><span class="n">getPrecision</span> <span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">getBoundingBox</span> <span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">min_z</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">max_z</span><span class="p">);</span>
+
+        <span class="c1">// encode amount of points</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">)</span>
+          <span class="n">point_count_</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">leaf_count_</span><span class="p">;</span>
+        <span class="k">else</span>
+          <span class="n">point_count_</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">object_count_</span><span class="p">;</span>
+
+        <span class="c1">// encode coding configuration</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud_with_color_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">cloud_with_color_</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_count_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">octree_resolution</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">octree_resolution</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">color_bit_depth</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">color_bit_depth</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_resolution</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_resolution</span><span class="p">));</span>
+
+        <span class="c1">// encode octree bounding box</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">min_x</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">min_x</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">min_y</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">min_y</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">min_z</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">min_z</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">max_x</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">max_x</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">max_y</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">max_y</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_out_arg</span><span class="p">.</span><span class="n">write</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">max_z</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">max_z</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">syncToHeader</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_in_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// sync to frame header</span>
+      <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">header_id_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(</span><span class="n">header_id_pos</span> <span class="o">&lt;</span> <span class="n">strlen</span> <span class="p">(</span><span class="n">frame_header_identifier_</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">readChar</span><span class="p">;</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">readChar</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">readChar</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">readChar</span> <span class="o">!=</span> <span class="n">frame_header_identifier_</span><span class="p">[</span><span class="n">header_id_pos</span><span class="o">++</span><span class="p">])</span>
+          <span class="n">header_id_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">frame_header_identifier_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">readChar</span><span class="p">)</span><span class="o">?</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">readFrameHeader</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">compressed_tree_data_in_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// read header</span>
+      <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">frame_ID_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">frame_ID_</span><span class="p">));</span>
+      <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i_frame_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">i_frame_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">min_z</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">max_z</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">octree_resolution</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">color_bit_depth</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">point_resolution</span><span class="p">;</span>
+
+        <span class="c1">// read coder configuration</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">data_with_color_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">data_with_color_</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_count_</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_count_</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">octree_resolution</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">octree_resolution</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">color_bit_depth</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">color_bit_depth</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point_resolution</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">point_resolution</span><span class="p">));</span>
+
+        <span class="c1">// read octree bounding box</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">min_x</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">min_x</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">min_y</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">min_y</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">min_z</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">min_z</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">max_x</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">max_x</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">max_y</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">max_y</span><span class="p">));</span>
+        <span class="n">compressed_tree_data_in_arg</span><span class="p">.</span><span class="n">read</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">max_z</span><span class="p">),</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">max_z</span><span class="p">));</span>
+
+        <span class="c1">// reset octree and assign new bounding box &amp; resolution</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">deleteTree</span> <span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">setResolution</span> <span class="p">(</span><span class="n">octree_resolution</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">defineBoundingBox</span> <span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">min_z</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">max_z</span><span class="p">);</span>
+
+        <span class="c1">// configure color &amp; point coding</span>
+        <span class="n">color_coder_</span><span class="p">.</span><span class="n">setBitDepth</span> <span class="p">(</span><span class="n">color_bit_depth</span><span class="p">);</span>
+        <span class="n">point_coder_</span><span class="p">.</span><span class="n">setPrecision</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">point_resolution</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">serializeTreeCallback</span> <span class="p">(</span>
+        <span class="n">LeafT</span> <span class="o">&amp;</span><span class="n">leaf_arg</span><span class="p">,</span> <span class="k">const</span> <span class="n">OctreeKey</span> <span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// reference to point indices vector stored within octree leaf</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">leafIdx</span> <span class="o">=</span> <span class="n">leaf_arg</span><span class="p">.</span><span class="n">getPointIndicesVector</span><span class="p">();</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+        <span class="c1">// encode amount of points within voxel</span>
+        <span class="n">point_count_data_vector_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">leafIdx</span><span class="p">.</span><span class="n">size</span> <span class="p">()));</span>
+
+        <span class="c1">// calculate lower voxel corner based on octree key</span>
+        <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">;</span>
+        <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">;</span>
+        <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">;</span>
+
+        <span class="c1">// differentially encode points to lower voxel corner</span>
+        <span class="n">point_coder_</span><span class="p">.</span><span class="n">encodePoints</span> <span class="p">(</span><span class="n">leafIdx</span><span class="p">,</span> <span class="n">lowerVoxelCorner</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">cloud_with_color_</span><span class="p">)</span>
+          <span class="c1">// encode color of points</span>
+          <span class="n">color_coder_</span><span class="p">.</span><span class="n">encodePoints</span> <span class="p">(</span><span class="n">leafIdx</span><span class="p">,</span> <span class="n">point_color_offset_</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cloud_with_color_</span><span class="p">)</span>
+          <span class="c1">// encode average color of all points within voxel</span>
+          <span class="n">color_coder_</span><span class="p">.</span><span class="n">encodeAverageOfPoints</span> <span class="p">(</span><span class="n">leafIdx</span><span class="p">,</span> <span class="n">point_color_offset_</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">input_</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">LeafT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">BranchT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">OctreeT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OctreePointCloudCompression</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">LeafT</span><span class="p">,</span> <span class="n">BranchT</span><span class="p">,</span> <span class="n">OctreeT</span><span class="o">&gt;::</span><span class="n">deserializeTreeCallback</span> <span class="p">(</span><span class="n">LeafT</span><span class="o">&amp;</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">OctreeKey</span><span class="o">&amp;</span> <span class="n">key_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">double</span> <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+      <span class="n">PointT</span> <span class="n">newPoint</span><span class="p">;</span>
+
+      <span class="kt">size_t</span> <span class="n">pointCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">do_voxel_grid_enDecoding_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// get current cloud size</span>
+        <span class="kt">size_t</span> <span class="n">cloudSize</span> <span class="o">=</span> <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+
+        <span class="c1">// get amount of point to be decoded</span>
+        <span class="n">pointCount</span> <span class="o">=</span> <span class="o">*</span><span class="n">point_count_data_vector_iterator_</span><span class="p">;</span>
+        <span class="n">point_count_data_vector_iterator_</span><span class="o">++</span><span class="p">;</span>
+
+        <span class="c1">// increase point cloud by amount of voxel points</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pointCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">newPoint</span><span class="p">);</span>
+
+        <span class="c1">// calculcate position of lower voxel corner</span>
+        <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">;</span>
+        <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">;</span>
+        <span class="n">lowerVoxelCorner</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">;</span>
+
+        <span class="c1">// decode differentially encoded points</span>
+        <span class="n">point_coder_</span><span class="p">.</span><span class="n">decodePoints</span> <span class="p">(</span><span class="n">output_</span><span class="p">,</span> <span class="n">lowerVoxelCorner</span><span class="p">,</span> <span class="n">cloudSize</span><span class="p">,</span> <span class="n">cloudSize</span> <span class="o">+</span> <span class="n">pointCount</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="c1">// calculate center of lower voxel corner</span>
+        <span class="n">newPoint</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_x_</span><span class="p">);</span>
+        <span class="n">newPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_y_</span><span class="p">);</span>
+        <span class="n">newPoint</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">((</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">key_arg</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">resolution_</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">min_z_</span><span class="p">);</span>
+
+        <span class="c1">// add point to point cloud</span>
+        <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">newPoint</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">cloud_with_color_</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">data_with_color_</span><span class="p">)</span>
+          <span class="c1">// decode color information</span>
+          <span class="n">color_coder_</span><span class="p">.</span><span class="n">decodePoints</span> <span class="p">(</span><span class="n">output_</span><span class="p">,</span> <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="n">pointCount</span><span class="p">,</span>
+                                    <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">point_color_offset_</span><span class="p">);</span>
+        <span class="k">else</span>
+          <span class="c1">// set default color information</span>
+          <span class="n">color_coder_</span><span class="p">.</span><span class="n">setDefaultColor</span> <span class="p">(</span><span class="n">output_</span><span class="p">,</span> <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="n">pointCount</span><span class="p">,</span>
+                                       <span class="n">output_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">point_color_offset_</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_octree_octree_pointcloud_density.h.html" class="btn btn-neutral float-right" title="File octree_pointcloud_density.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_compression_impl_octree_pointcloud_compression.hpp.html" class="btn btn-neutral float-left" title="File octree_pointcloud_compression.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

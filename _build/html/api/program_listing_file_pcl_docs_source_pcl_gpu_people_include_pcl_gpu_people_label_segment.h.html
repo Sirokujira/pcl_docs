@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File label_segment.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File label_segment.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_source_pcl_gpu_people_include_pcl_gpu_people_label_segment.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-label-segment-h">
+<span id="program-listing-file-pcl-docs-source-pcl-gpu-people-include-pcl-gpu-people-label-segment-h"></span><h1>Program Listing for File label_segment.h<a class="headerlink" href="#program-listing-for-file-label-segment-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_source_pcl_gpu_people_include_pcl_gpu_people_label_segment.h.html#file-pcl-docs-source-pcl-gpu-people-include-pcl-gpu-people-label-segment-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\source\pcl\gpu\people\include\pcl\gpu\people\label_segment.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id: $</span>
+<span class="cm"> * @author Koen Buys</span>
+<span class="cm"> * @file segment.h</span>
+<span class="cm"> * @brief This file contains the function prototypes for the segmentation functions</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="c1">// our headers</span>
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/gpu/people/label_blob2.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/gpu/people/label_common.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// std</span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="c1">// opencv drawing stuff</span>
+<span class="c1">//#include &lt;opencv2/highgui/highgui.hpp&gt;</span>
+
+<span class="c1">// PCL specific includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/conversions.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/centroid.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PointIndices.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/time.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">gpu</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">people</span>
+    <span class="p">{</span>
+      <span class="k">namespace</span> <span class="n">label_skeleton</span>
+      <span class="p">{</span>
+        <span class="cm">/*</span>
+<span class="cm">         * \brief this function smooths the label image based on label and depth</span>
+<span class="cm">         * \param[in] lmap_in the cvMat with the labels, must be CV_8UC1</span>
+<span class="cm">         * \param[in] dmap the cvMat with the depths, must be CV_16U in mm</span>
+<span class="cm">         * \param[out] lmap_out the smoothed output labelmap as cvMat</span>
+<span class="cm">         * \param[in] patch_size make the patch size for smoothing</span>
+<span class="cm">         * \param[in] depthThres the z-distance threshold</span>
+<span class="cm">         * \todo add a Gaussian contribution function to depth and vote</span>
+<span class="cm">         **/</span>
+        <span class="c1">//inline void smoothLabelImage ( cv::Mat&amp;      lmap_in,</span>
+        <span class="c1">//                        cv::Mat&amp;      dmap,</span>
+        <span class="c1">//                        cv::Mat&amp;      lmap_out,</span>
+        <span class="c1">//                        unsigned int  patch_size,</span>
+        <span class="c1">//                        unsigned int  depthThres)</span>
+        <span class="c1">//{</span>
+        <span class="c1">//  // check depth</span>
+        <span class="c1">//  assert(lmap_in.depth() == CV_8UC1);</span>
+        <span class="c1">//  assert(dmap.depth() == CV_16U);</span>
+        <span class="c1">//  assert(lmap_out.depth() == CV_8UC1);</span>
+        <span class="c1">//  // check size</span>
+        <span class="c1">//  assert(lmap_in.rows == dmap.rows);</span>
+        <span class="c1">//  assert(lmap_in.cols == dmap.cols);</span>
+        <span class="c1">//  assert(lmap_out.rows == dmap.rows);</span>
+        <span class="c1">//  assert(lmap_out.cols == dmap.cols);</span>
+
+        <span class="c1">//  unsigned int half_patch = static_cast&lt;int&gt; (patch_size/2);</span>
+
+        <span class="c1">//  // iterate over the height of the image (from 2 till 478)</span>
+        <span class="c1">//  for(unsigned int h = (0 + half_patch); h &lt; (lmap_in.rows - half_patch); h++)</span>
+        <span class="c1">//  {</span>
+        <span class="c1">//    // iterate over the width of the image (from 2 till 638)</span>
+        <span class="c1">//    for(unsigned int w = (0 + half_patch); w &lt; (lmap_in.cols - half_patch); w++)</span>
+        <span class="c1">//    {</span>
+        <span class="c1">//      short depth = dmap.at&lt;short&gt;(h, w);</span>
+        <span class="c1">//      unsigned int votes[NUM_PARTS];</span>
+        <span class="c1">//      //this should be unneeded but to test</span>
+        <span class="c1">//      for(int j = 0 ; j&lt; NUM_PARTS; j++)</span>
+        <span class="c1">//        votes[j] = 0;</span>
+
+        <span class="c1">//      // iterate over the size of the patch in the height</span>
+        <span class="c1">//      for(unsigned int h_l = (h - half_patch); h_l &lt;= (h + half_patch); h_l++)</span>
+        <span class="c1">//      {</span>
+        <span class="c1">//        // iterate over the size of the patch in the width</span>
+        <span class="c1">//        for(unsigned int w_l = (w - half_patch); w_l &lt;= (w + half_patch); w_l++)</span>
+        <span class="c1">//        {</span>
+        <span class="c1">//          // get the depth of this part of the patch</span>
+        <span class="c1">//          short depth_l = dmap.at&lt;short&gt;(h_l,w_l);</span>
+        <span class="c1">//          // evaluate the difference to the centroid</span>
+        <span class="c1">//          if(abs(depth - depth_l) &lt; static_cast&lt;int&gt; (depthThres))</span>
+        <span class="c1">//          {</span>
+        <span class="c1">//            char label = lmap_in.at&lt;char&gt;(h_l,w_l);</span>
+        <span class="c1">//            if(label &gt;= 0 &amp;&amp; label &lt; NUM_PARTS)</span>
+        <span class="c1">//              votes[static_cast&lt;unsigned int&gt; (label)]++;</span>
+        <span class="c1">//            else</span>
+        <span class="c1">//              std::cout &lt;&lt; &quot;(E) : smoothLabelImage(): I&#39;ve read a label that is non valid&quot; &lt;&lt; std::endl;</span>
+        <span class="c1">//          }</span>
+        <span class="c1">//        }</span>
+        <span class="c1">//      }</span>
+
+        <span class="c1">//      unsigned int max = 0;</span>
+        <span class="c1">//      char label = lmap_in.at&lt;char&gt;(h,w);</span>
+
+        <span class="c1">//      // iterate over the bin to find the max</span>
+        <span class="c1">//      for(char i=0; i&lt;NUM_PARTS; i++)</span>
+        <span class="c1">//      {</span>
+        <span class="c1">//        if(votes[static_cast&lt;int&gt; (i)] &gt; max)</span>
+        <span class="c1">//        {</span>
+        <span class="c1">//          max = votes[static_cast&lt;int&gt; (i)];</span>
+        <span class="c1">//          label = i;</span>
+        <span class="c1">//        }</span>
+        <span class="c1">//      }</span>
+        <span class="c1">//      lmap_out.at&lt;char&gt;(h,w) = label;</span>
+        <span class="c1">//    }</span>
+        <span class="c1">//  }</span>
+        <span class="c1">//}</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * \brief this function smooths the label image based on label and depth</span>
+<span class="cm">         * \param[in] lmap_in the cvMat with the labels, must be CV_8UC1</span>
+<span class="cm">         * \param[in] dmap the cvMat with the depths, must be CV_16U in mm</span>
+<span class="cm">         * \param[out] lmap_out the smoothed output labelmap as cvMat</span>
+<span class="cm">         * \todo make the patch size a parameter</span>
+<span class="cm">         * \todo make the z-distance a parameter</span>
+<span class="cm">         * \todo add a Gaussian contribution function to depth and vote</span>
+<span class="cm">         **/</span>
+        <span class="c1">//inline void smoothLabelImage2 ( cv::Mat&amp;  lmap_in,</span>
+        <span class="c1">//                        cv::Mat&amp;  dmap,</span>
+        <span class="c1">//                        cv::Mat&amp;  lmap_out)</span>
+        <span class="c1">//{</span>
+        <span class="c1">//  // check depth</span>
+        <span class="c1">//  assert(lmap_in.depth() == CV_8UC1);</span>
+        <span class="c1">//  assert(dmap.depth() == CV_16U);</span>
+        <span class="c1">//  assert(lmap_out.depth() == CV_8UC1);</span>
+        <span class="c1">//  // check size</span>
+        <span class="c1">//  assert(lmap_in.rows == dmap.rows);</span>
+        <span class="c1">//  assert(lmap_in.cols == dmap.cols);</span>
+        <span class="c1">//  assert(lmap_out.rows == dmap.rows);</span>
+        <span class="c1">//  assert(lmap_out.cols == dmap.cols);</span>
+
+        <span class="c1">//  //unsigned int patch_size = 5;</span>
+        <span class="c1">//  unsigned int half_patch = 2;</span>
+        <span class="c1">//  unsigned int depthThres = 300; // Think this is in mm, verify this!!!!!</span>
+
+        <span class="c1">//  // iterate over the height of the image (from 2 till 478)</span>
+        <span class="c1">//  unsigned int endrow = (lmap_in.rows - half_patch);</span>
+        <span class="c1">//  unsigned int endcol = (lmap_in.cols - half_patch);</span>
+        <span class="c1">//  for(unsigned int h = (0 + half_patch); h &lt; endrow; h++)</span>
+        <span class="c1">//  {</span>
+        <span class="c1">//    unsigned int endheight = (h + half_patch);</span>
+
+        <span class="c1">//    // iterate over the width of the image (from 2 till 638)</span>
+        <span class="c1">//    for(unsigned int w = (0 + half_patch); w &lt; endcol; w++)</span>
+        <span class="c1">//    {</span>
+        <span class="c1">//      unsigned int endwidth = (w + half_patch);</span>
+
+        <span class="c1">//      short depth = dmap.at&lt;short&gt;(h, w);</span>
+        <span class="c1">//      unsigned int votes[NUM_PARTS];</span>
+        <span class="c1">//      //this should be unneeded but to test</span>
+        <span class="c1">//      for(int j = 0 ; j&lt; NUM_PARTS; j++)</span>
+        <span class="c1">//        votes[j] = 0;</span>
+
+        <span class="c1">//      // iterate over the size of the patch in the height</span>
+        <span class="c1">//      for(unsigned int h_l = (h - half_patch); h_l &lt;= endheight; h_l++)</span>
+        <span class="c1">//      {</span>
+        <span class="c1">//        // iterate over the size of the patch in the width</span>
+        <span class="c1">//        for(unsigned int w_l = (w - half_patch); w_l &lt;= endwidth; w_l++)</span>
+        <span class="c1">//        {</span>
+        <span class="c1">//          // get the depth of this part of the patch</span>
+        <span class="c1">//          short depth_l = dmap.at&lt;short&gt;(h_l,w_l);</span>
+        <span class="c1">//          // evaluate the difference to the centroid</span>
+        <span class="c1">//          if(abs(depth - depth_l) &lt; static_cast&lt;int&gt; (depthThres))</span>
+        <span class="c1">//          {</span>
+        <span class="c1">//            char label = lmap_in.at&lt;char&gt;(h_l,w_l);</span>
+        <span class="c1">//            if(label &gt;= 0 &amp;&amp; label &lt; NUM_PARTS)</span>
+        <span class="c1">//              votes[static_cast&lt;unsigned int&gt;(label)]++;</span>
+        <span class="c1">//            else</span>
+        <span class="c1">//              std::cout &lt;&lt; &quot;(E) : smoothLabelImage(): I&#39;ve read a label that is non valid&quot; &lt;&lt; std::endl;</span>
+        <span class="c1">//          }</span>
+        <span class="c1">//        }</span>
+        <span class="c1">//      }</span>
+
+        <span class="c1">//      unsigned int max = 0;</span>
+        <span class="c1">//      char label = lmap_in.at&lt;char&gt;(h,w);</span>
+
+        <span class="c1">//      // iterate over the bin to find the max</span>
+        <span class="c1">//      for(char i=0; i&lt;NUM_PARTS; i++)</span>
+        <span class="c1">//      {</span>
+        <span class="c1">//        if(votes[static_cast&lt;unsigned int&gt;(i)] &gt; max)</span>
+        <span class="c1">//        {</span>
+        <span class="c1">//          max = votes[static_cast&lt;unsigned int&gt;(i)];</span>
+        <span class="c1">//          label = i;</span>
+        <span class="c1">//        }</span>
+        <span class="c1">//      }</span>
+        <span class="c1">//      lmap_out.at&lt;char&gt;(h,w) = label;</span>
+        <span class="c1">//    }</span>
+        <span class="c1">//  }</span>
+        <span class="c1">//}</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * @brief this function smooths the label image based on label and depth</span>
+<span class="cm">         * @param[in] lmap_in the cvMat with the labels, must be CV_8UC1</span>
+<span class="cm">         * @param[in] dmap the cvMat with the depths, must be CV_16U in mm</span>
+<span class="cm">         * @param[out] lmap_out the smoothed output labelmap as cvMat</span>
+<span class="cm">         * @todo make the patch size a parameter</span>
+<span class="cm">         * @todo make the z-distance a parameter</span>
+<span class="cm">         * @todo add a Gaussian contribution function to depth and vote</span>
+<span class="cm">         **/</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">smoothLabelImage</span> <span class="p">(</span> <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span>  <span class="n">lmap_in</span><span class="p">,</span>
+                                <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span>  <span class="n">dmap</span><span class="p">,</span>
+                                <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span>  <span class="n">lmap_out</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// check depth</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">lmap_in</span><span class="p">.</span><span class="n">depth</span><span class="p">()</span> <span class="o">==</span> <span class="n">CV_8UC1</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">dmap</span><span class="p">.</span><span class="n">depth</span><span class="p">()</span> <span class="o">==</span> <span class="n">CV_16U</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">lmap_out</span><span class="p">.</span><span class="n">depth</span><span class="p">()</span> <span class="o">==</span> <span class="n">CV_8UC1</span><span class="p">);</span>
+          <span class="c1">// check size</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">lmap_in</span><span class="p">.</span><span class="n">rows</span> <span class="o">==</span> <span class="n">dmap</span><span class="p">.</span><span class="n">rows</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">lmap_in</span><span class="p">.</span><span class="n">cols</span> <span class="o">==</span> <span class="n">dmap</span><span class="p">.</span><span class="n">cols</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">lmap_out</span><span class="p">.</span><span class="n">rows</span> <span class="o">==</span> <span class="n">dmap</span><span class="p">.</span><span class="n">rows</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">lmap_out</span><span class="p">.</span><span class="n">cols</span> <span class="o">==</span> <span class="n">dmap</span><span class="p">.</span><span class="n">cols</span><span class="p">);</span>
+
+          <span class="c1">//unsigned int patch_size = 5;</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">half_patch</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">depthThres</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span> <span class="c1">// Think this is in mm, verify this!!!!!</span>
+
+          <span class="c1">// iterate over the height of the image (from 2 till 478)</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">endrow</span> <span class="o">=</span> <span class="p">(</span><span class="n">lmap_in</span><span class="p">.</span><span class="n">rows</span> <span class="o">-</span> <span class="n">half_patch</span><span class="p">);</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">endcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">lmap_in</span><span class="p">.</span><span class="n">cols</span> <span class="o">-</span> <span class="n">half_patch</span><span class="p">);</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">votes</span><span class="p">[</span><span class="n">NUM_PARTS</span><span class="p">];</span>
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">endheight</span><span class="p">,</span> <span class="n">endwidth</span><span class="p">;</span>
+          <span class="k">const</span> <span class="kt">short</span><span class="o">*</span> <span class="n">drow</span><span class="p">;</span>
+          <span class="kt">char</span> <span class="o">*</span><span class="n">loutrow</span><span class="p">;</span>
+          <span class="kt">short</span> <span class="n">depth</span><span class="p">;</span>
+          <span class="k">const</span> <span class="kt">short</span><span class="o">*</span> <span class="n">drow_offset</span><span class="p">;</span>
+          <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">lrow_offset</span><span class="p">;</span>
+          <span class="kt">short</span> <span class="n">depth_l</span><span class="p">;</span>
+          <span class="kt">char</span> <span class="n">label</span><span class="p">;</span>
+          <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">+</span> <span class="n">half_patch</span><span class="p">);</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">endrow</span><span class="p">;</span> <span class="n">h</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">endheight</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">half_patch</span><span class="p">);</span>
+
+            <span class="n">drow</span> <span class="o">=</span> <span class="n">dmap</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">short</span><span class="o">&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+            <span class="n">loutrow</span> <span class="o">=</span> <span class="n">lmap_out</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+
+            <span class="c1">// iterate over the width of the image (from 2 till 638)</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">+</span> <span class="n">half_patch</span><span class="p">);</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">endcol</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">endwidth</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">+</span> <span class="n">half_patch</span><span class="p">);</span>
+
+              <span class="n">depth</span> <span class="o">=</span> <span class="n">drow</span><span class="p">[</span><span class="n">w</span><span class="p">];</span>
+              <span class="c1">// reset votes</span>
+              <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span> <span class="n">NUM_PARTS</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="n">votes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+              <span class="c1">// iterate over the size of the patch in the height</span>
+              <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">h_l</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">half_patch</span><span class="p">);</span> <span class="n">h_l</span> <span class="o">&lt;=</span> <span class="n">endheight</span><span class="p">;</span> <span class="n">h_l</span><span class="o">++</span><span class="p">)</span>
+              <span class="p">{</span>
+                <span class="n">drow_offset</span> <span class="o">=</span> <span class="n">dmap</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">short</span><span class="o">&gt;</span><span class="p">(</span><span class="n">h_l</span><span class="p">);</span>
+                <span class="n">lrow_offset</span> <span class="o">=</span> <span class="n">lmap_in</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">h_l</span><span class="p">);</span>
+
+                <span class="c1">// iterate over the size of the patch in the width</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">w_l</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">half_patch</span><span class="p">);</span> <span class="n">w_l</span> <span class="o">&lt;=</span> <span class="n">endwidth</span><span class="p">;</span> <span class="n">w_l</span><span class="o">++</span><span class="p">)</span>
+                <span class="p">{</span>
+                  <span class="c1">// get the depth of this part of the patch</span>
+                  <span class="n">depth_l</span> <span class="o">=</span> <span class="n">drow_offset</span><span class="p">[</span><span class="n">w_l</span><span class="p">];</span>
+                  <span class="c1">// evaluate the difference to the centroid</span>
+                  <span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">depth</span> <span class="o">-</span> <span class="n">depth_l</span><span class="p">)</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">depthThres</span><span class="p">))</span>
+                  <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">lrow_offset</span><span class="p">[</span><span class="n">w_l</span><span class="p">];</span>
+                    <span class="n">votes</span><span class="p">[</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span><span class="o">++</span><span class="p">;</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+
+              <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+              <span class="c1">// iterate over the bin to find the max</span>
+              <span class="k">for</span><span class="p">(</span><span class="kt">char</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">NUM_PARTS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+              <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">votes</span><span class="p">[</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
+                <span class="p">{</span>
+                  <span class="n">max</span> <span class="o">=</span> <span class="n">votes</span><span class="p">[</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">)];</span>
+                  <span class="n">loutrow</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * @brief This function takes a number of indices with label and sorts them in the blob matrix</span>
+<span class="cm">         * @param[in] cloud_in the original input pointcloud from which everything was calculated</span>
+<span class="cm">         * @param[in] sizeThres the minimal size needed to be considered as a valid blob</span>
+<span class="cm">         * @param[out] sorted the matrix in which every blob will be pushed back</span>
+<span class="cm">         * @param[in] indices the matrix of PointIndices</span>
+<span class="cm">         * @todo implement the eigenvalue evaluation again</span>
+<span class="cm">         * @todo do we still need sizeThres?</span>
+<span class="cm">         **/</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">sortIndicesToBlob2</span> <span class="p">(</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;&amp;</span>                       <span class="n">cloud_in</span><span class="p">,</span>
+                                  <span class="kt">unsigned</span> <span class="kt">int</span>                                                          <span class="n">sizeThres</span><span class="p">,</span>
+                                  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob2</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Blob2</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;&amp;</span>  <span class="n">sorted</span><span class="p">,</span>
+                                  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="o">&gt;&amp;</span>                        <span class="n">indices</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">sorted</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">==</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+          <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="c1">// Iterate over all labels</span>
+          <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">lab</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">lab</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">lab</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">lid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="c1">// Iterate over all blobs of this label</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">[</span><span class="n">lab</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">l</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="c1">// If the blob has enough pixels</span>
+              <span class="k">if</span><span class="p">(</span><span class="n">indices</span><span class="p">[</span><span class="n">lab</span><span class="p">][</span><span class="n">l</span><span class="p">].</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">sizeThres</span><span class="p">)</span>
+              <span class="p">{</span>
+                <span class="n">Blob2</span> <span class="n">b</span><span class="p">;</span>
+
+                <span class="n">b</span><span class="p">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">lab</span><span class="p">][</span><span class="n">l</span><span class="p">];</span>
+
+                <span class="n">pcl</span><span class="o">::</span><span class="n">compute3DCentroid</span><span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">mean</span><span class="p">);</span>
+<span class="cp">#ifdef NEED_STATS</span>
+                <span class="n">pcl</span><span class="o">::</span><span class="n">computeCovarianceMatrixNormalized</span><span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">cov</span><span class="p">);</span>
+                <span class="n">pcl</span><span class="o">::</span><span class="n">getMinMax3D</span><span class="p">(</span><span class="n">cloud_in</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">min</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">max</span><span class="p">);</span>
+                <span class="n">pcl</span><span class="o">::</span><span class="n">eigen33</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">cov</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">eigenvect</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">eigenval</span><span class="p">);</span>
+<span class="cp">#endif</span>
+                <span class="c1">// Check if it is a valid blob</span>
+                <span class="c1">//if((b.eigenval(0) &lt; LUT_max_part_size[(int) lab]) &amp;&amp; (b.mean(2) != 0))</span>
+                <span class="k">if</span><span class="p">((</span><span class="n">b</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="p">{</span>
+                  <span class="n">b</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+                  <span class="n">id</span><span class="o">++</span><span class="p">;</span>
+                  <span class="n">b</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">part_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">lab</span><span class="p">);</span>
+                  <span class="n">b</span><span class="p">.</span><span class="n">lid</span> <span class="o">=</span> <span class="n">lid</span><span class="p">;</span>
+                  <span class="n">lid</span><span class="o">++</span><span class="p">;</span>
+                  <span class="n">sorted</span><span class="p">[</span><span class="n">lab</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * @brief This function is a stupid helper function to debug easilier, it print out how the matrix was sorted</span>
+<span class="cm">         * @param[in] sorted the matrix of blobs</span>
+<span class="cm">         * @return Zero if everything went well</span>
+<span class="cm">         **/</span>
+        <span class="kr">inline</span> <span class="kt">int</span> <span class="n">giveSortedBlobsInfo</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob2</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Blob2</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">sorted</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(I) : giveSortedBlobsInfo(): Size of outer vector: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sorted</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+          <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sorted</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(I) : giveSortedBlobsInfo(): Found &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sorted</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; parts of type &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(I) : giveSortedBlobsInfo(): indices : &quot;</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">sorted</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; id:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sorted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; lid:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sorted</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">lid</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="c1">// end namespace label_skeleton</span>
+    <span class="p">}</span> <span class="c1">// end namespace people</span>
+  <span class="p">}</span> <span class="c1">// end namespace gpu</span>
+<span class="p">}</span> <span class="c1">// end namespace pcl</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

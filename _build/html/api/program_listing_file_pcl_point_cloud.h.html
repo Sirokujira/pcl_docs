@@ -1,0 +1,844 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File point_cloud.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File point_cloud.h" href="file_E__pcl_docs_pcl_cuda_common_include_pcl_cuda_point_cloud.h.html" />
+    <link rel="prev" title="File point_cloud.h" href="file_pcl_point_cloud.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_point_cloud.h.html">File point_cloud.h</a> &raquo;</li>
+        
+      <li>Program Listing for File point_cloud.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_point_cloud.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-point-cloud-h">
+<span id="program-listing-file-pcl-point-cloud-h"></span><h1>Program Listing for File point_cloud.h<a class="headerlink" href="#program-listing-for-file-point-cloud-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_point_cloud.h.html#file-pcl-point-cloud-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\point_cloud.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#ifdef __GNUC__</span>
+<span class="cp">#pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/StdVector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/Geometry&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PCLHeader.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/exceptions.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_traits.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">detail</span>
+  <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">FieldMapping</span>
+    <span class="p">{</span>
+      <span class="kt">size_t</span> <span class="n">serialized_offset</span><span class="p">;</span>
+      <span class="kt">size_t</span> <span class="n">struct_offset</span><span class="p">;</span>
+      <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span> <span class="c1">// namespace detail</span>
+
+  <span class="c1">// Forward declarations</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">PointCloud</span><span class="p">;</span>
+  <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">detail</span><span class="o">::</span><span class="n">FieldMapping</span><span class="o">&gt;</span> <span class="n">MsgFieldMap</span><span class="p">;</span>
+
+  <span class="cm">/** \brief Helper functor structure for copying data between an Eigen type and a PointT. */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span>
+  <span class="k">struct</span> <span class="n">NdCopyEigenPointFunctor</span>
+  <span class="p">{</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">POD</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Pod</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Constructor</span>
+<span class="cm">      * \param[in] p1 the input Eigen type</span>
+<span class="cm">      * \param[out] p2 the output Point type</span>
+<span class="cm">      */</span>
+    <span class="n">NdCopyEigenPointFunctor</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="n">PointOutT</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">p1_</span> <span class="p">(</span><span class="n">p1</span><span class="p">),</span>
+        <span class="n">p2_</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">Pod</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">p2</span><span class="p">)),</span>
+        <span class="n">f_idx_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="cm">/** \brief Operator. Data copy happens here. */</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+    <span class="k">operator</span><span class="p">()</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="c1">//boost::fusion::at_key&lt;Key&gt; (p2_) = p1_[f_idx_++];</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">T</span><span class="p">;</span>
+      <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">data_ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p2_</span><span class="p">)</span> <span class="o">+</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+      <span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">data_ptr</span><span class="p">)</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">p1_</span><span class="p">[</span><span class="n">f_idx_</span><span class="o">++</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">p1_</span><span class="p">;</span>
+      <span class="n">Pod</span> <span class="o">&amp;</span><span class="n">p2_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">f_idx_</span><span class="p">;</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+   <span class="p">};</span>
+
+  <span class="cm">/** \brief Helper functor structure for copying data between an Eigen type and a PointT. */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="o">&gt;</span>
+  <span class="k">struct</span> <span class="n">NdCopyPointEigenFunctor</span>
+  <span class="p">{</span>
+    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">POD</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">Pod</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Constructor</span>
+<span class="cm">      * \param[in] p1 the input Point type</span>
+<span class="cm">      * \param[out] p2 the output Eigen type</span>
+<span class="cm">      */</span>
+     <span class="n">NdCopyPointEigenFunctor</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">p1_</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Pod</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">p1</span><span class="p">)),</span> <span class="n">p2_</span> <span class="p">(</span><span class="n">p2</span><span class="p">),</span> <span class="n">f_idx_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="cm">/** \brief Operator. Data copy happens here. */</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+    <span class="k">operator</span><span class="p">()</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="c1">//p2_[f_idx_++] = boost::fusion::at_key&lt;Key&gt; (p1_);</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">T</span><span class="p">;</span>
+      <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">data_ptr</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p1_</span><span class="p">)</span> <span class="o">+</span> <span class="n">pcl</span><span class="o">::</span><span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">Key</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+      <span class="n">p2_</span><span class="p">[</span><span class="n">f_idx_</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">T</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">data_ptr</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="k">const</span> <span class="n">Pod</span> <span class="o">&amp;</span><span class="n">p1_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">p2_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">f_idx_</span><span class="p">;</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+
+  <span class="k">namespace</span> <span class="n">detail</span>
+  <span class="p">{</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">MsgFieldMap</span><span class="o">&gt;&amp;</span>
+    <span class="n">getMapping</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">);</span>
+  <span class="p">}</span> <span class="c1">// namespace detail</span>
+
+  <span class="cm">/** \brief PointCloud represents the base class in PCL for storing collections of 3D points.</span>
+<span class="cm">    *</span>
+<span class="cm">    * The class is templated, which means you need to specify the type of data</span>
+<span class="cm">    * that it should contain. For example, to create a point cloud that holds 4</span>
+<span class="cm">    * random XYZ data points, use:</span>
+<span class="cm">    *</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * pcl::PointCloud&lt;pcl::PointXYZ&gt; cloud;</span>
+<span class="cm">    * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));</span>
+<span class="cm">    * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));</span>
+<span class="cm">    * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));</span>
+<span class="cm">    * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    *</span>
+<span class="cm">    * The PointCloud class contains the following elements:</span>
+<span class="cm">    *   - \b width - specifies the width of the point cloud dataset in the number of points. WIDTH has two meanings:</span>
+<span class="cm">    *     - it can specify the total number of points in the cloud (equal with POINTS see below) for unorganized datasets;</span>
+<span class="cm">    *     - it can specify the width (total number of points in a row) of an organized point cloud dataset.</span>
+<span class="cm">    *   \a Mandatory.</span>
+<span class="cm">    *   - \b height - specifies the height of the point cloud dataset in the number of points. HEIGHT has two meanings:</span>
+<span class="cm">    *     - it can specify the height (total number of rows) of an organized point cloud dataset;</span>
+<span class="cm">    *     - it is set to 1 for unorganized datasets (thus used to check whether a dataset is organized or not).</span>
+<span class="cm">    *   \a Mandatory.</span>
+<span class="cm">    *   - \b points - the data array where all points of type &lt;b&gt;PointT&lt;/b&gt; are stored. \a Mandatory.</span>
+<span class="cm">    *</span>
+<span class="cm">    *   - \b is_dense - specifies if all the data in &lt;b&gt;points&lt;/b&gt; is finite (true), or whether it might contain Inf/NaN values</span>
+<span class="cm">    * (false). \a Mandatory.</span>
+<span class="cm">    *</span>
+<span class="cm">    *   - \b sensor_origin_ - specifies the sensor acquisition pose (origin/translation). \a Optional.</span>
+<span class="cm">    *   - \b sensor_orientation_ - specifies the sensor acquisition pose (rotation). \a Optional.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Patrick Mihelich, Radu B. Rusu</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">PointCloud</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Default constructor. Sets \ref is_dense to true, \ref width</span>
+<span class="cm">        * and \ref height to 0, and the \ref sensor_origin_ and \ref</span>
+<span class="cm">        * sensor_orientation_ to identity.</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloud</span> <span class="p">()</span> <span class="o">:</span>
+        <span class="n">header</span> <span class="p">(),</span> <span class="n">points</span> <span class="p">(),</span> <span class="n">width</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">is_dense</span> <span class="p">(</span><span class="nb">true</span><span class="p">),</span>
+        <span class="n">sensor_origin_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">()),</span> <span class="n">sensor_orientation_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span><span class="o">::</span><span class="n">Identity</span> <span class="p">()),</span>
+        <span class="n">mapping_</span> <span class="p">()</span>
+      <span class="p">{}</span>
+
+      <span class="cm">/** \brief Copy constructor (needed by compilers such as Intel C++)</span>
+<span class="cm">        * \param[in] pc the cloud to copy into this</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloud</span> <span class="p">(</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">pc</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">header</span> <span class="p">(),</span> <span class="n">points</span> <span class="p">(),</span> <span class="n">width</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">is_dense</span> <span class="p">(</span><span class="nb">true</span><span class="p">),</span>
+        <span class="n">sensor_origin_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">()),</span> <span class="n">sensor_orientation_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span><span class="o">::</span><span class="n">Identity</span> <span class="p">()),</span>
+        <span class="n">mapping_</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="o">*</span><span class="k">this</span> <span class="o">=</span> <span class="n">pc</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Copy constructor (needed by compilers such as Intel C++)</span>
+<span class="cm">        * \param[in] pc the cloud to copy into this</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">pc</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">header</span> <span class="p">(),</span> <span class="n">points</span> <span class="p">(),</span> <span class="n">width</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">height</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">is_dense</span> <span class="p">(</span><span class="nb">true</span><span class="p">),</span>
+        <span class="n">sensor_origin_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">()),</span> <span class="n">sensor_orientation_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span><span class="o">::</span><span class="n">Identity</span> <span class="p">()),</span>
+        <span class="n">mapping_</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="o">*</span><span class="k">this</span> <span class="o">=</span> <span class="n">pc</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Copy constructor from point cloud subset</span>
+<span class="cm">        * \param[in] pc the cloud to copy into this</span>
+<span class="cm">        * \param[in] indices the subset to copy</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">pc</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">header</span> <span class="p">(</span><span class="n">pc</span><span class="p">.</span><span class="n">header</span><span class="p">),</span> <span class="n">points</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()),</span> <span class="n">width</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()),</span> <span class="n">height</span> <span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">is_dense</span> <span class="p">(</span><span class="n">pc</span><span class="p">.</span><span class="n">is_dense</span><span class="p">),</span>
+        <span class="n">sensor_origin_</span> <span class="p">(</span><span class="n">pc</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">),</span> <span class="n">sensor_orientation_</span> <span class="p">(</span><span class="n">pc</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">),</span>
+        <span class="n">mapping_</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="c1">// Copy the obvious</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;=</span> <span class="n">pc</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Allocate constructor from point cloud subset</span>
+<span class="cm">        * \param[in] width_ the cloud width</span>
+<span class="cm">        * \param[in] height_ the cloud height</span>
+<span class="cm">        * \param[in] value_ default value</span>
+<span class="cm">        */</span>
+      <span class="n">PointCloud</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">width_</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">height_</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">value_</span> <span class="o">=</span> <span class="n">PointT</span> <span class="p">())</span>
+        <span class="o">:</span> <span class="n">header</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">points</span> <span class="p">(</span><span class="n">width_</span> <span class="o">*</span> <span class="n">height_</span><span class="p">,</span> <span class="n">value_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">width</span> <span class="p">(</span><span class="n">width_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">height</span> <span class="p">(</span><span class="n">height_</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">is_dense</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">sensor_origin_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">())</span>
+        <span class="p">,</span> <span class="n">sensor_orientation_</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span><span class="o">::</span><span class="n">Identity</span> <span class="p">())</span>
+        <span class="p">,</span> <span class="n">mapping_</span> <span class="p">()</span>
+      <span class="p">{}</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">PointCloud</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Add a point cloud to the current cloud.</span>
+<span class="cm">        * \param[in] rhs the cloud to add to the current cloud</span>
+<span class="cm">        * \return the new cloud as a concatenation of the current cloud and the new given cloud</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">PointCloud</span><span class="o">&amp;</span>
+      <span class="k">operator</span> <span class="o">+=</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// Make the resultant point cloud take the newest stamp</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span> <span class="o">&gt;</span> <span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="p">)</span>
+          <span class="n">header</span><span class="p">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="p">;</span>
+
+        <span class="kt">size_t</span> <span class="n">nr_points</span> <span class="o">=</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+        <span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">nr_points</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nr_points</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">nr_points</span><span class="p">];</span>
+
+        <span class="n">width</span>    <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">&amp;&amp;</span> <span class="n">is_dense</span><span class="p">)</span>
+          <span class="n">is_dense</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="k">else</span>
+          <span class="n">is_dense</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Add a point cloud to another cloud.</span>
+<span class="cm">        * \param[in] rhs the cloud to add to the current cloud</span>
+<span class="cm">        * \return the new cloud as a concatenation of the current cloud and the new given cloud</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointCloud</span>
+      <span class="k">operator</span> <span class="o">+</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">PointCloud</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)</span> <span class="o">+=</span> <span class="n">rhs</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Obtain the point given by the (column, row) coordinates. Only works on organized</span>
+<span class="cm">        * datasets (those that have height != 1).</span>
+<span class="cm">        * \param[in] column the column coordinate</span>
+<span class="cm">        * \param[in] row the row coordinate</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span>
+      <span class="n">at</span> <span class="p">(</span><span class="kt">int</span> <span class="n">column</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">at</span> <span class="p">(</span><span class="n">row</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">+</span> <span class="n">column</span><span class="p">));</span>
+        <span class="k">else</span>
+          <span class="k">throw</span> <span class="nf">UnorganizedPointCloudException</span> <span class="p">(</span><span class="s">&quot;Can&#39;t use 2D indexing with an unorganized point cloud&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Obtain the point given by the (column, row) coordinates. Only works on organized</span>
+<span class="cm">        * datasets (those that have height != 1).</span>
+<span class="cm">        * \param[in] column the column coordinate</span>
+<span class="cm">        * \param[in] row the row coordinate</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">PointT</span><span class="o">&amp;</span>
+      <span class="n">at</span> <span class="p">(</span><span class="kt">int</span> <span class="n">column</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">at</span> <span class="p">(</span><span class="n">row</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">+</span> <span class="n">column</span><span class="p">));</span>
+        <span class="k">else</span>
+          <span class="k">throw</span> <span class="nf">UnorganizedPointCloudException</span> <span class="p">(</span><span class="s">&quot;Can&#39;t use 2D indexing with an unorganized point cloud&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Obtain the point given by the (column, row) coordinates. Only works on organized</span>
+<span class="cm">        * datasets (those that have height != 1).</span>
+<span class="cm">        * \param[in] column the column coordinate</span>
+<span class="cm">        * \param[in] row the row coordinate</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span>
+      <span class="k">operator</span> <span class="p">()</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">column</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">row</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">+</span> <span class="n">column</span><span class="p">]);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Obtain the point given by the (column, row) coordinates. Only works on organized</span>
+<span class="cm">        * datasets (those that have height != 1).</span>
+<span class="cm">        * \param[in] column the column coordinate</span>
+<span class="cm">        * \param[in] row the row coordinate</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">PointT</span><span class="o">&amp;</span>
+      <span class="k">operator</span> <span class="p">()</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">column</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">row</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">+</span> <span class="n">column</span><span class="p">]);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Return whether a dataset is organized (e.g., arranged in a structured grid).</span>
+<span class="cm">        * \note The height value must be different than 1 for a dataset to be organized.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="n">isOrganized</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Return an Eigen MatrixXf (assumes float values) mapped to the specified dimensions of the PointCloud.</span>
+<span class="cm">        * \anchor getMatrixXfMap</span>
+<span class="cm">        * \note This method is for advanced users only! Use with care!</span>
+<span class="cm">        *</span>
+<span class="cm">        * \attention Since 1.4.0, Eigen matrices are forced to Row Major to increase the efficiency of the algorithms in PCL</span>
+<span class="cm">        *   This means that the behavior of getMatrixXfMap changed, and is now correctly mapping 1-1 with a PointCloud structure,</span>
+<span class="cm">        *   that is: number of points in a cloud = rows in a matrix, number of point dimensions = columns in a matrix</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] dim the number of dimensions to consider for each point</span>
+<span class="cm">        * \param[in] stride the number of values in each point (will be the number of values that separate two of the columns)</span>
+<span class="cm">        * \param[in] offset the number of dimensions to skip from the beginning of each point</span>
+<span class="cm">        *            (stride = offset + dim + x, where x is the number of dimensions to skip from the end of each point)</span>
+<span class="cm">        * \note for getting only XYZ coordinates out of PointXYZ use dim=3, stride=4 and offset=0 due to the alignment.</span>
+<span class="cm">        * \attention PointT types are most of the time aligned, so the offsets are not continuous!</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span>
+      <span class="n">getMatrixXfMap</span> <span class="p">(</span><span class="kt">int</span> <span class="n">dim</span><span class="p">,</span> <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span> <span class="kt">int</span> <span class="n">offset</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="o">::</span><span class="n">Flags</span> <span class="o">&amp;</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">RowMajorBit</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">dim</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="p">(</span><span class="n">stride</span><span class="p">)));</span>
+        <span class="k">else</span>
+          <span class="nf">return</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="p">(</span><span class="n">stride</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Return an Eigen MatrixXf (assumes float values) mapped to the specified dimensions of the PointCloud.</span>
+<span class="cm">        * \anchor getMatrixXfMap</span>
+<span class="cm">        * \note This method is for advanced users only! Use with care!</span>
+<span class="cm">        *</span>
+<span class="cm">        * \attention Since 1.4.0, Eigen matrices are forced to Row Major to increase the efficiency of the algorithms in PCL</span>
+<span class="cm">        *   This means that the behavior of getMatrixXfMap changed, and is now correctly mapping 1-1 with a PointCloud structure,</span>
+<span class="cm">        *   that is: number of points in a cloud = rows in a matrix, number of point dimensions = columns in a matrix</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] dim the number of dimensions to consider for each point</span>
+<span class="cm">        * \param[in] stride the number of values in each point (will be the number of values that separate two of the columns)</span>
+<span class="cm">        * \param[in] offset the number of dimensions to skip from the beginning of each point</span>
+<span class="cm">        *            (stride = offset + dim + x, where x is the number of dimensions to skip from the end of each point)</span>
+<span class="cm">        * \note for getting only XYZ coordinates out of PointXYZ use dim=3, stride=4 and offset=0 due to the alignment.</span>
+<span class="cm">        * \attention PointT types are most of the time aligned, so the offsets are not continuous!</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span>
+      <span class="n">getMatrixXfMap</span> <span class="p">(</span><span class="kt">int</span> <span class="n">dim</span><span class="p">,</span> <span class="kt">int</span> <span class="n">stride</span><span class="p">,</span> <span class="kt">int</span> <span class="n">offset</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="o">::</span><span class="n">Flags</span> <span class="o">&amp;</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">RowMajorBit</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">dim</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="p">(</span><span class="n">stride</span><span class="p">)));</span>
+        <span class="k">else</span>
+          <span class="nf">return</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="p">(</span><span class="n">stride</span><span class="p">)));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Return an Eigen MatrixXf (assumes float values) mapped to the PointCloud.</span>
+<span class="cm">        * \note This method is for advanced users only! Use with care!</span>
+<span class="cm">        * \attention PointT types are most of the time aligned, so the offsets are not continuous!</span>
+<span class="cm">        * See \ref getMatrixXfMap for more information.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span>
+      <span class="n">getMatrixXfMap</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">getMatrixXfMap</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">),</span>  <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">),</span> <span class="mi">0</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Return an Eigen MatrixXf (assumes float values) mapped to the PointCloud.</span>
+<span class="cm">        * \note This method is for advanced users only! Use with care!</span>
+<span class="cm">        * \attention PointT types are most of the time aligned, so the offsets are not continuous!</span>
+<span class="cm">        * See \ref getMatrixXfMap for more information.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXf</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Aligned</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">OuterStride</span><span class="o">&lt;&gt;</span> <span class="o">&gt;</span>
+      <span class="n">getMatrixXfMap</span> <span class="p">()</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">getMatrixXfMap</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">),</span>  <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">),</span> <span class="mi">0</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The point cloud header. It contains information about the acquisition time. */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PCLHeader</span> <span class="n">header</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The point data. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">points</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The point cloud width (if organized as an image-structure). */</span>
+      <span class="kt">uint32_t</span> <span class="n">width</span><span class="p">;</span>
+      <span class="cm">/** \brief The point cloud height (if organized as an image-structure). */</span>
+      <span class="kt">uint32_t</span> <span class="n">height</span><span class="p">;</span>
+
+      <span class="cm">/** \brief True if no points are invalid (e.g., have NaN or Inf values in any of their floating point fields). */</span>
+      <span class="kt">bool</span> <span class="n">is_dense</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Sensor acquisition pose (origin/translation). */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span>    <span class="n">sensor_origin_</span><span class="p">;</span>
+      <span class="cm">/** \brief Sensor acquisition pose (rotation). */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="n">sensor_orientation_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">PointT</span> <span class="n">PointType</span><span class="p">;</span>  <span class="c1">// Make the template class available from the outside</span>
+      <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">VectorType</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">CloudVectorType</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="c1">// std container compatibility typedefs according to</span>
+      <span class="c1">// http://en.cppreference.com/w/cpp/concept/Container</span>
+      <span class="k">typedef</span> <span class="n">PointT</span>        <span class="n">value_type</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">PointT</span><span class="o">&amp;</span>       <span class="n">reference</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">const_reference</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">VectorType</span><span class="o">::</span><span class="n">difference_type</span> <span class="n">difference_type</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">VectorType</span><span class="o">::</span><span class="n">size_type</span> <span class="n">size_type</span><span class="p">;</span>
+
+      <span class="c1">// iterators</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">VectorType</span><span class="o">::</span><span class="n">iterator</span> <span class="n">iterator</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">VectorType</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">const_iterator</span><span class="p">;</span>
+      <span class="kr">inline</span> <span class="n">iterator</span> <span class="nf">begin</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">begin</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">iterator</span> <span class="nf">end</span> <span class="p">()</span>   <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">const_iterator</span> <span class="nf">begin</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">begin</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">const_iterator</span> <span class="nf">end</span> <span class="p">()</span> <span class="k">const</span>  <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span> <span class="p">}</span>
+
+      <span class="c1">//capacity</span>
+      <span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">size</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">reserve</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="n">points</span><span class="p">.</span><span class="n">reserve</span> <span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="kt">bool</span> <span class="nf">empty</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">points</span><span class="p">.</span><span class="n">empty</span> <span class="p">();</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Resize the cloud</span>
+<span class="cm">        * \param[in] n the new cloud size</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">resize</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">n</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">!=</span> <span class="n">n</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span><span class="p">);</span>
+          <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="c1">//element access</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">at</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">at</span> <span class="p">(</span><span class="n">n</span><span class="p">));</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">at</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">at</span> <span class="p">(</span><span class="n">n</span><span class="p">));</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">front</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">front</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">front</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">front</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">back</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">back</span> <span class="p">());</span> <span class="p">}</span>
+      <span class="kr">inline</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">back</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">back</span> <span class="p">());</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Insert a new point in the cloud, at the end of the container.</span>
+<span class="cm">        * \note This breaks the organized structure of the cloud by setting the height to 1!</span>
+<span class="cm">        * \param[in] pt the point to insert</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">push_back</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">pt</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">points</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Insert a new point in the cloud, given an iterator.</span>
+<span class="cm">        * \note This breaks the organized structure of the cloud by setting the height to 1!</span>
+<span class="cm">        * \param[in] position where to insert the point</span>
+<span class="cm">        * \param[in] pt the point to insert</span>
+<span class="cm">        * \return returns the new position iterator</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">iterator</span>
+      <span class="n">insert</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">position</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">pt</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">points</span><span class="p">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">pt</span><span class="p">);</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">it</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Insert a new point in the cloud N times, given an iterator.</span>
+<span class="cm">        * \note This breaks the organized structure of the cloud by setting the height to 1!</span>
+<span class="cm">        * \param[in] position where to insert the point</span>
+<span class="cm">        * \param[in] n the number of times to insert the point</span>
+<span class="cm">        * \param[in] pt the point to insert</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">insert</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">position</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">pt</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">points</span><span class="p">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">pt</span><span class="p">);</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Insert a new range of points in the cloud, at a certain position.</span>
+<span class="cm">        * \note This breaks the organized structure of the cloud by setting the height to 1!</span>
+<span class="cm">        * \param[in] position where to insert the data</span>
+<span class="cm">        * \param[in] first where to start inserting the points from</span>
+<span class="cm">        * \param[in] last where to stop inserting the points from</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">InputIterator</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">insert</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">position</span><span class="p">,</span> <span class="n">InputIterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">InputIterator</span> <span class="n">last</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">points</span><span class="p">.</span><span class="n">insert</span> <span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">);</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Erase a point in the cloud.</span>
+<span class="cm">        * \note This breaks the organized structure of the cloud by setting the height to 1!</span>
+<span class="cm">        * \param[in] position what data point to erase</span>
+<span class="cm">        * \return returns the new position iterator</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">iterator</span>
+      <span class="n">erase</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">position</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">points</span><span class="p">.</span><span class="n">erase</span> <span class="p">(</span><span class="n">position</span><span class="p">);</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">it</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Erase a set of points given by a (first, last) iterator pair</span>
+<span class="cm">        * \note This breaks the organized structure of the cloud by setting the height to 1!</span>
+<span class="cm">        * \param[in] first where to start erasing points from</span>
+<span class="cm">        * \param[in] last where to stop erasing points from</span>
+<span class="cm">        * \return returns the new position iterator</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">iterator</span>
+      <span class="n">erase</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">iterator</span> <span class="n">last</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">points</span><span class="p">.</span><span class="n">erase</span> <span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">);</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">it</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Swap a point cloud with another cloud.</span>
+<span class="cm">        * \param[in,out] rhs point cloud to swap this with</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">swap</span> <span class="p">(</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">swap</span> <span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">header</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">swap</span> <span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">points</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">swap</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">width</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">swap</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">swap</span> <span class="p">(</span><span class="n">is_dense</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">is_dense</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">swap</span> <span class="p">(</span><span class="n">sensor_origin_</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">swap</span> <span class="p">(</span><span class="n">sensor_orientation_</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Removes all points in a cloud and sets the width and height to 0. */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">clear</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Copy the cloud to the heap and return a smart pointer</span>
+<span class="cm">        * Note that deep copy is performed, so avoid using this function on non-empty clouds.</span>
+<span class="cm">        * The changes of the returned cloud are not mirrored back to this one.</span>
+<span class="cm">        * \return shared pointer to the copy of the cloud</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="n">Ptr</span>
+      <span class="n">makeShared</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">));</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="c1">// This is motivated by ROS integration. Users should not need to access mapping_.</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MsgFieldMap</span><span class="o">&gt;</span> <span class="n">mapping_</span><span class="p">;</span>
+
+      <span class="k">friend</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MsgFieldMap</span><span class="o">&gt;&amp;</span> <span class="n">detail</span><span class="o">::</span><span class="n">getMapping</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+
+  <span class="k">namespace</span> <span class="n">detail</span>
+  <span class="p">{</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">MsgFieldMap</span><span class="o">&gt;&amp;</span>
+    <span class="n">getMapping</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">mapping_</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="c1">// namespace detail</span>
+
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span>
+  <span class="k">operator</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;header: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">header</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;points[]: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;width: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">width</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;height: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">height</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;is_dense: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;sensor origin (xyz): [&quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;] / orientation (xyzw): [&quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">p</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">w</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;]&quot;</span> <span class="o">&lt;&lt;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_PointCloud(T) template class PCL_EXPORTS pcl::PointCloud&lt;T&gt;;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_cuda_common_include_pcl_cuda_point_cloud.h.html" class="btn btn-neutral float-right" title="File point_cloud.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_point_cloud.h.html" class="btn btn-neutral float-left" title="File point_cloud.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

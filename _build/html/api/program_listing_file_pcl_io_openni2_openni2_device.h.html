@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File openni2_device.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File openni2_device_info.h" href="file_pcl_io_openni2_openni2_device_info.h.html" />
+    <link rel="prev" title="File openni2_device.h" href="file_pcl_io_openni2_openni2_device.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_io_openni2_openni2_device.h.html">File openni2_device.h</a> &raquo;</li>
+        
+      <li>Program Listing for File openni2_device.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_io_openni2_openni2_device.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-openni2-device-h">
+<span id="program-listing-file-pcl-io-openni2-openni2-device-h"></span><h1>Program Listing for File openni2_device.h<a class="headerlink" href="#program-listing-for-file-openni2-device-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_io_openni2_openni2_device.h.html#file-pcl-io-openni2-openni2-device-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\io\openni2\openni2_device.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Willow Garage, Inc.</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *       contributors may be used to endorse or promote products derived from</span>
+<span class="cm"> *       this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<span class="cm"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="cm"> * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span>
+<span class="cm"> * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE</span>
+<span class="cm"> * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR</span>
+<span class="cm"> * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF</span>
+<span class="cm"> * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS</span>
+<span class="cm"> * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span>
+<span class="cm"> * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)</span>
+<span class="cm"> * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> * POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;openni.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/io/openni2/openni2_video_mode.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pcl/io/io_exception.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/shared_ptr.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/cstdint.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/bind.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/function.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="c1">// Template frame wrappers</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/image.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/image_depth.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/image_ir.h&gt;</span><span class="cp"></span>
+
+
+
+<span class="k">namespace</span> <span class="n">openni</span>
+<span class="p">{</span>
+  <span class="k">class</span> <span class="nc">Device</span><span class="p">;</span>
+  <span class="k">class</span> <span class="nc">DeviceInfo</span><span class="p">;</span>
+  <span class="k">class</span> <span class="nc">VideoStream</span><span class="p">;</span>
+  <span class="k">class</span> <span class="nc">SensorInfo</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">io</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">openni2</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">DepthImage</span> <span class="n">DepthImage</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">IRImage</span> <span class="n">IRImage</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">Image</span> <span class="n">Image</span><span class="p">;</span>
+
+      <span class="k">class</span> <span class="nc">OpenNI2FrameListener</span><span class="p">;</span>
+
+      <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">OpenNI2Device</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">cookie</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">ImageCallbackFunction</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">DepthImage</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">cookie</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DepthImageCallbackFunction</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IRImage</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">cookie</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">IRImageCallbackFunction</span><span class="p">;</span>
+          <span class="k">typedef</span> <span class="kt">unsigned</span> <span class="n">CallbackHandle</span><span class="p">;</span>
+
+          <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&amp;</span> <span class="n">stream</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">StreamCallbackFunction</span><span class="p">;</span>
+
+          <span class="n">OpenNI2Device</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">device_URI</span><span class="p">);</span>
+          <span class="k">virtual</span> <span class="o">~</span><span class="n">OpenNI2Device</span> <span class="p">();</span>
+
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+          <span class="n">getUri</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+          <span class="n">getVendor</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+          <span class="n">getName</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">uint16_t</span>
+          <span class="nf">getUsbVendorId</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">uint16_t</span>
+          <span class="nf">getUsbProductId</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+          <span class="n">getStringID</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">isValid</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">hasIRSensor</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">hasColorSensor</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">hasDepthSensor</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">void</span>
+          <span class="nf">startIRStream</span> <span class="p">();</span>
+          <span class="kt">void</span>
+          <span class="nf">startColorStream</span> <span class="p">();</span>
+          <span class="kt">void</span>
+          <span class="nf">startDepthStream</span> <span class="p">();</span>
+
+          <span class="kt">void</span>
+          <span class="nf">stopAllStreams</span> <span class="p">();</span>
+
+          <span class="kt">void</span>
+          <span class="nf">stopIRStream</span> <span class="p">();</span>
+          <span class="kt">void</span>
+          <span class="nf">stopColorStream</span> <span class="p">();</span>
+          <span class="kt">void</span>
+          <span class="nf">stopDepthStream</span> <span class="p">();</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">isIRStreamStarted</span> <span class="p">();</span>
+          <span class="kt">bool</span>
+          <span class="nf">isColorStreamStarted</span> <span class="p">();</span>
+          <span class="kt">bool</span>
+          <span class="nf">isDepthStreamStarted</span> <span class="p">();</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">isImageRegistrationModeSupported</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">void</span>
+          <span class="nf">setImageRegistrationMode</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">enabled</span><span class="p">);</span>
+          <span class="kt">bool</span>
+          <span class="nf">isDepthRegistered</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="k">const</span> <span class="n">OpenNI2VideoMode</span>
+          <span class="nf">getIRVideoMode</span> <span class="p">();</span>
+          <span class="k">const</span> <span class="n">OpenNI2VideoMode</span>
+          <span class="nf">getColorVideoMode</span> <span class="p">();</span>
+          <span class="k">const</span> <span class="n">OpenNI2VideoMode</span>
+          <span class="nf">getDepthVideoMode</span> <span class="p">();</span>
+
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;&amp;</span>
+          <span class="n">getSupportedIRVideoModes</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;&amp;</span>
+          <span class="n">getSupportedColorVideoModes</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;&amp;</span>
+          <span class="n">getSupportedDepthVideoModes</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">isIRVideoModeSupported</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">video_mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">isColorVideoModeSupported</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">video_mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">isDepthVideoModeSupported</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">video_mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">findCompatibleIRMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">requested_mode</span><span class="p">,</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">actual_mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">findCompatibleColorMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">requested_mode</span><span class="p">,</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">actual_mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">findCompatibleDepthMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">requested_mode</span><span class="p">,</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">actual_mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">void</span>
+          <span class="nf">setIRVideoMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">video_mode</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">setColorVideoMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">video_mode</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">setDepthVideoMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">video_mode</span><span class="p">);</span>
+
+          <span class="n">OpenNI2VideoMode</span>
+          <span class="nf">getDefaultIRMode</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="n">OpenNI2VideoMode</span>
+          <span class="nf">getDefaultColorMode</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="n">OpenNI2VideoMode</span>
+          <span class="nf">getDefaultDepthMode</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">float</span>
+          <span class="nf">getIRFocalLength</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">float</span>
+          <span class="nf">getColorFocalLength</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">float</span>
+          <span class="nf">getDepthFocalLength</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="c1">// Baseline between sensors. Returns 0 if this value does not exist.</span>
+          <span class="kt">float</span>
+          <span class="nf">getBaseline</span><span class="p">();</span>
+
+          <span class="c1">// Value of pixels in shadow or that have no valid measurement</span>
+          <span class="kt">uint64_t</span>
+          <span class="nf">getShadowValue</span><span class="p">();</span>
+
+          <span class="kt">void</span>
+          <span class="nf">setAutoExposure</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">setAutoWhiteBalance</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">);</span>
+
+          <span class="kr">inline</span> <span class="kt">bool</span>
+          <span class="nf">isSynchronized</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">openni_device_</span><span class="o">-&gt;</span><span class="n">getDepthColorSyncEnabled</span> <span class="p">());</span>
+          <span class="p">}</span>
+
+          <span class="kr">inline</span> <span class="kt">bool</span>
+          <span class="nf">isSynchronizationSupported</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">// Not sure how to query this from the hardware</span>
+          <span class="p">}</span>
+
+          <span class="kr">inline</span> <span class="kt">bool</span>
+          <span class="nf">isFile</span><span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">openni_device_</span><span class="o">-&gt;</span><span class="n">isFile</span><span class="p">());</span>
+          <span class="p">}</span>
+
+          <span class="kt">void</span>
+          <span class="nf">setSynchronization</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">enableSync</span><span class="p">);</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">getAutoExposure</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="kt">bool</span>
+          <span class="nf">getAutoWhiteBalance</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">void</span>
+          <span class="nf">setUseDeviceTimer</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Get absolute number of depth frames in the current stream.</span>
+<span class="cm">          * This function returns 0 if the current device is not a file stream or</span>
+<span class="cm">          * if the current mode has no depth stream.</span>
+<span class="cm">          */</span>
+          <span class="kt">int</span>
+          <span class="nf">getDepthFrameCount</span> <span class="p">();</span>
+
+          <span class="cm">/** \brief Get absolute number of color frames in the current stream.</span>
+<span class="cm">          * This function returns 0 if the current device is not a file stream or</span>
+<span class="cm">          * if the current mode has no color stream.</span>
+<span class="cm">          */</span>
+          <span class="kt">int</span>
+          <span class="nf">getColorFrameCount</span> <span class="p">();</span>
+
+          <span class="cm">/** \brief Get absolute number of ir frames in the current stream.</span>
+<span class="cm">          * This function returns 0 if the current device is not a file stream or</span>
+<span class="cm">          * if the current mode has no ir stream.</span>
+<span class="cm">          */</span>
+          <span class="kt">int</span>
+          <span class="nf">getIRFrameCount</span> <span class="p">();</span>
+
+          <span class="cm">/** \brief Set the playback speed if the device is an recorded stream.</span>
+<span class="cm">          * If setting the device playback speed fails, because the device is no recorded stream or</span>
+<span class="cm">          * any other reason this function returns false. Otherwise true is returned.</span>
+<span class="cm">          * \param[in] speed The playback speed factor 1.0 means the same speed as recorded,</span>
+<span class="cm">          * 0.5 half the speed, 2.0 double speed and so on.</span>
+<span class="cm">          * \return True on success, false otherwise.</span>
+<span class="cm">          */</span>
+          <span class="kt">bool</span>
+          <span class="nf">setPlaybackSpeed</span> <span class="p">(</span><span class="kt">double</span> <span class="n">speed</span><span class="p">);</span>
+
+          <span class="cm">/************************************************************************************/</span>
+          <span class="c1">// Callbacks from openni::VideoStream to grabber. Internal interface</span>
+          <span class="kt">void</span>
+          <span class="nf">setColorCallback</span> <span class="p">(</span><span class="n">StreamCallbackFunction</span> <span class="n">color_callback</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">setDepthCallback</span> <span class="p">(</span><span class="n">StreamCallbackFunction</span> <span class="n">depth_callback</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">setIRCallback</span> <span class="p">(</span><span class="n">StreamCallbackFunction</span> <span class="n">ir_callback</span><span class="p">);</span>
+
+        <span class="k">protected</span><span class="o">:</span>
+          <span class="kt">void</span> <span class="n">shutdown</span> <span class="p">();</span>
+
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&gt;</span>
+          <span class="n">getIRVideoStream</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&gt;</span>
+          <span class="n">getColorVideoStream</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&gt;</span>
+          <span class="n">getDepthVideoStream</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+
+          <span class="kt">void</span>
+          <span class="nf">processColorFrame</span> <span class="p">(</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&amp;</span> <span class="n">stream</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">processDepthFrame</span> <span class="p">(</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&amp;</span> <span class="n">stream</span><span class="p">);</span>
+          <span class="kt">void</span>
+          <span class="nf">processIRFrame</span> <span class="p">(</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&amp;</span> <span class="n">stream</span><span class="p">);</span>
+
+
+          <span class="kt">bool</span>
+          <span class="nf">findCompatibleVideoMode</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;</span> <span class="n">supportedModes</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">output_mode</span><span class="p">,</span> <span class="n">OpenNI2VideoMode</span><span class="o">&amp;</span> <span class="n">mode</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="kt">bool</span>
+          <span class="nf">resizingSupported</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">input_width</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">input_height</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">output_width</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">output_height</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+          <span class="c1">// Members</span>
+
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">Device</span><span class="o">&gt;</span> <span class="n">openni_device_</span><span class="p">;</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">DeviceInfo</span><span class="o">&gt;</span> <span class="n">device_info_</span><span class="p">;</span>
+
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OpenNI2FrameListener</span><span class="o">&gt;</span> <span class="n">ir_frame_listener</span><span class="p">;</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OpenNI2FrameListener</span><span class="o">&gt;</span> <span class="n">color_frame_listener</span><span class="p">;</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OpenNI2FrameListener</span><span class="o">&gt;</span> <span class="n">depth_frame_listener</span><span class="p">;</span>
+
+          <span class="k">mutable</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&gt;</span> <span class="n">ir_video_stream_</span><span class="p">;</span>
+          <span class="k">mutable</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&gt;</span> <span class="n">color_video_stream_</span><span class="p">;</span>
+          <span class="k">mutable</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">openni</span><span class="o">::</span><span class="n">VideoStream</span><span class="o">&gt;</span> <span class="n">depth_video_stream_</span><span class="p">;</span>
+
+          <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;</span> <span class="n">ir_video_modes_</span><span class="p">;</span>
+          <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;</span> <span class="n">color_video_modes_</span><span class="p">;</span>
+          <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">OpenNI2VideoMode</span><span class="o">&gt;</span> <span class="n">depth_video_modes_</span><span class="p">;</span>
+
+          <span class="kt">bool</span> <span class="n">ir_video_started_</span><span class="p">;</span>
+          <span class="kt">bool</span> <span class="n">color_video_started_</span><span class="p">;</span>
+          <span class="kt">bool</span> <span class="n">depth_video_started_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief distance between the projector and the IR camera in meters*/</span>
+          <span class="kt">float</span> <span class="n">baseline_</span><span class="p">;</span>
+          <span class="cm">/** the value for shadow (occluded pixels) */</span>
+          <span class="kt">uint64_t</span> <span class="n">shadow_value_</span><span class="p">;</span>
+          <span class="cm">/** the value for pixels without a valid disparity measurement */</span>
+          <span class="kt">uint64_t</span> <span class="n">no_sample_value_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="n">PCL_EXPORTS</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="n">OpenNI2Device</span><span class="o">&amp;</span> <span class="n">device</span><span class="p">);</span>
+
+    <span class="p">}</span> <span class="c1">// namespace</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_io_openni2_openni2_device_info.h.html" class="btn btn-neutral float-right" title="File openni2_device_info.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_io_openni2_openni2_device.h.html" class="btn btn-neutral float-left" title="File openni2_device.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

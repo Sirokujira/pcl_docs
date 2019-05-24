@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File auxiliary.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File axes.h" href="file_pcl_outofcore_visualization_axes.h.html" />
+    <link rel="prev" title="File auxiliary.h" href="file_pcl_recognition_ransac_based_auxiliary.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_ransac_based_auxiliary.h.html">File auxiliary.h</a> &raquo;</li>
+        
+      <li>Program Listing for File auxiliary.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_ransac_based_auxiliary.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-auxiliary-h">
+<span id="program-listing-file-pcl-recognition-ransac-based-auxiliary-h"></span><h1>Program Listing for File auxiliary.h<a class="headerlink" href="#program-listing-for-file-auxiliary-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_ransac_based_auxiliary.h.html#file-pcl-recognition-ransac-based-auxiliary-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\ransac_based\auxiliary.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define AUX_PI_FLOAT            3.14159265358979323846f</span>
+<span class="cp">#define AUX_HALF_PI             1.57079632679489661923f</span>
+<span class="cp">#define AUX_DEG_TO_RADIANS     (3.14159265358979323846f/180.0f)</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">recognition</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">aux</span>
+    <span class="p">{</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">bool</span>
+      <span class="n">compareOrderedPairs</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">b</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">a</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">b</span><span class="p">.</span><span class="n">first</span> <span class="p">)</span>
+          <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">sqr</span> <span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">clamp</span> <span class="p">(</span><span class="n">T</span> <span class="n">value</span><span class="p">,</span> <span class="n">T</span> <span class="n">min</span><span class="p">,</span> <span class="n">T</span> <span class="n">max</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">min</span> <span class="p">)</span>
+          <span class="k">return</span> <span class="n">min</span><span class="p">;</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">max</span> <span class="p">)</span>
+          <span class="k">return</span> <span class="n">max</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Expands the destination bounding box &#39;dst&#39; such that it contains &#39;src&#39;. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">expandBoundingBox</span> <span class="p">(</span><span class="n">T</span> <span class="n">dst</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">src</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">src</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dst</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">)</span> <span class="n">dst</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">src</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dst</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">)</span> <span class="n">dst</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">src</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dst</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span> <span class="n">dst</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Expands the bounding box &#39;bbox&#39; such that it contains the point &#39;p&#39;. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">expandBoundingBoxToContainPoint</span> <span class="p">(</span><span class="n">T</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">if</span>      <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+        <span class="k">if</span>      <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">)</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+
+        <span class="k">if</span>      <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">)</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief v[0] = v[1] = v[2] = value */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">set3</span> <span class="p">(</span><span class="n">T</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">value</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief dst = src */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">copy3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">src</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">dst</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief dst = src */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">copy3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">src</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&amp;</span> <span class="n">dst</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">dst</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief a = -a */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">flip3</span> <span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief a = b */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">bool</span>
+      <span class="n">equal3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief a += b */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">add3</span> <span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief c = a + b */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">sum3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief c = a - b */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">diff3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">cross3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">v1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">v2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns the length of v. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">length3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns the Euclidean distance between a and b. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">distance3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">T</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]};</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">length3</span> <span class="p">(</span><span class="n">l</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns the squared Euclidean distance between a and b. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">sqrDistance3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">sqr</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">aux</span><span class="o">::</span><span class="n">sqr</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">aux</span><span class="o">::</span><span class="n">sqr</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns the dot product a*b */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">dot3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns the dot product (x, y, z)*(u, v, w) = x*u + y*v + z*w */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">dot3</span> <span class="p">(</span><span class="n">T</span> <span class="n">x</span><span class="p">,</span> <span class="n">T</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span> <span class="n">z</span><span class="p">,</span> <span class="n">T</span> <span class="n">u</span><span class="p">,</span> <span class="n">T</span> <span class="n">v</span><span class="p">,</span> <span class="n">T</span> <span class="n">w</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">v</span> <span class="o">+</span> <span class="n">z</span><span class="o">*</span><span class="n">w</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief v = scalar*v. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">mult3</span> <span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">v</span><span class="p">,</span> <span class="n">T</span> <span class="n">scalar</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scalar</span><span class="p">;</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scalar</span><span class="p">;</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scalar</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief out = scalar*v. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">mult3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">*</span> <span class="n">v</span><span class="p">,</span> <span class="n">T</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span> <span class="n">out</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">scalar</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">scalar</span><span class="p">;</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">scalar</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Normalize v */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">normalize3</span> <span class="p">(</span><span class="n">T</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">T</span> <span class="n">inv_len</span> <span class="o">=</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">))</span><span class="o">/</span><span class="n">aux</span><span class="o">::</span><span class="n">length3</span> <span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="n">inv_len</span><span class="p">;</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="n">inv_len</span><span class="p">;</span>
+        <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="n">inv_len</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns the square length of v. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span>
+      <span class="n">sqrLength3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** Projects &#39;x&#39; on the plane through 0 and with normal &#39;planeNormal&#39; and saves the result in &#39;out&#39;. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">projectOnPlane3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">planeNormal</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">T</span> <span class="n">dot</span> <span class="o">=</span> <span class="n">aux</span><span class="o">::</span><span class="n">dot3</span> <span class="p">(</span><span class="n">planeNormal</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+        <span class="c1">// Project &#39;x&#39; on the plane normal</span>
+        <span class="n">T</span> <span class="n">nproj</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="n">dot</span><span class="o">*</span><span class="n">planeNormal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">dot</span><span class="o">*</span><span class="n">planeNormal</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">dot</span><span class="o">*</span><span class="n">planeNormal</span><span class="p">[</span><span class="mi">2</span><span class="p">]};</span>
+        <span class="n">aux</span><span class="o">::</span><span class="n">sum3</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nproj</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Sets &#39;m&#39; to the 3x3 identity matrix. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">identity3x3</span> <span class="p">(</span><span class="n">T</span> <span class="n">m</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+        <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief out = mat*v. &#39;m&#39; is an 1D array of 9 elements treated as a 3x3 matrix (row major order). */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">mult3x3</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">m</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** Let x, y, z be the columns of the matrix a = [x|y|z]. The method computes out = a*m.</span>
+<span class="cm">        * Note that &#39;out&#39; is a 1D array of 9 elements and the resulting matrix is stored in row</span>
+<span class="cm">        * major order, i.e., the first matrix row is (out[0] out[1] out[2]), the second</span>
+<span class="cm">        * (out[3] out[4] out[5]) and the third (out[6] out[7] out[8]). */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">mult3x3</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">y</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">z</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+
+        <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+
+        <span class="n">out</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The first 9 elements of &#39;t&#39; are treated as a 3x3 matrix (row major order) and the last 3 as a translation.</span>
+<span class="cm">        * First, &#39;p&#39; is multiplied by that matrix and then translated. The result is saved in &#39;out&#39;. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">transform</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">t</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The first 9 elements of &#39;t&#39; are treated as a 3x3 matrix (row major order) and the last 3 as a translation.</span>
+<span class="cm">        * First, (x, y, z) is multiplied by that matrix and then translated. The result is saved in &#39;out&#39;. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">transform</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">t</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">T</span> <span class="n">x</span><span class="p">,</span> <span class="n">T</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span> <span class="n">z</span><span class="p">,</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Compute out = (upper left 3x3 of mat)*p + last column of mat. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">transform</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="o">&gt;&amp;</span> <span class="n">mat</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">mat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The first 9 elements of &#39;t&#39; are treated as a 3x3 matrix (row major order) and the last 3 as a translation.</span>
+<span class="cm">        * First, &#39;p&#39; is multiplied by that matrix and then translated. The result is saved in &#39;out&#39;. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">transform</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">t</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span> <span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+        <span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Returns true if the points &#39;p1&#39; and &#39;p2&#39; are co-planar and false otherwise. The method assumes that &#39;n1&#39;</span>
+<span class="cm">        * is a normal at &#39;p1&#39; and &#39;n2&#39; is a normal at &#39;p2&#39;. &#39;max_angle&#39; is the threshold used for the test. The bigger</span>
+<span class="cm">        * the value the larger the deviation between the normals can be which still leads to a positive test result. The</span>
+<span class="cm">        * angle has to be in radians. */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">bool</span>
+      <span class="n">pointsAreCoplanar</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">p1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">n1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">p2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">const</span> <span class="n">T</span> <span class="n">n2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">max_angle</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// Compute the angle between &#39;n1&#39; and &#39;n2&#39; and compare it with &#39;max_angle&#39;</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">clamp</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">dot3</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">max_angle</span> <span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+        <span class="n">T</span> <span class="n">cl</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="mi">2</span><span class="p">]};</span>
+        <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">cl</span><span class="p">);</span>
+
+        <span class="c1">// Compute the angle between &#39;cl&#39; and &#39;n1&#39;</span>
+        <span class="n">T</span> <span class="n">tmp_angle</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">clamp</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">dot3</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">cl</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">));</span>
+
+        <span class="c1">// &#39;tmp_angle&#39; should not deviate too much from 90 degrees</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">fabs</span> <span class="p">(</span><span class="n">tmp_angle</span> <span class="o">-</span> <span class="n">AUX_HALF_PI</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_angle</span> <span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+        <span class="c1">// All tests passed =&gt; the points are coplanar</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">array12ToMatrix4x4</span> <span class="p">(</span><span class="k">const</span> <span class="n">Scalar</span> <span class="n">src</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;&amp;</span> <span class="n">dst</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>  <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>  <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>  <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span>         <span class="n">dst</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span>          <span class="n">dst</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>    <span class="n">dst</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">matrix4x4ToArray12</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">&gt;&amp;</span> <span class="n">src</span><span class="p">,</span> <span class="n">Scalar</span> <span class="n">dst</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>  <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The method copies the input array &#39;src&#39; to the eigen matrix &#39;dst&#39; in row major order.</span>
+<span class="cm">        * dst[0] = src(0,0); dst[1] = src(0,1); dst[2] = src(0,2);</span>
+<span class="cm">        * dst[3] = src(1,0); dst[4] = src(1,1); dst[5] = src(1,2);</span>
+<span class="cm">        * dst[6] = src(2,0); dst[7] = src(2,1); dst[8] = src(2,2);</span>
+<span class="cm">        * */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">eigenMatrix3x3ToArray9RowMajor</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;&amp;</span> <span class="n">src</span><span class="p">,</span> <span class="n">T</span> <span class="n">dst</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">dst</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">dst</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief The method copies the input array &#39;src&#39; to the eigen matrix &#39;dst&#39; in row major order.</span>
+<span class="cm">        * dst(0,0) = src[0]; dst(0,1) = src[1]; dst(0,2) = src[2];</span>
+<span class="cm">        * dst(1,0) = src[3]; dst(1,1) = src[4]; dst(1,2) = src[5];</span>
+<span class="cm">        * dst(2,0) = src[6]; dst(2,1) = src[7]; dst(2,2) = src[8];</span>
+<span class="cm">        * */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">toEigenMatrix3x3RowMajor</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">src</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;&amp;</span> <span class="n">dst</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+        <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span> <span class="n">dst</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** brief Computes a rotation matrix from the provided input vector &#39;axis_angle&#39;. The direction of &#39;axis_angle&#39; is the rotation axis</span>
+<span class="cm">        * and its magnitude is the angle of rotation about that axis. &#39;rotation_matrix&#39; is the output rotation matrix saved in row major order. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">axisAngleToRotationMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">axis_angle</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span> <span class="n">rotation_matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+      <span class="p">{</span>
+        <span class="c1">// Get the angle of rotation</span>
+        <span class="n">T</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">aux</span><span class="o">::</span><span class="n">length3</span> <span class="p">(</span><span class="n">axis_angle</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">angle</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// Undefined rotation -&gt; set to identity</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">identity3x3</span> <span class="p">(</span><span class="n">rotation_matrix</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Normalize the input</span>
+        <span class="n">T</span> <span class="n">normalized_axis_angle</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+        <span class="n">aux</span><span class="o">::</span><span class="n">mult3</span> <span class="p">(</span><span class="n">axis_angle</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="n">angle</span><span class="p">,</span> <span class="n">normalized_axis_angle</span><span class="p">);</span>
+
+        <span class="c1">// The eigen objects</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">mat_axis</span><span class="p">(</span><span class="n">normalized_axis_angle</span><span class="p">);</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxis</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">eigen_angle_axis</span> <span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">mat_axis</span><span class="p">);</span>
+
+        <span class="c1">// Save the output</span>
+        <span class="n">aux</span><span class="o">::</span><span class="n">eigenMatrix3x3ToArray9RowMajor</span> <span class="p">(</span><span class="n">eigen_angle_axis</span><span class="p">.</span><span class="n">toRotationMatrix</span> <span class="p">(),</span> <span class="n">rotation_matrix</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** brief Extracts the angle-axis representation from &#39;rotation_matrix&#39;, i.e., computes a rotation &#39;axis&#39; and an &#39;angle&#39;</span>
+<span class="cm">        * of rotation about that axis from the provided input. The output &#39;angle&#39; is in the range [0, pi] and &#39;axis&#39; is normalized. */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">rotationMatrixToAxisAngle</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">rotation_matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">T</span> <span class="n">axis</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">angle</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// The eigen objects</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxis</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">angle_axis</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span> <span class="n">rot_mat</span><span class="p">;</span>
+        <span class="c1">// Copy the input matrix to the eigen matrix in row major order</span>
+        <span class="n">aux</span><span class="o">::</span><span class="n">toEigenMatrix3x3RowMajor</span> <span class="p">(</span><span class="n">rotation_matrix</span><span class="p">,</span> <span class="n">rot_mat</span><span class="p">);</span>
+
+        <span class="c1">// Do the computation</span>
+        <span class="n">angle_axis</span><span class="p">.</span><span class="n">fromRotationMatrix</span> <span class="p">(</span><span class="n">rot_mat</span><span class="p">);</span>
+
+        <span class="c1">// Save the result</span>
+        <span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">angle_axis</span><span class="p">.</span><span class="n">axis</span> <span class="p">()</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">axis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">angle_axis</span><span class="p">.</span><span class="n">axis</span> <span class="p">()</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">axis</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">angle_axis</span><span class="p">.</span><span class="n">axis</span> <span class="p">()</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">angle_axis</span><span class="p">.</span><span class="n">angle</span> <span class="p">();</span>
+
+        <span class="c1">// Make sure that &#39;angle&#39; is in the range [0, pi]</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">angle</span> <span class="o">&gt;</span> <span class="n">AUX_PI_FLOAT</span> <span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">angle</span> <span class="o">=</span> <span class="mf">2.0f</span><span class="o">*</span><span class="n">AUX_PI_FLOAT</span> <span class="o">-</span> <span class="n">angle</span><span class="p">;</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">flip3</span> <span class="p">(</span><span class="n">axis</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="c1">// namespace aux</span>
+  <span class="p">}</span> <span class="c1">// namespace recognition</span>
+<span class="p">}</span> <span class="c1">// namespace pcl</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_outofcore_visualization_axes.h.html" class="btn btn-neutral float-right" title="File axes.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_ransac_based_auxiliary.h.html" class="btn btn-neutral float-left" title="File auxiliary.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

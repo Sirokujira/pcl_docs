@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File range_image.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File range_image.hpp" href="file_pcl_range_image_impl_range_image.hpp.html" />
+    <link rel="prev" title="File range_image.h" href="file_pcl_range_image_range_image.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_range_image_range_image.h.html">File range_image.h</a> &raquo;</li>
+        
+      <li>Program Listing for File range_image.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_range_image_range_image.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-range-image-h">
+<span id="program-listing-file-pcl-range-image-range-image-h"></span><h1>Program Listing for File range_image.h<a class="headerlink" href="#program-listing-for-file-range-image-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_range_image_range_image.h.html#file-pcl-range-image-range-image-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\range_image\range_image.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_macros.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common_headers.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/vector_average.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;typeinfo&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief RangeImage is derived from pcl/PointCloud and provides functionalities with focus on situations where</span>
+<span class="cm">    *  a 3D scene was captured from a specific view point.</span>
+<span class="cm">    * \author Bastian Steder</span>
+<span class="cm">    * \ingroup range_image</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">RangeImage</span> <span class="o">:</span> <span class="k">public</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointWithRange</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="c1">// =====TYPEDEFS=====</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointWithRange</span><span class="o">&gt;</span> <span class="n">BaseClass</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">VectorOfEigenVector3f</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">RangeImage</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="k">enum</span> <span class="n">CoordinateFrame</span>
+      <span class="p">{</span>
+        <span class="n">CAMERA_FRAME</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">LASER_FRAME</span>  <span class="o">=</span> <span class="mi">1</span>
+      <span class="p">};</span>
+
+
+      <span class="c1">// =====CONSTRUCTOR &amp; DESTRUCTOR=====</span>
+      <span class="cm">/** Constructor */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="nf">RangeImage</span> <span class="p">();</span>
+      <span class="cm">/** Destructor */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="o">~</span><span class="n">RangeImage</span> <span class="p">();</span>
+
+      <span class="c1">// =====STATIC VARIABLES=====</span>
+      <span class="cm">/** The maximum number of openmp threads that can be used in this class */</span>
+      <span class="k">static</span> <span class="kt">int</span> <span class="n">max_no_of_threads</span><span class="p">;</span>
+
+      <span class="c1">// =====STATIC METHODS=====</span>
+      <span class="cm">/** \brief Get the size of a certain area when seen from the given pose</span>
+<span class="cm">        * \param viewer_pose an affine matrix defining the pose of the viewer</span>
+<span class="cm">        * \param center the center of the area</span>
+<span class="cm">        * \param radius the radius of the area</span>
+<span class="cm">        * \return the size of the area as viewed according to \a viewer_pose</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getMaxAngleSize</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">viewer_pose</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">center</span><span class="p">,</span>
+                       <span class="kt">float</span> <span class="n">radius</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Get Eigen::Vector3f from PointWithRange</span>
+<span class="cm">        * \param point the input point</span>
+<span class="cm">        * \return an Eigen::Vector3f representation of the input point</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span>
+      <span class="n">getEigenVector3f</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Get the transformation that transforms the given coordinate frame into CAMERA_FRAME</span>
+<span class="cm">        * \param coordinate_frame the input coordinate frame</span>
+<span class="cm">        * \param transformation the resulting transformation that warps \a coordinate_frame into CAMERA_FRAME</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">getCoordinateFrameTransformation</span> <span class="p">(</span><span class="n">RangeImage</span><span class="o">::</span><span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="p">,</span>
+                                        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">transformation</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Get the average viewpoint of a point cloud where each point carries viewpoint information as</span>
+<span class="cm">        * vp_x, vp_y, vp_z</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \return the average viewpoint (as an Eigen::Vector3f)</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudTypeWithViewpoints</span><span class="o">&gt;</span> <span class="k">static</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span>
+      <span class="n">getAverageViewPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudTypeWithViewpoints</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Check if the provided data includes far ranges and add them to far_ranges</span>
+<span class="cm">        * \param point_cloud_data a PCLPointCloud2 message containing the input cloud</span>
+<span class="cm">        * \param far_ranges the resulting cloud containing those points with far ranges</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">extractFarRanges</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span> <span class="n">point_cloud_data</span><span class="p">,</span> <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointWithViewpoint</span><span class="o">&gt;&amp;</span> <span class="n">far_ranges</span><span class="p">);</span>
+
+      <span class="c1">// =====METHODS=====</span>
+      <span class="cm">/** \brief Get a boost shared pointer of a copy of this */</span>
+      <span class="kr">inline</span> <span class="n">Ptr</span>
+      <span class="nf">makeShared</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">RangeImage</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">));</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Reset all values to an empty range image */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">reset</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Create the depth image from a point cloud</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param angular_resolution the angular difference (in radians) between the individual pixels in the image</span>
+<span class="cm">        * \param max_angle_width an angle (in radians) defining the horizontal bounds of the sensor</span>
+<span class="cm">        * \param max_angle_height an angle (in radians) defining the vertical bounds of the sensor</span>
+<span class="cm">        * \param sensor_pose an affine matrix defining the pose of the sensor (defaults to</span>
+<span class="cm">        *                    Eigen::Affine3f::Identity () )</span>
+<span class="cm">        * \param coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range (defaults to 0)</span>
+<span class="cm">        * \param border_size the border size (defaults to 0)</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">createFromPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudType</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">0.5f</span><span class="p">),</span>
+          <span class="kt">float</span> <span class="n">max_angle_width</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">360.0f</span><span class="p">),</span> <span class="kt">float</span> <span class="n">max_angle_height</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">180.0f</span><span class="p">),</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">sensor_pose</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+          <span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span> <span class="kt">float</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span>
+          <span class="kt">float</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create the depth image from a point cloud</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param angular_resolution_x the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the x-direction</span>
+<span class="cm">        * \param angular_resolution_y the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the y-direction</span>
+<span class="cm">        * \param max_angle_width an angle (in radians) defining the horizontal bounds of the sensor</span>
+<span class="cm">        * \param max_angle_height an angle (in radians) defining the vertical bounds of the sensor</span>
+<span class="cm">        * \param sensor_pose an affine matrix defining the pose of the sensor (defaults to</span>
+<span class="cm">        *                    Eigen::Affine3f::Identity () )</span>
+<span class="cm">        * \param coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range (defaults to 0)</span>
+<span class="cm">        * \param border_size the border size (defaults to 0)</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">createFromPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudType</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span>
+          <span class="kt">float</span> <span class="n">angular_resolution_x</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">0.5f</span><span class="p">),</span> <span class="kt">float</span> <span class="n">angular_resolution_y</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">0.5f</span><span class="p">),</span>
+          <span class="kt">float</span> <span class="n">max_angle_width</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">360.0f</span><span class="p">),</span> <span class="kt">float</span> <span class="n">max_angle_height</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">180.0f</span><span class="p">),</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">sensor_pose</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+          <span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span>
+          <span class="kt">float</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">float</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create the depth image from a point cloud, getting a hint about the size of the scene for</span>
+<span class="cm">        * faster calculation.</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param angular_resolution the angle (in radians) between each sample in the depth image</span>
+<span class="cm">        * \param point_cloud_center the center of bounding sphere</span>
+<span class="cm">        * \param point_cloud_radius the radius of the bounding sphere</span>
+<span class="cm">        * \param sensor_pose an affine matrix defining the pose of the sensor (defaults to</span>
+<span class="cm">        *                     Eigen::Affine3f::Identity () )</span>
+<span class="cm">        * \param coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range (defaults to 0)</span>
+<span class="cm">        * \param border_size the border size (defaults to 0)</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">createFromPointCloudWithKnownSize</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudType</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution</span><span class="p">,</span>
+                                         <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point_cloud_center</span><span class="p">,</span> <span class="kt">float</span> <span class="n">point_cloud_radius</span><span class="p">,</span>
+                                         <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">sensor_pose</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+                                         <span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span>
+                                         <span class="kt">float</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">float</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create the depth image from a point cloud, getting a hint about the size of the scene for</span>
+<span class="cm">        * faster calculation.</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param angular_resolution_x the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the x-direction</span>
+<span class="cm">        * \param angular_resolution_y the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the y-direction</span>
+<span class="cm">        * \param point_cloud_center the center of bounding sphere</span>
+<span class="cm">        * \param point_cloud_radius the radius of the bounding sphere</span>
+<span class="cm">        * \param sensor_pose an affine matrix defining the pose of the sensor (defaults to</span>
+<span class="cm">        *                     Eigen::Affine3f::Identity () )</span>
+<span class="cm">        * \param coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range (defaults to 0)</span>
+<span class="cm">        * \param border_size the border size (defaults to 0)</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">createFromPointCloudWithKnownSize</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudType</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span>
+                                         <span class="kt">float</span> <span class="n">angular_resolution_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution_y</span><span class="p">,</span>
+                                         <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point_cloud_center</span><span class="p">,</span> <span class="kt">float</span> <span class="n">point_cloud_radius</span><span class="p">,</span>
+                                         <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">sensor_pose</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+                                         <span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span>
+                                         <span class="kt">float</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">float</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create the depth image from a point cloud, using the average viewpoint of the points</span>
+<span class="cm">        * (vp_x,vp_y,vp_z in the point type) in the point cloud as sensor pose (assuming a rotation of (0,0,0)).</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param angular_resolution the angle (in radians) between each sample in the depth image</span>
+<span class="cm">        * \param max_angle_width an angle (in radians) defining the horizontal bounds of the sensor</span>
+<span class="cm">        * \param max_angle_height an angle (in radians) defining the vertical bounds of the sensor</span>
+<span class="cm">        * \param coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range (defaults to 0)</span>
+<span class="cm">        * \param border_size the border size (defaults to 0)</span>
+<span class="cm">        * \note If wrong_coordinate_system is true, the sensor pose will be rotated to change from a coordinate frame</span>
+<span class="cm">        * with x to the front, y to the left and z to the top to the coordinate frame we use here (x to the right, y</span>
+<span class="cm">        * to the bottom and z to the front) */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudTypeWithViewpoints</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">createFromPointCloudWithViewpoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudTypeWithViewpoints</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution</span><span class="p">,</span>
+                                          <span class="kt">float</span> <span class="n">max_angle_width</span><span class="p">,</span> <span class="kt">float</span> <span class="n">max_angle_height</span><span class="p">,</span>
+                                          <span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span> <span class="kt">float</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span>
+                                          <span class="kt">float</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create the depth image from a point cloud, using the average viewpoint of the points</span>
+<span class="cm">        * (vp_x,vp_y,vp_z in the point type) in the point cloud as sensor pose (assuming a rotation of (0,0,0)).</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param angular_resolution_x the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the x-direction</span>
+<span class="cm">        * \param angular_resolution_y the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the y-direction</span>
+<span class="cm">        * \param max_angle_width an angle (in radians) defining the horizontal bounds of the sensor</span>
+<span class="cm">        * \param max_angle_height an angle (in radians) defining the vertical bounds of the sensor</span>
+<span class="cm">        * \param coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range (defaults to 0)</span>
+<span class="cm">        * \param border_size the border size (defaults to 0)</span>
+<span class="cm">        * \note If wrong_coordinate_system is true, the sensor pose will be rotated to change from a coordinate frame</span>
+<span class="cm">        * with x to the front, y to the left and z to the top to the coordinate frame we use here (x to the right, y</span>
+<span class="cm">        * to the bottom and z to the front) */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudTypeWithViewpoints</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">createFromPointCloudWithViewpoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudTypeWithViewpoints</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span>
+                                          <span class="kt">float</span> <span class="n">angular_resolution_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution_y</span><span class="p">,</span>
+                                          <span class="kt">float</span> <span class="n">max_angle_width</span><span class="p">,</span> <span class="kt">float</span> <span class="n">max_angle_height</span><span class="p">,</span>
+                                          <span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span> <span class="kt">float</span> <span class="n">noise_level</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span>
+                                          <span class="kt">float</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create an empty depth image (filled with unobserved points)</span>
+<span class="cm">        * \param[in] angular_resolution the angle (in radians) between each sample in the depth image</span>
+<span class="cm">        * \param[in] sensor_pose an affine matrix defining the pose of the sensor (defaults to  Eigen::Affine3f::Identity () )</span>
+<span class="cm">        * \param[in] coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param[in] angle_width an angle (in radians) defining the horizontal bounds of the sensor (defaults to 2*pi (360deg))</span>
+<span class="cm">        * \param[in] angle_height an angle (in radians) defining the vertical bounds of the sensor (defaults to pi (180deg))</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">createEmpty</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angular_resolution</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">sensor_pose</span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+                   <span class="n">RangeImage</span><span class="o">::</span><span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angle_width</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">360.0f</span><span class="p">),</span>
+                   <span class="kt">float</span> <span class="n">angle_height</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">180.0f</span><span class="p">));</span>
+
+      <span class="cm">/** \brief Create an empty depth image (filled with unobserved points)</span>
+<span class="cm">        * \param angular_resolution_x the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the x-direction</span>
+<span class="cm">        * \param angular_resolution_y the angular difference (in radians) between the</span>
+<span class="cm">        *                             individual pixels in the image in the y-direction</span>
+<span class="cm">        * \param[in] sensor_pose an affine matrix defining the pose of the sensor (defaults to  Eigen::Affine3f::Identity () )</span>
+<span class="cm">        * \param[in] coordinate_frame the coordinate frame (defaults to CAMERA_FRAME)</span>
+<span class="cm">        * \param[in] angle_width an angle (in radians) defining the horizontal bounds of the sensor (defaults to 2*pi (360deg))</span>
+<span class="cm">        * \param[in] angle_height an angle (in radians) defining the vertical bounds of the sensor (defaults to pi (180deg))</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">createEmpty</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angular_resolution_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution_y</span><span class="p">,</span>
+                   <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">sensor_pose</span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+                   <span class="n">RangeImage</span><span class="o">::</span><span class="n">CoordinateFrame</span> <span class="n">coordinate_frame</span><span class="o">=</span><span class="n">CAMERA_FRAME</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angle_width</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">360.0f</span><span class="p">),</span>
+                   <span class="kt">float</span> <span class="n">angle_height</span><span class="o">=</span><span class="n">pcl</span><span class="o">::</span><span class="n">deg2rad</span> <span class="p">(</span><span class="mf">180.0f</span><span class="p">));</span>
+
+      <span class="cm">/** \brief Integrate the given point cloud into the current range image using a z-buffer</span>
+<span class="cm">        * \param point_cloud the input point cloud</span>
+<span class="cm">        * \param noise_level - The distance in meters inside of which the z-buffer will not use the minimum,</span>
+<span class="cm">        *                      but the mean of the points. If 0.0 it is equivalent to a normal z-buffer and</span>
+<span class="cm">        *                      will always take the minimum per cell.</span>
+<span class="cm">        * \param min_range the minimum visible range</span>
+<span class="cm">        * \param top    returns the minimum y pixel position in the image where a point was added</span>
+<span class="cm">        * \param right  returns the maximum x pixel position in the image where a point was added</span>
+<span class="cm">        * \param bottom returns the maximum y pixel position in the image where a point was added</span>
+<span class="cm">        * \param top returns the minimum y position in the image where a point was added</span>
+<span class="cm">        * \param left   returns the minimum x pixel position in the image where a point was added</span>
+<span class="cm">        */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">doZBuffer</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudType</span><span class="o">&amp;</span> <span class="n">point_cloud</span><span class="p">,</span> <span class="kt">float</span> <span class="n">noise_level</span><span class="p">,</span>
+                 <span class="kt">float</span> <span class="n">min_range</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">top</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">right</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">bottom</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">left</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Integrates the given far range measurements into the range image */</span>
+      <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointCloudType</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="n">integrateFarRanges</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudType</span><span class="o">&amp;</span> <span class="n">far_ranges</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Cut the range image to the minimal size so that it still contains all actual range readings.</span>
+<span class="cm">        * \param border_size allows increase from the minimal size by the specified number of pixels (defaults to 0)</span>
+<span class="cm">        * \param top if positive, this value overrides the position of the top edge (defaults to -1)</span>
+<span class="cm">        * \param right if positive, this value overrides the position of the right edge (defaults to -1)</span>
+<span class="cm">        * \param bottom if positive, this value overrides the position of the bottom edge (defaults to -1)</span>
+<span class="cm">        * \param left if positive, this value overrides the position of the left edge (defaults to -1)</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">cropImage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">top</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">bottom</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">=-</span><span class="mi">1</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Get all the range values in one float array of size width*height</span>
+<span class="cm">        * \return a pointer to a new float array containing the range values</span>
+<span class="cm">        * \note This method allocates a new float array; the caller is responsible for freeing this memory.</span>
+<span class="cm">        */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getRangesArray</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Getter for the transformation from the world system into the range image system</span>
+<span class="cm">       *  (the sensor coordinate frame) */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span>
+      <span class="n">getTransformationToRangeImageSystem</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">to_range_image_system_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** Setter for the transformation from the range image system</span>
+<span class="cm">       *  (the sensor coordinate frame) into the world system */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setTransformationToRangeImageSystem</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">to_range_image_system</span><span class="p">);</span>
+
+      <span class="cm">/** Getter for the transformation from the range image system</span>
+<span class="cm">       *  (the sensor coordinate frame) into the world system */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span>
+      <span class="n">getTransformationToWorldSystem</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">to_world_system_</span><span class="p">;}</span>
+
+      <span class="cm">/** Getter for the angular resolution of the range image in x direction in radians per pixel.</span>
+<span class="cm">       *  Provided for downwards compatibility */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getAngularResolution</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">angular_resolution_x_</span><span class="p">;}</span>
+
+      <span class="cm">/** Getter for the angular resolution of the range image in x direction in radians per pixel. */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getAngularResolutionX</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">angular_resolution_x_</span><span class="p">;}</span>
+
+      <span class="cm">/** Getter for the angular resolution of the range image in y direction in radians per pixel. */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="n">getAngularResolutionY</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">angular_resolution_y_</span><span class="p">;}</span>
+
+      <span class="cm">/** Getter for the angular resolution of the range image in x and y direction (in radians). */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">getAngularResolution</span> <span class="p">(</span><span class="kt">float</span><span class="o">&amp;</span> <span class="n">angular_resolution_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">angular_resolution_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Set the angular resolution of the range image</span>
+<span class="cm">        * \param angular_resolution the new angular resolution in x and y direction (in radians per pixel)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setAngularResolution</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angular_resolution</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Set the angular resolution of the range image</span>
+<span class="cm">        * \param angular_resolution_x the new angular resolution in x direction (in radians per pixel)</span>
+<span class="cm">        * \param angular_resolution_y the new angular resolution in y direction (in radians per pixel)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setAngularResolution</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angular_resolution_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angular_resolution_y</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Return the 3D point with range at the given image position</span>
+<span class="cm">        * \param image_x the x coordinate</span>
+<span class="cm">        * \param image_y the y coordinate</span>
+<span class="cm">        * \return the point at the specified location (returns unobserved_point if outside of the image bounds)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPoint</span> <span class="p">(</span><span class="kt">int</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Non-const-version of getPoint */</span>
+      <span class="kr">inline</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPoint</span> <span class="p">(</span><span class="kt">int</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">image_y</span><span class="p">);</span>
+
+      <span class="cm">/** Return the 3d point with range at the given image position */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Non-const-version of the above */</span>
+      <span class="kr">inline</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Return the 3D point with range at the given image position.  This methd performs no error checking</span>
+<span class="cm">        * to make sure the specified image position is inside of the image!</span>
+<span class="cm">        * \param image_x the x coordinate</span>
+<span class="cm">        * \param image_y the y coordinate</span>
+<span class="cm">        * \return the point at the specified location (program may fail if the location is outside of the image bounds)</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPointNoCheck</span> <span class="p">(</span><span class="kt">int</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Non-const-version of getPointNoCheck */</span>
+      <span class="kr">inline</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPointNoCheck</span> <span class="p">(</span><span class="kt">int</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">image_y</span><span class="p">);</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getPoint</span> <span class="p">(</span><span class="kt">int</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">image_y</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getPoint</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span>
+      <span class="n">getEigenVector3f</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&gt;</span>
+      <span class="n">getEigenVector3f</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Return the 3d point with range at the given index (whereas index=y*width+x) */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span>
+      <span class="n">getPoint</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate the 3D point according to the given image point and range */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">calculate3DPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">range</span><span class="p">,</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="cm">/** Calculate the 3D point according to the given image point and the range value at the closest pixel */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">calculate3DPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">,</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate the 3D point according to the given image point and range */</span>
+      <span class="k">virtual</span> <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">calculate3DPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">range</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="cm">/** Calculate the 3D point according to the given image point and the range value at the closest pixel */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">calculate3DPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Recalculate all 3D point positions according to their pixel position and range */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">recalculate3DPointPositions</span> <span class="p">();</span>
+
+      <span class="cm">/** Get imagePoint from 3D point in world coordinates */</span>
+      <span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">range</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">range</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">z</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">range</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">z</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">z</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** point_in_image will be the point in the image at the position the given point would be. Returns</span>
+<span class="cm">       * the range of the given point. */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">checkPoint</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point_in_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Returns the difference in range between the given point and the range of the point in the image</span>
+<span class="cm">       * at the position the given point would be.</span>
+<span class="cm">       *  (Return value is point_in_image.range-given_point.range) */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getRangeDifference</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the image point corresponding to the given angles */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getImagePointFromAngles</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angle_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">angle_y</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the angles corresponding to the given image point */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getAnglesFromImagePoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">angle_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">angle_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Transforms an image point in float values to an image point in int values */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">real2DToInt2D</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">xInt</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">yInt</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Check if a point is inside of the image */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isInImage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Check if a point is inside of the image and has a finite range */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isValid</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Check if a point has a finite range */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isValid</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Check if a point is inside of the image and has either a finite range or a max reading (range=INFINITY) */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isObserved</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Check if a point is a max range (range=INFINITY) - please check isInImage or isObserved first! */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">isMaxRange</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate the normal of an image point using the neighbors with a maximum pixel distance of radius.</span>
+<span class="cm">       *  step_size determines how many pixels are used. 1 means all, 2 only every second, etc..</span>
+<span class="cm">       *  Returns false if it was unable to calculate a normal.*/</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getNormal</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">normal</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above, but only the no_of_nearest_neighbors points closest to the given point are considered. */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getNormalForClosestNeighbors</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+                                    <span class="kt">int</span> <span class="n">no_of_nearest_neighbors</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">normal</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getNormalForClosestNeighbors</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+                                    <span class="kt">int</span> <span class="n">no_of_nearest_neighbors</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">normal</span><span class="p">,</span>
+                                    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">*</span> <span class="n">point_on_plane</span><span class="o">=</span><span class="k">nullptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above, using default values */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getNormalForClosestNeighbors</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">normal</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Same as above but extracts some more data and can also return the extracted</span>
+<span class="cm">       * information for all neighbors in radius if normal_all_neighbors is not NULL */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getSurfaceInformation</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+                             <span class="kt">int</span> <span class="n">no_of_closest_neighbors</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_size</span><span class="p">,</span>
+                             <span class="kt">float</span><span class="o">&amp;</span> <span class="n">max_closest_neighbor_distance_squared</span><span class="p">,</span>
+                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">normal</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">mean</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">eigen_values</span><span class="p">,</span>
+                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">*</span> <span class="n">normal_all_neighbors</span><span class="o">=</span><span class="k">nullptr</span><span class="p">,</span>
+                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">*</span> <span class="n">mean_all_neighbors</span><span class="o">=</span><span class="k">nullptr</span><span class="p">,</span>
+                             <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">*</span> <span class="n">eigen_values_all_neighbors</span><span class="o">=</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">// Return the squared distance to the n-th neighbors of the point at x,y</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getSquaredDistanceOfNthNeighbor</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_size</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate the impact angle based on the sensor position and the two given points - will return</span>
+<span class="cm">       * -INFINITY if one of the points is unobserved */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getImpactAngle</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point1</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="c1">//! Same as above</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getImpactAngle</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Extract a local normal (with a heuristic not to include background points) and calculate the impact</span>
+<span class="cm">       *  angle based on this */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getImpactAngleBasedOnLocalNormal</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="cm">/** Uses the above function for every point in the image */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getImpactAngleImageBasedOnLocalNormals</span> <span class="p">(</span><span class="kt">int</span> <span class="n">radius</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate a score [0,1] that tells how acute the impact angle is (1.0f - getImpactAngle/90deg)</span>
+<span class="cm">       *  This uses getImpactAngleBasedOnLocalNormal</span>
+<span class="cm">       *  Will return -INFINITY if no normal could be calculated */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getNormalBasedAcutenessValue</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate a score [0,1] that tells how acute the impact angle is (1.0f - getImpactAngle/90deg)</span>
+<span class="cm">       *  will return -INFINITY if one of the points is unobserved */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getAcutenessValue</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point1</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">point2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="c1">//! Same as above</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getAcutenessValue</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculate getAcutenessValue for every point */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">getAcutenessValueImages</span> <span class="p">(</span><span class="kt">int</span> <span class="n">pixel_distance</span><span class="p">,</span> <span class="kt">float</span><span class="o">*&amp;</span> <span class="n">acuteness_value_image_x</span><span class="p">,</span>
+                               <span class="kt">float</span><span class="o">*&amp;</span> <span class="n">acuteness_value_image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculates, how much the surface changes at a point. Pi meaning a flat suface and 0.0f</span>
+<span class="cm">       *  would be a needle point */</span>
+      <span class="c1">//inline float</span>
+      <span class="c1">//  getSurfaceChange (const PointWithRange&amp; point, const PointWithRange&amp; neighbor1,</span>
+      <span class="c1">//                   const PointWithRange&amp; neighbor2) const;</span>
+
+      <span class="cm">/** Calculates, how much the surface changes at a point. 1 meaning a 90deg angle and 0 a flat suface */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span>
+      <span class="nf">getSurfaceChange</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Uses the above function for every point in the image */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getSurfaceChangeImage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">radius</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculates, how much the surface changes at a point. Returns an angle [0.0f, PI] for x and y direction.</span>
+<span class="cm">       *  A return value of -INFINITY means that a point was unobserved. */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getSurfaceAngleChange</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">angle_change_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">angle_change_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Uses the above function for every point in the image */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">getSurfaceAngleChangeImages</span> <span class="p">(</span><span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">float</span><span class="o">*&amp;</span> <span class="n">angle_change_image_x</span><span class="p">,</span> <span class="kt">float</span><span class="o">*&amp;</span> <span class="n">angle_change_image_y</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculates the curvature in a point using pca */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getCurvature</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_size</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Get the sensor position</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span>
+      <span class="n">getSensorPos</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Sets all -INFINITY values to INFINITY */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">setUnseenToMaxRange</span> <span class="p">();</span>
+
+      <span class="c1">//! Getter for image_offset_x_</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">getImageOffsetX</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">image_offset_x_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for image_offset_y_</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">getImageOffsetY</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">image_offset_y_</span><span class="p">;}</span>
+
+      <span class="c1">//! Setter for image offsets</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setImageOffsets</span> <span class="p">(</span><span class="kt">int</span> <span class="n">offset_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">offset_y</span><span class="p">)</span> <span class="p">{</span> <span class="n">image_offset_x_</span><span class="o">=</span><span class="n">offset_x</span><span class="p">;</span> <span class="n">image_offset_y_</span><span class="o">=</span><span class="n">offset_y</span><span class="p">;}</span>
+
+
+
+      <span class="cm">/** Get a sub part of the complete image as a new range image.</span>
+<span class="cm">        * \param sub_image_image_offset_x - The x coordinate of the top left pixel of the sub image.</span>
+<span class="cm">        *                         This is always according to absolute 0,0 meaning -180°,-90°</span>
+<span class="cm">        *                         and it is already in the system of the new image, so the</span>
+<span class="cm">        *                         actual pixel used in the original image is</span>
+<span class="cm">        *                         combine_pixels* (image_offset_x-image_offset_x_)</span>
+<span class="cm">        * \param sub_image_image_offset_y - Same as image_offset_x for the y coordinate</span>
+<span class="cm">        * \param sub_image_width - width of the new image</span>
+<span class="cm">        * \param sub_image_height - height of the new image</span>
+<span class="cm">        * \param combine_pixels - shrinking factor, meaning the new angular resolution</span>
+<span class="cm">        *                         is combine_pixels times the old one</span>
+<span class="cm">        * \param sub_image - the output image</span>
+<span class="cm">        */</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">getSubImage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">sub_image_image_offset_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sub_image_image_offset_y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sub_image_width</span><span class="p">,</span>
+                   <span class="kt">int</span> <span class="n">sub_image_height</span><span class="p">,</span> <span class="kt">int</span> <span class="n">combine_pixels</span><span class="p">,</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">sub_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Get a range image with half the resolution</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">getHalfImage</span> <span class="p">(</span><span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">half_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Find the minimum and maximum range in the image</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">getMinMaxRanges</span> <span class="p">(</span><span class="kt">float</span><span class="o">&amp;</span> <span class="n">min_range</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">max_range</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! This function sets the sensor pose to 0 and transforms all point positions to this local coordinate frame</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">change3dPointsToLocalCoordinateFrame</span> <span class="p">();</span>
+
+      <span class="cm">/** Calculate a range patch as the z values of the coordinate frame given by pose.</span>
+<span class="cm">       *  The patch will have size pixel_size x pixel_size and each pixel</span>
+<span class="cm">       *  covers world_size/pixel_size meters in the world</span>
+<span class="cm">       *  You are responsible for deleting the structure afterwards! */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getInterpolatedSurfaceProjection</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">pose</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pixel_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">world_size</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Same as above, but using the local coordinate frame defined by point and the viewing direction</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getInterpolatedSurfaceProjection</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pixel_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">world_size</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Get the local coordinate frame with 0,0,0 in point, upright and Z as the viewing direction</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span>
+      <span class="n">getTransformationToViewerCoordinateFrame</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="c1">//! Same as above, using a reference for the retrurn value</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getTransformationToViewerCoordinateFrame</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+                                                <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">transformation</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="c1">//! Same as above, but only returning the rotation</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getRotationToViewerCoordinateFrame</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">transformation</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get a local coordinate frame at the given point based on the normal. */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">bool</span>
+      <span class="nf">getNormalBasedUprightTransformation</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span>
+                                           <span class="kt">float</span> <span class="n">max_dist</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">transformation</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the integral image of the range values (used for fast blur operations).</span>
+<span class="cm">       *  You are responsible for deleting it after usage! */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">getIntegralImage</span> <span class="p">(</span><span class="kt">float</span><span class="o">*&amp;</span> <span class="n">integral_image</span><span class="p">,</span> <span class="kt">int</span><span class="o">*&amp;</span> <span class="n">valid_points_num_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get a blurred version of the range image using box filters on the provided integral image*/</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>     <span class="c1">// Template necessary so that this function also works in derived classes</span>
+      <span class="n">getBlurredImageUsingIntegralImage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">blur_radius</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">integral_image</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">valid_points_num_image</span><span class="p">,</span>
+                                         <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get a blurred version of the range image using box filters */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="k">virtual</span> <span class="kt">void</span>     <span class="c1">// Template necessary so that this function also works in derived classes</span>
+      <span class="n">getBlurredImage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">blur_radius</span><span class="p">,</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the squared euclidean distance between the two image points.</span>
+<span class="cm">       *  Returns -INFINITY if one of the points was not observed */</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getEuclideanDistanceSquared</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="c1">//! Doing the above for some steps in the given direction and averaging</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getAverageEuclideanDistance</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">offset_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">offset_y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_steps</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Project all points on the local plane approximation, thereby smoothing the surface of the scan</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+      <span class="nf">getRangeImageWithSmoothedSurface</span> <span class="p">(</span><span class="kt">int</span> <span class="n">radius</span><span class="p">,</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">smoothed_range_image</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="c1">//void getLocalNormals (int radius) const;</span>
+
+      <span class="cm">/** Calculates the average 3D position of the no_of_points points described by the start</span>
+<span class="cm">       *  point x,y in the direction delta.</span>
+<span class="cm">       *  Returns a max range point (range=INFINITY) if the first point is max range and an</span>
+<span class="cm">       *  unobserved point (range=-INFINITY) if non of the points is observed. */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">get1dPointAverage</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">delta_x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">delta_y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">no_of_points</span><span class="p">,</span>
+                         <span class="n">PointWithRange</span><span class="o">&amp;</span> <span class="n">average_point</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Calculates the overlap of two range images given the relative transformation</span>
+<span class="cm">       *  (from the given image to *this) */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="kt">float</span>
+      <span class="nf">getOverlap</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">other_range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">relative_transformation</span><span class="p">,</span>
+                  <span class="kt">int</span> <span class="n">search_radius</span><span class="p">,</span> <span class="kt">float</span> <span class="n">max_distance</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pixel_step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the viewing direction for the given point */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">getViewingDirection</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">viewing_direction</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Get the viewing direction for the given point */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">getViewingDirection</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">viewing_direction</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Return a newly created Range image.</span>
+<span class="cm">       *  Can be reimplemented in derived classes like RangeImagePlanar to return an image of the same type. */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="k">virtual</span> <span class="n">RangeImage</span><span class="o">*</span>
+      <span class="nf">getNew</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="k">new</span> <span class="n">RangeImage</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** Copy other to *this. Necessary for use in virtual functions that need to copy derived RangeImage classes (like RangeImagePlanar) */</span>
+      <span class="n">PCL_EXPORTS</span> <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">copyTo</span> <span class="p">(</span><span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+      <span class="c1">// =====MEMBER VARIABLES=====</span>
+      <span class="c1">// BaseClass:</span>
+      <span class="c1">//   roslib::Header header;</span>
+      <span class="c1">//   std::vector&lt;PointT&gt; points;</span>
+      <span class="c1">//   uint32_t width;</span>
+      <span class="c1">//   uint32_t height;</span>
+      <span class="c1">//   bool is_dense;</span>
+
+      <span class="k">static</span> <span class="kt">bool</span> <span class="n">debug</span><span class="p">;</span> <span class="cm">/**&lt; Just for... well... debugging purposes. :-) */</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="c1">// =====PROTECTED MEMBER VARIABLES=====</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">to_range_image_system_</span><span class="p">;</span>  <span class="cm">/**&lt; Inverse of to_world_system_ */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">to_world_system_</span><span class="p">;</span>        <span class="cm">/**&lt; Inverse of to_range_image_system_ */</span>
+      <span class="kt">float</span> <span class="n">angular_resolution_x_</span><span class="p">;</span>             <span class="cm">/**&lt; Angular resolution of the range image in x direction in radians per pixel */</span>
+      <span class="kt">float</span> <span class="n">angular_resolution_y_</span><span class="p">;</span>             <span class="cm">/**&lt; Angular resolution of the range image in y direction in radians per pixel */</span>
+      <span class="kt">float</span> <span class="n">angular_resolution_x_reciprocal_</span><span class="p">;</span>  <span class="cm">/**&lt; 1.0/angular_resolution_x_ - provided for better performance of</span>
+<span class="cm">                                                *   multiplication compared to division */</span>
+      <span class="kt">float</span> <span class="n">angular_resolution_y_reciprocal_</span><span class="p">;</span>  <span class="cm">/**&lt; 1.0/angular_resolution_y_ - provided for better performance of</span>
+<span class="cm">                                                *   multiplication compared to division */</span>
+      <span class="kt">int</span> <span class="n">image_offset_x_</span><span class="p">,</span> <span class="n">image_offset_y_</span><span class="p">;</span>    <span class="cm">/**&lt; Position of the top left corner of the range image compared to</span>
+<span class="cm">                                                *   an image of full size (360x180 degrees) */</span>
+      <span class="n">PointWithRange</span> <span class="n">unobserved_point</span><span class="p">;</span>         <span class="cm">/**&lt; This point is used to be able to return</span>
+<span class="cm">                                                *   a reference to a non-existing point */</span>
+
+      <span class="c1">// =====PROTECTED METHODS=====</span>
+
+
+      <span class="c1">// =====STATIC PROTECTED=====</span>
+      <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">lookup_table_size</span><span class="p">;</span>
+      <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">asin_lookup_table</span><span class="p">;</span>
+      <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">atan_lookup_table</span><span class="p">;</span>
+      <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">cos_lookup_table</span><span class="p">;</span>
+      <span class="cm">/** Create lookup tables for trigonometric functions */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">createLookupTables</span> <span class="p">();</span>
+
+      <span class="cm">/** Query the asin lookup table */</span>
+      <span class="k">static</span> <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">asinLookUp</span> <span class="p">(</span><span class="kt">float</span> <span class="n">value</span><span class="p">);</span>
+
+      <span class="cm">/** Query the atan2 lookup table */</span>
+      <span class="k">static</span> <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">atan2LookUp</span> <span class="p">(</span><span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x</span><span class="p">);</span>
+
+      <span class="cm">/** Query the cos lookup table */</span>
+      <span class="k">static</span> <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">cosLookUp</span> <span class="p">(</span><span class="kt">float</span> <span class="n">value</span><span class="p">);</span>
+
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+
+  <span class="cm">/**</span>
+<span class="cm">    * /ingroup range_image</span>
+<span class="cm">    */</span>
+  <span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span>
+  <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;header: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;points[]: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;width: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">width</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;height: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">height</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;sensor_origin_: &quot;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_origin_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;sensor_orientation_: &quot;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">x</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">y</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">z</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">sensor_orientation_</span><span class="p">.</span><span class="n">w</span> <span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;is_dense: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;angular resolution: &quot;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">RAD2DEG</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">getAngularResolutionX</span> <span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;deg/pixel in x and &quot;</span>
+       <span class="o">&lt;&lt;</span> <span class="n">RAD2DEG</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">getAngularResolutionY</span> <span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;deg/pixel in y.</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>  <span class="c1">// namespace end</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/range_image/impl/range_image.hpp&gt;  // Definitions of templated and inline functions</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_range_image_impl_range_image.hpp.html" class="btn btn-neutral float-right" title="File range_image.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_range_image_range_image.h.html" class="btn btn-neutral float-left" title="File range_image.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

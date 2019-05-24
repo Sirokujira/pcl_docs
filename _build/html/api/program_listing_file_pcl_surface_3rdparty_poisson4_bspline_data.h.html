@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File bspline_data.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File bspline_data.hpp" href="file_pcl_surface_3rdparty_poisson4_bspline_data.hpp.html" />
+    <link rel="prev" title="File bspline_data.h" href="file_pcl_surface_3rdparty_poisson4_bspline_data.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_poisson4_bspline_data.h.html">File bspline_data.h</a> &raquo;</li>
+        
+      <li>Program Listing for File bspline_data.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_poisson4_bspline_data.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-bspline-data-h">
+<span id="program-listing-file-pcl-surface-3rdparty-poisson4-bspline-data-h"></span><h1>Program Listing for File bspline_data.h<a class="headerlink" href="#program-listing-for-file-bspline-data-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_poisson4_bspline_data.h.html#file-pcl-surface-3rdparty-poisson4-bspline-data-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\poisson4\bspline_data.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">Copyright (c) 2006, Michael Kazhdan and Matthew Bolitho</span>
+<span class="cm">All rights reserved.</span>
+
+<span class="cm">Redistribution and use in source and binary forms, with or without modification,</span>
+<span class="cm">are permitted provided that the following conditions are met:</span>
+
+<span class="cm">Redistributions of source code must retain the above copyright notice, this list of</span>
+<span class="cm">conditions and the following disclaimer. Redistributions in binary form must reproduce</span>
+<span class="cm">the above copyright notice, this list of conditions and the following disclaimer</span>
+<span class="cm">in the documentation and/or other materials provided with the distribution.</span>
+
+<span class="cm">Neither the name of the Johns Hopkins University nor the names of its contributors</span>
+<span class="cm">may be used to endorse or promote products derived from this software without specific</span>
+<span class="cm">prior written permission.</span>
+
+<span class="cm">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY</span>
+<span class="cm">EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES</span>
+<span class="cm">OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT</span>
+<span class="cm">SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm">INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED</span>
+<span class="cm">TO, PROCUREMENT OF SUBSTITUTE  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR</span>
+<span class="cm">BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span>
+<span class="cm">CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm">ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH</span>
+<span class="cm">DAMAGE.</span>
+<span class="cm">*/</span>
+
+<span class="cp">#ifndef BSPLINE_DATA_INCLUDED</span>
+<span class="cp">#define BSPLINE_DATA_INCLUDED</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&quot;ppolynomial.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">poisson</span>
+  <span class="p">{</span>
+
+
+    <span class="k">template</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="n">Degree</span> <span class="p">,</span> <span class="k">class</span> <span class="nc">Real</span> <span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">BSplineData</span>
+    <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">useDotRatios</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">reflectBoundary</span><span class="p">;</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">struct</span> <span class="n">BSplineComponents</span>
+        <span class="p">{</span>
+            <span class="n">Polynomial</span><span class="o">&lt;</span> <span class="n">Degree</span> <span class="o">&gt;</span> <span class="n">polys</span><span class="p">[</span><span class="n">Degree</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+            <span class="n">Polynomial</span><span class="o">&lt;</span> <span class="n">Degree</span> <span class="o">&gt;&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">idx</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">polys</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span> <span class="p">}</span>
+            <span class="k">const</span> <span class="n">Polynomial</span><span class="o">&lt;</span> <span class="n">Degree</span> <span class="o">&gt;&amp;</span> <span class="k">operator</span><span class="p">[]</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">idx</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">polys</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span> <span class="p">}</span>
+            <span class="kt">void</span> <span class="n">printnl</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="k">const</span>  <span class="p">{</span> <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">d</span><span class="o">&lt;=</span><span class="n">Degree</span> <span class="p">;</span> <span class="n">d</span><span class="o">++</span> <span class="p">)</span> <span class="n">polys</span><span class="p">[</span><span class="n">d</span><span class="p">].</span><span class="n">printnl</span><span class="p">();</span> <span class="p">}</span>
+            <span class="n">BSplineComponents</span> <span class="n">scale</span><span class="p">(</span> <span class="kt">double</span> <span class="n">s</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">BSplineComponents</span> <span class="n">b</span> <span class="p">;</span> <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">d</span><span class="o">&lt;=</span><span class="n">Degree</span> <span class="p">;</span> <span class="n">d</span><span class="o">++</span> <span class="p">)</span> <span class="n">b</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">polys</span><span class="p">[</span><span class="n">d</span><span class="p">].</span><span class="n">scale</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">;</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span> <span class="p">}</span>
+            <span class="n">BSplineComponents</span> <span class="n">shift</span><span class="p">(</span> <span class="kt">double</span> <span class="n">s</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">BSplineComponents</span> <span class="n">b</span> <span class="p">;</span> <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">d</span><span class="o">&lt;=</span><span class="n">Degree</span> <span class="p">;</span> <span class="n">d</span><span class="o">++</span> <span class="p">)</span> <span class="n">b</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">polys</span><span class="p">[</span><span class="n">d</span><span class="p">].</span><span class="n">shift</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">;</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="k">const</span> <span class="k">static</span> <span class="kt">int</span>  <span class="n">VV_DOT_FLAG</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">const</span> <span class="k">static</span> <span class="kt">int</span>  <span class="n">DV_DOT_FLAG</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">const</span> <span class="k">static</span> <span class="kt">int</span>  <span class="n">DD_DOT_FLAG</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="k">const</span> <span class="k">static</span> <span class="kt">int</span>   <span class="n">VALUE_FLAG</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">const</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">D_VALUE_FLAG</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">depth</span> <span class="p">,</span> <span class="n">functionCount</span> <span class="p">,</span> <span class="n">sampleCount</span><span class="p">;</span>
+        <span class="n">Real</span> <span class="o">*</span><span class="n">vvDotTable</span> <span class="p">,</span> <span class="o">*</span><span class="n">dvDotTable</span> <span class="p">,</span> <span class="o">*</span><span class="n">ddDotTable</span><span class="p">;</span>
+        <span class="n">Real</span> <span class="o">*</span><span class="n">valueTables</span> <span class="p">,</span> <span class="o">*</span><span class="n">dValueTables</span><span class="p">;</span>
+        <span class="n">PPolynomial</span><span class="o">&lt;</span> <span class="n">Degree</span>   <span class="o">&gt;</span>  <span class="n">baseFunction</span> <span class="p">,</span>  <span class="n">leftBaseFunction</span> <span class="p">,</span>  <span class="n">rightBaseFunction</span><span class="p">;</span>
+        <span class="n">PPolynomial</span><span class="o">&lt;</span> <span class="n">Degree</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">dBaseFunction</span> <span class="p">,</span> <span class="n">dLeftBaseFunction</span> <span class="p">,</span> <span class="n">dRightBaseFunction</span><span class="p">;</span>
+        <span class="n">BSplineComponents</span> <span class="n">baseBSpline</span><span class="p">,</span> <span class="n">leftBSpline</span> <span class="p">,</span> <span class="n">rightBSpline</span><span class="p">;</span>
+        <span class="n">PPolynomial</span><span class="o">&lt;</span><span class="n">Degree</span><span class="o">&gt;*</span> <span class="n">baseFunctions</span><span class="p">;</span>
+        <span class="n">BSplineComponents</span><span class="o">*</span> <span class="n">baseBSplines</span><span class="p">;</span>
+
+        <span class="n">BSplineData</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+        <span class="o">~</span><span class="n">BSplineData</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+        <span class="k">virtual</span> <span class="kt">void</span>   <span class="nf">setDotTables</span><span class="p">(</span> <span class="kt">int</span> <span class="n">flags</span> <span class="p">);</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">clearDotTables</span><span class="p">(</span> <span class="kt">int</span> <span class="n">flags</span> <span class="p">);</span>
+
+        <span class="k">virtual</span> <span class="kt">void</span>   <span class="nf">setValueTables</span><span class="p">(</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span><span class="kt">double</span> <span class="n">smooth</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+        <span class="k">virtual</span> <span class="kt">void</span>   <span class="nf">setValueTables</span><span class="p">(</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span><span class="kt">double</span> <span class="n">valueSmooth</span><span class="p">,</span><span class="kt">double</span> <span class="n">normalSmooth</span><span class="p">);</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">clearValueTables</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">setSampleSpan</span><span class="p">(</span> <span class="kt">int</span> <span class="n">idx</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">start</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">end</span> <span class="p">,</span> <span class="kt">double</span> <span class="n">smooth</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/********************************************************</span>
+<span class="cm">   * Sets the translates and scales of the basis function</span>
+<span class="cm">   * up to the prescribed depth</span>
+<span class="cm">   * &lt;maxDepth&gt; the maximum depth</span>
+<span class="cm">   * &lt;useDotRatios&gt; specifies if dot-products of derivatives</span>
+<span class="cm">   * should be pre-divided by function integrals</span>
+<span class="cm">   * &lt;reflectBoundary&gt; spcifies if function space should be</span>
+<span class="cm">   * forced to be reflectively symmetric across the boundary</span>
+<span class="cm">   ********************************************************/</span>
+        <span class="kt">void</span> <span class="nf">set</span><span class="p">(</span> <span class="kt">int</span> <span class="n">maxDepth</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">useDotRatios</span><span class="o">=</span><span class="nb">true</span> <span class="p">,</span> <span class="kt">bool</span> <span class="n">reflectBoundary</span><span class="o">=</span><span class="nb">false</span> <span class="p">);</span>
+
+        <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">Index</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i1</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">i2</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">SymmetricIndex</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i1</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">i2</span> <span class="p">);</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">SymmetricIndex</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i1</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">i2</span> <span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">index</span>  <span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">template</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="n">Degree</span> <span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">BSplineElementCoefficients</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">coeffs</span><span class="p">[</span><span class="n">Degree</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">BSplineElementCoefficients</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">memset</span><span class="p">(</span> <span class="n">coeffs</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="kt">int</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Degree</span><span class="o">+</span><span class="mi">1</span> <span class="p">)</span> <span class="p">);</span> <span class="p">}</span>
+        <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span> <span class="kt">int</span> <span class="n">idx</span> <span class="p">){</span> <span class="k">return</span> <span class="n">coeffs</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span> <span class="p">}</span>
+        <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span> <span class="kt">int</span> <span class="n">idx</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">coeffs</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span> <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="k">template</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="n">Degree</span> <span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="nl">BSplineElements</span> <span class="p">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">BSplineElementCoefficients</span><span class="o">&lt;</span> <span class="n">Degree</span> <span class="o">&gt;</span> <span class="o">&gt;</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">_off</span> <span class="o">=</span> <span class="p">(</span><span class="n">Degree</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">_addLeft</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">offset</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">boundary</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">_addRight</span><span class="p">(</span> <span class="kt">int</span> <span class="n">offset</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">boundary</span> <span class="p">);</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">enum</span>
+        <span class="p">{</span>
+          <span class="n">NONE</span>      <span class="o">=</span>  <span class="mi">0</span><span class="p">,</span>
+          <span class="n">DIRICHLET</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+          <span class="n">NEUMANN</span>   <span class="o">=</span>  <span class="mi">1</span>
+        <span class="p">};</span>
+        <span class="c1">// Coefficients are ordered as &quot;/&quot; &quot;-&quot; &quot;\&quot;</span>
+        <span class="kt">int</span> <span class="n">denominator</span><span class="p">;</span>
+
+        <span class="n">BSplineElements</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span> <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">BSplineElements</span><span class="p">(</span> <span class="kt">int</span> <span class="n">res</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">offset</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">boundary</span><span class="o">=</span><span class="n">NONE</span> <span class="p">);</span>
+
+        <span class="kt">void</span> <span class="nf">upSample</span><span class="p">(</span> <span class="n">BSplineElements</span><span class="o">&amp;</span> <span class="n">high</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">differentiate</span><span class="p">(</span> <span class="n">BSplineElements</span><span class="o">&lt;</span> <span class="n">Degree</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;&amp;</span> <span class="n">d</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span> <span class="nf">print</span><span class="p">(</span> <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="o">=</span><span class="n">stdout</span> <span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span> <span class="s">&quot;%d]&quot;</span> <span class="p">,</span> <span class="n">i</span> <span class="p">);</span>
+            <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">Degree</span> <span class="p">;</span> <span class="n">j</span><span class="o">++</span> <span class="p">)</span> <span class="n">printf</span><span class="p">(</span> <span class="s">&quot; %d&quot;</span> <span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span> <span class="s">&quot; (%d)</span><span class="se">\n</span><span class="s">&quot;</span> <span class="p">,</span> <span class="n">denominator</span> <span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="k">template</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="n">Degree1</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">Degree2</span> <span class="o">&gt;</span> <span class="kt">void</span> <span class="n">SetBSplineElementIntegrals</span><span class="p">(</span> <span class="kt">double</span> <span class="n">integrals</span><span class="p">[</span><span class="n">Degree1</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">Degree2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">);</span>
+
+
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&quot;bspline_data.hpp&quot;</span><span class="cp"></span>
+
+<span class="cp">#endif </span><span class="c1">// BSPLINE_DATA_INCLUDED</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_bspline_data.hpp.html" class="btn btn-neutral float-right" title="File bspline_data.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_poisson4_bspline_data.h.html" class="btn btn-neutral float-left" title="File bspline_data.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

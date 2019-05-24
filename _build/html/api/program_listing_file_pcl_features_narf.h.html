@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File narf.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File narf.hpp" href="file_pcl_features_impl_narf.hpp.html" />
+    <link rel="prev" title="File narf.h" href="file_pcl_features_narf.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_narf.h.html">File narf.h</a> &raquo;</li>
+        
+      <li>Program Listing for File narf.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_narf.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-narf-h">
+<span id="program-listing-file-pcl-features-narf-h"></span><h1>Program Listing for File narf.h<a class="headerlink" href="#program-listing-for-file-narf-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_narf.h.html#file-pcl-features-narf-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\narf.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common_headers.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_representation.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="c1">// Forward declarations</span>
+  <span class="k">class</span> <span class="nc">RangeImage</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">InterestPoint</span><span class="p">;</span>
+
+<span class="cp">#define NARF_DEFAULT_SURFACE_PATCH_PIXEL_SIZE 10</span>
+
+  <span class="cm">/**</span>
+<span class="cm">    * \brief NARF (Normal Aligned Radial Features) is a point feature descriptor type for 3D data.</span>
+<span class="cm">    * Please refer to pcl/features/narf_descriptor.h if you want the class derived from pcl Feature.</span>
+<span class="cm">    * See B. Steder, R. B. Rusu, K. Konolige, and W. Burgard</span>
+<span class="cm">    *     Point Feature Extraction on 3D Range Scans Taking into Account Object Boundaries</span>
+<span class="cm">    *     In Proc. of the IEEE Int. Conf. on Robotics &amp;Automation (ICRA). 2011.</span>
+<span class="cm">    * \author Bastian Steder</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">Narf</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="c1">// =====CONSTRUCTOR &amp; DESTRUCTOR=====</span>
+      <span class="c1">//! Constructor</span>
+      <span class="n">Narf</span><span class="p">();</span>
+      <span class="c1">//! Copy Constructor</span>
+      <span class="n">Narf</span><span class="p">(</span><span class="k">const</span> <span class="n">Narf</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+      <span class="c1">//! Destructor</span>
+      <span class="o">~</span><span class="n">Narf</span><span class="p">();</span>
+
+      <span class="c1">// =====Operators=====</span>
+      <span class="c1">//! Assignment operator</span>
+      <span class="k">const</span> <span class="n">Narf</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Narf</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+
+      <span class="c1">// =====STATIC=====</span>
+      <span class="cm">/** The maximum number of openmp threads that can be used in this class */</span>
+      <span class="k">static</span> <span class="kt">int</span> <span class="n">max_no_of_threads</span><span class="p">;</span>
+
+      <span class="cm">/** Add features extracted at the given interest point and add them to the list */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">extractFromRangeImageAndAddToList</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">interest_point</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span>
+                                         <span class="kt">float</span> <span class="n">support_size</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">rotation_invariant</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Narf</span><span class="o">*&gt;&amp;</span> <span class="n">feature_list</span><span class="p">);</span>
+      <span class="cm">/** Same as above */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">extractFromRangeImageAndAddToList</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">image_y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span>
+                                         <span class="kt">float</span> <span class="n">support_size</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">rotation_invariant</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Narf</span><span class="o">*&gt;&amp;</span> <span class="n">feature_list</span><span class="p">);</span>
+      <span class="cm">/** Get a list of features from the given interest points. */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">extractForInterestPoints</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">InterestPoint</span><span class="o">&gt;&amp;</span> <span class="n">interest_points</span><span class="p">,</span>
+                                <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">rotation_invariant</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Narf</span><span class="o">*&gt;&amp;</span> <span class="n">feature_list</span><span class="p">);</span>
+      <span class="cm">/** Extract an NARF for every point in the range image. */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="nf">extractForEveryRangeImagePointAndAddToList</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">,</span>
+                                                  <span class="kt">bool</span> <span class="n">rotation_invariant</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Narf</span><span class="o">*&gt;&amp;</span> <span class="n">feature_list</span><span class="p">);</span>
+
+      <span class="c1">// =====PUBLIC METHODS=====</span>
+      <span class="cm">/** Method to extract a NARF feature from a certain 3D point using a range image.</span>
+<span class="cm">       *  pose determines the coordinate system of the feature, whereas it transforms a point from the world into the feature system.</span>
+<span class="cm">       *  This means the interest point at which the feature is extracted will be the inverse application of pose onto (0,0,0).</span>
+<span class="cm">       *  descriptor_size_ determines the size of the descriptor,</span>
+<span class="cm">       *  support_size determines the support size of the feature, meaning the size in the world it covers */</span>
+      <span class="kt">bool</span>
+      <span class="nf">extractFromRangeImage</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span> <span class="n">pose</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">,</span>
+                             <span class="kt">int</span> <span class="n">surface_patch_world_size</span><span class="o">=</span><span class="n">NARF_DEFAULT_SURFACE_PATCH_PIXEL_SIZE</span><span class="p">);</span>
+
+      <span class="c1">//! Same as above, but determines the transformation from the surface in the range image</span>
+      <span class="kt">bool</span>
+      <span class="nf">extractFromRangeImage</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">);</span>
+
+      <span class="c1">//! Same as above</span>
+      <span class="kt">bool</span>
+      <span class="nf">extractFromRangeImage</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">InterestPoint</span><span class="o">&amp;</span> <span class="n">interest_point</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">);</span>
+
+      <span class="c1">//! Same as above</span>
+      <span class="kt">bool</span>
+      <span class="nf">extractFromRangeImage</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">interest_point</span><span class="p">,</span> <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">);</span>
+
+      <span class="cm">/** Same as above, but using the rotational invariant version by choosing the best extracted rotation around the normal.</span>
+<span class="cm">       *  Use extractFromRangeImageAndAddToList if you want to enable the system to return multiple features with different rotations. */</span>
+      <span class="kt">bool</span>
+      <span class="nf">extractFromRangeImageWithBestRotation</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">interest_point</span><span class="p">,</span>
+                                             <span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">,</span> <span class="kt">float</span> <span class="n">support_size</span><span class="p">);</span>
+
+      <span class="cm">/* Get the dominant rotations of the current descriptor</span>
+<span class="cm">       * \param rotations the returned rotations</span>
+<span class="cm">       * \param strength values describing how pronounced the corresponding rotations are</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">getRotations</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">rotations</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">strengths</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/* Get the feature with a different rotation around the normal</span>
+<span class="cm">       * You are responsible for deleting the new features!</span>
+<span class="cm">       * \param range_image the source from which the feature is extracted</span>
+<span class="cm">       * \param rotations list of angles (in radians)</span>
+<span class="cm">       * \param rvps returned features</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">getRotatedVersions</span> <span class="p">(</span><span class="k">const</span> <span class="n">RangeImage</span><span class="o">&amp;</span> <span class="n">range_image</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">rotations</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Narf</span><span class="o">*&gt;&amp;</span> <span class="n">features</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! Calculate descriptor distance, value in [0,1] with 0 meaning identical and 1 every cell above maximum distance</span>
+      <span class="kr">inline</span> <span class="kt">float</span>
+      <span class="nf">getDescriptorDistance</span> <span class="p">(</span><span class="k">const</span> <span class="n">Narf</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">//! How many points on each beam of the gradient star are used to calculate the descriptor?</span>
+      <span class="kr">inline</span> <span class="kt">int</span>
+      <span class="nf">getNoOfBeamPoints</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">pcl_lrint</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span> <span class="p">(</span><span class="mf">0.5f</span> <span class="o">*</span> <span class="kt">float</span> <span class="p">(</span><span class="n">surface_patch_pixel_size_</span><span class="p">)))));</span> <span class="p">}</span>
+
+      <span class="c1">//! Copy the descriptor and pose to the point struct Narf36</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">copyToNarf36</span> <span class="p">(</span><span class="n">Narf36</span><span class="o">&amp;</span> <span class="n">narf36</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Write to file */</span>
+      <span class="kt">void</span>
+      <span class="nf">saveBinary</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="cm">/** Write to output stream */</span>
+      <span class="kt">void</span>
+      <span class="nf">saveBinary</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">file</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Read from file */</span>
+      <span class="kt">void</span>
+      <span class="nf">loadBinary</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">);</span>
+      <span class="cm">/** Read from input stream */</span>
+      <span class="kt">void</span>
+      <span class="nf">loadBinary</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">file</span><span class="p">);</span>
+
+      <span class="c1">//! Create the descriptor from the already set other members</span>
+      <span class="kt">bool</span>
+      <span class="nf">extractDescriptor</span> <span class="p">(</span><span class="kt">int</span> <span class="n">descriptor_size</span><span class="p">);</span>
+
+      <span class="c1">// =====GETTERS=====</span>
+      <span class="c1">//! Getter (const) for the descriptor</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getDescriptor</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">descriptor_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the descriptor</span>
+      <span class="kr">inline</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getDescriptor</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">descriptor_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the descriptor length</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span>
+      <span class="n">getDescriptorSize</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">descriptor_size_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the descriptor length</span>
+      <span class="kr">inline</span> <span class="kt">int</span><span class="o">&amp;</span>
+      <span class="n">getDescriptorSize</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">descriptor_size_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the position</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span>
+      <span class="n">getPosition</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">position_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the position</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span>
+      <span class="n">getPosition</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">position_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the 6DoF pose</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span>
+      <span class="n">getTransformation</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">transformation_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the 6DoF pose</span>
+      <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span><span class="o">&amp;</span>
+      <span class="n">getTransformation</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">transformation_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the pixel size of the surface patch (only one dimension)</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span>
+      <span class="n">getSurfacePatchPixelSize</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_pixel_size_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the pixel size of the surface patch (only one dimension)</span>
+      <span class="kr">inline</span> <span class="kt">int</span><span class="o">&amp;</span>
+      <span class="n">getSurfacePatchPixelSize</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_pixel_size_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the world size of the surface patch</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span>
+      <span class="n">getSurfacePatchWorldSize</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_world_size_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the world size of the surface patch</span>
+      <span class="kr">inline</span> <span class="kt">float</span><span class="o">&amp;</span>
+      <span class="n">getSurfacePatchWorldSize</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_world_size_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the rotation of the surface patch</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span>
+      <span class="n">getSurfacePatchRotation</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_rotation_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the rotation of the surface patch</span>
+      <span class="kr">inline</span> <span class="kt">float</span><span class="o">&amp;</span>
+      <span class="n">getSurfacePatchRotation</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_rotation_</span><span class="p">;}</span>
+      <span class="c1">//! Getter (const) for the surface patch</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="n">getSurfacePatch</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_</span><span class="p">;}</span>
+      <span class="c1">//! Getter for the surface patch</span>
+      <span class="kr">inline</span> <span class="kt">float</span><span class="o">*</span>
+      <span class="n">getSurfacePatch</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">surface_patch_</span><span class="p">;}</span>
+      <span class="c1">//! Method to erase the surface patch and free the memory</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">freeSurfacePatch</span> <span class="p">()</span> <span class="p">{</span> <span class="k">delete</span><span class="p">[]</span> <span class="n">surface_patch_</span><span class="p">;</span> <span class="n">surface_patch_</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span> <span class="n">surface_patch_pixel_size_</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="c1">// =====SETTERS=====</span>
+      <span class="c1">//! Setter for the descriptor</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setDescriptor</span> <span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">descriptor</span><span class="p">)</span> <span class="p">{</span> <span class="n">descriptor_</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">;}</span>
+      <span class="c1">//! Setter for the surface patch</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSurfacePatch</span> <span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">surface_patch</span><span class="p">)</span> <span class="p">{</span> <span class="n">surface_patch_</span> <span class="o">=</span> <span class="n">surface_patch</span><span class="p">;}</span>
+
+      <span class="c1">// =====PUBLIC MEMBER VARIABLES=====</span>
+
+      <span class="c1">// =====PUBLIC STRUCTS=====</span>
+      <span class="k">struct</span> <span class="nl">FeaturePointRepresentation</span> <span class="p">:</span> <span class="k">public</span> <span class="n">PointRepresentation</span><span class="o">&lt;</span><span class="n">Narf</span><span class="o">*&gt;</span>
+      <span class="p">{</span>
+        <span class="k">typedef</span> <span class="n">Narf</span><span class="o">*</span> <span class="n">PointT</span><span class="p">;</span>
+        <span class="n">FeaturePointRepresentation</span><span class="p">(</span><span class="kt">int</span> <span class="n">nr_dimensions</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">nr_dimensions_</span> <span class="o">=</span> <span class="n">nr_dimensions</span><span class="p">;</span> <span class="p">}</span>
+        <span class="cm">/** \brief Empty destructor */</span>
+        <span class="o">~</span><span class="n">FeaturePointRepresentation</span> <span class="p">()</span> <span class="p">{}</span>
+        <span class="kt">void</span> <span class="n">copyToFloatArray</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="n">memcpy</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">getDescriptor</span><span class="p">(),</span> <span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">getDescriptor</span><span class="p">())</span><span class="o">*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">nr_dimensions_</span><span class="p">);</span> <span class="p">}</span>
+      <span class="p">};</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="c1">// =====PROTECTED METHODS=====</span>
+      <span class="c1">//! Reset al members to default values and free allocated memory</span>
+      <span class="kt">void</span>
+      <span class="n">reset</span> <span class="p">();</span>
+      <span class="c1">//! Create a deep copy of other</span>
+      <span class="kt">void</span>
+      <span class="nf">deepCopy</span> <span class="p">(</span><span class="k">const</span> <span class="n">Narf</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+      <span class="c1">//! Get the surface patch with a blur on it</span>
+      <span class="kt">float</span><span class="o">*</span>
+      <span class="nf">getBlurredSurfacePatch</span> <span class="p">(</span><span class="kt">int</span> <span class="n">new_pixel_size</span><span class="p">,</span> <span class="kt">int</span> <span class="n">blur_radius</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** Write header to output stream */</span>
+      <span class="kt">void</span>
+      <span class="nf">saveHeader</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">file</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+      <span class="cm">/** Read header from input stream */</span>
+      <span class="kt">int</span>
+      <span class="nf">loadHeader</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">file</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">// =====PROTECTED STATIC METHODS=====</span>
+      <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getHeaderKeyword</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;NARF&quot;</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="c1">// =====PROTECTED STATIC VARIABLES=====</span>
+      <span class="k">const</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">VERSION</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+      <span class="c1">// =====PROTECTED MEMBER VARIABLES=====</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">position_</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">transformation_</span><span class="p">;</span>
+      <span class="kt">float</span><span class="o">*</span> <span class="n">surface_patch_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">surface_patch_pixel_size_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">surface_patch_world_size_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">surface_patch_rotation_</span><span class="p">;</span>
+      <span class="kt">float</span><span class="o">*</span> <span class="n">descriptor_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">descriptor_size_</span><span class="p">;</span>
+
+      <span class="c1">// =====STATIC PROTECTED=====</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+  <span class="p">};</span>
+<span class="cp">#undef NARF_DEFAULT_SURFACE_PATCH_PIXEL_SIZE</span>
+
+<span class="p">}</span>  <span class="c1">// end namespace pcl</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/impl/narf.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_impl_narf.hpp.html" class="btn btn-neutral float-right" title="File narf.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_narf.h.html" class="btn btn-neutral float-left" title="File narf.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

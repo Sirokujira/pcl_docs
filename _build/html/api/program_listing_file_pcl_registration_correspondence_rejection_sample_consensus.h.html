@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File correspondence_rejection_sample_consensus.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File correspondence_rejection_sample_consensus.hpp" href="file_pcl_registration_impl_correspondence_rejection_sample_consensus.hpp.html" />
+    <link rel="prev" title="File correspondence_rejection_sample_consensus.h" href="file_pcl_registration_correspondence_rejection_sample_consensus.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_correspondence_rejection_sample_consensus.h.html">File correspondence_rejection_sample_consensus.h</a> &raquo;</li>
+        
+      <li>Program Listing for File correspondence_rejection_sample_consensus.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_correspondence_rejection_sample_consensus.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-correspondence-rejection-sample-consensus-h">
+<span id="program-listing-file-pcl-registration-correspondence-rejection-sample-consensus-h"></span><h1>Program Listing for File correspondence_rejection_sample_consensus.h<a class="headerlink" href="#program-listing-for-file-correspondence-rejection-sample-consensus-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_correspondence_rejection_sample_consensus.h.html#file-pcl-registration-correspondence-rejection-sample-consensus-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\correspondence_rejection_sample_consensus.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/correspondence_rejection.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/ransac.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/sample_consensus/sac_model_registration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/transforms.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">registration</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief CorrespondenceRejectorSampleConsensus implements a correspondence rejection</span>
+<span class="cm">      * using Random Sample Consensus to identify inliers (and reject outliers)</span>
+<span class="cm">      * \author Dirk Holz</span>
+<span class="cm">      * \ingroup registration</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">CorrespondenceRejectorSampleConsensus</span><span class="o">:</span> <span class="k">public</span> <span class="n">CorrespondenceRejector</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">using</span> <span class="n">CorrespondenceRejector</span><span class="o">::</span><span class="n">input_correspondences_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceRejector</span><span class="o">::</span><span class="n">rejection_name_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">CorrespondenceRejector</span><span class="o">::</span><span class="n">getClassName</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">CorrespondenceRejectorSampleConsensus</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">CorrespondenceRejectorSampleConsensus</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Empty constructor. Sets the inlier threshold to 5cm (0.05m),</span>
+<span class="cm">          * and the maximum number of iterations to 1000.</span>
+<span class="cm">          */</span>
+        <span class="n">CorrespondenceRejectorSampleConsensus</span> <span class="p">()</span>
+          <span class="o">:</span> <span class="n">inlier_threshold_</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">max_iterations_</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="c1">// std::numeric_limits&lt;int&gt;::max ()</span>
+          <span class="p">,</span> <span class="n">input_</span> <span class="p">()</span>
+          <span class="p">,</span> <span class="n">input_transformed_</span> <span class="p">()</span>
+          <span class="p">,</span> <span class="n">target_</span> <span class="p">()</span>
+          <span class="p">,</span> <span class="n">refine_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+          <span class="p">,</span> <span class="n">save_inliers_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">rejection_name_</span> <span class="o">=</span> <span class="s">&quot;CorrespondenceRejectorSampleConsensus&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Empty destructor. */</span>
+        <span class="o">~</span><span class="n">CorrespondenceRejectorSampleConsensus</span> <span class="p">()</span> <span class="p">{}</span>
+
+        <span class="cm">/** \brief Get a list of valid correspondences after rejection from the original set of correspondences.</span>
+<span class="cm">          * \param[in] original_correspondences the set of initial correspondences given</span>
+<span class="cm">          * \param[out] remaining_correspondences the resultant filtered set of remaining correspondences</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">getRemainingCorrespondences</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span><span class="o">&amp;</span> <span class="n">original_correspondences</span><span class="p">,</span>
+                                     <span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span><span class="o">&amp;</span> <span class="n">remaining_correspondences</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Provide a source point cloud dataset (must contain XYZ data!)</span>
+<span class="cm">          * \param[in] cloud a cloud containing XYZ data</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setInputSource</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">input_</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the input point cloud dataset target. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudConstPtr</span> <span class="k">const</span>
+        <span class="nf">getInputSource</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">input_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Provide a target point cloud dataset (must contain XYZ data!)</span>
+<span class="cm">          * \param[in] cloud a cloud containing XYZ data</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setInputTarget</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span> <span class="p">{</span> <span class="n">target_</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to the input point cloud dataset target. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudConstPtr</span> <span class="k">const</span>
+        <span class="nf">getInputTarget</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">target_</span> <span class="p">);</span> <span class="p">}</span>
+
+
+        <span class="cm">/** \brief See if this rejector requires source points */</span>
+        <span class="kt">bool</span>
+        <span class="nf">requiresSourcePoints</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+        <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Blob method for setting the source cloud */</span>
+        <span class="kt">void</span>
+        <span class="nf">setSourcePoints</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">cloud2</span><span class="p">)</span> <span class="k">override</span>
+        <span class="p">{</span>
+          <span class="n">PointCloudPtr</span> <span class="n">cloud</span> <span class="p">(</span><span class="k">new</span> <span class="n">PointCloud</span><span class="p">);</span>
+          <span class="n">fromPCLPointCloud2</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud2</span><span class="p">,</span> <span class="o">*</span><span class="n">cloud</span><span class="p">);</span>
+          <span class="n">setInputSource</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief See if this rejector requires a target cloud */</span>
+        <span class="kt">bool</span>
+        <span class="nf">requiresTargetPoints</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+        <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Method for setting the target cloud */</span>
+        <span class="kt">void</span>
+        <span class="nf">setTargetPoints</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">cloud2</span><span class="p">)</span> <span class="k">override</span>
+        <span class="p">{</span>
+          <span class="n">PointCloudPtr</span> <span class="n">cloud</span> <span class="p">(</span><span class="k">new</span> <span class="n">PointCloud</span><span class="p">);</span>
+          <span class="n">fromPCLPointCloud2</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud2</span><span class="p">,</span> <span class="o">*</span><span class="n">cloud</span><span class="p">);</span>
+          <span class="n">setInputTarget</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the maximum distance between corresponding points.</span>
+<span class="cm">          * Correspondences with distances below the threshold are considered as inliers.</span>
+<span class="cm">          * \param[in] threshold Distance threshold in the same dimension as source and target data sets.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setInlierThreshold</span> <span class="p">(</span><span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span> <span class="p">{</span> <span class="n">inlier_threshold_</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">;</span> <span class="p">};</span>
+
+        <span class="cm">/** \brief Get the maximum distance between corresponding points.</span>
+<span class="cm">          * \return Distance threshold in the same dimension as source and target data sets.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">double</span>
+        <span class="nf">getInlierThreshold</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">inlier_threshold_</span><span class="p">;</span> <span class="p">};</span>
+
+        <span class="cm">/** \brief Set the maximum number of iterations.</span>
+<span class="cm">          * \param[in] max_iterations Maximum number if iterations to run</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setMaximumIterations</span> <span class="p">(</span><span class="kt">int</span> <span class="n">max_iterations</span><span class="p">)</span> <span class="p">{</span> <span class="n">max_iterations_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">max_iterations</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the maximum number of iterations.</span>
+<span class="cm">          * \return max_iterations Maximum number if iterations to run</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="nf">getMaximumIterations</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">max_iterations_</span><span class="p">);</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the best transformation after RANSAC rejection.</span>
+<span class="cm">          * \return The homogeneous 4x4 transformation yielding the largest number of inliers.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span>
+        <span class="n">getBestTransformation</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">best_transformation_</span><span class="p">;</span> <span class="p">};</span>
+
+        <span class="cm">/** \brief Specify whether the model should be refined internally using the variance of the inliers</span>
+<span class="cm">          * \param[in] refine true if the model should be refined, false otherwise</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setRefineModel</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">refine</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">refine_</span> <span class="o">=</span> <span class="n">refine</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the internal refine parameter value as set by the user using setRefineModel */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span>
+        <span class="nf">getRefineModel</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">refine_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the inlier indices found by the correspondence rejector. This information is only saved if setSaveInliers(true) was called in advance.</span>
+<span class="cm">          * \param[out] inlier_indices Indices for the inliers</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">getInliersIndices</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">inlier_indices</span><span class="p">)</span> <span class="p">{</span> <span class="n">inlier_indices</span> <span class="o">=</span> <span class="n">inlier_indices_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set whether to save inliers or not</span>
+<span class="cm">          * \param[in] s True to save inliers / False otherwise</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">setSaveInliers</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="n">save_inliers_</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get whether the rejector is configured to save inliers */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span>
+        <span class="nf">getSaveInliers</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">save_inliers_</span><span class="p">;</span> <span class="p">}</span>
+
+
+      <span class="k">protected</span><span class="o">:</span>
+
+        <span class="cm">/** \brief Apply the rejection algorithm.</span>
+<span class="cm">          * \param[out] correspondences the set of resultant correspondences.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">applyRejection</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">Correspondences</span> <span class="o">&amp;</span><span class="n">correspondences</span><span class="p">)</span> <span class="k">override</span>
+        <span class="p">{</span>
+          <span class="n">getRemainingCorrespondences</span> <span class="p">(</span><span class="o">*</span><span class="n">input_correspondences_</span><span class="p">,</span> <span class="n">correspondences</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kt">double</span> <span class="n">inlier_threshold_</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">max_iterations_</span><span class="p">;</span>
+
+        <span class="n">PointCloudConstPtr</span> <span class="n">input_</span><span class="p">;</span>
+        <span class="n">PointCloudPtr</span> <span class="n">input_transformed_</span><span class="p">;</span>
+        <span class="n">PointCloudConstPtr</span> <span class="n">target_</span><span class="p">;</span>
+
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="n">best_transformation_</span><span class="p">;</span>
+
+        <span class="kt">bool</span> <span class="n">refine_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">inlier_indices_</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">save_inliers_</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="n">EIGEN_MAKE_ALIGNED_OPERATOR_NEW</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/impl/correspondence_rejection_sample_consensus.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_registration_impl_correspondence_rejection_sample_consensus.hpp.html" class="btn btn-neutral float-right" title="File correspondence_rejection_sample_consensus.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_correspondence_rejection_sample_consensus.h.html" class="btn btn-neutral float-left" title="File correspondence_rejection_sample_consensus.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

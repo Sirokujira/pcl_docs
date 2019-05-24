@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File cvfh.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File cyclical_buffer.h" href="file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.html" />
+    <link rel="prev" title="File cvfh.hpp" href="file_pcl_features_impl_cvfh.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_impl_cvfh.hpp.html">File cvfh.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File cvfh.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_impl_cvfh.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-cvfh-hpp">
+<span id="program-listing-file-pcl-features-impl-cvfh-hpp"></span><h1>Program Listing for File cvfh.hpp<a class="headerlink" href="#program-listing-for-file-cvfh-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_impl_cvfh.hpp.html#file-pcl-features-impl-cvfh-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\impl\cvfh.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_FEATURES_IMPL_CVFH_H_</span>
+<span class="cp">#define PCL_FEATURES_IMPL_CVFH_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/cvfh.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/normal_3d.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/pfh_tools.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/centroid.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">CVFHEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">compute</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">initCompute</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// Resize the output dataset</span>
+  <span class="c1">// Important! We should only allocate precisely how many elements we will need, otherwise</span>
+  <span class="c1">// we risk at pre-allocating too much memory which could lead to bad_alloc</span>
+  <span class="c1">// (see http://dev.pointclouds.org/issues/657)</span>
+  <span class="n">output</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="c1">// Perform the actual feature computation</span>
+  <span class="n">computeFeature</span> <span class="p">(</span><span class="n">output</span><span class="p">);</span>
+
+  <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">deinitCompute</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">CVFHEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">extractEuclideanClustersSmooth</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">normals</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">tolerance</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">Search</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">tree</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">clusters</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">eps_angle</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">min_pts_per_cluster</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_pts_per_cluster</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">getInputCloud</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::extractEuclideanClusters] Tree built for a different point cloud dataset (%lu) than the input cloud (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">getInputCloud</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::extractEuclideanClusters] Number of points in the input point cloud (%lu) different than normals (%lu)!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Create a bool vector of processed point indices, and initialize it to false</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">processed</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="nb">false</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nn_indices</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">nn_distances</span><span class="p">;</span>
+  <span class="c1">// Process all points in the indices vector</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">processed</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="k">continue</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">seed_queue</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">sq_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">seed_queue</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+    <span class="n">processed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">sq_idx</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">()))</span>
+    <span class="p">{</span>
+      <span class="c1">// Search for sq_idx</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">],</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">nn_indices</span><span class="p">,</span> <span class="n">nn_distances</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">sq_idx</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nn_indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="c1">// nn_indices[0] should be sq_idx</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">processed</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span> <span class="c1">// Has this point been processed before ?</span>
+          <span class="k">continue</span><span class="p">;</span>
+
+        <span class="c1">//processed[nn_indices[j]] = true;</span>
+        <span class="c1">// [-1;1]</span>
+
+        <span class="kt">double</span> <span class="n">dot_p</span> <span class="o">=</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                     <span class="o">+</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                     <span class="o">+</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">seed_queue</span><span class="p">[</span><span class="n">sq_idx</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">normals</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">normal</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">acos</span> <span class="p">(</span><span class="n">dot_p</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps_angle</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">processed</span><span class="p">[</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="n">seed_queue</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">nn_indices</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="n">sq_idx</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If this queue is satisfactory, add to the clusters</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&gt;=</span> <span class="n">min_pts_per_cluster</span> <span class="o">&amp;&amp;</span> <span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">&lt;=</span> <span class="n">max_pts_per_cluster</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span> <span class="n">r</span><span class="p">;</span>
+      <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">seed_queue</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">seed_queue</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">sort</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+      <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">erase</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">end</span> <span class="p">()),</span> <span class="n">r</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">end</span> <span class="p">());</span>
+
+      <span class="n">r</span><span class="p">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+      <span class="n">clusters</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="c1">// We could avoid a copy by working directly in the vector</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">CVFHEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">filterNormalsWithHighCurvature</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointNT</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_to_use</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_out</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_in</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">indices_out</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">indices_in</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+  <span class="kt">size_t</span> <span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">;</span>
+  <span class="n">in</span> <span class="o">=</span> <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">index</span> <span class="p">:</span> <span class="n">indices_to_use</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">curvature</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">indices_out</span><span class="p">[</span><span class="n">out</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span>
+      <span class="n">out</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">indices_in</span><span class="p">[</span><span class="n">in</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span>
+      <span class="n">in</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">indices_out</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">out</span><span class="p">);</span>
+  <span class="n">indices_in</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">in</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">CVFHEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">computeFeature</span> <span class="p">(</span><span class="n">PointCloudOut</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Check if input was set</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">normals_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeFeature] No input dataset containing normals was given!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">normals_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::computeFeature] The number of points in the input dataset differs from the number of points in the dataset containing the normals!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">centroids_dominant_orientations_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+
+  <span class="c1">// ---[ Step 0: remove normals with high curvature</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">indices_out</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">indices_in</span><span class="p">;</span>
+  <span class="n">filterNormalsWithHighCurvature</span> <span class="p">(</span><span class="o">*</span><span class="n">normals_</span><span class="p">,</span> <span class="o">*</span><span class="n">indices_</span><span class="p">,</span> <span class="n">indices_out</span><span class="p">,</span> <span class="n">indices_in</span><span class="p">,</span> <span class="n">curv_threshold_</span><span class="p">);</span>
+
+  <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">normals_filtered_cloud</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;</span> <span class="p">());</span>
+  <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">indices_in</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+  <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices_in</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices_in</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices_in</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">y</span><span class="p">;</span>
+    <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">z</span> <span class="o">=</span> <span class="n">surface_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">indices_in</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">z</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointIndices</span><span class="o">&gt;</span> <span class="n">clusters</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">min_points_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//recompute normals and use them for clustering</span>
+    <span class="n">KdTreePtr</span> <span class="n">normals_tree_filtered</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;</span> <span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+    <span class="n">normals_tree_filtered</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">normals_filtered_cloud</span><span class="p">);</span>
+
+
+    <span class="n">pcl</span><span class="o">::</span><span class="n">NormalEstimation</span><span class="o">&lt;</span><span class="n">PointNormal</span><span class="p">,</span> <span class="n">PointNormal</span><span class="o">&gt;</span> <span class="n">n3d</span><span class="p">;</span>
+    <span class="n">n3d</span><span class="p">.</span><span class="n">setRadiusSearch</span> <span class="p">(</span><span class="n">radius_normals_</span><span class="p">);</span>
+    <span class="n">n3d</span><span class="p">.</span><span class="n">setSearchMethod</span> <span class="p">(</span><span class="n">normals_tree_filtered</span><span class="p">);</span>
+    <span class="n">n3d</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">normals_filtered_cloud</span><span class="p">);</span>
+    <span class="n">n3d</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="o">*</span><span class="n">normals_filtered_cloud</span><span class="p">);</span>
+
+    <span class="n">KdTreePtr</span> <span class="nf">normals_tree</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointNormal</span><span class="o">&gt;</span> <span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+    <span class="n">normals_tree</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">normals_filtered_cloud</span><span class="p">);</span>
+
+    <span class="n">extractEuclideanClustersSmooth</span> <span class="p">(</span><span class="o">*</span><span class="n">normals_filtered_cloud</span><span class="p">,</span>
+                                    <span class="o">*</span><span class="n">normals_filtered_cloud</span><span class="p">,</span>
+                                    <span class="n">cluster_tolerance_</span><span class="p">,</span>
+                                    <span class="n">normals_tree</span><span class="p">,</span>
+                                    <span class="n">clusters</span><span class="p">,</span>
+                                    <span class="n">eps_angle_threshold_</span><span class="p">,</span>
+                                    <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">min_points_</span><span class="p">));</span>
+
+  <span class="p">}</span>
+
+  <span class="n">VFHEstimator</span> <span class="n">vfh</span><span class="p">;</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">surface_</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setInputNormals</span> <span class="p">(</span><span class="n">normals_</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setIndices</span><span class="p">(</span><span class="n">indices_</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setSearchMethod</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">tree_</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setUseGivenNormal</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setUseGivenCentroid</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setNormalizeBins</span> <span class="p">(</span><span class="n">normalize_bins_</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setNormalizeDistance</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">vfh</span><span class="p">.</span><span class="n">setFillSizeComponent</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">output</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// ---[ Step 1b : check if any dominant cluster was found</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">clusters</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span> <span class="c1">// ---[ Step 1b.1 : If yes, compute CVFH using the cluster information</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">cluster</span> <span class="p">:</span> <span class="n">clusters</span><span class="p">)</span> <span class="c1">//for each cluster</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">avg_normal</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">();</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">avg_centroid</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span><span class="o">::</span><span class="n">Zero</span> <span class="p">();</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">index</span> <span class="p">:</span> <span class="n">cluster</span><span class="p">.</span><span class="n">indices</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">avg_normal</span> <span class="o">+=</span> <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">getNormalVector4fMap</span> <span class="p">();</span>
+        <span class="n">avg_centroid</span> <span class="o">+=</span> <span class="n">normals_filtered_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">getVector4fMap</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="n">avg_normal</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cluster</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+      <span class="n">avg_centroid</span> <span class="o">/=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">cluster</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">centroid_test</span><span class="p">;</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">compute3DCentroid</span> <span class="p">(</span><span class="o">*</span><span class="n">normals_filtered_cloud</span><span class="p">,</span> <span class="n">centroid_test</span><span class="p">);</span>
+      <span class="n">avg_normal</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">avg_norm</span> <span class="p">(</span><span class="n">avg_normal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">avg_normal</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">avg_normal</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">avg_dominant_centroid</span> <span class="p">(</span><span class="n">avg_centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">avg_centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">avg_centroid</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+      <span class="c1">//append normal and centroid for the clusters</span>
+      <span class="n">dominant_normals_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">avg_norm</span><span class="p">);</span>
+      <span class="n">centroids_dominant_orientations_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">avg_dominant_centroid</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//compute modified VFH for all dominant clusters and add them to the list!</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">dominant_normals_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">dominant_normals_</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dominant_normals_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//configure VFH computation for CVFH</span>
+      <span class="n">vfh</span><span class="p">.</span><span class="n">setNormalToUse</span> <span class="p">(</span><span class="n">dominant_normals_</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+      <span class="n">vfh</span><span class="p">.</span><span class="n">setCentroidToUse</span> <span class="p">(</span><span class="n">centroids_dominant_orientations_</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">VFHSignature308</span><span class="o">&gt;</span> <span class="n">vfh_signature</span><span class="p">;</span>
+      <span class="n">vfh</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="n">vfh_signature</span><span class="p">);</span>
+      <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">vfh_signature</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span> <span class="c1">// ---[ Step 1b.1 : If no, compute CVFH using all the object points</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="n">avg_centroid</span><span class="p">;</span>
+    <span class="n">pcl</span><span class="o">::</span><span class="n">compute3DCentroid</span> <span class="p">(</span><span class="o">*</span><span class="n">surface_</span><span class="p">,</span> <span class="n">avg_centroid</span><span class="p">);</span>
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">cloud_centroid</span> <span class="p">(</span><span class="n">avg_centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">avg_centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">avg_centroid</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">centroids_dominant_orientations_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">cloud_centroid</span><span class="p">);</span>
+
+    <span class="c1">//configure VFH computation for CVFH using all object points</span>
+    <span class="n">vfh</span><span class="p">.</span><span class="n">setCentroidToUse</span> <span class="p">(</span><span class="n">cloud_centroid</span><span class="p">);</span>
+    <span class="n">vfh</span><span class="p">.</span><span class="n">setUseGivenNormal</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+    <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">VFHSignature308</span><span class="o">&gt;</span> <span class="n">vfh_signature</span><span class="p">;</span>
+    <span class="n">vfh</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="n">vfh_signature</span><span class="p">);</span>
+
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">output</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">vfh_signature</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_CVFHEstimation(T,NT,OutT) template class PCL_EXPORTS pcl::CVFHEstimation&lt;T,NT,OutT&gt;;</span>
+
+<span class="cp">#endif    </span><span class="c1">// PCL_FEATURES_IMPL_VFH_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.html" class="btn btn-neutral float-right" title="File cyclical_buffer.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_impl_cvfh.hpp.html" class="btn btn-neutral float-left" title="File cvfh.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

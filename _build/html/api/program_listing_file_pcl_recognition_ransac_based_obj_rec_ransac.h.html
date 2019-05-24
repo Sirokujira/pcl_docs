@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File obj_rec_ransac.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File object.h" href="file_pcl_outofcore_visualization_object.h.html" />
+    <link rel="prev" title="File obj_rec_ransac.h" href="file_pcl_recognition_ransac_based_obj_rec_ransac.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_ransac_based_obj_rec_ransac.h.html">File obj_rec_ransac.h</a> &raquo;</li>
+        
+      <li>Program Listing for File obj_rec_ransac.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_ransac_based_obj_rec_ransac.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-obj-rec-ransac-h">
+<span id="program-listing-file-pcl-recognition-ransac-based-obj-rec-ransac-h"></span><h1>Program Listing for File obj_rec_ransac.h<a class="headerlink" href="#program-listing-for-file-obj-rec-ransac-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_ransac_based_obj_rec_ransac.h.html#file-pcl-recognition-ransac-based-obj-rec-ransac-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\ransac_based\obj_rec_ransac.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/hypothesis.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/model_library.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/rigid_transform_space.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/orr_octree.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/orr_octree_zprojection.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/simple_octree.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/trimmed_icp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/orr_graph.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/auxiliary.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/recognition/ransac_based/bvh.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/transformation_estimation_svd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/correspondence.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;list&gt;</span><span class="cp"></span>
+
+<span class="cp">#define OBJ_REC_RANSAC_VERBOSE</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">recognition</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief This is a RANSAC-based 3D object recognition method. Do the following to use it: (i) call addModel() k times with k different models</span>
+<span class="cm">      * representing the objects to be recognized and (ii) call recognize() with the 3D scene in which the objects should be recognized. Recognition means both</span>
+<span class="cm">      * object identification and pose (position + orientation) estimation. Check the method descriptions for more details.</span>
+<span class="cm">      *</span>
+<span class="cm">      * \note If you use this code in any academic work, please cite:</span>
+<span class="cm">      *</span>
+<span class="cm">      *   - Chavdar Papazov, Sami Haddadin, Sven Parusel, Kai Krieger and Darius Burschka.</span>
+<span class="cm">      *     Rigid 3D geometry matching for grasping of known objects in cluttered scenes.</span>
+<span class="cm">      *     The International Journal of Robotics Research 2012. DOI: 10.1177/0278364911436019</span>
+<span class="cm">      *</span>
+<span class="cm">      *   - Chavdar Papazov and Darius Burschka.</span>
+<span class="cm">      *     An Efficient RANSAC for 3D Object Recognition in Noisy and Occluded Scenes.</span>
+<span class="cm">      *     In Proceedings of the 10th Asian Conference on Computer Vision (ACCV&#39;10),</span>
+<span class="cm">      *     November 2010.</span>
+<span class="cm">      *</span>
+<span class="cm">      *</span>
+<span class="cm">      * \author Chavdar Papazov</span>
+<span class="cm">      * \ingroup recognition</span>
+<span class="cm">      */</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">ObjRecRANSAC</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">ModelLibrary</span><span class="o">::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">ModelLibrary</span><span class="o">::</span><span class="n">PointCloudN</span> <span class="n">PointCloudN</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">BVH</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">*&gt;</span> <span class="n">BVHH</span><span class="p">;</span>
+
+        <span class="cm">/** \brief This is an output item of the ObjRecRANSAC::recognize() method. It contains the recognized model, its name (the ones passed to</span>
+<span class="cm">          * ObjRecRANSAC::addModel()), the rigid transform which aligns the model with the input scene and the match confidence which is a number</span>
+<span class="cm">          * in the interval (0, 1] which gives the fraction of the model surface area matched to the scene. E.g., a match confidence of 0.3 means</span>
+<span class="cm">          * that 30% of the object surface area was matched to the scene points. If the scene is represented by a single range image, the match</span>
+<span class="cm">          * confidence can not be greater than 0.5 since the range scanner sees only one side of each object.</span>
+<span class="cm">          */</span>
+        <span class="k">class</span> <span class="nc">Output</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">Output</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">object_name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="n">rigid_transform</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="kt">float</span> <span class="n">match_confidence</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="o">:</span>
+              <span class="n">object_name_</span> <span class="p">(</span><span class="n">object_name</span><span class="p">),</span>
+              <span class="n">match_confidence_</span> <span class="p">(</span><span class="n">match_confidence</span><span class="p">),</span>
+              <span class="n">user_data_</span> <span class="p">(</span><span class="n">user_data</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">memcpy</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">rigid_transform_</span><span class="p">,</span> <span class="n">rigid_transform</span><span class="p">,</span> <span class="mi">12</span><span class="o">*</span><span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">virtual</span> <span class="o">~</span><span class="n">Output</span> <span class="p">(){}</span>
+
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">object_name_</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">rigid_transform_</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span>
+            <span class="kt">float</span> <span class="n">match_confidence_</span><span class="p">;</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">user_data_</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="k">class</span> <span class="nc">OrientedPointPair</span>
+        <span class="p">{</span>
+            <span class="k">public</span><span class="o">:</span>
+              <span class="n">OrientedPointPair</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">n1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">n2</span><span class="p">)</span>
+              <span class="o">:</span> <span class="n">p1_</span> <span class="p">(</span><span class="n">p1</span><span class="p">),</span> <span class="n">n1_</span> <span class="p">(</span><span class="n">n1</span><span class="p">),</span> <span class="n">p2_</span> <span class="p">(</span><span class="n">p2</span><span class="p">),</span> <span class="n">n2_</span> <span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+              <span class="p">{</span>
+              <span class="p">}</span>
+
+              <span class="k">virtual</span> <span class="o">~</span><span class="n">OrientedPointPair</span> <span class="p">(){}</span>
+
+            <span class="k">public</span><span class="o">:</span>
+              <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">p1_</span><span class="p">,</span> <span class="o">*</span><span class="n">n1_</span><span class="p">,</span> <span class="o">*</span><span class="n">p2_</span><span class="p">,</span> <span class="o">*</span><span class="n">n2_</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="k">class</span> <span class="nc">HypothesisCreator</span>
+        <span class="p">{</span>
+          <span class="k">public</span><span class="o">:</span>
+            <span class="n">HypothesisCreator</span> <span class="p">(){}</span>
+            <span class="k">virtual</span> <span class="o">~</span><span class="n">HypothesisCreator</span> <span class="p">(){}</span>
+
+            <span class="n">Hypothesis</span><span class="o">*</span> <span class="n">create</span> <span class="p">(</span><span class="k">const</span> <span class="n">SimpleOctree</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="p">,</span> <span class="n">HypothesisCreator</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;::</span><span class="n">Node</span><span class="o">*</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="k">new</span> <span class="n">Hypothesis</span> <span class="p">();}</span>
+        <span class="p">};</span>
+
+        <span class="k">typedef</span> <span class="n">SimpleOctree</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="p">,</span> <span class="n">HypothesisCreator</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="n">HypothesisOctree</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/** \brief Constructor with some important parameters which can not be changed once an instance of that class is created.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] pair_width should be roughly half the extent of the visible object part. This means, for each object point p there should be (at least)</span>
+<span class="cm">          * one point q (from the same object) such that ||p - q|| &lt;= pair_width. Tradeoff: smaller values allow for detection in more occluded scenes but lead</span>
+<span class="cm">          * to more imprecise alignment. Bigger values lead to better alignment but require large visible object parts (i.e., less occlusion).</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] voxel_size is the size of the leafs of the octree, i.e., the &quot;size&quot; of the discretization. Tradeoff: High values lead to less</span>
+<span class="cm">          * computation time but ignore object details. Small values allow to better distinguish between objects, but will introduce more holes in the resulting</span>
+<span class="cm">          * &quot;voxel-surface&quot; (especially for a sparsely sampled scene). */</span>
+        <span class="n">ObjRecRANSAC</span> <span class="p">(</span><span class="kt">float</span> <span class="n">pair_width</span><span class="p">,</span> <span class="kt">float</span> <span class="n">voxel_size</span><span class="p">);</span>
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">ObjRecRANSAC</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="k">this</span><span class="o">-&gt;</span><span class="n">clearTestData</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Removes all models from the model library and releases some memory dynamically allocated by this instance. */</span>
+        <span class="kt">void</span>
+        <span class="kr">inline</span> <span class="n">clear</span><span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">model_library_</span><span class="p">.</span><span class="n">removeAllModels</span> <span class="p">();</span>
+          <span class="n">scene_octree_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">scene_octree_proj_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">sampled_oriented_point_pairs_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">transform_space_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">scene_octree_points_</span><span class="p">.</span><span class="n">reset</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief This is a threshold. The larger the value the more point pairs will be considered as co-planar and will</span>
+<span class="cm">          * be ignored in the off-line model pre-processing and in the online recognition phases. This makes sense only if</span>
+<span class="cm">          * &quot;ignore co-planar points&quot; is on. Call this method before calling addModel. This method calls the corresponding</span>
+<span class="cm">          * method of the model library. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setMaxCoplanarityAngleDegrees</span> <span class="p">(</span><span class="kt">float</span> <span class="n">max_coplanarity_angle_degrees</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">max_coplanarity_angle_</span> <span class="o">=</span> <span class="n">max_coplanarity_angle_degrees</span><span class="o">*</span><span class="n">AUX_DEG_TO_RADIANS</span><span class="p">;</span>
+          <span class="n">model_library_</span><span class="p">.</span><span class="n">setMaxCoplanarityAngleDegrees</span> <span class="p">(</span><span class="n">max_coplanarity_angle_degrees</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setSceneBoundsEnlargementFactor</span> <span class="p">(</span><span class="kt">float</span> <span class="n">value</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">scene_bounds_enlargement_factor_</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Default is on. This method calls the corresponding method of the model library. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">ignoreCoplanarPointPairsOn</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">ignore_coplanar_opps_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+          <span class="n">model_library_</span><span class="p">.</span><span class="n">ignoreCoplanarPointPairsOn</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Default is on. This method calls the corresponding method of the model library. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">ignoreCoplanarPointPairsOff</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">ignore_coplanar_opps_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+          <span class="n">model_library_</span><span class="p">.</span><span class="n">ignoreCoplanarPointPairsOff</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">icpHypothesesRefinementOn</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">do_icp_hypotheses_refinement_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">icpHypothesesRefinementOff</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">do_icp_hypotheses_refinement_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Add an object model to be recognized.</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in] points are the object points.</span>
+<span class="cm">          * \param[in] normals at each point.</span>
+<span class="cm">          * \param[in] object_name is an identifier for the object. If that object is detected in the scene &#39;object_name&#39;</span>
+<span class="cm">          * is returned by the recognition method and you know which object has been detected. Note that &#39;object_name&#39; has</span>
+<span class="cm">          * to be unique!</span>
+<span class="cm">          * \param[in] user_data is a pointer to some data (can be NULL)</span>
+<span class="cm">          *</span>
+<span class="cm">          * The method returns true if the model was successfully added to the model library and false otherwise (e.g., if &#39;object_name&#39; is already in use).</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span>
+        <span class="n">addModel</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudIn</span><span class="o">&amp;</span> <span class="n">points</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointCloudN</span><span class="o">&amp;</span> <span class="n">normals</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">object_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">model_library_</span><span class="p">.</span><span class="n">addModel</span> <span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">frac_of_points_for_icp_refinement_</span><span class="p">,</span> <span class="n">user_data</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief This method performs the recognition of the models loaded to the model library with the method addModel().</span>
+<span class="cm">          *</span>
+<span class="cm">          * \param[in]  scene is the 3d scene in which the object should be recognized.</span>
+<span class="cm">          * \param[in]  normals are the scene normals.</span>
+<span class="cm">          * \param[out] recognized_objects is the list of output items each one containing the recognized model instance, its name, the aligning rigid transform</span>
+<span class="cm">          * and the match confidence (see ObjRecRANSAC::Output for further explanations).</span>
+<span class="cm">          * \param[in]  success_probability is the user-defined probability of detecting all objects in the scene.</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">recognize</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudIn</span><span class="o">&amp;</span> <span class="n">scene</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointCloudN</span><span class="o">&amp;</span> <span class="n">normals</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">ObjRecRANSAC</span><span class="o">::</span><span class="n">Output</span><span class="o">&gt;&amp;</span> <span class="n">recognized_objects</span><span class="p">,</span> <span class="kt">double</span> <span class="n">success_probability</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">);</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">enterTestModeSampleOPP</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">rec_mode_</span> <span class="o">=</span> <span class="n">ObjRecRANSAC</span><span class="o">::</span><span class="n">SAMPLE_OPP</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">enterTestModeTestHypotheses</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">rec_mode_</span> <span class="o">=</span> <span class="n">ObjRecRANSAC</span><span class="o">::</span><span class="n">TEST_HYPOTHESES</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">leaveTestMode</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">rec_mode_</span> <span class="o">=</span> <span class="n">ObjRecRANSAC</span><span class="o">::</span><span class="n">FULL_RECOGNITION</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief This function is useful for testing purposes. It returns the oriented point pairs which were sampled from the</span>
+<span class="cm">          * scene during the recognition process. Makes sense only if some of the testing modes are active. */</span>
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">ObjRecRANSAC</span><span class="o">::</span><span class="n">OrientedPointPair</span><span class="o">&gt;&amp;</span>
+        <span class="n">getSampledOrientedPointPairs</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">sampled_oriented_point_pairs_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief This function is useful for testing purposes. It returns the accepted hypotheses generated during the</span>
+<span class="cm">          * recognition process. Makes sense only if some of the testing modes are active. */</span>
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">&gt;&amp;</span>
+        <span class="n">getAcceptedHypotheses</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">accepted_hypotheses_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief This function is useful for testing purposes. It returns the accepted hypotheses generated during the</span>
+<span class="cm">          * recognition process. Makes sense only if some of the testing modes are active. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">getAcceptedHypotheses</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">&gt;&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="n">out</span> <span class="o">=</span> <span class="n">accepted_hypotheses_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Returns the hash table in the model library. */</span>
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">recognition</span><span class="o">::</span><span class="n">ModelLibrary</span><span class="o">::</span><span class="n">HashTable</span><span class="o">&amp;</span>
+        <span class="n">getHashTable</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">model_library_</span><span class="p">.</span><span class="n">getHashTable</span> <span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">ModelLibrary</span><span class="o">&amp;</span>
+        <span class="n">getModelLibrary</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">model_library_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">ModelLibrary</span><span class="o">::</span><span class="n">Model</span><span class="o">*</span>
+        <span class="n">getModel</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">model_library_</span><span class="p">.</span><span class="n">getModel</span> <span class="p">(</span><span class="n">name</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="k">const</span> <span class="n">ORROctree</span><span class="o">&amp;</span>
+        <span class="n">getSceneOctree</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">scene_octree_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="n">RigidTransformSpace</span><span class="o">&amp;</span>
+        <span class="n">getRigidTransformSpace</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">transform_space_</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">float</span>
+        <span class="n">getPairWidth</span> <span class="p">()</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">pair_width_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="k">enum</span> <span class="n">Recognition_Mode</span> <span class="p">{</span><span class="n">SAMPLE_OPP</span><span class="p">,</span> <span class="n">TEST_HYPOTHESES</span><span class="p">,</span> <span class="cm">/*BUILD_CONFLICT_GRAPH,*/</span> <span class="n">FULL_RECOGNITION</span><span class="p">};</span>
+
+        <span class="k">friend</span> <span class="k">class</span> <span class="nc">ModelLibrary</span><span class="p">;</span>
+
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="nf">computeNumberOfIterations</span> <span class="p">(</span><span class="kt">double</span> <span class="n">success_probability</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="c1">// &#39;p_obj&#39; is the probability that given that the first sample point belongs to an object,</span>
+          <span class="c1">// the second sample point will belong to the same object</span>
+          <span class="k">const</span> <span class="kt">double</span> <span class="n">p_obj</span> <span class="o">=</span> <span class="mf">0.25f</span><span class="p">;</span>
+          <span class="c1">// old version: p = p_obj*relative_obj_size_*fraction_of_pairs_in_hash_table_;</span>
+          <span class="k">const</span> <span class="kt">double</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p_obj</span><span class="o">*</span><span class="n">relative_obj_size_</span><span class="p">;</span>
+
+          <span class="k">if</span> <span class="p">(</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="p">)</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+          <span class="k">return</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">log</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">success_probability</span><span class="p">)</span><span class="o">/</span><span class="n">log</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">clearTestData</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">sampled_oriented_point_pairs_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">accepted_hypotheses_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+          <span class="n">transform_space_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span>
+        <span class="nf">sampleOrientedPointPairs</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ORROctree</span><span class="o">::</span><span class="n">Node</span><span class="o">*&gt;&amp;</span> <span class="n">full_scene_leaves</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">OrientedPointPair</span><span class="o">&gt;&amp;</span> <span class="n">output</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">int</span>
+        <span class="nf">generateHypotheses</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">OrientedPointPair</span><span class="o">&gt;&amp;</span> <span class="n">pairs</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">HypothesisBase</span><span class="o">&gt;&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Groups close hypotheses in &#39;hypotheses&#39;. Saves a representative for each group in &#39;out&#39;. Returns the</span>
+<span class="cm">          * number of hypotheses after grouping. */</span>
+        <span class="kt">int</span>
+        <span class="nf">groupHypotheses</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">HypothesisBase</span><span class="o">&gt;&amp;</span> <span class="n">hypotheses</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num_hypotheses</span><span class="p">,</span> <span class="n">RigidTransformSpace</span><span class="o">&amp;</span> <span class="n">transform_space</span><span class="p">,</span>
+            <span class="n">HypothesisOctree</span><span class="o">&amp;</span> <span class="n">grouped_hypotheses</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">testHypothesis</span> <span class="p">(</span><span class="n">Hypothesis</span><span class="o">*</span> <span class="n">hypothesis</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">match</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">penalty</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">testHypothesisNormalBased</span> <span class="p">(</span><span class="n">Hypothesis</span><span class="o">*</span> <span class="n">hypothesis</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">match</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span>
+        <span class="nf">buildGraphOfCloseHypotheses</span> <span class="p">(</span><span class="n">HypothesisOctree</span><span class="o">&amp;</span> <span class="n">hypotheses</span><span class="p">,</span> <span class="n">ORRGraph</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">&gt;&amp;</span> <span class="n">graph</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span>
+        <span class="nf">filterGraphOfCloseHypotheses</span> <span class="p">(</span><span class="n">ORRGraph</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">&gt;&amp;</span> <span class="n">graph</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">&gt;&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span>
+        <span class="nf">buildGraphOfConflictingHypotheses</span> <span class="p">(</span><span class="k">const</span> <span class="n">BVHH</span><span class="o">&amp;</span> <span class="n">bvh</span><span class="p">,</span> <span class="n">ORRGraph</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">*&gt;&amp;</span> <span class="n">graph</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+        <span class="kt">void</span>
+        <span class="nf">filterGraphOfConflictingHypotheses</span> <span class="p">(</span><span class="n">ORRGraph</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">*&gt;&amp;</span> <span class="n">graph</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">ObjRecRANSAC</span><span class="o">::</span><span class="n">Output</span><span class="o">&gt;&amp;</span> <span class="n">recognized_objects</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Computes the rigid transform that maps the line (a1, b1) to (a2, b2).</span>
+<span class="cm">       * The computation is based on the corresponding points &#39;a1&#39; &lt;-&gt; &#39;a2&#39; and &#39;b1&#39; &lt;-&gt; &#39;b2&#39;</span>
+<span class="cm">       * and the normals &#39;a1_n&#39;, &#39;b1_n&#39;, &#39;a2_n&#39;, and &#39;b2_n&#39;. The result is saved in</span>
+<span class="cm">       * &#39;rigid_transform&#39; which is an array of length 12. The first 9 elements are the</span>
+<span class="cm">       * rotational part (row major order) and the last 3 are the translation. */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">computeRigidTransform</span><span class="p">(</span>
+          <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">a1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">a1_n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">b1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">b1_n</span><span class="p">,</span>
+          <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">a2</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">a2_n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">b2</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span><span class="o">*</span> <span class="n">b2_n</span><span class="p">,</span>
+          <span class="kt">float</span><span class="o">*</span> <span class="n">rigid_transform</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="c1">// Some local variables</span>
+          <span class="kt">float</span> <span class="n">o1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">o2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">x1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">x2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">y1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">y2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">z1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">z2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">tmp1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">tmp2</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">Ro1</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+
+          <span class="c1">// Compute the origins</span>
+          <span class="n">o1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="o">*</span><span class="p">(</span><span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">b1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+          <span class="n">o1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="o">*</span><span class="p">(</span><span class="n">a1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b1</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+          <span class="n">o1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="o">*</span><span class="p">(</span><span class="n">a1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">b1</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+          <span class="n">o2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="o">*</span><span class="p">(</span><span class="n">a2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">b2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+          <span class="n">o2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="o">*</span><span class="p">(</span><span class="n">a2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b2</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+          <span class="n">o2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5f</span><span class="o">*</span><span class="p">(</span><span class="n">a2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">b2</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+          <span class="c1">// Compute the x-axes</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">diff3</span> <span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">x1</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">x1</span><span class="p">);</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">diff3</span> <span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">x2</span><span class="p">);</span>
+          <span class="c1">// Compute the y-axes. First y-axis</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">projectOnPlane3</span> <span class="p">(</span><span class="n">a1_n</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tmp1</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">tmp1</span><span class="p">);</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">projectOnPlane3</span> <span class="p">(</span><span class="n">b1_n</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">tmp2</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">tmp2</span><span class="p">);</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">sum3</span> <span class="p">(</span><span class="n">tmp1</span><span class="p">,</span> <span class="n">tmp2</span><span class="p">,</span> <span class="n">y1</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">y1</span><span class="p">);</span>
+          <span class="c1">// Second y-axis</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">projectOnPlane3</span> <span class="p">(</span><span class="n">a2_n</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">tmp1</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">tmp1</span><span class="p">);</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">projectOnPlane3</span> <span class="p">(</span><span class="n">b2_n</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">tmp2</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">tmp2</span><span class="p">);</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">sum3</span> <span class="p">(</span><span class="n">tmp1</span><span class="p">,</span> <span class="n">tmp2</span><span class="p">,</span> <span class="n">y2</span><span class="p">);</span> <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">y2</span><span class="p">);</span>
+          <span class="c1">// Compute the z-axes</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">cross3</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">);</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">cross3</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span><span class="p">);</span>
+
+          <span class="c1">// 1. Invert the matrix [x1|y1|z1] (note that x1, y1, and z1 are treated as columns!)</span>
+          <span class="n">invFrame1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+          <span class="n">invFrame1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y1</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">y1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+          <span class="n">invFrame1</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">invFrame1</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+          <span class="c1">// 2. Compute the desired rotation as rigid_transform = [x2|y2|z2]*invFrame1</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">mult3x3</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">invFrame1</span><span class="p">,</span> <span class="n">rigid_transform</span><span class="p">);</span>
+
+          <span class="c1">// Construct the translation which is the difference between the rotated o1 and o2</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">mult3x3</span> <span class="p">(</span><span class="n">rigid_transform</span><span class="p">,</span> <span class="n">o1</span><span class="p">,</span> <span class="n">Ro1</span><span class="p">);</span>
+          <span class="n">rigid_transform</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>  <span class="o">=</span> <span class="n">o2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">Ro1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+          <span class="n">rigid_transform</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">o2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">Ro1</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+          <span class="n">rigid_transform</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="n">o2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">Ro1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Computes the signature of the oriented point pair ((p1, n1), (p2, n2)) consisting of the angles between</span>
+<span class="cm">          * \param p1</span>
+<span class="cm">          * \param n1</span>
+<span class="cm">          * \param p2</span>
+<span class="cm">          * \param n2</span>
+<span class="cm">          * \param[out] signature is an array of three doubles saving the three angles in the order shown above. */</span>
+        <span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="nf">compute_oriented_point_pair_signature</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">n1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">n2</span><span class="p">,</span> <span class="kt">float</span> <span class="n">signature</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+        <span class="p">{</span>
+          <span class="c1">// Get the line from p1 to p2</span>
+          <span class="kt">float</span> <span class="n">cl</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="mi">2</span><span class="p">]};</span>
+          <span class="n">aux</span><span class="o">::</span><span class="n">normalize3</span> <span class="p">(</span><span class="n">cl</span><span class="p">);</span>
+
+          <span class="n">signature</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">clamp</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">dot3</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">cl</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">));</span> <span class="n">cl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cl</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">cl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cl</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">cl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cl</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+          <span class="n">signature</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">clamp</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">dot3</span> <span class="p">(</span><span class="n">n2</span><span class="p">,</span><span class="n">cl</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">));</span>
+          <span class="n">signature</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">acos</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">clamp</span> <span class="p">(</span><span class="n">aux</span><span class="o">::</span><span class="n">dot3</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">));</span>
+        <span class="p">}</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="c1">// Parameters</span>
+        <span class="kt">float</span> <span class="n">pair_width_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">voxel_size_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">position_discretization_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">rotation_discretization_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">abs_zdist_thresh_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">relative_obj_size_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">visibility_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">relative_num_of_illegal_pts_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">intersection_fraction_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">max_coplanarity_angle_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">scene_bounds_enlargement_factor_</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">ignore_coplanar_opps_</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">frac_of_points_for_icp_refinement_</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">do_icp_hypotheses_refinement_</span><span class="p">;</span>
+
+        <span class="n">ModelLibrary</span> <span class="n">model_library_</span><span class="p">;</span>
+        <span class="n">ORROctree</span> <span class="n">scene_octree_</span><span class="p">;</span>
+        <span class="n">ORROctreeZProjection</span> <span class="n">scene_octree_proj_</span><span class="p">;</span>
+        <span class="n">RigidTransformSpace</span> <span class="n">transform_space_</span><span class="p">;</span>
+        <span class="n">TrimmedICP</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="n">trimmed_icp_</span><span class="p">;</span>
+        <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">scene_octree_points_</span><span class="p">;</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">OrientedPointPair</span><span class="o">&gt;</span> <span class="n">sampled_oriented_point_pairs_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Hypothesis</span><span class="o">&gt;</span> <span class="n">accepted_hypotheses_</span><span class="p">;</span>
+        <span class="n">Recognition_Mode</span> <span class="n">rec_mode_</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span> <span class="c1">// namespace recognition</span>
+<span class="p">}</span> <span class="c1">// namespace pcl</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_outofcore_visualization_object.h.html" class="btn btn-neutral float-right" title="File object.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_ransac_based_obj_rec_ransac.h.html" class="btn btn-neutral float-left" title="File obj_rec_ransac.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

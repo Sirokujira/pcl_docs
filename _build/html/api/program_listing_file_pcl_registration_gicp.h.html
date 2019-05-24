@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File gicp.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File gicp.hpp" href="file_pcl_registration_impl_gicp.hpp.html" />
+    <link rel="prev" title="File gicp.h" href="file_pcl_registration_gicp.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_gicp.h.html">File gicp.h</a> &raquo;</li>
+        
+      <li>Program Listing for File gicp.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_gicp.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-gicp-h">
+<span id="program-listing-file-pcl-registration-gicp-h"></span><h1>Program Listing for File gicp.h<a class="headerlink" href="#program-listing-for-file-gicp-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_gicp.h.html#file-pcl-registration-gicp-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\gicp.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/icp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/bfgs.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief GeneralizedIterativeClosestPoint is an ICP variant that implements the</span>
+<span class="cm">    * generalized iterative closest point algorithm as described by Alex Segal et al. in</span>
+<span class="cm">    * http://www.robots.ox.ac.uk/~avsegal/resources/papers/Generalized_ICP.pdf</span>
+<span class="cm">    * The approach is based on using anistropic cost functions to optimize the alignment</span>
+<span class="cm">    * after closest point assignments have been made.</span>
+<span class="cm">    * The original code uses GSL and ANN while in ours we use an eigen mapped BFGS and</span>
+<span class="cm">    * FLANN.</span>
+<span class="cm">    * \author Nizar Sallem</span>
+<span class="cm">    * \ingroup registration</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">GeneralizedIterativeClosestPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">reg_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">target_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">tree_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">tree_reciprocal_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">nr_iterations_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">max_iterations_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">previous_transformation_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">final_transformation_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">transformation_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">transformation_epsilon_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">converged_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">corr_dist_threshold_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">inlier_threshold_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">min_number_correspondences_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">update_visualizer_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span> <span class="n">PointCloudSource</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudSourcePtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudSource</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudSourceConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">PointCloudTarget</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudTargetPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudTarget</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudTargetConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">PointIndices</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointIndicesPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">PointIndices</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointIndicesConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">MatricesVector</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">MatricesVector</span> <span class="o">&gt;</span> <span class="n">MatricesVectorPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">MatricesVector</span> <span class="o">&gt;</span> <span class="n">MatricesVectorConstPtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">KdTree</span> <span class="n">InputKdTree</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Registration</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">KdTreePtr</span> <span class="n">InputKdTreePtr</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">GeneralizedIterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">GeneralizedIterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+
+      <span class="k">typedef</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="n">Vector6d</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">GeneralizedIterativeClosestPoint</span> <span class="p">()</span>
+        <span class="o">:</span> <span class="n">k_correspondences_</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">gicp_epsilon_</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">rotation_epsilon_</span><span class="p">(</span><span class="mf">2e-3</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">mahalanobis_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">max_inner_iterations_</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">min_number_correspondences_</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">reg_name_</span> <span class="o">=</span> <span class="s">&quot;GeneralizedIterativeClosestPoint&quot;</span><span class="p">;</span>
+        <span class="n">max_iterations_</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="n">transformation_epsilon_</span> <span class="o">=</span> <span class="mf">5e-4</span><span class="p">;</span>
+        <span class="n">corr_dist_threshold_</span> <span class="o">=</span> <span class="mf">5.</span><span class="p">;</span>
+        <span class="n">rigid_transformation_estimation_</span> <span class="o">=</span>
+          <span class="n">boost</span><span class="o">::</span><span class="n">bind</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">GeneralizedIterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">estimateRigidTransformationBFGS</span><span class="p">,</span>
+                       <span class="k">this</span><span class="p">,</span> <span class="n">_1</span><span class="p">,</span> <span class="n">_2</span><span class="p">,</span> <span class="n">_3</span><span class="p">,</span> <span class="n">_4</span><span class="p">,</span> <span class="n">_5</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input dataset</span>
+<span class="cm">        * \param cloud the const boost shared pointer to a PointCloud message</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputSource</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudSourceConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+        <span class="p">{</span>
+          <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::%s::setInputSource] Invalid or empty point cloud dataset given!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">getClassName</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">());</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">PointCloudSource</span> <span class="n">input</span> <span class="o">=</span> <span class="o">*</span><span class="n">cloud</span><span class="p">;</span>
+        <span class="c1">// Set all the point.data[3] values to 1 to aid the rigid transformation</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">input</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="n">input</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+
+        <span class="n">pcl</span><span class="o">::</span><span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">setInputSource</span> <span class="p">(</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="n">input_covariances_</span><span class="p">.</span><span class="n">reset</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the covariances of the input source (if computed externally!).</span>
+<span class="cm">        * If not set, GeneralizedIterativeClosestPoint will compute the covariances itself.</span>
+<span class="cm">        * Make sure to set the covariances AFTER setting the input source point cloud (setting the input source point cloud will reset the covariances).</span>
+<span class="cm">        * \param[in] target the input point cloud target</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setSourceCovariances</span> <span class="p">(</span><span class="k">const</span> <span class="n">MatricesVectorPtr</span><span class="o">&amp;</span> <span class="n">covariances</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">input_covariances_</span> <span class="o">=</span> <span class="n">covariances</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the input target (e.g., the point cloud that we want to align the input source to)</span>
+<span class="cm">        * \param[in] target the input point cloud target</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setInputTarget</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudTargetConstPtr</span> <span class="o">&amp;</span><span class="n">target</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">IterativeClosestPoint</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">setInputTarget</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+        <span class="n">target_covariances_</span><span class="p">.</span><span class="n">reset</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Provide a pointer to the covariances of the input target (if computed externally!).</span>
+<span class="cm">        * If not set, GeneralizedIterativeClosestPoint will compute the covariances itself.</span>
+<span class="cm">        * Make sure to set the covariances AFTER setting the input source point cloud (setting the input source point cloud will reset the covariances).</span>
+<span class="cm">        * \param[in] target the input point cloud target</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="n">setTargetCovariances</span> <span class="p">(</span><span class="k">const</span> <span class="n">MatricesVectorPtr</span><span class="o">&amp;</span> <span class="n">covariances</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">target_covariances_</span> <span class="o">=</span> <span class="n">covariances</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Estimate a rigid rotation transformation between a source and a target point cloud using an iterative</span>
+<span class="cm">        * non-linear Levenberg-Marquardt approach.</span>
+<span class="cm">        * \param[in] cloud_src the source point cloud dataset</span>
+<span class="cm">        * \param[in] indices_src the vector of indices describing the points of interest in \a cloud_src</span>
+<span class="cm">        * \param[in] cloud_tgt the target point cloud dataset</span>
+<span class="cm">        * \param[in] indices_tgt the vector of indices describing the correspondences of the interest points from \a indices_src</span>
+<span class="cm">        * \param[out] transformation_matrix the resultant transformation matrix</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">estimateRigidTransformationBFGS</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">cloud_src</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_src</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="n">PointCloudTarget</span> <span class="o">&amp;</span><span class="n">cloud_tgt</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices_tgt</span><span class="p">,</span>
+                                       <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">transformation_matrix</span><span class="p">);</span>
+
+      <span class="cm">/** \brief \return Mahalanobis distance matrix for the given point index */</span>
+      <span class="kr">inline</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="o">&amp;</span> <span class="n">mahalanobis</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">mahalanobis_</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">mahalanobis_</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Computes rotation matrix derivative.</span>
+<span class="cm">        * rotation matrix is obtainded from rotation angles x[3], x[4] and x[5]</span>
+<span class="cm">        * \return d/d_rx, d/d_ry and d/d_rz respectively in g[3], g[4] and g[5]</span>
+<span class="cm">        * param x array representing 3D transformation</span>
+<span class="cm">        * param R rotation matrix</span>
+<span class="cm">        * param g gradient vector</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">computeRDerivative</span><span class="p">(</span><span class="k">const</span> <span class="n">Vector6d</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="o">&amp;</span><span class="n">R</span><span class="p">,</span> <span class="n">Vector6d</span> <span class="o">&amp;</span><span class="n">g</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Set the rotation epsilon (maximum allowable difference between two</span>
+<span class="cm">        * consecutive rotations) in order for an optimization to be considered as having</span>
+<span class="cm">        * converged to the final solution.</span>
+<span class="cm">        * \param epsilon the rotation epsilon</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">void</span>
+      <span class="nf">setRotationEpsilon</span> <span class="p">(</span><span class="kt">double</span> <span class="n">epsilon</span><span class="p">)</span> <span class="p">{</span> <span class="n">rotation_epsilon_</span> <span class="o">=</span> <span class="n">epsilon</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the rotation epsilon (maximum allowable difference between two</span>
+<span class="cm">        * consecutive rotations) as set by the user.</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">getRotationEpsilon</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">rotation_epsilon_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Set the number of neighbors used when selecting a point neighbourhood</span>
+<span class="cm">        * to compute covariances.</span>
+<span class="cm">        * A higher value will bring more accurate covariance matrix but will make</span>
+<span class="cm">        * covariances computation slower.</span>
+<span class="cm">        * \param k the number of neighbors to use when computing covariances</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">setCorrespondenceRandomness</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="n">k_correspondences_</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Get the number of neighbors used when computing covariances as set by</span>
+<span class="cm">        * the user</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">getCorrespondenceRandomness</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">k_correspondences_</span><span class="p">);</span> <span class="p">}</span>
+
+      <span class="cm">/** set maximum number of iterations at the optimization step</span>
+<span class="cm">        * \param[in] max maximum number of iterations for the optimizer</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">setMaximumOptimizerIterations</span> <span class="p">(</span><span class="kt">int</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span> <span class="n">max_inner_iterations_</span> <span class="o">=</span> <span class="n">max</span><span class="p">;</span> <span class="p">}</span>
+
+      <span class="c1">///\return maximum number of iterations at the optimization step</span>
+      <span class="kt">int</span>
+      <span class="nf">getMaximumOptimizerIterations</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">max_inner_iterations_</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="cm">/** \brief The number of neighbors used for covariances computation.</span>
+<span class="cm">        * default: 20</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span> <span class="n">k_correspondences_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The epsilon constant for gicp paper; this is NOT the convergence</span>
+<span class="cm">        * tolerance</span>
+<span class="cm">        * default: 0.001</span>
+<span class="cm">        */</span>
+      <span class="kt">double</span> <span class="n">gicp_epsilon_</span><span class="p">;</span>
+
+      <span class="cm">/** The epsilon constant for rotation error. (In GICP the transformation epsilon</span>
+<span class="cm">        * is split in rotation part and translation part).</span>
+<span class="cm">        * default: 2e-3</span>
+<span class="cm">        */</span>
+      <span class="kt">double</span> <span class="n">rotation_epsilon_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief base transformation */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="n">base_transformation_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Temporary pointer to the source dataset. */</span>
+      <span class="k">const</span> <span class="n">PointCloudSource</span> <span class="o">*</span><span class="n">tmp_src_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Temporary pointer to the target dataset. */</span>
+      <span class="k">const</span> <span class="n">PointCloudTarget</span>  <span class="o">*</span><span class="n">tmp_tgt_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Temporary pointer to the source dataset indices. */</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">tmp_idx_src_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Temporary pointer to the target dataset indices. */</span>
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">tmp_idx_tgt_</span><span class="p">;</span>
+
+
+      <span class="cm">/** \brief Input cloud points covariances. */</span>
+      <span class="n">MatricesVectorPtr</span> <span class="n">input_covariances_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Target cloud points covariances. */</span>
+      <span class="n">MatricesVectorPtr</span> <span class="n">target_covariances_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Mahalanobis matrices holder. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="o">&gt;</span> <span class="n">mahalanobis_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief maximum number of optimizations */</span>
+      <span class="kt">int</span> <span class="n">max_inner_iterations_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief compute points covariances matrices according to the K nearest</span>
+<span class="cm">        * neighbors. K is set via setCorrespondenceRandomness() method.</span>
+<span class="cm">        * \param cloud pointer to point cloud</span>
+<span class="cm">        * \param tree KD tree performer for nearest neighbors search</span>
+<span class="cm">        * \param[out] cloud_covariances covariances matrices for each point in the cloud</span>
+<span class="cm">        */</span>
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+      <span class="kt">void</span> <span class="n">computeCovariances</span><span class="p">(</span><span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="n">cloud</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">KdTree</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">tree</span><span class="p">,</span>
+                              <span class="n">MatricesVector</span><span class="o">&amp;</span> <span class="n">cloud_covariances</span><span class="p">);</span>
+
+      <span class="cm">/** \return trace of mat1^t . mat2</span>
+<span class="cm">        * \param mat1 matrix of dimension nxm</span>
+<span class="cm">        * \param mat2 matrix of dimension nxp</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">double</span>
+      <span class="nf">matricesInnerProd</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">&amp;</span> <span class="n">mat1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">&amp;</span> <span class="n">mat2</span><span class="p">)</span> <span class="k">const</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span>
+        <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">mat1</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span>
+        <span class="c1">// tr(mat1^t.mat2)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="n">mat1</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">mat2</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Rigid transformation computation method  with initial guess.</span>
+<span class="cm">        * \param output the transformed input point cloud dataset using the rigid transformation found</span>
+<span class="cm">        * \param guess the initial guess of the transformation to compute</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeTransformation</span> <span class="p">(</span><span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">guess</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Search for the closest nearest neighbor of a given point.</span>
+<span class="cm">        * \param query the point to search a nearest neighbour for</span>
+<span class="cm">        * \param index vector of size 1 to store the index of the nearest neighbour found</span>
+<span class="cm">        * \param distance vector of size 1 to store the distance to nearest neighbour found</span>
+<span class="cm">        */</span>
+      <span class="kr">inline</span> <span class="kt">bool</span>
+      <span class="nf">searchForNeighbors</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointSource</span> <span class="o">&amp;</span><span class="n">query</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">index</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">distance</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">tree_</span><span class="o">-&gt;</span><span class="n">nearestKSearch</span> <span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">distance</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">/// \brief compute transformation matrix from transformation matrix</span>
+      <span class="kt">void</span> <span class="nf">applyState</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">Vector6d</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="c1">/// \brief optimization functor structure</span>
+      <span class="k">struct</span> <span class="nl">OptimizationFunctorWithIndices</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BFGSDummyFunctor</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="mi">6</span><span class="o">&gt;</span>
+      <span class="p">{</span>
+        <span class="n">OptimizationFunctorWithIndices</span> <span class="p">(</span><span class="k">const</span> <span class="n">GeneralizedIterativeClosestPoint</span><span class="o">*</span> <span class="n">gicp</span><span class="p">)</span>
+          <span class="o">:</span> <span class="n">BFGSDummyFunctor</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="mi">6</span><span class="o">&gt;</span> <span class="p">(),</span> <span class="n">gicp_</span><span class="p">(</span><span class="n">gicp</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="kt">double</span> <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="k">const</span> <span class="n">Vector6d</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span>  <span class="nf">df</span><span class="p">(</span><span class="k">const</span> <span class="n">Vector6d</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">Vector6d</span> <span class="o">&amp;</span><span class="n">df</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">fdf</span><span class="p">(</span><span class="k">const</span> <span class="n">Vector6d</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">f</span><span class="p">,</span> <span class="n">Vector6d</span> <span class="o">&amp;</span><span class="n">df</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="k">const</span> <span class="n">GeneralizedIterativeClosestPoint</span> <span class="o">*</span><span class="n">gicp_</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_src</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">src_indices</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud_tgt</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">tgt_indices</span><span class="p">,</span>
+                           <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">transformation_matrix</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">rigid_transformation_estimation_</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/impl/gicp.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_registration_impl_gicp.hpp.html" class="btn btn-neutral float-right" title="File gicp.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_gicp.h.html" class="btn btn-neutral float-left" title="File gicp.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

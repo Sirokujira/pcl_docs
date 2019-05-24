@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File conversions.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File convex_hull.h" href="file_E__pcl_docs_pcl_gpu_surface_include_pcl_gpu_surface_convex_hull.h.html" />
+    <link rel="prev" title="File conversions.h" href="file_pcl_conversions.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_conversions.h.html">File conversions.h</a> &raquo;</li>
+        
+      <li>Program Listing for File conversions.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_conversions.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-conversions-h">
+<span id="program-listing-file-pcl-conversions-h"></span><h1>Program Listing for File conversions.h<a class="headerlink" href="#program-listing-for-file-conversions-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_conversions.h.html#file-pcl-conversions-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\conversions.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#ifdef __GNUC__</span>
+<span class="cp">#pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PCLPointField.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PCLPointCloud2.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/PCLImage.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_traits.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/for_each_type.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/exceptions.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+<span class="cp">#ifndef Q_MOC_RUN</span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/foreach.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">detail</span>
+  <span class="p">{</span>
+    <span class="c1">// For converting template point cloud to message.</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">FieldAdder</span>
+    <span class="p">{</span>
+      <span class="n">FieldAdder</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;&amp;</span> <span class="n">fields</span><span class="p">)</span> <span class="o">:</span> <span class="n">fields_</span> <span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="p">{};</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">U</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="k">operator</span><span class="p">()</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span> <span class="n">f</span><span class="p">;</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">traits</span><span class="o">::</span><span class="n">name</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">datatype</span> <span class="o">=</span> <span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;::</span><span class="n">size</span><span class="p">;</span>
+        <span class="n">fields_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">f</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;&amp;</span> <span class="n">fields_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="c1">// For converting message to template point cloud.</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">FieldMapper</span>
+    <span class="p">{</span>
+      <span class="n">FieldMapper</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;&amp;</span> <span class="n">fields</span><span class="p">,</span>
+                   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FieldMapping</span><span class="o">&gt;&amp;</span> <span class="n">map</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">fields_</span> <span class="p">(</span><span class="n">fields</span><span class="p">),</span> <span class="n">map_</span> <span class="p">(</span><span class="n">map</span><span class="p">)</span>
+      <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Tag</span><span class="o">&gt;</span> <span class="kt">void</span>
+      <span class="k">operator</span> <span class="p">()</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">BOOST_FOREACH</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&amp;</span> <span class="n">field</span><span class="p">,</span> <span class="n">fields_</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">FieldMatches</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Tag</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">field</span><span class="p">))</span>
+          <span class="p">{</span>
+            <span class="n">FieldMapping</span> <span class="n">mapping</span><span class="p">;</span>
+            <span class="n">mapping</span><span class="p">.</span><span class="n">serialized_offset</span> <span class="o">=</span> <span class="n">field</span><span class="p">.</span><span class="n">offset</span><span class="p">;</span>
+            <span class="n">mapping</span><span class="p">.</span><span class="n">struct_offset</span> <span class="o">=</span> <span class="n">traits</span><span class="o">::</span><span class="n">offset</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Tag</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+            <span class="n">mapping</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">datatype</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Tag</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">);</span>
+            <span class="n">map_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">mapping</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// Disable thrown exception per #595: http://dev.pointclouds.org/issues/595</span>
+        <span class="n">PCL_WARN</span> <span class="p">(</span><span class="s">&quot;Failed to find match for field &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">traits</span><span class="o">::</span><span class="n">name</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">Tag</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">);</span>
+        <span class="c1">//throw pcl::InvalidConversionException (ss.str ());</span>
+      <span class="p">}</span>
+
+      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;&amp;</span> <span class="n">fields_</span><span class="p">;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FieldMapping</span><span class="o">&gt;&amp;</span> <span class="n">map_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="kr">inline</span> <span class="kt">bool</span>
+    <span class="nf">fieldOrdering</span> <span class="p">(</span><span class="k">const</span> <span class="n">FieldMapping</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">FieldMapping</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">serialized_offset</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">serialized_offset</span><span class="p">);</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span> <span class="c1">//namespace detail</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">createMapping</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointField</span><span class="o">&gt;&amp;</span> <span class="n">msg_fields</span><span class="p">,</span> <span class="n">MsgFieldMap</span><span class="o">&amp;</span> <span class="n">field_map</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Create initial 1-1 mapping between serialized data segments and struct fields</span>
+    <span class="n">detail</span><span class="o">::</span><span class="n">FieldMapper</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">mapper</span> <span class="p">(</span><span class="n">msg_fields</span><span class="p">,</span> <span class="n">field_map</span><span class="p">);</span>
+    <span class="n">for_each_type</span><span class="o">&lt;</span> <span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">fieldList</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">type</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">mapper</span><span class="p">);</span>
+
+    <span class="c1">// Coalesce adjacent fields into single memcpy&#39;s where possible</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">field_map</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">field_map</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">field_map</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">detail</span><span class="o">::</span><span class="n">fieldOrdering</span><span class="p">);</span>
+      <span class="n">MsgFieldMap</span><span class="o">::</span><span class="n">iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">field_map</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">field_map</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+      <span class="p">{</span>
+        <span class="c1">// This check is designed to permit padding between adjacent fields.</span>
+        <span class="c1">/// @todo One could construct a pathological case where the struct has a</span>
+        <span class="c1">/// field where the serialized data has padding</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">-&gt;</span><span class="n">serialized_offset</span> <span class="o">-</span> <span class="n">i</span><span class="o">-&gt;</span><span class="n">serialized_offset</span> <span class="o">==</span> <span class="n">j</span><span class="o">-&gt;</span><span class="n">struct_offset</span> <span class="o">-</span> <span class="n">i</span><span class="o">-&gt;</span><span class="n">struct_offset</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">i</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">+=</span> <span class="p">(</span><span class="n">j</span><span class="o">-&gt;</span><span class="n">struct_offset</span> <span class="o">+</span> <span class="n">j</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">i</span><span class="o">-&gt;</span><span class="n">struct_offset</span> <span class="o">+</span> <span class="n">i</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">);</span>
+          <span class="n">j</span> <span class="o">=</span> <span class="n">field_map</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+          <span class="o">++</span><span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Convert a PCLPointCloud2 binary data blob into a pcl::PointCloud&lt;T&gt; object using a field_map.</span>
+<span class="cm">    * \param[in] msg the PCLPointCloud2 binary blob</span>
+<span class="cm">    * \param[out] cloud the resultant pcl::PointCloud&lt;T&gt;</span>
+<span class="cm">    * \param[in] field_map a MsgFieldMap object</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note Use fromPCLPointCloud2 (PCLPointCloud2, PointCloud&lt;T&gt;) directly or create you</span>
+<span class="cm">    * own MsgFieldMap using:</span>
+<span class="cm">    *</span>
+<span class="cm">    * \code</span>
+<span class="cm">    * MsgFieldMap field_map;</span>
+<span class="cm">    * createMapping&lt;PointT&gt; (msg.fields, field_map);</span>
+<span class="cm">    * \endcode</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">fromPCLPointCloud2</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">,</span>
+              <span class="k">const</span> <span class="n">MsgFieldMap</span><span class="o">&amp;</span> <span class="n">field_map</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Copy info fields</span>
+    <span class="n">cloud</span><span class="p">.</span><span class="n">header</span>   <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">cloud</span><span class="p">.</span><span class="n">width</span>    <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="n">cloud</span><span class="p">.</span><span class="n">height</span>   <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">is_dense</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Copy point data</span>
+    <span class="kt">uint32_t</span> <span class="n">num_points</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">num_points</span><span class="p">);</span>
+    <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">cloud_data</span> <span class="o">=</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+    <span class="c1">// Check if we can copy adjacent points in a single memcpy.  We can do so if there</span>
+    <span class="c1">// is exactly one field to copy and it is the same size as the source and destination</span>
+    <span class="c1">// point types.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">field_map</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span>
+        <span class="n">field_map</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">serialized_offset</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+        <span class="n">field_map</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">struct_offset</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+        <span class="n">field_map</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span> <span class="o">==</span> <span class="n">msg</span><span class="p">.</span><span class="n">point_step</span> <span class="o">&amp;&amp;</span>
+        <span class="n">field_map</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">PointT</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="kt">uint32_t</span> <span class="n">cloud_row_step</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span><span class="p">);</span>
+      <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">msg_data</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="c1">// Should usually be able to copy all rows at once</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">row_step</span> <span class="o">==</span> <span class="n">cloud_row_step</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">memcpy</span> <span class="p">(</span><span class="n">cloud_data</span><span class="p">,</span> <span class="n">msg_data</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">,</span> <span class="n">cloud_data</span> <span class="o">+=</span> <span class="n">cloud_row_step</span><span class="p">,</span> <span class="n">msg_data</span> <span class="o">+=</span> <span class="n">msg</span><span class="p">.</span><span class="n">row_step</span><span class="p">)</span>
+          <span class="n">memcpy</span> <span class="p">(</span><span class="n">cloud_data</span><span class="p">,</span> <span class="n">msg_data</span><span class="p">,</span> <span class="n">cloud_row_step</span><span class="p">);</span>
+      <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="c1">// If not, memcpy each group of contiguous fields separately</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> <span class="o">++</span><span class="n">row</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">row_data</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">row_step</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">width</span><span class="p">;</span> <span class="o">++</span><span class="n">col</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">msg_data</span> <span class="o">=</span> <span class="n">row_data</span> <span class="o">+</span> <span class="n">col</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">point_step</span><span class="p">;</span>
+          <span class="n">BOOST_FOREACH</span> <span class="p">(</span><span class="k">const</span> <span class="n">detail</span><span class="o">::</span><span class="n">FieldMapping</span><span class="o">&amp;</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">field_map</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">memcpy</span> <span class="p">(</span><span class="n">cloud_data</span> <span class="o">+</span> <span class="n">mapping</span><span class="p">.</span><span class="n">struct_offset</span><span class="p">,</span> <span class="n">msg_data</span> <span class="o">+</span> <span class="n">mapping</span><span class="p">.</span><span class="n">serialized_offset</span><span class="p">,</span> <span class="n">mapping</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="n">cloud_data</span> <span class="o">+=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Convert a PCLPointCloud2 binary data blob into a pcl::PointCloud&lt;T&gt; object.</span>
+<span class="cm">    * \param[in] msg the PCLPointCloud2 binary blob</span>
+<span class="cm">    * \param[out] cloud the resultant pcl::PointCloud&lt;T&gt;</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">fromPCLPointCloud2</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">MsgFieldMap</span> <span class="n">field_map</span><span class="p">;</span>
+    <span class="n">createMapping</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">fields</span><span class="p">,</span> <span class="n">field_map</span><span class="p">);</span>
+    <span class="n">fromPCLPointCloud2</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">field_map</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Convert a pcl::PointCloud&lt;T&gt; object to a PCLPointCloud2 binary data blob.</span>
+<span class="cm">    * \param[in] cloud the input pcl::PointCloud&lt;T&gt;</span>
+<span class="cm">    * \param[out] msg the resultant PCLPointCloud2 binary blob</span>
+<span class="cm">    */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">toPCLPointCloud2</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Ease the user&#39;s burden on specifying width/height for unorganized datasets</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">==</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Fill point cloud binary data (padding and all)</span>
+    <span class="kt">size_t</span> <span class="n">data_size</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">data_size</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">data_size</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_size</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Fill fields metadata</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">fields</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+    <span class="n">for_each_type</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">traits</span><span class="o">::</span><span class="n">fieldList</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">FieldAdder</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">fields</span><span class="p">));</span>
+
+    <span class="n">msg</span><span class="p">.</span><span class="n">header</span>     <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">point_step</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">);</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">row_step</span>   <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">width</span><span class="p">);</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">is_dense</span>   <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span><span class="p">;</span>
+    <span class="c1">/// @todo msg.is_bigendian = ?;</span>
+  <span class="p">}</span>
+
+   <span class="cm">/** \brief Copy the RGB fields of a PointCloud into pcl::PCLImage format</span>
+<span class="cm">     * \param[in] cloud the point cloud message</span>
+<span class="cm">     * \param[out] msg the resultant pcl::PCLImage</span>
+<span class="cm">     * CloudT cloud type, CloudT should be akin to pcl::PointCloud&lt;pcl::PointXYZRGBA&gt;</span>
+<span class="cm">     * \note will throw std::runtime_error if there is a problem</span>
+<span class="cm">     */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">CloudT</span><span class="o">&gt;</span> <span class="kt">void</span>
+  <span class="n">toPCLPointCloud2</span> <span class="p">(</span><span class="k">const</span> <span class="n">CloudT</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Ease the user&#39;s burden on specifying width/height for unorganized datasets</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;Needs to be a dense like cloud!!&quot;</span><span class="p">);</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;The width and height do not match the cloud size!&quot;</span><span class="p">);</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ensor_msgs::image_encodings::BGR8;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s">&quot;bgr8&quot;</span><span class="p">;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">step</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">pixel</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">y</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">step</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]);</span>
+        <span class="n">memcpy</span> <span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cloud</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">).</span><span class="n">rgb</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** \brief Copy the RGB fields of a PCLPointCloud2 msg into pcl::PCLImage format</span>
+<span class="cm">    * \param cloud the point cloud message</span>
+<span class="cm">    * \param msg the resultant pcl::PCLImage</span>
+<span class="cm">    * will throw std::runtime_error if there is a problem</span>
+<span class="cm">    */</span>
+  <span class="kr">inline</span> <span class="kt">void</span>
+  <span class="n">toPCLPointCloud2</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">rgb_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// Get the index we need</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">d</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">d</span><span class="p">].</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;rgb&quot;</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">rgb_index</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">rgb_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+      <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span> <span class="p">(</span><span class="s">&quot;No rgb field!!&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span> <span class="p">(</span><span class="s">&quot;Needs to be a dense like cloud!!&quot;</span><span class="p">);</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+      <span class="n">msg</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">rgb_offset</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">fields</span><span class="p">[</span><span class="n">rgb_index</span><span class="p">].</span><span class="n">offset</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">point_step</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">.</span><span class="n">point_step</span><span class="p">;</span>
+
+    <span class="c1">// pcl::image_encodings::BGR8;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s">&quot;bgr8&quot;</span><span class="p">;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">step</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">step</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">width</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">,</span> <span class="n">rgb_offset</span> <span class="o">+=</span> <span class="n">point_step</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">pixel</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">y</span> <span class="o">*</span> <span class="n">msg</span><span class="p">.</span><span class="n">step</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]);</span>
+        <span class="n">memcpy</span> <span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">rgb_offset</span><span class="p">]),</span> <span class="mi">3</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_surface_include_pcl_gpu_surface_convex_hull.h.html" class="btn btn-neutral float-right" title="File convex_hull.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_conversions.h.html" class="btn btn-neutral float-left" title="File conversions.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

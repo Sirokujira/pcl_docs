@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File person_classifier.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File person_classifier.hpp" href="file_pcl_people_impl_person_classifier.hpp.html" />
+    <link rel="prev" title="File person_classifier.h" href="file_pcl_people_person_classifier.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_people_person_classifier.h.html">File person_classifier.h</a> &raquo;</li>
+        
+      <li>Program Listing for File person_classifier.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_people_person_classifier.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-person-classifier-h">
+<span id="program-listing-file-pcl-people-person-classifier-h"></span><h1>Program Listing for File person_classifier.h<a class="headerlink" href="#program-listing-for-file-person-classifier-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_people_person_classifier.h.html#file-pcl-people-person-classifier-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\people\person_classifier.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> * Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> * Copyright (c) 2013-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions</span>
+<span class="cm"> * are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> * * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> * notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> * * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> * copyright notice, this list of conditions and the following</span>
+<span class="cm"> * disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> * with the distribution.</span>
+<span class="cm"> * * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> * contributors may be used to endorse or promote products derived</span>
+<span class="cm"> * from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> * &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> * POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * person_classifier.h</span>
+<span class="cm"> * Created on: Nov 30, 2012</span>
+<span class="cm"> * Author: Matteo Munaro</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/people/person_cluster.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/people/hog.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">people</span>
+  <span class="p">{</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">PersonClassifier</span><span class="p">;</span>
+
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">PersonClassifier</span>
+    <span class="p">{</span>
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Height of the image patch to classify. */</span>
+      <span class="kt">int</span> <span class="n">window_height_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Width of the image patch to classify. */</span>
+      <span class="kt">int</span> <span class="n">window_width_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief SVM offset. */</span>
+      <span class="kt">float</span> <span class="n">SVM_offset_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief SVM weights vector. */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">SVM_weights_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PointCloud</span><span class="o">&gt;</span> <span class="n">PointCloudPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Constructor. */</span>
+      <span class="n">PersonClassifier</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Destructor. */</span>
+      <span class="k">virtual</span> <span class="o">~</span><span class="n">PersonClassifier</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Load SVM parameters from a text file.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[in] svm_filename Filename containing SVM parameters.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \return true if SVM has been correctly set, false otherwise.</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">loadSVMFromFile</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">svm_filename</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * \brief Set trained SVM for person confidence estimation.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[in] window_height Detection window height.</span>
+<span class="cm">       * \param[in] window_width Detection window width.</span>
+<span class="cm">       * \param[in] SVM_weights SVM weights vector.</span>
+<span class="cm">       * \param[in] SVM_offset SVM offset.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">setSVM</span> <span class="p">(</span><span class="kt">int</span> <span class="n">window_height</span><span class="p">,</span> <span class="kt">int</span> <span class="n">window_width</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">SVM_weights</span><span class="p">,</span> <span class="kt">float</span> <span class="n">SVM_offset</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * \brief Get trained SVM for person confidence estimation.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[out] window_height Detection window height.</span>
+<span class="cm">       * \param[out] window_width Detection window width.</span>
+<span class="cm">       * \param[out] SVM_weights SVM weights vector.</span>
+<span class="cm">       * \param[out] SVM_offset SVM offset.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">getSVM</span> <span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">window_height</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">window_width</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">SVM_weights</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">SVM_offset</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * \brief Resize an image represented by a pointcloud containing RGB information.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[in] input_image A pointer to a pointcloud containing RGB information.</span>
+<span class="cm">       * \param[out] output_image A pointer to the output pointcloud.</span>
+<span class="cm">       * \param[in] width Output width.</span>
+<span class="cm">       * \param[in] height Output height.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">resize</span> <span class="p">(</span><span class="n">PointCloudPtr</span><span class="o">&amp;</span> <span class="n">input_image</span><span class="p">,</span> <span class="n">PointCloudPtr</span><span class="o">&amp;</span> <span class="n">output_image</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * \brief Copies an image and makes a black border around it, where the source image is not present.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[in] input_image A pointer to a pointcloud containing RGB information.</span>
+<span class="cm">       * \param[out] output_image A pointer to the output pointcloud.</span>
+<span class="cm">       * \param[in] xmin x coordinate of the top-left point of the bbox to copy from the input image.</span>
+<span class="cm">       * \param[in] ymin y coordinate of the top-left point of the bbox to copy from the input image.</span>
+<span class="cm">       * \param[in] width Output width.</span>
+<span class="cm">       * \param[in] height Output height.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">copyMakeBorder</span> <span class="p">(</span><span class="n">PointCloudPtr</span><span class="o">&amp;</span> <span class="n">input_image</span><span class="p">,</span> <span class="n">PointCloudPtr</span><span class="o">&amp;</span> <span class="n">output_image</span><span class="p">,</span>
+          <span class="kt">int</span> <span class="n">xmin</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ymin</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * \brief Classify the given portion of image.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[in] height The height of the image patch to classify, in pixels.</span>
+<span class="cm">       * \param[in] xc The x-coordinate of the center of the image patch to classify, in pixels.</span>
+<span class="cm">       * \param[in] yc The y-coordinate of the center of the image patch to classify, in pixels.</span>
+<span class="cm">       * \param[in] image The whole image (pointer to a point cloud containing RGB information) containing the object to classify.</span>
+<span class="cm">       * \return The classification score given by the SVM.</span>
+<span class="cm">       */</span>
+      <span class="kt">double</span>
+      <span class="nf">evaluate</span> <span class="p">(</span><span class="kt">float</span> <span class="n">height</span><span class="p">,</span> <span class="kt">float</span> <span class="n">xc</span><span class="p">,</span> <span class="kt">float</span> <span class="n">yc</span><span class="p">,</span> <span class="n">PointCloudPtr</span><span class="o">&amp;</span> <span class="n">image</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * \brief Compute person confidence for a given PersonCluster.</span>
+<span class="cm">       *</span>
+<span class="cm">       * \param[in] image The input image (pointer to a point cloud containing RGB information).</span>
+<span class="cm">       * \param[in] bottom Theoretical bottom point of the cluster projected to the image.</span>
+<span class="cm">       * \param[in] top Theoretical top point of the cluster projected to the image.</span>
+<span class="cm">       * \param[in] centroid Theoretical centroid point of the cluster projected to the image.</span>
+<span class="cm">       * \param[in] vertical If true, the sensor is considered to be vertically placed (portrait mode).</span>
+<span class="cm">       * \return The person confidence.</span>
+<span class="cm">       */</span>
+      <span class="kt">double</span>
+      <span class="nf">evaluate</span> <span class="p">(</span><span class="n">PointCloudPtr</span><span class="o">&amp;</span> <span class="n">image</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">top</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">&amp;</span> <span class="n">centroid</span><span class="p">,</span>
+         <span class="kt">bool</span> <span class="n">vertical</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span> <span class="cm">/* namespace people */</span>
+<span class="p">}</span> <span class="cm">/* namespace pcl */</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/people/impl/person_classifier.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_people_impl_person_classifier.hpp.html" class="btn btn-neutral float-right" title="File person_classifier.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_people_person_classifier.h.html" class="btn btn-neutral float-left" title="File person_classifier.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

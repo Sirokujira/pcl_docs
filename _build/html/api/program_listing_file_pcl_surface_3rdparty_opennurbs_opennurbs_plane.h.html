@@ -1,0 +1,762 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File opennurbs_plane.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File opennurbs_planesurface.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_planesurface.h.html" />
+    <link rel="prev" title="File opennurbs_plane.h" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_plane.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_plane.h.html">File opennurbs_plane.h</a> &raquo;</li>
+        
+      <li>Program Listing for File opennurbs_plane.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_surface_3rdparty_opennurbs_opennurbs_plane.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-opennurbs-plane-h">
+<span id="program-listing-file-pcl-surface-3rdparty-opennurbs-opennurbs-plane-h"></span><h1>Program Listing for File opennurbs_plane.h<a class="headerlink" href="#program-listing-for-file-opennurbs-plane-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_surface_3rdparty_opennurbs_opennurbs_plane.h.html#file-pcl-surface-3rdparty-opennurbs-opennurbs-plane-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\surface\3rdparty\opennurbs\opennurbs_plane.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* $NoKeywords: $ */</span>
+<span class="cm">/*</span>
+<span class="cm">//</span>
+<span class="cm">// Copyright (c) 1993-2012 Robert McNeel &amp; Associates. All rights reserved.</span>
+<span class="cm">// OpenNURBS, Rhinoceros, and Rhino3D are registered trademarks of Robert</span>
+<span class="cm">// McNeel &amp; Associates.</span>
+<span class="cm">//</span>
+<span class="cm">// THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT EXPRESS OR IMPLIED WARRANTY.</span>
+<span class="cm">// ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF</span>
+<span class="cm">// MERCHANTABILITY ARE HEREBY DISCLAIMED.</span>
+<span class="cm">//</span>
+<span class="cm">// For complete openNURBS copyright information see &lt;http://www.opennurbs.org&gt;.</span>
+<span class="cm">//</span>
+<span class="cm">////////////////////////////////////////////////////////////////</span>
+<span class="cm">*/</span>
+
+<span class="cp">#if !defined(ON_PLANE_INC_)</span>
+<span class="cp">#define ON_PLANE_INC_</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_Plane</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    The default constructor creates a plane</span>
+<span class="cm">    with orgin=(0,0,0), xaxis=(1,0,0), yaxis=(0,1,0)</span>
+<span class="cm">    zaxis=(0,0,1), and equation=(0,0,1,0).</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Plane</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from a point and normal vector.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] point on the plane</span>
+<span class="cm">    normal - [in] non-zero normal to the plane</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    origin = point, zaxis = unitized normal, xaxis</span>
+<span class="cm">    xaxis set with xaxis.PerpindicularTo(zaxis).</span>
+<span class="cm">  See Also:</span>
+<span class="cm">    ON_Plane::CreateFromNormal</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Plane</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">normal</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from a point, and two vectors in</span>
+<span class="cm">    the plane.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] point on the plane</span>
+<span class="cm">    x_dir - [in] non-zero vector in the plane that</span>
+<span class="cm">        determines the xaxis direction.</span>
+<span class="cm">    y_dir - [in] non-zero vector not parallel to x_dir</span>
+<span class="cm">        that is used to determine the yaxis direction.</span>
+<span class="cm">        y_dir does not have to be perpendicular to x_dir.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Plane</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">x_dir</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">y_dir</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from three non-colinear points.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] point on the plane</span>
+<span class="cm">    x_point - [in] second point in the plane.</span>
+<span class="cm">        The xaxis will be parallel to x_point-origin.</span>
+<span class="cm">    y_point - [in] third point on the plane that is</span>
+<span class="cm">        not colinear with the first two points.</span>
+<span class="cm">        yaxis*(y_point-origin) will be &gt; 0.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Plane</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">x_point</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">y_point</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from an equation.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    equation - [in] an array of 4 doubles with</span>
+<span class="cm">       one of equation[0], equation[1], or equation[2]</span>
+<span class="cm">       being non-zero.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Plane</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">equation</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="p">);</span>
+
+  <span class="o">~</span><span class="n">ON_Plane</span><span class="p">();</span>
+
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Plane</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Plane</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Create a plane from a point and normal vector.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] point on the plane</span>
+<span class="cm">    normal - [in] non-zero normal to the plane</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    origin = point, zaxis = unitized normal, xaxis</span>
+<span class="cm">    xaxis set with xaxis.PerpindicularTo(zaxis).</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if valid plane is created.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">CreateFromNormal</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">normal</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from a point, and two vectors in</span>
+<span class="cm">    the plane.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] point on the plane</span>
+<span class="cm">    x_dir - [in] non-zero vector in the plane that</span>
+<span class="cm">        determines the xaxis direction.</span>
+<span class="cm">    y_dir - [in] non-zero vector not parallel to x_dir</span>
+<span class="cm">        that is used to determine the yaxis direction.</span>
+<span class="cm">        y_dir does not have to be perpendicular to x_dir.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if valid plane is created.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">CreateFromFrame</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">x_dir</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">y_dir</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from three non-colinear points.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] point on the plane</span>
+<span class="cm">    point_on_x - [in] second point in the plane.</span>
+<span class="cm">        The xaxis will be parallel to x_point-origin.</span>
+<span class="cm">    point_on - [in] third point on the plane that is</span>
+<span class="cm">        not colinear with the first two points.</span>
+<span class="cm">        yaxis*(y_point-origin) will be &gt; 0.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if valid plane is created.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">CreateFromPoints</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point_on_x</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point_on</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Construct a plane from an equation.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    equation - [in] an array of 4 doubles with</span>
+<span class="cm">       one of equation[0], equation[1], or equation[2]</span>
+<span class="cm">       being non-zero.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    points on the plane will satisfy</span>
+<span class="cm">    x*equation[0] +y*equation[1] + z*equation[2] + equation[3] = 0</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if valid plane is created.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">CreateFromEquation</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">equation</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Test plane to see if it is valid.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if all fields contain reasonable</span>
+<span class="cm">    information and equation jibes with point and zaxis.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Plane origin.</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">Origin</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Plane unit x-axis.</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">Xaxis</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Plane unit y-axis.</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">Yaxis</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Plane unit normal.</span>
+<span class="cm">  */</span>
+  <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">Normal</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Set the origin and update the plane equation</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    origin - [in] the new origin</span>
+<span class="cm">  */</span>
+  <span class="kt">void</span> <span class="nf">SetOrigin</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">origin</span> <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate a point on the plane</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    u - [in]</span>
+<span class="cm">    v - [in] evaulation parameters</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    plane.origin + u*plane.xaxis + v*plane.yaxis</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">u</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">v</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Evaluate a point on the plane</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    u - [in]</span>
+<span class="cm">    v - [in] evaluation parameters</span>
+<span class="cm">    w - [in] elevation parameter</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    plane.origin + u*plane.xaxis + v*plane.yaxis + z*plane.zaxis</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">PointAt</span><span class="p">(</span>
+    <span class="kt">double</span> <span class="n">u</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">v</span><span class="p">,</span>
+    <span class="kt">double</span> <span class="n">w</span>
+    <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get an isoparameteric line on the plane.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    dir - [in] direction of iso-parametric line</span>
+<span class="cm">        0: first parameter varies and second parameter is constant</span>
+<span class="cm">           e.g., line(t) = plane(t,c)</span>
+<span class="cm">        1: first parameter is constant and second parameter varies</span>
+<span class="cm">           e.g., line(t) = plane(c,t)</span>
+<span class="cm">    c - [in] value of constant parameter</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    iso-parametric line</span>
+<span class="cm">  */</span>
+  <span class="n">ON_Line</span> <span class="nf">IsoLine</span><span class="p">(</span>
+         <span class="kt">int</span> <span class="n">dir</span><span class="p">,</span>
+         <span class="kt">double</span> <span class="n">c</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get signed distance from the plane to a point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    point - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    Signed distance from a point to a plane.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If the point is on the plane, the distance is 0.</span>
+<span class="cm">    If the point is above the plane, the distance is &gt; 0.</span>
+<span class="cm">    If the point is below the plane the distance is &lt; 0.</span>
+<span class="cm">    The zaxis determines the plane&#39;s orientation.</span>
+<span class="cm">  */</span>
+  <span class="kt">double</span> <span class="nf">DistanceTo</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">point</span>
+        <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+  <span class="kt">bool</span> <span class="nf">GetDistanceToBoundingBox</span><span class="p">(</span>
+           <span class="c1">//returns false if plane has zero length normal</span>
+           <span class="k">const</span> <span class="n">ON_BoundingBox</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// Box</span>
+
+           <span class="c1">//output</span>
+           <span class="kt">double</span><span class="o">*</span> <span class="n">min</span><span class="p">,</span>    <span class="c1">// min signed dist from plane to box</span>
+           <span class="kt">double</span><span class="o">*</span> <span class="n">max</span>     <span class="c1">//max signed dist from plane to box</span>
+           <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Update the plane equation based on the current values</span>
+<span class="cm">    of the origin and zaxis.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful.  false if zaxis is zero.</span>
+<span class="cm">  Remarks:</span>
+<span class="cm">    If you modify a plane&#39;s origin or zaxis, call UpdateEquation()</span>
+<span class="cm">    to set equation[].</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">UpdateEquation</span><span class="p">();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get point on plane that is closest to a given point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    world_point - [in] 3d point</span>
+<span class="cm">    u - [out]</span>
+<span class="cm">    v - [out] The point ON_Plane::PointAt(*u,*v) is the point</span>
+<span class="cm">              on the plane that is closest to world_point.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">ClosestPointTo</span><span class="p">(</span>
+         <span class="n">ON_3dPoint</span> <span class="n">world_point</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">u</span><span class="p">,</span>
+         <span class="kt">double</span><span class="o">*</span> <span class="n">v</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Get point on plane that is closest to a given point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    point - [in]</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    A 3d point on the plane that is closest to world_point.</span>
+<span class="cm">  */</span>
+  <span class="n">ON_3dPoint</span> <span class="nf">ClosestPointTo</span><span class="p">(</span>
+         <span class="n">ON_3dPoint</span> <span class="n">point</span>
+         <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="c1">// For intersections see ON_Intersect();</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Transform plane.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    xform - [in] transformation to apply to plane</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Transform</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Transform a plane by swapping coordinates.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    i - [in]</span>
+<span class="cm">    j - [in] indices of coordinates to swap.</span>
+<span class="cm">        0 = x coordinate, 1 = y coordinate, 2 = z coordinate.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful.</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">SwapCoordinates</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="n">j</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Rotate a plane about its origin.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sin_angle - [in] sine of rotation angle</span>
+<span class="cm">    cos_angle - [in] cosine of rotation angle</span>
+<span class="cm">    axis - [in] axis of rotation</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Rotate a plane about its origin.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    angle - [in] rotation angle in radians</span>
+<span class="cm">    axis - [in] axis of rotation</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Rotate a plane about a point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    sin_angle - [in] sine of rotation angle</span>
+<span class="cm">    cos_angle - [in] cosine of rotation angle</span>
+<span class="cm">    axis - [in] axis of rotation</span>
+<span class="cm">    center - [in] center of rotation</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">sin_angle</span><span class="p">,</span>
+        <span class="kt">double</span> <span class="n">cos_angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span>  <span class="n">center</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Rotate a plane about a point.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    angle - [in] rotation angle in radians</span>
+<span class="cm">    axis - [in] axis of rotation</span>
+<span class="cm">    center - [in] center of rotation</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Rotate</span><span class="p">(</span>
+        <span class="kt">double</span> <span class="n">angle</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span> <span class="n">axis</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">center</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Translate a plane.</span>
+<span class="cm">  Parameters:</span>
+<span class="cm">    delta - [in] translation vector</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Translate</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_3dVector</span><span class="o">&amp;</span>  <span class="n">delta</span>
+        <span class="p">);</span>
+
+  <span class="cm">/*</span>
+<span class="cm">  Description:</span>
+<span class="cm">    Flip plane orientation by swapping x and y axes,</span>
+<span class="cm">    reversing the zaxis, and updating the equation.</span>
+<span class="cm">  Returns:</span>
+<span class="cm">    true if successful</span>
+<span class="cm">  */</span>
+  <span class="kt">bool</span> <span class="nf">Flip</span><span class="p">();</span>
+
+<span class="c1">// world plane coordinate system ON_Plane(ON_origin, ON_xaxis, ON_yaxis);</span>
+  <span class="k">const</span> <span class="k">static</span>
+  <span class="n">ON_Plane</span> <span class="n">World_xy</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// origin of plane</span>
+  <span class="n">ON_3dPoint</span>  <span class="n">origin</span><span class="p">;</span>
+
+  <span class="c1">// unit X axis of plane</span>
+  <span class="n">ON_3dVector</span> <span class="n">xaxis</span><span class="p">;</span>
+
+  <span class="c1">// unit Y axis of plane</span>
+  <span class="n">ON_3dVector</span> <span class="n">yaxis</span><span class="p">;</span>
+
+  <span class="c1">// unit Z axis of plane</span>
+  <span class="n">ON_3dVector</span> <span class="n">zaxis</span><span class="p">;</span>
+
+  <span class="c1">// equation of plane</span>
+  <span class="n">ON_PlaneEquation</span> <span class="n">plane_equation</span><span class="p">;</span>
+  <span class="c1">//double equation[4];</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClippingPlaneInfo</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// C++ defaults for construction, destruction, copy construction</span>
+  <span class="c1">// and operator= work fine.</span>
+
+  <span class="c1">// A point is visible if m_plane_equation.ValueAt(point) &lt;= 0.</span>
+  <span class="c1">// (This is the opposite convention from what OpenGL uses.)</span>
+  <span class="n">ON_PlaneEquation</span> <span class="n">m_plane_equation</span><span class="p">;</span>
+  <span class="n">ON_UUID</span> <span class="n">m_plane_id</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_bEnabled</span><span class="p">;</span>
+
+  <span class="kt">void</span> <span class="nf">Default</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="nf">Write</span><span class="p">(</span> <span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="nf">Read</span><span class="p">(</span> <span class="n">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClippingPlane</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">ON_ClippingPlane</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">ON_ClippingPlane</span><span class="p">();</span>
+
+  <span class="kt">void</span> <span class="nf">Default</span><span class="p">();</span>
+
+  <span class="n">ON_Plane</span> <span class="n">m_plane</span><span class="p">;</span>
+  <span class="n">ON_UuidList</span> <span class="n">m_viewport_ids</span><span class="p">;</span> <span class="c1">//ids of viewports that this clipping plane &quot;clips&quot;</span>
+  <span class="n">ON_UUID</span> <span class="n">m_plane_id</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_bEnabled</span><span class="p">;</span> <span class="c1">// true if this clipping plane is active</span>
+
+  <span class="n">ON_ClippingPlaneInfo</span> <span class="nf">ClippingPlaneInfo</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="nf">Read</span><span class="p">(</span> <span class="k">class</span> <span class="nc">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="nf">Write</span><span class="p">(</span> <span class="k">class</span> <span class="nc">ON_BinaryArchive</span><span class="o">&amp;</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="cp">#if defined(ON_DLL_TEMPLATE)</span>
+
+<span class="c1">// This stuff is here because of a limitation in the way Microsoft</span>
+<span class="c1">// handles templates and DLLs.  See Microsoft&#39;s knowledge base</span>
+<span class="c1">// article ID Q168958 for details.</span>
+<span class="cp">#pragma warning( push )</span>
+<span class="cp">#pragma warning( disable : 4231 )</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_Plane</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_ClippingPlane</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ON_DLL_TEMPLATE</span> <span class="k">template</span> <span class="k">class</span> <span class="nc">ON_CLASS</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_ClippingPlaneInfo</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="cp">#pragma warning( pop )</span>
+
+<span class="cp">#endif</span>
+
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_Plane</span> <span class="n">ON_xy_plane</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_Plane</span> <span class="n">ON_yz_plane</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">ON_EXTERN_DECL</span> <span class="k">const</span> <span class="n">ON_Plane</span> <span class="n">ON_zx_plane</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">Description:</span>
+<span class="cm">  Get a convex hull of a set of 3d points.</span>
+<span class="cm">Parameters:</span>
+<span class="cm">  points - [in]</span>
+<span class="cm">    List of points.  This function can handle tens of points</span>
+<span class="cm">    but is too slow for hundreds of points.</span>
+<span class="cm">  hull -[out]</span>
+<span class="cm">    Equations of the sides of the convex hull are appended to</span>
+<span class="cm">    this list.</span>
+<span class="cm">    A point P is inside the hull if hull[i].ValueAt(P) &lt;= 0 for</span>
+<span class="cm">    every plane equation.</span>
+<span class="cm">Returns:</span>
+<span class="cm">  Number of equations appended to hull[] array.</span>
+<span class="cm">  If 0, then the points are coincident or colinear.</span>
+<span class="cm">  If 2, then the points are coplanar and the returned</span>
+<span class="cm">  planes are parallel.</span>
+<span class="cm">  If &gt;= 4, then the points are in a 3d convex hull.</span>
+<span class="cm">*/</span>
+<span class="n">ON_DECL</span>
+<span class="kt">int</span> <span class="nf">ON_Get3dConvexHull</span><span class="p">(</span>
+          <span class="k">const</span> <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_3dPoint</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">points</span><span class="p">,</span>
+          <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_PlaneEquation</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">hull</span>
+          <span class="p">);</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_planesurface.h.html" class="btn btn-neutral float-right" title="File opennurbs_planesurface.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_surface_3rdparty_opennurbs_opennurbs_plane.h.html" class="btn btn-neutral float-left" title="File opennurbs_plane.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

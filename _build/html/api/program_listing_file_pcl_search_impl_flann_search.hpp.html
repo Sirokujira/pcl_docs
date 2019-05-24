@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File flann_search.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File flare.h" href="file_pcl_features_flare.h.html" />
+    <link rel="prev" title="File flann_search.hpp" href="file_pcl_search_impl_flann_search.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_search_impl_flann_search.hpp.html">File flann_search.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File flann_search.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_search_impl_flann_search.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-flann-search-hpp">
+<span id="program-listing-file-pcl-search-impl-flann-search-hpp"></span><h1>Program Listing for File flann_search.hpp<a class="headerlink" href="#program-listing-for-file-flann-search-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_search_impl_flann_search.hpp.html#file-pcl-search-impl-flann-search-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\search\impl\flann_search.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_SEARCH_IMPL_FLANN_SEARCH_H_</span>
+<span class="cp">#define PCL_SEARCH_IMPL_FLANN_SEARCH_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;flann/algorithms/kdtree_index.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;flann/algorithms/kdtree_single_index.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;flann/algorithms/kmeans_index.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/search/flann_search.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span>
+<span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">IndexPtr</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">KdTreeIndexCreator</span><span class="o">::</span><span class="n">createIndex</span> <span class="p">(</span><span class="n">MatrixConstPtr</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">IndexPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">flann</span><span class="o">::</span><span class="n">KDTreeSingleIndex</span><span class="o">&lt;</span><span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="n">flann</span><span class="o">::</span><span class="n">KDTreeSingleIndexParams</span> <span class="p">(</span><span class="n">max_leaf_size_</span><span class="p">))));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span>
+<span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">IndexPtr</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">KMeansIndexCreator</span><span class="o">::</span><span class="n">createIndex</span> <span class="p">(</span><span class="n">MatrixConstPtr</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">IndexPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">flann</span><span class="o">::</span><span class="n">KMeansIndex</span><span class="o">&lt;</span><span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="n">flann</span><span class="o">::</span><span class="n">KMeansIndexParams</span> <span class="p">())));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span>
+<span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">IndexPtr</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">KdTreeMultiIndexCreator</span><span class="o">::</span><span class="n">createIndex</span> <span class="p">(</span><span class="n">MatrixConstPtr</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">IndexPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">flann</span><span class="o">::</span><span class="n">KDTreeIndex</span><span class="o">&lt;</span><span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">flann</span><span class="o">::</span><span class="n">KDTreeIndexParams</span> <span class="p">(</span><span class="n">trees_</span><span class="p">))));</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">FlannSearch</span><span class="p">(</span><span class="kt">bool</span> <span class="n">sorted</span><span class="p">,</span> <span class="n">FlannIndexCreatorPtr</span> <span class="n">creator</span><span class="p">)</span> <span class="o">:</span> <span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">Search</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="s">&quot;FlannSearch&quot;</span><span class="p">,</span><span class="n">sorted</span><span class="p">),</span>
+  <span class="n">index_</span><span class="p">(),</span> <span class="n">creator_</span> <span class="p">(</span><span class="n">creator</span><span class="p">),</span> <span class="n">eps_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">checks_</span> <span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">input_copied_for_flann_</span> <span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">point_representation_</span> <span class="p">(</span><span class="k">new</span> <span class="n">DefaultPointRepresentation</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span><span class="p">),</span>
+  <span class="n">dim_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">identity_mapping_</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">dim_</span> <span class="o">=</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::~</span><span class="n">FlannSearch</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">input_copied_for_flann_</span><span class="p">)</span>
+    <span class="k">delete</span> <span class="p">[]</span> <span class="n">input_flann_</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudConstPtr</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="n">IndicesConstPtr</span><span class="o">&amp;</span> <span class="n">indices</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">input_</span> <span class="o">=</span> <span class="n">cloud</span><span class="p">;</span>
+  <span class="n">indices_</span> <span class="o">=</span> <span class="n">indices</span><span class="p">;</span>
+  <span class="n">convertInputToFlannMatrix</span> <span class="p">();</span>
+  <span class="n">index_</span> <span class="o">=</span> <span class="n">creator_</span><span class="o">-&gt;</span><span class="n">createIndex</span> <span class="p">(</span><span class="n">input_flann_</span><span class="p">);</span>
+  <span class="n">index_</span><span class="o">-&gt;</span><span class="n">buildIndex</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">nearestKSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span> <span class="o">&amp;</span><span class="n">point</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">dists</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Invalid (NaN, Inf) point coordinates given to nearestKSearch!&quot;</span><span class="p">);</span> <span class="c1">// remove this check as soon as FLANN does NaN checks internally</span>
+  <span class="kt">bool</span> <span class="n">can_cast</span> <span class="o">=</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isTrivial</span> <span class="p">();</span>
+
+  <span class="kt">float</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">can_cast</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span> <span class="p">[</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">()];</span>
+    <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kt">float</span><span class="o">*</span> <span class="n">cdata</span> <span class="o">=</span> <span class="n">can_cast</span> <span class="o">?</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point</span><span class="p">))</span><span class="o">:</span> <span class="n">data</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="n">cdata</span> <span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">());</span>
+
+  <span class="n">flann</span><span class="o">::</span><span class="n">SearchParams</span> <span class="n">p</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps_</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">sorted</span> <span class="o">=</span> <span class="n">sorted_results_</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">checks</span> <span class="o">=</span> <span class="n">checks_</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">k</span><span class="p">))</span>
+    <span class="n">indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">dists</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">k</span><span class="p">))</span>
+    <span class="n">dists</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">k</span><span class="p">);</span>
+  <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">i</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+  <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">d</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">dists</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">index_</span><span class="o">-&gt;</span><span class="n">knnSearch</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+
+  <span class="k">delete</span> <span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">identity_mapping_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">k</span><span class="p">);</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">int</span><span class="o">&amp;</span> <span class="n">neighbor_index</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">neighbor_index</span> <span class="o">=</span> <span class="n">index_mapping_</span><span class="p">[</span><span class="n">neighbor_index</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">nearestKSearch</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">indices</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">k_indices</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">k_sqr_distances</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">k_indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">k_sqr_distances</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span> <span class="c1">// remove this check as soon as FLANN does NaN checks internally</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Invalid (NaN, Inf) point coordinates given to nearestKSearch!&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">can_cast</span> <span class="o">=</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isTrivial</span> <span class="p">();</span>
+
+    <span class="c1">// full point cloud + trivial copy operation = no need to do any conversion/copying to the flann matrix!</span>
+    <span class="kt">float</span><span class="o">*</span> <span class="n">data</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">can_cast</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">dim_</span><span class="o">*</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">()];</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">float</span><span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="n">data</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="n">dim_</span><span class="p">;</span>
+        <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">out</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// const cast is evil, but the matrix constructor won&#39;t change the data, and the</span>
+    <span class="c1">// search won&#39;t change the matrix</span>
+    <span class="kt">float</span><span class="o">*</span> <span class="n">cdata</span> <span class="o">=</span> <span class="n">can_cast</span> <span class="o">?</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">:</span> <span class="n">data</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="n">cdata</span> <span class="p">,</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">dim_</span><span class="p">,</span> <span class="n">can_cast</span> <span class="o">?</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">:</span> <span class="n">dim_</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="p">);</span>
+
+    <span class="n">flann</span><span class="o">::</span><span class="n">SearchParams</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">sorted</span> <span class="o">=</span> <span class="n">sorted_results_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">checks</span> <span class="o">=</span> <span class="n">checks_</span><span class="p">;</span>
+    <span class="n">index_</span><span class="o">-&gt;</span><span class="n">knnSearch</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">k_indices</span><span class="p">,</span><span class="n">k_sqr_distances</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+
+    <span class="k">delete</span> <span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="c1">// if indices are present, the cloud has to be copied anyway. Only copy the relevant parts of the points here.</span>
+  <span class="p">{</span>
+    <span class="n">k_indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">k_sqr_distances</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span> <span class="c1">// remove this check as soon as FLANN does NaN checks internally</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">cloud</span> <span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Invalid (NaN, Inf) point coordinates given to nearestKSearch!&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span><span class="o">*</span> <span class="n">data</span><span class="o">=</span><span class="k">new</span> <span class="kt">float</span> <span class="p">[</span><span class="n">dim_</span><span class="o">*</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span><span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="n">data</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="n">dim_</span><span class="p">;</span>
+      <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">out</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="n">data</span> <span class="p">,</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">());</span>
+
+    <span class="n">flann</span><span class="o">::</span><span class="n">SearchParams</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">sorted</span> <span class="o">=</span> <span class="n">sorted_results_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">checks</span> <span class="o">=</span> <span class="n">checks_</span><span class="p">;</span>
+    <span class="n">index_</span><span class="o">-&gt;</span><span class="n">knnSearch</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">k_indices</span><span class="p">,</span><span class="n">k_sqr_distances</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">identity_mapping_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">k_index</span> <span class="p">:</span> <span class="n">k_indices</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="nl">neighbor_index</span> <span class="p">:</span> <span class="n">k_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">neighbor_index</span> <span class="o">=</span> <span class="n">index_mapping_</span><span class="p">[</span><span class="n">neighbor_index</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="kt">int</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span><span class="p">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">distances</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_nn</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="n">assert</span> <span class="p">(</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Invalid (NaN, Inf) point coordinates given to radiusSearch!&quot;</span><span class="p">);</span> <span class="c1">// remove this check as soon as FLANN does NaN checks internally</span>
+  <span class="kt">bool</span> <span class="n">can_cast</span> <span class="o">=</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isTrivial</span> <span class="p">();</span>
+
+  <span class="kt">float</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">can_cast</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span> <span class="p">[</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">()];</span>
+    <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kt">float</span><span class="o">*</span> <span class="n">cdata</span> <span class="o">=</span> <span class="n">can_cast</span> <span class="o">?</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">point</span><span class="p">))</span> <span class="o">:</span> <span class="n">data</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="n">cdata</span> <span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">());</span>
+
+  <span class="n">flann</span><span class="o">::</span><span class="n">SearchParams</span> <span class="n">p</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">sorted</span> <span class="o">=</span> <span class="n">sorted_results_</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps_</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">max_neighbors</span> <span class="o">=</span> <span class="n">max_nn</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">max_nn</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">p</span><span class="p">.</span><span class="n">checks</span> <span class="o">=</span> <span class="n">checks_</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">i</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">d</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">index_</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">),</span> <span class="n">p</span><span class="p">);</span>
+
+  <span class="k">delete</span> <span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+  <span class="n">indices</span> <span class="o">=</span> <span class="n">i</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">distances</span> <span class="o">=</span> <span class="n">d</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">identity_mapping_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="nl">neighbor_index</span> <span class="p">:</span> <span class="n">indices</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">neighbor_index</span> <span class="o">=</span> <span class="n">index_mapping_</span> <span class="p">[</span><span class="n">neighbor_index</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">radiusSearch</span> <span class="p">(</span>
+    <span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">indices</span><span class="p">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">k_indices</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&gt;&amp;</span> <span class="n">k_sqr_distances</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">max_nn</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">empty</span> <span class="p">())</span> <span class="c1">// full point cloud + trivial copy operation = no need to do any conversion/copying to the flann matrix!</span>
+  <span class="p">{</span>
+    <span class="n">k_indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">k_sqr_distances</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span> <span class="c1">// remove this check as soon as FLANN does NaN checks internally</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Invalid (NaN, Inf) point coordinates given to radiusSearch!&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">can_cast</span> <span class="o">=</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isTrivial</span> <span class="p">();</span>
+
+    <span class="kt">float</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">can_cast</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">dim_</span><span class="o">*</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">()];</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">float</span><span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="n">data</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="n">dim_</span><span class="p">;</span>
+        <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">out</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span><span class="o">*</span> <span class="n">cdata</span> <span class="o">=</span> <span class="n">can_cast</span> <span class="o">?</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">cloud</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">:</span> <span class="n">data</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="n">cdata</span> <span class="p">,</span><span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">dim_</span><span class="p">,</span> <span class="n">can_cast</span> <span class="o">?</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)</span> <span class="o">:</span> <span class="n">dim_</span> <span class="o">*</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+
+    <span class="n">flann</span><span class="o">::</span><span class="n">SearchParams</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">sorted</span> <span class="o">=</span> <span class="n">sorted_results_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">checks</span> <span class="o">=</span> <span class="n">checks_</span><span class="p">;</span>
+    <span class="c1">// here: max_nn==0: take all neighbors. flann: max_nn==0: return no neighbors, only count them. max_nn==-1: return all neighbors</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">max_neighbors</span> <span class="o">=</span> <span class="n">max_nn</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">max_nn</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">index_</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">k_indices</span><span class="p">,</span><span class="n">k_sqr_distances</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">),</span> <span class="n">p</span><span class="p">);</span>
+
+    <span class="k">delete</span> <span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="c1">// if indices are present, the cloud has to be copied anyway. Only copy the relevant parts of the points here.</span>
+  <span class="p">{</span>
+    <span class="n">k_indices</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+    <span class="n">k_sqr_distances</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">cloud</span><span class="p">.</span><span class="n">is_dense</span><span class="p">)</span>  <span class="c1">// remove this check as soon as FLANN does NaN checks internally</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">cloud</span> <span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Invalid (NaN, Inf) point coordinates given to radiusSearch!&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span> <span class="p">[</span><span class="n">dim_</span> <span class="o">*</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">()];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">indices</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">float</span><span class="o">*</span> <span class="n">out</span> <span class="o">=</span> <span class="n">data</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="n">dim_</span><span class="p">;</span>
+      <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">out</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">(),</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">());</span>
+
+    <span class="n">flann</span><span class="o">::</span><span class="n">SearchParams</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">sorted</span> <span class="o">=</span> <span class="n">sorted_results_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps_</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">checks</span> <span class="o">=</span> <span class="n">checks_</span><span class="p">;</span>
+    <span class="c1">// here: max_nn==0: take all neighbors. flann: max_nn==0: return no neighbors, only count them. max_nn==-1: return all neighbors</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">max_neighbors</span> <span class="o">=</span> <span class="n">max_nn</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">max_nn</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">index_</span><span class="o">-&gt;</span><span class="n">radiusSearch</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k_indices</span><span class="p">,</span> <span class="n">k_sqr_distances</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">),</span> <span class="n">p</span><span class="p">);</span>
+
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">identity_mapping_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">k_index</span> <span class="p">:</span> <span class="n">k_indices</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="nl">neighbor_index</span> <span class="p">:</span> <span class="n">k_index</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">neighbor_index</span> <span class="o">=</span> <span class="n">index_mapping_</span><span class="p">[</span><span class="n">neighbor_index</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FlannDistance</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">search</span><span class="o">::</span><span class="n">FlannSearch</span><span class="o">&lt;</span><span class="n">PointT</span><span class="p">,</span> <span class="n">FlannDistance</span><span class="o">&gt;::</span><span class="n">convertInputToFlannMatrix</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">size_t</span> <span class="n">original_no_of_points</span> <span class="o">=</span> <span class="n">indices_</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">indices_</span><span class="o">-&gt;</span><span class="n">empty</span> <span class="p">()</span> <span class="o">?</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">()</span> <span class="o">:</span> <span class="n">input_</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">input_copied_for_flann_</span><span class="p">)</span>
+    <span class="k">delete</span> <span class="n">input_flann_</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">();</span>
+  <span class="n">input_copied_for_flann_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="n">index_mapping_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="n">identity_mapping_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+  <span class="c1">//cloud_ = (float*)malloc (original_no_of_points * dim_ * sizeof (float));</span>
+  <span class="c1">//index_mapping_.reserve(original_no_of_points);</span>
+  <span class="c1">//identity_mapping_ = true;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">indices_</span> <span class="o">||</span> <span class="n">indices_</span><span class="o">-&gt;</span><span class="n">empty</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="c1">// best case: all points can be passed to flann without any conversions</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">input_</span><span class="o">-&gt;</span><span class="n">is_dense</span> <span class="o">&amp;&amp;</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isTrivial</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="c1">// const cast is evil, but flann won&#39;t change the data</span>
+      <span class="n">input_flann_</span> <span class="o">=</span> <span class="n">MatrixPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">)</span> <span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">original_no_of_points</span><span class="p">,</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">(),</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">PointT</span><span class="p">)));</span>
+      <span class="n">input_copied_for_flann_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">input_flann_</span> <span class="o">=</span> <span class="n">MatrixPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">original_no_of_points</span><span class="o">*</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">()],</span> <span class="n">original_no_of_points</span><span class="p">,</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">()));</span>
+      <span class="kt">float</span><span class="o">*</span> <span class="n">cloud_ptr</span> <span class="o">=</span> <span class="n">input_flann_</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">();</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">original_no_of_points</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">)[</span><span class="n">i</span><span class="p">];</span>
+        <span class="c1">// Check if the point is invalid</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">point</span><span class="p">))</span>
+        <span class="p">{</span>
+          <span class="n">identity_mapping_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+          <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">index_mapping_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">i</span><span class="p">));</span>  <span class="c1">// If the returned index should be for the indices vector</span>
+
+        <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">cloud_ptr</span><span class="p">);</span>
+        <span class="n">cloud_ptr</span> <span class="o">+=</span> <span class="n">dim_</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="n">input_flann_</span> <span class="o">=</span> <span class="n">MatrixPtr</span> <span class="p">(</span><span class="k">new</span> <span class="n">flann</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">original_no_of_points</span><span class="o">*</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">()],</span> <span class="n">original_no_of_points</span><span class="p">,</span> <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">getNumberOfDimensions</span> <span class="p">()));</span>
+    <span class="kt">float</span><span class="o">*</span> <span class="n">cloud_ptr</span> <span class="o">=</span> <span class="n">input_flann_</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">indices_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">indices_index</span> <span class="o">&lt;</span> <span class="n">original_no_of_points</span><span class="p">;</span> <span class="o">++</span><span class="n">indices_index</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">cloud_index</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">indices_</span><span class="p">)[</span><span class="n">indices_index</span><span class="p">];</span>
+      <span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span>  <span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">input_</span><span class="p">)[</span><span class="n">cloud_index</span><span class="p">];</span>
+      <span class="c1">// Check if the point is invalid</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">isValid</span> <span class="p">(</span><span class="n">point</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">identity_mapping_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="n">index_mapping_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">indices_index</span><span class="p">));</span>  <span class="c1">// If the returned index should be for the indices vector</span>
+
+      <span class="n">point_representation_</span><span class="o">-&gt;</span><span class="n">vectorize</span> <span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">cloud_ptr</span><span class="p">);</span>
+      <span class="n">cloud_ptr</span> <span class="o">+=</span> <span class="n">dim_</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">input_copied_for_flann_</span><span class="p">)</span>
+    <span class="n">input_flann_</span><span class="o">-&gt;</span><span class="n">rows</span> <span class="o">=</span> <span class="n">index_mapping_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_FlannSearch(T) template class PCL_EXPORTS pcl::search::FlannSearch&lt;T&gt;;</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_flare.h.html" class="btn btn-neutral float-right" title="File flare.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_search_impl_flann_search.hpp.html" class="btn btn-neutral float-left" title="File flann_search.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

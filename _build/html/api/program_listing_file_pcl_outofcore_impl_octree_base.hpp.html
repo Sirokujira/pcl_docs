@@ -1,0 +1,959 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File octree_base.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File octree_base_node.h" href="file_pcl_outofcore_octree_base_node.h.html" />
+    <link rel="prev" title="File octree_base.hpp" href="file_pcl_outofcore_impl_octree_base.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_outofcore_impl_octree_base.hpp.html">File octree_base.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File octree_base.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_outofcore_impl_octree_base.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-octree-base-hpp">
+<span id="program-listing-file-pcl-outofcore-impl-octree-base-hpp"></span><h1>Program Listing for File octree_base.hpp<a class="headerlink" href="#program-listing-for-file-octree-base-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_outofcore_impl_octree_base.hpp.html#file-pcl-outofcore-impl-octree-base-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\outofcore\impl\octree_base.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012, Urban Robotics, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  $Id$</span>
+<span class="cm"> */</span>
+
+<span class="cp">#ifndef PCL_OUTOFCORE_OCTREE_BASE_IMPL_H_</span>
+<span class="cp">#define PCL_OUTOFCORE_OCTREE_BASE_IMPL_H_</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/outofcore/octree_base.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// JSON</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/outofcore/cJSON.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/filters/random_sample.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/filters/extract_indices.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// C++</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;exception&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">outofcore</span>
+  <span class="p">{</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="c1">//Static constants</span>
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">TREE_EXTENSION_</span> <span class="o">=</span> <span class="s">&quot;.octree&quot;</span><span class="p">;</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">OUTOFCORE_VERSION_</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">OutofcoreOctreeBase</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span> <span class="n">root_name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">load_all</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">root_node_</span> <span class="p">()</span>
+      <span class="p">,</span> <span class="n">read_write_mutex_</span> <span class="p">()</span>
+      <span class="p">,</span> <span class="n">metadata_</span> <span class="p">(</span><span class="k">new</span> <span class="n">OutofcoreOctreeBaseMetadata</span> <span class="p">())</span>
+      <span class="p">,</span> <span class="n">sample_percent_</span> <span class="p">(</span><span class="mf">0.125</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">lod_filter_ptr_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">RandomSample</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="c1">//validate the root filename</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">checkExtension</span> <span class="p">(</span><span class="n">root_name</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">PCLException</span><span class="p">,</span> <span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase] Bad extension. Outofcore Octrees must have a root node ending in .oct_idx</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Create root_node_node</span>
+      <span class="n">root_node_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">root_name</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="n">load_all</span><span class="p">);</span>
+      <span class="c1">// Set root_node_nodes tree to the newly created tree</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">m_tree_</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+      <span class="c1">// Set the path to the outofcore octree metadata (unique to the root folder) ending in .octree</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">treepath</span> <span class="o">=</span> <span class="n">root_name</span><span class="p">.</span><span class="n">parent_path</span> <span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">basename</span> <span class="p">(</span><span class="n">root_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">TREE_EXTENSION_</span><span class="p">);</span>
+
+      <span class="c1">//Load the JSON metadata</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">loadMetadataFromDisk</span> <span class="p">(</span><span class="n">treepath</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">OutofcoreOctreeBase</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">resolution_arg</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span> <span class="n">root_node_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">coord_sys</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">root_node_</span><span class="p">()</span>
+      <span class="p">,</span> <span class="n">read_write_mutex_</span> <span class="p">()</span>
+      <span class="p">,</span> <span class="n">metadata_</span> <span class="p">(</span><span class="k">new</span> <span class="n">OutofcoreOctreeBaseMetadata</span> <span class="p">())</span>
+      <span class="p">,</span> <span class="n">sample_percent_</span> <span class="p">(</span><span class="mf">0.125</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">lod_filter_ptr_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">RandomSample</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="c1">//Enlarge the bounding box to a cube so our voxels will be cubes</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">tmp_min</span> <span class="o">=</span> <span class="n">min</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">tmp_max</span> <span class="o">=</span> <span class="n">max</span><span class="p">;</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">enlargeToCube</span> <span class="p">(</span><span class="n">tmp_min</span><span class="p">,</span> <span class="n">tmp_max</span><span class="p">);</span>
+
+      <span class="c1">//Compute the depth of the tree given the resolution</span>
+      <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">depth</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">calculateDepth</span> <span class="p">(</span><span class="n">tmp_min</span><span class="p">,</span> <span class="n">tmp_max</span><span class="p">,</span> <span class="n">resolution_arg</span><span class="p">);</span>
+
+      <span class="c1">//Create a new outofcore tree</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">init</span> <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">tmp_min</span><span class="p">,</span> <span class="n">tmp_max</span><span class="p">,</span> <span class="n">root_node_name</span><span class="p">,</span> <span class="n">coord_sys</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">OutofcoreOctreeBase</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">max_depth</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span> <span class="n">root_node_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">coord_sys</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">root_node_</span><span class="p">()</span>
+      <span class="p">,</span> <span class="n">read_write_mutex_</span> <span class="p">()</span>
+      <span class="p">,</span> <span class="n">metadata_</span> <span class="p">(</span><span class="k">new</span> <span class="n">OutofcoreOctreeBaseMetadata</span> <span class="p">())</span>
+      <span class="p">,</span> <span class="n">sample_percent_</span> <span class="p">(</span><span class="mf">0.125</span><span class="p">)</span>
+      <span class="p">,</span> <span class="n">lod_filter_ptr_</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">RandomSample</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;</span> <span class="p">())</span>
+    <span class="p">{</span>
+      <span class="c1">//Create a new outofcore tree</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">init</span> <span class="p">(</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">root_node_name</span><span class="p">,</span> <span class="n">coord_sys</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">init</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uint64_t</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span> <span class="n">root_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">coord_sys</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//Validate the extension of the pathname</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">checkExtension</span> <span class="p">(</span><span class="n">root_name</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">PCLException</span><span class="p">,</span> <span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase] Bad extension. Outofcore Octrees must have a root node ending in .oct_idx</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">//Check to make sure that we are not overwriting existing data</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span> <span class="p">(</span><span class="n">root_name</span><span class="p">.</span><span class="n">parent_path</span> <span class="p">()))</span>
+      <span class="p">{</span>
+        <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase] A dir named %s already exists. Overwriting an existing tree is not supported.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">root_name</span><span class="p">.</span><span class="n">parent_path</span> <span class="p">().</span><span class="n">c_str</span> <span class="p">()</span> <span class="p">);</span>
+        <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span> <span class="n">PCLException</span><span class="p">,</span> <span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase] Directory exists; Overwriting an existing tree is not supported</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Get fullpath and recreate directories</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">root_name</span><span class="p">.</span><span class="n">parent_path</span> <span class="p">();</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span> <span class="p">(</span><span class="n">dir</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">create_directory</span> <span class="p">(</span><span class="n">dir</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">tmp_min</span> <span class="o">=</span> <span class="n">min</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">tmp_max</span> <span class="o">=</span> <span class="n">max</span><span class="p">;</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">enlargeToCube</span> <span class="p">(</span><span class="n">tmp_min</span><span class="p">,</span> <span class="n">tmp_max</span><span class="p">);</span>
+
+      <span class="c1">// Create root node</span>
+      <span class="n">root_node_</span><span class="o">=</span> <span class="k">new</span> <span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">tmp_min</span><span class="p">,</span> <span class="n">tmp_max</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">root_name</span><span class="p">);</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">m_tree_</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+      <span class="c1">// Set root nodes file path</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">treepath</span> <span class="o">=</span> <span class="n">dir</span> <span class="o">/</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">basename</span> <span class="p">(</span><span class="n">root_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">TREE_EXTENSION_</span><span class="p">);</span>
+
+      <span class="c1">//fill the fields of the metadata</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">setCoordinateSystem</span> <span class="p">(</span><span class="n">coord_sys</span><span class="p">);</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">setDepth</span> <span class="p">(</span><span class="n">depth</span><span class="p">);</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">setLODPoints</span> <span class="p">(</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">setMetadataFilename</span> <span class="p">(</span><span class="n">treepath</span><span class="p">);</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">setOutofcoreVersion</span> <span class="p">(</span><span class="n">OUTOFCORE_VERSION_</span><span class="p">);</span>
+      <span class="c1">//metadata_-&gt;setPointType ( &lt;point type string here&gt; );</span>
+
+      <span class="c1">//save to disk</span>
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">serializeMetadataToDisk</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::~</span><span class="n">OutofcoreOctreeBase</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">flushToDiskRecursive</span> <span class="p">();</span>
+
+      <span class="n">saveToFile</span> <span class="p">();</span>
+      <span class="k">delete</span> <span class="p">(</span><span class="n">root_node_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">saveToFile</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">serializeMetadataToDisk</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addDataToLeaf</span> <span class="p">(</span><span class="k">const</span> <span class="n">AlignedPointTVector</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+
+      <span class="k">const</span> <span class="kt">bool</span> <span class="n">_FORCE_BB_CHECK</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+      <span class="kt">uint64_t</span> <span class="n">pt_added</span> <span class="o">=</span> <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">addDataToLeaf</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">_FORCE_BB_CHECK</span><span class="p">);</span>
+
+      <span class="n">assert</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">==</span> <span class="n">pt_added</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="n">pt_added</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addPointCloud</span> <span class="p">(</span><span class="n">PointCloudConstPtr</span> <span class="n">point_cloud</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">addDataToLeaf</span> <span class="p">(</span><span class="n">point_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addPointCloud</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">input_cloud</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">skip_bb_check</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">uint64_t</span> <span class="n">pt_added</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">addPointCloud</span> <span class="p">(</span><span class="n">input_cloud</span><span class="p">,</span> <span class="n">skip_bb_check</span><span class="p">)</span> <span class="p">;</span>
+<span class="c1">//      assert (input_cloud-&gt;width*input_cloud-&gt;height == pt_added);</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">pt_added</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addPointCloud_and_genLOD</span> <span class="p">(</span><span class="n">PointCloudConstPtr</span> <span class="n">point_cloud</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Lock the tree while writing</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">pt_added</span> <span class="o">=</span> <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">addDataToLeaf_and_genLOD</span> <span class="p">(</span><span class="n">point_cloud</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">pt_added</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addPointCloud_and_genLOD</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">input_cloud</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Lock the tree while writing</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">pt_added</span> <span class="o">=</span> <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">addPointCloud_and_genLOD</span> <span class="p">(</span><span class="n">input_cloud</span><span class="p">);</span>
+
+      <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase::%s] Points added %lu, points in input cloud, %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">__FUNCTION__</span><span class="p">,</span> <span class="n">pt_added</span><span class="p">,</span> <span class="n">input_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">*</span><span class="n">input_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="p">);</span>
+
+      <span class="n">assert</span> <span class="p">(</span> <span class="n">input_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">*</span><span class="n">input_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">==</span> <span class="n">pt_added</span> <span class="p">);</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="n">pt_added</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">addDataToLeaf_and_genLOD</span> <span class="p">(</span><span class="n">AlignedPointTVector</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// Lock the tree while writing</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">pt_added</span> <span class="o">=</span> <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">addDataToLeaf_and_genLOD</span> <span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">pt_added</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Container</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">Container</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryFrustum</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">planes</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">file_names</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryFrustum</span> <span class="p">(</span><span class="n">planes</span><span class="p">,</span> <span class="n">file_names</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">getTreeDepth</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Container</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">Container</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryFrustum</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">*</span><span class="n">planes</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">file_names</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">query_depth</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryFrustum</span> <span class="p">(</span><span class="n">planes</span><span class="p">,</span> <span class="n">file_names</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Container</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">Container</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryFrustum</span> <span class="p">(</span>
+        <span class="k">const</span> <span class="kt">double</span> <span class="o">*</span><span class="n">planes</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">eye</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4d</span> <span class="o">&amp;</span><span class="n">view_projection_matrix</span><span class="p">,</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">file_names</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">query_depth</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryFrustum</span> <span class="p">(</span><span class="n">planes</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">view_projection_matrix</span><span class="p">,</span> <span class="n">file_names</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryBBIncludes</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">AlignedPointTVector</span><span class="o">&amp;</span> <span class="n">dst</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">dst</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+      <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBaseNode] Querying Bounding Box %.2lf %.2lf %.2lf, %.2lf %.2lf %.2lf&quot;</span><span class="p">,</span> <span class="n">min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">min</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">min</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">max</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">max</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">max</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryBBIncludes</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">dst</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryBBIncludes</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">query_depth</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&amp;</span> <span class="n">dst_blob</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+
+      <span class="n">dst_blob</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+      <span class="n">dst_blob</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">dst_blob</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryBBIncludes</span> <span class="p">(</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">dst_blob</span> <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryBBIncludes_subsample</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">query_depth</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">percent</span><span class="p">,</span> <span class="n">AlignedPointTVector</span><span class="o">&amp;</span> <span class="n">dst</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">dst</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryBBIncludes_subsample</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="n">dst</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryBoundingBox</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">query_depth</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">dst_blob</span><span class="p">,</span> <span class="kt">double</span> <span class="n">percent</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">percent</span><span class="o">==</span><span class="mf">1.0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryBBIncludes</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">dst_blob</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryBBIncludes_subsample</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">dst_blob</span><span class="p">,</span> <span class="n">percent</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getBoundingBox</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">min</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">max</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">root_node_</span><span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">getBoundingBox</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">printBoundingBox</span><span class="p">(</span><span class="k">const</span> <span class="kt">size_t</span> <span class="n">query_depth</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">printBoundingBox</span> <span class="p">(</span><span class="n">query_depth</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getOccupiedVoxelCenters</span><span class="p">(</span><span class="n">AlignedPointTVector</span> <span class="o">&amp;</span><span class="n">voxel_centers</span><span class="p">,</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">query_depth</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">query_depth</span> <span class="o">&gt;</span> <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">())</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="n">voxel_centers</span><span class="p">,</span> <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">());</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="n">voxel_centers</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getOccupiedVoxelCenters</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">voxel_centers</span><span class="p">,</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">query_depth</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">query_depth</span> <span class="o">&gt;</span> <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">())</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="n">voxel_centers</span><span class="p">,</span> <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">());</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">getOccupiedVoxelCentersRecursive</span> <span class="p">(</span><span class="n">voxel_centers</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">queryBBIntersects</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max</span><span class="p">,</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">bin_name</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+      <span class="n">bin_name</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+<span class="cp">#if defined _MSC_VER</span>
+  <span class="cp">#pragma warning(push)</span>
+  <span class="cp">#pragma warning(disable : 4267)</span>
+<span class="cp">#endif</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">queryBBIntersects</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">query_depth</span><span class="p">,</span> <span class="n">bin_name</span><span class="p">);</span>
+<span class="cp">#if defined _MSC_VER</span>
+  <span class="cp">#pragma warning(pop)</span>
+<span class="cp">#endif</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">writeVPythonVisual</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="n">f</span> <span class="p">(</span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span> <span class="p">());</span>
+
+      <span class="n">f</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;from visual import *</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">writeVPythonVisual</span> <span class="p">(</span><span class="n">f</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">flushToDisk</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">flushToDisk</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">flushToDiskLazy</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">flushToDiskLazy</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">convertToXYZ</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">saveToFile</span> <span class="p">();</span>
+      <span class="n">root_node_</span><span class="o">-&gt;</span><span class="n">convertToXYZ</span> <span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">DeAllocEmptyNodeCache</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">DeAllocEmptyNodeCache</span> <span class="p">(</span><span class="n">root_node_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+   <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">DeAllocEmptyNodeCache</span> <span class="p">(</span><span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;*</span> <span class="n">current</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">current</span><span class="o">-&gt;</span><span class="n">flush_DeAlloc_this_only</span> <span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">numchildren</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">DeAllocEmptyNodeCache</span> <span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+      <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;*</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getBranchChildPtr</span> <span class="p">(</span><span class="k">const</span> <span class="n">BranchNode</span><span class="o">&amp;</span> <span class="n">branch_arg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">childIdx_arg</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">branch_arg</span><span class="p">.</span><span class="n">getChildPtr</span> <span class="p">(</span><span class="n">childIdx_arg</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Filter</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;::</span><span class="n">Ptr</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getLODFilter</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">lod_filter_ptr_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Filter</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;::</span><span class="n">ConstPtr</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getLODFilter</span> <span class="p">()</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">lod_filter_ptr_</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">setLODFilter</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">Filter</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;::</span><span class="n">Ptr</span><span class="o">&amp;</span> <span class="n">filter_arg</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">lod_filter_ptr_</span> <span class="o">=</span> <span class="n">filter_arg</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getBinDimension</span> <span class="p">(</span><span class="kt">double</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">root_node_</span><span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">;</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">getBoundingBox</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">);</span>
+
+      <span class="kt">double</span> <span class="n">depth</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">());</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">max</span><span class="o">-</span><span class="n">min</span><span class="p">;</span>
+
+      <span class="n">y</span> <span class="o">=</span> <span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">pow</span> <span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="n">depth</span><span class="p">);</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">pow</span> <span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="n">depth</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">double</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">getVoxelSideLength</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span><span class="o">&amp;</span> <span class="n">depth</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">;</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">getBoundingBox</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">);</span>
+      <span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">min</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">pow</span> <span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">()))</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">()</span> <span class="o">-</span> <span class="n">depth</span><span class="p">));</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">buildLOD</span> <span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">root_node_</span><span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;Root node is null; aborting buildLOD.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_timed_mutex</span> <span class="o">&gt;</span> <span class="n">lock</span> <span class="p">(</span><span class="n">read_write_mutex_</span><span class="p">);</span>
+
+      <span class="k">const</span> <span class="kt">int</span> <span class="n">number_of_nodes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BranchNode</span><span class="o">*&gt;</span> <span class="n">current_branch</span> <span class="p">(</span><span class="n">number_of_nodes</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">BranchNode</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">nullptr</span><span class="p">));</span>
+      <span class="n">current_branch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">root_node_</span><span class="p">;</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="k">this</span><span class="o">-&gt;</span><span class="n">buildLODRecursive</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">printBoundingBox</span> <span class="p">(</span><span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;&amp;</span> <span class="n">node</span><span class="p">)</span> <span class="k">const</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">;</span>
+      <span class="n">node</span><span class="p">.</span><span class="n">getBoundingBox</span> <span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="n">max</span><span class="p">);</span>
+      <span class="n">PCL_INFO</span> <span class="p">(</span><span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase::%s] min(%lf,%lf,%lf), max(%lf,%lf,%lf)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">,</span> <span class="n">min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">min</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">min</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">max</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">max</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">max</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">buildLODRecursive</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BranchNode</span><span class="o">*&gt;&amp;</span> <span class="n">current_branch</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;%s Building LOD at depth %d&quot;</span><span class="p">,</span><span class="n">__PRETTY_FUNCTION__</span><span class="p">,</span> <span class="n">current_branch</span><span class="p">.</span><span class="n">size</span> <span class="p">());</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">())</span>
+      <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">getNodeType</span> <span class="p">()</span> <span class="o">==</span> <span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">LEAF_NODE</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">()</span> <span class="o">==</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">());</span>
+
+        <span class="n">BranchNode</span><span class="o">*</span> <span class="n">leaf</span> <span class="o">=</span> <span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">();</span>
+
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">leaf_input_cloud</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="p">());</span>
+        <span class="c1">//read the data from the PCD file associated with the leaf; it is full resolution</span>
+        <span class="n">leaf</span><span class="o">-&gt;</span><span class="n">read</span> <span class="p">(</span><span class="n">leaf_input_cloud</span><span class="p">);</span>
+        <span class="n">assert</span> <span class="p">(</span><span class="n">leaf_input_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">*</span><span class="n">leaf_input_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+
+        <span class="c1">//go up the tree, re-downsampling the full resolution leaf cloud at lower and lower resolution</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int64_t</span> <span class="n">level</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">level</span><span class="o">--</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">BranchNode</span><span class="o">*</span> <span class="n">target_parent</span> <span class="o">=</span> <span class="n">current_branch</span><span class="p">[</span><span class="n">level</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+          <span class="n">assert</span> <span class="p">(</span><span class="n">target_parent</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+          <span class="kt">double</span> <span class="n">exponent</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">size</span> <span class="p">()</span> <span class="o">-</span> <span class="n">target_parent</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">());</span>
+          <span class="kt">double</span> <span class="n">current_depth_sample_percent</span> <span class="o">=</span> <span class="n">pow</span> <span class="p">(</span><span class="n">sample_percent_</span><span class="p">,</span> <span class="n">exponent</span><span class="p">);</span>
+
+          <span class="n">assert</span> <span class="p">(</span><span class="n">current_depth_sample_percent</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">);</span>
+          <span class="c1">//------------------------------------------------------------</span>
+          <span class="c1">//subsample data:</span>
+          <span class="c1">//   1. Get indices from a random sample</span>
+          <span class="c1">//   2. Extract those indices with the extract indices class (in order to also get the complement)</span>
+          <span class="c1">//------------------------------------------------------------</span>
+
+          <span class="n">lod_filter_ptr_</span><span class="o">-&gt;</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">leaf_input_cloud</span><span class="p">);</span>
+
+          <span class="c1">//set sample size to 1/8 of total points (12.5%)</span>
+          <span class="kt">uint64_t</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">leaf_input_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">*</span><span class="n">leaf_input_cloud</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="n">current_depth_sample_percent</span><span class="p">);</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">sample_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">sample_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+          <span class="n">lod_filter_ptr_</span><span class="o">-&gt;</span><span class="n">setSample</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sample_size</span><span class="p">));</span>
+
+          <span class="c1">//create our destination</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">downsampled_cloud</span> <span class="p">(</span><span class="k">new</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span> <span class="p">());</span>
+
+          <span class="c1">//create destination for indices</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">IndicesPtr</span> <span class="n">downsampled_cloud_indices</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="p">());</span>
+          <span class="n">lod_filter_ptr_</span><span class="o">-&gt;</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">downsampled_cloud_indices</span><span class="p">);</span>
+
+          <span class="c1">//extract the &quot;random subset&quot;, size by setSampleSize</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">ExtractIndices</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&gt;</span> <span class="n">extractor</span><span class="p">;</span>
+          <span class="n">extractor</span><span class="p">.</span><span class="n">setInputCloud</span> <span class="p">(</span><span class="n">leaf_input_cloud</span><span class="p">);</span>
+          <span class="n">extractor</span><span class="p">.</span><span class="n">setIndices</span> <span class="p">(</span><span class="n">downsampled_cloud_indices</span><span class="p">);</span>
+          <span class="n">extractor</span><span class="p">.</span><span class="n">filter</span> <span class="p">(</span><span class="o">*</span><span class="n">downsampled_cloud</span><span class="p">);</span>
+
+          <span class="c1">//write to the target</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">downsampled_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">*</span><span class="n">downsampled_cloud</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">target_parent</span><span class="o">-&gt;</span><span class="n">payload_</span><span class="o">-&gt;</span><span class="n">insertRange</span> <span class="p">(</span><span class="n">downsampled_cloud</span><span class="p">);</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">incrementPointsInLOD</span> <span class="p">(</span><span class="n">target_parent</span><span class="o">-&gt;</span><span class="n">getDepth</span> <span class="p">(),</span> <span class="n">downsampled_cloud</span><span class="o">-&gt;</span><span class="n">width</span><span class="o">*</span><span class="n">downsampled_cloud</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">else</span><span class="c1">//not at leaf, keep going down</span>
+      <span class="p">{</span>
+        <span class="c1">//clear this node while walking down the tree in case we are updating the LOD</span>
+        <span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">clearData</span> <span class="p">();</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BranchNode</span><span class="o">*&gt;</span> <span class="n">next_branch</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">hasUnloadedChildren</span> <span class="p">())</span>
+        <span class="p">{</span>
+          <span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">loadChildren</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">next_branch</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">current_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">getChildPtr</span> <span class="p">(</span><span class="n">i</span><span class="p">));</span>
+          <span class="c1">//skip that child if it doesn&#39;t exist</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">next_branch</span><span class="p">.</span><span class="n">back</span> <span class="p">()</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
+            <span class="n">buildLODRecursive</span> <span class="p">(</span><span class="n">next_branch</span><span class="p">);</span>
+
+          <span class="n">next_branch</span><span class="p">.</span><span class="n">pop_back</span> <span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">incrementPointsInLOD</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">depth</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">new_point_count</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;::</span><span class="n">max</span> <span class="p">()</span> <span class="o">-</span> <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getLODPoints</span> <span class="p">(</span><span class="n">depth</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">new_point_count</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase::incrementPointsInLOD] Overflow error. Too many points in depth %d of outofcore octree with root at %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">getMetadataFilename</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="n">PCL_THROW_EXCEPTION</span> <span class="p">(</span><span class="n">PCLException</span><span class="p">,</span> <span class="s">&quot;Overflow error&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="n">metadata_</span><span class="o">-&gt;</span><span class="n">setLODPoints</span> <span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">new_point_count</span><span class="p">,</span> <span class="nb">true</span> <span class="cm">/*true-&gt;increment*/</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">bool</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">checkExtension</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span> <span class="n">path_name</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">extension</span> <span class="p">(</span><span class="n">path_name</span><span class="p">)</span> <span class="o">!=</span> <span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">node_index_extension</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">PCL_ERROR</span> <span class="p">(</span> <span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase] Wrong root node file extension: %s. The tree must have a root node ending in %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">extension</span> <span class="p">(</span><span class="n">path_name</span><span class="p">).</span><span class="n">c_str</span> <span class="p">(),</span> <span class="n">OutofcoreOctreeBaseNode</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">node_index_extension</span><span class="p">.</span><span class="n">c_str</span> <span class="p">()</span> <span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="kt">void</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">enlargeToCube</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">bb_min</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">bb_max</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">bb_max</span> <span class="o">-</span> <span class="n">bb_min</span><span class="p">;</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="n">bb_max</span> <span class="o">+</span> <span class="n">bb_min</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">;</span>
+
+      <span class="kt">double</span> <span class="n">max_sidelength</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span> <span class="p">(</span><span class="n">fabs</span> <span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">fabs</span> <span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">2</span><span class="p">]));</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">max_sidelength</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">bb_min</span> <span class="o">=</span> <span class="n">center</span> <span class="o">-</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">max_sidelength</span><span class="o">/</span><span class="mf">2.0</span><span class="p">);</span>
+      <span class="n">bb_max</span> <span class="o">=</span> <span class="n">center</span> <span class="o">+</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">max_sidelength</span><span class="o">/</span><span class="mf">2.0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">////////////////////////////////////////////////////////////////////////////////</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">ContainerT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span>
+    <span class="n">OutofcoreOctreeBase</span><span class="o">&lt;</span><span class="n">ContainerT</span><span class="p">,</span> <span class="n">PointT</span><span class="o">&gt;::</span><span class="n">calculateDepth</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">min_bb</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">&amp;</span> <span class="n">max_bb</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">leaf_resolution</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">//Assume cube</span>
+      <span class="kt">double</span> <span class="n">side_length</span> <span class="o">=</span> <span class="n">max_bb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">min_bb</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">side_length</span> <span class="o">&lt;</span> <span class="n">leaf_resolution</span><span class="p">)</span>
+          <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+      <span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span> <span class="n">res</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">log2</span> <span class="p">(</span><span class="n">side_length</span> <span class="o">/</span> <span class="n">leaf_resolution</span><span class="p">)));</span>
+
+      <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::outofcore::OutofcoreOctreeBase::calculateDepth] Setting depth to %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">res</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span><span class="c1">//namespace outofcore</span>
+<span class="p">}</span><span class="c1">//namespace pcl</span>
+
+<span class="cp">#endif </span><span class="c1">//PCL_OUTOFCORE_OCTREE_BASE_IMPL_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_outofcore_octree_base_node.h.html" class="btn btn-neutral float-right" title="File octree_base_node.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_outofcore_impl_octree_base.hpp.html" class="btn btn-neutral float-left" title="File octree_base.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

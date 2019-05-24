@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File hsv_color_coherence.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File hv_go.h" href="file_pcl_recognition_hv_hv_go.h.html" />
+    <link rel="prev" title="File hsv_color_coherence.hpp" href="file_pcl_tracking_impl_hsv_color_coherence.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_tracking_impl_hsv_color_coherence.hpp.html">File hsv_color_coherence.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File hsv_color_coherence.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_tracking_impl_hsv_color_coherence.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-hsv-color-coherence-hpp">
+<span id="program-listing-file-pcl-tracking-impl-hsv-color-coherence-hpp"></span><h1>Program Listing for File hsv_color_coherence.hpp<a class="headerlink" href="#program-listing-for-file-hsv-color-coherence-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_tracking_impl_hsv_color_coherence.hpp.html#file-pcl-tracking-impl-hsv-color-coherence-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\tracking\impl\hsv_color_coherence.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef PCL_TRACKING_IMPL_HSV_COLOR_COHERENCE_H_</span>
+<span class="cp">#define PCL_TRACKING_IMPL_HSV_COLOR_COHERENCE_H_</span>
+
+<span class="cp">#if defined __GNUC__</span>
+<span class="cp">#  pragma GCC system_header</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/tracking/hsv_color_coherence.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">tracking</span>
+  <span class="p">{</span>
+    <span class="c1">// utility</span>
+    <span class="k">typedef</span> <span class="k">union</span>
+    <span class="p">{</span>
+      <span class="k">struct</span> <span class="cm">/*anonymous*/</span>
+      <span class="p">{</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">Blue</span><span class="p">;</span> <span class="c1">// Blue channel</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">Green</span><span class="p">;</span> <span class="c1">// Green channel</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">Red</span><span class="p">;</span> <span class="c1">// Red channel</span>
+      <span class="p">};</span>
+      <span class="kt">float</span> <span class="n">float_value</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">int_value</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">RGBValue</span><span class="p">;</span>
+
+    <span class="cm">/** \brief Convert a RGB tuple to an HSV one.</span>
+<span class="cm">      * \param[in] r the input Red component</span>
+<span class="cm">      * \param[in] g the input Green component</span>
+<span class="cm">      * \param[in] b the input Blue component</span>
+<span class="cm">      * \param[out] fh the output Hue component</span>
+<span class="cm">      * \param[out] fs the output Saturation component</span>
+<span class="cm">      * \param[out] fv the output Value component</span>
+<span class="cm">      */</span>
+    <span class="kt">void</span>
+    <span class="nf">RGB2HSV</span> <span class="p">(</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">fh</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">fs</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">fv</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// mostly copied from opencv-svn/modules/imgproc/src/color.cpp</span>
+      <span class="c1">// revision is 4351</span>
+      <span class="k">const</span> <span class="kt">int</span> <span class="n">hsv_shift</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+
+      <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">div_table</span><span class="p">[]</span> <span class="o">=</span>
+      <span class="p">{</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="mi">1044480</span><span class="p">,</span> <span class="mi">522240</span><span class="p">,</span> <span class="mi">348160</span><span class="p">,</span> <span class="mi">261120</span><span class="p">,</span> <span class="mi">208896</span><span class="p">,</span> <span class="mi">174080</span><span class="p">,</span> <span class="mi">149211</span><span class="p">,</span>
+        <span class="mi">130560</span><span class="p">,</span> <span class="mi">116053</span><span class="p">,</span> <span class="mi">104448</span><span class="p">,</span> <span class="mi">94953</span><span class="p">,</span> <span class="mi">87040</span><span class="p">,</span> <span class="mi">80345</span><span class="p">,</span> <span class="mi">74606</span><span class="p">,</span> <span class="mi">69632</span><span class="p">,</span>
+        <span class="mi">65280</span><span class="p">,</span> <span class="mi">61440</span><span class="p">,</span> <span class="mi">58027</span><span class="p">,</span> <span class="mi">54973</span><span class="p">,</span> <span class="mi">52224</span><span class="p">,</span> <span class="mi">49737</span><span class="p">,</span> <span class="mi">47476</span><span class="p">,</span> <span class="mi">45412</span><span class="p">,</span>
+        <span class="mi">43520</span><span class="p">,</span> <span class="mi">41779</span><span class="p">,</span> <span class="mi">40172</span><span class="p">,</span> <span class="mi">38684</span><span class="p">,</span> <span class="mi">37303</span><span class="p">,</span> <span class="mi">36017</span><span class="p">,</span> <span class="mi">34816</span><span class="p">,</span> <span class="mi">33693</span><span class="p">,</span>
+        <span class="mi">32640</span><span class="p">,</span> <span class="mi">31651</span><span class="p">,</span> <span class="mi">30720</span><span class="p">,</span> <span class="mi">29842</span><span class="p">,</span> <span class="mi">29013</span><span class="p">,</span> <span class="mi">28229</span><span class="p">,</span> <span class="mi">27486</span><span class="p">,</span> <span class="mi">26782</span><span class="p">,</span>
+        <span class="mi">26112</span><span class="p">,</span> <span class="mi">25475</span><span class="p">,</span> <span class="mi">24869</span><span class="p">,</span> <span class="mi">24290</span><span class="p">,</span> <span class="mi">23738</span><span class="p">,</span> <span class="mi">23211</span><span class="p">,</span> <span class="mi">22706</span><span class="p">,</span> <span class="mi">22223</span><span class="p">,</span>
+        <span class="mi">21760</span><span class="p">,</span> <span class="mi">21316</span><span class="p">,</span> <span class="mi">20890</span><span class="p">,</span> <span class="mi">20480</span><span class="p">,</span> <span class="mi">20086</span><span class="p">,</span> <span class="mi">19707</span><span class="p">,</span> <span class="mi">19342</span><span class="p">,</span> <span class="mi">18991</span><span class="p">,</span>
+        <span class="mi">18651</span><span class="p">,</span> <span class="mi">18324</span><span class="p">,</span> <span class="mi">18008</span><span class="p">,</span> <span class="mi">17703</span><span class="p">,</span> <span class="mi">17408</span><span class="p">,</span> <span class="mi">17123</span><span class="p">,</span> <span class="mi">16846</span><span class="p">,</span> <span class="mi">16579</span><span class="p">,</span>
+        <span class="mi">16320</span><span class="p">,</span> <span class="mi">16069</span><span class="p">,</span> <span class="mi">15825</span><span class="p">,</span> <span class="mi">15589</span><span class="p">,</span> <span class="mi">15360</span><span class="p">,</span> <span class="mi">15137</span><span class="p">,</span> <span class="mi">14921</span><span class="p">,</span> <span class="mi">14711</span><span class="p">,</span>
+        <span class="mi">14507</span><span class="p">,</span> <span class="mi">14308</span><span class="p">,</span> <span class="mi">14115</span><span class="p">,</span> <span class="mi">13926</span><span class="p">,</span> <span class="mi">13743</span><span class="p">,</span> <span class="mi">13565</span><span class="p">,</span> <span class="mi">13391</span><span class="p">,</span> <span class="mi">13221</span><span class="p">,</span>
+        <span class="mi">13056</span><span class="p">,</span> <span class="mi">12895</span><span class="p">,</span> <span class="mi">12738</span><span class="p">,</span> <span class="mi">12584</span><span class="p">,</span> <span class="mi">12434</span><span class="p">,</span> <span class="mi">12288</span><span class="p">,</span> <span class="mi">12145</span><span class="p">,</span> <span class="mi">12006</span><span class="p">,</span>
+        <span class="mi">11869</span><span class="p">,</span> <span class="mi">11736</span><span class="p">,</span> <span class="mi">11605</span><span class="p">,</span> <span class="mi">11478</span><span class="p">,</span> <span class="mi">11353</span><span class="p">,</span> <span class="mi">11231</span><span class="p">,</span> <span class="mi">11111</span><span class="p">,</span> <span class="mi">10995</span><span class="p">,</span>
+        <span class="mi">10880</span><span class="p">,</span> <span class="mi">10768</span><span class="p">,</span> <span class="mi">10658</span><span class="p">,</span> <span class="mi">10550</span><span class="p">,</span> <span class="mi">10445</span><span class="p">,</span> <span class="mi">10341</span><span class="p">,</span> <span class="mi">10240</span><span class="p">,</span> <span class="mi">10141</span><span class="p">,</span>
+        <span class="mi">10043</span><span class="p">,</span> <span class="mi">9947</span><span class="p">,</span> <span class="mi">9854</span><span class="p">,</span> <span class="mi">9761</span><span class="p">,</span> <span class="mi">9671</span><span class="p">,</span> <span class="mi">9582</span><span class="p">,</span> <span class="mi">9495</span><span class="p">,</span> <span class="mi">9410</span><span class="p">,</span>
+        <span class="mi">9326</span><span class="p">,</span> <span class="mi">9243</span><span class="p">,</span> <span class="mi">9162</span><span class="p">,</span> <span class="mi">9082</span><span class="p">,</span> <span class="mi">9004</span><span class="p">,</span> <span class="mi">8927</span><span class="p">,</span> <span class="mi">8852</span><span class="p">,</span> <span class="mi">8777</span><span class="p">,</span>
+        <span class="mi">8704</span><span class="p">,</span> <span class="mi">8632</span><span class="p">,</span> <span class="mi">8561</span><span class="p">,</span> <span class="mi">8492</span><span class="p">,</span> <span class="mi">8423</span><span class="p">,</span> <span class="mi">8356</span><span class="p">,</span> <span class="mi">8290</span><span class="p">,</span> <span class="mi">8224</span><span class="p">,</span>
+        <span class="mi">8160</span><span class="p">,</span> <span class="mi">8097</span><span class="p">,</span> <span class="mi">8034</span><span class="p">,</span> <span class="mi">7973</span><span class="p">,</span> <span class="mi">7913</span><span class="p">,</span> <span class="mi">7853</span><span class="p">,</span> <span class="mi">7795</span><span class="p">,</span> <span class="mi">7737</span><span class="p">,</span>
+        <span class="mi">7680</span><span class="p">,</span> <span class="mi">7624</span><span class="p">,</span> <span class="mi">7569</span><span class="p">,</span> <span class="mi">7514</span><span class="p">,</span> <span class="mi">7461</span><span class="p">,</span> <span class="mi">7408</span><span class="p">,</span> <span class="mi">7355</span><span class="p">,</span> <span class="mi">7304</span><span class="p">,</span>
+        <span class="mi">7253</span><span class="p">,</span> <span class="mi">7203</span><span class="p">,</span> <span class="mi">7154</span><span class="p">,</span> <span class="mi">7105</span><span class="p">,</span> <span class="mi">7057</span><span class="p">,</span> <span class="mi">7010</span><span class="p">,</span> <span class="mi">6963</span><span class="p">,</span> <span class="mi">6917</span><span class="p">,</span>
+        <span class="mi">6872</span><span class="p">,</span> <span class="mi">6827</span><span class="p">,</span> <span class="mi">6782</span><span class="p">,</span> <span class="mi">6739</span><span class="p">,</span> <span class="mi">6695</span><span class="p">,</span> <span class="mi">6653</span><span class="p">,</span> <span class="mi">6611</span><span class="p">,</span> <span class="mi">6569</span><span class="p">,</span>
+        <span class="mi">6528</span><span class="p">,</span> <span class="mi">6487</span><span class="p">,</span> <span class="mi">6447</span><span class="p">,</span> <span class="mi">6408</span><span class="p">,</span> <span class="mi">6369</span><span class="p">,</span> <span class="mi">6330</span><span class="p">,</span> <span class="mi">6292</span><span class="p">,</span> <span class="mi">6254</span><span class="p">,</span>
+        <span class="mi">6217</span><span class="p">,</span> <span class="mi">6180</span><span class="p">,</span> <span class="mi">6144</span><span class="p">,</span> <span class="mi">6108</span><span class="p">,</span> <span class="mi">6073</span><span class="p">,</span> <span class="mi">6037</span><span class="p">,</span> <span class="mi">6003</span><span class="p">,</span> <span class="mi">5968</span><span class="p">,</span>
+        <span class="mi">5935</span><span class="p">,</span> <span class="mi">5901</span><span class="p">,</span> <span class="mi">5868</span><span class="p">,</span> <span class="mi">5835</span><span class="p">,</span> <span class="mi">5803</span><span class="p">,</span> <span class="mi">5771</span><span class="p">,</span> <span class="mi">5739</span><span class="p">,</span> <span class="mi">5708</span><span class="p">,</span>
+        <span class="mi">5677</span><span class="p">,</span> <span class="mi">5646</span><span class="p">,</span> <span class="mi">5615</span><span class="p">,</span> <span class="mi">5585</span><span class="p">,</span> <span class="mi">5556</span><span class="p">,</span> <span class="mi">5526</span><span class="p">,</span> <span class="mi">5497</span><span class="p">,</span> <span class="mi">5468</span><span class="p">,</span>
+        <span class="mi">5440</span><span class="p">,</span> <span class="mi">5412</span><span class="p">,</span> <span class="mi">5384</span><span class="p">,</span> <span class="mi">5356</span><span class="p">,</span> <span class="mi">5329</span><span class="p">,</span> <span class="mi">5302</span><span class="p">,</span> <span class="mi">5275</span><span class="p">,</span> <span class="mi">5249</span><span class="p">,</span>
+        <span class="mi">5222</span><span class="p">,</span> <span class="mi">5196</span><span class="p">,</span> <span class="mi">5171</span><span class="p">,</span> <span class="mi">5145</span><span class="p">,</span> <span class="mi">5120</span><span class="p">,</span> <span class="mi">5095</span><span class="p">,</span> <span class="mi">5070</span><span class="p">,</span> <span class="mi">5046</span><span class="p">,</span>
+        <span class="mi">5022</span><span class="p">,</span> <span class="mi">4998</span><span class="p">,</span> <span class="mi">4974</span><span class="p">,</span> <span class="mi">4950</span><span class="p">,</span> <span class="mi">4927</span><span class="p">,</span> <span class="mi">4904</span><span class="p">,</span> <span class="mi">4881</span><span class="p">,</span> <span class="mi">4858</span><span class="p">,</span>
+        <span class="mi">4836</span><span class="p">,</span> <span class="mi">4813</span><span class="p">,</span> <span class="mi">4791</span><span class="p">,</span> <span class="mi">4769</span><span class="p">,</span> <span class="mi">4748</span><span class="p">,</span> <span class="mi">4726</span><span class="p">,</span> <span class="mi">4705</span><span class="p">,</span> <span class="mi">4684</span><span class="p">,</span>
+        <span class="mi">4663</span><span class="p">,</span> <span class="mi">4642</span><span class="p">,</span> <span class="mi">4622</span><span class="p">,</span> <span class="mi">4601</span><span class="p">,</span> <span class="mi">4581</span><span class="p">,</span> <span class="mi">4561</span><span class="p">,</span> <span class="mi">4541</span><span class="p">,</span> <span class="mi">4522</span><span class="p">,</span>
+        <span class="mi">4502</span><span class="p">,</span> <span class="mi">4483</span><span class="p">,</span> <span class="mi">4464</span><span class="p">,</span> <span class="mi">4445</span><span class="p">,</span> <span class="mi">4426</span><span class="p">,</span> <span class="mi">4407</span><span class="p">,</span> <span class="mi">4389</span><span class="p">,</span> <span class="mi">4370</span><span class="p">,</span>
+        <span class="mi">4352</span><span class="p">,</span> <span class="mi">4334</span><span class="p">,</span> <span class="mi">4316</span><span class="p">,</span> <span class="mi">4298</span><span class="p">,</span> <span class="mi">4281</span><span class="p">,</span> <span class="mi">4263</span><span class="p">,</span> <span class="mi">4246</span><span class="p">,</span> <span class="mi">4229</span><span class="p">,</span>
+        <span class="mi">4212</span><span class="p">,</span> <span class="mi">4195</span><span class="p">,</span> <span class="mi">4178</span><span class="p">,</span> <span class="mi">4161</span><span class="p">,</span> <span class="mi">4145</span><span class="p">,</span> <span class="mi">4128</span><span class="p">,</span> <span class="mi">4112</span><span class="p">,</span> <span class="mi">4096</span>
+      <span class="p">};</span>
+      <span class="kt">int</span> <span class="n">hr</span> <span class="o">=</span> <span class="mi">180</span><span class="p">,</span> <span class="n">hscale</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">vmin</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">diff</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">vr</span><span class="p">,</span> <span class="n">vg</span><span class="p">;</span>
+
+      <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
+      <span class="n">v</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+      <span class="n">vmin</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>
+      <span class="n">vmin</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+
+      <span class="n">diff</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">;</span>
+      <span class="n">vr</span> <span class="o">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">r</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">vg</span> <span class="o">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">g</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="n">s</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">*</span> <span class="n">div_table</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">hsv_shift</span><span class="p">;</span>
+      <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">vr</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">g</span> <span class="o">-</span> <span class="n">b</span><span class="p">))</span> <span class="o">+</span>
+          <span class="p">(</span><span class="o">~</span><span class="n">vr</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">vg</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">diff</span><span class="p">))</span>
+          <span class="o">+</span> <span class="p">((</span><span class="o">~</span><span class="n">vg</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">g</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">diff</span><span class="p">))));</span>
+      <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">div_table</span><span class="p">[</span><span class="n">diff</span><span class="p">]</span> <span class="o">*</span> <span class="n">hscale</span> <span class="o">+</span>
+          <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">hsv_shift</span> <span class="o">+</span> <span class="mi">6</span><span class="p">)))</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="n">hsv_shift</span><span class="p">);</span>
+
+      <span class="n">h</span> <span class="o">+=</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nl">hr</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">fh</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="mf">180.0f</span><span class="p">;</span>
+      <span class="n">fs</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0f</span><span class="p">;</span>
+      <span class="n">fv</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0f</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">///////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="o">&gt;</span> <span class="kt">double</span>
+    <span class="n">HSVColorCoherence</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">computeCoherence</span> <span class="p">(</span><span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">source</span><span class="p">,</span> <span class="n">PointInT</span> <span class="o">&amp;</span><span class="n">target</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// convert color space from RGB to HSV</span>
+      <span class="n">RGBValue</span> <span class="n">source_rgb</span><span class="p">,</span> <span class="n">target_rgb</span><span class="p">;</span>
+      <span class="n">source_rgb</span><span class="p">.</span><span class="n">int_value</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">rgba</span><span class="p">;</span>
+      <span class="n">target_rgb</span><span class="p">.</span><span class="n">int_value</span> <span class="o">=</span> <span class="n">target</span><span class="p">.</span><span class="n">rgba</span><span class="p">;</span>
+
+      <span class="kt">float</span> <span class="n">source_h</span><span class="p">,</span> <span class="n">source_s</span><span class="p">,</span> <span class="n">source_v</span><span class="p">,</span> <span class="n">target_h</span><span class="p">,</span> <span class="n">target_s</span><span class="p">,</span> <span class="n">target_v</span><span class="p">;</span>
+      <span class="n">RGB2HSV</span> <span class="p">(</span><span class="n">source_rgb</span><span class="p">.</span><span class="n">Red</span><span class="p">,</span> <span class="n">source_rgb</span><span class="p">.</span><span class="n">Blue</span><span class="p">,</span> <span class="n">source_rgb</span><span class="p">.</span><span class="n">Green</span><span class="p">,</span>
+               <span class="n">source_h</span><span class="p">,</span> <span class="n">source_s</span><span class="p">,</span> <span class="n">source_v</span><span class="p">);</span>
+      <span class="n">RGB2HSV</span> <span class="p">(</span><span class="n">target_rgb</span><span class="p">.</span><span class="n">Red</span><span class="p">,</span> <span class="n">target_rgb</span><span class="p">.</span><span class="n">Blue</span><span class="p">,</span> <span class="n">target_rgb</span><span class="p">.</span><span class="n">Green</span><span class="p">,</span>
+               <span class="n">target_h</span><span class="p">,</span> <span class="n">target_s</span><span class="p">,</span> <span class="n">target_v</span><span class="p">);</span>
+      <span class="c1">// hue value is in 0 ~ 2pi, but circulated.</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">_h_diff</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="n">source_h</span> <span class="o">-</span> <span class="n">target_h</span><span class="p">);</span>
+      <span class="c1">// Also need to compute distance other way around circle - but need to check which is closer to 0</span>
+      <span class="kt">float</span> <span class="n">_h_diff2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">source_h</span> <span class="o">&lt;</span> <span class="n">target_h</span><span class="p">)</span>
+        <span class="n">_h_diff2</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="mf">1.0f</span> <span class="o">+</span> <span class="n">source_h</span> <span class="o">-</span> <span class="n">target_h</span><span class="p">);</span> <span class="c1">//Add 2pi to source, subtract target</span>
+      <span class="k">else</span>
+        <span class="n">_h_diff2</span> <span class="o">=</span> <span class="n">fabsf</span> <span class="p">(</span><span class="mf">1.0f</span> <span class="o">+</span> <span class="n">target_h</span> <span class="o">-</span> <span class="n">source_h</span><span class="p">);</span> <span class="c1">//Add 2pi to target, subtract source</span>
+
+      <span class="kt">float</span> <span class="n">h_diff</span><span class="p">;</span>
+      <span class="c1">//Now we need to choose the smaller distance</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">_h_diff</span> <span class="o">&lt;</span> <span class="n">_h_diff2</span><span class="p">)</span>
+        <span class="n">h_diff</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">h_weight_</span><span class="p">)</span> <span class="o">*</span> <span class="n">_h_diff</span> <span class="o">*</span> <span class="n">_h_diff</span><span class="p">;</span>
+      <span class="k">else</span>
+        <span class="n">h_diff</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">h_weight_</span><span class="p">)</span> <span class="o">*</span> <span class="n">_h_diff2</span> <span class="o">*</span> <span class="n">_h_diff2</span><span class="p">;</span>
+
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">s_diff</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">s_weight_</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">source_s</span> <span class="o">-</span> <span class="n">target_s</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">source_s</span> <span class="o">-</span> <span class="n">target_s</span><span class="p">);</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">v_diff</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">v_weight_</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">source_v</span> <span class="o">-</span> <span class="n">target_v</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">source_v</span> <span class="o">-</span> <span class="n">target_v</span><span class="p">);</span>
+      <span class="k">const</span> <span class="kt">float</span> <span class="n">diff2</span> <span class="o">=</span> <span class="n">h_diff</span> <span class="o">+</span> <span class="n">s_diff</span> <span class="o">+</span> <span class="n">v_diff</span><span class="p">;</span>
+
+      <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">weight_</span> <span class="o">*</span> <span class="n">diff2</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define PCL_INSTANTIATE_HSVColorCoherence(T) template class PCL_EXPORTS pcl::tracking::HSVColorCoherence&lt;T&gt;;</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_recognition_hv_hv_go.h.html" class="btn btn-neutral float-right" title="File hv_go.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_tracking_impl_hsv_color_coherence.hpp.html" class="btn btn-neutral float-left" title="File hsv_color_coherence.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

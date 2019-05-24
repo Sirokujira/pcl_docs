@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File ndt_2d.hpp &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File nearest_pair_point_cloud_coherence.h" href="file_pcl_tracking_nearest_pair_point_cloud_coherence.h.html" />
+    <link rel="prev" title="File ndt_2d.hpp" href="file_pcl_registration_impl_ndt_2d.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_registration_impl_ndt_2d.hpp.html">File ndt_2d.hpp</a> &raquo;</li>
+        
+      <li>Program Listing for File ndt_2d.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_registration_impl_ndt_2d.hpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-ndt-2d-hpp">
+<span id="program-listing-file-pcl-registration-impl-ndt-2d-hpp"></span><h1>Program Listing for File ndt_2d.hpp<a class="headerlink" href="#program-listing-for-file-ndt-2d-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_registration_impl_ndt_2d.hpp.html#file-pcl-registration-impl-ndt-2d-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\registration\impl\ndt_2d.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2011-2012, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef PCL_NDT_2D_IMPL_H_</span>
+<span class="cp">#define PCL_NDT_2D_IMPL_H_</span>
+<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/registration/boost.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">ndt2d</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief Class to store vector value and first and second derivatives</span>
+<span class="cm">      * (grad vector and hessian matrix), so they can be returned easily from</span>
+<span class="cm">      * functions</span>
+<span class="cm">      */</span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">=</span><span class="kt">double</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">ValueAndDerivatives</span>
+    <span class="p">{</span>
+      <span class="n">ValueAndDerivatives</span> <span class="p">()</span> <span class="o">:</span> <span class="n">hessian</span> <span class="p">(),</span> <span class="n">grad</span> <span class="p">(),</span> <span class="n">value</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">&gt;</span> <span class="n">hessian</span><span class="p">;</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span>    <span class="n">grad</span><span class="p">;</span>
+      <span class="n">T</span> <span class="n">value</span><span class="p">;</span>
+
+      <span class="k">static</span> <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="n">N</span><span class="p">,</span><span class="n">T</span><span class="o">&gt;</span>
+      <span class="n">Zero</span> <span class="p">()</span>
+      <span class="p">{</span>
+        <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="n">N</span><span class="p">,</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">r</span><span class="p">;</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">hessian</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="o">&gt;::</span><span class="n">Zero</span> <span class="p">();</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">grad</span>    <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;::</span><span class="n">Zero</span> <span class="p">();</span>
+        <span class="n">r</span><span class="p">.</span><span class="n">value</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="n">N</span><span class="p">,</span><span class="n">T</span><span class="o">&gt;&amp;</span>
+      <span class="k">operator</span><span class="o">+=</span> <span class="p">(</span><span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="n">N</span><span class="p">,</span><span class="n">T</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">hessian</span> <span class="o">+=</span> <span class="n">r</span><span class="p">.</span><span class="n">hessian</span><span class="p">;</span>
+        <span class="n">grad</span>    <span class="o">+=</span> <span class="n">r</span><span class="p">.</span><span class="n">grad</span><span class="p">;</span>
+        <span class="n">value</span>   <span class="o">+=</span> <span class="n">r</span><span class="p">.</span><span class="n">value</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief A normal distribution estimation class.</span>
+<span class="cm">      *</span>
+<span class="cm">      * First the indices of of the points from a point cloud that should be</span>
+<span class="cm">      * modelled by the distribution are added with addIdx (...).</span>
+<span class="cm">      *</span>
+<span class="cm">      * Then estimateParams (...) uses the stored point indices to estimate the</span>
+<span class="cm">      * parameters of a normal distribution, and discards the stored indices.</span>
+<span class="cm">      *</span>
+<span class="cm">      * Finally the distriubution, and its derivatives, may be evaluated at any</span>
+<span class="cm">      * point using test (...).</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">NormalDist</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="n">NormalDist</span> <span class="p">()</span>
+          <span class="o">:</span> <span class="n">min_n_</span> <span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">n_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Store a point index to use later for estimating distribution parameters.</span>
+<span class="cm">          * \param[in] i Point index to store</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">addIdx</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">pt_indices_</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Estimate the normal distribution parameters given the point indices provided. Memory of point indices is cleared.</span>
+<span class="cm">          * \param[in] cloud                    Point cloud corresponding to indices passed to addIdx.</span>
+<span class="cm">          * \param[in] min_covar_eigvalue_mult  Set the smallest eigenvalue to this times the largest.</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">estimateParams</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloud</span><span class="o">&amp;</span> <span class="n">cloud</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_covar_eigvalue_mult</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span> <span class="n">sx</span>  <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="o">::</span><span class="n">Zero</span> <span class="p">();</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span> <span class="n">sxx</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span><span class="o">::</span><span class="n">Zero</span> <span class="p">();</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="n">pt_indices_</span><span class="p">.</span><span class="n">cbegin</span> <span class="p">();</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">pt_indices_</span><span class="p">.</span><span class="n">cend</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span> <span class="n">p</span> <span class="p">(</span><span class="n">cloud</span><span class="p">[</span><span class="o">*</span><span class="n">i</span><span class="p">].</span> <span class="n">x</span><span class="p">,</span> <span class="n">cloud</span><span class="p">[</span><span class="o">*</span><span class="n">i</span><span class="p">].</span> <span class="n">y</span><span class="p">);</span>
+            <span class="n">sx</span>  <span class="o">+=</span> <span class="n">p</span><span class="p">;</span>
+            <span class="n">sxx</span> <span class="o">+=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span><span class="p">.</span><span class="n">transpose</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="n">n_</span> <span class="o">=</span> <span class="n">pt_indices_</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">n_</span> <span class="o">&gt;=</span> <span class="n">min_n_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">mean_</span> <span class="o">=</span> <span class="n">sx</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">n_</span><span class="p">);</span>
+            <span class="c1">// Using maximum likelihood estimation as in the original paper</span>
+            <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span> <span class="n">covar</span> <span class="o">=</span> <span class="p">(</span><span class="n">sxx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">sx</span> <span class="o">*</span> <span class="n">mean_</span><span class="p">.</span><span class="n">transpose</span> <span class="p">()))</span> <span class="o">/</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">n_</span><span class="p">)</span> <span class="o">+</span> <span class="n">mean_</span> <span class="o">*</span> <span class="n">mean_</span><span class="p">.</span><span class="n">transpose</span> <span class="p">();</span>
+
+            <span class="n">Eigen</span><span class="o">::</span><span class="n">SelfAdjointEigenSolver</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span><span class="o">&gt;</span> <span class="n">solver</span> <span class="p">(</span><span class="n">covar</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">min_covar_eigvalue_mult</span> <span class="o">*</span> <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="p">{</span>
+              <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::NormalDist::estimateParams] NDT normal fit: adjusting eigenvalue %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">0</span><span class="p">]);</span>
+              <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span> <span class="n">l</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">().</span><span class="n">asDiagonal</span> <span class="p">();</span>
+              <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span> <span class="n">q</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">eigenvectors</span> <span class="p">();</span>
+              <span class="c1">// set minimum smallest eigenvalue:</span>
+              <span class="n">l</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">l</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">min_covar_eigvalue_mult</span><span class="p">;</span>
+              <span class="n">covar</span> <span class="o">=</span> <span class="n">q</span> <span class="o">*</span> <span class="n">l</span> <span class="o">*</span> <span class="n">q</span><span class="p">.</span><span class="n">transpose</span> <span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">covar_inv_</span> <span class="o">=</span> <span class="n">covar</span><span class="p">.</span><span class="n">inverse</span> <span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="n">pt_indices_</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Return the &#39;score&#39; (denormalised likelihood) and derivatives of score of the point p given this distribution.</span>
+<span class="cm">          * \param[in] transformed_pt   Location to evaluate at.</span>
+<span class="cm">          * \param[in] cos_theta        sin(theta) of the current rotation angle of rigid transformation: to avoid repeated evaluation</span>
+<span class="cm">          * \param[in] sin_theta        cos(theta) of the current rotation angle of rigid transformation: to avoid repeated evaluation</span>
+<span class="cm">          * estimateParams must have been called after at least three points were provided, or this will return zero.</span>
+<span class="cm">          *</span>
+<span class="cm">          */</span>
+        <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span>
+        <span class="n">test</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">transformed_pt</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">cos_theta</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">sin_theta</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">n_</span> <span class="o">&lt;</span> <span class="n">min_n_</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">Zero</span> <span class="p">();</span>
+
+          <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">r</span><span class="p">;</span>
+          <span class="k">const</span> <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">transformed_pt</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+          <span class="k">const</span> <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">transformed_pt</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span> <span class="n">p_xy</span> <span class="p">(</span><span class="n">transformed_pt</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">transformed_pt</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span> <span class="n">q</span> <span class="o">=</span> <span class="n">p_xy</span> <span class="o">-</span> <span class="n">mean_</span><span class="p">;</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">RowVector2d</span> <span class="n">qt_cvi</span> <span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">transpose</span> <span class="p">()</span> <span class="o">*</span> <span class="n">covar_inv_</span><span class="p">);</span>
+          <span class="k">const</span> <span class="kt">double</span> <span class="n">exp_qt_cvi_q</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exp</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="kt">double</span> <span class="p">(</span><span class="n">qt_cvi</span> <span class="o">*</span> <span class="n">q</span><span class="p">));</span>
+          <span class="n">r</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="n">exp_qt_cvi_q</span><span class="p">;</span>
+
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span> <span class="n">jacobian</span><span class="p">;</span>
+          <span class="n">jacobian</span> <span class="o">&lt;&lt;</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin_theta</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">cos_theta</span><span class="p">),</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>   <span class="n">x</span> <span class="o">*</span> <span class="n">cos_theta</span> <span class="o">-</span> <span class="n">y</span><span class="o">*</span><span class="n">sin_theta</span><span class="p">;</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">grad</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kt">double</span> <span class="p">(</span><span class="n">qt_cvi</span> <span class="o">*</span> <span class="n">jacobian</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">exp_qt_cvi_q</span><span class="p">;</span>
+
+          <span class="c1">// second derivative only for i == j == 2:</span>
+          <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span> <span class="n">d2q_didj</span> <span class="p">(</span>
+              <span class="n">y</span> <span class="o">*</span> <span class="n">sin_theta</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">cos_theta</span><span class="p">,</span>
+            <span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin_theta</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">cos_theta</span><span class="p">)</span>
+          <span class="p">);</span>
+
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+              <span class="n">r</span><span class="p">.</span><span class="n">hessian</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">exp_qt_cvi_q</span> <span class="o">*</span> <span class="p">(</span>
+                <span class="kt">double</span> <span class="p">(</span><span class="o">-</span><span class="n">qt_cvi</span><span class="o">*</span><span class="n">jacobian</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="kt">double</span> <span class="p">(</span><span class="o">-</span><span class="n">qt_cvi</span><span class="o">*</span><span class="n">jacobian</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">j</span><span class="p">))</span> <span class="o">+</span>
+                <span class="p">(</span><span class="o">-</span><span class="n">qt_cvi</span> <span class="o">*</span> <span class="p">((</span><span class="n">i</span><span class="o">==</span><span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span><span class="o">?</span> <span class="nl">d2q_didj</span> <span class="p">:</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="o">::</span><span class="n">Zero</span> <span class="p">()))</span> <span class="o">+</span>
+                <span class="p">(</span><span class="o">-</span><span class="n">jacobian</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">j</span><span class="p">).</span><span class="n">transpose</span> <span class="p">()</span> <span class="o">*</span> <span class="n">covar_inv_</span> <span class="o">*</span> <span class="n">jacobian</span><span class="p">.</span><span class="n">col</span> <span class="p">(</span><span class="n">i</span><span class="p">))</span>
+              <span class="p">);</span>
+
+          <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+        <span class="k">const</span> <span class="kt">size_t</span> <span class="n">min_n_</span><span class="p">;</span>
+
+        <span class="kt">size_t</span> <span class="n">n_</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span> <span class="n">pt_indices_</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span> <span class="n">mean_</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix2d</span> <span class="n">covar_inv_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Build a set of normal distributions modelling a 2D point cloud,</span>
+<span class="cm">      * and provide the value and derivatives of the model at any point via the</span>
+<span class="cm">      * test (...) function.</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">NDTSingleGrid</span><span class="o">:</span> <span class="k">public</span> <span class="n">boost</span><span class="o">::</span><span class="n">noncopyable</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ndt2d</span><span class="o">::</span><span class="n">NormalDist</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">NormalDist</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="n">NDTSingleGrid</span> <span class="p">(</span><span class="n">PointCloudConstPtr</span> <span class="n">cloud</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&amp;</span> <span class="n">about</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&amp;</span> <span class="n">extent</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&amp;</span> <span class="n">step</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">min_</span> <span class="p">(</span><span class="n">about</span> <span class="o">-</span> <span class="n">extent</span><span class="p">),</span> <span class="n">max_</span> <span class="p">(</span><span class="n">min_</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">extent</span><span class="p">),</span> <span class="n">step_</span> <span class="p">(</span><span class="n">step</span><span class="p">),</span>
+              <span class="n">cells_</span> <span class="p">((</span><span class="n">max_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">min_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">step_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                      <span class="p">(</span><span class="n">max_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">min_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">step_</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+              <span class="n">normal_distributions_</span> <span class="p">(</span><span class="n">cells_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cells_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">{</span>
+          <span class="c1">// sort through all points, assigning them to distributions:</span>
+          <span class="n">NormalDist</span><span class="o">*</span> <span class="n">n</span><span class="p">;</span>
+          <span class="kt">size_t</span> <span class="n">used_points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cloud</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="o">=</span> <span class="n">normalDistForPoint</span> <span class="p">(</span><span class="n">cloud</span><span class="o">-&gt;</span><span class="n">at</span> <span class="p">(</span><span class="n">i</span><span class="p">))))</span>
+          <span class="p">{</span>
+            <span class="n">n</span><span class="o">-&gt;</span><span class="n">addIdx</span> <span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="n">used_points</span><span class="o">++</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::NDTSingleGrid] NDT single grid %dx%d using %d/%d points</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cells_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cells_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">used_points</span><span class="p">,</span> <span class="n">cloud</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">());</span>
+
+          <span class="c1">// then bake the distributions such that they approximate the</span>
+          <span class="c1">// points (and throw away memory of the points)</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">cells_</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">cells_</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span>
+              <span class="n">normal_distributions_</span><span class="p">.</span><span class="n">coeffRef</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">).</span><span class="n">estimateParams</span> <span class="p">(</span><span class="o">*</span><span class="n">cloud</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Return the &#39;score&#39; (denormalised likelihood) and derivatives of score of the point p given this distribution.</span>
+<span class="cm">          * \param[in] transformed_pt   Location to evaluate at.</span>
+<span class="cm">          * \param[in] cos_theta        sin(theta) of the current rotation angle of rigid transformation: to avoid repeated evaluation</span>
+<span class="cm">          * \param[in] sin_theta        cos(theta) of the current rotation angle of rigid transformation: to avoid repeated evaluation</span>
+<span class="cm">          */</span>
+        <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span>
+        <span class="n">test</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">transformed_pt</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">cos_theta</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">sin_theta</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="k">const</span> <span class="n">NormalDist</span><span class="o">*</span> <span class="n">n</span> <span class="o">=</span> <span class="n">normalDistForPoint</span> <span class="p">(</span><span class="n">transformed_pt</span><span class="p">);</span>
+          <span class="c1">// index is in grid, return score from the normal distribution from</span>
+          <span class="c1">// the correct part of the grid:</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">n</span><span class="o">-&gt;</span><span class="n">test</span> <span class="p">(</span><span class="n">transformed_pt</span><span class="p">,</span> <span class="n">cos_theta</span><span class="p">,</span> <span class="n">sin_theta</span><span class="p">);</span>
+          <span class="k">else</span>
+            <span class="k">return</span> <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">Zero</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="cm">/** \brief Return the normal distribution covering the location of point p</span>
+<span class="cm">          * \param[in] p a point</span>
+<span class="cm">          */</span>
+        <span class="n">NormalDist</span><span class="o">*</span>
+        <span class="n">normalDistForPoint</span> <span class="p">(</span><span class="n">PointT</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="c1">// this would be neater in 3d...</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">idxf</span><span class="p">;</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">idxf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">getVector3fMap</span> <span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">step_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2i</span> <span class="n">idxi</span> <span class="o">=</span> <span class="n">idxf</span><span class="p">.</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">();</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">idxi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">cells_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">||</span> <span class="n">idxi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+              <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+          <span class="c1">// const cast to avoid duplicating this function in const and</span>
+          <span class="c1">// non-const variants...</span>
+          <span class="k">return</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="n">NormalDist</span><span class="o">*&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">normal_distributions_</span><span class="p">.</span><span class="n">coeffRef</span> <span class="p">(</span><span class="n">idxi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">idxi</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
+        <span class="p">}</span>
+
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">min_</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">max_</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">step_</span><span class="p">;</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2i</span> <span class="n">cells_</span><span class="p">;</span>
+
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">NormalDist</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span> <span class="n">normal_distributions_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Build a Normal Distributions Transform of a 2D point cloud. This</span>
+<span class="cm">      * consists of the sum of four overlapping models of the original points</span>
+<span class="cm">      * with normal distributions.</span>
+<span class="cm">      * The value and derivatives of the model at any point can be evaluated</span>
+<span class="cm">      * with the test (...) function.</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">NDT2D</span><span class="o">:</span> <span class="k">public</span> <span class="n">boost</span><span class="o">::</span><span class="n">noncopyable</span>
+    <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">PointCloud</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudConstPtr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">NDTSingleGrid</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="n">SingleGrid</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/** \brief</span>
+<span class="cm">          * \param[in] cloud the input point cloud</span>
+<span class="cm">          * \param[in] about Centre of the grid for normal distributions model</span>
+<span class="cm">          * \param[in] extent Extent of grid for normal distributions model</span>
+<span class="cm">          * \param[in] step Size of region that each normal distribution will model</span>
+<span class="cm">          */</span>
+        <span class="n">NDT2D</span> <span class="p">(</span><span class="n">PointCloudConstPtr</span> <span class="n">cloud</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&amp;</span> <span class="n">about</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&amp;</span> <span class="n">extent</span><span class="p">,</span>
+             <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span><span class="o">&amp;</span> <span class="n">step</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">dx</span> <span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2f</span> <span class="n">dy</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+          <span class="n">single_grids_</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">SingleGrid</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span>        <span class="n">extent</span><span class="p">,</span> <span class="n">step</span><span class="p">));</span>
+          <span class="n">single_grids_</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">SingleGrid</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">about</span> <span class="o">+</span><span class="n">dx</span><span class="p">,</span>    <span class="n">extent</span><span class="p">,</span> <span class="n">step</span><span class="p">));</span>
+          <span class="n">single_grids_</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">SingleGrid</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">about</span> <span class="o">+</span><span class="n">dy</span><span class="p">,</span>    <span class="n">extent</span><span class="p">,</span> <span class="n">step</span><span class="p">));</span>
+          <span class="n">single_grids_</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">SingleGrid</span> <span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">about</span> <span class="o">+</span><span class="n">dx</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">step</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Return the &#39;score&#39; (denormalised likelihood) and derivatives of score of the point p given this distribution.</span>
+<span class="cm">          * \param[in] transformed_pt   Location to evaluate at.</span>
+<span class="cm">          * \param[in] cos_theta        sin(theta) of the current rotation angle of rigid transformation: to avoid repeated evaluation</span>
+<span class="cm">          * \param[in] sin_theta        cos(theta) of the current rotation angle of rigid transformation: to avoid repeated evaluation</span>
+<span class="cm">          */</span>
+        <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span>
+        <span class="n">test</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointT</span><span class="o">&amp;</span> <span class="n">transformed_pt</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">cos_theta</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">sin_theta</span><span class="p">)</span> <span class="k">const</span>
+        <span class="p">{</span>
+          <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">Zero</span> <span class="p">();</span>
+          <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">single_grid</span> <span class="p">:</span> <span class="n">single_grids_</span><span class="p">)</span>
+              <span class="n">r</span> <span class="o">+=</span> <span class="n">single_grid</span><span class="o">-&gt;</span><span class="n">test</span> <span class="p">(</span><span class="n">transformed_pt</span><span class="p">,</span> <span class="n">cos_theta</span><span class="p">,</span> <span class="n">sin_theta</span><span class="p">);</span>
+          <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SingleGrid</span><span class="o">&gt;</span> <span class="n">single_grids_</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="p">};</span>
+
+  <span class="p">}</span> <span class="c1">// namespace ndt2d</span>
+<span class="p">}</span> <span class="c1">// namespace pcl</span>
+
+
+<span class="k">namespace</span> <span class="n">Eigen</span>
+<span class="p">{</span>
+  <span class="cm">/* This NumTraits specialisation is necessary because NormalDist is used as</span>
+<span class="cm">   * the element type of an Eigen Matrix.</span>
+<span class="cm">   */</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">NumTraits</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">ndt2d</span><span class="o">::</span><span class="n">NormalDist</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">typedef</span> <span class="kt">double</span> <span class="n">Real</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="kt">double</span> <span class="n">Literal</span><span class="p">;</span>
+    <span class="k">static</span> <span class="n">Real</span> <span class="nf">dummy_precision</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">1.0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">enum</span> <span class="p">{</span>
+      <span class="n">IsComplex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">IsInteger</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">IsSigned</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">RequireInitialization</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="n">ReadCost</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="n">AddCost</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="n">MulCost</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointSource</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointTarget</span><span class="o">&gt;</span> <span class="kt">void</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">NormalDistributionsTransform2D</span><span class="o">&lt;</span><span class="n">PointSource</span><span class="p">,</span> <span class="n">PointTarget</span><span class="o">&gt;::</span><span class="n">computeTransformation</span> <span class="p">(</span><span class="n">PointCloudSource</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="o">&amp;</span><span class="n">guess</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">PointCloudSource</span> <span class="n">intm_cloud</span> <span class="o">=</span> <span class="n">output</span><span class="p">;</span>
+
+  <span class="n">nr_iterations_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">converged_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">guess</span> <span class="o">!=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">::</span><span class="n">Identity</span> <span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">transformation_</span> <span class="o">=</span> <span class="n">guess</span><span class="p">;</span>
+    <span class="n">transformPointCloud</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">intm_cloud</span><span class="p">,</span> <span class="n">transformation_</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// build Normal Distribution Transform of target cloud:</span>
+  <span class="n">ndt2d</span><span class="o">::</span><span class="n">NDT2D</span><span class="o">&lt;</span><span class="n">PointTarget</span><span class="o">&gt;</span> <span class="n">target_ndt</span> <span class="p">(</span><span class="n">target_</span><span class="p">,</span> <span class="n">grid_centre_</span><span class="p">,</span> <span class="n">grid_extent_</span><span class="p">,</span> <span class="n">grid_step_</span><span class="p">);</span>
+
+  <span class="c1">// can&#39;t seem to use .block&lt;&gt; () member function on transformation_</span>
+  <span class="c1">// directly... gcc bug?</span>
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&amp;</span> <span class="n">transformation</span> <span class="o">=</span> <span class="n">transformation_</span><span class="p">;</span>
+
+
+  <span class="c1">// work with x translation, y translation and z rotation: extending to 3D</span>
+  <span class="c1">// would be some tricky maths, but not impossible.</span>
+  <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="n">initial_rot</span> <span class="p">(</span><span class="n">transformation</span><span class="p">.</span><span class="n">block</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">));</span>
+  <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">rot_x</span> <span class="p">(</span><span class="n">initial_rot</span><span class="o">*</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitX</span> <span class="p">());</span>
+  <span class="k">const</span> <span class="kt">double</span> <span class="n">z_rotation</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">atan2</span> <span class="p">(</span><span class="n">rot_x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rot_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+  <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">xytheta_transformation</span> <span class="p">(</span>
+    <span class="n">transformation</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+    <span class="n">transformation</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+    <span class="n">z_rotation</span>
+  <span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">converged_</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">cos_theta</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">cos</span> <span class="p">(</span><span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">sin_theta</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">sin</span> <span class="p">(</span><span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">previous_transformation_</span> <span class="o">=</span> <span class="n">transformation</span><span class="p">;</span>
+
+    <span class="n">ndt2d</span><span class="o">::</span><span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">score</span> <span class="o">=</span> <span class="n">ndt2d</span><span class="o">::</span><span class="n">ValueAndDerivatives</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;::</span><span class="n">Zero</span> <span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">intm_cloud</span><span class="p">.</span><span class="n">size</span> <span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">score</span> <span class="o">+=</span> <span class="n">target_ndt</span><span class="p">.</span><span class="n">test</span> <span class="p">(</span><span class="n">intm_cloud</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cos_theta</span><span class="p">,</span> <span class="n">sin_theta</span><span class="p">);</span>
+
+    <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::NormalDistributionsTransform2D::computeTransformation] NDT score %f (x=%f,y=%f,r=%f)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kt">float</span> <span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// test for positive definiteness, and adjust to ensure it if necessary:</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">EigenSolver</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="o">&gt;</span> <span class="n">solver</span><span class="p">;</span>
+      <span class="n">solver</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="n">hessian</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+      <span class="kt">double</span> <span class="n">min_eigenvalue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="n">i</span><span class="p">].</span><span class="n">real</span> <span class="p">()</span> <span class="o">&lt;</span> <span class="n">min_eigenvalue</span><span class="p">)</span>
+            <span class="n">min_eigenvalue</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="n">i</span><span class="p">].</span><span class="n">real</span> <span class="p">();</span>
+
+      <span class="c1">// ensure &quot;safe&quot; positive definiteness: this is a detail missing</span>
+      <span class="c1">// from the original paper</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">min_eigenvalue</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">lambda</span> <span class="o">=</span> <span class="mf">1.1</span> <span class="o">*</span> <span class="n">min_eigenvalue</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">score</span><span class="p">.</span><span class="n">hessian</span> <span class="o">+=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="p">(</span><span class="o">-</span><span class="n">lambda</span><span class="p">,</span> <span class="o">-</span><span class="n">lambda</span><span class="p">,</span> <span class="o">-</span><span class="n">lambda</span><span class="p">).</span><span class="n">asDiagonal</span> <span class="p">();</span>
+        <span class="n">solver</span><span class="p">.</span><span class="n">compute</span> <span class="p">(</span><span class="n">score</span><span class="p">.</span><span class="n">hessian</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+        <span class="n">PCL_DEBUG</span> <span class="p">(</span><span class="s">&quot;[pcl::NormalDistributionsTransform2D::computeTransformation] adjust hessian: %f: new eigenvalues:%f %f %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="kt">float</span> <span class="p">(</span><span class="n">lambda</span><span class="p">),</span>
+            <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">real</span> <span class="p">(),</span>
+            <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">1</span><span class="p">].</span><span class="n">real</span> <span class="p">(),</span>
+            <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">2</span><span class="p">].</span><span class="n">real</span> <span class="p">()</span>
+        <span class="p">);</span>
+      <span class="p">}</span>
+      <span class="n">assert</span> <span class="p">(</span><span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">real</span> <span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+              <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">1</span><span class="p">].</span><span class="n">real</span> <span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+              <span class="n">solver</span><span class="p">.</span><span class="n">eigenvalues</span> <span class="p">()[</span><span class="mi">2</span><span class="p">].</span><span class="n">real</span> <span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">delta_transformation</span> <span class="p">(</span><span class="o">-</span><span class="n">score</span><span class="p">.</span><span class="n">hessian</span><span class="p">.</span><span class="n">inverse</span> <span class="p">()</span> <span class="o">*</span> <span class="n">score</span><span class="p">.</span><span class="n">grad</span><span class="p">);</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">new_transformation</span> <span class="o">=</span> <span class="n">xytheta_transformation</span> <span class="o">+</span> <span class="n">newton_lambda_</span><span class="p">.</span><span class="n">cwiseProduct</span> <span class="p">(</span><span class="n">delta_transformation</span><span class="p">);</span>
+
+      <span class="n">xytheta_transformation</span> <span class="o">=</span> <span class="n">new_transformation</span><span class="p">;</span>
+
+      <span class="c1">// update transformation matrix from x, y, theta:</span>
+      <span class="n">transformation</span><span class="p">.</span><span class="n">block</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3f</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxisf</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitZ</span> <span class="p">()));</span>
+      <span class="n">transformation</span><span class="p">.</span><span class="n">block</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">).</span><span class="n">matrix</span> <span class="p">()</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">xytheta_transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">0.0f</span><span class="p">);</span>
+
+      <span class="c1">//std::cout &lt;&lt; &quot;new transformation:\n&quot; &lt;&lt; transformation &lt;&lt; std::endl;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">PCL_ERROR</span> <span class="p">(</span><span class="s">&quot;[pcl::NormalDistributionsTransform2D::computeTransformation] no overlap: try increasing the size or reducing the step of the grid</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">transformPointCloud</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">intm_cloud</span><span class="p">,</span> <span class="n">transformation</span><span class="p">);</span>
+
+    <span class="n">nr_iterations_</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">update_visualizer_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+      <span class="n">update_visualizer_</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="o">*</span><span class="n">indices_</span><span class="p">,</span> <span class="o">*</span><span class="n">target_</span><span class="p">,</span> <span class="o">*</span><span class="n">indices_</span><span class="p">);</span>
+
+    <span class="c1">//std::cout &lt;&lt; &quot;eps=&quot; &lt;&lt; fabs ((transformation - previous_transformation_).sum ()) &lt;&lt; std::endl;</span>
+
+    <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="n">transformation_delta</span> <span class="o">=</span> <span class="n">transformation</span><span class="p">.</span><span class="n">inverse</span><span class="p">()</span> <span class="o">*</span> <span class="n">previous_transformation_</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">cos_angle</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">translation_sqr</span> <span class="o">=</span> <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+                               <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+                               <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">transformation_delta</span><span class="p">.</span><span class="n">coeff</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">nr_iterations_</span> <span class="o">&gt;=</span> <span class="n">max_iterations_</span> <span class="o">||</span>
+        <span class="p">((</span><span class="n">transformation_epsilon_</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">translation_sqr</span> <span class="o">&lt;=</span> <span class="n">transformation_epsilon_</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">transformation_rotation_epsilon_</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">cos_angle</span> <span class="o">&gt;=</span> <span class="n">transformation_rotation_epsilon_</span><span class="p">))</span> <span class="o">||</span>
+        <span class="p">((</span><span class="n">transformation_epsilon_</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>                                             <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">transformation_rotation_epsilon_</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">cos_angle</span> <span class="o">&gt;=</span> <span class="n">transformation_rotation_epsilon_</span><span class="p">))</span> <span class="o">||</span>
+        <span class="p">((</span><span class="n">transformation_epsilon_</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">translation_sqr</span> <span class="o">&lt;=</span> <span class="n">transformation_epsilon_</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">transformation_rotation_epsilon_</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)))</span>
+    <span class="p">{</span>
+      <span class="n">converged_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">final_transformation_</span> <span class="o">=</span> <span class="n">transformation</span><span class="p">;</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="n">intm_cloud</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#endif    </span><span class="c1">// PCL_NDT_2D_IMPL_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_tracking_nearest_pair_point_cloud_coherence.h.html" class="btn btn-neutral float-right" title="File nearest_pair_point_cloud_coherence.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_registration_impl_ndt_2d.hpp.html" class="btn btn-neutral float-left" title="File ndt_2d.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File pcl_painter2D.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File pcl_plotter.h" href="file_pcl_visualization_pcl_plotter.h.html" />
+    <link rel="prev" title="File pcl_painter2D.h" href="file_pcl_visualization_pcl_painter2D.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_visualization_pcl_painter2D.h.html">File pcl_painter2D.h</a> &raquo;</li>
+        
+      <li>Program Listing for File pcl_painter2D.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_visualization_pcl_painter2D.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-pcl-painter2d-h">
+<span id="program-listing-file-pcl-visualization-pcl-painter2d-h"></span><h1>Program Listing for File pcl_painter2D.h<a class="headerlink" href="#program-listing-for-file-pcl-painter2d-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_visualization_pcl_painter2D.h.html#file-pcl-visualization-pcl-painter2d-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\visualization\pcl_painter2D.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_exports.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkRenderer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkRenderWindow.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkRenderWindowInteractor.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkSmartPointer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkObjectFactory.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkContext2D.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkTransform2D.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkContextItem.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkContextView.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkContextScene.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkPen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkBrush.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkTextProperty.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkOpenGLContextDevice2D.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vtkPoints2D.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;vtkCommand.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">visualization</span>
+  <span class="p">{</span>
+
+   <span class="cm">/** \brief Abstract class for storing figure information. All the derived class uses the same method draw() to invoke different drawing function of vtkContext2D</span>
+<span class="cm">     * \author Kripasindhu Sarkar</span>
+<span class="cm">     * \ingroup visualization</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="n">Figure2D</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info_</span><span class="p">;</span>     <span class="c1">//information stored in a general form for every object</span>
+      <span class="n">vtkPen</span> <span class="o">*</span><span class="n">pen_</span><span class="p">;</span>                 <span class="c1">//the corresponding pen and brush for the figure</span>
+      <span class="n">vtkBrush</span> <span class="o">*</span><span class="n">brush_</span><span class="p">;</span>
+      <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">transform_</span><span class="p">;</span>
+
+      <span class="n">Figure2D</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">pen_</span> <span class="o">=</span> <span class="n">vtkPen</span><span class="o">::</span><span class="n">New</span> <span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">brush_</span> <span class="o">=</span> <span class="n">vtkBrush</span><span class="o">::</span><span class="n">New</span> <span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">transform_</span> <span class="o">=</span> <span class="n">vtkTransform2D</span><span class="o">::</span><span class="n">New</span><span class="p">();</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">pen_</span><span class="o">-&gt;</span><span class="n">DeepCopy</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">brush_</span><span class="o">-&gt;</span><span class="n">DeepCopy</span> <span class="p">(</span><span class="n">b</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">transform_</span><span class="o">-&gt;</span><span class="n">SetMatrix</span> <span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">GetMatrix</span><span class="p">());</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">info_</span> <span class="o">=</span> <span class="n">info</span><span class="p">;</span> <span class="c1">//note: it copies :-)</span>
+      <span class="p">}</span>
+
+      <span class="n">Figure2D</span> <span class="p">(</span><span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">pen_</span> <span class="o">=</span> <span class="n">vtkPen</span><span class="o">::</span><span class="n">New</span> <span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">brush_</span> <span class="o">=</span> <span class="n">vtkBrush</span><span class="o">::</span><span class="n">New</span> <span class="p">();</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">transform_</span> <span class="o">=</span> <span class="n">vtkTransform2D</span><span class="o">::</span><span class="n">New</span><span class="p">();</span>
+
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">pen_</span><span class="o">-&gt;</span><span class="n">DeepCopy</span> <span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">brush_</span><span class="o">-&gt;</span><span class="n">DeepCopy</span> <span class="p">(</span><span class="n">b</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">transform_</span><span class="o">-&gt;</span><span class="n">SetMatrix</span> <span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">GetMatrix</span><span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">applyInternals</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span><span class="n">painter</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">ApplyPen</span> <span class="p">(</span><span class="n">pen_</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">ApplyBrush</span> <span class="p">(</span><span class="n">brush_</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">GetDevice</span> <span class="p">()</span><span class="o">-&gt;</span><span class="n">SetMatrix</span> <span class="p">(</span><span class="n">transform_</span><span class="o">-&gt;</span><span class="n">GetMatrix</span><span class="p">());</span>
+      <span class="p">}</span>
+
+      <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="p">};</span>
+
+   <span class="cm">/** \brief Class for PolyLine</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="nl">FPolyLine2D</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Figure2D</span>
+    <span class="p">{</span>
+
+      <span class="n">FPolyLine2D</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">:</span> <span class="n">Figure2D</span> <span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">){}</span>
+
+      <span class="kt">void</span> <span class="n">draw</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span> <span class="n">painter</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">applyInternals</span><span class="p">(</span><span class="n">painter</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">DrawPoly</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">info_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">info_</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+   <span class="cm">/** \brief Class for storing Points</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="nl">FPoints2D</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Figure2D</span>
+    <span class="p">{</span>
+
+      <span class="n">FPoints2D</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">:</span> <span class="n">Figure2D</span> <span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="p">{}</span>
+
+      <span class="kt">void</span> <span class="n">draw</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span> <span class="n">painter</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">applyInternals</span><span class="p">(</span><span class="n">painter</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">DrawPoints</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">info_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">info_</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+   <span class="cm">/** \brief Class for storing Quads</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="nl">FQuad2D</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Figure2D</span>
+    <span class="p">{</span>
+
+      <span class="n">FQuad2D</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">:</span> <span class="n">Figure2D</span> <span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="p">{}</span>
+
+      <span class="kt">void</span> <span class="n">draw</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span> <span class="n">painter</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">applyInternals</span><span class="p">(</span><span class="n">painter</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">DrawQuad</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">info_</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="cm">/** \brief Class for Polygon</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="nl">FPolygon2D</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Figure2D</span>
+    <span class="p">{</span>
+
+      <span class="n">FPolygon2D</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">:</span> <span class="n">Figure2D</span> <span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">){}</span>
+
+      <span class="kt">void</span> <span class="n">draw</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span> <span class="n">painter</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">applyInternals</span><span class="p">(</span><span class="n">painter</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">DrawPolygon</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">info_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">info_</span><span class="p">.</span><span class="n">size</span> <span class="p">())</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+   <span class="cm">/** \brief Class for storing EllipticArc; every ellipse , circle are covered by this</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="nl">FEllipticArc2D</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Figure2D</span>
+    <span class="p">{</span>
+
+      <span class="n">FEllipticArc2D</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">info</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">:</span> <span class="n">Figure2D</span> <span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="p">{}</span>
+
+      <span class="n">FEllipticArc2D</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">ry</span><span class="p">,</span> <span class="kt">float</span> <span class="n">sa</span><span class="p">,</span> <span class="kt">float</span> <span class="n">ea</span><span class="p">,</span> <span class="n">vtkPen</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">vtkBrush</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">:</span> <span class="n">Figure2D</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">info_</span><span class="p">.</span><span class="n">resize</span> <span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+        <span class="n">info_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">info_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">info_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">rx</span><span class="p">;</span>
+        <span class="n">info_</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">ry</span><span class="p">;</span>
+        <span class="n">info_</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">sa</span><span class="p">;</span>
+        <span class="n">info_</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">ea</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kt">void</span> <span class="n">draw</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span> <span class="n">painter</span><span class="p">)</span> <span class="k">override</span>
+      <span class="p">{</span>
+        <span class="n">applyInternals</span><span class="p">(</span><span class="n">painter</span><span class="p">);</span>
+        <span class="n">painter</span><span class="o">-&gt;</span><span class="n">DrawEllipticArc</span> <span class="p">(</span><span class="n">info_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">info_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">info_</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">info_</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">info_</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">info_</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+
+    <span class="c1">////////////////////////////////////The Main Painter Class begins here//////////////////////////////////////</span>
+    <span class="cm">/** \brief PCL Painter2D main class. Class for drawing 2D figures</span>
+<span class="cm">     * \author Kripasindhu Sarkar</span>
+<span class="cm">     * \ingroup visualization</span>
+<span class="cm">     */</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">PCLPainter2D</span><span class="p">:</span> <span class="k">public</span> <span class="n">vtkContextItem</span>
+    <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="c1">//static PCLPainter2D *New();</span>
+
+      <span class="cm">/** \brief Constructor of the class</span>
+<span class="cm">       */</span>
+      <span class="n">PCLPainter2D</span> <span class="p">(</span><span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;PCLPainter2D&quot;</span><span class="p">);</span>
+      <span class="n">vtkTypeMacro</span> <span class="p">(</span><span class="n">PCLPainter2D</span><span class="p">,</span> <span class="n">vtkContextItem</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Paint event for the chart, called whenever the chart needs to be drawn</span>
+<span class="cm">       *  \param[in] painter Name of the window</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">Paint</span> <span class="p">(</span><span class="n">vtkContext2D</span> <span class="o">*</span><span class="n">painter</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Draw a line between the specified points.</span>
+<span class="cm">       * \param[in] x1 X coordinate of the starting point of the line</span>
+<span class="cm">       * \param[in] y1 Y coordinate of the starting point of the line</span>
+<span class="cm">       * \param[in] x2 X coordinate of the ending point of the line</span>
+<span class="cm">       * \param[in] y2 Y coordinate of the ending point of the line</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addLine</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y1</span><span class="p">,</span> <span class="kt">float</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y2</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Draw line(s) between the specified points</span>
+<span class="cm">       *  \param[in] p a vector of size 2*n and the points are packed x1, y1, x2, y2 etc.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addLine</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Draw specified point(s).</span>
+<span class="cm">       * \param[in] x X coordinate of the point</span>
+<span class="cm">       * \param[in] y Y coordinate of the point</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addPoint</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">);</span>
+      <span class="cm">/** \brief Draw specified point(s).</span>
+<span class="cm">       * \param[in] points a vector of size 2*n and the points are packed x1, y1, x2, y2 etc.</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span>
+      <span class="nf">addPoints</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">points</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Draw a rectangle based on the given points</span>
+<span class="cm">       * \param[in] x X coordinate of the origin</span>
+<span class="cm">       * \param[in] y Y coordinate of the origin</span>
+<span class="cm">       * \param[in] width width of the rectangle</span>
+<span class="cm">       * \param[in] height height of the rectangle</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addRect</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">width</span><span class="p">,</span> <span class="kt">float</span> <span class="n">height</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Draw a quadrilateral based on the given points</span>
+<span class="cm">       * \param[in] p a vector of size 8 and the points are packed x1, y1, x2, y2, x3, y3 and x4, y4.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addQuad</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Draw a polygon between the specified points</span>
+<span class="cm">       *  \param[in] p a vector of size 2*n and the points are packed x1, y1, x2, y2 etc.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addPolygon</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Draw an ellipse based on the inputs</span>
+<span class="cm">       * \param[in] x X coordinate of the origin</span>
+<span class="cm">       * \param[in] y Y coordinate of the origin</span>
+<span class="cm">       * \param[in] rx X radius of the ellipse</span>
+<span class="cm">       * \param[in] ry Y radius of the ellipse</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addEllipse</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">ry</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Draw a circle based on the inputs</span>
+<span class="cm">       * \param[in] x X coordinate of the origin</span>
+<span class="cm">       * \param[in] y Y coordinate of the origin</span>
+<span class="cm">       * \param[in] r radius of the circle</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addCircle</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">r</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Draw an elliptic arc based on the inputs</span>
+<span class="cm">       * \param[in] x X coordinate of the origin</span>
+<span class="cm">       * \param[in] y Y coordinate of the origin</span>
+<span class="cm">       * \param[in] rx X radius of the ellipse</span>
+<span class="cm">       * \param[in] ry Y radius of the ellipse</span>
+<span class="cm">       * \param[in] start_angle the starting angle of the arc expressed in degrees</span>
+<span class="cm">       * \param[in] end_angle the ending angle of the arc expressed in degrees</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addEllipticArc</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">ry</span><span class="p">,</span> <span class="kt">float</span> <span class="n">start_angle</span><span class="p">,</span> <span class="kt">float</span> <span class="n">end_angle</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Draw an arc based on the inputs</span>
+<span class="cm">       * \param[in] x X coordinate of the origin</span>
+<span class="cm">       * \param[in] y Y coordinate of the origin</span>
+<span class="cm">       * \param[in] r radius of the circle</span>
+<span class="cm">       * \param[in] start_angle the starting angle of the arc expressed in degrees</span>
+<span class="cm">       * \param[in] end_angle the ending angle of the arc expressed in degrees</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">addArc</span> <span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">r</span><span class="p">,</span> <span class="kt">float</span> <span class="n">start_angle</span><span class="p">,</span> <span class="kt">float</span> <span class="n">end_angle</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Create a translation matrix and concatenate it with the current transformation.</span>
+<span class="cm">       * \param[in] x translation along X axis</span>
+<span class="cm">       * \param[in] y translation along Y axis</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">translatePen</span> <span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create a rotation matrix and concatenate it with the current transformation.</span>
+<span class="cm">       * \param[in] angle angle in degrees</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">rotatePen</span><span class="p">(</span><span class="kt">double</span> <span class="n">angle</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create a scale matrix and concatenate it with the current transformation.</span>
+<span class="cm">       * \param[in] x translation along X axis</span>
+<span class="cm">       * \param[in] y translation along Y axis</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">scalePen</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Create a translation matrix and concatenate it with the current transformation.</span>
+<span class="cm">       * \param[in] matrix the transformation matrix</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">setTransform</span><span class="p">(</span><span class="n">vtkMatrix3x3</span> <span class="o">*</span><span class="n">matrix</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Returns the current transformation matrix.</span>
+<span class="cm">       */</span>
+      <span class="n">vtkMatrix3x3</span> <span class="o">*</span>
+      <span class="nf">getTransform</span><span class="p">();</span>
+
+      <span class="cm">/** \brief Clears all the transformation applied. Sets the transformation matrix to Identity</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">clearTransform</span><span class="p">();</span>
+
+      <span class="cm">/** \brief remove all the figures from the window</span>
+<span class="cm">       */</span>
+       <span class="kt">void</span>
+       <span class="nf">clearFigures</span><span class="p">();</span>
+
+      <span class="cm">/** \brief set/get methods for current working vtkPen</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">setPenColor</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">r</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">g</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">);</span>
+      <span class="kt">void</span> <span class="nf">setPenWidth</span> <span class="p">(</span><span class="kt">float</span> <span class="n">w</span><span class="p">);</span>
+      <span class="kt">void</span> <span class="nf">setPenType</span> <span class="p">(</span><span class="kt">int</span> <span class="n">type</span><span class="p">);</span>
+
+      <span class="cm">/** \brief set/get methods for current working vtkPen</span>
+<span class="cm">       */</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">getPenColor</span> <span class="p">();</span>
+      <span class="kt">float</span> <span class="nf">getPenWidth</span> <span class="p">();</span>
+      <span class="kt">int</span> <span class="nf">getPenType</span> <span class="p">();</span>
+      <span class="kt">void</span> <span class="nf">setPen</span> <span class="p">(</span><span class="n">vtkPen</span> <span class="o">*</span><span class="n">pen</span><span class="p">);</span>
+      <span class="n">vtkPen</span><span class="o">*</span> <span class="nf">getPen</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief set/get methods for current working vtkBrush</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">setBrush</span> <span class="p">(</span><span class="n">vtkBrush</span> <span class="o">*</span><span class="n">brush</span><span class="p">);</span>
+      <span class="n">vtkBrush</span><span class="o">*</span> <span class="nf">getBrush</span> <span class="p">();</span>
+      <span class="kt">void</span> <span class="nf">setBrushColor</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">r</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">g</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">);</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">getBrushColor</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief set/get method for the viewport&#39;s background color.</span>
+<span class="cm">       * \param[in] r the red component of the RGB color</span>
+<span class="cm">       * \param[in] g the green component of the RGB color</span>
+<span class="cm">       * \param[in] b the blue component of the RGB color</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">setBackgroundColor</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">r</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">g</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">b</span><span class="p">);</span>
+
+      <span class="cm">/** \brief set/get method for the viewport&#39;s background color.</span>
+<span class="cm">       * \param [in] color the array containing the 3 component of the RGB color</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">setBackgroundColor</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">color</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+
+      <span class="cm">/** \brief set/get method for the viewport&#39;s background color.</span>
+<span class="cm">       * \return [out] color the array containing the 3 component of the RGB color</span>
+<span class="cm">       */</span>
+      <span class="kt">double</span> <span class="o">*</span>
+      <span class="nf">getBackgroundColor</span> <span class="p">();</span>
+
+
+      <span class="cm">/** \brief set/get method for the window size.</span>
+<span class="cm">       * \param[in] w the width of the window</span>
+<span class="cm">       * \param[in] h the height of the window</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="nf">setWindowSize</span> <span class="p">(</span><span class="kt">int</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">h</span><span class="p">);</span>
+
+      <span class="cm">/** \brief set/get method for the window size.</span>
+<span class="cm">       * \return[in] array containing the width and height of the window</span>
+<span class="cm">       */</span>
+      <span class="kt">int</span> <span class="o">*</span>
+      <span class="nf">getWindowSize</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief displays all the figures added in a window.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">display</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief spins (runs the event loop) the interactor for spin_time amount of time. The name is confusing and will be probably obsolete in the future release with a single overloaded spin()/display() function.</span>
+<span class="cm">        *  \param[in] spin_time - How long (in ms) should the visualization loop be allowed to run.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span> <span class="nf">spinOnce</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">spin_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">);</span>
+
+      <span class="cm">/** \brief spins (runs the event loop) the interactor indefinitely. Same as display() - added to retain the similarity between other existing visualization classes</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">spin</span> <span class="p">();</span>
+
+    <span class="k">private</span><span class="o">:</span>
+      <span class="c1">//std::map&lt; int, std::vector&lt; std::vector&lt;float&gt; &gt; &gt; figures_; //FIG_TYPE -&gt; vector&lt;array&gt;</span>
+
+      <span class="c1">//All the figures drawn till now gets stored here</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Figure2D</span> <span class="o">*&gt;</span> <span class="n">figures_</span><span class="p">;</span>
+
+      <span class="c1">//state variables of the class</span>
+      <span class="n">vtkPen</span> <span class="o">*</span><span class="n">current_pen_</span><span class="p">;</span>
+      <span class="n">vtkBrush</span> <span class="o">*</span><span class="n">current_brush_</span><span class="p">;</span>
+      <span class="n">vtkTransform2D</span> <span class="o">*</span><span class="n">current_transform_</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">win_width_</span><span class="p">,</span> <span class="n">win_height_</span><span class="p">;</span>
+      <span class="kt">double</span> <span class="n">bkg_color_</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+      <span class="n">vtkContextView</span> <span class="o">*</span><span class="n">view_</span><span class="p">;</span>
+
+      <span class="c1">//####event callback class####</span>
+        <span class="k">struct</span> <span class="nl">ExitMainLoopTimerCallback</span> <span class="p">:</span> <span class="k">public</span> <span class="n">vtkCommand</span>
+        <span class="p">{</span>
+          <span class="k">static</span> <span class="n">ExitMainLoopTimerCallback</span><span class="o">*</span> <span class="n">New</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="n">ExitMainLoopTimerCallback</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="kt">void</span>
+          <span class="n">Execute</span> <span class="p">(</span><span class="n">vtkObject</span><span class="o">*</span> <span class="n">vtkNotUsed</span> <span class="p">(</span><span class="n">caller</span><span class="p">),</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">event_id</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">call_data</span><span class="p">)</span> <span class="k">override</span>
+          <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">event_id</span> <span class="o">!=</span> <span class="n">vtkCommand</span><span class="o">::</span><span class="n">TimerEvent</span><span class="p">)</span>
+              <span class="k">return</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">timer_id</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span> <span class="p">(</span><span class="n">call_data</span><span class="p">));</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">timer_id</span> <span class="o">!=</span> <span class="n">right_timer_id</span><span class="p">)</span>
+              <span class="k">return</span><span class="p">;</span>
+
+            <span class="c1">// Stop vtk loop and send notification to app to wake it up</span>
+            <span class="n">interactor</span><span class="o">-&gt;</span><span class="n">TerminateApp</span> <span class="p">();</span>
+          <span class="p">}</span>
+          <span class="kt">int</span> <span class="n">right_timer_id</span><span class="p">;</span>
+          <span class="n">vtkRenderWindowInteractor</span> <span class="o">*</span><span class="n">interactor</span><span class="p">;</span>
+        <span class="p">};</span>
+
+        <span class="cm">/** \brief Callback object enabling us to leave the main loop, when a timer fires. */</span>
+        <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">ExitMainLoopTimerCallback</span><span class="o">&gt;</span> <span class="n">exit_loop_timer_</span><span class="p">;</span>
+    <span class="p">};</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_visualization_pcl_plotter.h.html" class="btn btn-neutral float-right" title="File pcl_plotter.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_visualization_pcl_painter2D.h.html" class="btn btn-neutral float-left" title="File pcl_painter2D.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

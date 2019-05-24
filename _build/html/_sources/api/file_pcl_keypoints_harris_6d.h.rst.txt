@@ -1,0 +1,59 @@
+
+.. _file_pcl_keypoints_harris_6d.h:
+
+File harris_6d.h
+================
+
+|exhale_lsh| :ref:`Parent directory <dir_pcl_keypoints>` (``pcl\keypoints``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``pcl\keypoints\harris_6d.h``)
+------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_pcl_keypoints_harris_6d.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``pcl/keypoints/impl/harris_6d.hpp``
+
+- ``pcl/keypoints/keypoint.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_pcl_keypoints_impl_harris_6d.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_pcl`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classpcl_1_1_harris_keypoint6_d`
+

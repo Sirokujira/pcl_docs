@@ -1,0 +1,722 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File particle_filter.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File particle_filter.hpp" href="file_pcl_tracking_impl_particle_filter.hpp.html" />
+    <link rel="prev" title="File particle_filter.h" href="file_pcl_tracking_particle_filter.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_tracking_particle_filter.h.html">File particle_filter.h</a> &raquo;</li>
+        
+      <li>Program Listing for File particle_filter.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_tracking_particle_filter.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-particle-filter-h">
+<span id="program-listing-file-pcl-tracking-particle-filter-h"></span><h1>Program Listing for File particle_filter.h<a class="headerlink" href="#program-listing-for-file-particle-filter-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_tracking_particle_filter.h.html#file-pcl-tracking-particle-filter-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\tracking\particle_filter.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;boost/shared_ptr.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/tracking/tracking.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/tracking/tracker.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/tracking/coherence.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/filters/passthrough.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/octree/octree_pointcloud_changedetector.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">tracking</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief @b ParticleFilterTracker tracks the PointCloud which is given by</span>
+<span class="cm">        setReferenceCloud within the measured PointCloud using particle filter method.</span>
+<span class="cm">      * \author Ryohei Ueda</span>
+<span class="cm">      * \ingroup tracking</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">StateT</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">ParticleFilterTracker</span><span class="o">:</span> <span class="k">public</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;</span>
+    <span class="p">{</span>
+      <span class="k">protected</span><span class="o">:</span>
+        <span class="k">using</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">deinitCompute</span><span class="p">;</span>
+
+      <span class="k">public</span><span class="o">:</span>
+        <span class="k">using</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">tracker_name_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">search_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+        <span class="k">using</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleFilterTracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;</span> <span class="n">BaseClass</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudInPtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudIn</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudInConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Tracker</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">StateT</span><span class="o">&gt;::</span><span class="n">PointCloudState</span> <span class="n">PointCloudState</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudState</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">PointCloudStatePtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">PointCloudState</span><span class="o">::</span><span class="n">ConstPtr</span> <span class="n">PointCloudStateConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">PointCoherence</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">Coherence</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">Coherence</span> <span class="o">&gt;</span> <span class="n">CoherencePtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">Coherence</span> <span class="o">&gt;</span> <span class="n">CoherenceConstPtr</span><span class="p">;</span>
+
+        <span class="k">typedef</span> <span class="n">PointCloudCoherence</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">CloudCoherence</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">CloudCoherence</span> <span class="o">&gt;</span> <span class="n">CloudCoherencePtr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="k">const</span> <span class="n">CloudCoherence</span> <span class="o">&gt;</span> <span class="n">CloudCoherenceConstPtr</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Empty constructor. */</span>
+        <span class="n">ParticleFilterTracker</span> <span class="p">()</span>
+        <span class="o">:</span> <span class="n">iteration_num_</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">particle_num_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">min_indices_</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">ref_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">particles_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">coherence_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">resample_likelihood_thr_</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">occlusion_angle_thr_</span> <span class="p">(</span><span class="n">M_PI</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">alpha_</span> <span class="p">(</span><span class="mf">15.0</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">representative_state_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">use_normal_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">motion_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">motion_ratio_</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">pass_x_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">pass_y_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">pass_z_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">transed_reference_vector_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">change_detector_</span> <span class="p">()</span>
+        <span class="p">,</span> <span class="n">changed_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">change_counter_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">change_detector_filter_</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">change_detector_interval_</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">change_detector_resolution_</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">use_change_detector_</span> <span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">tracker_name_</span> <span class="o">=</span> <span class="s">&quot;ParticleFilterTracker&quot;</span><span class="p">;</span>
+          <span class="n">pass_x_</span><span class="p">.</span><span class="n">setFilterFieldName</span> <span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">);</span>
+          <span class="n">pass_y_</span><span class="p">.</span><span class="n">setFilterFieldName</span> <span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">);</span>
+          <span class="n">pass_z_</span><span class="p">.</span><span class="n">setFilterFieldName</span> <span class="p">(</span><span class="s">&quot;z&quot;</span><span class="p">);</span>
+          <span class="n">pass_x_</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+          <span class="n">pass_y_</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+          <span class="n">pass_z_</span><span class="p">.</span><span class="n">setKeepOrganized</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the number of iteration.</span>
+<span class="cm">          * \param[in] iteration_num the number of iteration.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setIterationNum</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">iteration_num</span><span class="p">)</span> <span class="p">{</span> <span class="n">iteration_num_</span> <span class="o">=</span> <span class="n">iteration_num</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the number of iteration. */</span>
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="n">getIterationNum</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">iteration_num_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the number of the particles.</span>
+<span class="cm">          * \param[in] particle_num the number of the particles.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setParticleNum</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">particle_num</span><span class="p">)</span> <span class="p">{</span> <span class="n">particle_num_</span> <span class="o">=</span> <span class="n">particle_num</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the number of the particles. */</span>
+        <span class="kr">inline</span> <span class="kt">int</span>
+        <span class="n">getParticleNum</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">particle_num_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set a pointer to a reference dataset to be tracked.</span>
+<span class="cm">          * \param[in] ref a pointer to a PointCloud message</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setReferenceCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudInConstPtr</span> <span class="o">&amp;</span><span class="n">ref</span><span class="p">)</span> <span class="p">{</span> <span class="n">ref_</span> <span class="o">=</span> <span class="n">ref</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to a reference dataset to be tracked. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudInConstPtr</span> <span class="k">const</span>
+        <span class="n">getReferenceCloud</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ref_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the PointCloudCoherence as likelihood.</span>
+<span class="cm">          * \param[in] coherence a pointer to PointCloudCoherence.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setCloudCoherence</span> <span class="p">(</span><span class="k">const</span> <span class="n">CloudCoherencePtr</span> <span class="o">&amp;</span><span class="n">coherence</span><span class="p">)</span> <span class="p">{</span> <span class="n">coherence_</span> <span class="o">=</span> <span class="n">coherence</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the PointCloudCoherence to compute likelihood. */</span>
+        <span class="kr">inline</span> <span class="n">CloudCoherencePtr</span>
+        <span class="n">getCloudCoherence</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">coherence_</span><span class="p">;</span> <span class="p">}</span>
+
+
+        <span class="cm">/** \brief Set the covariance of step noise.</span>
+<span class="cm">          * \param[in] step_noise_covariance the diagonal elements of covariance matrix of step noise.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setStepNoiseCovariance</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">step_noise_covariance</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">step_noise_covariance_</span> <span class="o">=</span> <span class="n">step_noise_covariance</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the covariance of the initial noise. It will be used when initializing the particles.</span>
+<span class="cm">          * \param[in] initial_noise_covariance the diagonal elements of covariance matrix of initial noise.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setInitialNoiseCovariance</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">initial_noise_covariance</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">initial_noise_covariance_</span> <span class="o">=</span> <span class="n">initial_noise_covariance</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the mean of the initial noise. It will be used when initializing the particles.</span>
+<span class="cm">          * \param[in] initial_noise_mean the mean values of initial noise.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setInitialNoiseMean</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">initial_noise_mean</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">initial_noise_mean_</span> <span class="o">=</span> <span class="n">initial_noise_mean</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the threshold to re-initialize the particles.</span>
+<span class="cm">          * \param[in] resample_likelihood_thr threshold to re-initialize.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setResampleLikelihoodThr</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">resample_likelihood_thr</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">resample_likelihood_thr_</span> <span class="o">=</span> <span class="n">resample_likelihood_thr</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the threshold of angle to be considered occlusion (default: pi/2).</span>
+<span class="cm">          * ParticleFilterTracker does not take the occluded points into account according to the angle</span>
+<span class="cm">          * between the normal and the position.</span>
+<span class="cm">          * \param[in] occlusion_angle_thr threshold of angle to be considered occlusion.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setOcclusionAngleThe</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">occlusion_angle_thr</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">occlusion_angle_thr_</span> <span class="o">=</span> <span class="n">occlusion_angle_thr</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the minimum number of indices (default: 1).</span>
+<span class="cm">          * ParticleFilterTracker does not take into account the hypothesis</span>
+<span class="cm">          * whose the number of points is smaller than the minimum indices.</span>
+<span class="cm">          * \param[in] min_indices the minimum number of indices.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span>
+        <span class="n">setMinIndices</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">min_indices</span><span class="p">)</span> <span class="p">{</span> <span class="n">min_indices_</span> <span class="o">=</span> <span class="n">min_indices</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the transformation from the world coordinates to the frame of the particles.</span>
+<span class="cm">          * \param[in] trans Affine transformation from the worldcoordinates to the frame of the particles.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setTrans</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="o">&amp;</span><span class="n">trans</span><span class="p">)</span> <span class="p">{</span> <span class="n">trans_</span> <span class="o">=</span> <span class="n">trans</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the transformation from the world coordinates to the frame of the particles. */</span>
+        <span class="kr">inline</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">getTrans</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">trans_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get an instance of the result of tracking.</span>
+<span class="cm">          * This function returns the particle that represents the transform between the reference point cloud at the</span>
+<span class="cm">          * beginning and the best guess about its location in the most recent frame.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="n">StateT</span> <span class="n">getResult</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">representative_state_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Convert a state to affine transformation from the world coordinates frame.</span>
+<span class="cm">          * \param[in] particle an instance of StateT.</span>
+<span class="cm">          */</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">toEigenMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">StateT</span><span class="o">&amp;</span> <span class="n">particle</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">particle</span><span class="p">.</span><span class="n">toEigenMatrix</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get a pointer to a pointcloud of the particles. */</span>
+        <span class="kr">inline</span> <span class="n">PointCloudStatePtr</span> <span class="n">getParticles</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">particles_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Normalize the weight of a particle using \f$ exp(1- alpha ( w - w_{min}) / (w_max - w_min)) \f$</span>
+<span class="cm">          * \note This method is described in [P.Azad et. al, ICRA11].</span>
+<span class="cm">          * \param[in] w the weight to be normalized</span>
+<span class="cm">          * \param[in] w_min the minimum weight of the particles</span>
+<span class="cm">          * \param[in] w_max the maximum weight of the particles</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="n">normalizeParticleWeight</span> <span class="p">(</span><span class="kt">double</span> <span class="n">w</span><span class="p">,</span> <span class="kt">double</span> <span class="n">w_min</span><span class="p">,</span> <span class="kt">double</span> <span class="n">w_max</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">exp</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">alpha_</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">w_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">w_max</span> <span class="o">-</span> <span class="n">w_min</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the value of alpha.</span>
+<span class="cm">          *  \param[in] alpha the value of alpha</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setAlpha</span> <span class="p">(</span><span class="kt">double</span> <span class="n">alpha</span><span class="p">)</span> <span class="p">{</span> <span class="n">alpha_</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the value of alpha. */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="n">getAlpha</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">alpha_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the value of use_normal_.</span>
+<span class="cm">          * \param[in] use_normal the value of use_normal_.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setUseNormal</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">use_normal</span><span class="p">)</span> <span class="p">{</span> <span class="n">use_normal_</span> <span class="o">=</span> <span class="n">use_normal</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the value of use_normal_. */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">getUseNormal</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">use_normal_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the value of use_change_detector_.</span>
+<span class="cm">          * \param[in] use_change_detector the value of use_change_detector_.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setUseChangeDetector</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">use_change_detector</span><span class="p">)</span> <span class="p">{</span> <span class="n">use_change_detector_</span> <span class="o">=</span> <span class="n">use_change_detector</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the value of use_change_detector_. */</span>
+        <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">getUseChangeDetector</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">use_change_detector_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the motion ratio</span>
+<span class="cm">          * \param[in] motion_ratio the ratio of hypothesis to use motion model.</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setMotionRatio</span> <span class="p">(</span><span class="kt">double</span> <span class="n">motion_ratio</span><span class="p">)</span> <span class="p">{</span> <span class="n">motion_ratio_</span> <span class="o">=</span> <span class="n">motion_ratio</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the motion ratio. */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="n">getMotionRatio</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">motion_ratio_</span><span class="p">;}</span>
+
+        <span class="cm">/** \brief Set the number of interval frames to run change detection.</span>
+<span class="cm">          * \param[in] change_detector_interval the number of interval frames.</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setIntervalOfChangeDetection</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">change_detector_interval</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">change_detector_interval_</span> <span class="o">=</span> <span class="n">change_detector_interval</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the number of interval frames to run change detection. */</span>
+        <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">getIntervalOfChangeDetection</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">change_detector_interval_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the minimum amount of points required within leaf node to become serialized in change detection</span>
+<span class="cm">          * \param[in] change_detector_filter the minimum amount of points required within leaf node</span>
+<span class="cm">         */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setMinPointsOfChangeDetection</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">change_detector_filter</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">change_detector_filter_</span> <span class="o">=</span> <span class="n">change_detector_filter</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Set the resolution of change detection.</span>
+<span class="cm">          * \param[in] resolution resolution of change detection octree</span>
+<span class="cm">          */</span>
+        <span class="kr">inline</span> <span class="kt">void</span> <span class="n">setResolutionOfChangeDetection</span> <span class="p">(</span><span class="kt">double</span> <span class="n">resolution</span><span class="p">)</span> <span class="p">{</span> <span class="n">change_detector_resolution_</span> <span class="o">=</span> <span class="n">resolution</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the resolution of change detection. */</span>
+        <span class="kr">inline</span> <span class="kt">double</span> <span class="n">getResolutionOfChangeDetection</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">change_detector_resolution_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the minimum amount of points required within leaf node to become serialized in change detection. */</span>
+        <span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">getMinPointsOfChangeDetection</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">change_detector_filter_</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the adjustment ratio. */</span>
+        <span class="kr">inline</span> <span class="kt">double</span>
+        <span class="n">getFitRatio</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">fit_ratio_</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Reset the particles to restart tracking*/</span>
+        <span class="k">virtual</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="n">resetTracking</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">particles_</span><span class="p">)</span>
+            <span class="n">particles_</span><span class="o">-&gt;</span><span class="n">points</span><span class="p">.</span><span class="n">clear</span> <span class="p">();</span>
+        <span class="p">}</span>
+
+      <span class="k">protected</span><span class="o">:</span>
+
+        <span class="cm">/** \brief Compute the parameters for the bounding box of hypothesis pointclouds.</span>
+<span class="cm">          * \param[out] x_min the minimum value of x axis.</span>
+<span class="cm">          * \param[out] x_max the maximum value of x axis.</span>
+<span class="cm">          * \param[out] y_min the minimum value of y axis.</span>
+<span class="cm">          * \param[out] y_max the maximum value of y axis.</span>
+<span class="cm">          * \param[out] z_min the minimum value of z axis.</span>
+<span class="cm">          * \param[out] z_max the maximum value of z axis.</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span> <span class="n">calcBoundingBox</span> <span class="p">(</span><span class="kt">double</span> <span class="o">&amp;</span><span class="n">x_min</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">x_max</span><span class="p">,</span>
+                              <span class="kt">double</span> <span class="o">&amp;</span><span class="n">y_min</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">y_max</span><span class="p">,</span>
+                              <span class="kt">double</span> <span class="o">&amp;</span><span class="n">z_min</span><span class="p">,</span> <span class="kt">double</span> <span class="o">&amp;</span><span class="n">z_max</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Crop the pointcloud by the bounding box calculated from hypothesis and the reference pointcloud.</span>
+<span class="cm">          * \param[in] cloud a pointer to pointcloud to be cropped.</span>
+<span class="cm">          * \param[out] output a pointer to be assigned the cropped pointcloud.</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span> <span class="nf">cropInputPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudInConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">,</span> <span class="n">PointCloudIn</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+
+
+        <span class="cm">/** \brief Compute a reference pointcloud transformed to the pose that hypothesis represents.</span>
+<span class="cm">          * \param[in] hypothesis a particle which represents a hypothesis.</span>
+<span class="cm">          * \param[in] indices the indices which should be taken into account.</span>
+<span class="cm">          * \param[out] cloud the resultant point cloud model dataset which is transformed to hypothesis.</span>
+<span class="cm">         **/</span>
+        <span class="kt">void</span> <span class="nf">computeTransformedPointCloud</span> <span class="p">(</span><span class="k">const</span> <span class="n">StateT</span><span class="o">&amp;</span> <span class="n">hypothesis</span><span class="p">,</span>
+                                           <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                                           <span class="n">PointCloudIn</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Compute a reference pointcloud transformed to the pose that hypothesis represents and calculate</span>
+<span class="cm">          * indices taking occlusion into account.</span>
+<span class="cm">          * \param[in] hypothesis a particle which represents a hypothesis.</span>
+<span class="cm">          * \param[in] indices the indices which should be taken into account.</span>
+<span class="cm">          * \param[out] cloud the resultant point cloud model dataset which is transformed to hypothesis.</span>
+<span class="cm">          **/</span>
+        <span class="kt">void</span> <span class="nf">computeTransformedPointCloudWithNormal</span> <span class="p">(</span><span class="k">const</span> <span class="n">StateT</span><span class="o">&amp;</span> <span class="n">hypothesis</span><span class="p">,</span>
+                                                     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">indices</span><span class="p">,</span>
+                                                     <span class="n">PointCloudIn</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Compute a reference pointcloud transformed to the pose that hypothesis represents and calculate</span>
+<span class="cm">          * indices without taking occlusion into account.</span>
+<span class="cm">          * \param[in] hypothesis a particle which represents a hypothesis.</span>
+<span class="cm">          * \param[out] cloud the resultant point cloud model dataset which is transformed to hypothesis.</span>
+<span class="cm">         **/</span>
+        <span class="kt">void</span> <span class="nf">computeTransformedPointCloudWithoutNormal</span> <span class="p">(</span><span class="k">const</span> <span class="n">StateT</span><span class="o">&amp;</span> <span class="n">hypothesis</span><span class="p">,</span>
+                                                        <span class="n">PointCloudIn</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+
+        <span class="cm">/** \brief This method should get called before starting the actual computation. */</span>
+        <span class="kt">bool</span> <span class="nf">initCompute</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Weighting phase of particle filter method. Calculate the likelihood of all of the particles and set the weights. */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">weight</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Resampling phase of particle filter method. Sampling the particles according to the weights calculated</span>
+<span class="cm">          * in weight method. In particular, &quot;sample with replacement&quot; is archieved by walker&#39;s alias method.</span>
+<span class="cm">          */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">resample</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Calculate the weighted mean of the particles and set it as the result. */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">update</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Normalize the weights of all the particels. */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">normalizeWeight</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Initialize the particles. initial_noise_covariance_ and initial_noise_mean_ are used for Gaussian sampling. */</span>
+        <span class="kt">void</span> <span class="nf">initParticles</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">reset</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Track the pointcloud using particle filter method. */</span>
+        <span class="kt">void</span> <span class="nf">computeTracking</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Implementation of &quot;sample with replacement&quot; using Walker&#39;s alias method.</span>
+<span class="cm">            about Walker&#39;s alias method, you can check the paper below:</span>
+<span class="cm">             article{355749},</span>
+<span class="cm">             author = {Walker, Alastair J.},</span>
+<span class="cm">             title = {An Efficient Method for Generating Discrete</span>
+<span class="cm">             Random Variables with General Distributions},</span>
+<span class="cm">             journal = {ACM Trans. Math. Softw.},</span>
+<span class="cm">             volume = {3},</span>
+<span class="cm">             number = {3},</span>
+<span class="cm">             year = {1977},</span>
+<span class="cm">             issn = {0098-3500},</span>
+<span class="cm">             pages = {253--256},</span>
+<span class="cm">             doi = {http://doi.acm.org/10.1145/355744.355749},</span>
+<span class="cm">             publisher = {ACM},</span>
+<span class="cm">             address = {New York, NY, USA},</span>
+<span class="cm">             }</span>
+<span class="cm">             \param a an alias table, which generated by genAliasTable.</span>
+<span class="cm">             \param q a table of weight, which generated by genAliasTable.</span>
+<span class="cm">         */</span>
+        <span class="kt">int</span> <span class="nf">sampleWithReplacement</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span> <span class="n">q</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Generate the tables for walker&#39;s alias method. */</span>
+        <span class="kt">void</span> <span class="nf">genAliasTable</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="k">const</span> <span class="n">PointCloudStateConstPtr</span> <span class="o">&amp;</span><span class="n">particles</span><span class="p">);</span>
+
+        <span class="cm">/** \brief Resampling the particle with replacement. */</span>
+        <span class="kt">void</span>
+        <span class="nf">resampleWithReplacement</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Resampling the particle in deterministic way. */</span>
+        <span class="kt">void</span>
+        <span class="nf">resampleDeterministic</span> <span class="p">();</span>
+
+        <span class="cm">/** \brief Run change detection and return true if there is a change.</span>
+<span class="cm">          * \param[in] input a pointer to the input pointcloud.</span>
+<span class="cm">          */</span>
+        <span class="kt">bool</span>
+        <span class="nf">testChangeDetection</span> <span class="p">(</span><span class="k">const</span> <span class="n">PointCloudInConstPtr</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">);</span>
+
+        <span class="cm">/** \brief The number of iteration of particlefilter. */</span>
+        <span class="kt">int</span> <span class="n">iteration_num_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The number of the particles. */</span>
+        <span class="kt">int</span> <span class="n">particle_num_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The minimum number of points which the hypothesis should have. */</span>
+        <span class="kt">int</span> <span class="n">min_indices_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Adjustment of the particle filter. */</span>
+        <span class="kt">double</span> <span class="n">fit_ratio_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to reference point cloud. */</span>
+        <span class="n">PointCloudInConstPtr</span> <span class="n">ref_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to the particles  */</span>
+        <span class="n">PointCloudStatePtr</span> <span class="n">particles_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A pointer to PointCloudCoherence. */</span>
+        <span class="n">CloudCoherencePtr</span> <span class="n">coherence_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The diagonal elements of covariance matrix of the step noise. the covariance matrix is used</span>
+<span class="cm">          * at every resample method.</span>
+<span class="cm">          */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">step_noise_covariance_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The diagonal elements of covariance matrix of the initial noise. the covariance matrix is used</span>
+<span class="cm">          * when initialize the particles.</span>
+<span class="cm">          */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">initial_noise_covariance_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The mean values of initial noise. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">initial_noise_mean_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The threshold for the particles to be re-initialized. */</span>
+        <span class="kt">double</span> <span class="n">resample_likelihood_thr_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The threshold for the points to be considered as occluded. */</span>
+        <span class="kt">double</span> <span class="n">occlusion_angle_thr_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The weight to be used in normalization of the weights of the particles. */</span>
+        <span class="kt">double</span> <span class="n">alpha_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The result of tracking. */</span>
+        <span class="n">StateT</span> <span class="n">representative_state_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief An affine transformation from the world coordinates frame to the origin of the particles. */</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">trans_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A flag to use normal or not. defaults to false. */</span>
+        <span class="kt">bool</span> <span class="n">use_normal_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Difference between the result in t and t-1. */</span>
+        <span class="n">StateT</span> <span class="n">motion_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Ratio of hypothesis to use motion model. */</span>
+        <span class="kt">double</span> <span class="n">motion_ratio_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Pass through filter to crop the pointclouds within the hypothesis bounding box. */</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PassThrough</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">pass_x_</span><span class="p">;</span>
+        <span class="cm">/** \brief Pass through filter to crop the pointclouds within the hypothesis bounding box. */</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PassThrough</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">pass_y_</span><span class="p">;</span>
+        <span class="cm">/** \brief Pass through filter to crop the pointclouds within the hypothesis bounding box. */</span>
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PassThrough</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;</span> <span class="n">pass_z_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A list of the pointers to pointclouds. */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PointCloudInPtr</span><span class="o">&gt;</span> <span class="n">transed_reference_vector_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Change detector used as a trigger to track. */</span>
+        <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">octree</span><span class="o">::</span><span class="n">OctreePointCloudChangeDetector</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">change_detector_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A flag to be true when change of pointclouds is detected. */</span>
+        <span class="kt">bool</span> <span class="n">changed_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief A counter to skip change detection. */</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">change_counter_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Minimum points in a leaf when calling change detector. defaults to 10. */</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">change_detector_filter_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The number of interval frame to run change detection. defaults to 10. */</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">change_detector_interval_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Resolution of change detector. defaults to 0.01. */</span>
+        <span class="kt">double</span> <span class="n">change_detector_resolution_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief The flag which will be true if using change detection. */</span>
+        <span class="kt">bool</span> <span class="n">use_change_detector_</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// #include &lt;pcl/tracking/impl/particle_filter.hpp&gt;</span>
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/tracking/impl/particle_filter.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_tracking_impl_particle_filter.hpp.html" class="btn btn-neutral float-right" title="File particle_filter.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_tracking_particle_filter.h.html" class="btn btn-neutral float-left" title="File particle_filter.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

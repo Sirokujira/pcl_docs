@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File simple_buffer_visualizer.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File simple_octree.h" href="file_pcl_recognition_ransac_based_simple_octree.h.html" />
+    <link rel="prev" title="File simple_buffer_visualizer.h" href="file_pcl_visualization_simple_buffer_visualizer.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_visualization_simple_buffer_visualizer.h.html">File simple_buffer_visualizer.h</a> &raquo;</li>
+        
+      <li>Program Listing for File simple_buffer_visualizer.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_visualization_simple_buffer_visualizer.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-simple-buffer-visualizer-h">
+<span id="program-listing-file-pcl-visualization-simple-buffer-visualizer-h"></span><h1>Program Listing for File simple_buffer_visualizer.h<a class="headerlink" href="#program-listing-for-file-simple-buffer-visualizer-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_visualization_simple_buffer_visualizer.h.html#file-pcl-visualization-simple-buffer-visualizer-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\visualization\simple_buffer_visualizer.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/histogram_visualizer.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//#include &lt;pcl/visualization/impl/simple_buffer_visualizer.hpp&gt;</span>
+
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">visualization</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief PCL simple buffer visualizer main class.</span>
+<span class="cm">      * \note The idea is to offer a simple visualizer that stores and display the last X values as a curve.</span>
+<span class="cm">      * \note The class is based on PCLHistogramVisualizer and pcl::VFHSignature308 for display.</span>
+<span class="cm">      * \note Therefore, the number of values is limited to [2-308].</span>
+<span class="cm">      * \author Raphael Favier</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">PCLSimpleBufferVisualizer</span>
+    <span class="p">{</span>
+      <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/** \brief PCL simple buffer visualizer visualizer default constructor. */</span>
+        <span class="n">PCLSimpleBufferVisualizer</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">histo_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PCLHistogramVisualizer</span> <span class="p">();</span>
+          <span class="n">nb_values_</span> <span class="o">=</span> <span class="mi">308</span><span class="p">;</span>
+
+          <span class="c1">// init values buffer</span>
+          <span class="n">initValuesAndVisualization</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief PCL simple buffer visualizer visualizer constructor.</span>
+<span class="cm">          * \param[in] nb_values the number of values stored in the buffer [2 - 308]</span>
+<span class="cm">          */</span>
+        <span class="n">PCLSimpleBufferVisualizer</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">nb_values</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">histo_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PCLHistogramVisualizer</span> <span class="p">();</span>
+          <span class="n">nb_values_</span> <span class="o">=</span> <span class="n">nb_values</span><span class="p">;</span>
+
+          <span class="k">if</span><span class="p">(</span><span class="n">nb_values_</span> <span class="o">&gt;</span> <span class="mi">308</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">PCL_WARN</span><span class="p">(</span><span class="s">&quot;Maximum number of values can only be 308 (%d given). Setting back to 308. </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+            <span class="n">nb_values_</span> <span class="o">=</span> <span class="mi">308</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="k">if</span><span class="p">(</span><span class="n">nb_values_</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">PCL_WARN</span><span class="p">(</span><span class="s">&quot;Number of values must be at least 2 (%d given). Setting it to default (308). </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+            <span class="n">nb_values_</span> <span class="o">=</span> <span class="mi">308</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="c1">// init values buffer</span>
+          <span class="n">initValuesAndVisualization</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief force display of values.</span>
+<span class="cm">          * \param[in] time - How long (in ms) should the visualization loop be allowed to run</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">displayValues</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// load values into cloud</span>
+          <span class="n">updateValuesToDisplay</span><span class="p">();</span>
+
+          <span class="c1">// check if we need to automatically handle the background color</span>
+          <span class="k">if</span><span class="p">(</span><span class="n">control_background_color_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">values_</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">lowest_threshold_</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">setBackgroundColor</span><span class="p">(</span><span class="mf">255.0</span><span class="p">,</span> <span class="mf">140.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+              <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">setBackgroundColor</span><span class="p">(</span><span class="mf">255.0</span><span class="p">,</span> <span class="mf">255.0</span><span class="p">,</span> <span class="mf">255.0</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+
+          <span class="c1">// add cloud to the visualizer</span>
+          <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">updateFeatureHistogram</span><span class="p">(</span><span class="n">cloud_</span><span class="p">,</span> <span class="n">nb_values_</span><span class="p">);</span>
+
+          <span class="c1">// check if we need to handle the Y scale ourselves</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">handle_y_scale_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">setGlobalYRange</span><span class="p">(</span><span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="c1">// spin once</span>
+          <span class="n">spinOnce</span><span class="p">(</span><span class="n">time</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief add a new value at the end of the buffer.</span>
+<span class="cm">          * \param[in] val the float value to add.</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">addValue</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">val</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="c1">// remove front value</span>
+          <span class="n">values_</span><span class="p">.</span><span class="n">pop_front</span><span class="p">();</span>
+
+          <span class="c1">// push new value in the back</span>
+          <span class="n">values_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+
+          <span class="c1">// udapte min_ and max_ values</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">max_</span><span class="p">)</span>
+            <span class="n">max_</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">min_</span><span class="p">)</span>
+            <span class="n">min_</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief spinOnce method.</span>
+<span class="cm">          * \param[in] time - How long (in ms) should the visualization loop be allowed to run</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">spinOnce</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">spinOnce</span><span class="p">(</span><span class="n">time</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief spin method. */</span>
+        <span class="kt">void</span>
+        <span class="n">spin</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">spin</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief set background color handling mode.</span>
+<span class="cm">          * \note The point here is to change the background to orange when the latest value is under a threshold.</span>
+<span class="cm">          * \param[in] value if true, automatic mode is enabled. Else, background will be white</span>
+<span class="cm">          * \param[in] threshold value that triggers the background to turn orange if the latest value is lower</span>
+<span class="cm">          * \note This functionality does not work yet at time of commit (see http://dev.pointclouds.org/issues/829)</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">setAutomaticBackgroundColorControl</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">control_background_color_</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+
+          <span class="c1">// if the user sets it back to false, we make sure to reset the bckgrd color to white</span>
+          <span class="k">if</span><span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+            <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">setBackgroundColor</span><span class="p">(</span><span class="mf">255.0</span><span class="p">,</span> <span class="mf">255.0</span><span class="p">,</span> <span class="mf">255.0</span><span class="p">);</span>
+
+          <span class="n">lowest_threshold_</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief set Y scale policy.</span>
+<span class="cm">          * \note If set to true, the minimal and maximal Y values are kept forever.</span>
+<span class="cm">          * \note If set to false, the Y scale is automatically adjusted to the current values (default).</span>
+<span class="cm">          * \param[in] value boolean that enable or disable this policy</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">setManuallyManageYScale</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">handle_y_scale_</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+      <span class="k">private</span><span class="o">:</span>
+        <span class="cm">/** \brief initialize the buffer that stores the values to zero.</span>
+<span class="cm">          * \note The size is set by private member nb_values_ which is in the range [2-308].</span>
+<span class="cm">          */</span>
+        <span class="kt">void</span>
+        <span class="n">initValuesAndVisualization</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">cloud_</span><span class="p">.</span><span class="n">points</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+          <span class="n">PCL_WARN</span><span class="p">(</span><span class="s">&quot;Setting buffer size to %d entries.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">nb_values_</span><span class="p">);</span>
+          <span class="n">values_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">nb_values_</span><span class="p">);</span>
+
+          <span class="c1">// add the cloud to the histogram viewer</span>
+          <span class="n">histo_</span><span class="o">-&gt;</span><span class="n">addFeatureHistogram</span><span class="p">(</span><span class="n">cloud_</span><span class="p">,</span> <span class="n">nb_values_</span><span class="p">);</span>
+
+          <span class="c1">// init GUI-related variables</span>
+          <span class="n">initGUIValues</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief pushes the values contained inside the buffer to the cloud used for visualization. */</span>
+        <span class="kt">void</span>
+        <span class="n">updateValuesToDisplay</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nb_values_</span> <span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">cloud_</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values_</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief initialize private variables linked to the GUI */</span>
+        <span class="kt">void</span>
+        <span class="n">initGUIValues</span> <span class="p">()</span>
+        <span class="p">{</span>
+          <span class="n">control_background_color_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+          <span class="n">lowest_threshold_</span> <span class="o">=</span> <span class="mf">0.0f</span><span class="p">;</span>
+
+          <span class="n">handle_y_scale_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+          <span class="n">min_</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">1.0f</span><span class="p">;</span> <span class="c1">// numeric_limits&lt;float&gt;::max( );</span>
+          <span class="n">max_</span> <span class="o">=</span>  <span class="mf">1.0f</span><span class="p">;</span> <span class="c1">// numeric_limits&lt;float&gt;::min( );</span>
+        <span class="p">}</span>
+
+        <span class="cm">/** \brief visualizer object */</span>
+        <span class="n">PCLHistogramVisualizer</span> <span class="o">*</span><span class="n">histo_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief cloud used for visualization */</span>
+        <span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">VFHSignature308</span><span class="o">&gt;</span> <span class="n">cloud_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief buffer of values */</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">values_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief number of values stored in the buffer</span>
+<span class="cm">          * \note ([2-308])</span>
+<span class="cm">          */</span>
+        <span class="kt">int</span> <span class="n">nb_values_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief boolean used to know if we need to change the background color in case of low values. */</span>
+        <span class="kt">bool</span> <span class="n">control_background_color_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief threshold to turn the background orange if latest value is lower. */</span>
+        <span class="kt">float</span> <span class="n">lowest_threshold_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief boolean used to know if we need to change the background color in case of low values. True means we do it ourselves. */</span>
+        <span class="kt">bool</span> <span class="n">handle_y_scale_</span><span class="p">;</span>
+
+        <span class="cm">/** \brief float tracking the minimal and maximal values ever observed. */</span>
+        <span class="kt">float</span> <span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_recognition_ransac_based_simple_octree.h.html" class="btn btn-neutral float-right" title="File simple_octree.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_visualization_simple_buffer_visualizer.h.html" class="btn btn-neutral float-left" title="File simple_buffer_visualizer.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

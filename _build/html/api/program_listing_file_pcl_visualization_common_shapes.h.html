@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File shapes.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File shapes.hpp" href="file_pcl_visualization_common_impl_shapes.hpp.html" />
+    <link rel="prev" title="File shapes.h" href="file_pcl_visualization_common_shapes.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_visualization_common_shapes.h.html">File shapes.h</a> &raquo;</li>
+        
+      <li>Program Listing for File shapes.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_visualization_common_shapes.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-shapes-h">
+<span id="program-listing-file-pcl-visualization-common-shapes-h"></span><h1>Program Listing for File shapes.h<a class="headerlink" href="#program-listing-for-file-shapes-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_visualization_common_shapes.h.html#file-pcl-visualization-common-shapes-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\visualization\common\shapes.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2009-2012, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/ModelCoefficients.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/geometry/planar_polygon.h&gt;</span><span class="cp"></span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">vtkSmartPointer</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkDataSet</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">vtkUnstructuredGrid</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm">  * \file pcl/visualization/common/shapes.h</span>
+<span class="cm">  * Define methods or creating 3D shapes from parametric models</span>
+<span class="cm">  * \ingroup visualization</span>
+<span class="cm">  */</span>
+
+<span class="cm">/*@{*/</span>
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">visualization</span>
+  <span class="p">{</span>
+    <span class="cm">/** \brief Create a 3d poly line from a set of points.</span>
+<span class="cm">      * \param[in] cloud the set of points used to create the 3d polyline</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span> <span class="kr">inline</span>
+    <span class="n">createPolygon</span> <span class="p">(</span><span class="k">const</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">ConstPtr</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a 3d poly line from a set of points on the boundary of a planar region.</span>
+<span class="cm">      * \param[in] planar_polygon the set of points used to create the 3d polyline</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span> <span class="kr">inline</span>
+    <span class="n">createPolygon</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PlanarPolygon</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">planar_polygon</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a line shape from two points</span>
+<span class="cm">      * \param[in] pt1 the first point on the line</span>
+<span class="cm">      * \param[in] pt2 the end point on the line</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createLine</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">pt1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">pt2</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a sphere shape from a point and a radius</span>
+<span class="cm">      * \param[in] center the center of the sphere (as an Eigen Vector4f, with only the first 3 coordinates used)</span>
+<span class="cm">      * \param[in] radius the radius of the sphere</span>
+<span class="cm">      * \param[in] res (optional) the resolution used for rendering the model</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createSphere</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4f</span> <span class="o">&amp;</span><span class="n">center</span><span class="p">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">,</span> <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a cylinder shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the model coefficients (point_on_axis, axis_direction, radius)</span>
+<span class="cm">      * \param[in] numsides (optional) the number of sides used for rendering the cylinder</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * // The following are given (or computed using sample consensus techniques -- see SampleConsensusModelCylinder)</span>
+<span class="cm">      * // Eigen::Vector3f pt_on_axis, axis_direction;</span>
+<span class="cm">      * // float radius;</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::ModelCoefficients cylinder_coeff;</span>
+<span class="cm">      * cylinder_coeff.values.resize (7);    // We need 7 values</span>
+<span class="cm">      * cylinder_coeff.values[0] = pt_on_axis.x ();</span>
+<span class="cm">      * cylinder_coeff.values[1] = pt_on_axis.y ();</span>
+<span class="cm">      * cylinder_coeff.values[2] = pt_on_axis.z ();</span>
+<span class="cm">      *</span>
+<span class="cm">      * cylinder_coeff.values[3] = axis_direction.x ();</span>
+<span class="cm">      * cylinder_coeff.values[4] = axis_direction.y ();</span>
+<span class="cm">      * cylinder_coeff.values[5] = axis_direction.z ();</span>
+<span class="cm">      *</span>
+<span class="cm">      * cylinder_coeff.values[6] = radius;</span>
+<span class="cm">      *</span>
+<span class="cm">      * vtkSmartPointer&lt;vtkDataSet&gt; data = pcl::visualization::createCylinder (cylinder_coeff, numsides);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createCylinder</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numsides</span> <span class="o">=</span> <span class="mi">30</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a sphere shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the model coefficients (sphere center, radius)</span>
+<span class="cm">      * \param[in] res (optional) the resolution used for rendering the model</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * // The following are given (or computed using sample consensus techniques -- see SampleConsensusModelSphere)</span>
+<span class="cm">      * // Eigen::Vector3f sphere_center;</span>
+<span class="cm">      * // float radius;</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::ModelCoefficients sphere_coeff;</span>
+<span class="cm">      * sphere_coeff.values.resize (4);    // We need 4 values</span>
+<span class="cm">      * sphere_coeff.values[0] = sphere_center.x ();</span>
+<span class="cm">      * sphere_coeff.values[1] = sphere_center.y ();</span>
+<span class="cm">      * sphere_coeff.values[2] = sphere_center.z ();</span>
+<span class="cm">      *</span>
+<span class="cm">      * sphere_coeff.values[3] = radius;</span>
+<span class="cm">      *</span>
+<span class="cm">      * vtkSmartPointer&lt;vtkDataSet&gt; data = pcl::visualization::createSphere (sphere_coeff, resolution);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createSphere</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">,</span> <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a line shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the model coefficients (point_on_line, line_direction)</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * // The following are given (or computed using sample consensus techniques -- see SampleConsensusModelLine)</span>
+<span class="cm">      * // Eigen::Vector3f point_on_line, line_direction;</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::ModelCoefficients line_coeff;</span>
+<span class="cm">      * line_coeff.values.resize (6);    // We need 6 values</span>
+<span class="cm">      * line_coeff.values[0] = point_on_line.x ();</span>
+<span class="cm">      * line_coeff.values[1] = point_on_line.y ();</span>
+<span class="cm">      * line_coeff.values[2] = point_on_line.z ();</span>
+<span class="cm">      *</span>
+<span class="cm">      * line_coeff.values[3] = line_direction.x ();</span>
+<span class="cm">      * line_coeff.values[4] = line_direction.y ();</span>
+<span class="cm">      * line_coeff.values[5] = line_direction.z ();</span>
+<span class="cm">      *</span>
+<span class="cm">      * vtkSmartPointer&lt;vtkDataSet&gt; data = pcl::visualization::createLine (line_coeff);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createLine</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a planar shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the model coefficients (a, b, c, d with ax+by+cz+d=0)</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * // The following are given (or computed using sample consensus techniques -- see SampleConsensusModelPlane)</span>
+<span class="cm">      * // Eigen::Vector4f plane_parameters;</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::ModelCoefficients plane_coeff;</span>
+<span class="cm">      * plane_coeff.values.resize (4);    // We need 4 values</span>
+<span class="cm">      * plane_coeff.values[0] = plane_parameters.x ();</span>
+<span class="cm">      * plane_coeff.values[1] = plane_parameters.y ();</span>
+<span class="cm">      * plane_coeff.values[2] = plane_parameters.z ();</span>
+<span class="cm">      * plane_coeff.values[3] = plane_parameters.w ();</span>
+<span class="cm">      *</span>
+<span class="cm">      * vtkSmartPointer&lt;vtkDataSet&gt; data = pcl::visualization::createPlane (plane_coeff);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createPlane</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a planar shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the model coefficients (a, b, c, d with ax+by+cz+d=0)</span>
+<span class="cm">      * \param[in] x,y,z projection of this point on the plane is used to get the center of the plane.</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createPlane</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">,</span> <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a 2d circle shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the model coefficients (x, y, radius)</span>
+<span class="cm">      * \param[in] z (optional) specify a z value (default: 0)</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * // The following are given (or computed using sample consensus techniques -- see SampleConsensusModelCircle2D)</span>
+<span class="cm">      * // float x, y, radius;</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::ModelCoefficients circle_coeff;</span>
+<span class="cm">      * circle_coeff.values.resize (3);    // We need 3 values</span>
+<span class="cm">      * circle_coeff.values[0] = x;</span>
+<span class="cm">      * circle_coeff.values[1] = y;</span>
+<span class="cm">      * circle_coeff.values[2] = radius;</span>
+<span class="cm">      *</span>
+<span class="cm">      * vtkSmartPointer&lt;vtkDataSet&gt; data = pcl::visualization::create2DCircle (circle_coeff, z);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">create2DCircle</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a cone shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the cone coefficients (cone_apex, axis_direction, angle)</span>
+<span class="cm">      *</span>
+<span class="cm">      * \code</span>
+<span class="cm">      * // The following are given (or computed using sample consensus techniques -- see SampleConsensusModelCone)</span>
+<span class="cm">      * // Eigen::Vector3f cone_apex, axis_direction;</span>
+<span class="cm">      * // float angle;</span>
+<span class="cm">      * // Note: The height of the cone is set using the magnitude of the axis_direction vector.</span>
+<span class="cm">      *</span>
+<span class="cm">      * pcl::ModelCoefficients cone_coeff;</span>
+<span class="cm">      * cone_coeff.values.resize (7);    // We need 7 values</span>
+<span class="cm">      * cone_coeff.values[0] = cone_apex.x ();</span>
+<span class="cm">      * cone_coeff.values[1] = cone_apex.y ();</span>
+<span class="cm">      * cone_coeff.values[2] = cone_apex.z ();</span>
+<span class="cm">      * cone_coeff.values[3] = axis_direction.x ();</span>
+<span class="cm">      * cone_coeff.values[4] = axis_direction.y ();</span>
+<span class="cm">      * cone_coeff.values[5] = axis_direction.z ();</span>
+<span class="cm">      * cone_coeff.values[6] = angle (); // degrees</span>
+<span class="cm">      *</span>
+<span class="cm">      * vtkSmartPointer&lt;vtkDataSet&gt; data = pcl::visualization::createCone (cone_coeff);</span>
+<span class="cm">      * \endcode</span>
+<span class="cm">      *</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createCone</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a cube shape from a set of model coefficients.</span>
+<span class="cm">      * \param[in] coefficients the cube coefficients (Tx, Ty, Tz, Qx, Qy, Qz, Qw, width, height, depth)</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createCube</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ModelCoefficients</span> <span class="o">&amp;</span><span class="n">coefficients</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a cube shape from a set of model coefficients.</span>
+<span class="cm">      *</span>
+<span class="cm">      * \param[in] translation a translation to apply to the cube from 0,0,0</span>
+<span class="cm">      * \param[in] rotation a quaternion-based rotation to apply to the cube</span>
+<span class="cm">      * \param[in] width the cube&#39;s width</span>
+<span class="cm">      * \param[in] height the cube&#39;s height</span>
+<span class="cm">      * \param[in] depth the cube&#39;s depth</span>
+<span class="cm">      * \ingroup visualization</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createCube</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span><span class="n">translation</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaternionf</span> <span class="o">&amp;</span><span class="n">rotation</span><span class="p">,</span>
+                <span class="kt">double</span> <span class="n">width</span><span class="p">,</span> <span class="kt">double</span> <span class="n">height</span><span class="p">,</span> <span class="kt">double</span> <span class="n">depth</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Create a cube from a set of bounding points</span>
+<span class="cm">      * \param[in] x_min is the minimum x value of the box</span>
+<span class="cm">      * \param[in] x_max is the maximum x value of the box</span>
+<span class="cm">      * \param[in] y_min is the minimum y value of the box</span>
+<span class="cm">      * \param[in] y_max is the maximum y value of the box</span>
+<span class="cm">      * \param[in] z_min is the minimum z value of the box</span>
+<span class="cm">      * \param[in] z_max is the maximum z value of the box</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkDataSet</span><span class="o">&gt;</span>
+    <span class="n">createCube</span> <span class="p">(</span><span class="kt">double</span> <span class="n">x_min</span><span class="p">,</span> <span class="kt">double</span> <span class="n">x_max</span><span class="p">,</span>
+                <span class="kt">double</span> <span class="n">y_min</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y_max</span><span class="p">,</span>
+                <span class="kt">double</span> <span class="n">z_min</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z_max</span><span class="p">);</span>
+
+    <span class="cm">/** \brief Allocate a new unstructured grid smartpointer. For internal use only.</span>
+<span class="cm">      * \param[out] polydata the resultant unstructured grid.</span>
+<span class="cm">      */</span>
+    <span class="n">PCL_EXPORTS</span> <span class="kt">void</span>
+    <span class="nf">allocVtkUnstructuredGrid</span> <span class="p">(</span><span class="n">vtkSmartPointer</span><span class="o">&lt;</span><span class="n">vtkUnstructuredGrid</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">polydata</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*@}*/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/visualization/common/impl/shapes.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_visualization_common_impl_shapes.hpp.html" class="btn btn-neutral float-right" title="File shapes.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_visualization_common_shapes.h.html" class="btn btn-neutral float-left" title="File shapes.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

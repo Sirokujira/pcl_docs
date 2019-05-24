@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File shot.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File shot.hpp" href="file_pcl_features_impl_shot.hpp.html" />
+    <link rel="prev" title="File shot.h" href="file_pcl_features_shot.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_features_shot.h.html">File shot.h</a> &raquo;</li>
+        
+      <li>Program Listing for File shot.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_features_shot.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-shot-h">
+<span id="program-listing-file-pcl-features-shot-h"></span><h1>Program Listing for File shot.h<a class="headerlink" href="#program-listing-for-file-shot-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_features_shot.h.html#file-pcl-features-shot-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\features\shot.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/feature.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief SHOTEstimation estimates the Signature of Histograms of OrienTations (SHOT) descriptor for</span>
+<span class="cm">    * a given point cloud dataset containing points and normals.</span>
+<span class="cm">    *</span>
+<span class="cm">    * The suggested PointOutT is pcl::SHOT352.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If you use this code in any academic work, please cite:</span>
+<span class="cm">    *</span>
+<span class="cm">    *   - F. Tombari, S. Salti, L. Di Stefano</span>
+<span class="cm">    *     Unique Signatures of Histograms for Local Surface Description.</span>
+<span class="cm">    *     In Proceedings of the 11th European Conference on Computer Vision (ECCV),</span>
+<span class="cm">    *     Heraklion, Greece, September 5-11 2010.</span>
+<span class="cm">    *   - F. Tombari, S. Salti, L. Di Stefano</span>
+<span class="cm">    *     A Combined Texture-Shape Descriptor For Enhanced 3D Feature Matching.</span>
+<span class="cm">    *     In Proceedings of the 18th International Conference on Image Processing (ICIP),</span>
+<span class="cm">    *     Brussels, Belgium, September 11-14 2011.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Samuele Salti, Federico Tombari</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ReferenceFrame</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">SHOTEstimationBase</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;</span><span class="p">,</span>
+                             <span class="k">public</span> <span class="n">FeatureWithLocalReferenceFrames</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">feature_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">search_parameter_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">search_radius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">fake_surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">FeatureFromNormals</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">normals_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">FeatureWithLocalReferenceFrames</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">frames_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Empty constructor.</span>
+<span class="cm">        * \param[in] nr_shape_bins the number of bins in the shape histogram</span>
+<span class="cm">        */</span>
+      <span class="n">SHOTEstimationBase</span> <span class="p">(</span><span class="kt">int</span> <span class="n">nr_shape_bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">nr_shape_bins_</span> <span class="p">(</span><span class="n">nr_shape_bins</span><span class="p">),</span>
+        <span class="n">lrf_radius_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">sqradius_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius3_4_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius1_4_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius1_2_</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">nr_grid_sector_</span> <span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+        <span class="n">maxAngularSectors_</span> <span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+        <span class="n">descLength_</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">feature_name_</span> <span class="o">=</span> <span class="s">&quot;SHOTEstimation&quot;</span><span class="p">;</span>
+      <span class="p">};</span>
+
+
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="o">~</span><span class="n">SHOTEstimationBase</span> <span class="p">()</span> <span class="p">{}</span>
+
+       <span class="cm">/** \brief Estimate the SHOT descriptor for a given point based on its spatial neighborhood of 3D points with normals</span>
+<span class="cm">         * \param[in] index the index of the point in indices_</span>
+<span class="cm">         * \param[in] indices the k-neighborhood point indices in surface_</span>
+<span class="cm">         * \param[in] sqr_dists the k-neighborhood point distances in surface_</span>
+<span class="cm">         * \param[out] shot the resultant SHOT descriptor representing the feature at the query point</span>
+<span class="cm">         */</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="n">computePointSHOT</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+                        <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="cm">/** \brief Set the radius used for local reference frame estimation if the frames are not set by the user */</span>
+      <span class="k">virtual</span> <span class="kt">void</span>
+      <span class="nf">setLRFRadius</span> <span class="p">(</span><span class="kt">float</span> <span class="n">radius</span><span class="p">)</span> <span class="p">{</span> <span class="n">lrf_radius_</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="cm">/** \brief Get the radius used for local reference frame estimation */</span>
+      <span class="k">virtual</span> <span class="kt">float</span>
+      <span class="nf">getLRFRadius</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">lrf_radius_</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="cm">/** \brief This method should get called before starting the actual computation. */</span>
+      <span class="kt">bool</span>
+      <span class="n">initCompute</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Quadrilinear interpolation used when color and shape descriptions are NOT activated simultaneously</span>
+<span class="cm">        *</span>
+<span class="cm">        * \param[in] indices the neighborhood point indices</span>
+<span class="cm">        * \param[in] sqr_dists the neighborhood point distances</span>
+<span class="cm">        * \param[in] index the index of the point in indices_</span>
+<span class="cm">        * \param[out] binDistance the resultant distance shape histogram</span>
+<span class="cm">        * \param[in] nr_bins the number of bins in the shape histogram</span>
+<span class="cm">        * \param[out] shot the resultant SHOT histogram</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">interpolateSingleChannel</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+                                <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">binDistance</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_bins</span><span class="p">,</span>
+                                <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Normalize the SHOT histogram.</span>
+<span class="cm">        * \param[in,out] shot the SHOT histogram</span>
+<span class="cm">        * \param[in] desc_length the length of the histogram</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">normalizeHistogram</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">,</span> <span class="kt">int</span> <span class="n">desc_length</span><span class="p">);</span>
+
+
+      <span class="cm">/** \brief Create a binned distance shape histogram</span>
+<span class="cm">        * \param[in] index the index of the point in indices_</span>
+<span class="cm">        * \param[in] indices the k-neighborhood point indices in surface_</span>
+<span class="cm">        * \param[out] bin_distance_shape the resultant histogram</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">createBinDistanceShape</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                              <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">bin_distance_shape</span><span class="p">);</span>
+
+      <span class="cm">/** \brief The number of bins in each shape histogram. */</span>
+      <span class="kt">int</span> <span class="n">nr_shape_bins_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Placeholder for a point&#39;s SHOT. */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="n">shot_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The radius used for the LRF computation */</span>
+      <span class="kt">float</span> <span class="n">lrf_radius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The squared search radius. */</span>
+      <span class="kt">double</span> <span class="n">sqradius_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief 3/4 of the search radius. */</span>
+      <span class="kt">double</span> <span class="n">radius3_4_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief 1/4 of the search radius. */</span>
+      <span class="kt">double</span> <span class="n">radius1_4_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief 1/2 of the search radius. */</span>
+      <span class="kt">double</span> <span class="n">radius1_2_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Number of azimuthal sectors. */</span>
+      <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_grid_sector_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief ... */</span>
+      <span class="k">const</span> <span class="kt">int</span> <span class="n">maxAngularSectors_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief One SHOT length. */</span>
+      <span class="kt">int</span> <span class="n">descLength_</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief SHOTEstimation estimates the Signature of Histograms of OrienTations (SHOT) descriptor for</span>
+<span class="cm">    * a given point cloud dataset containing points and normals.</span>
+<span class="cm">    *</span>
+<span class="cm">    * The suggested PointOutT is pcl::SHOT352</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If you use this code in any academic work, please cite:</span>
+<span class="cm">    *</span>
+<span class="cm">    *   - F. Tombari, S. Salti, L. Di Stefano</span>
+<span class="cm">    *     Unique Signatures of Histograms for Local Surface Description.</span>
+<span class="cm">    *     In Proceedings of the 11th European Conference on Computer Vision (ECCV),</span>
+<span class="cm">    *     Heraklion, Greece, September 5-11 2010.</span>
+<span class="cm">    *   - F. Tombari, S. Salti, L. Di Stefano</span>
+<span class="cm">    *     A Combined Texture-Shape Descriptor For Enhanced 3D Feature Matching.</span>
+<span class="cm">    *     In Proceedings of the 18th International Conference on Image Processing (ICIP),</span>
+<span class="cm">    *     Brussels, Belgium, September 11-14 2011.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Samuele Salti, Federico Tombari</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SHOT352</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ReferenceFrame</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">SHOTEstimation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SHOTEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">SHOTEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">feature_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">search_parameter_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">search_radius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">normals_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">descLength_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">nr_grid_sector_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">nr_shape_bins_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">sqradius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">radius3_4_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">radius1_4_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">radius1_2_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">maxAngularSectors_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">interpolateSingleChannel</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">shot_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">FeatureWithLocalReferenceFrames</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">frames_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor. */</span>
+      <span class="n">SHOTEstimation</span> <span class="p">()</span> <span class="o">:</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">feature_name_</span> <span class="o">=</span> <span class="s">&quot;SHOTEstimation&quot;</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="o">~</span><span class="n">SHOTEstimation</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Estimate the SHOT descriptor for a given point based on its spatial neighborhood of 3D points with normals</span>
+<span class="cm">        * \param[in] index the index of the point in indices_</span>
+<span class="cm">        * \param[in] indices the k-neighborhood point indices in surface_</span>
+<span class="cm">        * \param[in] sqr_dists the k-neighborhood point distances in surface_</span>
+<span class="cm">        * \param[out] shot the resultant SHOT descriptor representing the feature at the query point</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">computePointSHOT</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+                        <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Estimate the Signatures of Histograms of OrienTations (SHOT) descriptors at a set of points given by</span>
+<span class="cm">        * &lt;setInputCloud (), setIndices ()&gt; using the surface in setSearchSurface () and the spatial locator in</span>
+<span class="cm">        * setSearchMethod ()</span>
+<span class="cm">        * \param output the resultant point cloud model dataset that contains the SHOT feature estimates</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">computeFeature</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="cm">/** \brief SHOTColorEstimation estimates the Signature of Histograms of OrienTations (SHOT) descriptor for a given point cloud dataset</span>
+<span class="cm">    * containing points, normals and colors.</span>
+<span class="cm">    *</span>
+<span class="cm">    * The suggested PointOutT is pcl::SHOT1344</span>
+<span class="cm">    *</span>
+<span class="cm">    * \note If you use this code in any academic work, please cite:</span>
+<span class="cm">    *</span>
+<span class="cm">    *   - F. Tombari, S. Salti, L. Di Stefano</span>
+<span class="cm">    *     Unique Signatures of Histograms for Local Surface Description.</span>
+<span class="cm">    *     In Proceedings of the 11th European Conference on Computer Vision (ECCV),</span>
+<span class="cm">    *     Heraklion, Greece, September 5-11 2010.</span>
+<span class="cm">    *   - F. Tombari, S. Salti, L. Di Stefano</span>
+<span class="cm">    *     A Combined Texture-Shape Descriptor For Enhanced 3D Feature Matching.</span>
+<span class="cm">    *     In Proceedings of the 18th International Conference on Image Processing (ICIP),</span>
+<span class="cm">    *     Brussels, Belgium, September 11-14 2011.</span>
+<span class="cm">    *</span>
+<span class="cm">    * \author Samuele Salti, Federico Tombari</span>
+<span class="cm">    * \ingroup features</span>
+<span class="cm">    */</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointInT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointNT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointOutT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">SHOT1344</span><span class="p">,</span> <span class="k">typename</span> <span class="n">PointRFT</span> <span class="o">=</span> <span class="n">pcl</span><span class="o">::</span><span class="n">ReferenceFrame</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">SHOTColorEstimation</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">SHOTColorEstimation</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">feature_name_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">getClassName</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">indices_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">k_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">search_parameter_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">search_radius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">surface_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">input_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">normals_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">descLength_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">nr_grid_sector_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">nr_shape_bins_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">sqradius_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">radius3_4_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">radius1_4_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">radius1_2_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">maxAngularSectors_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">interpolateSingleChannel</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">shot_</span><span class="p">;</span>
+      <span class="k">using</span> <span class="n">FeatureWithLocalReferenceFrames</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;::</span><span class="n">frames_</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Feature</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="o">&gt;::</span><span class="n">PointCloudIn</span> <span class="n">PointCloudIn</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Empty constructor.</span>
+<span class="cm">        * \param[in] describe_shape</span>
+<span class="cm">        * \param[in] describe_color</span>
+<span class="cm">        */</span>
+      <span class="n">SHOTColorEstimation</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">describe_shape</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                           <span class="kt">bool</span> <span class="n">describe_color</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">SHOTEstimationBase</span><span class="o">&lt;</span><span class="n">PointInT</span><span class="p">,</span> <span class="n">PointNT</span><span class="p">,</span> <span class="n">PointOutT</span><span class="p">,</span> <span class="n">PointRFT</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+          <span class="n">b_describe_shape_</span> <span class="p">(</span><span class="n">describe_shape</span><span class="p">),</span>
+          <span class="n">b_describe_color_</span> <span class="p">(</span><span class="n">describe_color</span><span class="p">),</span>
+          <span class="n">nr_color_bins_</span> <span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">feature_name_</span> <span class="o">=</span> <span class="s">&quot;SHOTColorEstimation&quot;</span><span class="p">;</span>
+      <span class="p">};</span>
+
+      <span class="cm">/** \brief Empty destructor */</span>
+      <span class="o">~</span><span class="n">SHOTColorEstimation</span> <span class="p">()</span> <span class="p">{}</span>
+
+      <span class="cm">/** \brief Estimate the SHOT descriptor for a given point based on its spatial neighborhood of 3D points with normals</span>
+<span class="cm">        * \param[in] index the index of the point in indices_</span>
+<span class="cm">        * \param[in] indices the k-neighborhood point indices in surface_</span>
+<span class="cm">        * \param[in] sqr_dists the k-neighborhood point distances in surface_</span>
+<span class="cm">        * \param[out] shot the resultant SHOT descriptor representing the feature at the query point</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">computePointSHOT</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+                        <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** \brief Estimate the Signatures of Histograms of OrienTations (SHOT) descriptors at a set of points given by</span>
+<span class="cm">        * &lt;setInputCloud (), setIndices ()&gt; using the surface in setSearchSurface () and the spatial locator in</span>
+<span class="cm">        * setSearchMethod ()</span>
+<span class="cm">        * \param output the resultant point cloud model dataset that contains the SHOT feature estimates</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">computeFeature</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointOutT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">output</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Quadrilinear interpolation; used when color and shape descriptions are both activated</span>
+<span class="cm">        * \param[in] indices the neighborhood point indices</span>
+<span class="cm">        * \param[in] sqr_dists the neighborhood point distances</span>
+<span class="cm">        * \param[in] index the index of the point in indices_</span>
+<span class="cm">        * \param[out] binDistanceShape the resultant distance shape histogram</span>
+<span class="cm">        * \param[out] binDistanceColor the resultant color shape histogram</span>
+<span class="cm">        * \param[in] nr_bins_shape the number of bins in the shape histogram</span>
+<span class="cm">        * \param[in] nr_bins_color the number of bins in the color histogram</span>
+<span class="cm">        * \param[out] shot the resultant SHOT histogram</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">interpolateDoubleChannel</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">indices</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">sqr_dists</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span>
+                                <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">binDistanceShape</span><span class="p">,</span>
+                                <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">binDistanceColor</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_bins_shape</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">int</span> <span class="n">nr_bins_color</span><span class="p">,</span>
+                                <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXf</span> <span class="o">&amp;</span><span class="n">shot</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Compute shape descriptor. */</span>
+      <span class="kt">bool</span> <span class="n">b_describe_shape_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Compute color descriptor. */</span>
+      <span class="kt">bool</span> <span class="n">b_describe_color_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief The number of bins in each color histogram. */</span>
+      <span class="kt">int</span> <span class="n">nr_color_bins_</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Converts RGB triplets to CIELab space.</span>
+<span class="cm">        * \param[in] R the red channel</span>
+<span class="cm">        * \param[in] G the green channel</span>
+<span class="cm">        * \param[in] B the blue channel</span>
+<span class="cm">        * \param[out] L the lightness</span>
+<span class="cm">        * \param[out] A the first color-opponent dimension</span>
+<span class="cm">        * \param[out] B2 the second color-opponent dimension</span>
+<span class="cm">        */</span>
+      <span class="k">static</span> <span class="kt">void</span>
+      <span class="n">RGB2CIELAB</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">R</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">G</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">B</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="n">B2</span><span class="p">);</span>
+
+      <span class="k">static</span> <span class="kt">float</span> <span class="n">sRGB_LUT</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+      <span class="k">static</span> <span class="kt">float</span> <span class="n">sXYZ_LUT</span><span class="p">[</span><span class="mi">4000</span><span class="p">];</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef PCL_NO_PRECOMPILE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/impl/shot.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_features_impl_shot.hpp.html" class="btn btn-neutral float-right" title="File shot.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_features_shot.h.html" class="btn btn-neutral float-left" title="File shot.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File kernel.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File kernel.hpp" href="file_pcl_2d_impl_kernel.hpp.html" />
+    <link rel="prev" title="File kernel.h" href="file_pcl_2d_kernel.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_2d_kernel.h.html">File kernel.h</a> &raquo;</li>
+        
+      <li>Program Listing for File kernel.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_2d_kernel.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-kernel-h">
+<span id="program-listing-file-pcl-2d-kernel-h"></span><h1>Program Listing for File kernel.h<a class="headerlink" href="#program-listing-for-file-kernel-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_2d_kernel.h.html#file-pcl-2d-kernel-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\2d\kernel.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_base.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="o">&gt;</span>
+  <span class="k">class</span> <span class="nc">kernel</span>
+  <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * enumerates the different types of kernels available.</span>
+<span class="cm">       */</span>
+      <span class="k">enum</span> <span class="n">KERNEL_ENUM</span>
+      <span class="p">{</span>
+        <span class="n">SOBEL_X</span><span class="p">,</span>              <span class="c1">//!&lt; SOBEL_X</span>
+        <span class="n">SOBEL_Y</span><span class="p">,</span>              <span class="c1">//!&lt; SOBEL_Y</span>
+        <span class="n">PREWITT_X</span><span class="p">,</span>            <span class="c1">//!&lt; PREWITT_X</span>
+        <span class="n">PREWITT_Y</span><span class="p">,</span>            <span class="c1">//!&lt; PREWITT_Y</span>
+        <span class="n">ROBERTS_X</span><span class="p">,</span>            <span class="c1">//!&lt; ROBERTS_X</span>
+        <span class="n">ROBERTS_Y</span><span class="p">,</span>            <span class="c1">//!&lt; ROBERTS_Y</span>
+        <span class="n">LOG</span><span class="p">,</span>                  <span class="c1">//!&lt; LOG</span>
+        <span class="n">DERIVATIVE_CENTRAL_X</span><span class="p">,</span> <span class="c1">//!&lt; DERIVATIVE_CENTRAL_X</span>
+        <span class="n">DERIVATIVE_FORWARD_X</span><span class="p">,</span> <span class="c1">//!&lt; DERIVATIVE_FORWARD_X</span>
+        <span class="n">DERIVATIVE_BACKWARD_X</span><span class="p">,</span><span class="c1">//!&lt; DERIVATIVE_BACKWARD_X</span>
+        <span class="n">DERIVATIVE_CENTRAL_Y</span><span class="p">,</span> <span class="c1">//!&lt; DERIVATIVE_CENTRAL_Y</span>
+        <span class="n">DERIVATIVE_FORWARD_Y</span><span class="p">,</span> <span class="c1">//!&lt; DERIVATIVE_FORWARD_Y</span>
+        <span class="n">DERIVATIVE_BACKWARD_Y</span><span class="p">,</span><span class="c1">//!&lt; DERIVATIVE_BACKWARD_Y</span>
+        <span class="n">GAUSSIAN</span>              <span class="c1">//!&lt; GAUSSIAN</span>
+      <span class="p">};</span>
+
+      <span class="kt">int</span> <span class="n">kernel_size_</span><span class="p">;</span>
+      <span class="kt">float</span> <span class="n">sigma_</span><span class="p">;</span>
+      <span class="n">KERNEL_ENUM</span> <span class="n">kernel_type_</span><span class="p">;</span>
+
+      <span class="n">kernel</span> <span class="p">()</span> <span class="o">:</span>
+        <span class="n">kernel_size_</span> <span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+        <span class="n">sigma_</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">kernel_type_</span> <span class="p">(</span><span class="n">GAUSSIAN</span><span class="p">)</span>
+      <span class="p">{</span>
+
+      <span class="p">}</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * Helper function which returns the kernel selected by the kernel_type_ enum</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="n">fetchKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * Gaussian kernel with size (kernel_size_ x kernel_size_) and variance sigma_</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">gaussianKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * Laplacian of Gaussian kernel with size (kernel_size_ x kernel_size_) and variance sigma_</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">loGKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * 3x3 Sobel kernel in the X direction</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">sobelKernelX</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * 3x3 Prewitt kernel in the X direction</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">prewittKernelX</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * 2x2 Roberts kernel in the X direction</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">robertsKernelX</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * 3x3 Sobel kernel in the Y direction</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">sobelKernelY</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * 3x3 Prewitt kernel in the Y direction</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">prewittKernelY</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * 2x2 Roberts kernel in the Y direction</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">robertsKernelY</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * kernel [-1 0 1]</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">derivativeXCentralKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * kernel [-1 0 1]&#39;</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">derivativeYCentralKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * kernel [0 -1 1]</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">derivativeXForwardKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * kernel [0 -1 1]&#39;</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">derivativeYForwardKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * kernel [-1 1 0]</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">derivativeXBackwardKernel</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel Kernel point cloud passed by reference</span>
+<span class="cm">       *</span>
+<span class="cm">       * kernel [-1 1 0]&#39;</span>
+<span class="cm">       */</span>
+
+      <span class="kt">void</span> <span class="nf">derivativeYBackwardKernel</span> <span class="p">(</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">kernel</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel_type enum indicating the kernel type wanted</span>
+<span class="cm">       *</span>
+<span class="cm">       * select the kernel type.</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">setKernelType</span> <span class="p">(</span><span class="n">KERNEL_ENUM</span> <span class="n">kernel_type</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel_size kernel of size kernel_size x kernel_size is created(LoG and Gaussian only)</span>
+<span class="cm">       *</span>
+<span class="cm">       * Setter function for kernel_size_</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">setKernelSize</span> <span class="p">(</span><span class="kt">int</span> <span class="n">kernel_size</span><span class="p">);</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param kernel_sigma variance of the Gaussian or LoG kernels.</span>
+<span class="cm">       *</span>
+<span class="cm">       * Setter function for kernel_sigma_</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="nf">setKernelSigma</span> <span class="p">(</span><span class="kt">float</span> <span class="n">kernel_sigma</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/2d/impl/kernel.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_2d_impl_kernel.hpp.html" class="btn btn-neutral float-right" title="File kernel.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_2d_kernel.h.html" class="btn btn-neutral float-left" title="File kernel.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File crh_alignment.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File crop_box.h" href="file_pcl_filters_crop_box.h.html" />
+    <link rel="prev" title="File crh_alignment.h" href="file_pcl_recognition_crh_alignment.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_recognition_crh_alignment.h.html">File crh_alignment.h</a> &raquo;</li>
+        
+      <li>Program Listing for File crh_alignment.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_recognition_crh_alignment.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-crh-alignment-h">
+<span id="program-listing-file-pcl-recognition-crh-alignment-h"></span><h1>Program Listing for File crh_alignment.h<a class="headerlink" href="#program-listing-for-file-crh-alignment-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_recognition_crh_alignment.h.html#file-pcl-recognition-crh-alignment-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\recognition\crh_alignment.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * crh_recognition.h</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Created on: Mar 30, 2012</span>
+<span class="cm"> *      Author: aitor</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/common.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/features/crh.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/fft/kiss_fftr.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/transforms.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+
+  <span class="cm">/** \brief CRHAlignment uses two Camera Roll Histograms (CRH) to find the</span>
+<span class="cm">   * roll rotation that aligns both views. See:</span>
+<span class="cm">   *   - CAD-Model Recognition and 6 DOF Pose Estimation</span>
+<span class="cm">   *     A. Aldoma, N. Blodow, D. Gossow, S. Gedikli, R.B. Rusu, M. Vincze and G. Bradski</span>
+<span class="cm">   *     ICCV 2011, 3D Representation and Recognition (3dRR11) workshop</span>
+<span class="cm">   *     Barcelona, Spain, (2011)</span>
+<span class="cm">   *</span>
+<span class="cm">   * \author Aitor Aldoma</span>
+<span class="cm">   * \ingroup recognition</span>
+<span class="cm">   */</span>
+
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">PointT</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nbins_</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">CRHAlignment</span>
+    <span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Sorts peaks */</span>
+      <span class="k">typedef</span> <span class="k">struct</span>
+      <span class="p">{</span>
+        <span class="kt">bool</span>
+        <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">first</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="n">peaks_ordering</span><span class="p">;</span>
+
+      <span class="k">typedef</span> <span class="k">typename</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">PointT</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">PointTPtr</span><span class="p">;</span>
+
+      <span class="cm">/** \brief View of the model to be aligned to input_view_ */</span>
+      <span class="n">PointTPtr</span> <span class="n">target_view_</span><span class="p">;</span>
+      <span class="cm">/** \brief View of the input */</span>
+      <span class="n">PointTPtr</span> <span class="n">input_view_</span><span class="p">;</span>
+      <span class="cm">/** \brief Centroid of the model_view_ */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">centroid_target_</span><span class="p">;</span>
+      <span class="cm">/** \brief Centroid of the input_view_ */</span>
+      <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">centroid_input_</span><span class="p">;</span>
+      <span class="cm">/** \brief transforms from model view to input view */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">transforms_</span><span class="p">;</span>
+      <span class="cm">/** \brief Allowed maximum number of peaks  */</span>
+      <span class="kt">int</span> <span class="n">max_peaks_</span><span class="p">;</span>
+      <span class="cm">/** \brief Quantile of peaks after sorting to be checked  */</span>
+      <span class="kt">float</span> <span class="n">quantile_</span><span class="p">;</span>
+      <span class="cm">/** \brief Threshold for a peak to be accepted.</span>
+<span class="cm">       * If peak_i &gt;= (max_peak * accept_threhsold_) =&gt; peak is accepted</span>
+<span class="cm">       */</span>
+      <span class="kt">float</span> <span class="n">accept_threshold_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief computes the transformation to the z-axis</span>
+<span class="cm">        * \param[in] centroid</span>
+<span class="cm">        * \param[out] trasnformation to z-axis</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeTransformToZAxes</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="o">&amp;</span> <span class="n">transform</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">plane_normal</span><span class="p">;</span>
+        <span class="n">plane_normal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">plane_normal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">plane_normal</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">centroid</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">z_vector</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitZ</span> <span class="p">();</span>
+        <span class="n">plane_normal</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">plane_normal</span><span class="p">.</span><span class="n">cross</span> <span class="p">(</span><span class="n">z_vector</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">rotation</span> <span class="o">=</span> <span class="o">-</span><span class="n">asin</span> <span class="p">(</span><span class="n">axis</span><span class="p">.</span><span class="n">norm</span> <span class="p">());</span>
+        <span class="n">axis</span><span class="p">.</span><span class="n">normalize</span> <span class="p">();</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxisf</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">rotation</span><span class="p">),</span> <span class="n">axis</span><span class="p">));</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief computes the roll transformation</span>
+<span class="cm">        * \param[in] centroid input</span>
+<span class="cm">        * \param[in] centroid view</span>
+<span class="cm">        * \param[in] roll_angle</span>
+<span class="cm">        * \param[out] roll transformation</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">computeRollTransform</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span> <span class="n">centroidInput</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span> <span class="n">centroidResult</span><span class="p">,</span> <span class="kt">double</span> <span class="n">roll_angle</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="o">&amp;</span> <span class="n">final_trans</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">transformInputToZ</span><span class="p">;</span>
+        <span class="n">computeTransformToZAxes</span> <span class="p">(</span><span class="n">centroidInput</span><span class="p">,</span> <span class="n">transformInputToZ</span><span class="p">);</span>
+
+        <span class="n">transformInputToZ</span> <span class="o">=</span> <span class="n">transformInputToZ</span><span class="p">.</span><span class="n">inverse</span> <span class="p">();</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">transformRoll</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">AngleAxisf</span> <span class="p">(</span><span class="o">-</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">roll_angle</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">),</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span><span class="o">::</span><span class="n">UnitZ</span> <span class="p">()));</span>
+        <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">transformDBResultToZ</span><span class="p">;</span>
+        <span class="n">computeTransformToZAxes</span> <span class="p">(</span><span class="n">centroidResult</span><span class="p">,</span> <span class="n">transformDBResultToZ</span><span class="p">);</span>
+
+        <span class="n">final_trans</span> <span class="o">=</span> <span class="n">transformInputToZ</span> <span class="o">*</span> <span class="n">transformRoll</span> <span class="o">*</span> <span class="n">transformDBResultToZ</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="k">public</span><span class="o">:</span>
+
+      <span class="cm">/** \brief Constructor. */</span>
+      <span class="n">CRHAlignment</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">max_peaks_</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="n">quantile_</span> <span class="o">=</span> <span class="mf">0.2f</span><span class="p">;</span>
+        <span class="n">accept_threshold_</span> <span class="o">=</span> <span class="mf">0.8f</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief returns the computed transformations</span>
+<span class="cm">       * \param[out] transforms transformations</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span> <span class="n">getTransforms</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">transforms</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">transforms</span> <span class="o">=</span> <span class="n">transforms_</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief sets model and input views</span>
+<span class="cm">       * \param[in] input_view</span>
+<span class="cm">       * \param[in] target_view</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="n">setInputAndTargetView</span> <span class="p">(</span><span class="n">PointTPtr</span> <span class="o">&amp;</span> <span class="n">input_view</span><span class="p">,</span> <span class="n">PointTPtr</span> <span class="o">&amp;</span> <span class="n">target_view</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">target_view_</span> <span class="o">=</span> <span class="n">target_view</span><span class="p">;</span>
+        <span class="n">input_view_</span> <span class="o">=</span> <span class="n">input_view</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief sets model and input centroids</span>
+<span class="cm">        * \param[in] c1 model view centroid</span>
+<span class="cm">        * \param[in] c2 input view centroid</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">setInputAndTargetCentroids</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span> <span class="n">c1</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="o">&amp;</span> <span class="n">c2</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">centroid_target_</span> <span class="o">=</span> <span class="n">c2</span><span class="p">;</span>
+        <span class="n">centroid_input_</span> <span class="o">=</span> <span class="n">c1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Computes the transformation aligning model to input</span>
+<span class="cm">       * \param[in] input_ftt CRH histogram of the input cloud</span>
+<span class="cm">       * \param[in] target_ftt CRH histogram of the target cloud</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="n">align</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Histogram</span><span class="o">&lt;</span><span class="n">nbins_</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">input_ftt</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Histogram</span><span class="o">&lt;</span><span class="n">nbins_</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">target_ftt</span><span class="p">)</span>
+      <span class="p">{</span>
+
+        <span class="n">transforms_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span> <span class="c1">//clear from last round...</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">peaks</span><span class="p">;</span>
+        <span class="n">computeRollAngle</span> <span class="p">(</span><span class="n">input_ftt</span><span class="p">,</span> <span class="n">target_ftt</span><span class="p">,</span> <span class="n">peaks</span><span class="p">);</span>
+
+        <span class="c1">//if the number of peaks is too big, we should try to reduce using siluette matching</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="o">&amp;</span><span class="nl">peak</span> <span class="p">:</span> <span class="n">peaks</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="n">rollToRot</span><span class="p">;</span>
+          <span class="n">computeRollTransform</span> <span class="p">(</span><span class="n">centroid_input_</span><span class="p">,</span> <span class="n">centroid_target_</span><span class="p">,</span> <span class="n">peak</span><span class="p">,</span> <span class="n">rollToRot</span><span class="p">);</span>
+
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="n">rollHomMatrix</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="p">();</span>
+          <span class="n">rollHomMatrix</span><span class="p">.</span><span class="n">setIdentity</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+          <span class="n">rollHomMatrix</span> <span class="o">=</span> <span class="n">rollToRot</span><span class="p">.</span><span class="n">matrix</span> <span class="p">();</span>
+
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="n">translation2</span><span class="p">;</span>
+          <span class="n">translation2</span><span class="p">.</span><span class="n">setIdentity</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3f</span> <span class="n">centr</span> <span class="o">=</span> <span class="n">rollToRot</span> <span class="o">*</span> <span class="n">centroid_target_</span><span class="p">;</span>
+          <span class="n">translation2</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">centroid_input_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">centr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+          <span class="n">translation2</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">centroid_input_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">centr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+          <span class="n">translation2</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">centroid_input_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">centr</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+          <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix4f</span> <span class="n">resultHom</span> <span class="p">(</span><span class="n">translation2</span> <span class="o">*</span> <span class="n">rollHomMatrix</span><span class="p">);</span>
+          <span class="n">transforms_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">resultHom</span><span class="p">.</span><span class="n">inverse</span><span class="p">());</span>
+        <span class="p">}</span>
+
+      <span class="p">}</span>
+
+      <span class="cm">/** \brief Computes the roll angle that aligns input to model.</span>
+<span class="cm">       * \param[in] input_ftt CRH histogram of the input cloud</span>
+<span class="cm">       * \param[in] target_ftt CRH histogram of the target cloud</span>
+<span class="cm">       * \param[out] peaks Vector containing angles where the histograms correlate</span>
+<span class="cm">       */</span>
+      <span class="kt">void</span>
+      <span class="n">computeRollAngle</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Histogram</span><span class="o">&lt;</span><span class="n">nbins_</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">input_ftt</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Histogram</span><span class="o">&lt;</span><span class="n">nbins_</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">target_ftt</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">peaks</span><span class="p">)</span>
+      <span class="p">{</span>
+
+        <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">Histogram</span><span class="o">&lt;</span><span class="n">nbins_</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">input_ftt_negate</span> <span class="p">(</span><span class="n">input_ftt</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">nbins_</span><span class="p">);</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span>
+          <span class="n">input_ftt_negate</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">input_ftt_negate</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+        <span class="kt">int</span> <span class="n">nr_bins_after_padding</span> <span class="o">=</span> <span class="mi">180</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">peak_distance</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="n">nbins_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="n">kiss_fft_cpx</span> <span class="o">*</span> <span class="n">multAB</span> <span class="o">=</span> <span class="k">new</span> <span class="n">kiss_fft_cpx</span><span class="p">[</span><span class="n">nr_bins_after_padding</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_bins_after_padding</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="n">multAB</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span> <span class="o">=</span> <span class="n">multAB</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">i</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">r</span> <span class="o">=</span> <span class="n">input_ftt_negate</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">target_ftt</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+
+        <span class="kt">float</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cutoff</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="n">input_ftt_negate</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="n">b</span> <span class="o">=</span> <span class="n">input_ftt_negate</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+          <span class="n">c</span> <span class="o">=</span> <span class="n">target_ftt</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="n">d</span> <span class="o">=</span> <span class="n">target_ftt</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+          <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">d</span><span class="p">;</span>
+          <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">i</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">d</span><span class="p">;</span>
+
+          <span class="kt">float</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">sqrt</span> <span class="p">(</span><span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">r</span> <span class="o">*</span> <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">r</span> <span class="o">+</span> <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">i</span> <span class="o">*</span> <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">i</span><span class="p">);</span>
+
+          <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">r</span> <span class="o">/=</span> <span class="n">tmp</span><span class="p">;</span>
+          <span class="n">multAB</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">i</span> <span class="o">/=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">multAB</span><span class="p">[</span><span class="n">nbins_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">r</span> <span class="o">=</span> <span class="n">input_ftt_negate</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">nbins_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">target_ftt</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">histogram</span><span class="p">[</span><span class="n">nbins_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+
+        <span class="n">kiss_fft_cfg</span> <span class="n">mycfg</span> <span class="o">=</span> <span class="n">kiss_fft_alloc</span> <span class="p">(</span><span class="n">nr_bins_after_padding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+        <span class="n">kiss_fft_cpx</span> <span class="o">*</span> <span class="n">invAB</span> <span class="o">=</span> <span class="k">new</span> <span class="n">kiss_fft_cpx</span><span class="p">[</span><span class="n">nr_bins_after_padding</span><span class="p">];</span>
+        <span class="n">kiss_fft</span> <span class="p">(</span><span class="n">mycfg</span><span class="p">,</span> <span class="n">multAB</span><span class="p">,</span> <span class="n">invAB</span><span class="p">);</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">scored_peaks</span> <span class="p">(</span><span class="n">nr_bins_after_padding</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nr_bins_after_padding</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+          <span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span> <span class="p">(</span><span class="n">invAB</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">sort</span> <span class="p">(</span><span class="n">scored_peaks</span><span class="p">.</span><span class="n">begin</span> <span class="p">(),</span> <span class="n">scored_peaks</span><span class="p">.</span><span class="n">end</span> <span class="p">(),</span> <span class="n">peaks_ordering</span> <span class="p">());</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">peaks_indices</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">peaks_values</span><span class="p">;</span>
+
+        <span class="c1">// we look at the upper quantile_</span>
+        <span class="kt">float</span> <span class="n">quantile</span> <span class="o">=</span> <span class="n">quantile_</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">max_inserted</span><span class="o">=</span> <span class="n">max_peaks_</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">inserted</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">stop</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">quantile</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">nr_bins_after_padding</span><span class="p">)))</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">stop</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">first</span> <span class="o">&gt;=</span> <span class="n">scored_peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">first</span> <span class="o">*</span> <span class="n">accept_threshold_</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="kt">bool</span> <span class="n">insert</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+            <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">peaks_index</span> <span class="p">:</span> <span class="n">peaks_indices</span><span class="p">)</span>
+            <span class="p">{</span> <span class="c1">//check inserted peaks, first pick always inserted</span>
+              <span class="k">if</span> <span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">peaks_index</span> <span class="o">-</span> <span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">peak_distance</span><span class="p">)</span> <span class="o">||</span>
+                  <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span> <span class="p">(</span><span class="n">peaks_index</span> <span class="o">-</span> <span class="p">(</span><span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span> <span class="o">-</span> <span class="n">nr_bins_after_padding</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">peak_distance</span><span class="p">))</span>
+              <span class="p">{</span>
+                <span class="n">insert</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">insert</span><span class="p">)</span>
+            <span class="p">{</span>
+              <span class="n">peaks_indices</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">);</span>
+              <span class="n">peaks_values</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">);</span>
+              <span class="n">peaks</span><span class="p">.</span><span class="n">push_back</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">scored_peaks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span> <span class="o">*</span> <span class="p">(</span><span class="mi">360</span> <span class="o">/</span> <span class="n">nr_bins_after_padding</span><span class="p">)));</span>
+              <span class="n">inserted</span><span class="o">++</span><span class="p">;</span>
+              <span class="k">if</span><span class="p">(</span><span class="n">inserted</span> <span class="o">&gt;=</span> <span class="n">max_inserted</span><span class="p">)</span>
+                <span class="n">stop</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_filters_crop_box.h.html" class="btn btn-neutral float-right" title="File crop_box.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_recognition_crh_alignment.h.html" class="btn btn-neutral float-left" title="File crh_alignment.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

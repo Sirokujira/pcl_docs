@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File outofcore.doxy &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Program Listing for File outofcore.doxy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_docs_source_pcl_outofcore_outofcore.doxy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-outofcore-doxy">
+<span id="program-listing-file-pcl-docs-source-pcl-outofcore-outofcore-doxy"></span><h1>Program Listing for File outofcore.doxy<a class="headerlink" href="#program-listing-for-file-outofcore-doxy" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_docs_source_pcl_outofcore_outofcore.doxy.html#file-pcl-docs-source-pcl-outofcore-outofcore-doxy"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl_docs\source\pcl\outofcore\outofcore.doxy</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">  \addtogroup outofcore Module outofcore</span>
+
+<span class="cm">  \section secOutofcoreOctree Overview</span>
+
+<span class="cm">  The &lt;b&gt;pcl_outofcore&lt;/b&gt; library provides an octree data structure</span>
+<span class="cm">  for point clouds that are too large to be stored in main memory. The</span>
+<span class="cm">  data are located instead in an directory-based octree hierary on</span>
+<span class="cm">  some secondary storage (disk) medium. &lt;b&gt;pcl_outofcore&lt;/b&gt; provides</span>
+<span class="cm">  the framework for constructing and traversing outofcore octrees, a</span>
+<span class="cm">  command-line tool &lt;b&gt;pcl_outofcore_process&lt;/b&gt; for converting a set</span>
+<span class="cm">  of registered PCD files to outofcore octree, and</span>
+<span class="cm">  &lt;b&gt;pcl_outofcore_viewer&lt;/b&gt; for rendering outofcore octrees.</span>
+
+<span class="cm">  &lt;b&gt;pcl_outofcore&lt;/b&gt; provides an interface to construct and query</span>
+<span class="cm">  outofcore octrees via OutofcoreOctreeBase. The out of core octree</span>
+<span class="cm">  can be used with any PCLPointCloud2 with point types containing ``x&#39;&#39;,</span>
+<span class="cm">  ``y&#39;&#39; and ``z&#39;&#39; fields. No internal checking is done to verify</span>
+<span class="cm">  this. On the other hand, point clouds do not need to be filtered for</span>
+<span class="cm">  NaN entries; the library will automatically ignore NaN points in the</span>
+<span class="cm">  insertion methods.</span>
+
+<span class="cm">  The average user may not need to do any development with this</span>
+<span class="cm">  library, but rather use the command-line tool</span>
+<span class="cm">  &lt;b&gt;pcl_outofcore_process&lt;/b&gt; to construct an outofcore octree, and</span>
+<span class="cm">  &lt;b&gt;pcl_outofcore_viewer&lt;/b&gt; to view it.</span>
+
+<span class="cm">  For those interested in developing software with</span>
+<span class="cm">  &lt;b&gt;pcl_outofcore&lt;/b&gt;, the functionality of the OutofcoreOctreeBase</span>
+<span class="cm">  class provides methods for insertion (&lt;b&gt;addPointCloud&lt;/b&gt;), and</span>
+<span class="cm">  querying bounding boxes (&lt;b&gt;queryBoundingBox&lt;/b&gt;).  Furthermore</span>
+<span class="cm">  &lt;b&gt;OutofcoreDepthFirstIterator&lt;/b&gt; provides an iterator for the</span>
+<span class="cm">  entire tree that gives direct access to the in-memory node</span>
+<span class="cm">  datastructre, &lt;b&gt;OutofcoreOctreeBaseNode&lt;/b&gt;. Please note that this</span>
+<span class="cm">  library is still under development, and that interested users should</span>
+<span class="cm">  use the &lt;b&gt;PCLPointCloud2&lt;/b&gt;-based insertion and query methods.</span>
+
+<span class="cm">  \section secOutofcore Example Usage</span>
+
+<span class="cm">  \section secOutofcoreRequirements Requirements</span>
+<span class="cm">  - \ref common &quot;common&quot;</span>
+<span class="cm">  - \ref io &quot;io&quot;</span>
+<span class="cm">  - \ref visualization &quot;visualization&quot; (for pcl_outofcore_viewer)</span>
+<span class="cm">  - \ref filters &quot;filters&quot;</span>
+
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

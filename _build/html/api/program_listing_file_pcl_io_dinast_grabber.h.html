@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File dinast_grabber.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File disparity_map_converter.h" href="file_pcl_stereo_disparity_map_converter.h.html" />
+    <link rel="prev" title="File dinast_grabber.h" href="file_pcl_io_dinast_grabber.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_io_dinast_grabber.h.html">File dinast_grabber.h</a> &raquo;</li>
+        
+      <li>Program Listing for File dinast_grabber.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_io_dinast_grabber.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-dinast-grabber-h">
+<span id="program-listing-file-pcl-io-dinast-grabber-h"></span><h1>Program Listing for File dinast_grabber.h<a class="headerlink" href="#program-listing-for-file-dinast-grabber-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_io_dinast_grabber.h.html#file-pcl-io-dinast-grabber-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\io\dinast_grabber.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2012-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> * $Id$</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_cloud.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/grabber.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/console/print.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;libusb-1.0/libusb.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;boost/circular_buffer.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="cm">/** \brief Grabber for DINAST devices (i.e., IPA-1002, IPA-1110, IPA-2001)</span>
+<span class="cm">    * \author Marco A. Gutierrez &lt;marcog@unex.es&gt;</span>
+<span class="cm">    * \ingroup io</span>
+<span class="cm">    */</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">DinastGrabber</span><span class="p">:</span> <span class="k">public</span> <span class="n">Grabber</span>
+  <span class="p">{</span>
+    <span class="c1">// Define callback signature typedefs</span>
+    <span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="n">sig_cb_dinast_point_cloud</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;</span> <span class="o">&gt;&amp;</span><span class="p">);</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** \brief Constructor that sets up the grabber constants.</span>
+<span class="cm">        * \param[in] device_position Number corresponding the device to grab</span>
+<span class="cm">        */</span>
+      <span class="n">DinastGrabber</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">device_position</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Destructor. It never throws. */</span>
+      <span class="o">~</span><span class="n">DinastGrabber</span> <span class="p">()</span> <span class="k">throw</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Check if the grabber is running</span>
+<span class="cm">        * \return true if grabber is running / streaming. False otherwise.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isRunning</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Returns the name of the concrete subclass, DinastGrabber.</span>
+<span class="cm">        * \return DinastGrabber.</span>
+<span class="cm">        */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getName</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+      <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="p">(</span><span class="s">&quot;DinastGrabber&quot;</span><span class="p">));</span> <span class="p">}</span>
+
+      <span class="cm">/** \brief Start the data acquisition process.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="n">start</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Stop the data acquisition process.</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">stop</span> <span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Obtain the number of frames per second (FPS). */</span>
+      <span class="kt">float</span>
+      <span class="nf">getFramesPerSecond</span> <span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Get the version number of the currently opened device</span>
+<span class="cm">        */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getDeviceVersion</span> <span class="p">();</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+
+      <span class="cm">/** \brief On initialization processing. */</span>
+      <span class="kt">void</span>
+      <span class="n">onInit</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">device_id</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Setup a Dinast 3D camera device</span>
+<span class="cm">        * \param[in] device_position Number corresponding the device to grab</span>
+<span class="cm">        * \param[in] id_vendor The ID of the camera vendor (should be 0x18d1)</span>
+<span class="cm">        * \param[in] id_product The ID of the product (should be 0x1402)</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">setupDevice</span> <span class="p">(</span><span class="kt">int</span> <span class="n">device_position</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">int</span> <span class="n">id_vendor</span> <span class="o">=</span> <span class="mh">0x18d1</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="kt">int</span> <span class="n">id_product</span> <span class="o">=</span> <span class="mh">0x1402</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Send a RX data packet request</span>
+<span class="cm">        * \param[in] req_code the request to send (the request field for the setup packet)</span>
+<span class="cm">        * \param buffer</span>
+<span class="cm">        * \param[in] length the length field for the setup packet. The data buffer should be at least this size.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">USBRxControlData</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">req_code</span><span class="p">,</span>
+                        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">length</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Send a TX data packet request</span>
+<span class="cm">        * \param[in] req_code the request to send (the request field for the setup packet)</span>
+<span class="cm">        * \param buffer</span>
+<span class="cm">        * \param[in] length the length field for the setup packet. The data buffer should be at least this size.</span>
+<span class="cm">        */</span>
+      <span class="kt">bool</span>
+      <span class="nf">USBTxControlData</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">req_code</span><span class="p">,</span>
+                        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">length</span><span class="p">);</span>
+
+      <span class="cm">/** \brief Check if we have a header in the global buffer, and return the position of the next valid image.</span>
+<span class="cm">        * \note If the image in the buffer is partial, return -1, as we have to wait until we add more data to it.</span>
+<span class="cm">        * \return the position of the next valid image (i.e., right after a valid header) or -1 in case the buffer</span>
+<span class="cm">        * either doesn&#39;t have an image or has a partial image</span>
+<span class="cm">        */</span>
+      <span class="kt">int</span>
+      <span class="nf">checkHeader</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Read image data and leaves it on image_</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">readImage</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Obtains XYZI Point Cloud from the image of the camera</span>
+<span class="cm">        * \return the point cloud from the image data</span>
+<span class="cm">        */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;::</span><span class="n">Ptr</span>
+      <span class="n">getXYZIPointCloud</span> <span class="p">();</span>
+
+       <span class="cm">/** \brief The function in charge of getting the data from the camera</span>
+<span class="cm">        */</span>
+      <span class="kt">void</span>
+      <span class="nf">captureThreadFunction</span> <span class="p">();</span>
+
+      <span class="cm">/** \brief Width of image */</span>
+      <span class="kt">int</span> <span class="n">image_width_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Height of image */</span>
+      <span class="kt">int</span> <span class="n">image_height_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Total size of image */</span>
+      <span class="kt">int</span> <span class="n">image_size_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Length of a sync packet */</span>
+      <span class="kt">int</span> <span class="n">sync_packet_size_</span><span class="p">;</span>
+
+      <span class="kt">double</span> <span class="n">dist_max_2d_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief diagonal Field of View*/</span>
+      <span class="kt">double</span> <span class="n">fov_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Size of pixel */</span>
+      <span class="k">enum</span> <span class="n">pixel_size</span> <span class="p">{</span> <span class="n">RAW8</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">RGB16</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">RGB24</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">RGB32</span><span class="o">=</span><span class="mi">4</span> <span class="p">};</span>
+
+      <span class="cm">/** \brief The libusb context*/</span>
+      <span class="n">libusb_context</span> <span class="o">*</span><span class="n">context_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief the actual device_handle for the camera */</span>
+      <span class="k">struct</span> <span class="n">libusb_device_handle</span> <span class="o">*</span><span class="n">device_handle_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Temporary USB read buffer, since we read two RGB16 images at a time size is the double of two images</span>
+<span class="cm">        * plus a sync packet.</span>
+<span class="cm">        */</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">raw_buffer_</span> <span class="p">;</span>
+
+      <span class="cm">/** \brief Global circular buffer */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">circular_buffer</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="n">g_buffer_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Bulk endpoint address value */</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bulk_ep_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Device command values */</span>
+      <span class="k">enum</span> <span class="p">{</span> <span class="n">CMD_READ_START</span><span class="o">=</span><span class="mh">0xC7</span><span class="p">,</span> <span class="n">CMD_READ_STOP</span><span class="o">=</span><span class="mh">0xC8</span><span class="p">,</span> <span class="n">CMD_GET_VERSION</span><span class="o">=</span><span class="mh">0xDC</span><span class="p">,</span> <span class="n">CMD_SEND_DATA</span><span class="o">=</span><span class="mh">0xDE</span> <span class="p">};</span>
+
+      <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">image_</span><span class="p">;</span>
+
+      <span class="cm">/** \brief Since there is no header after the first image, we need to save the state */</span>
+      <span class="kt">bool</span> <span class="n">second_image_</span><span class="p">;</span>
+
+      <span class="kt">bool</span> <span class="n">running_</span><span class="p">;</span>
+
+      <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">capture_thread_</span><span class="p">;</span>
+
+      <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">capture_mutex_</span><span class="p">;</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_dinast_point_cloud</span><span class="o">&gt;*</span> <span class="n">point_cloud_signal_</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span> <span class="c1">//namespace pcl</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_stereo_disparity_map_converter.h.html" class="btn btn-neutral float-right" title="File disparity_map_converter.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_io_dinast_grabber.h.html" class="btn btn-neutral float-left" title="File dinast_grabber.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

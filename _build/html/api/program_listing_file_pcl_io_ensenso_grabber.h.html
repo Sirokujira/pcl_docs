@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File ensenso_grabber.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File entropy_range_coder.h" href="file_pcl_compression_entropy_range_coder.h.html" />
+    <link rel="prev" title="File ensenso_grabber.h" href="file_pcl_io_ensenso_grabber.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_pcl_io_ensenso_grabber.h.html">File ensenso_grabber.h</a> &raquo;</li>
+        
+      <li>Program Listing for File ensenso_grabber.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_pcl_io_ensenso_grabber.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-ensenso-grabber-h">
+<span id="program-listing-file-pcl-io-ensenso-grabber-h"></span><h1>Program Listing for File ensenso_grabber.h<a class="headerlink" href="#program-listing-for-file-ensenso-grabber-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_pcl_io_ensenso_grabber.h.html#file-pcl-io-ensenso-grabber-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">pcl\io\ensenso_grabber.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2014-, Open Perception, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of the copyright holder(s) nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Author: Victor Lamoine (victor.lamoine@gmail.com)</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/pcl_config.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/io.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/eigen.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/Geometry&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/StdVector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/boost.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/grabber.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/common/synchronizer.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;nxLib.h&gt; // Ensenso SDK</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">PointXYZ</span><span class="p">;</span>
+  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">PointCloud</span><span class="p">;</span>
+
+  <span class="cm">/** @brief Grabber for IDS-Imaging Ensenso&#39;s devices.\n</span>
+<span class="cm">   * The [Ensenso SDK](http://www.ensenso.de/manual/) allow to use multiple Ensenso devices to produce a single cloud.\n</span>
+<span class="cm">   * This feature is not implemented here, it is up to the user to configure multiple Ensenso cameras.\n</span>
+<span class="cm">   * @author Victor Lamoine (victor.lamoine@gmail.com)\n</span>
+<span class="cm">   * @ingroup io</span>
+<span class="cm">   */</span>
+  <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="nl">EnsensoGrabber</span> <span class="p">:</span> <span class="k">public</span> <span class="n">Grabber</span>
+  <span class="p">{</span>
+      <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="p">,</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PCLImage</span><span class="o">&gt;</span> <span class="n">PairOfImages</span><span class="p">;</span>
+
+    <span class="k">public</span><span class="o">:</span>
+      <span class="cm">/** @cond */</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">EnsensoGrabber</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
+      <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">EnsensoGrabber</span><span class="o">&gt;</span> <span class="n">ConstPtr</span><span class="p">;</span>
+
+      <span class="c1">// Define callback signature typedefs</span>
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_ensenso_point_cloud</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="p">);</span>
+
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_ensenso_images</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PairOfImages</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">);</span>
+
+      <span class="k">typedef</span> <span class="nf">void</span>
+      <span class="p">(</span><span class="n">sig_cb_ensenso_point_cloud_images</span><span class="p">)</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="p">,</span>
+                                           <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PairOfImages</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">);</span>
+     <span class="cm">/** @endcond */</span>
+
+      <span class="cm">/** @brief Constructor */</span>
+      <span class="n">EnsensoGrabber</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Destructor inherited from the Grabber interface. It never throws. */</span>
+      <span class="k">virtual</span>
+      <span class="o">~</span><span class="n">EnsensoGrabber</span> <span class="p">()</span> <span class="k">throw</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Searches for available devices</span>
+<span class="cm">       * @returns The number of Ensenso devices connected */</span>
+      <span class="kt">int</span>
+      <span class="nf">enumDevices</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Opens an Ensenso device</span>
+<span class="cm">       * @param[in] device The device ID to open</span>
+<span class="cm">       * @return True if successful, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">openDevice</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">device</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Closes the Ensenso device</span>
+<span class="cm">       * @return True if successful, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">closeDevice</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Start the point cloud and or image acquisition</span>
+<span class="cm">       * @note Opens device &quot;0&quot; if no device is open */</span>
+      <span class="kt">void</span>
+      <span class="nf">start</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Stop the data acquisition */</span>
+      <span class="kt">void</span>
+      <span class="nf">stop</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Check if the data acquisition is still running</span>
+<span class="cm">       * @return True if running, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isRunning</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Check if a TCP port is opened</span>
+<span class="cm">       * @return True if open, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">isTcpPortOpen</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get class name</span>
+<span class="cm">       * @returns A string containing the class name */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getName</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Configure Ensenso capture settings</span>
+<span class="cm">       * @param[in] auto_exposure If set to yes, the exposure parameter will be ignored</span>
+<span class="cm">       * @param[in] auto_gain If set to yes, the gain parameter will be ignored</span>
+<span class="cm">       * @param[in] bining Pixel bining: 1, 2 or 4</span>
+<span class="cm">       * @param[in] exposure In milliseconds, from 0.01 to 20 ms</span>
+<span class="cm">       * @param[in] front_light Infrared front light (useful for calibration)</span>
+<span class="cm">       * @param[in] gain Float between 1 and 4</span>
+<span class="cm">       * @param[in] gain_boost</span>
+<span class="cm">       * @param[in] hardware_gamma</span>
+<span class="cm">       * @param[in] hdr High Dynamic Range (check compatibility with other options in Ensenso manual)</span>
+<span class="cm">       * @param[in] pixel_clock In MegaHertz, from 5 to 85</span>
+<span class="cm">       * @param[in] projector Use the central infrared projector or not</span>
+<span class="cm">       * @param[in] target_brightness Between 40 and 210</span>
+<span class="cm">       * @param[in] trigger_mode</span>
+<span class="cm">       * @param[in] use_disparity_map_area_of_interest</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @note See [Capture tree item](http://www.ensenso.de/manual/index.html?capture.htm) for more</span>
+<span class="cm">       * details about the parameters. */</span>
+      <span class="kt">bool</span>
+      <span class="nf">configureCapture</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">auto_exposure</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">auto_gain</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">int</span> <span class="n">bining</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">float</span> <span class="n">exposure</span> <span class="o">=</span> <span class="mf">0.32</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">front_light</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">int</span> <span class="n">gain</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">gain_boost</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">hardware_gamma</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">hdr</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">int</span> <span class="n">pixel_clock</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">projector</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">int</span> <span class="n">target_brightness</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">trigger_mode</span> <span class="o">=</span> <span class="s">&quot;Software&quot;</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">bool</span> <span class="n">use_disparity_map_area_of_interest</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Capture a single point cloud and store it</span>
+<span class="cm">       * @param[out] cloud The cloud to be filled</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning A device must be opened and not running */</span>
+      <span class="kt">bool</span>
+      <span class="nf">grabSingleCloud</span> <span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">cloud</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Set up the Ensenso sensor and API to do 3D extrinsic calibration using the Ensenso 2D patterns</span>
+<span class="cm">       * @param[in] grid_spacing</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       *</span>
+<span class="cm">       * Configures the capture parameters to default values (eg: @c projector = @c false and @c front_light = @c true)</span>
+<span class="cm">       * Discards all previous patterns, configures @c grid_spacing</span>
+<span class="cm">       * @warning A device must be opened and must not be running.</span>
+<span class="cm">       * @note See the [Ensenso manual](http://www.ensenso.de/manual/index.html?calibratehandeyeparameters.htm) for more</span>
+<span class="cm">       * information about the extrinsic calibration process.</span>
+<span class="cm">       * @note [GridSize](http://www.ensenso.de/manual/index.html?gridsize.htm) item is protected in the NxTree, you can&#39;t modify it.</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">initExtrinsicCalibration</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">grid_spacing</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Clear calibration patterns buffer */</span>
+      <span class="kt">bool</span>
+      <span class="nf">clearCalibrationPatternBuffer</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Captures a calibration pattern</span>
+<span class="cm">       * @return the number of calibration patterns stored in the nxTree, -1 on error</span>
+<span class="cm">       * @warning A device must be opened and must not be running.</span>
+<span class="cm">       * @note You should use @ref initExtrinsicCalibration before */</span>
+      <span class="kt">int</span>
+      <span class="nf">captureCalibrationPattern</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Estimate the calibration pattern pose</span>
+<span class="cm">       * @param[out] pattern_pose the calibration pattern pose</span>
+<span class="cm">       * @return true if successful, false otherwise</span>
+<span class="cm">       * @warning A device must be opened and must not be running.</span>
+<span class="cm">       * @note At least one calibration pattern must have been captured before, use @ref captureCalibrationPattern before */</span>
+      <span class="kt">bool</span>
+      <span class="nf">estimateCalibrationPatternPose</span> <span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span> <span class="o">&amp;</span><span class="n">pattern_pose</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Computes the calibration matrix using the collected patterns and the robot poses vector</span>
+<span class="cm">       * @param[in] robot_poses A list of robot poses, 1 for each pattern acquired (in the same order)</span>
+<span class="cm">       * @param[out] json The extrinsic calibration data in JSON format</span>
+<span class="cm">       * @param[in] setup Moving or Fixed, please refer to the Ensenso documentation</span>
+<span class="cm">       * @param[in] target Please refer to the Ensenso documentation</span>
+<span class="cm">       * @param[in] guess_tf Guess transformation for the calibration matrix (translation in meters)</span>
+<span class="cm">       * @param[in] pretty_format JSON formatting style</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning This can take up to 120 seconds</span>
+<span class="cm">       * @note Check the result with @ref getResultAsJson.</span>
+<span class="cm">       * If you want to permanently store the result, use @ref storeEEPROMExtrinsicCalibration. */</span>
+      <span class="kt">bool</span>
+      <span class="nf">computeCalibrationMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">robot_poses</span><span class="p">,</span>
+                                <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">json</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">setup</span> <span class="o">=</span> <span class="s">&quot;Moving&quot;</span><span class="p">,</span>  <span class="c1">// Default values: Moving or Fixed</span>
+                                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">target</span> <span class="o">=</span> <span class="s">&quot;Hand&quot;</span><span class="p">,</span>  <span class="c1">// Default values: Hand or Workspace</span>
+                                <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span> <span class="o">&amp;</span><span class="n">guess_tf</span> <span class="o">=</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span><span class="o">::</span><span class="n">Identity</span> <span class="p">(),</span>
+                                <span class="k">const</span> <span class="kt">bool</span> <span class="n">pretty_format</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Copy the link defined in the Link node of the nxTree to the EEPROM</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * Refer to @ref setExtrinsicCalibration for more information about how the EEPROM works.\n</span>
+<span class="cm">       * After calling @ref computeCalibrationMatrix, this enables to permanently store the matrix.</span>
+<span class="cm">       * @note The target must be specified (@ref computeCalibrationMatrix specifies the target) */</span>
+      <span class="kt">bool</span>
+      <span class="nf">storeEEPROMExtrinsicCalibration</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Clear the extrinsic calibration stored in the EEPROM by writing an identity matrix</span>
+<span class="cm">       * @return True if successful, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">clearEEPROMExtrinsicCalibration</span> <span class="p">();</span>
+
+      <span class="cm">/** @brief Update Link node in NxLib tree</span>
+<span class="cm">       * @param[in] target &quot;Hand&quot; or &quot;Workspace&quot; for example</span>
+<span class="cm">       * @param[in] euler_angle</span>
+<span class="cm">       * @param[in] rotation_axis</span>
+<span class="cm">       * @param[in] translation Translation in meters</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning Translation are in meters, rotation angles in radians! (stored in mm/radians in Ensenso tree)</span>
+<span class="cm">       * @note If a calibration has been stored in the EEPROM, it is copied in the Link node at nxLib tree start.</span>
+<span class="cm">       * This method overwrites the Link node but does not write to the EEPROM.</span>
+<span class="cm">       *</span>
+<span class="cm">       * More information on the parameters can be found in [Link node](http://www.ensenso.de/manual/index.html?cameralink.htm)</span>
+<span class="cm">       * section of the Ensenso manual.</span>
+<span class="cm">       *</span>
+<span class="cm">       * The point cloud you get from the Ensenso is already transformed using this calibration matrix.</span>
+<span class="cm">       * Make sure it is the identity transformation if you want the original point cloud! (use @ref clearEEPROMExtrinsicCalibration)</span>
+<span class="cm">       * Use @ref storeEEPROMExtrinsicCalibration to permanently store this transformation */</span>
+      <span class="kt">bool</span>
+      <span class="nf">setExtrinsicCalibration</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">euler_angle</span><span class="p">,</span>
+                               <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">rotation_axis</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">translation</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">target</span> <span class="o">=</span> <span class="s">&quot;Hand&quot;</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Update Link node in NxLib tree with an identity matrix</span>
+<span class="cm">       * @param[in] target &quot;Hand&quot; or &quot;Workspace&quot; for example</span>
+<span class="cm">       * @return True if successful, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">setExtrinsicCalibration</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">target</span> <span class="o">=</span> <span class="s">&quot;Hand&quot;</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Update Link node in NxLib tree</span>
+<span class="cm">       * @param[in] transformation Transformation matrix</span>
+<span class="cm">       * @param[in] target &quot;Hand&quot; or &quot;Workspace&quot; for example</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning Translation are in meters, rotation angles in radians! (stored in mm/radians in Ensenso tree)</span>
+<span class="cm">       * @note If a calibration has been stored in the EEPROM, it is copied in the Link node at nxLib tree start.</span>
+<span class="cm">       * This method overwrites the Link node but does not write to the EEPROM.</span>
+<span class="cm">       *</span>
+<span class="cm">       * More information on the parameters can be found in [Link node](http://www.ensenso.de/manual/index.html?cameralink.htm)</span>
+<span class="cm">       * section of the Ensenso manual.</span>
+<span class="cm">       *</span>
+<span class="cm">       * The point cloud you get from the Ensenso is already transformed using this calibration matrix.</span>
+<span class="cm">       * Make sure it is the identity transformation if you want the original point cloud! (use @ref clearEEPROMExtrinsicCalibration)</span>
+<span class="cm">       * Use @ref storeEEPROMExtrinsicCalibration to permanently store this transformation */</span>
+      <span class="kt">bool</span>
+      <span class="nf">setExtrinsicCalibration</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span> <span class="o">&amp;</span><span class="n">transformation</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">target</span> <span class="o">=</span> <span class="s">&quot;Hand&quot;</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Obtain the number of frames per second (FPS) */</span>
+      <span class="kt">float</span>
+      <span class="nf">getFramesPerSecond</span> <span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Open TCP port to enable access via the [nxTreeEdit](http://www.ensenso.de/manual/software_components.htm) program.</span>
+<span class="cm">       * @param[in] port The port number</span>
+<span class="cm">       * @return True if successful, false otherwise */</span>
+      <span class="kt">bool</span>
+      <span class="nf">openTcpPort</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="mi">24000</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Close TCP port program</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning If you do not close the TCP port the program might exit with the port still open, if it is the case</span>
+<span class="cm">       * use @code ps -ef @endcode and @code kill PID @endcode to kill the application and effectively close the port. */</span>
+      <span class="kt">bool</span>
+      <span class="nf">closeTcpPort</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Returns the full NxLib tree as a JSON string</span>
+<span class="cm">       * @param[in] pretty_format JSON formatting style</span>
+<span class="cm">       * @return A string containing the NxLib tree in JSON format */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getTreeAsJson</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">pretty_format</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Returns the Result node (of the last command) as a JSON string</span>
+<span class="cm">       * @param[in] pretty_format JSON formatting style</span>
+<span class="cm">       * @return A string containing the Result node in JSON format</span>
+<span class="cm">       */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="n">getResultAsJson</span> <span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">pretty_format</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get the Euler angles corresponding to a JSON string (an angle axis transformation)</span>
+<span class="cm">       * @param[in] json A string containing the angle axis transformation in JSON format</span>
+<span class="cm">       * @param[out] x The X translation</span>
+<span class="cm">       * @param[out] y The Y translation</span>
+<span class="cm">       * @param[out] z The Z translation</span>
+<span class="cm">       * @param[out] w The yaW angle</span>
+<span class="cm">       * @param[out] p The Pitch angle</span>
+<span class="cm">       * @param[out] r The Roll angle</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning The units are meters and radians!</span>
+<span class="cm">       * @note See: [transformation page](http://www.ensenso.de/manual/transformation.htm) in the EnsensoSDK documentation</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">jsonTransformationToEulerAngles</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">json</span><span class="p">,</span>
+                                       <span class="kt">double</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span>
+                                       <span class="kt">double</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">,</span>
+                                       <span class="kt">double</span> <span class="o">&amp;</span><span class="n">z</span><span class="p">,</span>
+                                       <span class="kt">double</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">,</span>
+                                       <span class="kt">double</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span>
+                                       <span class="kt">double</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get the angle axis parameters corresponding to a JSON string</span>
+<span class="cm">       * @param[in] json A string containing the angle axis transformation in JSON format</span>
+<span class="cm">       * @param[out] alpha Euler angle</span>
+<span class="cm">       * @param[out] axis Axis vector</span>
+<span class="cm">       * @param[out] translation Translation vector</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning The units are meters and radians!</span>
+<span class="cm">       * @note See: [transformation page](http://www.ensenso.de/manual/transformation.htm) in the EnsensoSDK documentation</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">jsonTransformationToAngleAxis</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">json</span><span class="p">,</span>
+                                     <span class="kt">double</span> <span class="o">&amp;</span><span class="n">alpha</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">axis</span><span class="p">,</span>
+                                     <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">translation</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+      <span class="cm">/** @brief Get the JSON string corresponding to a 4x4 matrix</span>
+<span class="cm">       * @param[in] transformation The input transformation</span>
+<span class="cm">       * @param[out] matrix A matrix containing JSON transformation</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning The units are meters and radians!</span>
+<span class="cm">       * @note See: [ConvertTransformation page](http://www.ensenso.de/manual/index.html?cmdconverttransformation.htm) in the EnsensoSDK documentation</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">jsonTransformationToMatrix</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">transformation</span><span class="p">,</span>
+                                  <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span> <span class="o">&amp;</span><span class="n">matrix</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+
+      <span class="cm">/** @brief Get the JSON string corresponding to the Euler angles transformation</span>
+<span class="cm">       * @param[in] x The X translation</span>
+<span class="cm">       * @param[in] y The Y translation</span>
+<span class="cm">       * @param[in] z The Z translation</span>
+<span class="cm">       * @param[in] w The yaW angle</span>
+<span class="cm">       * @param[in] p The Pitch angle</span>
+<span class="cm">       * @param[in] r The Roll angle</span>
+<span class="cm">       * @param[out] json A string containing the Euler angles transformation in JSON format</span>
+<span class="cm">       * @param[in] pretty_format JSON formatting style</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning The units are meters and radians!</span>
+<span class="cm">       * @note See: [transformation page](http://www.ensenso.de/manual/transformation.htm) in the EnsensoSDK documentation</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">eulerAnglesTransformationToJson</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">x</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">double</span> <span class="n">z</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">double</span> <span class="n">w</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">double</span> <span class="n">p</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">double</span> <span class="n">r</span><span class="p">,</span>
+                                       <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">json</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="kt">bool</span> <span class="n">pretty_format</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get the JSON string corresponding to an angle axis transformation</span>
+<span class="cm">       * @param[in] x The X angle</span>
+<span class="cm">       * @param[in] y The Y angle</span>
+<span class="cm">       * @param[in] z The Z angle</span>
+<span class="cm">       * @param[in] rx The X component of the Euler axis</span>
+<span class="cm">       * @param[in] ry The Y component of the Euler axis</span>
+<span class="cm">       * @param[in] rz The Z component of the Euler axis</span>
+<span class="cm">       * @param[in] alpha The Euler rotation angle</span>
+<span class="cm">       * @param[out] json A string containing the angle axis transformation in JSON format</span>
+<span class="cm">       * @param[in] pretty_format JSON formatting style</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning The units are meters and radians! (the Euler axis doesn&#39;t need to be normalized)</span>
+<span class="cm">       * @note See: [transformation page](http://www.ensenso.de/manual/transformation.htm) in the EnsensoSDK documentation</span>
+<span class="cm">       */</span>
+      <span class="kt">bool</span>
+      <span class="nf">angleAxisTransformationToJson</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">x</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">double</span> <span class="n">z</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">double</span> <span class="n">rx</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">double</span> <span class="n">ry</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">double</span> <span class="n">rz</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">double</span> <span class="n">alpha</span><span class="p">,</span>
+                                     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">json</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">bool</span> <span class="n">pretty_format</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Get the JSON string corresponding to a 4x4 matrix</span>
+<span class="cm">       * @param[in] matrix The input matrix</span>
+<span class="cm">       * @param[out] json A string containing the matrix transformation in JSON format</span>
+<span class="cm">       * @param[in] pretty_format JSON formatting style</span>
+<span class="cm">       * @return True if successful, false otherwise</span>
+<span class="cm">       * @warning The units are meters and radians!</span>
+<span class="cm">       * @note See: [ConvertTransformation page](http://www.ensenso.de/manual/index.html?cmdconverttransformation.htm)</span>
+<span class="cm">       * in the EnsensoSDK documentation */</span>
+      <span class="kt">bool</span>
+      <span class="nf">matrixTransformationToJson</span> <span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3d</span> <span class="o">&amp;</span><span class="n">matrix</span><span class="p">,</span>
+                                  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">json</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="kt">bool</span> <span class="n">pretty_format</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Reference to the NxLib tree root</span>
+<span class="cm">       * @warning You must handle NxLib exceptions manually when playing with @ref root_ !</span>
+<span class="cm">       * See ensensoExceptionHandling in ensenso_grabber.cpp */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">NxLibItem</span><span class="o">&gt;</span> <span class="n">root_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Reference to the camera tree</span>
+<span class="cm">       *  @warning You must handle NxLib exceptions manually when playing with @ref camera_ ! */</span>
+      <span class="n">NxLibItem</span> <span class="n">camera_</span><span class="p">;</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+      <span class="cm">/** @brief Grabber thread */</span>
+      <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">grabber_thread_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost point cloud signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_ensenso_point_cloud</span><span class="o">&gt;*</span> <span class="n">point_cloud_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost images signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_ensenso_images</span><span class="o">&gt;*</span> <span class="n">images_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Boost images + point cloud signal */</span>
+      <span class="n">boost</span><span class="o">::</span><span class="n">signals2</span><span class="o">::</span><span class="n">signal</span><span class="o">&lt;</span><span class="n">sig_cb_ensenso_point_cloud_images</span><span class="o">&gt;*</span> <span class="n">point_cloud_images_signal_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Whether an Ensenso device is opened or not */</span>
+      <span class="kt">bool</span> <span class="n">device_open_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Whether an TCP port is opened or not */</span>
+      <span class="kt">bool</span> <span class="n">tcp_open_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Whether an Ensenso device is running or not */</span>
+      <span class="kt">bool</span> <span class="n">running_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Point cloud capture/processing frequency */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="n">EventFrequency</span> <span class="n">frequency_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Mutual exclusion for FPS computation */</span>
+      <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">fps_mutex_</span><span class="p">;</span>
+
+      <span class="cm">/** @brief Convert an Ensenso time stamp into a PCL/ROS time stamp</span>
+<span class="cm">       * @param[in] ensenso_stamp</span>
+<span class="cm">       * @return PCL stamp</span>
+<span class="cm">       * The Ensenso API returns the time elapsed from January 1st, 1601 (UTC); on Linux OS the reference time is January 1st, 1970 (UTC).</span>
+<span class="cm">       * See [time-stamp page](http://www.ensenso.de/manual/index.html?json_types.htm) for more info about the time stamp conversion. */</span>
+      <span class="n">pcl</span><span class="o">::</span><span class="kt">uint64_t</span>
+      <span class="k">static</span>
+      <span class="n">getPCLStamp</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ensenso_stamp</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Get OpenCV image type corresponding to the parameters given</span>
+<span class="cm">       * @param channels number of channels in the image</span>
+<span class="cm">       * @param bpe bytes per element</span>
+<span class="cm">       * @param isFlt is float</span>
+<span class="cm">       * @return the OpenCV type as a string */</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span>
+      <span class="k">static</span>
+      <span class="n">getOpenCVType</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">channels</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="kt">int</span> <span class="n">bpe</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="kt">bool</span> <span class="n">isFlt</span><span class="p">);</span>
+
+      <span class="cm">/** @brief Continuously asks for images and or point clouds data from the device and publishes them if available.</span>
+<span class="cm">       * PCL time stamps are filled for both the images and clouds grabbed (see @ref getPCLStamp)</span>
+<span class="cm">       * @note The cloud time stamp is the RAW image time stamp */</span>
+      <span class="kt">void</span>
+      <span class="nf">processGrabbing</span> <span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">}</span>  <span class="c1">// namespace pcl</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_pcl_compression_entropy_range_coder.h.html" class="btn btn-neutral float-right" title="File entropy_range_coder.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_pcl_io_ensenso_grabber.h.html" class="btn btn-neutral float-left" title="File ensenso_grabber.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

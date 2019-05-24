@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Program Listing for File cyclical_buffer.h &mdash; pcl 1.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/modified_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File data_source.hpp" href="file_E__pcl_docs_pcl_gpu_features_test_data_source.hpp.html" />
+    <link rel="prev" title="File cyclical_buffer.h" href="file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> pcl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pcl</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Library API</a> &raquo;</li>
+        
+          <li><a href="file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.html">File cyclical_buffer.h</a> &raquo;</li>
+        
+      <li>Program Listing for File cyclical_buffer.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/program_listing_file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-cyclical-buffer-h">
+<span id="program-listing-file-e-pcl-docs-pcl-gpu-kinfu-large-scale-include-pcl-gpu-kinfu-large-scale-cyclical-buffer-h"></span><h1>Program Listing for File cyclical_buffer.h<a class="headerlink" href="#program-listing-for-file-cyclical-buffer-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.html#file-e-pcl-docs-pcl-gpu-kinfu-large-scale-include-pcl-gpu-kinfu-large-scale-cyclical-buffer-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">E:\pcl_docs\pcl\gpu\kinfu_large_scale\include\pcl\gpu\kinfu_large_scale\cyclical_buffer.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Software License Agreement (BSD License)</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Point Cloud Library (PCL) - www.pointclouds.org</span>
+<span class="cm"> *  Copyright (c) 2010-2011, Willow Garage, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> *  modification, are permitted provided that the following conditions</span>
+<span class="cm"> *  are met:</span>
+<span class="cm"> *</span>
+<span class="cm"> *   * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *     notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *   * Redistributions in binary form must reproduce the above</span>
+<span class="cm"> *     copyright notice, this list of conditions and the following</span>
+<span class="cm"> *     disclaimer in the documentation and/or other materials provided</span>
+<span class="cm"> *     with the distribution.</span>
+<span class="cm"> *   * Neither the name of Willow Garage, Inc. nor the names of its</span>
+<span class="cm"> *     contributors may be used to endorse or promote products derived</span>
+<span class="cm"> *     from this software without specific prior written permission.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span class="cm"> *  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span class="cm"> *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span class="cm"> *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span class="cm"> *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span class="cm"> *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span class="cm"> *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="cm"> *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span class="cm"> *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span class="cm"> *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span class="cm"> *  POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/point_types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu_large_scale/tsdf_volume.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu_large_scale/tsdf_buffer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;Eigen/Core&gt;</span><span class="cp"></span>
+<span class="c1">//#include &lt;boost/graph/buffer_concepts.hpp&gt;</span>
+<span class="cp">#include</span> <span class="cpf">&lt;cuda_runtime.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu_large_scale/point_intensity.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/gpu/kinfu_large_scale/world_model.h&gt;</span><span class="cp"></span>
+
+
+<span class="cp">#include</span> <span class="cpf">&lt;pcl/io/pcd_io.h&gt;</span><span class="cp"></span>
+<span class="k">namespace</span> <span class="n">pcl</span>
+<span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">gpu</span>
+  <span class="p">{</span>
+    <span class="k">namespace</span> <span class="n">kinfuLS</span>
+    <span class="p">{</span>
+
+      <span class="cm">/** \brief CyclicalBuffer implements a cyclical TSDF buffer.</span>
+<span class="cm">        *  The class offers a simple interface, by handling shifts and maintaining the world autonomously.</span>
+<span class="cm">        * \author Raphael Favier, Francisco Heredia</span>
+<span class="cm">        */</span>
+      <span class="k">class</span> <span class="nc">PCL_EXPORTS</span> <span class="n">CyclicalBuffer</span>
+      <span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+
+
+          <span class="cm">/** \brief Constructor for a cubic CyclicalBuffer.</span>
+<span class="cm">            * \param[in] distance_threshold distance between cube center and target point at which we decide to shift.</span>
+<span class="cm">            * \param[in] cube_size physical size (in meters) of the volume (here, a cube) represented by the TSDF buffer.</span>
+<span class="cm">            * \param[in] nb_voxels_per_axis number of voxels per axis of the volume represented by the TSDF buffer.</span>
+<span class="cm">            */</span>
+          <span class="n">CyclicalBuffer</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">distance_threshold</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">cube_size</span> <span class="o">=</span> <span class="mf">3.f</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">nb_voxels_per_axis</span> <span class="o">=</span> <span class="mi">512</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">distance_threshold_</span> <span class="o">=</span> <span class="n">distance_threshold</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cube_size</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">cube_size</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">cube_size</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">nb_voxels_per_axis</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">nb_voxels_per_axis</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">nb_voxels_per_axis</span><span class="p">;</span>
+          <span class="p">}</span>
+
+
+          <span class="cm">/** \brief Constructor for a non-cubic CyclicalBuffer.</span>
+<span class="cm">            * \param[in] distance_threshold distance between cube center and target point at which we decide to shift.</span>
+<span class="cm">            * \param[in] volume_size_x physical size (in meters) of the volume, X axis.</span>
+<span class="cm">            * \param[in] volume_size_y physical size (in meters) of the volume, Y axis.</span>
+<span class="cm">            * \param[in] volume_size_z physical size (in meters) of the volume, Z axis.</span>
+<span class="cm">            * \param[in] nb_voxels_x number of voxels for X axis of the volume represented by the TSDF buffer.</span>
+<span class="cm">            * \param[in] nb_voxels_y number of voxels for Y axis of the volume represented by the TSDF buffer.</span>
+<span class="cm">            * \param[in] nb_voxels_z number of voxels for Z axis of the volume represented by the TSDF buffer.</span>
+<span class="cm">            */</span>
+          <span class="n">CyclicalBuffer</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">distance_threshold</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">volume_size_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">volume_size_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">volume_size_z</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">nb_voxels_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">nb_voxels_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">nb_voxels_z</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">distance_threshold_</span> <span class="o">=</span> <span class="n">distance_threshold</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">volume_size_x</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">volume_size_y</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">volume_size_z</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">nb_voxels_x</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">nb_voxels_y</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">nb_voxels_z</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Check if shifting needs to be performed, returns true if so.</span>
+<span class="cm">              Shifting is considered needed if the target point is farther than distance_threshold_.</span>
+<span class="cm">              The target point is located at distance_camera_point on the local Z axis of the camera.</span>
+<span class="cm">            * \param[in] volume pointer to the TSDFVolume living in GPU</span>
+<span class="cm">            * \param[in] cam_pose global pose of the camera in the world</span>
+<span class="cm">            * \param[in] distance_camera_target distance from the camera&#39;s origin to the target point</span>
+<span class="cm">            * \param[in] perform_shift if set to false, shifting is not performed. The function will return true if shifting is needed.</span>
+<span class="cm">            * \param[in] last_shift if set to true, the whole cube will be shifted. This is used to push the whole cube to the world model.</span>
+<span class="cm">            * \param[in] force_shift if set to true, shifting is forced.</span>
+<span class="cm">            * \return true is the cube needs to be or has been shifted.</span>
+<span class="cm">            */</span>
+          <span class="kt">bool</span> <span class="n">checkForShift</span> <span class="p">(</span><span class="k">const</span> <span class="n">TsdfVolume</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Affine3f</span> <span class="o">&amp;</span><span class="n">cam_pose</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">distance_camera_target</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">perform_shift</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">last_shift</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">force_shift</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Perform shifting operations:</span>
+<span class="cm">              Compute offsets.</span>
+<span class="cm">              Extract current slice from TSDF buffer.</span>
+<span class="cm">              Extract existing data from world.</span>
+<span class="cm">              Clear shifted slice in TSDF buffer.</span>
+<span class="cm">              Push existing data into TSDF buffer.</span>
+<span class="cm">              Update rolling buffer</span>
+<span class="cm">              Update world model.</span>
+<span class="cm">            * \param[in] volume pointer to the TSDFVolume living in GPU</span>
+<span class="cm">            * \param[in] target_point target point around which the new cube will be centered</span>
+<span class="cm">            * \param[in] last_shift if set to true, the whole cube will be shifted. This is used to push the whole cube to the world model.</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span> <span class="nf">performShift</span> <span class="p">(</span><span class="k">const</span> <span class="n">TsdfVolume</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">volume</span><span class="p">,</span> <span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span> <span class="o">&amp;</span><span class="n">target_point</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">last_shift</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Sets the distance threshold between cube&#39;s center and target point that triggers a shift.</span>
+<span class="cm">            * \param[in] threshold the distance in meters at which to trigger shift.</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span> <span class="nf">setDistanceThreshold</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">distance_threshold_</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">;</span>
+            <span class="c1">// PCL_INFO (&quot;Shifting threshold set to %f meters.\n&quot;, distance_threshold_);</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Returns the distance threshold between cube&#39;s center and target point that triggers a shift. */</span>
+          <span class="kt">float</span> <span class="nf">getDistanceThreshold</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">distance_threshold_</span><span class="p">);</span> <span class="p">}</span>
+
+          <span class="cm">/** \brief get a pointer to the tsdf_buffer structure.</span>
+<span class="cm">            * \return a pointer to the tsdf_buffer used by cyclical buffer object.</span>
+<span class="cm">            */</span>
+          <span class="n">tsdf_buffer</span><span class="o">*</span> <span class="nf">getBuffer</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">buffer_</span><span class="p">);</span> <span class="p">}</span>
+
+          <span class="cm">/** \brief Set the physical size represented by the default TSDF volume.</span>
+<span class="cm">          * \param[in] size_x size of the volume on X axis, in meters.</span>
+<span class="cm">          * \param[in] size_y size of the volume on Y axis, in meters.</span>
+<span class="cm">          * \param[in] size_z size of the volume on Z axis, in meters.</span>
+<span class="cm">          */</span>
+          <span class="kt">void</span> <span class="nf">setVolumeSize</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">size_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">size_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">size_z</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">size_x</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">size_y</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">size_z</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Set the physical size represented by the default TSDF volume.</span>
+<span class="cm">          * \param[in] size size of the volume on all axis, in meters.</span>
+<span class="cm">          */</span>
+          <span class="kt">void</span> <span class="nf">setVolumeSize</span> <span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">size</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">volume_size</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Computes and set the origin of the new cube (relative to the world), centered around a the target point.</span>
+<span class="cm">            * \param[in] target_point the target point around which the new cube will be centered.</span>
+<span class="cm">            * \param[out] shiftX shift on X axis (in indices).</span>
+<span class="cm">            * \param[out] shiftY shift on Y axis (in indices).</span>
+<span class="cm">            * \param[out] shiftZ shift on Z axis (in indices).</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span> <span class="nf">computeAndSetNewCubeMetricOrigin</span> <span class="p">(</span><span class="k">const</span> <span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZ</span> <span class="o">&amp;</span><span class="n">target_point</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">shiftX</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">shiftY</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">shiftZ</span><span class="p">);</span>
+
+          <span class="cm">/** \brief Initializes memory pointers of the  cyclical buffer (start, end, current origin)</span>
+<span class="cm">            * \param[in] tsdf_volume pointer to the TSDF volume managed by this cyclical buffer</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span> <span class="nf">initBuffer</span> <span class="p">(</span><span class="n">TsdfVolume</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">tsdf_volume</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">localVolume</span> <span class="o">=</span> <span class="n">tsdf_volume</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
+
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_memory_start</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">localVolume</span><span class="p">.</span><span class="n">ptr</span> <span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_memory_end</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">localVolume</span><span class="p">.</span><span class="n">ptr</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)[</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_rolling_buff_origin</span> <span class="o">=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_memory_start</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Reset buffer structure</span>
+<span class="cm">            * \param[in] tsdf_volume pointer to the TSDF volume managed by this cyclical buffer</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span> <span class="nf">resetBuffer</span> <span class="p">(</span><span class="n">TsdfVolume</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">tsdf_volume</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID_global</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID_global</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID_global</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_metric</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_metric</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_metric</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.f</span><span class="p">;</span>
+            <span class="n">initBuffer</span> <span class="p">(</span><span class="n">tsdf_volume</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="cm">/** \brief Return a pointer to the world model</span>
+<span class="cm">            */</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;*</span>
+          <span class="n">getWorldModel</span> <span class="p">()</span>
+          <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">world_model_</span><span class="p">);</span>
+          <span class="p">}</span>
+
+
+        <span class="k">private</span><span class="o">:</span>
+
+          <span class="cm">/** \brief buffer used to extract XYZ values from GPU */</span>
+          <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="n">PointXYZ</span><span class="o">&gt;</span> <span class="n">cloud_buffer_device_xyz_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief buffer used to extract Intensity values from GPU */</span>
+          <span class="n">DeviceArray</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">cloud_buffer_device_intensities_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief distance threshold (cube&#39;s center to target point) to trigger shift */</span>
+          <span class="kt">double</span> <span class="n">distance_threshold_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief world model object that maintains the known world */</span>
+          <span class="n">pcl</span><span class="o">::</span><span class="n">kinfuLS</span><span class="o">::</span><span class="n">WorldModel</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;</span> <span class="n">world_model_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief structure that contains all TSDF buffer&#39;s addresses */</span>
+          <span class="n">tsdf_buffer</span> <span class="n">buffer_</span><span class="p">;</span>
+
+          <span class="cm">/** \brief updates cyclical buffer origins given offsets on X, Y and Z</span>
+<span class="cm">            * \param[in] tsdf_volume pointer to the TSDF volume managed by this cyclical buffer</span>
+<span class="cm">            * \param[in] offset_x offset in indices on axis X</span>
+<span class="cm">            * \param[in] offset_y offset in indices on axis Y</span>
+<span class="cm">            * \param[in] offset_z offset in indices on axis Z</span>
+<span class="cm">            */</span>
+          <span class="kt">void</span> <span class="nf">shiftOrigin</span> <span class="p">(</span><span class="n">TsdfVolume</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">tsdf_volume</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offset_x</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offset_y</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">offset_z</span><span class="p">)</span>
+          <span class="p">{</span>
+            <span class="c1">// shift rolling origin (making sure they keep in [0 - NbVoxels[ )</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">offset_x</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+              <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span> <span class="o">-=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+              <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">offset_y</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+              <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span> <span class="o">-=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+              <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">offset_z</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span> <span class="o">&gt;=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+              <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span> <span class="o">-=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+              <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+            <span class="c1">// update memory pointers</span>
+            <span class="n">PtrStep</span><span class="o">&lt;</span><span class="n">short2</span><span class="o">&gt;</span> <span class="n">localVolume</span> <span class="o">=</span> <span class="n">tsdf_volume</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_memory_start</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">localVolume</span><span class="p">.</span><span class="n">ptr</span> <span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_memory_end</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">localVolume</span><span class="p">.</span><span class="n">ptr</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">z</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)[</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">tsdf_rolling_buff_origin</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">localVolume</span><span class="p">.</span><span class="n">ptr</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">voxels_size</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">)[</span><span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID</span><span class="p">.</span><span class="n">x</span><span class="p">]);</span>
+
+            <span class="c1">// update global origin</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID_global</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">offset_x</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID_global</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">offset_y</span><span class="p">;</span>
+            <span class="n">buffer_</span><span class="p">.</span><span class="n">origin_GRID_global</span><span class="p">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">offset_z</span><span class="p">;</span>
+          <span class="p">}</span>
+
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="file_E__pcl_docs_pcl_gpu_features_test_data_source.hpp.html" class="btn btn-neutral float-right" title="File data_source.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_E__pcl_docs_pcl_gpu_kinfu_large_scale_include_pcl_gpu_kinfu_large_scale_cyclical_buffer.h.html" class="btn btn-neutral float-left" title="File cyclical_buffer.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, open perception foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
