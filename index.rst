@@ -22,7 +22,7 @@ Welcome to pcl's documentation!
    :maxdepth: 2
    :caption: API documentation:
 
-
+   api/index
 
 Indices and tables
 ==================

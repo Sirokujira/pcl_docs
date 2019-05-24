@@ -125,8 +125,8 @@ def generate_doxygen_xml(app):
         # retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
         # run_doxygen(".")
         # generate documents(not generate API documents)
-        print("--- read the docs build(without API document) ---")
-        retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
+        # print("--- read the docs build(without API document) ---")
+        # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
         # build local pc.(git contains _build/html folder)
         print("--- read the docs build(using _build folder files.) ---")
         pass
