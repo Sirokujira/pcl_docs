@@ -204,9 +204,9 @@ highlight_language = 'cpp'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
 # generate API documentation(api rst generate local build)
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files before upload.
-# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
