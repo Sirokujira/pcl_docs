@@ -87,17 +87,17 @@ def run_doxygen(folder):
 
             # make doc
             # logging on
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             # logging off
-            # retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # generate xml files in doxyfile
             # logging on
-            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
             # logging off
-            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
+            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
 
         # generate xml files in doxyfile
         # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
