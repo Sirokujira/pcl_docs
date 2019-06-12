@@ -111,22 +111,22 @@ def generate_doxygen_xml(app):
         # # remove read the docs cache data
         # retcode = subprocess.call("rm -rf pcl", shell=True)
         # # set conda module paths
-        # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
-        # os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
-        # os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
-        # os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
-        # os.environ["FLANN_ROOT"] = rootpath
-        # os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
-        # os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
-        # os.environ["BOOST_ROOT"] = rootpath
-        # os.environ["QHULL_ROOT"] = rootpath
-        # os.environ["VTK_DIR"] = rootpath
-        # os.environ["GLEW_ROOT"] = rootpath
-        # retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
-        # run_doxygen(".")
-        # generate documents(not generate API documents)
-        print("--- read the docs build(without API document) ---")
-        retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
+        rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
+        os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+        os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+        os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
+        os.environ["FLANN_ROOT"] = rootpath
+        os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
+        os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
+        os.environ["BOOST_ROOT"] = rootpath
+        os.environ["QHULL_ROOT"] = rootpath
+        os.environ["VTK_DIR"] = rootpath
+        os.environ["GLEW_ROOT"] = rootpath
+        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
+        run_doxygen(".")
+        # generate documents(without APIs document)
+        # print("--- read the docs build(without API document) ---")
+        # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
         # build local pc.(git contains _build/html folder)
         # print("--- read the docs build(using _build folder files.) ---")
         pass

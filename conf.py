@@ -107,9 +107,9 @@ def generate_doxygen_xml(app):
     if read_the_docs_build:
         # generate documents(contains API documents)
         print("--- read the docs build ---")
-        # build read the docs hosting server.(timeout error)
+        # build read the docs hosting server.(Free Hosting 15min timeout error)
         # remove read the docs cache data
-        retcode = subprocess.call("rm -rf pcl", shell=True)
+        # retcode = subprocess.call("rm -rf pcl", shell=True)
         # set conda module paths
         rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
@@ -124,7 +124,7 @@ def generate_doxygen_xml(app):
         os.environ["GLEW_ROOT"] = rootpath
         retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
         run_doxygen(".")
-        # generate documents(not generate API documents)
+        # generate documents(without APIs documents)
         # print("--- read the docs build(without API document) ---")
         # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
         # # build local pc.(git contains _build/html folder)
@@ -186,11 +186,11 @@ highlight_language = 'cpp'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
 # generate API documentation(api rst generate local build)
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files before upload.
-# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
