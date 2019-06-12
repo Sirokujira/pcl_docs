@@ -78,17 +78,26 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # doc generate makefile in build folder
+            # logging on
             # retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # logging off
             retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # logging on
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # logging off
+            # retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
-            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
+            # generate xml files in doxyfile
+            # logging on
+            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+            # logging off
+            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
 
         # generate xml files in doxyfile
         # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
