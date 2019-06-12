@@ -111,7 +111,14 @@ def generate_doxygen_xml(app):
         # remove read the docs cache data
         # retcode = subprocess.call("rm -rf pcl", shell=True)
         # set conda module paths
-        rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
+        # using read the docs environments parameter
+        # https://docs.readthedocs.io/en/stable/builds.html?highlight=READTHEDOCS#build-environment
+        # read_the_docs_project_name = os.environ.get('READTHEDOCS_PROJECT', None)
+        # read_the_docs_version_name = os.environ.get('READTHEDOCS_VERSION', None)
+        # free hosting path
+        # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
+        # advance hosting path(organization : doctest)
+        rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/doctest-pcl-docs/conda/latest/'
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
@@ -122,7 +129,7 @@ def generate_doxygen_xml(app):
         os.environ["QHULL_ROOT"] = rootpath
         os.environ["VTK_DIR"] = rootpath
         os.environ["GLEW_ROOT"] = rootpath
-        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
+        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:" + rootpath + "/pcl/cmake/Modules", shell=True)
         run_doxygen(".")
         # generate documents(without APIs documents)
         # print("--- read the docs build(without API document) ---")
