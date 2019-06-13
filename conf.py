@@ -127,7 +127,8 @@ def generate_doxygen_xml(app):
         # free hosting path
         # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
         # advance hosting path(organization : doctest)
-        rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/doctest-pcl-docs/conda/latest/'
+        # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/doctest-pcl-docs/conda/latest/'
+        rootpath = os.path.join(os.getcwd(), 'conda/latest/')])
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
@@ -204,9 +205,9 @@ highlight_language = 'cpp'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
 # generate API documentation(api rst generate local build)
-# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files before upload.
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
