@@ -128,7 +128,7 @@ def generate_doxygen_xml(app):
         # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
         # advance hosting path(organization : doctest)
         # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/doctest-pcl-docs/conda/latest/'
-        rootpath = os.path.join(os.getcwd(), 'conda/latest/')])
+        rootpath = os.path.join(os.getcwd(), 'conda/latest/')
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
