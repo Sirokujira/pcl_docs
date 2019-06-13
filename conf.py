@@ -144,8 +144,6 @@ def generate_doxygen_xml(app):
         # generate documents(without APIs documents)
         # print("--- read the docs build(without API document) ---")
         # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
-        # # build local pc.(git contains _build/html folder)
-        # # print("--- read the docs build(using _build folder files.) ---")
         pass
 
 # Running on Read the Docs
@@ -205,9 +203,9 @@ highlight_language = 'cpp'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
 # generate API documentation(api rst generate local build)
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files before upload.
-# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 

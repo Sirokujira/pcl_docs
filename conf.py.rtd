@@ -78,16 +78,25 @@ def run_doxygen(folder):
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # doc generate makefile in build folder
+            # logging on
             # retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # logging off
             retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
+            # logging on
+            # retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            # logging off
             retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
+            # generate xml files in doxyfile
+            # logging on
+            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+            # logging off
             retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
 
         # generate xml files in doxyfile
@@ -127,8 +136,6 @@ def generate_doxygen_xml(app):
         # generate documents(not generate API documents)
         print("--- read the docs build(without API document) ---")
         retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
-        # build local pc.(git contains _build/html folder)
-        # print("--- read the docs build(using _build folder files.) ---")
         pass
 
 # Running on Read the Docs

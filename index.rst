@@ -18,6 +18,12 @@ Welcome to pcl's documentation!
 
    pcl/doc/advanced/content/index
 
+.. toctree::
+   :maxdepth: 2
+   :caption: API documentation:
+
+   api/index
+
 Indices and tables
 ==================
 
