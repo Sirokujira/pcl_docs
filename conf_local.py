@@ -115,12 +115,21 @@ def generate_doxygen_xml(app):
 
     if read_the_docs_build:
         # generate documents(contains API documents)
-        # print("--- read the docs build ---")
-        # # build read the docs hosting server.(timeout error)
-        # # remove read the docs cache data
+        print("--- read the docs build ---")
+        # build read the docs hosting server.(Free Hosting 15min timeout error)
+        # remove read the docs cache data
         # retcode = subprocess.call("rm -rf pcl", shell=True)
-        # # set conda module paths
-        rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
+        # set conda module paths
+        # using read the docs environments parameter
+        # https://docs.readthedocs.io/en/stable/builds.html?highlight=READTHEDOCS#build-environment
+        # read_the_docs_project_name = os.environ.get('READTHEDOCS_PROJECT', None)
+        read_the_docs_version_name = os.environ.get('READTHEDOCS_VERSION', 'latest')
+        # free hosting path
+        # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
+        # advance hosting path(organization : doctest)
+        # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/doctest-pcl-docs/conda/latest/'
+        # rootpath = os.path.join(os.getcwd(), 'conda/latest/')
+        rootpath = os.path.join(os.getcwd(), 'conda', read_the_docs_version_name)
         os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
         os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
@@ -131,13 +140,11 @@ def generate_doxygen_xml(app):
         os.environ["QHULL_ROOT"] = rootpath
         os.environ["VTK_DIR"] = rootpath
         os.environ["GLEW_ROOT"] = rootpath
-        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/checkouts/latest/pcl/cmake/Modules", shell=True)
+        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:" + rootpath + "/pcl/cmake/Modules", shell=True)
         run_doxygen(".")
         # generate documents(without APIs documents)
         # print("--- read the docs build(without API document) ---")
         # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
-        # build local pc.(git contains _build/html folder)
-        # print("--- read the docs build(using _build folder files.) ---")
         pass
 
 # Running on Read the Docs
@@ -198,8 +205,10 @@ highlight_language = 'cpp'
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo']
 # generate API documentation(api rst generate local build)
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
-# generate API rst files before upload.
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
+# generate API rst files.(local build only)
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
+# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe', 'exhale']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
