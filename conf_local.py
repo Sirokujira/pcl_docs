@@ -111,7 +111,7 @@ def run_doxygen(folder):
 def generate_doxygen_xml(app):
     """Run the doxygen make commands if we're on the ReadTheDocs server"""
 
-    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+    read_the_docs_build = os.environ.get('READTHEDOCS', 'True') == 'True'
 
     if read_the_docs_build:
         # generate documents(contains API documents)
@@ -207,10 +207,9 @@ highlight_language = 'cpp'
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files.(local build only)
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
-# extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe', 'exhale']
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe', 'exhale']
 
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+on_rtd = os.environ.get('READTHEDOCS', 'True') == 'True'
 
 # Only add spelling extension if it is available. We don't know if it is installed as we don't want
 # to put it in the setup.py file as a dependency as we don't want Breathe to be dependent on it as
