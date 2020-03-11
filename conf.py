@@ -22,8 +22,6 @@ import cmake
 import platform
 from subprocess import call
 
-import sphinx.apidoc
-
 def run_doxygen(folder):
     """Run the doxygen make command in the designated folder"""
 
@@ -113,7 +111,7 @@ def run_doxygen(folder):
 def generate_doxygen_xml(app):
     """Run the doxygen make commands if we're on the ReadTheDocs server"""
 
-    read_the_docs_build = os.environ.get('READTHEDOCS', 'True') == 'True'
+    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
     if read_the_docs_build:
         # generate documents(contains API documents)
