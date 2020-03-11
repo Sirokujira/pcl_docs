@@ -224,7 +224,7 @@ highlight_language = 'cpp'
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files.(local build only)
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinxcontrib.apidoc', 'sphinx_search.extension', 'breathe', 'exhale']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe', 'exhale']
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
