@@ -156,7 +156,24 @@ def setup(app):
 
 
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
-if not read_the_docs_build:
+if read_the_docs_build:
+    print("--- read the docs build ---")
+    read_the_docs_version_name = os.environ.get('READTHEDOCS_VERSION', 'latest')
+    rootpath = os.path.join(os.getcwd(), 'conda', read_the_docs_version_name)
+    os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+    os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+    os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
+    os.environ["FLANN_ROOT"] = rootpath
+    os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
+    os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
+    os.environ["BOOST_ROOT"] = rootpath
+    os.environ["QHULL_ROOT"] = rootpath
+    os.environ["VTK_DIR"] = rootpath
+    os.environ["GLEW_ROOT"] = rootpath
+    retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:" + rootpath + "/pcl/cmake/Modules", shell=True)
+    run_doxygen(".")
+    pass
+else:
     print("--- not read the docs ---")
     run_doxygen(".")
 
@@ -207,9 +224,9 @@ highlight_language = 'cpp'
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe']
 # generate API rst files.(local build only)
 # extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'breathe', 'exhale']
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinx_search.extension', 'breathe', 'exhale']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.todo', 'sphinxcontrib.apidoc', 'sphinx_search.extension', 'breathe', 'exhale']
 
-on_rtd = os.environ.get('READTHEDOCS', 'True') == 'True'
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 # Only add spelling extension if it is available. We don't know if it is installed as we don't want
 # to put it in the setup.py file as a dependency as we don't want Breathe to be dependent on it as
