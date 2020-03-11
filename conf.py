@@ -22,6 +22,8 @@ import cmake
 import platform
 from subprocess import call
 
+import sphinx.apidoc
+
 def run_doxygen(folder):
     """Run the doxygen make command in the designated folder"""
 
