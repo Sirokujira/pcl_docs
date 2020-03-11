@@ -115,7 +115,7 @@ def generate_doxygen_xml(app):
 
     if read_the_docs_build:
         # generate documents(contains API documents)
-        print("--- read the docs build ---")
+        print("--- read the docs build(setup) ---")
         # build read the docs hosting server.(Free Hosting 15min timeout error)
         # remove read the docs cache data
         # retcode = subprocess.call("rm -rf pcl", shell=True)
