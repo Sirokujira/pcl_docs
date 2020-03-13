@@ -164,8 +164,10 @@ read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 if read_the_docs_build:
     print("--- read the docs build ---")
     read_the_docs_version_name = os.environ.get('READTHEDOCS_VERSION', 'latest')
-    rootpath = os.path.join(os.getcwd(), 'conda', read_the_docs_version_name)
+    rootpath = os.path.join(os.getcwd(), '../conda', read_the_docs_version_name)
     #rootpath = os.environ.get('CONDA_PREFIX')
+    for k, v in os.environ.items():
+        print("{key} : {value}".format(key=k, value=v))
     print("roopath: " + rootpath)
     os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
     os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
