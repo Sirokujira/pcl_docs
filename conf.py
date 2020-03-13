@@ -185,6 +185,7 @@ if read_the_docs_build:
     pass
 else:
     print("--- not read the docs ---")
+    rootpath = ""
     if platform.system() == "Windows":
         rootpath = os.environ.get('LIBRARY_PREFIX')
     else:
