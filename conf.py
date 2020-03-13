@@ -185,6 +185,23 @@ if read_the_docs_build:
     pass
 else:
     print("--- not read the docs ---")
+    if platform.system() == "Windows":
+        rootpath = os.environ.get('LIBRARY_PREFIX')
+    else:
+        # Linux
+        rootpath = os.environ.get('CONDA_PREFIX')
+    print("roopath: " + rootpath)
+    os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+    os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+    os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
+    os.environ["FLANN_ROOT"] = rootpath
+    os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
+    os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
+    os.environ["BOOST_ROOT"] = rootpath
+    os.environ["QHULL_ROOT"] = rootpath
+    os.environ["VTK_DIR"] = rootpath
+    os.environ["GLEW_ROOT"] = rootpath
+    retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:" + rootpath + "/pcl/cmake/Modules", shell=True)
     run_doxygen(".")
 
 
