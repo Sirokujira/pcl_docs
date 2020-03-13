@@ -185,12 +185,12 @@ if read_the_docs_build:
     pass
 else:
     print("--- not read the docs ---")
-    rootpath = ""
+    rootpath = ''
     if platform.system() == "Windows":
         rootpath = os.environ.get('LIBRARY_PREFIX')
     else:
         # Linux
-        rootpath = os.environ.get('CONDA_PREFIX')
+        rootpath = os.environ.get('CONDA_PREFIX', '/usr/local')
     print("roopath: " + rootpath)
     os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
     os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
