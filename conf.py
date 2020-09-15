@@ -59,7 +59,7 @@ def run_doxygen(folder):
         else:
             # Linux
             retcode = subprocess.call("rm -rf pcl", shell=True)
-            # retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
+            #retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl", shell=True)
             retcode = subprocess.call("git clone https://github.com/PointCloudLibrary/pcl -b pcl-1.9.1 --depth 1", shell=True)
 
             # git pull
@@ -79,25 +79,25 @@ def run_doxygen(folder):
 
             # doc generate makefile in build folder
             # logging on
-            # retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DCMAKE_PREFIX_PATH=$CONDA_PREFIX -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             # logging off
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            #retcode = subprocess.call("cd %s/pcl/build; %s/cmake .. -DWITH_OPENGL:BOOL=OFF -DWITH_VTK:BOOL=OFF -DBUILD_visualization:BOOL=OFF -DDOXYGEN_USE_SHORT_NAMES=OFF -DSPHINX_HTML_FILE_SUFFIX=php -DWITH_DOCS=ON -DWITH_TUTORIALS=ON > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # make doc
             # logging on
-            # retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             # logging off
-            retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
+            #retcode = subprocess.call("cd %s/pcl/build; %s/cmake --build . -- doc tutorials advanced > /dev/null 2>&1; cd -" % (folder, cmake.CMAKE_BIN_DIR), shell=True)
             if retcode < 0:
                 sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 
             # generate xml files in doxyfile
             # logging on
-            # retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
+            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile" % (folder), shell=True)
             # logging off
-            retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
+            #retcode = subprocess.call("doxygen %s/pcl/build/doc/doxygen/doxyfile > /dev/null 2>&1" % (folder), shell=True)
 
         # generate xml files in doxyfile
         # call(['doxygen', './doxyfiles/Developer_Doxyfile'])
@@ -111,7 +111,7 @@ def run_doxygen(folder):
 def generate_doxygen_xml(app):
     """Run the doxygen make commands if we're on the ReadTheDocs server"""
 
-    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+    read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'False'
 
     if read_the_docs_build:
         # generate documents(contains API documents)
@@ -128,18 +128,18 @@ def generate_doxygen_xml(app):
         # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/pcl-docs/conda/latest'
         # advance hosting path(organization : doctest)
         # rootpath = '/home/docs/checkouts/readthedocs.org/user_builds/doctest-pcl-docs/conda/latest/'
-        rootpath = os.path.join(os.getcwd(), 'conda/latest/')
-        os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
-        os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
-        os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
-        os.environ["FLANN_ROOT"] = rootpath
-        os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
-        os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
-        os.environ["BOOST_ROOT"] = rootpath
-        os.environ["QHULL_ROOT"] = rootpath
-        os.environ["VTK_DIR"] = rootpath
-        os.environ["GLEW_ROOT"] = rootpath
-        retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:" + rootpath + "/pcl/cmake/Modules", shell=True)
+        #rootpath = os.path.join(os.getcwd(), 'conda/latest/')
+        #os.environ["EIGEN_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+        #os.environ["EIGEN3_INCLUDE_DIR"] = os.path.join(rootpath, 'include/eigen3')
+        #os.environ["EIGEN_ROOT"] = os.path.join(rootpath, 'include/eigen3')
+        #os.environ["FLANN_ROOT"] = rootpath
+        #os.environ["FLANN_INCLUDE_DIRS"] = os.path.join(rootpath, 'include/flann')
+        #os.environ["FLANN_LIBRARY"] = os.path.join(rootpath, 'lib')
+        #os.environ["BOOST_ROOT"] = rootpath
+        #os.environ["QHULL_ROOT"] = rootpath
+        #os.environ["VTK_DIR"] = rootpath
+        #os.environ["GLEW_ROOT"] = rootpath
+        #retcode = subprocess.call("export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:" + rootpath + "/pcl/cmake/Modules", shell=True)
         run_doxygen(".")
         # generate documents(without APIs documents)
         # print("--- read the docs build(without API document) ---")
